@@ -20,7 +20,7 @@ A brief explanation of replaceable values from the config examples below:
 Let's configure `zilla.yaml`.
 
 ::: details zilla.yaml
-@[code yaml{3-9,69-86}](zilla.yaml)
+@[code yaml{3-9,69-86}](redpanda-zilla.yaml)
 :::
 
 ::: info NOTE

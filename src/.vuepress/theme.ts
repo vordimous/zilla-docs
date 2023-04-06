@@ -1,10 +1,8 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { navbar } from "vuepress-theme-hope";
-import versions from './versions.json' assert { type: "json" };
 import { enSidebar } from "./sidebar/index.js";
-import { hostname, siteBase } from "./env.js";
+import { enNavbar } from "./navbar/index.js";
+import { hostname } from "./env.js";
 
-const versionLinks = <{ text: string; link: string; }[]>versions.map(o => ({ text: o.text, link: o.key?`${hostname}/${siteBase}/${o.key}`:o.link }));
 
 export default hopeTheme({
   hostname,
@@ -25,26 +23,7 @@ export default hopeTheme({
   },
   locales: {
     "/": {
-      // navbar
-      navbar: navbar([
-        { text: "Get Started", icon: "clock", link: "/get-started/", },
-        { text: "Guides", icon: "bars-staggered", link: "/guides/", },
-        { text: "Examples", icon: "diagram-project", link: "/examples/", },
-        {
-          text: "Reference",
-          icon: "book",
-          prefix: "/reference/",
-          children: [
-            "zilla.yaml/",
-            "zilla/",
-            "zpm/",
-          ],
-        },
-        { text: "Blog", icon: "blog", link: `${hostname.replace(/\/$/, '')}/blog/`, },
-        { text: "version", icon: "list-ol", children: versionLinks }
-      ]),
-
-      // sidebar
+      navbar: enNavbar,
       sidebar: enSidebar,
 
       footer: "Default footer",

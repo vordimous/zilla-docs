@@ -1,4 +1,4 @@
-name: Poductions build & deploy
+name: Site versioned build & deploy
 
 on:
   push:
@@ -60,8 +60,6 @@ jobs:
             tar -xvf "$tag.tar.gz" -C "$BuildDir/$key" --strip-components 1;
 
             cp versions.json "$BuildDir/$key/src/.vuepress/versions.json";
-
-            ls -la "$BuildDir/$key";
           done
 
         env:
@@ -85,7 +83,6 @@ jobs:
 
             cd $wrkdir;
           done
-          ls $DistDir
 
       - name: Build VuePress site
         env:

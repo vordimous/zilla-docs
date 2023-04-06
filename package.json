@@ -1,9 +1,10 @@
 {
-  "name": "vuepress-theme-hope-template",
-  "version": "2.0.0",
-  "description": "A project of vuepress-theme-hope",
-  "license": "MIT",
-  "type": "module",
+  "name": "zilla-docs",
+  "version": "0.0.1",
+  "description": "The official documentation for the aklivity/zilla open-source project",
+  "keywords": [],
+  "author": "aklivity.io",
+  "license": "ISC",
   "scripts": {
     "info": "vuepress info",
     "build": "vuepress build src",
