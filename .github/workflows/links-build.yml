@@ -1,0 +1,37 @@
+name: Links check build
+
+on:
+  pull_request:
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Build VuePress site
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: |
+          export DIST_DIR="$(pwd)/site";
+          pnpm build
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.6.1
+        with:
+          fail: true
+          args: --exclude "https://github.com/aklivity" /site
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
