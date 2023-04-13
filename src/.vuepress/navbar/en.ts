@@ -1,7 +1,7 @@
 import { navbar } from "vuepress-theme-hope";
-import { hostname, siteBase } from "../env.js";
+import { hostnameSEO, siteBase } from "../env.js";
 import versions from '../versions.json' assert { type: "json" };
-const versionLinks = <{ text: string; link: string; }[]>versions.map(o => ({ text: o.text, link: o.key?`${hostname}/${siteBase}/${o.key}`:o.link }));
+const versionLinks = <{ text: string; link: string; }[]>versions.map(o => ({ text: o.text, link: o.key?`${hostnameSEO}/${siteBase}/${o.key}`:o.link }));
 
 export const enNavbar = navbar([
   { text: "Get Started", icon: "clock", link: "/get-started/", },

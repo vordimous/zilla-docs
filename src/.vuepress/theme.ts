@@ -1,18 +1,20 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { enSidebar } from "./sidebar/index.js";
 import { enNavbar } from "./navbar/index.js";
-import { hostname } from "./env.js";
+import { hostnameSEO, docsRepo, docsBranch } from "./env.js";
 
 
 export default hopeTheme({
-  hostname,
+  hostname: hostnameSEO,
   author: {
     name: "Aklivity",
     url: "https://www.aklivity.io/",
   },
   logo: "/logo-dark.png",
   logoDark: "/logo.png",
-  repo: "aklivity/zilla-docs",
+  docsRepo,
+  docsDir: "src",
+  docsBranch,
   pure: true,
   iconAssets: "fontawesome-with-brands",
 
