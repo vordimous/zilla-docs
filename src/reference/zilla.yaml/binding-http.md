@@ -114,9 +114,9 @@ Cross Origin Resource Sharing (CORS) access control for `HTTP` protocol.
 | Name (\* = required)                   | Type                   | Description                                                                                                                                              |
 | -------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `policy`\*                             | `const "cross-origin"` | Support cross-origin access control policy                                                                                                               |
-| ``[`allow`](binding-http.md#allow)``   | `object`               | <p>Allowed cross-origin request origins, methods, headers and credentials.<br><br>Defaults to all origins, methods and headers, without credentials.</p> |
+| ``[`allow`](binding-http.md#allow)   | `object`               | <p>Allowed cross-origin request origins, methods, headers and credentials.<br><br>Defaults to all origins, methods and headers, without credentials.</p> |
 | `max-age`                              | `number`               | Maximum cache age (in seconds) for allowed headers and methods.                                                                                          |
-| ``[`expose`](binding-http.md#expose)`` | `object`               | <p>Exposed cross-origin response headers.<br><br>Defaults to all response headers.</p>                                                                   |
+| ``[`expose`](binding-http.md#expose) | `object`               | <p>Exposed cross-origin response headers.<br><br>Defaults to all response headers.</p>                                                                   |
 
 ### allow
 
@@ -172,7 +172,7 @@ Routes for `HTTP` protocol.
 | Name (\* = required) | Type                                                  | Description                                                        |
 | -------------------- | ----------------------------------------------------- | ------------------------------------------------------------------ |
 | `guarded`            | `object` as named map of `string` `array`             | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-http.md#condition)`` | List of conditions (any match) to match this route                 |
+| `when`               | `array` of [`condition`](binding-http.md#condition) | List of conditions (any match) to match this route                 |
 | `exit`\*             | `string`                                              | Next binding when following this route                             |
 
 ### condition

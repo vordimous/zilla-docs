@@ -46,7 +46,7 @@ Binding with support for adapting `http` data streams into `filesystem` data str
 | -------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
 | `type`\*             | `const "http-filesystem"`                                | Adapt `http` data streams into `filesystem` data streams   |
 | `kind`\*             | `enum [ "proxy" ]`                                       | Behave as an `http-filesystem` `proxy`                     |
-| `routes`             | `array` of [`route`](binding-http-filesystem.md#route)`` | Conditional `http-kafka`-specific routes                   |
+| `routes`             | `array` of [`route`](binding-http-filesystem.md#route) | Conditional `http-kafka`-specific routes                   |
 | `exit`               | `string`                                                 | Default exit binding when no conditional routes are viable |
 
 ### route

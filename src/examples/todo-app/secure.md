@@ -1,12 +1,12 @@
 # Secure the Todo Application
 
-In this getting started exercise, you will enhance the [previously built Todo application](build-todo-app.md) to secure the Tasks API using JWT access tokens.
+In this getting started exercise, you will enhance the [previously built Todo application](build.md) to secure the Tasks API using JWT access tokens.
 
-![](../.gitbook/assets/todo-app-architecture-secured@2x.png)
+![](/assets/todo-app-architecture@2x.png)
 
-Zilla has the concept of a [guard](../reference/zilla.yaml/guard.md) that can be defined to control access to any route in the bindings configuration.
+Zilla has the concept of a [guard](../../reference/zilla.yaml/guard.md) that can be defined to control access to any route in the bindings configuration.
 
-In this guide, you will use the [JWT guard](../reference/zilla.yaml/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
+In this guide, you will use the [JWT guard](../../reference/zilla.yaml/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
 
 ### Prerequisites
 
@@ -14,19 +14,17 @@ In this guide, you will use the [JWT guard](../reference/zilla.yaml/guard-jwt.md
 * Git `2.32.0`
 * npm `8.3.1`  and above
 * jq `1.6` and above
-* completed [Build the Todo Application](build-todo-app.md) with docker stack still running
+* completed [Build the Todo Application](build.md) with Docker stack still running
 
 ### Step 1: Zilla
 
-In [Build a Todo Application](build-todo-app.md#step-3-zilla), you defined a Tasks API to send commands to the `Todo` service via Kafka and retrieve a continuously updated stream of tasks from Kafka as needed by the Tasks UX.
+In [Build a Todo Application](build.md#step-3-zilla), you defined a Tasks API to send commands to the `Todo` service via Kafka and retrieve a continuously updated stream of tasks from Kafka as needed by the Tasks UX.
 
-<details>
+![](./post-tasks.png)
 
-<summary><img src="../.gitbook/assets/Screen Shot 2022-05-23 at 10.34.46 AM.png" alt=""></summary>
+::: details
 
 Creates a new Todo Task.&#x20;
-
-
 
 Requires `content-type` `application/json` and request body matching `CreateTask` command domain model.
 
@@ -36,11 +34,11 @@ Include `idempotency-key` of type `uuid` to support idempotent `CreateTask`.
 
 **201: Created** - Task created successfully
 
-</details>
+:::
 
-<details>
+![](./put-tasks.png)
 
-<summary><img src="../.gitbook/assets/Screen Shot 2022-05-23 at 10.58.56 AM.png" alt=""></summary>
+::: details
 
 **Rename Task**
 
@@ -62,18 +60,16 @@ id\[String] - Task identifier
 
 if-match\[String] - Task etag
 
-
-
 **Responses:**
 
 * **204 No Content** - Task renamed successfully
 * **412 Precondition Failed** - Task rename failed, etag does not match
 
-</details>
+:::
 
-<details>
+![](./delete-tasks.png)
 
-<summary><img src="../.gitbook/assets/Screen Shot 2022-05-23 at 11.05.49 AM.png" alt=""></summary>
+::: details
 
 **Delete Task**
 
@@ -93,36 +89,34 @@ id\[String] - Task identifier
 
 if-match\[String] - Task etag
 
-
-
 **Responses:**
 
 * **204 No Content** - **** Task deleted successfully
 * **412 Precondition Failed** - **** Task delete failed, etag does not match
 
-</details>
+:::
 
-<details>
 
-<summary><img src="../.gitbook/assets/Screen Shot 2022-05-23 at 11.12.06 AM.png" alt=""></summary>
+![](./get-tasks.png)
+
+::: details
 
 **Get Tasks**
 
-Retrieves a stream of tasks, with via Server-Sent Events.
+Retrieves all tasks, with `etag` representing the **** latest value.
 
 **Parameters**
 
 **Header:**
 
-last-event-id\[String] - last received task event id
-
-
+if-none-match\[String] - Tasks collection etag
 
 **Responses:**
 
-* **200 OK** - Returns a stream of tasks
+* **200 OK** - Returns an array of Tasks
+* **304 Not Modified** - **** If Tasks collection etag matches
 
-</details>
+:::
 
 Now we secure the Tasks API by requiring the caller to have `read:tasks` role for the `GET` request, and `write:tasks` role for the `POST`, `PUT` and `DELETE` requests.
 
@@ -130,7 +124,7 @@ Now we secure the Tasks API by requiring the caller to have `read:tasks` role fo
 
 The Zilla engine configuration defines a flow of named `bindings` representing each step in the pipeline as inbound network traffic is decoded and transformed then encoded into outbound network traffic as needed.
 
-In [Build the Todo Application, Step 3: Zilla](build-todo-app.md#step-3-zilla), you created `zilla.yaml` that defined the Tasks API without security.
+In [Build the Todo Application, Step 3: Zilla](build.md#step-3-zilla), you created `zilla.yaml` that defined the Tasks API without security.
 
 When routing at each binding, Zilla can guard a route to require that specific roles have been granted to the caller. If the caller does not have the required roles, then the route is ignored. If no routes are viable, then the HTTP request fails with `404 Not Found`.
 
@@ -140,7 +134,7 @@ In this example, tokens are issued by [`Auth0`](https://auth0.com/) at `https://
 
 Using [Zilla Studio](https://zilla-studio.aklivity.io/), select the `Secure the Todo App` template from the `Load Template` dropdown and then press `Generate Config` to download the corresponding `zilla.yaml` configuration file.
 
-<figure><img src="../.gitbook/assets/zilla-studio@2x.png" alt=""><figcaption><p>Zilla Studio</p></figcaption></figure>
+![Zilla Studio](/assets/zilla-studio@2x.png)
 
 Alternatively, copy the contents of `zilla.yaml` shown below to your local `zilla.yaml` file.
 
@@ -540,4 +534,4 @@ For the purposes of this guide, all authorized users are implicitly granted both
 
 The Todo Application now behaves as expected, with authorized-only access to the Tasks API.
 
-![](../.gitbook/assets/SecureTodoAppLoggedIn.png)
+![](./SecureTodoAppLoggedIn.png)

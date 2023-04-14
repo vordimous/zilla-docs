@@ -5,3 +5,11 @@
 .hero-info-wrapper h1 {
     font-size: 2.6rem;
 }
+
+html[data-theme=dark] #app {
+    --code-highlight-line-color: #0e5c49;
+}
+
+html[data-theme=light] #app {
+    --code-highlight-line-color: #78d0ba;
+}

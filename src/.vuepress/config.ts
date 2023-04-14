@@ -1,13 +1,10 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
-
-let siteBase;
-if (process.env.SITE_BASE) {
-  siteBase = `/${process.env.SITE_BASE}/`
-}
+import { base, dest } from "./env.js";
 
 export default defineUserConfig({
-  base: siteBase || "/",
+  base: `/${base}/`,
+  dest,
 
   locales: {
     "/": {

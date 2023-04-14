@@ -1,10 +1,8 @@
-name: Poductions build & deploy
+name: Site versioned build & deploy
 
 on:
-  # trigger deployment on every push to main branch
   push:
-    branches: [main, feature/vuepress-rewrite] # todo: remove the feature branch before going into production
-  # trigger deployment manually
+    branches: [develop]
   workflow_dispatch:
 
 permissions:
@@ -13,51 +11,103 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
+
+env:
+  DistDir: dist
+  BuildDir: build
+  SITE_BASE: ${{ vars.SITE_BASE }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
+
+      - name: Restore cached Docs
+        id: dist-cache
+        uses: actions/cache/restore@v3
         with:
-          # fetch all commits to get last updated time or other git log info
-          fetch-depth: 0
+          path: ${{ env.DistDir }}
+          key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          # choose pnpm version to use
           version: 7
-          # install deps with pnpm
           run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          # choose node.js version to use
           node-version: 18
-          # cache deps for pnpm
           cache: pnpm
 
-      # run build script
-      - name: Build VuePress site
-        run: pnpm docs:build
-        env:
-          SITE_BASE: ${{ vars.SITE_BASE }}
+      - name: build versions.json
+        run: jq -rc '. + input' "src/.vuepress/versions.json" deploy-versions.json > versions.json;
 
-      #push the static site as an artifact
-      - name: Upload artifact
+      - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        name: Pull versions
+        run: |
+          for row in $(jq -rc '.[]' deploy-versions.json); do
+            key=$(echo ${row} | jq -r '.key');
+            tag=$(echo ${row} | jq -r '.tag');
+            
+            gh release download "$tag" --archive=tar.gz --output "$tag.tar.gz" --skip-existing;
+            mkdir -p "$BuildDir/$key";
+            tar -xvf "$tag.tar.gz" -C "$BuildDir/$key" --strip-components 1;
+
+            cp versions.json "$BuildDir/$key/src/.vuepress/versions.json";
+          done
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        name: Build versions
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: |
+          wrkdir=$(pwd);
+          for row in $(jq -rc '.[]' deploy-versions.json); do
+            key=$(echo ${row} | jq -r '.key');
+
+            export DIST_DIR="$wrkdir/$DistDir";
+            export SITE_VERSION_KEY="$key";
+            mkdir -p "$DIST_DIR";
+
+            cd "$BuildDir/$key";
+            pnpm install && pnpm build;
+
+            cd $wrkdir;
+          done
+
+      - name: Build VuePress site
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+          SITE_VERSION_KEY: next
+        run: |
+          cp versions.json "src/.vuepress/versions.json";
+
+          export DIST_DIR="$(pwd)/$DistDir";
+          pnpm build
+
+      - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        name: Save Docs
+        uses: actions/cache/save@v3
+        with:
+          path: ${{ env.DistDir }}
+          key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
+
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'src/.vuepress/dist'
+          path: ${{ env.DistDir }}
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
     permissions:
       pages: write
       id-token: write

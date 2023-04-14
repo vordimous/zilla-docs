@@ -1,6 +1,5 @@
 ---
-title: Runtime CLI
-text: "Runtime CLI"
+title: Zilla Runtime CLI
 icon: "terminal"
 order: 2
 category:

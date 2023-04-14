@@ -68,7 +68,7 @@ Routes for adapting `sse` data streams to `kafka` data streams.
 | Name (\* = required) | Type                                                       | Description                                                        |
 | -------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------ |
 | `guarded`            | `object` as named map of `string` `array`                  | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-sse-kafka.md#condition)`` | List of conditions (any match) to match this route                 |
+| `when`               | `array` of [`condition`](binding-sse-kafka.md#condition) | List of conditions (any match) to match this route                 |
 | `exit`\*             | `string`                                                   | Next binding when following this route                             |
 | `with`               | [`with`](binding-sse-kafka.md#with)                        | Kafka parameters used when following this route                    |
 
@@ -92,7 +92,7 @@ Kafka parameters for matched route when adapting `sse` data streams to `kafka` d
 | ----------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------- |
 | `topic`\*                                 | `string`                                           | Topic name, optionally referencing path parameter such as `${params.topic}` |
 | `filters`                                 | `array` of [`filter`](binding-sse-kafka.md#filter) | List of criteria (any match)                                                |
-| ``[`event`](binding-sse-kafka.md#event)`` | `object`                                           | Defines the syntax of the `event` `id`                                      |
+| ``[`event`](binding-sse-kafka.md#event) | `object`                                           | Defines the syntax of the `event` `id`                                      |
 
 ### filter
 

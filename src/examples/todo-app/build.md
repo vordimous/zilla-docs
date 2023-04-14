@@ -834,4 +834,4 @@ Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to
 
 Notice that there is no need to `Login` as the Tasks API is initially available to anonymous clients.
 
-Next up: [Secure the Todo Application](secure-todo-app.md) Tasks API with JWT access tokens.
+Next up: [Secure the Todo Application](secure.md) Tasks API with JWT access tokens.
