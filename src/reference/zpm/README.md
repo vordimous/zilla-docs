@@ -1,6 +1,5 @@
 ---
-title: Manager CLI
-text: "Manager CLI"
+title: Zilla Manager CLI
 icon: "server"
 order: 3
 category:
@@ -25,4 +24,3 @@ The Zilla Manager command line interface supports the following commands:
 | [`zpm encrypt`](encrypt.md) | Encrypt passwords        |
 | [`zpm install`](install.md) | Install dependencies     |
 | [`zpm wrap`](wrap.md)       | Generate wrapper         |
-

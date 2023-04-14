@@ -1,6 +1,5 @@
 ---
-title: Config Yaml
-text: "yaml"
+title: Zilla Runtime Configuration
 icon: "gears"
 order: 1
 category:

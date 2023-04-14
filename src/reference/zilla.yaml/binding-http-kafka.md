@@ -169,7 +169,7 @@ Routes for adapting `http` request-response streams to `kafka` topic streams.
 | Name (\* = required) | Type                                                                                                                                                              | Description                                        |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | `guarded`            | `object` as named map of `string` `array`                                                                                                                         | Roles required by named guard                      |
-| `when`               | `array` of [`condition`](binding-http-kafka.md#condition)``                                                                                                       | <p>List of conditions<br>(any match)</p>           |
+| `when`               | `array` of [`condition`](binding-http-kafka.md#condition)                                                                                                       | <p>List of conditions<br>(any match)</p>           |
 | `exit`\*             | `string`                                                                                                                                                          | List of conditions (any match) to match this route |
 | `with`               | [with (fetch)](binding-http-kafka.md#with-fetch) | [with (produce)](binding-http-kafka.md#with-produce) | Kafka parameters used when following this route    |
 

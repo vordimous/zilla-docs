@@ -12,11 +12,15 @@ export default hopeTheme({
   },
   logo: "/logo-dark.png",
   logoDark: "/logo.png",
+  iconAssets: "fontawesome-with-brands",
+
+  editLink: true,
+  contributors: false,
+  lastUpdated: true,
   docsRepo,
   docsDir: "src",
   docsBranch,
   pure: true,
-  iconAssets: "fontawesome-with-brands",
 
   navbarLayout: {
     start: ["Brand"],

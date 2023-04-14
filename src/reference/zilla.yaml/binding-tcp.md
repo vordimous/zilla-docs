@@ -62,7 +62,7 @@ Routes for `tcp` protocol.
 | Name (\* = required) | Type                                                 | Description                                                        |
 | -------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
 | `guarded`            | `object` as named map of `string` `array`            | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-tcp.md#condition)`` | List of conditions (any match) to match this route                 |
+| `when`               | `array` of [`condition`](binding-tcp.md#condition) | List of conditions (any match) to match this route                 |
 | `exit`\*             | `string`                                             | Next binding when following this route, for kind `server` only     |
 
 ### condition
