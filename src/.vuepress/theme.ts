@@ -6,10 +6,6 @@ import { hostnameSEO, docsRepo, docsBranch } from "./env.js";
 
 export default hopeTheme({
   hostname: hostnameSEO,
-  author: {
-    name: "Aklivity",
-    url: "https://www.aklivity.io/",
-  },
   logo: "/logo-dark.png",
   logoDark: "/logo.png",
   iconAssets: "fontawesome-with-brands",
