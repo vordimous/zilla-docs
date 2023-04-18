@@ -1,8 +1,23 @@
 ---
+shortTitle: valut (filesystem)
 description: Zilla runtime filesystem vault
+category:
+  - Vault
 ---
 
-# vault (filesystem)
+# filesystem Vault
+
+Zilla runtime filesystem vault
+
+```yaml {2}
+server:
+  type: filesystem
+  options:
+    keys:
+      store: localhost.p12
+      type: pkcs12
+      password: "{{env.KEYS_PASSWORD}}"
+```
 
 Defines a vault stored on the local filesystem.
 
@@ -13,24 +28,6 @@ The `keys` option is used to identify the local peer in a `TLS` handshake.
 The `trust` option is used to verify identity of the remote peer in a `TLS` handshake.
 
 The `signers` option is used to challenge for mutual authentication in a `TLS` handshake.
-
-## Example
-
-```
-"server":
-{
-    "type": "filesystem",
-    "options":
-    {
-        "keys":
-        {
-            "store": "localhost.p12",
-            "type": "pkcs12",
-            "password": "{{env.KEYS_PASSWORD}}"
-        }
-    }
-}
-```
 
 Note that use of `{{env.*}}` syntax to read an environment variable currently requires setting `zilla.engine.config.syntax.mustache=true` in `.zilla/zilla.properties`.
 

@@ -1,37 +1,32 @@
 ---
+shortTitle: binding (mqtt) 🚧
 description: Zilla runtime mqtt binding (incubator)
+category:
+  - Binding
+tag:
+  - Server
 ---
 
 # binding (mqtt) 🚧
+
+Zilla runtime mqtt binding (incubator)
+
+```yaml {2}
+mqtt_server0:
+  type: mqtt
+  kind: server
+  routes:
+  - when:
+    - topic: echo
+      capabilities: publish_and_subscribe
+    exit: echo_server0
+```
 
 Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
 
 The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`.
 
 Conditional routes based on the `topic` `name` are used to route these application streams to an `exit` binding.
-
-## Example
-
-```
-"mqtt_server0":
-{
-    "type" : "mqtt",
-    "kind": "server",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "topic": "echo",
-                    "capabilities": "publish_and_subscribe"
-                }
-            ],
-            "exit": "echo_server0"
-        }   
-    ]
-}
-```
 
 ## Configuration
 

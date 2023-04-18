@@ -1,8 +1,35 @@
 ---
+shortTitle: binding (http)
 description: Zilla runtime http binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (http)
+# http Binding
+
+Zilla runtime http binding
+
+```yaml {2}
+http_server0:
+  type: http
+  kind: server
+  options:
+    access-control:
+      policy: cross-origin
+    authorization:
+      jwt0:
+        credentials:
+          headers:
+            authorization: Bearer {credentials}
+  routes:
+  - when:
+    - headers:
+        ":scheme": https
+        ":authority": example.com:443
+    exit: echo_server0
+```
 
 Defines a binding with `http` protocol support, with `server` or `client` behavior.
 
@@ -21,52 +48,6 @@ Conditional routes based on `http` request headers are used to route these appli
 The `client` kind `http` binding receives inbound application streams and encodes each request as a network stream via `HTTP/1.1` protocol. Note that the same network stream can be reused to encode multiple `HTTP/1.1` requests.
 
 Conditional routes based on `http` request headers are used to route these network streams to an `exit` binding.
-
-## Example
-
-```
-"http_server0":
-{
-    "type" : "http",
-    "kind": "server",
-    "options":
-    {
-        "access-control":
-        {
-            "policy": "cross-origin"
-        },
-        "authorization":
-        {
-            "jwt0":
-            {
-                "credentials":
-                {
-                    "headers":
-                    {
-                        "authorization": "Bearer {credentials}"
-                    }
-                }
-            }
-        }
-    },
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "headers":
-                    {
-                        ":scheme": "https",
-                        ":authority": "example.com:443"
-                    }
-                }
-            ],
-            "exit": "echo_server0"
-        }
-    ]
-}
-```
 
 ## Configuration
 

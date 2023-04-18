@@ -124,7 +124,7 @@ jobs:
 
     environment:
       name: cloudflare-pages
-      url: ${{ steps.cloudflare-deployment.outputs.url }}/next
+      url: ${{ steps.cloudflare-deployment.outputs.url }}
 
     steps:
       - name: Download cloudflare-pages artifact
@@ -164,7 +164,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.github-deployment.outputs.page_url }}/next
+      url: ${{ steps.github-deployment.outputs.page_url }}next
 
     steps:
       - name: Deploy to GitHub Pages

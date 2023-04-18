@@ -1,8 +1,25 @@
 ---
+shortTitle: binding (tcp)
 description: Zilla runtime tcp binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (tcp)
+# tcp Binding
+
+Zilla runtime tcp binding
+
+```yaml {2}
+tcp_server0:
+  type: tcp
+  kind: server
+  options:
+    host: 0.0.0.0
+    port: 12345
+  exit: echo_server0
+```
 
 Defines a binding with `tcp` protocol support, with `server` or `client` behavior.
 
@@ -11,22 +28,6 @@ The `server` kind `tcp` binding listens for inbound socket connections, producin
 The `client` kind `tcp` binding receives inbound application streams and initiates outbound `tcp` network connections to a remote `tcp` server address.
 
 Conditional routes based on the hostname authority and network address mask are used to route these streams to an `exit` binding.
-
-## Example
-
-```
-"tcp_server0":
-{
-    "type" : "tcp",
-    "kind": "server",
-    "options":
-    {
-        "host": "0.0.0.0",
-        "port": 12345
-    },
-    "exit": "echo_server0"
-}
-```
 
 ## Configuration
 

@@ -1,10 +1,15 @@
 ---
+shortTitle: binding (filesystem)
 description: Zilla runtime filesystem binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (filesystem)
+# filesystem Binding
 
-Defines a binding with `filesystem`  support, with `server` behavior.
+Zilla runtime filesystem binding
 
 ```yaml {2}
 filesystem_server0:

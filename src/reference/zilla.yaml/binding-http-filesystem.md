@@ -1,40 +1,33 @@
 ---
+shortTitle: binding (http-filesystem)
 description: Zilla runtime http-filesystem binding
+category:
+  - Binding
+tag:
+  - Proxy
 ---
 
-# binding (http-filesystem)
+# http-filesystem Binding
+
+Zilla runtime http-filesystem binding
+
+```yaml {2}
+http_filesystem_proxy0:
+  type: http-filesystem
+  kind: proxy
+  routes:
+  - when:
+    - path: "/{path}"
+    exit: filesystem_server0
+    with:
+      path: "${params.path}"
+```
 
 Defines a binding with `http-filesystem`  support, with `proxy` behavior.
 
 The `proxy` kind `http-filesystem` binding adapts `http` data streams into `filesystem` data streams by mapping the path from an inbound `http` `GET` request into a filesystem relative path.
 
 Behaves as a web server when combined with `tcp,` `tls`, `http` and `filesystem` bindings.
-
-## Example
-
-```
-"http_filesystem_proxy0":
-{
-    "type" : "http-filesystem",
-    "kind": "proxy",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "path": "/{path}"
-                }
-            ],
-            "exit": "filesystem_server0",
-            "with":
-            {
-                "path": "${params.path}"
-            }
-        }
-    ]
-}
-```
 
 ## Configuration
 

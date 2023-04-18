@@ -1,25 +1,28 @@
 ---
+shortTitle: binding (sse)
 description: Zilla runtime sse binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (sse)
+# sse Binding
+
+Zilla runtime sse binding
+
+```yaml {2}
+sse_server0:
+  type: sse
+  kind: server
+  exit: sse_kafka_proxy0
+```
 
 Defines a binding with `Server Sent Events (sse)` protocol support, with `server` behavior.
 
 The `server` kind `sse` binding converts inbound `http` request-response streams into `sse` request-response streams, with optionally configured `retry` delay.
 
 Messages received on the `sse` response stream are encoded using `Server Sent Events` protocol, including support for custom `event` types and last event `id`.
-
-## Example
-
-```
-"sse_server0":
-{
-    "type" : "sse",
-    "kind": "server",
-    "exit": "sse_kafka_proxy0"
-}
-```
 
 ## Configuration
 

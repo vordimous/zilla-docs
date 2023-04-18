@@ -1,8 +1,25 @@
 ---
+shortTitle: binding (ws)
 description: Zilla runtime ws binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (ws)
+# ws Binding
+
+Zilla runtime ws binding
+
+```yaml {2}
+ws_server0:
+  type: ws
+  kind: server
+  routes:
+  - when:
+    - protocol: echo
+    exit: echo_server0
+```
 
 Defines a binding with `WebSockets` protocol support, with `server` or `client` behavior.
 
@@ -17,28 +34,6 @@ Conditional routes based on `ws` scheme, authority, path or negotiated subprotoc
 The `client` kind `ws` binding converts inbound `ws` full duplex streams into `http` request-response streams.
 
 Conditional routes based on `ws` scheme, authority, path or negotiated subprotocol are used to route these streams to an `exit` binding.
-
-## Example
-
-```
-"ws_server0":
-{
-    "type" : "ws",
-    "kind": "server",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "protocol": "echo"
-                }
-            ],
-            "exit": "echo_server0"
-        }
-    ]
-}
-```
 
 ## Configuration
 

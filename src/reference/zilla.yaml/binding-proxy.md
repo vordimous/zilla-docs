@@ -1,8 +1,29 @@
 ---
+shortTitle: binding (proxy)
 description: Zilla runtime proxy binding
+category:
+  - Binding
+tag:
+  - Proxy
+  - Server
 ---
 
-# binding (proxy)
+# proxy Binding
+
+Zilla runtime proxy binding
+
+```yaml {2}
+proxy_server0:
+  type: proxy
+  kind: server
+  routes:
+  - when:
+    - transport: stream
+      family: inet4
+      destination:
+        port: 443
+    exit: tls_server0
+```
 
 Defines a binding with `proxy` protocol support, with `server` or `client` behavior.
 
@@ -11,33 +32,6 @@ The `server` kind `proxy` binding decodes `Proxy v2` protocol on the inbound net
 The `client` kind `proxy` binding receives inbound application streams and encodes each as a network stream via `Proxy v2` protocol.
 
 Conditional routes based on the network transport type or network addresses are used to route these streams to an `exit` binding.
-
-## Example
-
-```
-"proxy_server0":
-{
-    "type" : "proxy",
-    "kind": "server",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "transport": "stream",
-                    "family": "inet4",
-                    "destination":
-                    {
-                        "port": 443
-                    }
-                }
-            ],
-            "exit": "tls_server0"
-        }
-    ]
-}
-```
 
 ## Configuration
 

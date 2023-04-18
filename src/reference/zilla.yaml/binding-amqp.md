@@ -1,37 +1,28 @@
 ---
+shortTitle: binding (amqp) 🚧
 description: Zilla runtime amqp binding (incubator)
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (amqp) 🚧
+# amqp Binding 🚧
+
+Zilla runtime amqp binding (incubator)
+
+```yaml {2}
+fan_server0:
+  type: fan
+  kind: server
+  exit: echo_server0
+```
 
 Defines a binding with `amqp 1.0` protocol support, with `server` behavior.
 
 The `server` kind `amqp` binding decodes `amqp 1.0` protocol on the inbound network stream, producing higher level application streams for each `send` or `receive` `link`.
 
 Conditional routes based on the `link` `address` are used to route these application streams to an `exit` binding.
-
-## Example
-
-```
-"amqp_server0":
-{
-    "type" : "amqp",
-    "kind": "server",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "address": "echo",
-                    "capabilities": "send_and_receive"
-                }
-            ],
-            "exit": "echo_server0"
-        }
-    ]
-}
-```
 
 ## Configuration
 

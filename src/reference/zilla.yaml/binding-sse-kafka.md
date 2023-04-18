@@ -1,8 +1,29 @@
 ---
+shortTitle: binding (sse-kafka)
 description: Zilla runtime sse-kafka binding
+category:
+  - Binding
+tag:
+  - Proxy
 ---
 
-# binding (sse-kafka)
+# sse-kafka Binding
+
+Zilla runtime sse-kafka binding
+
+```yaml {2}
+sse_kafka_proxy0:
+  type: sse-kafka
+  kind: proxy
+  routes:
+  - when:
+    - path: "/items"
+    exit: kafka_cache_client0
+    with:
+      topic: items-snapshots
+      event:
+        id: '["${base64(key)}","${etag}"]'
+```
 
 Defines a binding with `sse-kafka`  support, with `proxy` behavior.
 
@@ -16,35 +37,6 @@ The event `id` can be configured to include the message `key` and `etag` of each
 
 When a `kafka` tombstone (`null` value) message is received by the `sse-kafka` binding, it delivers a `delete` event to the `sse` client. This informs the client which specific message has been deleted by observing the message key from the `sse` `delete` event `id`.
 
-## Example
-
-```
-"sse_kafka_proxy0":
-{
-    "type" : "sse-kafka",
-    "kind": "proxy",
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "path": "/items"
-                }
-            ],
-            "exit": "kafka_cache_client0",
-            "with":
-            {
-                "topic": "items-snapshots",
-                "event":
-                {
-                    "id": "[\"${base64(key)}\",\"${etag}\"]"
-                }
-            }
-        }
-    ]
-}
-```
 
 ## Configuration
 

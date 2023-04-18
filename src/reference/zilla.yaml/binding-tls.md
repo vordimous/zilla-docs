@@ -1,8 +1,33 @@
 ---
+shortTitle: binding (tls)
 description: Zilla runtime tls binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (tls)
+# tls Binding
+
+Zilla runtime tls binding
+
+```yaml {2}
+tls_server0:
+  type: tls
+  kind: server
+  vault: server
+  options:
+    keys:
+    - localhost
+    sni:
+    - localhost
+    alpn:
+    - echo
+  routes:
+  - when:
+    - alpn: echo
+    exit: echo_server0
+```
 
 Defines a binding with `tls` protocol support, with `server`, `client` or `proxy` behavior.
 
@@ -27,35 +52,6 @@ Conditional routes based on `tls` hostname authority or negotiated ALPN protocol
 The `proxy` kind `tls` binding detects `ClientHello` `server_name` extension to provide TLS virtual hosting by routing based on server name.
 
 A `vault` is not required to proxy `TLS` protocol as the handshake is only observed read-only as it routes through the `tls` `proxy` binding.
-
-## Example
-
-```
-"tls_server0":
-{
-    "type" : "tls",
-    "kind": "server",
-    "vault": "server",
-    "options":
-    {
-        "keys": [ "localhost" ],
-        "sni": [ "localhost" ],
-        "alpn": [ "echo" ]
-    },
-    "routes":
-    [
-        {
-            "when":
-            [
-                {
-                    "alpn": "echo"
-                }
-            ],
-            "exit": "echo_server0"
-        }
-    ]
-}
-```
 
 ## Configuration
 

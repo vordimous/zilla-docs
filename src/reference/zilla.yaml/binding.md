@@ -1,8 +1,15 @@
 ---
+shortTitle: binding
 description: Zilla runtime bindings
+category:
+  - Binding
+tag:
+  - Client
+  - Proxy
+  - Server
 ---
 
-# binding
+# Binding
 
 Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`.
 

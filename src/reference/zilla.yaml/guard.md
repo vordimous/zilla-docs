@@ -1,8 +1,11 @@
 ---
+shortTitle: guard
 description: Zilla runtime guard type
+category:
+  - Guard
 ---
 
-# guard
+# Guard
 
 Each configured `guard` represents a security checkpoint for one or more bindings based on a specific implementation `type`.
 

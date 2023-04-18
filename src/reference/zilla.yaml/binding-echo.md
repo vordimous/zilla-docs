@@ -9,19 +9,13 @@ tag:
 
 # echo binding
 
-Zilla runtime **echo** binding.
-
-::: code-tabs#yaml
-
-@tab:active zilla.yaml
+Zilla runtime echo binding.
 
 ```yaml {2}
 echo_server0:
     type: echo
     kind: server
 ```
-
-:::
 
 - [`kind`](#kind) How the binding will behave
 

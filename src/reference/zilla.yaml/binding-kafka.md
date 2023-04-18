@@ -1,8 +1,37 @@
 ---
+shortTitle: binding (kafka)
 description: Zilla runtime kafka binding
+category:
+  - Binding
+tag:
+  - Server
 ---
 
-# binding (kafka)
+# kafka Binding
+
+Zilla runtime kafka binding
+
+```yaml {2,10,17}
+kafka_cache_client0:
+  type: kafka
+  kind: cache_client
+  options:
+    merged:
+    - items-requests
+    - items-responses
+  exit: kafka_cache_server0
+kafka_cache_server0:
+  type: kafka
+  kind: cache_server
+  options:
+    bootstrap:
+    - items-responses
+  exit: kafka_client0
+kafka_client0:
+  type: kafka
+  kind: client
+  exit: tcp_client0
+```
 
 Defines a binding with `kafka` protocol support, with `cache_client`, `cache_server` or `client` behavior.
 
@@ -27,46 +56,6 @@ The `cache_client` and `cache_server` also combine to provide a staging area whe
 The `client` kind `kafka` binding receives inbound application streams and encodes each as a network stream via `kafka` request-response protocol. Note that the same network stream can be reused to encode multiple `kafka` requests, including both `fetch` and `produce` requests.
 
 Conditional routes based on `kafka` `topic` names are used to route these network streams to an `exit` binding that ultimately reaches a `kafka` broker.
-
-## Example
-
-```
-"kafka_cache_client0":
-{
-    "type" : "kafka",
-    "kind": "cache_client",
-    "options":
-    {
-        "merged":
-        [
-            "items-requests",
-            "items-responses"
-        ]
-    },
-    "exit": "kafka_cache_server0"
-},
-
-"kafka_cache_server0":
-{
-    "type" : "kafka",
-    "kind": "cache_server",
-    "options":
-    {
-        "bootstrap":
-        [
-            "items-responses"
-        ]
-    },
-    "exit": "kafka_client0"
-},
-
-"kafka_client0":
-{
-    "type" : "kafka",
-    "kind": "client",
-    "exit": "tcp_client0"
-}
-```
 
 ## Configuration
 
