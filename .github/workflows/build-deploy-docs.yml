@@ -36,7 +36,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
           run_install: true
 
       - name: Setup Node.js
@@ -124,7 +124,7 @@ jobs:
 
     environment:
       name: cloudflare-pages
-      url: ${{ steps.cloudflare-deployment.outputs.url }}
+      url: ${{ steps.cloudflare-deployment.outputs.url }}/next
 
     steps:
       - name: Download cloudflare-pages artifact
@@ -151,7 +151,6 @@ jobs:
           accountId: 65fb75109b09718cddae9ab7c68e2e3c
           projectName: zilla-docs
           directory: ${{ env.DistDir }}
-          # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
 
@@ -165,7 +164,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.github-deployment.outputs.page_url }}
+      url: ${{ steps.github-deployment.outputs.page_url }}/next
 
     steps:
       - name: Deploy to GitHub Pages

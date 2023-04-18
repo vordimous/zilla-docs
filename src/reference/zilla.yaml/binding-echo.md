@@ -7,7 +7,7 @@ tag:
   - Server
 ---
 
-# Echo binding
+# echo binding
 
 Zilla runtime **echo** binding.
 
@@ -31,18 +31,20 @@ echo_server0:
 
 This binding supports the `echo` protocol and is run with the `server` behavior. It reads inbound messages and writes it back to the sender.
 
-## Properties
+## Configuration
 
-### **type** \*
+### type\*
 
-- `const "echo"`
+> const "echo"
 
 Supports `echo` protocol
 
-### **kind** \*
+### kind\*
 
-- `enum [ "server" ]`
+> enum [ "server" ]
 
 Behaves as an `echo` `server`
+
+---
 
 \* = required
