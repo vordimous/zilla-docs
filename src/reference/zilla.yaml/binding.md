@@ -12,11 +12,11 @@ As each incoming data stream arrives, the binding follows its configured `routes
 
 See each of the specific `binding` types linked below for more detailed examples.
 
-### Configuration
+## Configuration
 
 Each runtime `binding` has a behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
 
-#### Properties (generic)
+### Properties (generic)
 
 ### type
 
@@ -38,26 +38,28 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 > [`"ws"`](binding-ws.md)\
 > \]
 
-
 Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols
 
-#### Properties (type-specific)
+### Properties (type-specific)
 
 ### kind
 
 > `string`
 
 Behavioral kind such as `server`, `client` or `proxy`
+
 ### options
 
 > `object`
 
 Type-specific options to configure the binding
+
 ### routes
 
 > `array` of `route`
 
 Type-specific conditional routing rules to reach an `exit` binding
+
 ### exit
 
 > `string`

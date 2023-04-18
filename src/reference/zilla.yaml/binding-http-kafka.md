@@ -11,9 +11,8 @@ tag:
 
 Zilla runtime http-kafka binding
 
-@[code yaml](binding-http-kafka.yaml)
+@[code yaml {2}](binding-http-kafka.yaml)
 
-- [`type`](#type) Adapt http request-response streams to kafka topic streams
 - [`kind`](#kind) Behave as an http-kafka proxy
 - [`options`](#options) http-kafka-specific options
   - [`idempotency`](#options-idempotency) Idempotency key
@@ -26,8 +25,6 @@ Zilla runtime http-kafka binding
   - [`with(produce)`](#route-with-produce) Kafka parameters when adapting to kafka topic produce streams.
 
 ## Summary
-
-Defines a binding with `http-kafka` support, with `proxy` behavior.
 
 The `proxy` kind `http-kafka` binding adapts `http` request-response streams to `kafka` topic streams.
 
@@ -50,16 +47,6 @@ Specifying `async` allows clients to include a `prefer: respond-async` header in
 A corresponding `route` `condition` with matching `GET` method and `location` path is also required for follow up `GET` requests to return the same response as would have been returned if `prefer: respond-async` request header had been omitted.
 
 ## Configuration
-
-### type\*
-
-> const "http-kafka"
-
-Adapt `http` request-response streams to `kafka` topic streams
-
-```yaml
-type: http-kafka
-```
 
 ### kind\*
 
@@ -310,7 +297,7 @@ Produce capability.
 
 Kafka topic name, optionally referencing path parameter such as `${params.topic}`
 
-#### with.acks | enum [ `"none"`, `"leader_only"`, `"in_sync_replicas"` ]
+#### with.acks | `enum [ "none", "leader_only", "in_sync_replicas" ]`
 
 Kafka acknowledgement mode\
 Defaults to `in_sync_replicas`.

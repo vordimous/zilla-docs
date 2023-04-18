@@ -15,7 +15,7 @@ Zilla runtime **echo** binding.
 
 @tab:active zilla.yaml
 
-```yaml
+```yaml {2}
 echo_server0:
     type: echo
     kind: server
@@ -23,7 +23,6 @@ echo_server0:
 
 :::
 
-- [`type`](#type) The type of binding beind defined
 - [`kind`](#kind) How the binding will behave
 
 
@@ -33,17 +32,17 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 ## Configuration
 
-### type\*
-
-> const "echo"
-
-Supports `echo` protocol
 
 ### kind\*
 
 > enum [ "server" ]
 
 Behaves as an `echo` `server`
+
+
+```yaml
+kind: server
+```
 
 ---
 
