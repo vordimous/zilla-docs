@@ -23,8 +23,3 @@ For example, when deployed in front of a Kafka cluster, Zilla can be configured 
 As a developer, you can focus on writing and testing your event-driven microservices with technologies such as Kafka consumers and producers, you can define your web and mobile APIs using Zilla, and then you can deploy securely at global scale.
 
 Learn more about Zilla in the [Get Started](get-started/) guide!
-
-- reorganize content into: Reference -> Guides -> Examples -> Get Started
-- build and deploy next version from develop
-- build all versions based on deploy-versions.json
-- check cache hit and use correct build
