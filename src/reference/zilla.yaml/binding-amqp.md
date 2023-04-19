@@ -30,7 +30,7 @@ Binding with support for `amqp 1.0` protocol.
 
 #### Properties
 
-<table><thead><tr><th>Name (* = required)</th><th>Type</th><th>Description</th><th data-hidden data-type="checkbox">Required</th></tr></thead><tbody><tr><td><code>type</code>*</td><td><code>const "amqp"</code></td><td>Support <code>amqp 1.0</code> protocol</td><td>true</td></tr><tr><td><code>kind</code>*</td><td><code>enum [ "server" ]</code></td><td>Behave as an <code>amqp 1.0</code> <code>server</code></td><td>true</td></tr><tr><td><code>routes</code></td><td><code>array</code> of <a href="binding-amqp.md#route"><code>route</code></a></td><td>Conditional <code>amqp</code>-specific routes</td><td>false</td></tr><tr><td><code>exit</code></td><td><code>string</code></td><td>Default exit binding when no conditional routes are viable</td><td>false</td></tr></tbody></table>
+<table><thead><tr><th>Name (* = required)</th><th>Type</th><th>Description</th><th data-hidden data-type="checkbox">Required</th></tr></thead><tbody><tr><td><code>type</code>*</td><td><code>const "amqp"</code></td><td>Support <code>amqp 1.0</code> protocol</td><td>true</td></tr><tr><td><code>kind</code>*</td><td><code>enum [ "server" ]</code></td><td>Behave as an <code>amqp 1.0</code> <code>server</code></td><td>true</td></tr><tr><td><code>routes</code></td><td><code>array</code> of [`route`](binding-amqp.md#route)</td><td>Conditional <code>amqp</code>-specific routes</td><td>false</td></tr><tr><td><code>exit</code></td><td><code>string</code></td><td>Default exit binding when no conditional routes are viable</td><td>false</td></tr></tbody></table>
 
 ### route
 

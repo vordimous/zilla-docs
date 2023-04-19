@@ -21,7 +21,7 @@ Each runtime `vault` has a behavioral type supporting a specific implementation 
 
 | Name   | Type                                                                                                          | Description     |
 | ------ | ------------------------------------------------------------------------------------------------------------- | --------------- |
-| `type` | <p><code>enum [</code><br>  <a href="vault-filesystem.md"><code>"filesystem"</code></a><br><code>]</code></p> | Behavioral type |
+| `type` | <p><code>enum [</code><br>  [`"filesystem"`](vault-filesystem.md)<br><code>]</code></p> | Behavioral type |
 
 #### Properties (type-specific)
 

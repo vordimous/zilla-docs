@@ -23,7 +23,7 @@ Each runtime `guard` has a behavioral type supporting a specific implementation 
 
 | Name   | Type                                                                                            | Description     |
 | ------ | ----------------------------------------------------------------------------------------------- | --------------- |
-| `type` | <p><code>enum [</code><br>  <a href="guard-jwt.md"><code>"jwt"</code></a><br><code>]</code></p> | Behavioral type |
+| `type` | <p><code>enum [</code><br>  [`"jwt"`](guard-jwt.md) <br><code>]</code></p> | Behavioral type |
 
 #### Properties (type-specific)
 

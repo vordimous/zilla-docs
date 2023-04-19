@@ -17,14 +17,20 @@ echo_server0:
     kind: server
 ```
 
-- [`kind`](#kind) How the binding will behave
-
-
 ## Summary
 
 This binding supports the `echo` protocol and is run with the `server` behavior. It reads inbound messages and writes it back to the sender.
 
 ## Configuration
+
+::: right
+\* = required
+:::
+
+::: details Table of Contents
+- [kind\*](#kind)
+
+:::
 
 
 ### kind\*
@@ -40,4 +46,6 @@ kind: server
 
 ---
 
+::: right
 \* = required
+:::

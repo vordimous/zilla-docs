@@ -49,17 +49,6 @@ http_kafka_proxy0:
           location: "/items/${params.id};${correlationId}"
 ```
 
-- [`kind`](#kind) Behave as an http-kafka proxy
-- [`options`](#options) http-kafka-specific options
-  - [`idempotency`](#options-idempotency) Idempotency key
-  - [`correlation`](#options-correlation) Correlate requests and responses
-- [`routes`](#routes) Conditional http-kafka-specific routes
-  - [`guarded`](#route-guarded) Roles required by named guard
-  - [`when`](#route-when) List of conditions to match this route
-  - [`exit`](#route-exit) Default exit binding
-  - [`with(fetch)`](#route-with-fetch) Kafka parameters when adapting to kafka topic fetch streams.
-  - [`with(produce)`](#route-with-produce) Kafka parameters when adapting to kafka topic produce streams.
-
 ## Summary
 
 The `proxy` kind `http-kafka` binding adapts `http` request-response streams to `kafka` topic streams.
@@ -83,6 +72,51 @@ Specifying `async` allows clients to include a `prefer: respond-async` header in
 A corresponding `route` `condition` with matching `GET` method and `location` path is also required for follow up `GET` requests to return the same response as would have been returned if `prefer: respond-async` request header had been omitted.
 
 ## Configuration
+
+::: right
+\* = required
+:::
+
+::: details Table of Contents
+- [Fetch capability](#fetch-capability)
+- [Produce capability](#produce-capability)
+- [kind\*](#kind)
+- [options](#options)
+  - [options.idempotency | `object`](#options-idempotency-object)
+    - [idempotency.header | `string`](#idempotency-header-string)
+  - [options.correlation | `object`](#options-correlation-object)
+    - [correlation.headers | `object`](#correlation-headers-object)
+    - [headers.reply-to | `string`](#headers-reply-to-string)
+    - [headers.correlation-id | `string`](#headers-correlation-id-string)
+- [routes](#routes)
+  - [route | `object`](#route-object)
+- [route.guarded](#route-guarded)
+- [route.when](#route-when)
+  - [condition | `object`](#condition-object)
+  - [condition.method | `string`](#condition-method-string)
+  - [condition.path | `string`](#condition-path-string)
+- [route.exit\*](#route-exit)
+- [route.with](#route-with)
+- [with.capability (fetch)](#with-capability-fetch)
+  - [with.topic | `string`](#with-topic-string)
+  - [with.filters | `array` of `filter object`](#with-filters-array-of-filter-object)
+    - [filter | `object`](#filter-object)
+    - [filter.key | `string`](#filter-key-string)
+    - [filter.headers | `object`](#filter-headers-object)
+  - [with.merge | `object`](#with-merge-object)
+  - [merge.content-type | `const "application/json"`](#merge-content-type-const-application-json)
+  - [merge.patch | `object`](#merge-patch-object)
+  - [patch.initial | `string`](#patch-initial-string)
+  - [patch.path | `const "/-"`](#patch-path-const)
+- [with.capability (produce)](#with-capability-produce)
+  - [with.topic | `string`](#with-topic-string-1)
+  - [with.acks | `enum [ "none", "leader_only", "in_sync_replicas" ]`](#with-acks-enum-none-leader-only-in-sync-replicas)
+  - [with.key | `string`](#with-key-string)
+  - [with.overrides | `object`](#with-overrides-object)
+  - [with.reply-to | `string`](#with-reply-to-string)
+  - [with.async | `object`](#with-async-object)
+
+:::
 
 ### kind\*
 
@@ -139,7 +173,7 @@ Defaults to `"zilla:correlation-id"`.
 
 ### routes
 
-> `array` of [`route`](#route)
+> `array` of [`route`](#route-object)
 
 Conditional `http-kafka`-specific routes
 
@@ -186,20 +220,16 @@ A route for adapting `http` request-response streams to `kafka` topic streams.
 
 Roles required by named guard
 
-```yaml {2-4}
+```yaml
 routes:
   - guarded:
       test0:
         - read:items
-    exit: kafka0
-    when:
-      - method: GET
-        path: /items/{id}
 ```
 
 ### route.when
 
-> `array` of [`condition`](#condition)
+> `array` of `condition object`
 
 List of conditions (any match) to match this route
 
@@ -207,17 +237,7 @@ List of conditions (any match) to match this route
 routes:
   - when:
       - method: GET
-        path: "/items"
-    ...
-  - when:
-      - method: GET
-        path: "/items/{id}"
-    ...
-  - when:
-      - path: "/items/{id}"
-      - method: GET
         path: "/items/{id};{correlationId}"
-    ...
 ```
 
 #### condition | `object`
@@ -238,19 +258,37 @@ Path with optional embedded parameter names, such as `/{topic}`
 
 Default exit binding when no conditional routes are viable
 
-```yaml {2}
+```yaml
 routes:
   exit: kafka0
-  when:
-    - method: GET
-      path: /items/{id}
 ```
 
-### route.with (fetch)
+
+### route.with
+
+> **oneOf**: [Fetch](#with-capability-fetch) | [Produce](#with-capability-produce)
+
+Defines the route with the Fetch capability
+
+```yaml
+with:
+  capability: fetch
+```
+
+Defines the route with the Produce capability
+
+```yaml
+with:
+  capability: produce
+```
+
+### with.capability (fetch)
+
+> `object`
 
 Kafka parameters for matched route when adapting `http` request-response streams to `kafka` topic fetch streams.
 
-```yaml {2}
+```yaml
 with:
   capability: fetch
   topic: items-snapshots
@@ -258,19 +296,15 @@ with:
     - key: "${params.id}"
 ```
 
-#### with.capability | `const "fetch"`
-
-Defines the route with the Fetch capability
-
 #### with.topic | `string`
 
 Topic name, optionally referencing path parameter such as `${params.topic}`
 
-#### with.filters | `array` of [`filter`](#filter)
+#### with.filters | `array` of `filter object`
 
 List of criteria (any match)
 
-#### with.filter | `object`
+##### filter | `object`
 
 Kafka filters for matched route when adapting `http` request-response streams to `kafka` topic fetch streams. All specified headers and key must match for the combined criteria to match.
 
@@ -306,15 +340,22 @@ Describes how to patch initial HTTP response to include one or more Kafka messag
 
   Kafka merge patch configuration for matched route when adapting `http` request-response streams to `kafka` topic streams where all messages are fetched and must be merged into a unified `http` response.
 
-#### patch.initial | `string` \\ `const "/-"`
+#### patch.initial | `string`
+
+Initial JSON value.
+
+#### patch.path | `const "/-"`
 
 JSON Patch path to include each Kafka message in unified HTTP response.
 
-### route.with (produce)
+
+### with.capability (produce)
+
+> `object`
 
 Kafka parameters for matched route when adapting `http` request-response streams to `kafka` topic pruduce streams.
 
-```yaml{2}
+```yaml
 with:
   capability: produce
   topic: items-requests
@@ -324,10 +365,6 @@ with:
   async:
     location: "/items/${params.id};${correlationId}"
 ```
-
-#### with.capability | `const "produce"`
-
-Produce capability.
 
 #### with.topic | `string`
 
@@ -356,4 +393,6 @@ HTTP response headers, with values optionally referencing path parameter or `${c
 
 ---
 
-\* = required
+::: right
+\* required
+:::

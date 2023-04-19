@@ -84,7 +84,7 @@ Access control for `HTTP` protocol.
 
 | Name (\* = required) | Type                                                                                                                                                                                                          | Description                       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| `policy`\*           | <p><code>enum [</code><br><code></code>  <code>"same-origin"</code> <code>,</code><br><code></code>  <a href="binding-http.md#access-control-cross-origin"><code>"cross-origin"</code></a> <code>]</code></p> | Supported access control policies |
+| `policy`\*           | <p><code>enum [</code><br><code></code>  <code>"same-origin"</code> <code>,</code><br><code></code>  [`"cross-origin"`](binding-http.md#access-control-cross-origin) <code>]</code></p> | Supported access control policies |
 
 ### access-control (cross-origin)
 
