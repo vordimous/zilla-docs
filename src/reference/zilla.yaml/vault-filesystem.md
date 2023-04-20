@@ -37,10 +37,17 @@ Guard with support for local `filesystem`.
 
 #### Properties
 
-| Name (\* = required)                     | Type                 | Description                   |
-| ---------------------------------------- | -------------------- | ----------------------------- |
-| `type`\*                                 | `const "filesystem"` | Support `filesystem`          |
-| [`options`](vault-filesystem.md#options) | `object`             | `filesystem`-specific options |
+## type\*
+
+> `const "filesystem"`
+
+ Support `filesystem`
+
+## [`options`](vault-filesystem.md#options)
+
+> `object`
+
+ `filesystem`-specific options
 
 ### options
 
@@ -48,11 +55,17 @@ Options for local `filesystem`.
 
 #### Properties
 
-| Name (\* = required) | Type                                 | Description         |
-| -------------------- | ------------------------------------ | ------------------- |
-| `keys`               | [`store`](vault-filesystem.md#store) | Private keys        |
-| `trust`              | [`store`](vault-filesystem.md#store) | Trust certificates  |
-| `signers`            | [`store`](vault-filesystem.md#store) | Signer certificates |
+## keys
+
+ [`store`](vault-filesystem.md#store) | Private keys
+
+## trust
+
+ [`store`](vault-filesystem.md#store) | Trust certificates
+
+## signers
+
+ [`store`](vault-filesystem.md#store) | Signer certificates
 
 ### store
 
@@ -60,11 +73,23 @@ Store option for local `filesystem`.
 
 #### Properties
 
-| Name (\* = required) | Type     | Description                                                |
-| -------------------- | -------- | ---------------------------------------------------------- |
-| `store`\*            | `string` | Relative path to keystore                                  |
-| `type`               | `string` | <p>Keystore type,<br>defaults to <code>"pkcs12"</code></p> |
-| `password`           | `string` | Keystore password                                          |
+## store\*
+
+> `string`
+
+ Relative path to keystore
+
+## type
+
+> `string`
+
+ <p>Keystore type,<br>defaults to <code>"pkcs12"</code></p>
+
+## password
+
+> `string`
+
+ Keystore password
 
 ---
 

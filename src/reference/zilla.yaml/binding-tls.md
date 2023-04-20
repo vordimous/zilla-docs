@@ -59,14 +59,39 @@ Binding with support for `tls` protocol.
 
 #### Properties
 
-| Name (\* = required)                | Type                                                                                                           | Description                                                |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| `type`\*                            | `const "tls"`                                                                                                  | Support `tls` protocol                                     |
-| `kind`\*                            | <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server",</code><br>  <code>"proxy" ]</code></p> | Behave as a `tls` `client`, `server` or `proxy`            |
-| `vault`                             | `string`                                                                                                       | Vault name                                                 |
-| [`options`](binding-tls.md#options) | `object`                                                                                                       | `tls`-specific options                                     |
-| `routes`                            | `array` of [`route`](binding-tls.md#route)                                                                     | Conditional `tls`-specific routes                          |
-| `exit`                              | `string`                                                                                                       | Default exit binding when no conditional routes are viable |
+## type\*
+
+> `const "tls"`
+
+ Support `tls` protocol
+
+## kind\*
+
+ <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server",</code><br>  <code>"proxy" ]</code></p> | Behave as a `tls` `client`, `server` or `proxy`
+
+## vault
+
+> `string`
+
+ Vault name
+
+## [`options`](binding-tls.md#options)
+
+> `object`
+
+ `tls`-specific options
+
+## routes
+
+> `array` of [`route`](binding-tls.md#route)
+
+ Conditional `tls`-specific routes
+
+## exit
+
+> `string`
+
+ Default exit binding when no conditional routes are viable
 
 ### options
 
@@ -74,16 +99,51 @@ Options for `tls` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                                                                                               | Description                                                       |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `version`            | `string`                                                                                                                           | Protocol version                                                  |
-| `keys`               | `array` of `string`                                                                                                                | Vault key refs                                                    |
-| `trust`              | `array` of `string`                                                                                                                | Vault certificate refs                                            |
-| `signers`            | `array` of `string`                                                                                                                | Vault signer certificate refs                                     |
-| `trustcacerts`       | `boolean`                                                                                                                          | Trust CA certificates                                             |
-| `sni`\*              | `array` of `string`                                                                                                                | Server names                                                      |
-| `alpn`               | `array` of `string`                                                                                                                | Application protocols                                             |
-| `mutual`             | <p><code>enum [</code><br>  <code>"required",</code><br>  <code>"requested",</code><br>  <code>"none"</code><br><code>]</code></p> | <p>Mutual authentication<br><br>Defaults to <code>none</code></p> |
+## version
+
+> `string`
+
+ Protocol version
+
+## keys
+
+> `array` of `string`
+
+ Vault key refs
+
+## trust
+
+> `array` of `string`
+
+ Vault certificate refs
+
+## signers
+
+> `array` of `string`
+
+ Vault signer certificate refs
+
+## trustcacerts
+
+> `boolean`
+
+ Trust CA certificates
+
+## sni\*
+
+> `array` of `string`
+
+ Server names
+
+## alpn
+
+> `array` of `string`
+
+ Application protocols
+
+## mutual
+
+ <p><code>enum [</code><br>  <code>"required",</code><br>  <code>"requested",</code><br>  <code>"none"</code><br><code>]</code></p> | <p>Mutual authentication<br><br>Defaults to <code>none</code></p>
 
 ### route
 
@@ -91,11 +151,23 @@ Routes for `tls` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                 | Description                                                        |
-| -------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| `guarded`            | `object` as named map of `string` `array`            | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-tls.md#condition) | List of conditions (any match) to match this route                 |
-| `exit`\*             | `string`                                             | Next binding when following this route                             |
+## guarded
+
+> `object` as named map of `string` `array`
+
+ List of roles required by each named guard to authorize this route
+
+## when
+
+> `array` of [`condition`](binding-tls.md#condition)
+
+ List of conditions (any match) to match this route
+
+## exit\*
+
+> `string`
+
+ Next binding when following this route
 
 ### condition
 
@@ -103,10 +175,17 @@ Conditions to match routes for `tls` protocol.
 
 #### Properties
 
-| Name        | Type     | Description          |
-| ----------- | -------- | -------------------- |
-| `authority` | `string` | Associated authority |
-| `alpn`      | `string` | Application protocol |
+## authority
+
+> `string`
+
+ Associated authority
+
+## alpn
+
+> `string`
+
+ Application protocol
 
 ---
 

@@ -42,11 +42,23 @@ Routes for `amqp 1.0` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                  | Description                                                        |
-| -------------------- | ----------------------------------------------------- | ------------------------------------------------------------------ |
-| `guarded`            | `object` as named map of `string` `array`             | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-amqp.md#condition) | List of conditions (any match) to match this route                 |
-| `exit`\*             | `string`                                              | Next binding when following this route                             |
+## guarded
+
+> `object` as named map of `string` `array`
+
+ List of roles required by each named guard to authorize this route
+
+## when
+
+> `array` of [`condition`](binding-amqp.md#condition)
+
+ List of conditions (any match) to match this route
+
+## exit\*
+
+> `string`
+
+ Next binding when following this route
 
 ### condition
 
@@ -54,10 +66,15 @@ Conditions to match routes for `amqp 1.0` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                                                                                                  | Description                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `address`            | `string`                                                                                                                              | Link address                                                                   |
-| `capabilities`       | <p><code>enum [</code> <br>  <code>"send_only",</code> <br>  <code>"receive_only",</code> <br>  <code>"send_and_receive" ]</code></p> | <p>Send or receive, or both.<br>Defaults to <code>send_and_receive</code>.</p> |
+## address
+
+> `string`
+
+ Link address
+
+## capabilities
+
+ <p><code>enum [</code> <br>  <code>"send_only",</code> <br>  <code>"receive_only",</code> <br>  <code>"send_and_receive" ]</code></p> | <p>Send or receive, or both.<br>Defaults to <code>send_and_receive</code>.</p>
 
 ---
 

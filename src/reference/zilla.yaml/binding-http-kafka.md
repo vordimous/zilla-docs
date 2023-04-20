@@ -73,7 +73,6 @@ A corresponding `routes[].when` object with matching `GET` method and `location`
 
 ## Configuration
 
-
 :::: note Properties
 
 - [kind\*](#kind)
@@ -108,7 +107,6 @@ A corresponding `routes[].when` object with matching `GET` method and `location`
   - [with.overrides](#with-overrides)
   - [with.reply-to](#with-reply-to)
   - [with.async](#with-async)
-
 
 ::: right
 \* required
@@ -268,7 +266,6 @@ Default exit binding when no conditional routes are viable
 routes:
   exit: kafka0
 ```
-
 
 ### routes[].with
 

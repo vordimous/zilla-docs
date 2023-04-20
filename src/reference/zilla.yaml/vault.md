@@ -19,15 +19,17 @@ Each runtime `vault` has a behavioral type supporting a specific implementation 
 
 #### Properties (generic)
 
-| Name   | Type                                                                                                          | Description     |
-| ------ | ------------------------------------------------------------------------------------------------------------- | --------------- |
-| `type` | <p><code>enum [</code><br>  [`"filesystem"`](vault-filesystem.md)<br><code>]</code></p> | Behavioral type |
+## type
+
+ <p><code>enum [</code><br>  [`"filesystem"`](vault-filesystem.md)<br><code>]</code></p> | Behavioral type
 
 #### Properties (type-specific)
 
-| Name      | Type     | Description        |
-| --------- | -------- | ------------------ |
-| `options` | `object` | Behavioral options |
+## options
+
+> `object`
+
+ Behavioral options
 
 ---
 

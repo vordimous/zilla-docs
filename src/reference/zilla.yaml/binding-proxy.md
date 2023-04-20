@@ -39,12 +39,27 @@ Binding with support for `proxy` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                                                | Description                                                |
-| -------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| `type`\*             | `const "proxy"`                                                                     | Support `proxy` protocol.                                  |
-| `kind`\*             | <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as `proxy` `client` or `server`                     |
-| `routes`             | `array` of [`route`](binding-proxy.md#route)                                        | Conditional `proxy`-specific routes                        |
-| `exit`               | `string`                                                                            | Default exit binding when no conditional routes are viable |
+## type\*
+
+> `const "proxy"`
+
+ Support `proxy` protocol.
+
+## kind\*
+
+ <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as `proxy` `client` or `server`
+
+## routes
+
+> `array` of [`route`](binding-proxy.md#route)
+
+ Conditional `proxy`-specific routes
+
+## exit
+
+> `string`
+
+ Default exit binding when no conditional routes are viable
 
 ### route
 
@@ -52,11 +67,23 @@ Routes for `proxy` protocol.
 
 #### Properties
 
-| Name      | Type                                                   | Description                                                        |
-| --------- | ------------------------------------------------------ | ------------------------------------------------------------------ |
-| `guarded` | `object` as named map of `string` `array`              | List of roles required by each named guard to authorize this route |
-| `when`    | `array` of [`condition`](binding-proxy.md#condition) | List of conditions (any match) to match this route                 |
-| `exit`\*  | `string`                                               | Next binding when following this route                             |
+## guarded
+
+> `object` as named map of `string` `array`
+
+ List of roles required by each named guard to authorize this route
+
+## when
+
+> `array` of [`condition`](binding-proxy.md#condition)
+
+ List of conditions (any match) to match this route
+
+## exit\*
+
+> `string`
+
+ Next binding when following this route
 
 ### condition
 
@@ -64,12 +91,21 @@ Conditions to match routes for `proxy` protocol.
 
 #### Properties
 
-| Name          | Type                                                                                                                                     | Description         |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `transport`   | <p><code>enum [</code> <br>  <code>"stream",</code> <br>  <code>"datagram" ]</code></p>                                                  | Transport type      |
-| `family`      | <p><code>enum [</code> <br>  <code>"inet",</code> <br>  <code>"inet4",</code> <br>  <code>"inet6",</code><br>  <code>"unix" ]</code></p> | Address family      |
-| `source`      | [`address`](binding-proxy.md#address)                                                                                                    | Source address      |
-| `destination` | [`address`](binding-proxy.md#address)                                                                                                    | Destination address |
+## transport
+
+ <p><code>enum [</code> <br>  <code>"stream",</code> <br>  <code>"datagram" ]</code></p>                                                  | Transport type
+
+## family
+
+ <p><code>enum [</code> <br>  <code>"inet",</code> <br>  <code>"inet4",</code> <br>  <code>"inet6",</code><br>  <code>"unix" ]</code></p> | Address family
+
+## source
+
+ [`address`](binding-proxy.md#address)                                                                                                    | Source address
+
+## destination
+
+ [`address`](binding-proxy.md#address)                                                                                                    | Destination address
 
 ### address
 
@@ -77,10 +113,17 @@ Address for `proxy` protocol.
 
 #### Properties
 
-| Name   | Type      | Description            |
-| ------ | --------- | ---------------------- |
-| `host` | `string`  | Hostname or IP address |
-| `port` | `integer` | Port number            |
+## host
+
+> `string`
+
+ Hostname or IP address
+
+## port
+
+> `integer`
+
+ Port number
 
 ---
 

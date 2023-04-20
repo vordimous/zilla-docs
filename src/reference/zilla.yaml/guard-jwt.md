@@ -44,10 +44,17 @@ Guard with support for `jwt`.
 
 #### Properties
 
-| Name (\* = required)              | Type          | Description            |
-| --------------------------------- | ------------- | ---------------------- |
-| `type`\*                          | `const "jwt"` | Support `jwt`          |
-| [`options`](guard-jwt.md#options) | `object`      | `jwt`-specific options |
+## type\*
+
+> `const "jwt"`
+
+ Support `jwt`
+
+## [`options`](guard-jwt.md#options)
+
+> `object`
+
+ `jwt`-specific options
 
 ### options
 
@@ -55,12 +62,27 @@ Options for `jwt`.
 
 #### Properties
 
-| Name        | Type                      | Description                |
-| ----------- | ------------------------- | -------------------------- |
-| `issuer`    | `string`                  | Issuer claim               |
-| `audience`  | `string`                  | Audience claim             |
-| `keys`\*    | [`key`](guard-jwt.md#key) | Signature public keys      |
-| `challenge` | `number`                  | Challenge period (seconds) |
+## issuer
+
+> `string`
+
+ Issuer claim
+
+## audience
+
+> `string`
+
+ Audience claim
+
+## keys\*
+
+ [`key`](guard-jwt.md#key) | Signature public keys
+
+## challenge
+
+> `number`
+
+ Challenge period (seconds)
 
 ### key
 
@@ -68,16 +90,53 @@ Key option for `jwt`.
 
 #### Properties
 
-| Name    | Type     | Description                   |
-| ------- | -------- | ----------------------------- |
-| `kty`\* | `string` | Key type, e.g. `RSA` , `EC`   |
-| `kid`\* | `string` | Key ID                        |
-| `n`     | `string` | `RSA` `modulus`               |
-| `e`     | `string` | `RSA` `exponent`              |
-| `alg`   | `string` | `RSA` algorithm, e.g. `RS256` |
-| `crv`   | `string` | `EC` curve name               |
-| `x`     | `string` | `EC` point `x` coordinate     |
-| `y`     | `string` | `EC` point `y` coordinate     |
+## kty\*
+
+> `string`
+
+ Key type, e.g. `RSA` , `EC`
+
+## kid\*
+
+> `string`
+
+ Key ID
+
+## n
+
+> `string`
+
+ `RSA` `modulus`
+
+## e
+
+> `string`
+
+ `RSA` `exponent`
+
+## alg
+
+> `string`
+
+ `RSA` algorithm, e.g. `RS256`
+
+## crv
+
+> `string`
+
+ `EC` curve name
+
+## x
+
+> `string`
+
+ `EC` point `x` coordinate
+
+## y
+
+> `string`
+
+ `EC` point `y` coordinate
 
 ---
 

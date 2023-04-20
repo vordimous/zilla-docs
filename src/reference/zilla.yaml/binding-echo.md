@@ -23,7 +23,6 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 ## Configuration
 
-
 :::: note Properties
 
 - [kind\*](#kind)
@@ -34,13 +33,11 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 ::::
 
-
 ### kind\*
 
 > enum [ "server" ]
 
 Behaves as an `echo` `server`
-
 
 ```yaml
 kind: server

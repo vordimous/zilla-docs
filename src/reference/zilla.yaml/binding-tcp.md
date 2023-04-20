@@ -35,13 +35,33 @@ Binding with support for `tcp` protocol.
 
 #### Properties
 
-| Name (\* = required)                | Type                                                                                | Description                                                                        |
-| ----------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`\*                            | `const "tcp"`                                                                       | Support `tcp` protocol                                                             |
-| `kind`\*                            | <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as a `tcp` `client` or `server`                                             |
-| [`options`](binding-tcp.md#options) | `object`                                                                            | `tcp`-specific options                                                             |
-| `routes`                            | `array` of [`route`](binding-tcp.md#route)                                          | Conditional `tcp`-specific routes                                                  |
-| `exit`                              | `string`                                                                            | Default exit binding when no conditional routes are viable, for kind `server` only |
+## type\*
+
+> `const "tcp"`
+
+ Support `tcp` protocol
+
+## kind\*
+
+ <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as a `tcp` `client` or `server`
+
+## [`options`](binding-tcp.md#options)
+
+> `object`
+
+ `tcp`-specific options
+
+## routes
+
+> `array` of [`route`](binding-tcp.md#route)
+
+ Conditional `tcp`-specific routes
+
+## exit
+
+> `string`
+
+ Default exit binding when no conditional routes are viable, for kind `server` only
 
 ### options
 
@@ -49,10 +69,17 @@ Options for `tcp` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                                                                                                                   | Description                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| `host`               | `string`                                                                                                                                               | Hostname or IP address                        |
-| `port`               | `integer` | `string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges. |
+## host
+
+> `string`
+
+ Hostname or IP address
+
+## port
+
+> `integer`
+
+ `string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges.
 
 ### route
 
@@ -60,11 +87,23 @@ Routes for `tcp` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type                                                 | Description                                                        |
-| -------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| `guarded`            | `object` as named map of `string` `array`            | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-tcp.md#condition) | List of conditions (any match) to match this route                 |
-| `exit`\*             | `string`                                             | Next binding when following this route, for kind `server` only     |
+## guarded
+
+> `object` as named map of `string` `array`
+
+ List of roles required by each named guard to authorize this route
+
+## when
+
+> `array` of [`condition`](binding-tcp.md#condition)
+
+ List of conditions (any match) to match this route
+
+## exit\*
+
+> `string`
+
+ Next binding when following this route, for kind `server` only
 
 ### condition
 
@@ -72,10 +111,17 @@ Conditions to match routes for `tcp` protocol.
 
 #### Properties
 
-| Name (\* = required) | Type     | Description          |
-| -------------------- | -------- | -------------------- |
-| `authority`          | `string` | Associated authority |
-| `cidr`               | `string` | CIDR mask            |
+## authority
+
+> `string`
+
+ Associated authority
+
+## cidr
+
+> `string`
+
+ CIDR mask
 
 ---
 

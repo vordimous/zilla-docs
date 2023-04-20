@@ -35,12 +35,29 @@ Binding with support for adapting `http` data streams into `filesystem` data str
 
 #### Properties
 
-| Name (\* = required) | Type                                                     | Description                                                |
-| -------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| `type`\*             | `const "http-filesystem"`                                | Adapt `http` data streams into `filesystem` data streams   |
-| `kind`\*             | `enum [ "proxy" ]`                                       | Behave as an `http-filesystem` `proxy`                     |
-| `routes`             | `array` of [`route`](binding-http-filesystem.md#route) | Conditional `http-kafka`-specific routes                   |
-| `exit`               | `string`                                                 | Default exit binding when no conditional routes are viable |
+## type\*
+
+> `const "http-filesystem"`
+
+ Adapt `http` data streams into `filesystem` data streams
+
+## kind\*
+
+> `enum [ "proxy" ]`
+
+ Behave as an `http-filesystem` `proxy`
+
+## routes
+
+> `array` of [`route`](binding-http-filesystem.md#route)
+
+ Conditional `http-kafka`-specific routes
+
+## exit
+
+> `string`
+
+ Default exit binding when no conditional routes are viable
 
 ### route
 
@@ -48,12 +65,27 @@ Routes for adapting `http` data streams into `filesystem` data streams.
 
 #### Properties
 
-| Name (\* = required) | Type                                                           | Description                                                        |
-| -------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `guarded`            | `object` as named map of `string` `array`                      | List of roles required by each named guard to authorize this route |
-| `when`               | `array` of [`condition`](binding-http-filesystem.md#condition) | List of conditions (any match) to match this route                 |
-| `exit`\*             | `string`                                                       | Next binding when following this route                             |
-| `with`               | [`with`](binding-http-filesystem.md#with)                      | Filesystem parameters used when following this route               |
+## guarded
+
+> `object` as named map of `string` `array`
+
+ List of roles required by each named guard to authorize this route
+
+## when
+
+> `array` of [`condition`](binding-http-filesystem.md#condition)
+
+ List of conditions (any match) to match this route
+
+## exit\*
+
+> `string`
+
+ Next binding when following this route
+
+## with
+
+ [`with`](binding-http-filesystem.md#with)                      | Filesystem parameters used when following this route
 
 ### condition
 
@@ -61,9 +93,11 @@ HTTP conditions to match routes when adapting `http` data streams into `filesyst
 
 #### Properties
 
-| Name (\* = required) | Type     | Description                                                    |
-| -------------------- | -------- | -------------------------------------------------------------- |
-| `path`\*             | `string` | Path with optional embedded parameter names, such as `/{path}` |
+## path\*
+
+> `string`
+
+ Path with optional embedded parameter names, such as `/{path}`
 
 ### with
 
@@ -71,9 +105,11 @@ Filesystem parameters from matched route when adapting `http` data streams into 
 
 #### Properties
 
-| Name (\* = required) | Type     | Description                                                                |
-| -------------------- | -------- | -------------------------------------------------------------------------- |
-| `path`\*             | `string` | Topic name, optionally referencing path parameter such as `${params.path}` |
+## path\*
+
+> `string`
+
+ Topic name, optionally referencing path parameter such as `${params.path}`
 
 ---
 
