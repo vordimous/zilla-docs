@@ -73,11 +73,9 @@ A corresponding `route` `condition` with matching `GET` method and `location` pa
 
 ## Configuration
 
-::: right
-\* = required
-:::
 
-::: details Table of Contents
+:::: note Properties
+
 - [Fetch capability](#fetch-capability)
 - [Produce capability](#produce-capability)
 - [kind\*](#kind)
@@ -92,9 +90,8 @@ A corresponding `route` `condition` with matching `GET` method and `location` pa
   - [route | `object`](#route-object)
 - [route.guarded](#route-guarded)
 - [route.when](#route-when)
-  - [condition | `object`](#condition-object)
-  - [condition.method | `string`](#condition-method-string)
-  - [condition.path | `string`](#condition-path-string)
+  - [when\[\].method | `string`](#when-method-string)
+  - [when\[\].path | `string`](#when-path-string)
 - [route.exit\*](#route-exit)
 - [route.with](#route-with)
 - [with.capability (fetch)](#with-capability-fetch)
@@ -116,7 +113,12 @@ A corresponding `route` `condition` with matching `GET` method and `location` pa
   - [with.reply-to | `string`](#with-reply-to-string)
   - [with.async | `object`](#with-async-object)
 
+
+::: right
+\* = required
 :::
+
+::::
 
 ### kind\*
 
@@ -240,15 +242,15 @@ routes:
         path: "/items/{id};{correlationId}"
 ```
 
-#### condition | `object`
-
+::: note condition object
 A condition matches routes for adapting `http` request-response streams to `kafka` topic streams.
+:::
 
-#### condition.method | `string`
+#### when[].method | `string`
 
 HTTP Method, such as `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`
 
-#### condition.path | `string`
+#### when[].path | `string`
 
 Path with optional embedded parameter names, such as `/{topic}`
 
