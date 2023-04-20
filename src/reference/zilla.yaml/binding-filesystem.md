@@ -74,7 +74,7 @@ File system URI or directory name with trailing slash.
 > `enum` [ "follow", "ignore" ]
 
 How to treat symbolic links.\
-Defaults to `ignore`
+Defaults to `"ignore"`
 
 ---
 

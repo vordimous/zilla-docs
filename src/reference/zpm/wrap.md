@@ -12,7 +12,7 @@ This approach avoids the need to manually install `zpm` and allows greater contr
 
 ### Usage
 
-```bash
+```bash:no-line-numbers
 zpm wrap
 ```
 
@@ -20,13 +20,13 @@ zpm wrap
 
 |                                     |                                                                                                   |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `--local-repository <locaRepolDir>` | <p>Local Maven repository directory<br>Defaults to <code>${user.home}/.m2/repository</code></p>   |
-| `--remote-repository <repoURL>`     | <p>Remote Maven repository URL<br>Defaults to <code>https://maven.packages.aklivity.io</code></p> |
+| `--local-repository <locaRepolDir>` | Local Maven repository directory<br>Defaults to `${user.home}/.m2/repository`   |
+| `--remote-repository <repoURL>`     | Remote Maven repository URL<br>Defaults to `https://maven.packages.aklivity.io` |
 | `--version <version>`               | Require `zpm`  wrapper to use \<version>                                                          |
 
 ### Examples
 
-```bash
+```bash:no-line-numbers
 ./zpmw wrap --version 0.9.8
 ```
 

@@ -14,13 +14,13 @@ If a master secret does not already exist, it is generated in [Zilla Manager Sec
 
 ### Usage
 
-```bash
+```bash:no-line-numbers
 zpm encrypt
 ```
 
 ### Examples
 
-```bash
+```bash:no-line-numbers
 ./zpmw encrypt
 ```
 

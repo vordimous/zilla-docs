@@ -34,29 +34,31 @@ Binding with support for `sse` protocol.
 
 > `const "sse"`
 
- Support `sse` protocol
+Support `sse` protocol
 
 ## kind\*
 
- <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as a `sse` `client` or `server`
+> `enum` [ "client", "server" ]
+
+Behave as a `sse` `client` or `server`
 
 ## [`options`](binding-sse.md#options)
 
 > `object`
 
- `sse`-specific options
+`sse`-specific options
 
 ## routes
 
 > `array` of [`route`](binding-sse.md#route)
 
- Conditional `sse`-specific routes
+Conditional `sse`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### options
 
@@ -68,7 +70,8 @@ Options for `sse` protocol.
 
 > `integer`
 
- <p>Retry delay (ms)<br><br>Defaults to <code>2000</code></p>
+Retry delay (ms)\
+Defaults to `2000`
 
 ### route
 
@@ -80,19 +83,19 @@ Routes for `sse` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-sse.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ### condition
 
@@ -104,7 +107,7 @@ Conditions to match routes for `sse` protocol.
 
 > `string`
 
- Path pattern
+Path pattern
 
 ---
 

@@ -8,7 +8,7 @@ The `zilla start` command resolves the [Zilla Runtime Configuration](../zilla.ya
 
 ### Usage
 
-```bash
+```bash:no-line-numbers
 zilla start
 ```
 
@@ -17,11 +17,11 @@ zilla start
 |              |                                                          |
 | ------------ | -------------------------------------------------------- |
 | `--verbose`  | Show verbose output                                      |
-| `--workers`  | <p>Worker count<br>Defaults to # CPU cores available</p> |
+| `--workers`  | Worker count<br>Defaults to # CPU cores available        |
 
 ### Examples
 
-```bash
+```bash:no-line-numbers
 ./zilla start --verbose
 {
     "name": "example",

@@ -34,7 +34,7 @@ First**,** you will export the Client Certificate to a local file called `client
 
 ```
 aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_ATHORITY_ARN \
- --certificate-arn CERTIFICATE_ARN --output text
+  --certificate-arn CERTIFICATE_ARN --output text
 ```
 
 #### output
@@ -77,7 +77,7 @@ To create the KeyStore you will need a signed client certificate alias. It is be
 With the `bootstrap server name` in hand, run the following command to create the `keystore.p12` file:
 
 #### keystore.p12
-```bash
+```bash:no-line-numbers
 openssl pkcs12 -export -in client.cert -inkey client-1.key.pem \
                -out keystore.p12 -name SIGNED_CLIENT_CERT_ALIES \
                -CAfile ca.pem

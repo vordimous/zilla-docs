@@ -67,29 +67,31 @@ Binding with support for `kafka` protocol.
 
 > `const "kafka"`
 
- Support `kafka` protocol
+Support `kafka` protocol
 
 ## kind\*
 
- <p><code>enum [</code><br>  <code>"cache_client",</code><br>  <code>"cache_server",</code><br>  <code>"client" ]</code></p> | Behave as a `kafka` `cache_client`, `cache_server` or `client`
+> `enum` [ "cache_client", "cache_server", "client" ]
+
+Behave as a `kafka` `cache_client`, `cache_server` or `client`
 
 ## [`options`](binding-kafka.md#options)
 
 > `object`
 
- `kafka`-specific options
+`kafka`-specific options
 
 ## routes
 
 > `array` of [`route`](binding-kafka.md#route)
 
- Conditional `kafka`-specific routes
+Conditional `kafka`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### options
 
@@ -101,19 +103,19 @@ Options for `kafka` protocol.
 
 > `array` of `string`
 
- Topics to bootstrap in cache server even when no clients
+Topics to bootstrap in cache server even when no clients
 
 ## topics
 
 > `array` of [`topic`](binding-kafka.md#topic)
 
- Topic configuration
+Topic configuration
 
 ## [`sasl`](binding-kafka.md#sasl)
 
 > `object`
 
- SASL credentials
+SASL credentials
 
 ### topic
 
@@ -125,11 +127,14 @@ Topic-specific configuration when supporting `kafka` protocol.
 
 > `string`
 
- Topic name
+Topic name
 
 ## defaultOffset
 
- <p><code>enum [</code><br>  <code>"live",</code><br>  <code>"historical" ]</code></p> | <p>Fetch offset to use for new consumers<br><br>Defaults to <code>"historical"</code></p>
+> `enum` [ "live", "historical" ]
+
+Fetch offset to use for new consumers\
+Defaults to `"historical"`
 
 ### sasl
 
@@ -141,23 +146,26 @@ SASL credentials to use when connecting to `kafka` brokers.
 
 > `string`
 
- Mechanism name
+Mechanism name
 
 ## mechanism\*
 
- <p><code>enum [</code><br>  <code>"plain",</code><br>  <code>"scram-sha-1",</code><br>  <code>"scram-sha-256",</code><br>  <code>"scram-sha-512" ]</code></p> | <p>SASL mechanism<br><br>Supports <code>plain</code> and <code>scram</code> mechanisms</p>
+> `enum` [ "plain", "scram-sha-1", "scram-sha-256", "scram-sha-512" ]
+
+SASL mechanism\
+Supports `plain` and `scram` mechanisms
 
 ## username
 
 > `string`
 
- SASL username
+SASL username
 
 ## password
 
 > `string`
 
- SASL password
+SASL password
 
 ### route
 
@@ -169,19 +177,19 @@ Routes for `kafka` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-kafka.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ### condition
 
@@ -193,7 +201,7 @@ Conditions to match routes for `kafka` protocol.
 
 > `string`
 
- Topic name pattern
+Topic name pattern
 
 ---
 

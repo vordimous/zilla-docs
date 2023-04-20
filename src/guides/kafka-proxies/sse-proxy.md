@@ -4,7 +4,7 @@ There is an increasing rise in integrating the event stream into frontends where
 
 A brief explanation of replaceable values from the config examples below:
 
-<table><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td><code>ENDPOINT_PATH</code></td><td>HTTP path for example <code>/tasks</code></td><td></td></tr><tr><td><code>KAFKA_TOPIC</code></td><td>The Kafka topic that you want to stream from</td><td></td></tr></tbody></table>
+<table><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td>`ENDPOINT_PATH`</td><td>HTTP path for example `/tasks`</td><td></td></tr><tr><td>`KAFKA_TOPIC`</td><td>The Kafka topic that you want to stream from</td><td></td></tr></tbody></table>
 
 ### Configure Endpoint
 

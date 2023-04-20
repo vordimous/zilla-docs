@@ -39,29 +39,31 @@ Binding with support for `tcp` protocol.
 
 > `const "tcp"`
 
- Support `tcp` protocol
+Support `tcp` protocol
 
 ## kind\*
 
- <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as a `tcp` `client` or `server`
+> `enum` [ "client", "server" ]
+
+Behave as a `tcp` `client` or `server`
 
 ## [`options`](binding-tcp.md#options)
 
 > `object`
 
- `tcp`-specific options
+`tcp`-specific options
 
 ## routes
 
 > `array` of [`route`](binding-tcp.md#route)
 
- Conditional `tcp`-specific routes
+Conditional `tcp`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable, for kind `server` only
+Default exit binding when no conditional routes are viable, for kind `server` only
 
 ### options
 
@@ -73,13 +75,13 @@ Options for `tcp` protocol.
 
 > `string`
 
- Hostname or IP address
+Hostname or IP address
 
 ## port
 
 > `integer`
 
- `string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges.
+`string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges.
 
 ### route
 
@@ -91,19 +93,19 @@ Routes for `tcp` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-tcp.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route, for kind `server` only
+Next binding when following this route, for kind `server` only
 
 ### condition
 
@@ -115,13 +117,13 @@ Conditions to match routes for `tcp` protocol.
 
 > `string`
 
- Associated authority
+Associated authority
 
 ## cidr
 
 > `string`
 
- CIDR mask
+CIDR mask
 
 ---
 

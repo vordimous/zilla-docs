@@ -496,18 +496,18 @@ guards:
 
 Now run the command below to update the `zilla` service and force a restart.
 
-```bash
+```bash:no-line-numbers
 docker service update --force \
   $(docker stack services example -q -f name=example_zilla)
 ```
 
 Let's verify the Tasks API using `curl` as shown below.
 
-```bash
+```bash:no-line-numbers
 curl -v http://localhost:8080/tasks
 ```
 
-```bash
+```bash:no-line-numbers
 > GET /tasks HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.79.1

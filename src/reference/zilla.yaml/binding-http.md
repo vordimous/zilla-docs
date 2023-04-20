@@ -59,29 +59,31 @@ Binding with support for `http` protocol.
 
 > `const "http"`
 
- Support `http` protocol
+Support `http` protocol
 
 ## kind\*
 
- <p><code>enum [</code></p><p>  <code>"server",</code></p><p>  <code>"client" ]</code></p> | Behave as an `http` `server` or `client`
+> `enum` [ "server",  "client" ]
+
+Behave as an `http` `server` or `client`
 
 ## [`options`](binding-http.md#options)
 
 > `object`
 
- `http`-specifc options
+`http`-specifc options
 
 ## routes
 
 > `array` of [`route`](binding-http.md#route)
 
- Conditional `http`-specific routes
+Conditional `http`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### options
 
@@ -91,25 +93,27 @@ Options for `HTTP` protocol.
 
 ## versions
 
- <p><code>array</code> of <code>enum [</code><br>  <code>"http/1.1",</code><br>  <code>"h2" ]</code></p> | Supported protocol versions
+`array` of > `enum` [ "http/1.1", "h2" ]
+
+Supported protocol versions
 
 ## [`access-control`](binding-http.md#access-control)
 
 > `object`
 
- Access control policy
+Access control policy
 
 ## authorization
 
 > `object` as map of named [`authorization`](binding-http.md#authorization) properties
 
- Authorization by guard
+Authorization by guard
 
 ## overrides
 
 > `object` of name-value header overrides
 
- Request header overrides
+Request header overrides
 
 ### access-control
 
@@ -119,7 +123,9 @@ Access control for `HTTP` protocol.
 
 ## policy\*
 
- <p><code>enum [</code><br><code></code>  <code>"same-origin"</code> <code>,</code><br><code></code>  [`"cross-origin"`](binding-http.md#access-control-cross-origin) <code>]</code></p> | Supported access control policies
+> `enum` [ "same-origin" , "cross-origin" ]
+
+Supported access control policies
 
 ### access-control (cross-origin)
 
@@ -131,25 +137,27 @@ Cross Origin Resource Sharing (CORS) access control for `HTTP` protocol.
 
 > `const "cross-origin"`
 
- Support cross-origin access control policy
+Support cross-origin access control policy
 
 ## `[`allow](binding-http.md#allow)
 
 > `object`
 
- <p>Allowed cross-origin request origins, methods, headers and credentials.<br><br>Defaults to all origins, methods and headers, without credentials.</p>
+Allowed cross-origin request origins, methods, headers and credentials.\
+Defaults to all origins, methods and headers, without credentials.
 
 ## max-age
 
 > `number`
 
- Maximum cache age (in seconds) for allowed headers and methods.
+Maximum cache age (in seconds) for allowed headers and methods.
 
 ## `[`expose](binding-http.md#expose)
 
 > `object`
 
- <p>Exposed cross-origin response headers.<br><br>Defaults to all response headers.</p>
+Exposed cross-origin response headers.\
+Defaults to all response headers.
 
 ### allow
 
@@ -161,25 +169,25 @@ CORS allowed request origins, methods, headers and credentials for `HTTP` protoc
 
 > `array of string`
 
- Allowed request origins.
+Allowed request origins.
 
 ## methods
 
 > `array of string`
 
- Allowed request methods.
+Allowed request methods.
 
 ## headers
 
 > `array of string`
 
- Allowed request headers
+Allowed request headers
 
 ## credentials
 
 > `boolean`
 
- Support `fetch` credentials mode `include`.
+Support `fetch` credentials mode `include`.
 
 ### expose
 
@@ -191,7 +199,7 @@ CORS exposed response headers for `HTTP` protocol.
 
 > `array of string`
 
- Exposed response headers
+Exposed response headers
 
 ### authorization
 
@@ -203,7 +211,7 @@ Authorization for `HTTP/1.1` and `HTTP/2` protocols.
 
 > `object`
 
- Defines how to extract credentials from the HTTP request.
+Defines how to extract credentials from the HTTP request.
 
 ### credentials
 
@@ -215,19 +223,19 @@ Credentials for `HTTP` protocol.
 
 > `object` as map of `string`
 
- Named cookie value pattern with `{credentials}`
+Named cookie value pattern with `{credentials}`
 
 ## headers
 
 > `object` as map of `string`
 
- Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`
+Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`
 
 ## query
 
 > `object` as map of `string`
 
- Named query parameter value pattern with `{credentials}`
+Named query parameter value pattern with `{credentials}`
 
 ### route
 
@@ -239,19 +247,19 @@ Routes for `HTTP` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-http.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ### condition
 
@@ -263,7 +271,7 @@ Conditions to match routes for `HTTP` protocol.
 
 > `object` of name-value headers
 
- <p>Header name value pairs<br>(all match)</p>
+Header name value pairs (all match)
 
 ---
 

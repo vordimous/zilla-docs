@@ -4,7 +4,7 @@ Zilla lets you configure application-centric REST API endpoints that unlock `Apa
 
 A brief explanation of replaceable values from the config examples below:
 
-<table><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td><code>ENDPOINT_PATH</code></td><td>HTTP path for example <code>/tasks</code></td><td></td></tr><tr><td><code>KAFKA_TOPIC</code></td><td>The Kafka topic that you want to produce to or fetch from.</td><td></td></tr><tr><td><code>KAFKA_REPLY_TO_TOPIC</code></td><td>The Kafka topic that you want to send a response with <code>correlation-id</code></td><td></td></tr><tr><td><code>AUTH_URL</code></td><td>JWT token provider URL</td><td></td></tr></tbody></table>
+<table><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td>`ENDPOINT_PATH`</td><td>HTTP path for example `/tasks`</td><td></td></tr><tr><td>`KAFKA_TOPIC`</td><td>The Kafka topic that you want to produce to or fetch from.</td><td></td></tr><tr><td>`KAFKA_REPLY_TO_TOPIC`</td><td>The Kafka topic that you want to send a response with `correlation-id`</td><td></td></tr><tr><td>`AUTH_URL`</td><td>JWT token provider URL</td><td></td></tr></tbody></table>
 
 ### Configure Endpoints
 
@@ -91,36 +91,36 @@ It's a common case when you want to work with a specific entity e.g. `/tasks/123
 
 ```json
 {
-      "bindings": {
-      ...
-        "http_kafka_proxy0": {
-          "type": "http-kafka",
-          "kind": "proxy",
-          "routes": [
+  "bindings": {
+  ...
+    "http_kafka_proxy0": {
+      "type": "http-kafka",
+      "kind": "proxy",
+      "routes": [
+        {
+          "when": [
             {
-              "when": [
-                {
-                  "method": "GET",
-                  "path": "/tasks/{id}"
-                }
-              ],
-              "exit": "kafka_cache_client0",
-              "with": {
-                "capability": "fetch",
-                "topic": "KAFKA_TOPIC"
-              },
-              "filters":
-              [
-                  {
-                      "key": "${params.id}"
-                  }
-              ]
+              "method": "GET",
+              "path": "/tasks/{id}"
             }
+          ],
+          "exit": "kafka_cache_client0",
+          "with": {
+            "capability": "fetch",
+            "topic": "KAFKA_TOPIC"
+          },
+          "filters":
+          [
+              {
+                  "key": "${params.id}"
+              }
           ]
         }
-        ...
-      }
-    }  
+      ]
+    }
+    ...
+  }
+}  
 ```
 
 
@@ -252,9 +252,9 @@ curl -s https://AUTH_URL/.well-known/jwks.json | jq .keys
             ]
         }
         ...
-	}
+  }
     ...
- }
+}
 ```
 
 

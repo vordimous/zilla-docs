@@ -48,13 +48,13 @@ Guard with support for `jwt`.
 
 > `const "jwt"`
 
- Support `jwt`
+Support `jwt`
 
 ## [`options`](guard-jwt.md#options)
 
 > `object`
 
- `jwt`-specific options
+`jwt`-specific options
 
 ### options
 
@@ -66,23 +66,23 @@ Options for `jwt`.
 
 > `string`
 
- Issuer claim
+Issuer claim
 
 ## audience
 
 > `string`
 
- Audience claim
+Audience claim
 
 ## keys\*
 
- [`key`](guard-jwt.md#key) | Signature public keys
+[`key`](guard-jwt.md#key) | Signature public keys
 
 ## challenge
 
 > `number`
 
- Challenge period (seconds)
+Challenge period (seconds)
 
 ### key
 
@@ -94,49 +94,49 @@ Key option for `jwt`.
 
 > `string`
 
- Key type, e.g. `RSA` , `EC`
+Key type, e.g. `RSA` , `EC`
 
 ## kid\*
 
 > `string`
 
- Key ID
+Key ID
 
 ## n
 
 > `string`
 
- `RSA` `modulus`
+`RSA` `modulus`
 
 ## e
 
 > `string`
 
- `RSA` `exponent`
+`RSA` `exponent`
 
 ## alg
 
 > `string`
 
- `RSA` algorithm, e.g. `RS256`
+`RSA` algorithm, e.g. `RS256`
 
 ## crv
 
 > `string`
 
- `EC` curve name
+`EC` curve name
 
 ## x
 
 > `string`
 
- `EC` point `x` coordinate
+`EC` point `x` coordinate
 
 ## y
 
 > `string`
 
- `EC` point `y` coordinate
+`EC` point `y` coordinate
 
 ---
 

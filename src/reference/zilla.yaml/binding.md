@@ -27,22 +27,22 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 
 ### type
 
-> enum \[\
-> [`"amqp"`](binding-amqp.md),\
-> [`"echo"`](binding-echo.md),\
-> [`"fan"`](binding-fan.md),\
-> [`"filesystem"`](binding-filesystem.md),\
-> [`"http"`](binding-http.md),\
-> [`"http-filesystem"`](binding-http-filesystem.md),\
-> [`"http-kafka"`](binding-http-kafka.md),\
-> [`"kafka"`](binding-kafka.md),\
-> [`"mqtt"`](binding-mqtt.md),\
-> [`"proxy"`](binding-proxy.md),\
-> [`"sse"`](binding-sse.md),\
-> [`"sse-kafka"`](binding-sse-kafka.md),\
-> [`"tcp"`](binding-tcp.md),\
-> [`"tls"`](binding-tls.md),\
-> [`"ws"`](binding-ws.md)\
+> `enum` \[\
+> ["amqp"](binding-amqp.md),\
+> ["echo"](binding-echo.md),\
+> ["fan"](binding-fan.md),\
+> ["filesystem"](binding-filesystem.md),\
+> ["http"](binding-http.md),\
+> ["http-filesystem"](binding-http-filesystem.md),\
+> ["http-kafka"](binding-http-kafka.md),\
+> ["kafka"](binding-kafka.md),\
+> ["mqtt"](binding-mqtt.md),\
+> ["proxy"](binding-proxy.md),\
+> ["sse"](binding-sse.md),\
+> ["sse-kafka"](binding-sse-kafka.md),\
+> ["tcp"](binding-tcp.md),\
+> ["tls"](binding-tls.md),\
+> ["ws"](binding-ws.md)\
 > \]
 
 Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols

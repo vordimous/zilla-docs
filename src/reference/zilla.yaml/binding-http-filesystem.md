@@ -39,25 +39,25 @@ Binding with support for adapting `http` data streams into `filesystem` data str
 
 > `const "http-filesystem"`
 
- Adapt `http` data streams into `filesystem` data streams
+Adapt `http` data streams into `filesystem` data streams
 
 ## kind\*
 
 > `enum [ "proxy" ]`
 
- Behave as an `http-filesystem` `proxy`
+Behave as an `http-filesystem` `proxy`
 
 ## routes
 
 > `array` of [`route`](binding-http-filesystem.md#route)
 
- Conditional `http-kafka`-specific routes
+Conditional `http-kafka`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### route
 
@@ -69,23 +69,25 @@ Routes for adapting `http` data streams into `filesystem` data streams.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-http-filesystem.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ## with
 
- [`with`](binding-http-filesystem.md#with)                      | Filesystem parameters used when following this route
+> `object`
+
+Filesystem parameters used when following this route
 
 ### condition
 
@@ -97,7 +99,7 @@ HTTP conditions to match routes when adapting `http` data streams into `filesyst
 
 > `string`
 
- Path with optional embedded parameter names, such as `/{path}`
+Path with optional embedded parameter names, such as `/{path}`
 
 ### with
 
@@ -109,7 +111,7 @@ Filesystem parameters from matched route when adapting `http` data streams into 
 
 > `string`
 
- Topic name, optionally referencing path parameter such as `${params.path}`
+Topic name, optionally referencing path parameter such as `${params.path}`
 
 ---
 

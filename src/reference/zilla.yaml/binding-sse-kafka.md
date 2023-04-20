@@ -47,25 +47,25 @@ Binding with support for adapting `sse` data streams to `kafka` data streams.
 
 > `const "sse-kafka"`
 
- Adapt `sse` data streams to `kafka` data streams
+Adapt `sse` data streams to `kafka` data streams
 
 ## kind\*
 
 > `enum [ "proxy" ]`
 
- Behave as a `sse-kafka` `proxy`
+Behave as a `sse-kafka` `proxy`
 
 ## routes
 
 > `array` of [`route`](binding-sse-kafka.md#route)
 
- Conditional `sse-kafka`-specific routes
+Conditional `sse-kafka`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### route
 
@@ -77,23 +77,25 @@ Routes for adapting `sse` data streams to `kafka` data streams.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-sse-kafka.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ## with
 
- [`with`](binding-sse-kafka.md#with)                        | Kafka parameters used when following this route
+[`with`](binding-sse-kafka.md#with)                       
+
+Kafka parameters used when following this route
 
 ### condition
 
@@ -105,7 +107,7 @@ Conditions to match routes for adapting `sse` data streams to `kafka` data strea
 
 > `string`
 
- Path with optional embedded parameter names, such as `/{topic}`
+Path with optional embedded parameter names, such as `/{topic}`
 
 ### with
 
@@ -117,19 +119,19 @@ Kafka parameters for matched route when adapting `sse` data streams to `kafka` d
 
 > `string`
 
- Topic name, optionally referencing path parameter such as `${params.topic}`
+Topic name, optionally referencing path parameter such as `${params.topic}`
 
 ## filters
 
 > `array` of [`filter`](binding-sse-kafka.md#filter)
 
- List of criteria (any match)
+List of criteria (any match)
 
 ## `[`event](binding-sse-kafka.md#event)
 
 > `object`
 
- Defines the syntax of the `event` `id`
+Defines the syntax of the `event` `id`
 
 ### filter
 
@@ -143,13 +145,13 @@ All specified headers and key must match for the combined criteria to match.
 
 > `string`
 
- Message key, optionally referencing path parameter such as `${params.key}`
+Message key, optionally referencing path parameter such as `${params.key}`
 
 ## headers
 
 > `object`
 
- Message headers, with value optionally referencing path parameter such as `${params.headerX}`
+Message headers, with value optionally referencing path parameter such as `${params.headerX}`
 
 ### event
 
@@ -159,7 +161,10 @@ SSE event syntax used when delivering Kafka messages to SSE clients.
 
 ## id\*
 
- <p><code>enum [</code><br>  <code>"${etag}",</code><br>  <code>"[\"${base64(key)}\",\"${etag}\"]"</code><br><code>]</code></p> | <p>Format of <code>id</code> field in <code>sse</code> <code>event</code><br><br>Defaults to <code>"${etag}"</code></p>
+> `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ]
+
+Format of `id` field in `sse` `event`\
+Defaults to `"${etag}"`
 
 ---
 

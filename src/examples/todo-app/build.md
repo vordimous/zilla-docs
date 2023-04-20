@@ -157,7 +157,7 @@ services:
 
 Now let's run
 
-```bash
+```bash:no-line-numbers
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
@@ -171,7 +171,7 @@ docker stack deploy -c stack.yml example --resolve-image never
 
 Now verify that the Kafka topics have been successfully created.
 
-```bash
+```bash:no-line-numbers
 docker service logs example_init-topics --follow --raw
 ```
 
@@ -181,7 +181,7 @@ Make sure you see this output at the end of the `example_init-topics` service lo
 
 @tab Apache Kafka
 
-```bash
+```bash:no-line-numbers
 ## Creating the Kafka topics
 Created topic task-commands.
 Created topic task-replies.
@@ -195,7 +195,7 @@ task-snapshots
 
 @tab Redpanda
 
-```bash
+```bash:no-line-numbers
 CLUSTER
 =======
 redpanda.initializing
@@ -242,7 +242,7 @@ The `ValidateCommand` Kafka Streams processor implements optimistic locking by e
 
 Let's checkout and build the service by running the commands below.
 
-```bash
+```bash:no-line-numbers
 git clone https://github.com/aklivity/todo-service
 cd todo-service
 ./mvnw clean install
@@ -272,7 +272,7 @@ Open `stack.yml` file and add the Todo service into the stack:
 
 Run the command below to deploy the `todo-service` to your existing stack.
 
-```bash
+```bash:no-line-numbers
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
@@ -281,14 +281,14 @@ Output:
 
 @tab Apache Kafka
 
-```bash
+```bash:no-line-numbers
 Creating service example_todo-service
 Updating service example_kafka (id: st4hq1bwjsom5r0jxnc6i9rgr)
 ```
 
 @tab Redpanda
 
-```bash
+```bash:no-line-numbers
 Creating service example_todo-service
 Updating service example_redpanda (id: ilmfqpwf35b7ftd6cvzdis8au)
 ```
@@ -577,7 +577,7 @@ Now let's add the `zilla` service to the docker stack, mounting the `zilla.yaml`
 
 Run the below command as this will deploy the `zilla` service to the existing stack.
 
-```bash
+```bash:no-line-numbers
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
@@ -585,7 +585,7 @@ docker stack deploy -c stack.yml example --resolve-image never
 
 @tab Apache Kafka
 
-```bash
+```bash:no-line-numbers
 Updating service example_kafka (id: st4hq1bwjsom5r0jxnc6i9rgr)
 Updating service example_todo-service (id: ojbj2kbuft22egy854xqv8yo8)
 Creating service example_zilla
@@ -593,7 +593,7 @@ Creating service example_zilla
 
 @tab Redpanda
 
-```bash
+```bash:no-line-numbers
 Updating service example_redpanda (id: ilmfqpwf35b7ftd6cvzdis8au)
 Updating service example_todo-service (id: 1tq9nktlvcwxeh3wzhmj02cvd)
 Creating service example_zilla
@@ -607,18 +607,18 @@ Make sure that Zilla is fully started by checking container logs where you see *
 
 Let's verify the Tasks API using the `curl` `POST` and `GET` commands shown below.
 
-```bash
+```bash:no-line-numbers
 curl -X POST http://localhost:8080/tasks \
   -H "Idempotency-Key: 5958F9A2-8319-486B-BD43-2F80FDE87223" \
   -H "Content-Type: application/json" \
   -d "{\"name\":\"Read the docs\"}"
 ```
 
-```bash
+```bash:no-line-numbers
 curl http://localhost:8080/tasks
 ```
 
-```bash
+```bash:no-line-numbers
 id:["NTk1OEY5QTItODMxOS00ODZCLUJENDMtMkY4MEZERTg3MjIz","AQIAAg==/1"]
 data:{"name":"Read the docs"}
 ```
@@ -627,7 +627,7 @@ As you can see, the `GET /tasks` API delivers a continuous stream of tasks start
 
 Now create a new Todo task while keeping the `GET /tasks` stream open as shown above.
 
-```bash
+```bash:no-line-numbers
 curl -X POST http://localhost:8080/tasks \
   -H "Idempotency-Key: 5C1A90A3-AEB5-496F-BA00-42D1D805B21B" \
   -H "Content-Type: application/json" \
@@ -636,7 +636,7 @@ curl -X POST http://localhost:8080/tasks \
 
 The `GET /tasks` stream automatically receives the update when the new task is created.
 
-```bash
+```bash:no-line-numbers
 id:["NUMxQTkwQTMtQUVCNS00OTZGLUJBMDAtNDJEMUQ4MDVCMjFC","AQIABA==/1"]
 data:{"name":"Join the Slack community"}
 
@@ -648,7 +648,7 @@ Each new update arrives automatically, even when changes are made by other clien
 
 Next, you will build the `Todo` app that's implemented using [VueJs](https://vuejs.org/) framework.  Run the commands below in the root directory.
 
-```bash
+```bash:no-line-numbers
 git clone https://github.com/aklivity/todo-app && \
 cd todo-app && \
 npm install && \
@@ -820,7 +820,7 @@ Open `stack.yml` file and add `- ./todo-app/dist:/app/dist:ro` to the `zilla` se
 
 Finally, run
 
-```bash
+```bash:no-line-numbers
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 

@@ -23,7 +23,11 @@ Each runtime `guard` has a behavioral type supporting a specific implementation 
 
 ## type
 
- <p><code>enum [</code><br>  [`"jwt"`](guard-jwt.md) <br><code>]</code></p> | Behavioral type
+> `enum` \[\
+> ["jwt"](guard-jwt.md)\
+> \]
+
+Behavioral type
 
 #### Properties (type-specific)
 
@@ -31,7 +35,7 @@ Each runtime `guard` has a behavioral type supporting a specific implementation 
 
 > `object`
 
- Behavioral options
+Behavioral options
 
 ---
 

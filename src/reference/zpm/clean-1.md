@@ -12,7 +12,7 @@ Optionally, only the files necessary to execute the [Zilla Runtime](../zilla/) a
 
 ### Usage
 
-```bash
+```bash:no-line-numbers
 zpm clean
 ```
 
@@ -20,10 +20,10 @@ zpm clean
 
 |                |                                                                                   |
 | -------------- | --------------------------------------------------------------------------------- |
-| `--keep-image` | <p>Clean up everything except runtime image<br>Defaults to <code>false</code></p> |
+| `--keep-image` | Clean up everything except runtime image<br>Defaults to `false` |
 
 ### Examples
 
-```bash
+```bash:no-line-numbers
 ./zpmw clean --keep-image
 ```

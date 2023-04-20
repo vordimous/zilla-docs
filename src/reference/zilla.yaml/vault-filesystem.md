@@ -41,13 +41,13 @@ Guard with support for local `filesystem`.
 
 > `const "filesystem"`
 
- Support `filesystem`
+Support `filesystem`
 
 ## [`options`](vault-filesystem.md#options)
 
 > `object`
 
- `filesystem`-specific options
+`filesystem`-specific options
 
 ### options
 
@@ -57,15 +57,15 @@ Options for local `filesystem`.
 
 ## keys
 
- [`store`](vault-filesystem.md#store) | Private keys
+[`store`](vault-filesystem.md#store) | Private keys
 
 ## trust
 
- [`store`](vault-filesystem.md#store) | Trust certificates
+[`store`](vault-filesystem.md#store) | Trust certificates
 
 ## signers
 
- [`store`](vault-filesystem.md#store) | Signer certificates
+[`store`](vault-filesystem.md#store) | Signer certificates
 
 ### store
 
@@ -77,19 +77,20 @@ Store option for local `filesystem`.
 
 > `string`
 
- Relative path to keystore
+Relative path to keystore
 
 ## type
 
 > `string`
 
- <p>Keystore type,<br>defaults to <code>"pkcs12"</code></p>
+Keystore type,\
+defaults to `"pkcs12"`
 
 ## password
 
 > `string`
 
- Keystore password
+Keystore password
 
 ---
 

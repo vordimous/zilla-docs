@@ -45,29 +45,31 @@ Binding with support for `ws` protocol.
 
 > `const "ws"`
 
- Support `ws` protocol
+Support `ws` protocol
 
 ## kind\*
 
- <p><code>enum [</code><br>  <code>"client",</code><br>  <code>"server" ]</code></p> | Behave as a `ws` `client` or `server`
+> `enum` [ "client", "server" ]
+
+Behave as a `ws` `client` or `server`
 
 ## [`options`](binding-ws.md#options)
 
 > `object`
 
- `ws`-specific options
+`ws`-specific options
 
 ## routes
 
 > `array` of [`route`](binding-ws.md#route)
 
- Conditional `ws`-specific routes
+Conditional `ws`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### options
 
@@ -79,7 +81,7 @@ Options for `ws` protocol.
 
 > `object`
 
- Defaults
+Defaults
 
 ### defaults
 
@@ -91,25 +93,25 @@ Defaults option for `ws` protocol.
 
 > `string`
 
- Subprotocol
+Subprotocol
 
 ## scheme
 
 > `string`
 
- Scheme
+Scheme
 
 ## authority
 
 > `string`
 
- Authority
+Authority
 
 ## path
 
 > `string`
 
- Path
+Path
 
 ### route
 
@@ -121,19 +123,19 @@ Routes for `ws` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-ws.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ### condition
 
@@ -145,25 +147,25 @@ Conditions to match routes for `ws` protocol.
 
 > `string`
 
- Subprotocol pattern
+Subprotocol pattern
 
 ## scheme
 
 > `string`
 
- Scheme pattern
+Scheme pattern
 
 ## authority
 
 > `string`
 
- Authority pattern
+Authority pattern
 
 ## path
 
 > `string`
 
- Path pattern
+Path pattern
 
 ---
 

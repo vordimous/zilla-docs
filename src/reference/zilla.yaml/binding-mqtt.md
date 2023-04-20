@@ -38,25 +38,25 @@ Binding with support for `mqtt 5.0` protocol.
 
 > `const "mqtt"`
 
- Support `mqtt 5.0` protocol
+Support `mqtt 5.0` protocol
 
 ## kind\*
 
 > `enum [ "server" ]`
 
- Behave as a `mqtt` `server`
+Behave as a `mqtt` `server`
 
 ## routes
 
 > `array` of [`route`](binding-mqtt.md#route)
 
- Conditional `mqtt`-specific routes
+Conditional `mqtt`-specific routes
 
 ## exit
 
 > `string`
 
- Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable
 
 ### route
 
@@ -68,19 +68,19 @@ Routes for `mqtt 5.0` protocol.
 
 > `object` as named map of `string` `array`
 
- List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route
 
 ## when
 
 > `array` of [`condition`](binding-mqtt.md#condition)
 
- List of conditions (any match) to match this route
+List of conditions (any match) to match this route
 
 ## exit\*
 
 > `string`
 
- Next binding when following this route
+Next binding when following this route
 
 ### condition
 
@@ -92,11 +92,14 @@ Conditions to match routes for `mqtt 5.0` protocol.
 
 > `string`
 
- Topic name
+Topic name
 
 ## capabilities
 
- <p><code>enum [</code> <br>  <code>"publish_only",</code> <br>  <code>"subscribe_only",</code> <br>  <code>"publish_and_subscribe" ]</code></p> | <p>Publish or subscribe, or both.<br>Defaults to <code>publish_and_subscribe</code>.</p>
+> `enum` [ "publish_only", "subscribe_only", "publish_and_subscribe" ]
+
+Publish or subscribe, or both.\
+Defaults to `"publish_and_subscribe"`.
 
 ---
 

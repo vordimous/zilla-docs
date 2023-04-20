@@ -390,7 +390,7 @@ Kafka topic name, optionally referencing path parameter such as `${params.topic}
 > `enum` [ "none", "leader_only", "in_sync_replicas" ]
 
 Kafka acknowledgement mode\
-Defaults to `in_sync_replicas`.
+Defaults to `"in_sync_replicas"`.
 
 #### with.key
 
