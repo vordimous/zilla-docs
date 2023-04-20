@@ -28,3 +28,9 @@ Each runtime `vault` has a behavioral type supporting a specific implementation 
 | Name      | Type     | Description        |
 | --------- | -------- | ------------------ |
 | `options` | `object` | Behavioral options |
+
+---
+
+::: right
+\* required
+:::

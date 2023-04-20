@@ -81,3 +81,9 @@ Address for `proxy` protocol.
 | ------ | --------- | ---------------------- |
 | `host` | `string`  | Hostname or IP address |
 | `port` | `integer` | Port number            |
+
+---
+
+::: right
+\* required
+:::

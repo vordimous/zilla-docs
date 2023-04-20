@@ -72,3 +72,9 @@ Type-specific conditional routing rules to reach an `exit` binding
 > `string`
 
 Unconditional `exit` binding acting as a default if none of the conditional routes are viable
+
+---
+
+::: right
+\* required
+:::

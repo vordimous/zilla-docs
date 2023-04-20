@@ -69,3 +69,9 @@ Conditions to match routes for `sse` protocol.
 | Name (\* = required) | Type     | Description  |
 | -------------------- | -------- | ------------ |
 | `path`\*             | `string` | Path pattern |
+
+---
+
+::: right
+\* required
+:::

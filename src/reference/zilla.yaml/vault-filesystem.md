@@ -1,5 +1,5 @@
 ---
-shortTitle: valut (filesystem)
+shortTitle: vault (filesystem)
 description: Zilla runtime filesystem vault
 category:
   - Vault
@@ -65,3 +65,9 @@ Store option for local `filesystem`.
 | `store`\*            | `string` | Relative path to keystore                                  |
 | `type`               | `string` | <p>Keystore type,<br>defaults to <code>"pkcs12"</code></p> |
 | `password`           | `string` | Keystore password                                          |
+
+---
+
+::: right
+\* required
+:::

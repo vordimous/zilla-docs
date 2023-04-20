@@ -35,3 +35,9 @@ Binding with support for `fan-in` and `fan-out`.
 | `type`\*             | `const "fan"`       | Support `fan-in` and `fan-out`.              |
 | `kind`\*             | `enum [ "server" ]` | Behave as an `fan-in` and `fan-out` `server` |
 | `exit`\*             | `string`            | Default exit binding                         |
+
+---
+
+::: right
+\* required
+:::

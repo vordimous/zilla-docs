@@ -20,7 +20,6 @@ filesystem_server0:
     simlinks: follow
 ```
 
-
 ## Summary
 
 The `server` kind `filesystem` binding provides access to files and directories on the local filesystem, optionally following symbolic links.
@@ -29,21 +28,22 @@ Behaves as a web server when combined with `tcp,` `tls`, `http` and `http-filesy
 
 ## Configuration
 
-::: right
-\* = required
-:::
+:::: note Properties
 
-::: details Table of Contents
 - [kind\*](#kind)
 - [options](#options)
-  - [options.location | `string`](#options-location-string)
-  - [options.symlinks | `enum [ "follow", "ignore" ]`](#options-symlinks-enum-follow-ignore)
+  - [options.location](#options-location)
+  - [options.symlinks](#options-symlinks)
 
+::: right
+\* required
 :::
+
+::::
 
 ### kind\*
 
-> enum [ "server" ]
+> `enum` [ "server" ]
 
 Behave as a `filesystem` `server`
 
@@ -63,10 +63,15 @@ options:
   simlinks: follow
 ```
 
-#### options.location | `string`
+#### options.location
+
+> `string`
 
 File system URI or directory name with trailing slash.
-#### options.symlinks | `enum [ "follow", "ignore" ]`
+
+#### options.symlinks
+
+> `enum` [ "follow", "ignore" ]
 
 How to treat symbolic links.\
 Defaults to `ignore`
@@ -74,5 +79,5 @@ Defaults to `ignore`
 ---
 
 ::: right
-\* = required
+\* required
 :::

@@ -12,10 +12,14 @@ tag:
 Zilla runtime amqp binding (incubator)
 
 ```yaml {2}
-fan_server0:
-  type: fan
+amqp_server0:
+  type: amqp
   kind: server
-  exit: echo_server0
+  routes:
+  - when:
+    - address: echo
+      capabilities: send_and_receive
+    exit: echo_server0
 ```
 
 Defines a binding with `amqp 1.0` protocol support, with `server` behavior.
@@ -54,3 +58,9 @@ Conditions to match routes for `amqp 1.0` protocol.
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | `address`            | `string`                                                                                                                              | Link address                                                                   |
 | `capabilities`       | <p><code>enum [</code> <br>  <code>"send_only",</code> <br>  <code>"receive_only",</code> <br>  <code>"send_and_receive" ]</code></p> | <p>Send or receive, or both.<br>Defaults to <code>send_and_receive</code>.</p> |
+
+---
+
+::: right
+\* required
+:::

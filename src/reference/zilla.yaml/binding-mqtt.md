@@ -63,3 +63,9 @@ Conditions to match routes for `mqtt 5.0` protocol.
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `topic`\*            | `string`                                                                                                                                        | Topic name                                                                               |
 | `capabilities`       | <p><code>enum [</code> <br>  <code>"publish_only",</code> <br>  <code>"subscribe_only",</code> <br>  <code>"publish_and_subscribe" ]</code></p> | <p>Publish or subscribe, or both.<br>Defaults to <code>publish_and_subscribe</code>.</p> |
+
+---
+
+::: right
+\* required
+:::

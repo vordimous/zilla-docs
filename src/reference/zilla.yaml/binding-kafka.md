@@ -128,3 +128,9 @@ Conditions to match routes for `kafka` protocol.
 | Name (\* = required) | Type     | Description        |
 | -------------------- | -------- | ------------------ |
 | `topic`\*            | `string` | Topic name pattern |
+
+---
+
+::: right
+\* required
+:::

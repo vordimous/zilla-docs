@@ -74,3 +74,9 @@ Filesystem parameters from matched route when adapting `http` data streams into 
 | Name (\* = required) | Type     | Description                                                                |
 | -------------------- | -------- | -------------------------------------------------------------------------- |
 | `path`\*             | `string` | Topic name, optionally referencing path parameter such as `${params.path}` |
+
+---
+
+::: right
+\* required
+:::

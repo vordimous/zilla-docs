@@ -165,3 +165,9 @@ Conditions to match routes for `HTTP` protocol.
 | Name (\* = required) | Type                           | Description                                   |
 | -------------------- | ------------------------------ | --------------------------------------------- |
 | `headers`            | `object` of name-value headers | <p>Header name value pairs<br>(all match)</p> |
+
+---
+
+::: right
+\* required
+:::

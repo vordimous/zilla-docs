@@ -96,3 +96,9 @@ Conditions to match routes for `ws` protocol.
 | `scheme`             | `string` | Scheme pattern      |
 | `authority`          | `string` | Authority pattern   |
 | `path`               | `string` | Path pattern        |
+
+---
+
+::: right
+\* required
+:::

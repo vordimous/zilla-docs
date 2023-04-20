@@ -107,3 +107,9 @@ Conditions to match routes for `tls` protocol.
 | ----------- | -------- | -------------------- |
 | `authority` | `string` | Associated authority |
 | `alpn`      | `string` | Application protocol |
+
+---
+
+::: right
+\* required
+:::

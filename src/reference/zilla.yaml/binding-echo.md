@@ -23,14 +23,16 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 ## Configuration
 
-::: right
-\* = required
-:::
 
-::: details Table of Contents
+:::: note Properties
+
 - [kind\*](#kind)
 
+::: right
+\* required
 :::
+
+::::
 
 
 ### kind\*
@@ -47,5 +49,5 @@ kind: server
 ---
 
 ::: right
-\* = required
+\* required
 :::

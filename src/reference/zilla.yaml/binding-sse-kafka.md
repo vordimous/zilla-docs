@@ -109,3 +109,8 @@ SSE event syntax used when delivering Kafka messages to SSE clients.
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
 | `id`\*               | <p><code>enum [</code><br>  <code>"${etag}",</code><br>  <code>"[\"${base64(key)}\",\"${etag}\"]"</code><br><code>]</code></p> | <p>Format of <code>id</code> field in <code>sse</code> <code>event</code><br><br>Defaults to <code>"${etag}"</code></p> |
 
+---
+
+::: right
+\* required
+:::

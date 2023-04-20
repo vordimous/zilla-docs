@@ -76,3 +76,9 @@ Conditions to match routes for `tcp` protocol.
 | -------------------- | -------- | -------------------- |
 | `authority`          | `string` | Associated authority |
 | `cidr`               | `string` | CIDR mask            |
+
+---
+
+::: right
+\* required
+:::

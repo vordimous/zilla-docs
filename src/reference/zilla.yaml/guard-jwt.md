@@ -78,3 +78,9 @@ Key option for `jwt`.
 | `crv`   | `string` | `EC` curve name               |
 | `x`     | `string` | `EC` point `x` coordinate     |
 | `y`     | `string` | `EC` point `y` coordinate     |
+
+---
+
+::: right
+\* required
+:::
