@@ -80,42 +80,42 @@ A corresponding `route` `condition` with matching `GET` method and `location` pa
 - [Produce capability](#produce-capability)
 - [kind\*](#kind)
 - [options](#options)
-  - [options.idempotency | `object`](#options-idempotency-object)
-    - [idempotency.header | `string`](#idempotency-header-string)
-  - [options.correlation | `object`](#options-correlation-object)
-    - [correlation.headers | `object`](#correlation-headers-object)
-    - [headers.reply-to | `string`](#headers-reply-to-string)
-    - [headers.correlation-id | `string`](#headers-correlation-id-string)
+  - [options.idempotency](#options-idempotency)
+    - [idempotency.header](#idempotency-header)
+  - [options.correlation](#options-correlation)
+    - [correlation.headers](#correlation-headers)
+    - [headers.reply-to](#headers-reply-to)
+    - [headers.correlation-id](#headers-correlation-id)
 - [routes](#routes)
-  - [route | `object`](#route-object)
+  - [route](#route)
 - [route.guarded](#route-guarded)
 - [route.when](#route-when)
-  - [when\[\].method | `string`](#when-method-string)
-  - [when\[\].path | `string`](#when-path-string)
+  - [when\[\].method](#when-method)
+  - [when\[\].path](#when-path)
 - [route.exit\*](#route-exit)
 - [route.with](#route-with)
 - [with.capability (fetch)](#with-capability-fetch)
-  - [with.topic | `string`](#with-topic-string)
-  - [with.filters | `array` of `filter object`](#with-filters-array-of-filter-object)
-    - [filter | `object`](#filter-object)
-    - [filter.key | `string`](#filter-key-string)
-    - [filter.headers | `object`](#filter-headers-object)
-  - [with.merge | `object`](#with-merge-object)
-  - [merge.content-type | `const "application/json"`](#merge-content-type-const-application-json)
-  - [merge.patch | `object`](#merge-patch-object)
-  - [patch.initial | `string`](#patch-initial-string)
-  - [patch.path | `const "/-"`](#patch-path-const)
+  - [with.topic](#with-topic)
+  - [with.filters](#with-filters)
+    - [filter](#filter)
+    - [filter.key](#filter-key)
+    - [filter.headers](#filter-headers)
+- [with.merge](#with-merge)
+  - [merge.content-type](#merge-content-type)
+  - [merge.patch](#merge-patch)
+  - [patch.initial](#patch-initial)
+  - [patch.path](#patch-path)
 - [with.capability (produce)](#with-capability-produce)
-  - [with.topic | `string`](#with-topic-string-1)
-  - [with.acks | `enum [ "none", "leader_only", "in_sync_replicas" ]`](#with-acks-enum-none-leader-only-in-sync-replicas)
-  - [with.key | `string`](#with-key-string)
-  - [with.overrides | `object`](#with-overrides-object)
-  - [with.reply-to | `string`](#with-reply-to-string)
-  - [with.async | `object`](#with-async-object)
+  - [with.topic](#with-topic-1)
+  - [with.acks](#with-acks)
+  - [with.key](#with-key)
+  - [with.overrides](#with-overrides)
+  - [with.reply-to](#with-reply-to)
+  - [with.async](#with-async)
 
 
 ::: right
-\* = required
+\* required
 :::
 
 ::::
@@ -146,29 +146,41 @@ options:
       correlation-id: zilla:correlation-id
 ```
 
-#### options.idempotency | `object`
+#### options.idempotency
+
+> `object`
 
 HTTP request header used to specify the idempotency key when adapting `http` request-response streams to `kafka` topic streams.
 
-##### idempotency.header | `string`
+##### idempotency.header
+
+> `string`
 
 HTTP request header name for idempotency key.\
 Defaults to `"idempotency-key"`
 
-#### options.correlation | `object`
+#### options.correlation
+
+> `object`
 
 Kafka request message headers injected when adapting `http` request-response streams to `kafka` topic streams.
 
-##### correlation.headers | `object`
+##### correlation.headers
+
+> `object`
 
 Kafka request message reply to and correlation id header names injected when adapting `http` request-response streams to `kafka` topic streams.
 
-##### headers.reply-to | `string`
+##### headers.reply-to
+
+> `string`
 
 Kafka header name for reply-to topic.\
 Defaults to `"zilla:reply-to"`.
 
-##### headers.correlation-id | `string`
+##### headers.correlation-id
+
+> `string`
 
 Kafka header name for request-response correlation identifier.\
 Defaults to `"zilla:correlation-id"`.
@@ -212,7 +224,9 @@ routes:
       reply-to: items-responses
 ```
 
-#### route | `object`
+#### route
+
+> `object`
 
 A route for adapting `http` request-response streams to `kafka` topic streams.
 
@@ -246,11 +260,15 @@ routes:
 A condition matches routes for adapting `http` request-response streams to `kafka` topic streams.
 :::
 
-#### when[].method | `string`
+#### when[].method
+
+> `string`
 
 HTTP Method, such as `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`
 
-#### when[].path | `string`
+#### when[].path
+
+> `string`
 
 Path with optional embedded parameter names, such as `/{topic}`
 
@@ -298,27 +316,39 @@ with:
     - key: "${params.id}"
 ```
 
-#### with.topic | `string`
+#### with.topic
+
+> `string`
 
 Topic name, optionally referencing path parameter such as `${params.topic}`
 
-#### with.filters | `array` of `filter object`
+#### with.filters
+
+> `array` of `filter object`
 
 List of criteria (any match)
 
-##### filter | `object`
+##### filter
+
+> `object`
 
 Kafka filters for matched route when adapting `http` request-response streams to `kafka` topic fetch streams. All specified headers and key must match for the combined criteria to match.
 
-##### filter.key | `string`
+##### filter.key
+
+> `string`
 
 Message key, optionally referencing path parameter such as `${params.key}`
 
-##### filter.headers | `object`
+##### filter.headers
+
+> `object`
 
 Message headers, with value optionally referencing path parameter such as `${params.headerX}`
 
-#### with.merge | `object`
+#### with.merge
+
+> `object`
 
 Merge multiple Kafka messages into a unified HTTP response. Kafka merge configuration for matched route when adapting `http` request-response streams to `kafka` topic streams where all messages are fetched and must be merged into a unified `http` response.
 
@@ -330,11 +360,15 @@ merge:
     path: /-
 ```
 
-#### merge.content-type | `const "application/json"`
+#### merge.content-type
+
+> `const "application/json"`
 
 Content type of merged HTTP response.
 
-#### merge.patch | `object`
+#### merge.patch
+
+> `object`
 
 Describes how to patch initial HTTP response to include one or more Kafka messages in unified HTTP response.
 
@@ -342,11 +376,15 @@ Describes how to patch initial HTTP response to include one or more Kafka messag
 
   Kafka merge patch configuration for matched route when adapting `http` request-response streams to `kafka` topic streams where all messages are fetched and must be merged into a unified `http` response.
 
-#### patch.initial | `string`
+#### patch.initial
+
+> `string`
 
 Initial JSON value.
 
-#### patch.path | `const "/-"`
+#### patch.path
+
+> `const "/-"`
 
 JSON Patch path to include each Kafka message in unified HTTP response.
 
@@ -368,28 +406,40 @@ with:
     location: "/items/${params.id};${correlationId}"
 ```
 
-#### with.topic | `string`
+#### with.topic
+
+> `string`
 
 Kafka topic name, optionally referencing path parameter such as `${params.topic}`
 
-#### with.acks | `enum [ "none", "leader_only", "in_sync_replicas" ]`
+#### with.acks
+
+> `enum [ "none", "leader_only", "in_sync_replicas" ]`
 
 Kafka acknowledgement mode\
 Defaults to `in_sync_replicas`.
 
-#### with.key | `string`
+#### with.key
+
+> `string`
 
 Kafka message key, optionally referencing path parameter such as `${params.id}`
 
-#### with.overrides | `object`
+#### with.overrides
+
+> `object`
 
 Kafka message headers, with values optionally referencing path parameter.
 
-#### with.reply-to | `string`
+#### with.reply-to
+
+> `string`
 
 Kafka reply-to topic name.
 
-#### with.async | `object`
+#### with.async
+
+> `object`
 
 HTTP response headers, with values optionally referencing path parameter or `${correlationId}`
 
