@@ -24,7 +24,7 @@ proxy_server0:
           port: 443
       exit: tls_server0
 ```
-
+## Summary
 Defines a binding with `proxy` protocol support, with `server` or `client` behavior.
 
 The `server` kind `proxy` binding decodes `Proxy v2` protocol on the inbound network stream, producing higher level application streams for each request.
@@ -34,6 +34,31 @@ The `client` kind `proxy` binding receives inbound application streams and encod
 Conditional routes based on the network transport type or network addresses are used to route these streams to an `exit` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].transport](#when-transport)
+  - [when\[\].family](#when-family)
+  - [when\[\].source](#when-source)
+    - [source.host](#source-host)
+    - [source.port](#source-port)
+  - [when\[\].destination](#when-destination)
+    - [destination.host](#destination-host)
+    - [destination.port](#destination-port)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

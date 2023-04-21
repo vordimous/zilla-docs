@@ -17,7 +17,7 @@ fan_server0:
   kind: server
   exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `fan-in` and `fan-out` support, with `server` behavior.
 
 The `server` kind `fan` binding performs fan-in of data on all inbound network streams, grouping them into a single application stream. Then data received from the application stream is fanned-out to all network streams in the group.
@@ -26,7 +26,17 @@ When the `exit` is an `echo` server binding, the combination reflects all inboun
 
 ## Configuration
 
-Binding with support for `fan-in` and `fan-out`.
+:::: note Properties
+
+- [kind\*](#kind)
+- [exit\*](#exit)
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

@@ -21,6 +21,7 @@ amqp_server0:
           capabilities: send_and_receive
     exit: echo_server0
 ```
+## Summary
 
 Defines a binding with `amqp 1.0` protocol support, with `server` behavior.
 
@@ -28,9 +29,25 @@ The `server` kind `amqp` binding decodes `amqp 1.0` protocol on the inbound netw
 
 Conditional routes based on the `link` `address` are used to route these application streams to an `exit` binding.
 
+
 ## Configuration
 
-Binding with support for the `amqp 1.0` protocol.
+:::: note Properties
+
+- [kind\*](#kind)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].address](#when-address)
+  - [when\[\].capabilities](#when-capabilities)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
 
 ### kind\*
 

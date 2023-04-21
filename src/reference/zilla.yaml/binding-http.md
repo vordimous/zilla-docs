@@ -30,7 +30,7 @@ http_server0:
             ":authority": example.com:443
     exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `http` protocol support, with `server` or `client` behavior.
 
 #### Server behavior
@@ -50,6 +50,44 @@ The `client` kind `http` binding receives inbound application streams and encode
 Conditional routes based on `http` request headers are used to route these network streams to an `exit` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [options](#options)
+- [options.versions](#options-versions)
+- [options.access-control](#options-access-control)
+  - [access-control.policy\*](#access-control-policy)
+  - [access-control.policy (same-origin)](#access-control-policy-same-origin)
+  - [access-control.policy (cross-origin)](#access-control-policy-cross-origin)
+  - [access-control.allow](#access-control-allow)
+    - [allow.origins](#allow-origins)
+    - [allow.methods](#allow-methods)
+    - [allow.headers](#allow-headers)
+    - [allow.credentials](#allow-credentials)
+  - [access-control.max-age](#access-control-max-age)
+  - [access-control.expose](#access-control-expose)
+    - [expose.headers](#expose-headers)
+- [options.authorization](#options-authorization)
+  - [authorization.credentials](#authorization-credentials)
+    - [credentials.cookies](#credentials-cookies)
+    - [credentials.headers](#credentials-headers)
+    - [credentials.query](#credentials-query)
+- [options.overrides](#options-overrides)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].headers](#when-headers)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 
@@ -162,7 +200,7 @@ Exposed cross-origin response headers.\
 Defaults to all response headers.
 
 
-#### expose.headers
+##### expose.headers
 
 > `array` of `string`
 

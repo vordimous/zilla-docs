@@ -18,7 +18,7 @@ server:
       type: pkcs12
       password: "{{env.KEYS_PASSWORD}}"
 ```
-
+## Summary
 Defines a vault stored on the local filesystem.
 
 The `filesystem` vault uses `PKCS12` format to store signed certificates and keys.
@@ -32,6 +32,30 @@ The [signers](#options-signers) option is used to challenge for mutual authentic
 Note that use of `{{env.*}}` syntax to read an environment variable currently requires setting `zilla.engine.config.syntax.mustache=true` in `.zilla/zilla.properties`.
 
 ## Configuration
+
+:::: note Properties
+
+- [options](#options)
+- [options.keys](#options-keys)
+  - [keys.store\*](#keys-store)
+  - [keys.type](#keys-type)
+  - [keys.password](#keys-password)
+- [options.trust](#options-trust)
+  - [trust.store\*](#trust-store)
+  - [trust.type](#trust-type)
+  - [trust.password](#trust-password)
+- [options.signers](#options-signers)
+  - [signers.store\*](#signers-store)
+  - [signers.type](#signers-type)
+  - [signers.password](#signers-password)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### options
 

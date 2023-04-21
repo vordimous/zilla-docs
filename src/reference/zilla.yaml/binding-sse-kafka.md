@@ -24,7 +24,7 @@ sse_kafka_proxy0:
         event:
           id: '["${base64(key)}","${etag}"]'
 ```
-
+## Summary
 Defines a binding with `sse-kafka`  support, with `proxy` behavior.
 
 The `proxy` kind `sse-kafka` binding adapts `sse` data streams into `kafka` data streams, so that `kafka` messages can be delivered to `sse` clients.
@@ -38,6 +38,32 @@ The event `id` can be configured to include the message `key` and `etag` of each
 When a `kafka` tombstone (`null` value) message is received by the `sse-kafka` binding, it delivers a `delete` event to the `sse` client. This informs the client which specific message has been deleted by observing the message key from the `sse` `delete` event `id`.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].path\*](#when-path)
+- [routes\[\].exit\*](#routes-exit)
+- [routes\[\].with](#routes-with)
+  - [with.topic\*](#with-topic)
+  - [with.filters](#with-filters)
+    - [filters\[\].key](#filters-key)
+    - [filters\[\].headers](#filters-headers)
+    - [filters\[\].event](#filters-event)
+  - [with.event](#with-event)
+    - [event.id\*](#event-id)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 
@@ -119,13 +145,13 @@ exit: kafka_cache_client0
 
 Kafka parameters used when adapting `sse` data streams to `kafka` data streams.
 
-### with.topic\*
+#### with.topic\*
 
 > `string`
 
 Topic name, optionally referencing path parameter such as `${params.topic}`
 
-### with.filters
+#### with.filters
 
 > `array` of `object`
 
@@ -133,30 +159,30 @@ List of criteria (any match)Kafka filters for matched route when adapting `sse` 
 
 All specified headers and key must match for the combined criteria to match.
 
-#### filters[].key
+##### filters[].key
 
 > `string`
 
 Message key, optionally referencing path parameter such as `${params.key}`
 
-#### filters[].headers
+##### filters[].headers
 
 > `object`
 
 Message headers, with value optionally referencing path parameter such as `${params.headerX}`
 
-#### filters[].event
+##### filters[].event
 
 > `object`
 
 
-### with.event
+#### with.event
 
 > `object`
 
 Defines the SSE event syntax used when delivering Kafka messages to SSE clients.
 
-#### event.id\*
+##### event.id\*
 
 > `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ]
 

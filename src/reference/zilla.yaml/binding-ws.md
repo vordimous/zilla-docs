@@ -20,7 +20,7 @@ ws_server0:
         - protocol: echo
     exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `WebSockets` protocol support, with `server` or `client` behavior.
 
 #### Server behavior
@@ -36,6 +36,33 @@ The `client` kind `ws` binding converts inbound `ws` full duplex streams into `h
 Conditional routes based on `ws` scheme, authority, path or negotiated subprotocol are used to route these streams to an `exit` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [options](#options)
+- [options.defaults](#options-defaults)
+  - [defaults.protocol](#defaults-protocol)
+  - [defaults.scheme](#defaults-scheme)
+  - [defaults.authority](#defaults-authority)
+  - [defaults.path](#defaults-path)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].protocol](#when-protocol)
+  - [when\[\].scheme](#when-scheme)
+  - [when\[\].authority](#when-authority)
+  - [when\[\].path](#when-path)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

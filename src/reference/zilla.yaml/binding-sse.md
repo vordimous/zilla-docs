@@ -17,7 +17,7 @@ sse_server0:
   kind: server
   exit: sse_kafka_proxy0
 ```
-
+## Summary
 Defines a binding with `Server Sent Events (sse)` protocol support, with `server` behavior.
 
 The `server` kind `sse` binding converts inbound `http` request-response streams into `sse` request-response streams, with optionally configured `retry` delay.
@@ -25,6 +25,26 @@ The `server` kind `sse` binding converts inbound `http` request-response streams
 Messages received on the `sse` response stream are encoded using `Server Sent Events` protocol, including support for custom `event` types and last event `id`.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [options](#options)
+- [options.retry](#options-retry)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].path\*](#when-path)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

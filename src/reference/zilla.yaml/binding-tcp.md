@@ -20,7 +20,7 @@ tcp_server0:
     port: 12345
   exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `tcp` protocol support, with `server` or `client` behavior.
 
 The `server` kind `tcp` binding listens for inbound socket connections, producing higher level application streams for each remote `tcp` client.
@@ -30,6 +30,28 @@ The `client` kind `tcp` binding receives inbound application streams and initiat
 Conditional routes based on the hostname authority and network address mask are used to route these streams to an `exit` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [options](#options)
+- [options.host](#options-host)
+- [options.port](#options-port)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].authority](#when-authority)
+  - [when\[\].cidr](#when-cidr)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

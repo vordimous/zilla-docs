@@ -22,7 +22,7 @@ http_filesystem_proxy0:
       with:
         path: "${params.path}"
 ```
-
+## Summary
 Defines a binding with `http-filesystem`  support, with `proxy` behavior.
 
 The `proxy` kind `http-filesystem` binding adapts `http` data streams into `filesystem` data streams by mapping the path from an inbound `http` `GET` request into a filesystem relative path.
@@ -31,7 +31,25 @@ Behaves as a web server when combined with `tcp,` `tls`, `http` and `filesystem`
 
 ## Configuration
 
-Binding with support for adapting `http` data streams into `filesystem` data streams.
+:::: note Properties
+
+- [kind\*](#kind)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].path\*](#when-path)
+- [routes\[\].exit\*](#routes-exit)
+- [routes\[\].with](#routes-with)
+  - [with\[\].path\*](#with-path)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

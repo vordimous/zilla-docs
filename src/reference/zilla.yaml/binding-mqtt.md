@@ -21,7 +21,7 @@ mqtt_server0:
           capabilities: publish_and_subscribe
       exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
 
 The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`.
@@ -29,6 +29,25 @@ The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound netw
 Conditional routes based on the `topic` `name` are used to route these application streams to an `exit` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].topic\*](#when-topic)
+  - [when\[\].capabilities](#when-capabilities)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

@@ -32,7 +32,7 @@ kafka_client0:
   kind: client
   exit: tcp_client0
 ```
-
+## Summary
 Defines a binding with `kafka` protocol support, with `cache_client`, `cache_server` or `client` behavior.
 
 #### Cache behavior
@@ -58,6 +58,34 @@ The `client` kind `kafka` binding receives inbound application streams and encod
 Conditional routes based on `kafka` `topic` names are used to route these network streams to an `exit` binding that ultimately reaches a `kafka` broker.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [options](#options)
+- [options.bootstrap](#options-bootstrap)
+- [options.topics](#options-topics)
+  - [topics\[\].name\*](#topics-name)
+  - [topics\[\].defaultOffset](#topics-defaultoffset)
+- [options.sasl](#options-sasl)
+  - [sasl.name](#sasl-name)
+  - [sasl.mechanism\*](#sasl-mechanism)
+  - [sasl.username](#sasl-username)
+  - [sasl.password](#sasl-password)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].topic\*](#when-topic)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

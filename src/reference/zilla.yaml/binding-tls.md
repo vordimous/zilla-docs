@@ -28,7 +28,7 @@ tls_server0:
         - alpn: echo
     exit: echo_server0
 ```
-
+## Summary
 Defines a binding with `tls` protocol support, with `server`, `client` or `proxy` behavior.
 
 #### Server behavior
@@ -54,6 +54,35 @@ The `proxy` kind `tls` binding detects `ClientHello` `server_name` extension to 
 A `vault` is not required to proxy `TLS` protocol as the handshake is only observed read-only as it routes through the `tls` `proxy` binding.
 
 ## Configuration
+
+:::: note Properties
+
+- [kind\*](#kind)
+- [vault](#vault)
+- [options](#options)
+- [options.version](#options-version)
+- [options.keys](#options-keys)
+- [options.trust](#options-trust)
+- [options.signers](#options-signers)
+- [options.trustcacerts](#options-trustcacerts)
+- [options.sni\*](#options-sni)
+- [options.alpn](#options-alpn)
+- [options.mutual](#options-mutual)
+- [exit](#exit)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].authority](#when-authority)
+  - [when\[\].alpn](#when-alpn)
+- [routes\[\].exit\*](#routes-exit)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 ### kind\*
 

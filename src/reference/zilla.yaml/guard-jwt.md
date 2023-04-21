@@ -31,7 +31,7 @@ jwt0:
         kid: '2011-04-29'
     challenge: 30
 ```
-
+## Summary
 Defines a guard with `JSON Web Token (JWT)` support.
 
 The `jwt` guard uses public keys to verify the integrity of `JWT` access tokens when identifying authorized subjects and their associated roles scope. The token issuer and audience can also be constrained to prevent access tokens from other applications from being reused inappropriately.
@@ -39,6 +39,30 @@ The `jwt` guard uses public keys to verify the integrity of `JWT` access tokens 
 Each verified JWT access token has an expiration time, and an optional challenge window prior to the expiration time that can be used by specific protocol bindings to send a challenge to renew the access token before it expires.
 
 ## Configuration
+
+:::: note Properties
+
+- [options](#options)
+- [options.issuer](#options-issuer)
+- [options.audience](#options-audience)
+- [options.keys\*](#options-keys)
+- [keys\[\].kty\*](#keys-kty)
+- [keys\[\].kid\*](#keys-kid)
+- [keys\[\].n](#keys-n)
+- [keys\[\].e](#keys-e)
+- [keys\[\].alg](#keys-alg)
+- [keys\[\].crv](#keys-crv)
+- [keys\[\].x](#keys-x)
+- [keys\[\].y](#keys-y)
+- [options.challenge](#options-challenge)
+
+
+::: right
+\* required
+:::
+
+::::
+
 
 
 ### options
