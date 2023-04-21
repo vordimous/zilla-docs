@@ -336,7 +336,7 @@ Merge multiple Kafka messages into a unified HTTP response. Kafka merge configur
 
 ##### merge.content-type
 
-> `const "application/json"`
+> `const` "application/json"
 
 Content type of merged HTTP response.
 
@@ -358,7 +358,7 @@ Initial JSON value.
 
 ##### patch.path
 
-> `const "/-"`
+> `const` "/-"
 
 JSON Patch path to include each Kafka message in unified HTTP response.
 

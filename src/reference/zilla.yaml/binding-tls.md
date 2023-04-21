@@ -55,142 +55,115 @@ A `vault` is not required to proxy `TLS` protocol as the handshake is only obser
 
 ## Configuration
 
-Binding with support for `tls` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "tls"`
-
-Support `tls` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "client", "server", "proxy" ]
 
 Behave as a `tls` `client`, `server` or `proxy`
 
-## vault
+### vault
 
 > `string`
 
 Vault name
 
-## [`options`](binding-tls.md#options)
+### options
 
 > `object`
 
 `tls`-specific options
 
-## routes
-
-> `array` of [`route`](binding-tls.md#route)
-
-Conditional `tls`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable
-
-### options
-
-Options for `tls` protocol.
-
-#### Properties
-
-## version
+### options.version
 
 > `string`
 
 Protocol version
 
-## keys
+### options.keys
 
 > `array` of `string`
 
 Vault key refs
 
-## trust
+### options.trust
 
 > `array` of `string`
 
 Vault certificate refs
 
-## signers
+### options.signers
 
 > `array` of `string`
 
 Vault signer certificate refs
 
-## trustcacerts
+### options.trustcacerts
 
 > `boolean`
 
 Trust CA certificates
 
-## sni\*
+### options.sni\*
 
 > `array` of `string`
 
 Server names
 
-## alpn
+### options.alpn
 
 > `array` of `string`
 
 Application protocols
 
-## mutual
+### options.mutual
 
 > `enum` [ "required", "requested", "none" ]
 
 Mutual authentication\
 Defaults to `"none"`
 
-### route
-
-Routes for `tls` protocol.
-
-#### Properties
-
-## guarded
-
-> `object` as named map of `string` `array`
-
-List of roles required by each named guard to authorize this route
-
-## when
-
-> `array` of [`condition`](binding-tls.md#condition)
-
-List of conditions (any match) to match this route
-
-## exit\*
+### exit
 
 > `string`
 
-Next binding when following this route
+Default exit binding when no conditional routes are viable
 
-### condition
+### routes
 
-Conditions to match routes for `tls` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `tls`-specific routes.
 
-## authority
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route.
+
+
+#### when[].authority
 
 > `string`
 
 Associated authority
 
-## alpn
+#### when[].alpn
 
 > `string`
 
 Application protocol
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
 
 ---
 

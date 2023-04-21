@@ -35,105 +35,90 @@ Conditional routes based on the network transport type or network addresses are 
 
 ## Configuration
 
-Binding with support for `proxy` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "proxy"`
-
-Support `proxy` protocol.
-
-## kind\*
+### kind\*
 
 > `enum` [ "client", "server" ]
 
 Behave as `proxy` `client` or `server`
 
-## routes
-
-> `array` of [`route`](binding-proxy.md#route)
-
-Conditional `proxy`-specific routes
-
-## exit
+### exit
 
 > `string`
 
 Default exit binding when no conditional routes are viable
 
-### route
+### routes
 
-Routes for `proxy` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `proxy`-specific routes.
 
-## guarded
+### routes[].guarded
 
-> `object` as named map of `string` `array`
+> `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
-## when
+### routes[].when
 
-> `array` of [`condition`](binding-proxy.md#condition)
+> `array` of `object`
 
-List of conditions (any match) to match this route
+List of conditions (any match) to match this route.
 
-## exit\*
-
-> `string`
-
-Next binding when following this route
-
-### condition
-
-Conditions to match routes for `proxy` protocol.
-
-#### Properties
-
-## transport
+#### when[].transport
 
 > `enum` [ "stream", "datagram" ]
 
 Transport type
 
-## family
+#### when[].family
 
 > `enum` [ "inet", "inet4", "inet6", "unix" ]
 
 Address family
 
-## source
+#### when[].source
 
-[`address`](binding-proxy.md#address)
+> `object`
 
 Source address
 
-## destination
-
-[`address`](binding-proxy.md#address)
-
-Destination address
-
-### address
-
-Address for `proxy` protocol.
-
-#### Properties
-
-## host
+##### source.host
 
 > `string`
 
 Hostname or IP address
 
-## port
+##### source.port
 
 > `integer`
 
 Port number
+
+#### when[].destination
+
+> `object`
+
+Destination address
+
+##### destination.host
+
+> `string`
+
+Hostname or IP address
+
+##### destination.port
+
+> `integer`
+
+Port number
+
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
 
 ---
 

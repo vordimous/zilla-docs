@@ -51,227 +51,193 @@ Conditional routes based on `http` request headers are used to route these netwo
 
 ## Configuration
 
-Binding with support for `http` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "http"`
-
-Support `http` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "server",  "client" ]
 
 Behave as an `http` `server` or `client`
 
-## [`options`](binding-http.md#options)
+### options
 
 > `object`
 
-`http`-specifc options
+`http`-specifc options.
 
-## routes
 
-> `array` of [`route`](binding-http.md#route)
-
-Conditional `http`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable
-
-### options
-
-Options for `HTTP` protocol.
-
-#### Properties
-
-## versions
+### options.versions
 
 `array` of > `enum` [ "http/1.1", "h2" ]
 
 Supported protocol versions
 
-## [`access-control`](binding-http.md#access-control)
+### options.access-control
 
-> `object`
+> **oneOf**: [same-origin](#access-control-policy-same-origin) | [cross-origin](#access-control-policy-cross-origin)
 
-Access control policy
+Access control policy for the `HTTP` protocol.
 
-## authorization
-
-> `object` as map of named [`authorization`](binding-http.md#authorization) properties
-
-Authorization by guard
-
-## overrides
-
-> `object` of name-value header overrides
-
-Request header overrides
-
-### access-control
-
-Access control for `HTTP` protocol.
-
-#### Properties
-
-## policy\*
+#### access-control.policy\*
 
 > `enum` [ "same-origin" , "cross-origin" ]
 
 Supported access control policies
 
-### access-control (cross-origin)
+#### access-control.policy (same-origin)
 
-Cross Origin Resource Sharing (CORS) access control for `HTTP` protocol.
+> `string`
 
-#### Properties
+Extra properties aren't needed when using Same Origin access control for the `HTTP` protocol.
 
-## policy\*
+```yaml
+options:
+  access-control:
+    policy: same-origin
+```
 
-> `const "cross-origin"`
+#### access-control.policy (cross-origin)
 
-Support cross-origin access control policy
+> `object`
 
-## `[`allow](binding-http.md#allow)
+Additional properties that cover Cross Origin Resource Sharing (CORS) access control for the `HTTP` protocol.
+
+```yaml
+options:
+  access-control:
+    policy: cross-origin
+```
+
+#### access-control.allow
 
 > `object`
 
 Allowed cross-origin request origins, methods, headers and credentials.\
 Defaults to all origins, methods and headers, without credentials.
+CORS allowed request origins, methods, headers and credentials for the `HTTP` protocol.
 
-## max-age
+##### allow.origins
+
+> `array` of `string`
+
+Allowed request origins.
+
+##### allow.methods
+
+> `array` of `string`
+
+Allowed request methods.
+
+##### allow.headers
+
+> `array` of `string`
+
+Allowed request headers
+
+##### allow.credentials
+
+> `boolean`
+
+Support `fetch` credentials mode `include`.
+
+#### access-control.max-age
 
 > `number`
 
 Maximum cache age (in seconds) for allowed headers and methods.
 
-## `[`expose](binding-http.md#expose)
+#### access-control.expose
 
 > `object`
 
 Exposed cross-origin response headers.\
 Defaults to all response headers.
 
-### allow
 
-CORS allowed request origins, methods, headers and credentials for `HTTP` protocol.
+#### expose.headers
 
-#### Properties
-
-## origins
-
-> `array of string`
-
-Allowed request origins.
-
-## methods
-
-> `array of string`
-
-Allowed request methods.
-
-## headers
-
-> `array of string`
-
-Allowed request headers
-
-## credentials
-
-> `boolean`
-
-Support `fetch` credentials mode `include`.
-
-### expose
-
-CORS exposed response headers for `HTTP` protocol.
-
-#### Properties
-
-## headers
-
-> `array of string`
+> `array` of `string`
 
 Exposed response headers
 
-### authorization
+### options.authorization
 
-Authorization for `HTTP/1.1` and `HTTP/2` protocols.
+> `object` as map of named properties
 
-#### Properties
+Authorization by guard for the `HTTP/1.1` and `HTTP/2` protocols.
 
-## [`credentials`](binding-http.md#credentials)
+```yaml
+authorization:
+  jwt0:
+    credentials:
+      headers:
+        authorization: Bearer {credentials}
+```
+
+#### authorization.credentials
 
 > `object`
 
 Defines how to extract credentials from the HTTP request.
 
-### credentials
-
-Credentials for `HTTP` protocol.
-
-#### Properties
-
-## cookies
+##### credentials.cookies
 
 > `object` as map of `string`
 
 Named cookie value pattern with `{credentials}`
 
-## headers
+##### credentials.headers
 
 > `object` as map of `string`
 
 Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`
 
-## query
+##### credentials.query
 
 > `object` as map of `string`
 
 Named query parameter value pattern with `{credentials}`
 
-### route
+### options.overrides
 
-Routes for `HTTP` protocol.
+> `object` of name-value header overrides
 
-#### Properties
+Request header overrides
 
-## guarded
-
-> `object` as named map of `string` `array`
-
-List of roles required by each named guard to authorize this route
-
-## when
-
-> `array` of [`condition`](binding-http.md#condition)
-
-List of conditions (any match) to match this route
-
-## exit\*
+### exit
 
 > `string`
 
-Next binding when following this route
+Default exit binding when no conditional routes are viable
 
-### condition
+### routes
 
-Conditions to match routes for `HTTP` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `http`-specific routes.
 
-## headers
+
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route.
+
+#### when[].headers
 
 > `object` of name-value headers
 
 Header name value pairs (all match)
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
 
 ---
 

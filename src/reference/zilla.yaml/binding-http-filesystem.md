@@ -33,85 +33,60 @@ Behaves as a web server when combined with `tcp,` `tls`, `http` and `filesystem`
 
 Binding with support for adapting `http` data streams into `filesystem` data streams.
 
-#### Properties
+### kind\*
 
-## type\*
-
-> `const "http-filesystem"`
-
-Adapt `http` data streams into `filesystem` data streams
-
-## kind\*
-
-> `enum [ "proxy" ]`
+> `enum` [ "proxy" ]
 
 Behave as an `http-filesystem` `proxy`
 
-## routes
-
-> `array` of [`route`](binding-http-filesystem.md#route)
-
-Conditional `http-kafka`-specific routes
-
-## exit
+### exit
 
 > `string`
 
 Default exit binding when no conditional routes are viable
 
-### route
+### routes
 
-Routes for adapting `http` data streams into `filesystem` data streams.
+> `array` of `object`
 
-#### Properties
+Conditional `http-kafka`-specific routes for adapting `http` data streams into `filesystem` data streams.
 
-## guarded
+### routes[].guarded
 
-> `object` as named map of `string` `array`
+> `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
-## when
+### routes[].when
 
-> `array` of [`condition`](binding-http-filesystem.md#condition)
+> `array` of `object`
 
-List of conditions (any match) to match this route
+List of conditions (any match) to match this route when adapting `http` data streams into `filesystem` data streams.
 
-## exit\*
-
-> `string`
-
-Next binding when following this route
-
-## with
-
-> `object`
-
-Filesystem parameters used when following this route
-
-### condition
-
-HTTP conditions to match routes when adapting `http` data streams into `filesystem` data streams.
-
-#### Properties
-
-## path\*
+#### when[].path\*
 
 > `string`
 
 Path with optional embedded parameter names, such as `/{path}`
 
-### with
-
-Filesystem parameters from matched route when adapting `http` data streams into `filesystem` data streams.
-
-#### Properties
-
-## path\*
+### routes[].exit\*
 
 > `string`
 
-Topic name, optionally referencing path parameter such as `${params.path}`
+Next binding when following this route
+
+### routes[].with
+
+> `object`
+
+Filesystem parameters used when adapting `http` data streams into `filesystem` data streams.
+
+
+#### with[].path\*
+
+> `string`
+
+Topic name, optionally referencing path parameter such as `${params.path}`.
 
 ---
 

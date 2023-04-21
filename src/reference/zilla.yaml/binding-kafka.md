@@ -59,149 +59,110 @@ Conditional routes based on `kafka` `topic` names are used to route these networ
 
 ## Configuration
 
-Binding with support for `kafka` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "kafka"`
-
-Support `kafka` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "cache_client", "cache_server", "client" ]
 
 Behave as a `kafka` `cache_client`, `cache_server` or `client`
 
-## [`options`](binding-kafka.md#options)
+### options
 
 > `object`
 
-`kafka`-specific options
+`kafka`-specific options.
 
-## routes
-
-> `array` of [`route`](binding-kafka.md#route)
-
-Conditional `kafka`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable
-
-### options
-
-Options for `kafka` protocol.
-
-#### Properties
-
-## bootstrap
+### options.bootstrap
 
 > `array` of `string`
 
 Topics to bootstrap in cache server even when no clients
 
-## topics
+### options.topics
 
-> `array` of [`topic`](binding-kafka.md#topic)
+> `array` of `object`
 
 Topic configuration
 
-## [`sasl`](binding-kafka.md#sasl)
-
-> `object`
-
-SASL credentials
-
-### topic
-
-Topic-specific configuration when supporting `kafka` protocol.
-
-#### Properties
-
-## name\*
+#### topics[].name\*
 
 > `string`
 
 Topic name
 
-## defaultOffset
+#### topics[].defaultOffset
 
 > `enum` [ "live", "historical" ]
 
 Fetch offset to use for new consumers\
 Defaults to `"historical"`
 
-### sasl
+### options.sasl
+
+> `object`
 
 SASL credentials to use when connecting to `kafka` brokers.
 
-#### Properties
-
-## name
+#### sasl.name
 
 > `string`
 
 Mechanism name
 
-## mechanism\*
+#### sasl.mechanism\*
 
 > `enum` [ "plain", "scram-sha-1", "scram-sha-256", "scram-sha-512" ]
 
 SASL mechanism\
 Supports `plain` and `scram` mechanisms
 
-## username
+#### sasl.username
 
 > `string`
 
 SASL username
 
-## password
+#### sasl.password
 
 > `string`
 
 SASL password
 
-### route
+### exit
 
-Routes for `kafka` protocol.
+> `string`
 
-#### Properties
+Default exit binding when no conditional routes are viable
 
-## guarded
+### routes
 
-> `object` as named map of `string` `array`
+> `array` of `object`
+
+Conditional `kafka`-specific routes.
+
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
-## when
+### routes[].when
 
-> `array` of [`condition`](binding-kafka.md#condition)
+> `array` of `object`
 
-List of conditions (any match) to match this route
+List of conditions (any match) to match this route.
 
-## exit\*
+#### when[].topic\*
+
+> `string`
+
+Topic name pattern
+
+### routes[].exit\*
 
 > `string`
 
 Next binding when following this route
 
-### condition
-
-Conditions to match routes for `kafka` protocol.
-
-#### Properties
-
-## topic\*
-
-> `string`
-
-Topic name pattern
 
 ---
 

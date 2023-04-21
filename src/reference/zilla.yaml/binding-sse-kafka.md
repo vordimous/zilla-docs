@@ -39,127 +39,93 @@ When a `kafka` tombstone (`null` value) message is received by the `sse-kafka` b
 
 ## Configuration
 
-Binding with support for adapting `sse` data streams to `kafka` data streams.
+### kind\*
 
-#### Properties
-
-## type\*
-
-> `const "sse-kafka"`
-
-Adapt `sse` data streams to `kafka` data streams
-
-## kind\*
-
-> `enum [ "proxy" ]`
+> `enum` [ "proxy" ]
 
 Behave as a `sse-kafka` `proxy`
 
-## routes
-
-> `array` of [`route`](binding-sse-kafka.md#route)
-
-Conditional `sse-kafka`-specific routes
-
-## exit
+### exit
 
 > `string`
 
 Default exit binding when no conditional routes are viable
 
-### route
+### routes
 
-Routes for adapting `sse` data streams to `kafka` data streams.
+> `array` of `object`
 
-#### Properties
+Conditional `sse-kafka`-specific routes for adapting `sse` data streams to `kafka` data streams.
 
-## guarded
+### routes[].guarded
 
-> `object` as named map of `string` `array`
+> `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
-## when
+### routes[].when
 
-> `array` of [`condition`](binding-sse-kafka.md#condition)
+> `array` of `object`
 
-List of conditions (any match) to match this route
+List of conditions (any match) to match this route.
 
-## exit\*
-
-> `string`
-
-Next binding when following this route
-
-## with
-
-[`with`](binding-sse-kafka.md#with)                       
-
-Kafka parameters used when following this route
-
-### condition
-
-Conditions to match routes for adapting `sse` data streams to `kafka` data streams.
-
-#### Properties
-
-## path\*
+#### when[].path\*
 
 > `string`
 
 Path with optional embedded parameter names, such as `/{topic}`
 
-### with
+### routes[].exit\*
 
-Kafka parameters for matched route when adapting `sse` data streams to `kafka` data streams.
+> `string`
 
-#### Properties
+Next binding when following this route
 
-## topic\*
+### routes[].with
+
+> `object`
+
+Kafka parameters used when adapting `sse` data streams to `kafka` data streams.
+
+
+### with.topic\*
 
 > `string`
 
 Topic name, optionally referencing path parameter such as `${params.topic}`
 
-## filters
+### with.filters
 
-> `array` of [`filter`](binding-sse-kafka.md#filter)
+> `array` of `object`
 
-List of criteria (any match)
-
-## `[`event](binding-sse-kafka.md#event)
-
-> `object`
-
-Defines the syntax of the `event` `id`
-
-### filter
-
-Kafka filters for matched route when adapting `sse` data streams to `kafka` data streams.
+List of criteria (any match)Kafka filters for matched route when adapting `sse` data streams to `kafka` data streams.
 
 All specified headers and key must match for the combined criteria to match.
 
-#### Properties
-
-## key
+#### filters[].key
 
 > `string`
 
 Message key, optionally referencing path parameter such as `${params.key}`
 
-## headers
+#### filters[].headers
 
 > `object`
 
 Message headers, with value optionally referencing path parameter such as `${params.headerX}`
 
-### event
+#### filters[].event
 
-SSE event syntax used when delivering Kafka messages to SSE clients.
+> `object`
 
-#### Properties
 
-## id\*
+### with.event
+
+> `object`
+
+Defines the SSE event syntax used when delivering Kafka messages to SSE clients.
+
+#### event.id\*
 
 > `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ]
 

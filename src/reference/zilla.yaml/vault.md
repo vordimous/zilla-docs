@@ -21,10 +21,6 @@ Each runtime `vault` has a behavioral type supporting a specific implementation 
 
 ## type
 
-> `enum` [\
-
-`]`
-
 > `enum` \[\
 > ["filesystem"](vault-filesystem.md)\
 > \]

@@ -30,76 +30,55 @@ Conditional routes based on the `topic` `name` are used to route these applicati
 
 ## Configuration
 
-Binding with support for `mqtt 5.0` protocol.
+### kind\*
 
-#### Properties
-
-## type\*
-
-> `const "mqtt"`
-
-Support `mqtt 5.0` protocol
-
-## kind\*
-
-> `enum [ "server" ]`
+> `enum` [ "server" ]
 
 Behave as a `mqtt` `server`
 
-## routes
-
-> `array` of [`route`](binding-mqtt.md#route)
-
-Conditional `mqtt`-specific routes
-
-## exit
+### exit
 
 > `string`
 
 Default exit binding when no conditional routes are viable
 
-### route
+### routes
 
-Routes for `mqtt 5.0` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `mqtt`-specific routes.
 
-## guarded
+### routes[].guarded
 
-> `object` as named map of `string` `array`
+> `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
-## when
+### routes[].when
 
-> `array` of [`condition`](binding-mqtt.md#condition)
+> `array` of `object`
 
-List of conditions (any match) to match this route
+List of conditions (any match) to match this route.
 
-## exit\*
-
-> `string`
-
-Next binding when following this route
-
-### condition
-
-Conditions to match routes for `mqtt 5.0` protocol.
-
-#### Properties
-
-## topic\*
+#### when[].topic\*
 
 > `string`
 
 Topic name
 
-## capabilities
+#### when[].capabilities
 
 > `enum` [ "publish_only", "subscribe_only", "publish_and_subscribe" ]
 
 Publish or subscribe, or both.\
 Defaults to `"publish_and_subscribe"`.
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
+
 
 ---
 

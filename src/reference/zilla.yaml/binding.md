@@ -63,11 +63,11 @@ Type-specific options to configure the binding
 
 ### routes
 
-> `array` of `route`
+> `array` of `object`
 
 Type-specific conditional routing rules to reach an `exit` binding
 
-### exit
+### routes[].exit
 
 > `string`
 

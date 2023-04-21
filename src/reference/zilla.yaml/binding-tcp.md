@@ -31,99 +31,71 @@ Conditional routes based on the hostname authority and network address mask are 
 
 ## Configuration
 
-Binding with support for `tcp` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "tcp"`
-
-Support `tcp` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "client", "server" ]
 
 Behave as a `tcp` `client` or `server`
 
-## [`options`](binding-tcp.md#options)
+### options
 
 > `object`
 
 `tcp`-specific options
 
-## routes
-
-> `array` of [`route`](binding-tcp.md#route)
-
-Conditional `tcp`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable, for kind `server` only
-
-### options
-
-Options for `tcp` protocol.
-
-#### Properties
-
-## host
+### options.host
 
 > `string`
 
 Hostname or IP address
 
-## port
+### options.port
 
 > `integer`
 
 `string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges.
 
-### route
-
-Routes for `tcp` protocol.
-
-#### Properties
-
-## guarded
-
-> `object` as named map of `string` `array`
-
-List of roles required by each named guard to authorize this route
-
-## when
-
-> `array` of [`condition`](binding-tcp.md#condition)
-
-List of conditions (any match) to match this route
-
-## exit\*
+### exit
 
 > `string`
 
-Next binding when following this route, for kind `server` only
+Default exit binding when no conditional routes are viable, for kind `server` only
 
-### condition
+### routes
 
-Conditions to match routes for `tcp` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `tcp`-specific routes.
 
-## authority
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route.
+
+#### when[].authority
 
 > `string`
 
 Associated authority
 
-## cidr
+#### when[].cidr
 
 > `string`
 
 CIDR mask
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route, for kind `server` only
 
 ---
 

@@ -40,103 +40,83 @@ Each verified JWT access token has an expiration time, and an optional challenge
 
 ## Configuration
 
-Guard with support for `jwt`.
 
-#### Properties
-
-## type\*
-
-> `const "jwt"`
-
-Support `jwt`
-
-## [`options`](guard-jwt.md#options)
+### options
 
 > `object`
 
 `jwt`-specific options
 
-### options
-
-Options for `jwt`.
-
-#### Properties
-
-## issuer
+### options.issuer
 
 > `string`
 
 Issuer claim
 
-## audience
+### options.audience
 
 > `string`
 
 Audience claim
 
-## keys\*
+### options.keys\*
 
-[`key`](guard-jwt.md#key) | Signature public keys
+> `array` of `object`
 
-## challenge
 
-> `number`
-
-Challenge period (seconds)
-
-### key
-
-Key option for `jwt`.
-
-#### Properties
-
-## kty\*
+### keys[].kty\*
 
 > `string`
 
 Key type, e.g. `RSA` , `EC`
 
-## kid\*
+### keys[].kid\*
 
 > `string`
 
 Key ID
 
-## n
+### keys[].n
 
 > `string`
 
 `RSA` `modulus`
 
-## e
+### keys[].e
 
 > `string`
 
 `RSA` `exponent`
 
-## alg
+### keys[].alg
 
 > `string`
 
 `RSA` algorithm, e.g. `RS256`
 
-## crv
+### keys[].crv
 
 > `string`
 
 `EC` curve name
 
-## x
+### keys[].x
 
 > `string`
 
 `EC` point `x` coordinate
 
-## y
+### keys[].y
 
 > `string`
 
 `EC` point `y` coordinate
+
+### options.challenge
+
+> `number`
+
+Challenge period (seconds)
 
 ---
 

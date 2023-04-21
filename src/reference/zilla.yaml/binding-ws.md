@@ -37,135 +37,103 @@ Conditional routes based on `ws` scheme, authority, path or negotiated subprotoc
 
 ## Configuration
 
-Binding with support for `ws` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "ws"`
-
-Support `ws` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "client", "server" ]
 
 Behave as a `ws` `client` or `server`
 
-## [`options`](binding-ws.md#options)
+### options
 
 > `object`
 
 `ws`-specific options
 
-## routes
-
-> `array` of [`route`](binding-ws.md#route)
-
-Conditional `ws`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable
-
-### options
-
-Options for `ws` protocol.
-
-#### Properties
-
-## [`defaults`](binding-ws.md#defaults)
+### options.defaults
 
 > `object`
 
 Defaults
 
-### defaults
-
-Defaults option for `ws` protocol.
-
-#### Properties
-
-## protocol
+#### defaults.protocol
 
 > `string`
 
 Subprotocol
 
-## scheme
+#### defaults.scheme
 
 > `string`
 
 Scheme
 
-## authority
+#### defaults.authority
 
 > `string`
 
 Authority
 
-## path
+#### defaults.path
 
 > `string`
 
 Path
 
-### route
-
-Routes for `ws` protocol.
-
-#### Properties
-
-## guarded
-
-> `object` as named map of `string` `array`
-
-List of roles required by each named guard to authorize this route
-
-## when
-
-> `array` of [`condition`](binding-ws.md#condition)
-
-List of conditions (any match) to match this route
-
-## exit\*
+### exit
 
 > `string`
 
-Next binding when following this route
+Default exit binding when no conditional routes are viable
 
-### condition
 
-Conditions to match routes for `ws` protocol.
 
-#### Properties
+### routes
 
-## protocol
+> `array` of `object`
+
+Conditional `ws`-specific routes.
+
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route.
+
+#### when[].protocol
 
 > `string`
 
 Subprotocol pattern
 
-## scheme
+#### when[].scheme
 
 > `string`
 
 Scheme pattern
 
-## authority
+#### when[].authority
 
 > `string`
 
 Authority pattern
 
-## path
+#### when[].path
 
 > `string`
 
 Path pattern
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
 
 ---
 

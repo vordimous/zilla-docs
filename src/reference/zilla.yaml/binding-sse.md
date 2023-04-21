@@ -26,88 +26,60 @@ Messages received on the `sse` response stream are encoded using `Server Sent Ev
 
 ## Configuration
 
-Binding with support for `sse` protocol.
-
-#### Properties
-
-## type\*
-
-> `const "sse"`
-
-Support `sse` protocol
-
-## kind\*
+### kind\*
 
 > `enum` [ "client", "server" ]
 
-Behave as a `sse` `client` or `server`
-
-## [`options`](binding-sse.md#options)
-
-> `object`
-
-`sse`-specific options
-
-## routes
-
-> `array` of [`route`](binding-sse.md#route)
-
-Conditional `sse`-specific routes
-
-## exit
-
-> `string`
-
-Default exit binding when no conditional routes are viable
+Behave as a `sse` `client` or `server`.
 
 ### options
 
-Options for `sse` protocol.
+> `object`
 
-#### Properties
+`sse`-specific options.
 
-## retry
+### options.retry
 
 > `integer`
 
 Retry delay (ms)\
 Defaults to `2000`
 
-### route
-
-Routes for `sse` protocol.
-
-#### Properties
-
-## guarded
-
-> `object` as named map of `string` `array`
-
-List of roles required by each named guard to authorize this route
-
-## when
-
-> `array` of [`condition`](binding-sse.md#condition)
-
-List of conditions (any match) to match this route
-
-## exit\*
+### exit
 
 > `string`
 
-Next binding when following this route
+Default exit binding when no conditional routes are viable
 
-### condition
+### routes
 
-Conditions to match routes for `sse` protocol.
+> `array` of `object`
 
-#### Properties
+Conditional `sse`-specific routes.
 
-## path\*
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route.
+
+#### when[].path\*
 
 > `string`
 
 Path pattern
+
+### routes[].exit\*
+
+> `string`
+
+Next binding when following this route
 
 ---
 

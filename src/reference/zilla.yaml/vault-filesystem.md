@@ -23,70 +23,95 @@ Defines a vault stored on the local filesystem.
 
 The `filesystem` vault uses `PKCS12` format to store signed certificates and keys.
 
-The `keys` option is used to identify the local peer in a `TLS` handshake.
+The [keys](#options-keys) option is used to identify the local peer in a `TLS` handshake.
 
-The `trust` option is used to verify identity of the remote peer in a `TLS` handshake.
+The [trust](#options-trust) option is used to verify identity of the remote peer in a `TLS` handshake.
 
-The `signers` option is used to challenge for mutual authentication in a `TLS` handshake.
+The [signers](#options-signers) option is used to challenge for mutual authentication in a `TLS` handshake.
 
 Note that use of `{{env.*}}` syntax to read an environment variable currently requires setting `zilla.engine.config.syntax.mustache=true` in `.zilla/zilla.properties`.
 
 ## Configuration
 
-Guard with support for local `filesystem`.
-
-#### Properties
-
-## type\*
-
-> `const "filesystem"`
-
-Support `filesystem`
-
-## [`options`](vault-filesystem.md#options)
+### options
 
 > `object`
 
 `filesystem`-specific options
 
-### options
+### options.keys
 
-Options for local `filesystem`.
+> `object`
 
-#### Properties
+Private keys
 
-## keys
 
-[`store`](vault-filesystem.md#store) | Private keys
-
-## trust
-
-[`store`](vault-filesystem.md#store) | Trust certificates
-
-## signers
-
-[`store`](vault-filesystem.md#store) | Signer certificates
-
-### store
-
-Store option for local `filesystem`.
-
-#### Properties
-
-## store\*
+#### keys.store\*
 
 > `string`
 
 Relative path to keystore
 
-## type
+#### keys.type
 
 > `string`
 
 Keystore type,\
 defaults to `"pkcs12"`
 
-## password
+#### keys.password
+
+> `string`
+
+Keystore password
+
+### options.trust
+
+> `object`
+
+Trust certificates
+
+
+#### trust.store\*
+
+> `string`
+
+Relative path to keystore
+
+#### trust.type
+
+> `string`
+
+Keystore type,\
+defaults to `"pkcs12"`
+
+#### trust.password
+
+> `string`
+
+Keystore password
+
+### options.signers
+
+> `object`
+
+Signer certificates
+
+
+#### signers.store\*
+
+> `string`
+
+Relative path to keystore
+
+#### signers.type
+
+> `string`
+
+Keystore type,\
+defaults to `"pkcs12"`
+
+#### signers.password
 
 > `string`
 
