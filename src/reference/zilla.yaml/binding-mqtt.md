@@ -16,10 +16,10 @@ mqtt_server0:
   type: mqtt
   kind: server
   routes:
-  - when:
-    - topic: echo
-      capabilities: publish_and_subscribe
-    exit: echo_server0
+    - when:
+        - topic: echo
+          capabilities: publish_and_subscribe
+      exit: echo_server0
 ```
 
 Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
@@ -42,6 +42,10 @@ Behave as a `mqtt` `server`
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: echo_server0
+```
+
 ### routes
 
 > `array` of `object`
@@ -54,11 +58,25 @@ Conditional `mqtt`-specific routes.
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - topic: echo
+        capabilities: publish_and_subscribe
+```
 
 #### when[].topic\*
 
@@ -79,6 +97,9 @@ Defaults to `"publish_and_subscribe"`.
 
 Next binding when following this route
 
+```yaml
+exit: echo_server0
+```
 
 ---
 

@@ -39,6 +39,14 @@ Note that use of `{{env.*}}` syntax to read an environment variable currently re
 
 `filesystem`-specific options
 
+```yaml
+options:
+  keys:
+    store: localhost.p12
+    type: pkcs12
+    password: "{{env.KEYS_PASSWORD}}"
+```
+
 ### options.keys
 
 > `object`

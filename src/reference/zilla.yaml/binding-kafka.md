@@ -17,15 +17,15 @@ kafka_cache_client0:
   kind: cache_client
   options:
     merged:
-    - items-requests
-    - items-responses
+      - items-requests
+      - items-responses
   exit: kafka_cache_server0
 kafka_cache_server0:
   type: kafka
   kind: cache_server
   options:
     bootstrap:
-    - items-responses
+      - items-responses
   exit: kafka_client0
 kafka_client0:
   type: kafka
@@ -70,6 +70,13 @@ Behave as a `kafka` `cache_client`, `cache_server` or `client`
 > `object`
 
 `kafka`-specific options.
+
+```yaml
+options:
+  merged:
+    - items-requests
+    - items-responses
+```
 
 ### options.bootstrap
 
@@ -133,6 +140,10 @@ SASL password
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: echo_server0
+```
+
 ### routes
 
 > `array` of `object`
@@ -144,6 +155,13 @@ Conditional `kafka`-specific routes.
 > `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
+
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
 
 ### routes[].when
 
@@ -163,6 +181,9 @@ Topic name pattern
 
 Next binding when following this route
 
+```yaml
+exit: echo_server0
+```
 
 ---
 

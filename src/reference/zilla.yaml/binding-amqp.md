@@ -16,9 +16,9 @@ amqp_server0:
   type: amqp
   kind: server
   routes:
-  - when:
-    - address: echo
-      capabilities: send_and_receive
+    - when:
+        - address: echo
+          capabilities: send_and_receive
     exit: echo_server0
 ```
 
@@ -48,6 +48,13 @@ kind: proxy
 
 Conditional `amqp`-specific routes for adapting `http` request-response streams to `kafka` topic streams.
 
+```yaml
+routes:
+  - when:
+      - address: echo
+        capabilities: send_and_receive
+    exit: echo_server0
+```
 
 ### routes[].guarded
 
@@ -55,11 +62,25 @@ Conditional `amqp`-specific routes for adapting `http` request-response streams 
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - address: echo
+        capabilities: send_and_receive
+```
 
 #### when[].address
 
@@ -79,6 +100,10 @@ Defaults to `"send_and_receive"`
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

@@ -15,13 +15,13 @@ Associated roles can be enforced during routing by only following routes `guarde
 
 See each of the specific `guard` types linked below for more detailed examples.
 
-### Configuration
+## Configuration
 
 Each runtime `guard` has a behavioral type supporting a specific implementation strategy.
 
-#### Properties (generic)
+### Properties (generic)
 
-## type
+### type
 
 > `enum` \[\
 > ["jwt"](guard-jwt.md)\
@@ -29,9 +29,9 @@ Each runtime `guard` has a behavioral type supporting a specific implementation 
 
 Behavioral type
 
-#### Properties (type-specific)
+### Properties (type-specific)
 
-## options
+### options
 
 > `object`
 

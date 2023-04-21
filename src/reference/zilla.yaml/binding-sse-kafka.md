@@ -16,13 +16,13 @@ sse_kafka_proxy0:
   type: sse-kafka
   kind: proxy
   routes:
-  - when:
-    - path: "/items"
-    exit: kafka_cache_client0
-    with:
-      topic: items-snapshots
-      event:
-        id: '["${base64(key)}","${etag}"]'
+    - when:
+        - path: "/items"
+      exit: kafka_cache_client0
+      with:
+        topic: items-snapshots
+        event:
+          id: '["${base64(key)}","${etag}"]'
 ```
 
 Defines a binding with `sse-kafka`  support, with `proxy` behavior.
@@ -51,11 +51,26 @@ Behave as a `sse-kafka` `proxy`
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: kafka_cache_client0
+```
+
 ### routes
 
 > `array` of `object`
 
 Conditional `sse-kafka`-specific routes for adapting `sse` data streams to `kafka` data streams.
+
+```yaml
+routes:
+  - when:
+      - path: "/items"
+    exit: kafka_cache_client0
+    with:
+      topic: items-snapshots
+      event:
+        id: '["${base64(key)}","${etag}"]'
+```
 
 ### routes[].guarded
 
@@ -63,11 +78,24 @@ Conditional `sse-kafka`-specific routes for adapting `sse` data streams to `kafk
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - path: "/items"
+```
 
 #### when[].path\*
 
@@ -81,12 +109,15 @@ Path with optional embedded parameter names, such as `/{topic}`
 
 Next binding when following this route
 
+```yaml
+exit: kafka_cache_client0
+```
+
 ### routes[].with
 
 > `object`
 
 Kafka parameters used when adapting `sse` data streams to `kafka` data streams.
-
 
 ### with.topic\*
 

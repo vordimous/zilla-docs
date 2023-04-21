@@ -18,11 +18,11 @@ proxy_server0:
   kind: server
   routes:
   - when:
-    - transport: stream
-      family: inet4
-      destination:
-        port: 443
-    exit: tls_server0
+      - transport: stream
+        family: inet4
+        destination:
+          port: 443
+      exit: tls_server0
 ```
 
 Defines a binding with `proxy` protocol support, with `server` or `client` behavior.
@@ -47,17 +47,38 @@ Behave as `proxy` `client` or `server`
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: echo_server0
+```
+
 ### routes
 
 > `array` of `object`
 
 Conditional `proxy`-specific routes.
 
+```yaml
+routes:
+  - when:
+      - transport: stream
+        family: inet4
+        destination:
+          port: 443
+  exit: tls_server0
+```
+
 ### routes[].guarded
 
 > `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
+
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
 
 ### routes[].when
 
@@ -119,6 +140,10 @@ Port number
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

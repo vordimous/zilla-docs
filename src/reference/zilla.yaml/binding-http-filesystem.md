@@ -16,11 +16,11 @@ http_filesystem_proxy0:
   type: http-filesystem
   kind: proxy
   routes:
-  - when:
-    - path: "/{path}"
-    exit: filesystem_server0
-    with:
-      path: "${params.path}"
+    - when:
+        - path: "/{path}"
+      exit: filesystem_server0
+      with:
+        path: "${params.path}"
 ```
 
 Defines a binding with `http-filesystem`  support, with `proxy` behavior.
@@ -39,11 +39,19 @@ Binding with support for adapting `http` data streams into `filesystem` data str
 
 Behave as an `http-filesystem` `proxy`
 
+```yaml
+kind: proxy
+```
+
 ### exit
 
 > `string`
 
 Default exit binding when no conditional routes are viable
+
+```yaml
+exit: filesystem_server0
+```
 
 ### routes
 
@@ -51,17 +59,39 @@ Default exit binding when no conditional routes are viable
 
 Conditional `http-kafka`-specific routes for adapting `http` data streams into `filesystem` data streams.
 
+```yaml
+routes:
+  - when:
+      - path: "/{path}"
+    exit: filesystem_server0
+    with:
+      path: "${params.path}"
+```
+
 ### routes[].guarded
 
 > `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route when adapting `http` data streams into `filesystem` data streams.
+
+```yaml
+routes:
+  - when:
+      - path: "/{path}"
+```
 
 #### when[].path\*
 
@@ -74,6 +104,10 @@ Path with optional embedded parameter names, such as `/{path}`
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: filesystem_server0
+```
 
 ### routes[].with
 

@@ -28,17 +28,21 @@ When the `exit` is an `echo` server binding, the combination reflects all inboun
 
 Binding with support for `fan-in` and `fan-out`.
 
-## kind\*
+### kind\*
 
 > `enum` [ "server" ]
 
 Behave as an `fan-in` and `fan-out` `server`
 
-## exit\*
+### exit\*
 
 > `string`
 
 Default exit binding
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

@@ -24,10 +24,10 @@ http_server0:
           headers:
             authorization: Bearer {credentials}
   routes:
-  - when:
-    - headers:
-        ":scheme": https
-        ":authority": example.com:443
+    - when:
+        - headers:
+            ":scheme": https
+            ":authority": example.com:443
     exit: echo_server0
 ```
 
@@ -63,6 +63,16 @@ Behave as an `http` `server` or `client`
 
 `http`-specifc options.
 
+```yaml
+options:
+  access-control:
+    policy: cross-origin
+  authorization:
+    jwt0:
+      credentials:
+        headers:
+          authorization: Bearer {credentials}
+```
 
 ### options.versions
 
@@ -208,12 +218,24 @@ Request header overrides
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: echo_server0
+```
+
 ### routes
 
 > `array` of `object`
 
 Conditional `http`-specific routes.
 
+```yaml
+routes:
+  - when:
+      - headers:
+          ":scheme": https
+          ":authority": example.com:443
+    exit: echo_server0
+```
 
 ### routes[].guarded
 
@@ -221,11 +243,26 @@ Conditional `http`-specific routes.
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - headers:
+          ":scheme": https
+          ":authority": example.com:443
+```
 
 #### when[].headers
 
@@ -238,6 +275,10 @@ Header name value pairs (all match)
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

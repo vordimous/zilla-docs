@@ -263,8 +263,7 @@ Path with optional embedded parameter names, such as `/{topic}`
 Default exit binding when no conditional routes are viable
 
 ```yaml
-routes:
-  exit: kafka0
+exit: kafka_cache_client0
 ```
 
 ### routes[].with

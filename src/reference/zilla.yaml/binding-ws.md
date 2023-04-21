@@ -16,8 +16,8 @@ ws_server0:
   type: ws
   kind: server
   routes:
-  - when:
-    - protocol: echo
+    - when:
+        - protocol: echo
     exit: echo_server0
 ```
 
@@ -85,7 +85,9 @@ Path
 
 Default exit binding when no conditional routes are viable
 
-
+```yaml
+exit: echo_server0
+```
 
 ### routes
 
@@ -93,17 +95,37 @@ Default exit binding when no conditional routes are viable
 
 Conditional `ws`-specific routes.
 
+```yaml
+routes:
+  - when:
+      - protocol: echo
+  exit: echo_server0
+```
+
 ### routes[].guarded
 
 > `object` as named map of `string:string` `array`
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - protocol: echo
+```
 
 #### when[].protocol
 
@@ -134,6 +156,10 @@ Path pattern
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

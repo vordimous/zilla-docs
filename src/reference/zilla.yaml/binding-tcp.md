@@ -43,6 +43,12 @@ Behave as a `tcp` `client` or `server`
 
 `tcp`-specific options
 
+```yaml
+options:
+  host: 0.0.0.0
+  port: 12345
+```
+
 ### options.host
 
 > `string`
@@ -60,6 +66,10 @@ Hostname or IP address
 > `string`
 
 Default exit binding when no conditional routes are viable, for kind `server` only
+
+```yaml
+exit: echo_server0
+```
 
 ### routes
 

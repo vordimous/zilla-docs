@@ -18,14 +18,14 @@ tls_server0:
   vault: server
   options:
     keys:
-    - localhost
+      - localhost
     sni:
-    - localhost
+      - localhost
     alpn:
-    - echo
+      - echo
   routes:
-  - when:
-    - alpn: echo
+    - when:
+        - alpn: echo
     exit: echo_server0
 ```
 
@@ -72,6 +72,16 @@ Vault name
 > `object`
 
 `tls`-specific options
+
+```yaml
+options:
+  keys:
+  - localhost
+  sni:
+  - localhost
+  alpn:
+  - echo
+```
 
 ### options.version
 
@@ -128,11 +138,22 @@ Defaults to `"none"`
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: echo_server0
+```
+
 ### routes
 
 > `array` of `object`
 
 Conditional `tls`-specific routes.
+
+```yaml
+routes:
+  - when:
+      - alpn: echo
+  exit: echo_server0
+```
 
 ### routes[].guarded
 
@@ -140,12 +161,24 @@ Conditional `tls`-specific routes.
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
 
+```yaml
+routes:
+  - when:
+      - alpn: echo
+```
 
 #### when[].authority
 
@@ -164,6 +197,10 @@ Application protocol
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: echo_server0
+```
 
 ---
 

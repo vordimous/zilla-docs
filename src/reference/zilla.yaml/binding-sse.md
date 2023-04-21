@@ -38,6 +38,11 @@ Behave as a `sse` `client` or `server`.
 
 `sse`-specific options.
 
+```yaml
+options:
+  retry: 2000
+```
+
 ### options.retry
 
 > `integer`
@@ -51,11 +56,25 @@ Defaults to `2000`
 
 Default exit binding when no conditional routes are viable
 
+```yaml
+exit: sse_kafka_proxy0
+```
+
 ### routes
 
 > `array` of `object`
 
 Conditional `sse`-specific routes.
+
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+    when:
+      - path: "/items"
+    exit: sse_kafka_proxy0
+```
 
 ### routes[].guarded
 
@@ -63,11 +82,24 @@ Conditional `sse`-specific routes.
 
 List of roles required by each named guard to authorize this route
 
+```yaml
+routes:
+  - guarded:
+      test0:
+        - read:items
+```
+
 ### routes[].when
 
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+
+```yaml
+routes:
+  - when:
+      - path: "/items"
+```
 
 #### when[].path\*
 
@@ -80,6 +112,10 @@ Path pattern
 > `string`
 
 Next binding when following this route
+
+```yaml
+exit: sse_kafka_proxy0
+```
 
 ---
 
