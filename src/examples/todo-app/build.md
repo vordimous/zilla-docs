@@ -31,6 +31,7 @@ Let's create `stack.yml` and add `Apache Kafka` (or `Redpanda`).
 ::: code-tabs#shell
 
 @tab Apache Kafka
+
 ```yaml stack.yml
 version: "3"
 
@@ -153,6 +154,7 @@ services:
       rpk topic list --brokers kafka.internal.net:29092 --regex 'task-.*'
       "
 ```
+
 :::
 
 Now let's run
@@ -161,7 +163,7 @@ Now let's run
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-&#x20;to spin up `Apache Kafka` (or `Redpanda`) and create the following topics.
+to spin up `Apache Kafka` (or `Redpanda`) and create the following topics.
 
 |                  |                      |
 | ---------------- | -------------------- |
@@ -311,9 +313,7 @@ Let's design the Tasks API. You need to define a Tasks API to send commands to t
 
 ::: details
 
-Creates a new Todo Task.&#x20;
-
-
+Creates a new Todo Task.
 
 Requires `content-type` `application/json` and request body matching `CreateTask` command domain model.
 
@@ -325,11 +325,9 @@ Include `idempotency-key` of type `uuid` to support idempotent `CreateTask`.
 
 :::
 
-
 ![](./put-tasks.png)
 
 ::: details
-
 
 **Rename Task**
 
@@ -350,8 +348,6 @@ id\[String] - Task identifier
 **Header:**
 
 if-match\[String] - Task etag
-
-
 
 **Responses:**
 
@@ -382,15 +378,12 @@ id\[String] - Task identifier
 
 if-match\[String] - Task etag
 
-
-
 **Responses:**
 
 * **204 No Content** - **** Task deleted successfully
 * **412 Precondition Failed** - **** Task delete failed, etag does not match
 
 :::
-
 
 ![](./get-tasks.png)
 
@@ -405,8 +398,6 @@ Retrieves all tasks, with `etag` representing the **** latest value.
 **Header:**
 
 if-none-match\[String] - Tasks collection etag
-
-
 
 **Responses:**
 
@@ -804,6 +795,7 @@ The last step is to mount the `dist` folder into the `Zilla` container.
 Open `stack.yml` file and add `- ./todo-app/dist:/app/dist:ro` to the `zilla` service `volumes`.
 
 #### stack.yml
+
 ```yaml
   ...
   
@@ -826,7 +818,7 @@ docker stack deploy -c stack.yml example --resolve-image never
 
 Make sure that `zilla.yaml`  config changes got applied after restarting the `Zilla` service. Check the `example_zilla` service log.
 
-### Step 5: Test Drive!
+### Step 5: Test Drive
 
 Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to see the Todo Application.
 

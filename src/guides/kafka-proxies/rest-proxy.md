@@ -45,9 +45,8 @@ Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`
   
 ```
 
-
 ::: info NOTE
-When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](https://docs.aklivity.io/zilla/reference/zilla.json/binding-http-kafka#with-produce) as well.&#x20;
+When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](https://docs.aklivity.io/zilla/reference/zilla.json/binding-http-kafka#with-produce) as well.
 :::
 
 Kafka **Fetch** capability with HTTP request methods such as `GET` :
@@ -81,7 +80,6 @@ Kafka **Fetch** capability with HTTP request methods such as `GET` :
       }
     }  
 ```
-
 
 ### Dynamic URL parameters
 
@@ -123,7 +121,6 @@ It's a common case when you want to work with a specific entity e.g. `/tasks/123
 }  
 ```
 
-
 ### CORS
 
 Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](https://docs.aklivity.io/zilla/reference/zilla.json/binding-http).
@@ -162,10 +159,9 @@ Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify f
 
 ```
 
-
 ### Authorization
 
-Since `Zilla` config is very much modular it has the concept of [`guard`](https://docs.aklivity.io/zilla/reference/zilla.json/guard) where you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](https://docs.aklivity.io/zilla/reference/zilla.json/guard-jwt)  mechanism to authorize the endpoint.&#x20;
+Since `Zilla` config is very much modular it has the concept of [`guard`](https://docs.aklivity.io/zilla/reference/zilla.json/guard) where you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](https://docs.aklivity.io/zilla/reference/zilla.json/guard-jwt)  mechanism to authorize the endpoint.
 
 The information about keys and other details such as issuer and audience you can get from `JWT` providers for example in the case of Auth0 you can use the command below.
 
@@ -256,7 +252,6 @@ curl -s https://AUTH_URL/.well-known/jwks.json | jq .keys
     ...
 }
 ```
-
 
 ### More
 

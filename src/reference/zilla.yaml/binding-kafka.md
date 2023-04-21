@@ -9,7 +9,7 @@ tag:
 
 # kafka Binding
 
-Zilla runtime kafka binding
+Zilla runtime kafka binding.
 
 ```yaml {2,10,17}
 kafka_cache_client0:
@@ -32,7 +32,9 @@ kafka_client0:
   kind: client
   exit: tcp_client0
 ```
+
 ## Summary
+
 Defines a binding with `kafka` protocol support, with `cache_client`, `cache_server` or `client` behavior.
 
 #### Cache behavior
@@ -79,19 +81,17 @@ Conditional routes based on `kafka` `topic` names are used to route these networ
   - [when\[\].topic\*](#when-topic)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "cache_client", "cache_server", "client" ]
 
-Behave as a `kafka` `cache_client`, `cache_server` or `client`
+Behave as a `kafka` `cache_client`, `cache_server` or `client`.
 
 ### options
 
@@ -110,26 +110,26 @@ options:
 
 > `array` of `string`
 
-Topics to bootstrap in cache server even when no clients
+Topics to bootstrap in cache server even when no clients.
 
 ### options.topics
 
 > `array` of `object`
 
-Topic configuration
+Topic configuration.
 
 #### topics[].name\*
 
 > `string`
 
-Topic name
+Topic name.
 
 #### topics[].defaultOffset
 
 > `enum` [ "live", "historical" ]
 
 Fetch offset to use for new consumers\
-Defaults to `"historical"`
+Defaults to `"historical"`.
 
 ### options.sasl
 
@@ -141,32 +141,32 @@ SASL credentials to use when connecting to `kafka` brokers.
 
 > `string`
 
-Mechanism name
+Mechanism name.
 
 #### sasl.mechanism\*
 
 > `enum` [ "plain", "scram-sha-1", "scram-sha-256", "scram-sha-512" ]
 
 SASL mechanism\
-Supports `plain` and `scram` mechanisms
+Supports `plain` and `scram` mechanisms.
 
 #### sasl.username
 
 > `string`
 
-SASL username
+SASL username.
 
 #### sasl.password
 
 > `string`
 
-SASL password
+SASL password.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -182,7 +182,7 @@ Conditional `kafka`-specific routes.
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -201,13 +201,13 @@ List of conditions (any match) to match this route.
 
 > `string`
 
-Topic name pattern
+Topic name pattern.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

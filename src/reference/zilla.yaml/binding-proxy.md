@@ -10,7 +10,7 @@ tag:
 
 # proxy Binding
 
-Zilla runtime proxy binding
+Zilla runtime proxy binding.
 
 ```yaml {2}
 proxy_server0:
@@ -24,7 +24,9 @@ proxy_server0:
           port: 443
       exit: tls_server0
 ```
+
 ## Summary
+
 Defines a binding with `proxy` protocol support, with `server` or `client` behavior.
 
 The `server` kind `proxy` binding decodes `Proxy v2` protocol on the inbound network stream, producing higher level application streams for each request.
@@ -52,25 +54,23 @@ Conditional routes based on the network transport type or network addresses are 
     - [destination.port](#destination-port)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "client", "server" ]
 
-Behave as `proxy` `client` or `server`
+Behave as `proxy` `client` or `server`.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -96,7 +96,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -115,56 +115,55 @@ List of conditions (any match) to match this route.
 
 > `enum` [ "stream", "datagram" ]
 
-Transport type
+Transport type.
 
 #### when[].family
 
 > `enum` [ "inet", "inet4", "inet6", "unix" ]
 
-Address family
+Address family.
 
 #### when[].source
 
 > `object`
 
-Source address
+Source address.
 
 ##### source.host
 
 > `string`
 
-Hostname or IP address
+Hostname or IP address.
 
 ##### source.port
 
 > `integer`
 
-Port number
+Port number.
 
 #### when[].destination
 
 > `object`
 
-Destination address
+Destination address.
 
 ##### destination.host
 
 > `string`
 
-Hostname or IP address
+Hostname or IP address.
 
 ##### destination.port
 
 > `integer`
 
-Port number
-
+Port number.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

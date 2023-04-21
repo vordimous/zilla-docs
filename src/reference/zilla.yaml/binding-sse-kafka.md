@@ -9,7 +9,7 @@ tag:
 
 # sse-kafka Binding
 
-Zilla runtime sse-kafka binding
+Zilla runtime sse-kafka binding.
 
 ```yaml {2}
 sse_kafka_proxy0:
@@ -24,7 +24,9 @@ sse_kafka_proxy0:
         event:
           id: '["${base64(key)}","${etag}"]'
 ```
+
 ## Summary
+
 Defines a binding with `sse-kafka`  support, with `proxy` behavior.
 
 The `proxy` kind `sse-kafka` binding adapts `sse` data streams into `kafka` data streams, so that `kafka` messages can be delivered to `sse` clients.
@@ -57,25 +59,23 @@ When a `kafka` tombstone (`null` value) message is received by the `sse-kafka` b
   - [with.event](#with-event)
     - [event.id\*](#event-id)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "proxy" ]
 
-Behave as a `sse-kafka` `proxy`
+Behave as a `sse-kafka` `proxy`.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: kafka_cache_client0
@@ -102,7 +102,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -127,13 +127,13 @@ routes:
 
 > `string`
 
-Path with optional embedded parameter names, such as `/{topic}`
+Path with optional embedded parameter names, such as `/{topic}`.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: kafka_cache_client0
@@ -149,7 +149,7 @@ Kafka parameters used when adapting `sse` data streams to `kafka` data streams.
 
 > `string`
 
-Topic name, optionally referencing path parameter such as `${params.topic}`
+Topic name, optionally referencing path parameter such as `${params.topic}`.
 
 #### with.filters
 
@@ -163,18 +163,17 @@ All specified headers and key must match for the combined criteria to match.
 
 > `string`
 
-Message key, optionally referencing path parameter such as `${params.key}`
+Message key, optionally referencing path parameter such as `${params.key}`.
 
 ##### filters[].headers
 
 > `object`
 
-Message headers, with value optionally referencing path parameter such as `${params.headerX}`
+Message headers, with value optionally referencing path parameter such as `${params.headerX}`.
 
 ##### filters[].event
 
 > `object`
-
 
 #### with.event
 
@@ -187,7 +186,7 @@ Defines the SSE event syntax used when delivering Kafka messages to SSE clients.
 > `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ]
 
 Format of `id` field in `sse` `event`\
-Defaults to `"${etag}"`
+Defaults to `"${etag}"`.
 
 ---
 

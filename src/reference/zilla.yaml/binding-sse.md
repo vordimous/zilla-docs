@@ -9,7 +9,7 @@ tag:
 
 # sse Binding
 
-Zilla runtime sse binding
+Zilla runtime sse binding.
 
 ```yaml {2}
 sse_server0:
@@ -17,7 +17,9 @@ sse_server0:
   kind: server
   exit: sse_kafka_proxy0
 ```
+
 ## Summary
+
 Defines a binding with `Server Sent Events (sse)` protocol support, with `server` behavior.
 
 The `server` kind `sse` binding converts inbound `http` request-response streams into `sse` request-response streams, with optionally configured `retry` delay.
@@ -38,13 +40,11 @@ Messages received on the `sse` response stream are encoded using `Server Sent Ev
   - [when\[\].path\*](#when-path)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
-
 
 ### kind\*
 
@@ -68,13 +68,13 @@ options:
 > `integer`
 
 Retry delay (ms)\
-Defaults to `2000`
+Defaults to `2000`.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: sse_kafka_proxy0
@@ -100,7 +100,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -125,13 +125,13 @@ routes:
 
 > `string`
 
-Path pattern
+Path pattern.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: sse_kafka_proxy0

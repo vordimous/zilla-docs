@@ -45,7 +45,7 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 > ["ws"](binding-ws.md)\
 > \]
 
-Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols
+Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
 
 ### Properties (type-specific)
 
@@ -53,25 +53,25 @@ Behavioral type supporting either encoding and decoding for a specific protocol 
 
 > `string`
 
-Behavioral kind such as `server`, `client` or `proxy`
+Behavioral kind such as `server`, `client` or `proxy`.
 
 ### options
 
 > `object`
 
-Type-specific options to configure the binding
+Type-specific options to configure the binding.
 
 ### routes
 
 > `array` of `object`
 
-Type-specific conditional routing rules to reach an `exit` binding
+Type-specific conditional routing rules to reach an `exit` binding.
 
 ### routes[].exit
 
 > `string`
 
-Unconditional `exit` binding acting as a default if none of the conditional routes are viable
+Unconditional `exit` binding acting as a default if none of the conditional routes are viable.
 
 ---
 

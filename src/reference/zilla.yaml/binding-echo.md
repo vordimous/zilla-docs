@@ -37,7 +37,7 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 > enum [ "server" ]
 
-Behaves as an `echo` `server`
+Behaves as an `echo` `server`.
 
 ```yaml
 kind: server

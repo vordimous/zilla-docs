@@ -9,7 +9,7 @@ tag:
 
 # http-kafka Binding
 
-Zilla runtime http-kafka binding
+Zilla runtime http-kafka binding.
 
 ```yaml {2}
 http_kafka_proxy0:
@@ -118,7 +118,7 @@ A corresponding `routes[].when` object with matching `GET` method and `location`
 
 > `enum` [ "proxy" ]
 
-Behave as an `http-kafka` `proxy`
+Behave as an `http-kafka` `proxy`.
 
 ```yaml
 kind: proxy
@@ -151,7 +151,7 @@ HTTP request header used to specify the idempotency key when adapting `http` req
 > `string`
 
 HTTP request header name for idempotency key.\
-Defaults to `"idempotency-key"`
+Defaults to `"idempotency-key"`.
 
 #### options.correlation
 
@@ -222,7 +222,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-Roles required by named guard
+Roles required by named guard.
 
 ```yaml
 routes:
@@ -248,19 +248,19 @@ routes:
 
 > `string`
 
-HTTP Method, such as `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`
+HTTP Method, such as `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
 
 #### when[].path
 
 > `string`
 
-Path with optional embedded parameter names, such as `/{topic}`
+Path with optional embedded parameter names, such as `/{topic}`.
 
 ### routes[].exit\*
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: kafka_cache_client0
@@ -270,14 +270,14 @@ exit: kafka_cache_client0
 
 > **oneOf**: [Fetch](#with-capability-fetch) | [Produce](#with-capability-produce)
 
-Defines the route with the Fetch capability
+Defines the route with the Fetch capability.
 
 ```yaml
 with:
   capability: fetch
 ```
 
-Defines the route with the Produce capability
+Defines the route with the Produce capability.
 
 ```yaml
 with:
@@ -307,7 +307,7 @@ with:
 
 > `string`
 
-Topic name, optionally referencing path parameter such as `${params.topic}`
+Topic name, optionally referencing path parameter such as `${params.topic}`.
 
 #### with.filters
 
@@ -319,13 +319,13 @@ List of criteria (any match) to this filter. Kafka filters for matched route whe
 
 > `string`
 
-Message key, optionally referencing path parameter such as `${params.key}`
+Message key, optionally referencing path parameter such as `${params.key}`.
 
 ##### filters[].headers
 
 > `object`
 
-Message headers, with value optionally referencing path parameter such as `${params.headerX}`
+Message headers, with value optionally referencing path parameter such as `${params.headerX}`.
 
 #### with.merge
 
@@ -382,7 +382,7 @@ with:
 
 > `string`
 
-Kafka topic name, optionally referencing path parameter such as `${params.topic}`
+Kafka topic name, optionally referencing path parameter such as `${params.topic}`.
 
 #### with.acks
 
@@ -395,7 +395,7 @@ Defaults to `"in_sync_replicas"`.
 
 > `string`
 
-Kafka message key, optionally referencing path parameter such as `${params.id}`
+Kafka message key, optionally referencing path parameter such as `${params.id}`.
 
 #### with.overrides
 
@@ -413,7 +413,7 @@ Kafka reply-to topic name.
 
 > `object`
 
-HTTP response headers, with values optionally referencing path parameter or `${correlationId}`
+HTTP response headers, with values optionally referencing path parameter or `${correlationId}`.
 
 ---
 

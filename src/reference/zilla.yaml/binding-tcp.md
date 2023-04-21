@@ -9,7 +9,7 @@ tag:
 
 # tcp Binding
 
-Zilla runtime tcp binding
+Zilla runtime tcp binding.
 
 ```yaml {2}
 tcp_server0:
@@ -20,7 +20,9 @@ tcp_server0:
     port: 12345
   exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `tcp` protocol support, with `server` or `client` behavior.
 
 The `server` kind `tcp` binding listens for inbound socket connections, producing higher level application streams for each remote `tcp` client.
@@ -45,25 +47,23 @@ Conditional routes based on the hostname authority and network address mask are 
   - [when\[\].cidr](#when-cidr)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "client", "server" ]
 
-Behave as a `tcp` `client` or `server`
+Behave as a `tcp` `client` or `server`.
 
 ### options
 
 > `object`
 
-`tcp`-specific options
+`tcp`-specific options.
 
 ```yaml
 options:
@@ -75,7 +75,7 @@ options:
 
 > `string`
 
-Hostname or IP address
+Hostname or IP address.
 
 ### options.port
 
@@ -87,7 +87,7 @@ Hostname or IP address
 
 > `string`
 
-Default exit binding when no conditional routes are viable, for kind `server` only
+Default exit binding when no conditional routes are viable, for kind `server` only.
 
 ```yaml
 exit: echo_server0
@@ -103,7 +103,7 @@ Conditional `tcp`-specific routes.
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ### routes[].when
 
@@ -115,19 +115,19 @@ List of conditions (any match) to match this route.
 
 > `string`
 
-Associated authority
+Associated authority.
 
 #### when[].cidr
 
 > `string`
 
-CIDR mask
+CIDR mask.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route, for kind `server` only
+Next binding when following this route, for kind `server` only.
 
 ---
 

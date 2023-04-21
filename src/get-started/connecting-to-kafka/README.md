@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this guide, you will explore how to connect to your own Kafka from Zilla.&#x20;
+In this guide, you will explore how to connect to your own Kafka from Zilla.
 
 A brief explanation of replaceable values from the config examples below:
 
@@ -125,7 +125,6 @@ The `exit` from `kafka_client0` binding now changes to `tls_client0`.
 }
 ```
 
-
 However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](https://docs.aklivity.io/zilla/reference/zilla.json/vault-filesystem) to provide access to certificates needed by the `TLS` client binding.
 
 #### zilla.json
@@ -213,7 +212,6 @@ The following items need to be prepared:
 Kafka clients connecting to Kafka clusters that are configured for `TLS mutual authentication` require three files; a `Client Key`, a `Client Certificate`, and a `CA Certificate`.
 
 You can use the scripts shown below to generate `truststore.p12` and `keystore.p12` files using the three files.
-
 
 ::: code-tabs#shell
 
@@ -331,7 +329,7 @@ Apache Kafka supports the following SASL mechanisms are:
 ::: info NOTE
 Zilla currently supports SASL PLAIN authentication to Kafka.
 
-Please add your feedback to the [SASL enhancement request](https://github.com/aklivity/zilla/issues/12).&#x20;
+Please add your feedback to the [SASL enhancement request](https://github.com/aklivity/zilla/issues/12).
 :::
 
 Let's configure zilla.json.

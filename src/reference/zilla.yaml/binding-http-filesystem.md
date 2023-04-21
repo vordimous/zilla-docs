@@ -9,7 +9,7 @@ tag:
 
 # http-filesystem Binding
 
-Zilla runtime http-filesystem binding
+Zilla runtime http-filesystem binding.
 
 ```yaml {2}
 http_filesystem_proxy0:
@@ -22,7 +22,9 @@ http_filesystem_proxy0:
       with:
         path: "${params.path}"
 ```
+
 ## Summary
+
 Defines a binding with `http-filesystem`  support, with `proxy` behavior.
 
 The `proxy` kind `http-filesystem` binding adapts `http` data streams into `filesystem` data streams by mapping the path from an inbound `http` `GET` request into a filesystem relative path.
@@ -43,19 +45,17 @@ Behaves as a web server when combined with `tcp,` `tls`, `http` and `filesystem`
 - [routes\[\].with](#routes-with)
   - [with\[\].path\*](#with-path)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "proxy" ]
 
-Behave as an `http-filesystem` `proxy`
+Behave as an `http-filesystem` `proxy`.
 
 ```yaml
 kind: proxy
@@ -65,7 +65,7 @@ kind: proxy
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: filesystem_server0
@@ -90,7 +90,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -115,13 +115,13 @@ routes:
 
 > `string`
 
-Path with optional embedded parameter names, such as `/{path}`
+Path with optional embedded parameter names, such as `/{path}`.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: filesystem_server0
@@ -132,7 +132,6 @@ exit: filesystem_server0
 > `object`
 
 Filesystem parameters used when adapting `http` data streams into `filesystem` data streams.
-
 
 #### with[].path\*
 

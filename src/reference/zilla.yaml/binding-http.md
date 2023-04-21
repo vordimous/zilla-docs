@@ -9,7 +9,7 @@ tag:
 
 # http Binding
 
-Zilla runtime http binding
+Zilla runtime http binding.
 
 ```yaml {2}
 http_server0:
@@ -30,7 +30,9 @@ http_server0:
             ":authority": example.com:443
     exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `http` protocol support, with `server` or `client` behavior.
 
 #### Server behavior
@@ -81,19 +83,17 @@ Conditional routes based on `http` request headers are used to route these netwo
   - [when\[\].headers](#when-headers)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "server",  "client" ]
 
-Behave as an `http` `server` or `client`
+Behave as an `http` `server` or `client`.
 
 ### options
 
@@ -114,9 +114,9 @@ options:
 
 ### options.versions
 
-`array` of > `enum` [ "http/1.1", "h2" ]
+> `array` of `enum` [ "http/1.1", "h2" ]
 
-Supported protocol versions
+Supported protocol versions.
 
 ### options.access-control
 
@@ -128,7 +128,7 @@ Access control policy for the `HTTP` protocol.
 
 > `enum` [ "same-origin" , "cross-origin" ]
 
-Supported access control policies
+Supported access control policies.
 
 #### access-control.policy (same-origin)
 
@@ -178,7 +178,7 @@ Allowed request methods.
 
 > `array` of `string`
 
-Allowed request headers
+Allowed request headers.
 
 ##### allow.credentials
 
@@ -199,12 +199,11 @@ Maximum cache age (in seconds) for allowed headers and methods.
 Exposed cross-origin response headers.\
 Defaults to all response headers.
 
-
 ##### expose.headers
 
 > `array` of `string`
 
-Exposed response headers
+Exposed response headers.
 
 ### options.authorization
 
@@ -230,31 +229,31 @@ Defines how to extract credentials from the HTTP request.
 
 > `object` as map of `string`
 
-Named cookie value pattern with `{credentials}`
+Named cookie value pattern with `{credentials}`.
 
 ##### credentials.headers
 
 > `object` as map of `string`
 
-Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`
+Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`.
 
 ##### credentials.query
 
 > `object` as map of `string`
 
-Named query parameter value pattern with `{credentials}`
+Named query parameter value pattern with `{credentials}`.
 
 ### options.overrides
 
 > `object` of name-value header overrides
 
-Request header overrides
+Request header overrides.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -279,7 +278,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -306,13 +305,13 @@ routes:
 
 > `object` of name-value headers
 
-Header name value pairs (all match)
+Header name value pairs (all match).
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

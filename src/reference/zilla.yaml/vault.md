@@ -25,7 +25,7 @@ Each runtime `vault` has a behavioral type supporting a specific implementation 
 > ["filesystem"](vault-filesystem.md)\
 > \]
 
-Behavioral type
+Behavioral type.
 
 ### Properties (type-specific)
 
@@ -33,7 +33,7 @@ Behavioral type
 
 > `object`
 
-Behavioral options
+Behavioral options.
 
 ---
 

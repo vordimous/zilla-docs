@@ -9,7 +9,7 @@ tag:
 
 # binding (mqtt) 🚧
 
-Zilla runtime mqtt binding (incubator)
+Zilla runtime mqtt binding (incubator).
 
 ```yaml {2}
 mqtt_server0:
@@ -21,7 +21,9 @@ mqtt_server0:
           capabilities: publish_and_subscribe
       exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
 
 The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`.
@@ -41,25 +43,23 @@ Conditional routes based on the `topic` `name` are used to route these applicati
   - [when\[\].capabilities](#when-capabilities)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "server" ]
 
-Behave as a `mqtt` `server`
+Behave as a `mqtt` `server`.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -75,7 +75,7 @@ Conditional `mqtt`-specific routes.
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -101,7 +101,7 @@ routes:
 
 > `string`
 
-Topic name
+Topic name.
 
 #### when[].capabilities
 
@@ -114,7 +114,7 @@ Defaults to `"publish_and_subscribe"`.
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

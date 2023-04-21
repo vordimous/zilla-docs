@@ -20,7 +20,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ## Aiven Parameters
 
-The Aiven Kafka requires clients to connect via `TLS mutual authentication` and provides the following files  `Client Key`, `Client Certificate`, and `CA Certificate` to achieve that. You can download them by going to `Aiven Console` -> `Kafka Cluster` -> `Overview Tab` as shown below.&#x20;
+The Aiven Kafka requires clients to connect via `TLS mutual authentication` and provides the following files  `Client Key`, `Client Certificate`, and `CA Certificate` to achieve that. You can download them by going to `Aiven Console` -> `Kafka Cluster` -> `Overview Tab` as shown below.
 
 ![Connection Info](./aivien-connection-information.png)
 

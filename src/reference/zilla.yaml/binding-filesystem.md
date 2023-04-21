@@ -9,7 +9,7 @@ tag:
 
 # filesystem Binding
 
-Zilla runtime filesystem binding
+Zilla runtime filesystem binding.
 
 ```yaml {2}
 filesystem_server0:
@@ -45,7 +45,7 @@ Behaves as a web server when combined with `tcp,` `tls`, `http` and `http-filesy
 
 > `enum` [ "server" ]
 
-Behave as a `filesystem` `server`
+Behave as a `filesystem` `server`.
 
 ```yaml
 kind: server
@@ -74,7 +74,7 @@ File system URI or directory name with trailing slash.
 > `enum` [ "follow", "ignore" ]
 
 How to treat symbolic links.\
-Defaults to `"ignore"`
+Defaults to `"ignore"`.
 
 ---
 

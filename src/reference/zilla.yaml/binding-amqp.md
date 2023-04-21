@@ -9,7 +9,7 @@ tag:
 
 # amqp Binding 🚧
 
-Zilla runtime amqp binding (incubator)
+Zilla runtime amqp binding (incubator).
 
 ```yaml {2}
 amqp_server0:
@@ -21,6 +21,7 @@ amqp_server0:
           capabilities: send_and_receive
     exit: echo_server0
 ```
+
 ## Summary
 
 Defines a binding with `amqp 1.0` protocol support, with `server` behavior.
@@ -28,7 +29,6 @@ Defines a binding with `amqp 1.0` protocol support, with `server` behavior.
 The `server` kind `amqp` binding decodes `amqp 1.0` protocol on the inbound network stream, producing higher level application streams for each `send` or `receive` `link`.
 
 Conditional routes based on the `link` `address` are used to route these application streams to an `exit` binding.
-
 
 ## Configuration
 
@@ -42,7 +42,6 @@ Conditional routes based on the `link` `address` are used to route these applica
   - [when\[\].capabilities](#when-capabilities)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
@@ -53,7 +52,7 @@ Conditional routes based on the `link` `address` are used to route these applica
 
 > `enum` [ "server" ]
 
-Behave as an `amqp 1.0` `proxy`
+Behave as an `amqp 1.0` `proxy`.
 
 ```yaml
 kind: proxy
@@ -77,7 +76,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -103,20 +102,20 @@ routes:
 
 > `string`
 
-Link address
+Link address.
 
 #### when[].capabilities
 
 > `enum` [ "send_only", "receive_only", "send_and_receive" ]
 
 Send or receive, or both.\
-Defaults to `"send_and_receive"`
+Defaults to `"send_and_receive"`.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

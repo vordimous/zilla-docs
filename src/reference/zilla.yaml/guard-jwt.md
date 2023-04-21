@@ -9,7 +9,7 @@ tag:
 
 # jwt Guard
 
-Zilla runtime jwt guard
+Zilla runtime jwt guard.
 
 ```yaml {2}
 jwt0:
@@ -31,7 +31,9 @@ jwt0:
         kid: '2011-04-29'
     challenge: 30
 ```
+
 ## Summary
+
 Defines a guard with `JSON Web Token (JWT)` support.
 
 The `jwt` guard uses public keys to verify the integrity of `JWT` access tokens when identifying authorized subjects and their associated roles scope. The token issuer and audience can also be constrained to prevent access tokens from other applications from being reused inappropriately.
@@ -56,20 +58,17 @@ Each verified JWT access token has an expiration time, and an optional challenge
 - [keys\[\].y](#keys-y)
 - [options.challenge](#options-challenge)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
-
 ### options
 
 > `object`
 
-`jwt`-specific options
+`jwt`-specific options.
 
 ```yaml
 options:
@@ -94,72 +93,71 @@ options:
 
 > `string`
 
-Issuer claim
+Issuer claim.
 
 ### options.audience
 
 > `string`
 
-Audience claim
+Audience claim.
 
 ### options.keys\*
 
 > `array` of `object`
 
-
 ### keys[].kty\*
 
 > `string`
 
-Key type, e.g. `RSA` , `EC`
+Key type, e.g. `RSA` , `EC`.
 
 ### keys[].kid\*
 
 > `string`
 
-Key ID
+Key ID.
 
 ### keys[].n
 
 > `string`
 
-`RSA` `modulus`
+`RSA` `modulus`.
 
 ### keys[].e
 
 > `string`
 
-`RSA` `exponent`
+`RSA` `exponent`.
 
 ### keys[].alg
 
 > `string`
 
-`RSA` algorithm, e.g. `RS256`
+`RSA` algorithm, e.g. `RS256`.
 
 ### keys[].crv
 
 > `string`
 
-`EC` curve name
+`EC` curve name.
 
 ### keys[].x
 
 > `string`
 
-`EC` point `x` coordinate
+`EC` point `x` coordinate.
 
 ### keys[].y
 
 > `string`
 
-`EC` point `y` coordinate
+`EC` point `y` coordinate.
 
 ### options.challenge
 
 > `number`
 
-Challenge period (seconds)
+Challenge period (seconds).
 
 ---
 

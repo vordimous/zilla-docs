@@ -17,19 +17,22 @@ The Zilla runtime configuration defines the [`bindings`](binding.md), [`guards`]
 
 > `string`
 
-Namespace name
+Namespace name.
+
 ### bindings
 
 > `object` as map of named [`binding`](binding.md) properties
 
-Map of named bindings
+Map of named bindings.
+
 ### guards
 
 > `object` as map of named [`guard`](guard.md) properties
 
-Map of named guards
+Map of named guards.
+
 ### vaults
 
 > `object` as map of named [`vault`](vault.md) properties
 
-Map of named vaults
+Map of named vaults.

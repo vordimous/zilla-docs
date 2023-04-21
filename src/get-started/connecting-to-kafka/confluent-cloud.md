@@ -9,7 +9,7 @@ In this guide, you will learn how to connect to Confluent Cloud from Zilla. You 
 * Cluster Bootstrap server - see [Confluent Cloud Cluster Settings](https://docs.confluent.io/cloud/current/clusters/broker-config.html).
 * API Keys(Key, Secret) - see [API Keys to Control Access](https://docs.confluent.io/cloud/current/access-management/authenticate/api-keys/api-keys.html).
 
-## Confluent Cloud Parameters&#x20;
+## Confluent Cloud Parameters
 
 Confluent Cloud is exposed over `SASL_SSL` authentication protocols and the `Confluent Cloud` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority.
 
@@ -92,7 +92,6 @@ Let's configure `zilla.json`.
     }
 }
 ```
-
 
 ::: info NOTE
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.

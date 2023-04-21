@@ -9,7 +9,7 @@ tag:
 
 # ws Binding
 
-Zilla runtime ws binding
+Zilla runtime ws binding.
 
 ```yaml {2}
 ws_server0:
@@ -20,7 +20,9 @@ ws_server0:
         - protocol: echo
     exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `WebSockets` protocol support, with `server` or `client` behavior.
 
 #### Server behavior
@@ -56,61 +58,59 @@ Conditional routes based on `ws` scheme, authority, path or negotiated subprotoc
   - [when\[\].path](#when-path)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "client", "server" ]
 
-Behave as a `ws` `client` or `server`
+Behave as a `ws` `client` or `server`.
 
 ### options
 
 > `object`
 
-`ws`-specific options
+`ws`-specific options.
 
 ### options.defaults
 
 > `object`
 
-Defaults
+Defaults.
 
 #### defaults.protocol
 
 > `string`
 
-Subprotocol
+Subprotocol.
 
 #### defaults.scheme
 
 > `string`
 
-Scheme
+Scheme.
 
 #### defaults.authority
 
 > `string`
 
-Authority
+Authority.
 
 #### defaults.path
 
 > `string`
 
-Path
+Path.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -133,7 +133,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -158,31 +158,31 @@ routes:
 
 > `string`
 
-Subprotocol pattern
+Subprotocol pattern.
 
 #### when[].scheme
 
 > `string`
 
-Scheme pattern
+Scheme pattern.
 
 #### when[].authority
 
 > `string`
 
-Authority pattern
+Authority pattern.
 
 #### when[].path
 
 > `string`
 
-Path pattern
+Path pattern.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

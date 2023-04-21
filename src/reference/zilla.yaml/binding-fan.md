@@ -9,7 +9,7 @@ tag:
 
 # fan Binding
 
-Zilla runtime fan binding
+Zilla runtime fan binding.
 
 ```yaml {2}
 fan_server0:
@@ -17,7 +17,9 @@ fan_server0:
   kind: server
   exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `fan-in` and `fan-out` support, with `server` behavior.
 
 The `server` kind `fan` binding performs fan-in of data on all inbound network streams, grouping them into a single application stream. Then data received from the application stream is fanned-out to all network streams in the group.
@@ -37,18 +39,17 @@ When the `exit` is an `echo` server binding, the combination reflects all inboun
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "server" ]
 
-Behave as an `fan-in` and `fan-out` `server`
+Behave as an `fan-in` and `fan-out` `server`.
 
 ### exit\*
 
 > `string`
 
-Default exit binding
+Default exit binding.
 
 ```yaml
 exit: echo_server0

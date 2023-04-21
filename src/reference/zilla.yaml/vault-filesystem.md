@@ -7,7 +7,7 @@ category:
 
 # filesystem Vault
 
-Zilla runtime filesystem vault
+Zilla runtime filesystem vault.
 
 ```yaml {2}
 server:
@@ -18,7 +18,9 @@ server:
       type: pkcs12
       password: "{{env.KEYS_PASSWORD}}"
 ```
+
 ## Summary
+
 Defines a vault stored on the local filesystem.
 
 The `filesystem` vault uses `PKCS12` format to store signed certificates and keys.
@@ -49,19 +51,17 @@ Note that use of `{{env.*}}` syntax to read an environment variable currently re
   - [signers.type](#signers-type)
   - [signers.password](#signers-password)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### options
 
 > `object`
 
-`filesystem`-specific options
+`filesystem`-specific options.
 
 ```yaml
 options:
@@ -75,14 +75,13 @@ options:
 
 > `object`
 
-Private keys
-
+Private keys.
 
 #### keys.store\*
 
 > `string`
 
-Relative path to keystore
+Relative path to keystore.
 
 #### keys.type
 
@@ -95,20 +94,19 @@ defaults to `"pkcs12"`
 
 > `string`
 
-Keystore password
+Keystore password.
 
 ### options.trust
 
 > `object`
 
-Trust certificates
-
+Trust certificates.
 
 #### trust.store\*
 
 > `string`
 
-Relative path to keystore
+Relative path to keystore.
 
 #### trust.type
 
@@ -121,20 +119,19 @@ defaults to `"pkcs12"`
 
 > `string`
 
-Keystore password
+Keystore password.
 
 ### options.signers
 
 > `object`
 
-Signer certificates
-
+Signer certificates.
 
 #### signers.store\*
 
 > `string`
 
-Relative path to keystore
+Relative path to keystore.
 
 #### signers.type
 
@@ -147,7 +144,7 @@ defaults to `"pkcs12"`
 
 > `string`
 
-Keystore password
+Keystore password.
 
 ---
 

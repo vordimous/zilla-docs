@@ -9,7 +9,7 @@ tag:
 
 # tls Binding
 
-Zilla runtime tls binding
+Zilla runtime tls binding.
 
 ```yaml {2}
 tls_server0:
@@ -28,7 +28,9 @@ tls_server0:
         - alpn: echo
     exit: echo_server0
 ```
+
 ## Summary
+
 Defines a binding with `tls` protocol support, with `server`, `client` or `proxy` behavior.
 
 #### Server behavior
@@ -76,31 +78,29 @@ A `vault` is not required to proxy `TLS` protocol as the handshake is only obser
   - [when\[\].alpn](#when-alpn)
 - [routes\[\].exit\*](#routes-exit)
 
-
 ::: right
 \* required
 :::
 
 ::::
 
-
 ### kind\*
 
 > `enum` [ "client", "server", "proxy" ]
 
-Behave as a `tls` `client`, `server` or `proxy`
+Behave as a `tls` `client`, `server` or `proxy`.
 
 ### vault
 
 > `string`
 
-Vault name
+Vault name.
 
 ### options
 
 > `object`
 
-`tls`-specific options
+`tls`-specific options.
 
 ```yaml
 options:
@@ -116,56 +116,56 @@ options:
 
 > `string`
 
-Protocol version
+Protocol version.
 
 ### options.keys
 
 > `array` of `string`
 
-Vault key refs
+Vault key refs.
 
 ### options.trust
 
 > `array` of `string`
 
-Vault certificate refs
+Vault certificate refs.
 
 ### options.signers
 
 > `array` of `string`
 
-Vault signer certificate refs
+Vault signer certificate refs.
 
 ### options.trustcacerts
 
 > `boolean`
 
-Trust CA certificates
+Trust CA certificates.
 
 ### options.sni\*
 
 > `array` of `string`
 
-Server names
+Server names.
 
 ### options.alpn
 
 > `array` of `string`
 
-Application protocols
+Application protocols.
 
 ### options.mutual
 
 > `enum` [ "required", "requested", "none" ]
 
 Mutual authentication\
-Defaults to `"none"`
+Defaults to `"none"`.
 
 ### exit
 
 > `string`
 
-Default exit binding when no conditional routes are viable
+Default exit binding when no conditional routes are viable.
 
 ```yaml
 exit: echo_server0
@@ -188,7 +188,7 @@ routes:
 
 > `object` as named map of `string:string` `array`
 
-List of roles required by each named guard to authorize this route
+List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
@@ -213,19 +213,19 @@ routes:
 
 > `string`
 
-Associated authority
+Associated authority.
 
 #### when[].alpn
 
 > `string`
 
-Application protocol
+Application protocol.
 
 ### routes[].exit\*
 
 > `string`
 
-Next binding when following this route
+Next binding when following this route.
 
 ```yaml
 exit: echo_server0

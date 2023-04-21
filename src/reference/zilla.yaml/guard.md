@@ -27,7 +27,7 @@ Each runtime `guard` has a behavioral type supporting a specific implementation 
 > ["jwt"](guard-jwt.md)\
 > \]
 
-Behavioral type
+Behavioral type.
 
 ### Properties (type-specific)
 
@@ -35,7 +35,7 @@ Behavioral type
 
 > `object`
 
-Behavioral options
+Behavioral options.
 
 ---
 
