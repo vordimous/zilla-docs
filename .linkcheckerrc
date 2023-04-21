@@ -1,0 +1,5 @@
+{
+    "allow-hash-href": true,
+    "disable-external": true,
+    "url-ignore": [".+zilla-docs\/.+"]
+}

@@ -1,0 +1,41 @@
+name: Links check build
+
+on:
+  pull_request:
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Build VuePress site
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: |
+          pnpm build
+
+      - name: Anchor tag Checker
+        run: |
+          pnpm install -g link-checker
+          link-checker src/.vuepress/dist
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.6.1
+        with:
+          fail: true
+          args: -E --exclude "github.com/aklivity/zilla-docs" --exclude "docs.aklivity.io" --exclude-mail src/.vuepress/dist
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
