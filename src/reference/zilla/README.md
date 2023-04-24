@@ -1,6 +1,5 @@
 ---
 title: Zilla Runtime CLI
-icon: "terminal"
 order: 2
 category:
   - CLI
@@ -9,7 +8,7 @@ description: The command line interface to control the Zilla runtime.
 
 # Zilla Runtime CLI (zilla)
 
-The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](../zilla.yaml/README.md) to control and observe the Zilla runtime.
+The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](../zilla.yaml/) to control and observe the Zilla runtime.
 
 ## Commands
 

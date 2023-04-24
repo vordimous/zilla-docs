@@ -1,3 +1,7 @@
+---
+description: Our Build the Todo Application guide shows you how to create your first application with Zilla, using Apache Kafka with Kafka Streams to implement the Tasks service that maintains a shared Todo List of tasks.
+---
+
 # Build the Todo Application
 
 In this getting started exercise, you will create a simple Todo application using a CQRS design pattern that's backed by Apache Kafka and Zilla as the event-driven API gateway. Zilla lets you focus on your applications and business logic instead of spending time writing tons of code and this demo helps to ease CQRS complexity. This tutorial gives a basic introduction to Zilla and describes some straightforward capabilities.
@@ -412,7 +416,8 @@ The Zilla engine configuration defines a flow of named `bindings` representing e
 
 Let's configure `Zilla` for the Tasks API to interact with the `Todo` Kafka Streams service via Kafka topics.
 
-You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](https://docs.aklivity.io/zilla/reference/zilla.json).
+You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](../../reference/zilla.yaml/).
+
 |                       |                      |
 | --------------------- | -------------------- |
 | `tcp_server0`         | listens on port 8080 routes to http_server0 |
@@ -432,7 +437,6 @@ Alternatively, copy the contents of `zilla.yaml` shown below to your local `zill
 ::: details zilla.yaml
 
 ```yaml
----
 name: Example
 vaults: {}
 bindings:
@@ -654,7 +658,6 @@ First, add the `http_filesystem_proxy0` and `filesystem_server0` bindings to `zi
 ::: details zilla.yaml (updated)
 
 ```yaml
----
 name: Example
 vaults: {}
 bindings:
@@ -820,7 +823,7 @@ Make sure that `zilla.yaml`  config changes got applied after restarting the `Zi
 
 ### Step 5: Test Drive
 
-Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to see the Todo Application.
+Open the browser and enter `http://localhost:8080/` to see the Todo Application.
 
 ![](./TodoAppNotLoggedIn.png)
 

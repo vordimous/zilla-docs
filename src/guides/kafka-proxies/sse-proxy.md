@@ -11,50 +11,37 @@ A brief explanation of replaceable values from the config examples below:
 
 Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is shown below:
 
-```json
-{
-    ...
-    "sse_server0":
-    {
-        "type" : "sse",
-        "kind": "server",
-        "exit": "sse_kafka_proxy0"
-    },
-    "sse_kafka_proxy0":
-    {
-        "type" : "sse-kafka",
-        "kind": "proxy",
-        "routes":
-        [
-            {
-                "when":
-                [
-                    {
-                        "path": "ENDPOINT_PATH"
-                    }
-                ],
-                "with":
-                {
-                    "topic": "KAFKA_TOPIC",
-                    "event":
-                    {
-                        "id": "[\"${base64(key)}\",\"${etag}\"]"
-                    }
-                },
-                "exit": "kafka_cache_client0",
-            }
-        ]
-    }
-    ...
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+sse_server0:
+  type: sse
+  kind: server
+  exit: sse_kafka_proxy0
+sse_kafka_proxy0:
+  type: sse-kafka
+  kind: proxy
+  routes:
+    - when:
+        - path: ENDPOINT_PATH
+      with:
+        topic: KAFKA_TOPIC
+        event:
+          id: '["${base64(key)}","${etag}"]'
+      exit: kafka_cache_client0
+
 ```
+
+:::
 
 As shown above you can describe your event id in case you want to retrieve the message `key` or `etag`.
 
 ### Authorization
 
-Similar to [REST API](https://app.gitbook.com/o/-MgpzCvF5ASmql4KrimM/s/Vm9RaZVq9LSiRtVnjdT5/\~/changes/6egLxlGFQsSCpw1GICR4/configure-apis/rest-api) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
+Similar to [REST Proxy](rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
 
 ### More
 
-For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](https://docs.aklivity.io/zilla/reference/zilla.json/binding-sse), [SSE-Kafka Binding](https://docs.aklivity.io/zilla/reference/zilla.json/binding-sse-kafka).
+For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/zilla.yaml/binding-sse.md), [SSE-Kafka Binding](../../reference/zilla.yaml/binding-sse-kafka.md).

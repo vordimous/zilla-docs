@@ -22,8 +22,41 @@ A brief explanation of replaceable values from the config examples below:
 
 Let's configure `zilla.yaml`.
 
-::: details zilla.yaml
-@[code yaml{3-9,69-86}](redpanda-zilla.yaml)
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    options:
+      sasl:
+        mechanism: scram-sha-256
+        username: SASL_USERNAME
+        password: SASL_PASSWORD
+    exit: tls_client0
+  tls_client0:
+    type: tls
+    kind: client
+    options:
+      trustcacerts: true
+      sni:
+      - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: "BOOTSTRAP_SERVER_PORT"
+    routes:
+    - when:
+      - cidr: 0.0.0.0/0
+
+```
+
 :::
 
 ::: info NOTE

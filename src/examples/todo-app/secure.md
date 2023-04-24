@@ -1,3 +1,7 @@
+---
+description: Our Secure the Todo Application guide shows you how to secure the Tasks API using JWT access tokens to allow read and write access only to authorized clients.
+---
+
 # Secure the Todo Application
 
 In this getting started exercise, you will enhance the [previously built Todo application](build.md) to secure the Tasks API using JWT access tokens.
@@ -142,7 +146,6 @@ Alternatively, copy the contents of `zilla.yaml` shown below to your local `zill
 <summary>zilla.yaml</summary>
 
 ```yaml
----
 name: Example
 vaults: {}
 bindings:
@@ -314,7 +317,6 @@ Then, add the `http_filesystem_proxy0` and `filesystem_server0` bindings to `zil
 <summary>zilla.yaml (updated)</summary>
 
 ```yaml
----
 name: Example
 vaults: {}
 bindings:
@@ -523,7 +525,7 @@ As you can see, the `GET /tasks` API is now secured against unauthorized access,
 
 ### Step 2: Test Drive
 
-Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to see the secured Todo Application.
+Open the browser and enter `http://localhost:8080/` to see the secured Todo Application.
 
 Initially you will see an error message caused by attempting to list the current tasks as an unauthorized user without the `read:tasks` role.
 

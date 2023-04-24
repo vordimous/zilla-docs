@@ -1,6 +1,5 @@
 ---
 title: Zilla Manager CLI
-icon: "server"
 order: 3
 category:
   - CLI

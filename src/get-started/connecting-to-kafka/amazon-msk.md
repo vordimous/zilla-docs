@@ -102,72 +102,50 @@ To configure Zilla you will be replacing the following values in the `zilla.json
 
 Inside `zilla.json` create a `client_vault` that references your newly created `keystore`. After this, reference the the vault in the `tls_client0` binding. Your `zilla.json` should appear as follows:
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "vaults":
-    {
-        "client_vault":
-        {
-            "type": "filesystem",
-            "options":
-            {
-                "keys":
-                {
-                    "store": "KEYSTORE_PATH",
-                    "type": "STORE_TYPE",
-                    "password": "KEYSTORE_PASSWORD"
-                }
-            }
-        }
-    },
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0"
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "vault": "client_vault",
-            "options":
-            {    
-                "trustcacerts": true,
-                "keys": ["SIGNED_CLIENT_CERT_ALIAS"],
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_ SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+vaults:
+  client_vault:
+    type: filesystem
+    options:
+      keys:
+        store: KEYSTORE_PATH
+        type: STORE_TYPE
+        password: KEYSTORE_PASSWORD
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+  tls_client0:
+    type: tls
+    kind: client
+    vault: client_vault
+    options:
+      trustcacerts: true
+      keys:
+        - SIGNED_CLIENT_CERT_ALIAS
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_ SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
+
+:::
 
 ::: info NOTE
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.

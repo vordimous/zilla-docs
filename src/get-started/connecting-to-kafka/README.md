@@ -24,45 +24,31 @@ A brief explanation of replaceable values from the config examples below:
 
 To connect to any Kafka on **PLAINTEXT** protocol is as simple as defining your TCP binding as shown below.
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-     }     
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
 
-@[code yaml{69-86}](zilla.yaml)
+:::
 
 As usual, you need to define the host and port and flush the data to the network. For the full working config please take a look at this [example](https://github.com/aklivity/zilla-examples/blob/main/http.kafka.cache/).
 
@@ -76,129 +62,87 @@ If the `Kafka` cluster is secured by a `TLS` server certificate that is provided
 The `exit` from `kafka_client0` binding now changes to `tls_client0`.
 :::
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0"
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "options":
-            {
-                "trustcacerts": true
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+  tls_client0:
+    type: tls
+    kind: client
+    options:
+      trustcacerts: true
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](https://docs.aklivity.io/zilla/reference/zilla.json/vault-filesystem) to provide access to certificates needed by the `TLS` client binding.
-
-#### zilla.json
-
-```json
-{
-    "vaults":
-    {
-        "client_vault":
-        {
-            "type": "filesystem",
-            "options":
-            {
-                "trust":
-                {
-                    "store": "TRUSTORE_PATH",
-                    "type": "STORE_TYPE",
-                    "password": "TRUSTORE_PASSWORD"
-                }
-            }
-        }
-    },
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0"
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "vault": "client_vault",
-            "options":
-            {    
-                "trust": ["CA_CERT_ALIAS"],
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
-```
-
-@[code yaml{69-77}](zilla.yaml)
 :::
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](https://docs.aklivity.io/zilla/reference/zilla.json/vault-filesystem) to provide access to certificates needed by the `TLS` client binding.
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
-@[code yaml{3-10}](zilla.yaml)
+### zilla.yaml
+
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+vaults:
+  client_vault:
+    type: filesystem
+    options:
+      trust:
+        store: TRUSTORE_PATH
+        type: STORE_TYPE
+        password: TRUSTORE_PASSWORD
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+  tls_client0:
+    type: tls
+    kind: client
+    vault: client_vault
+    options:
+      trust:
+        - CA_CERT_ALIAS
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
+```
+
+:::
+
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
 ## Connect to Kafka over `TLS/SSL` using client certificates
 
@@ -234,80 +178,55 @@ openssl pkcs12 -export -in service.cert -inkey service.key
 
 You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client0` binding.
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "vaults":
-    {
-        "client_vault":
-        {
-            "type": "filesystem",
-            "options":
-            {
-                "trust":
-                {
-                    "store": "TRUSTORE_PATH",
-                    "type": "STORE_TYPE",
-                    "password": "TRUSTORE_PASSWORD"
-                },
-                "keys":
-                {
-                    "store": "KEYSTORE_PATH",
-                    "type": "STORE_TYPE",
-                    "password": "KEYSTORE_PASSWORD"
-                }
-            }
-        }
-    },
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0"
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "vault": "client_vault",
-            "options":
-            {    
-                "trust": ["CA_CERT_ALIAS"],
-                "keys": ["SIGNED_CLIENT_CERT_ALIAS"],
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+vaults:
+  client_vault:
+    type: filesystem
+    options:
+      trust:
+        store: TRUSTORE_PATH
+        type: STORE_TYPE
+        password: TRUSTORE_PASSWORD
+      keys:
+        store: KEYSTORE_PATH
+        type: STORE_TYPE
+        password: KEYSTORE_PASSWORD
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+  tls_client0:
+    type: tls
+    kind: client
+    vault: client_vault
+    options:
+      trust:
+        - CA_CERT_ALIAS
+      keys:
+        - SIGNED_CLIENT_CERT_ALIAS
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
 
-@[code yaml{69-86}](zilla.yaml)
+:::
 
 ::: info NOTE
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.
@@ -334,64 +253,43 @@ Please add your feedback to the [SASL enhancement request](https://github.com/ak
 
 Let's configure zilla.json.
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0",
-            "options":
-            {
-                "sasl": 
-                {
-                    "mechanism": "plain",
-                    "username": "SASL_USERNAME",
-                    "password": "SASL_PASSWORD"
-                }
-            }
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "options":
-            {
-                "trustcacerts": true
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+    options:
+      sasl:
+        mechanism: plain
+        username: SASL_USERNAME
+        password: SASL_PASSWORD
+  tls_client0:
+    type: tls
+    kind: client
+    options:
+      trustcacerts: true
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
 
-@[code yaml{69-86}](zilla.yaml)
+:::
 
 To test the above config you can follow instructions in the README from the [example](https://github.com/aklivity/zilla-examples/blob/main/http.kafka.cache/).

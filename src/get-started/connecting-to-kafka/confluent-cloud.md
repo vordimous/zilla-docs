@@ -38,63 +38,44 @@ kcat -b BOOTSTRAP_SERVER_HOSTNAME:BOOTSTRAP_SERVER_PORT \
 
 Let's configure `zilla.json`.
 
-#### zilla.json
+### zilla.yaml
 
-```json
-{
-    "bindings":
-    {
-        ...
-        "kafka_client0":
-        {
-            "type" : "kafka",
-            "kind": "client",
-            "exit": "tls_client0",
-            "options":
-            {
-                "sasl": 
-                {
-                    "mechanism": "plain",
-                    "username": "API_KEY_KEY",
-                    "password": "API_KEY_SECRET"
-                }
-            }
-        },
-        "tls_client0":
-        {
-            "type" : "tls",
-            "kind": "client",
-            "options":
-            {
-                "trustcacerts": true
-                "sni": ["BOOTSTRAP_SERVER_HOSTNAME"]
-            },
-            "exit": "tcp_client0"
-        },
-        "tcp_client0":
-        {
-            "type" : "tcp",
-            "kind": "client",
-            "options":
-            {
-                "host": "BOOTSTRAP_SERVER_HOSTNAME",
-                "port": BOOTSTRAP_SERVER_PORT
-            },
-            "routes":
-            [
-                {
-                    "when":
-                    [
-                        {
-                            "cidr": "0.0.0.0/0"
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-}
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+```yaml
+bindings:
+  kafka_client0:
+    type: kafka
+    kind: client
+    exit: tls_client0
+    options:
+      sasl:
+        mechanism: plain
+        username: API_KEY_KEY
+        password: API_KEY_SECRET
+  tls_client0:
+    type: tls
+    kind: client
+    options:
+      trustcacerts: true
+      sni:
+        - BOOTSTRAP_SERVER_HOSTNAME
+    exit: tcp_client0
+  tcp_client0:
+    type: tcp
+    kind: client
+    options:
+      host: BOOTSTRAP_SERVER_HOSTNAME
+      port: BOOTSTRAP_SERVER_PORT
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0
+
 ```
+
+:::
 
 ::: info NOTE
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.

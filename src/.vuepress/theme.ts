@@ -28,8 +28,6 @@ export default hopeTheme({
       navbar: enNavbar,
       sidebar: enSidebar,
 
-      footer: "Default footer",
-
       displayFooter: false,
 
       metaLocales: {
@@ -39,7 +37,9 @@ export default hopeTheme({
   },
 
   plugins: {
-
+    autoCatalog: {
+      level: 1
+    },
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,

@@ -112,7 +112,7 @@ jobs:
         if: github.repository_owner != 'aklivity'
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ${{ env.DistDir }}
+          path: ${{ env.DistDir }}/zilla-docs
 
   deployCloudflarePages:
     if: github.repository_owner == 'aklivity'
@@ -134,14 +134,7 @@ jobs:
           path: ${{ env.DistDir }}
 
       - name: Move cloudflare files to root
-        run: mv ${{ env.DistDir }}/next/cloudflare/* ${{ env.DistDir }}
-
-      - name: Update folder structure
-        if: env.SITE_BASE != ''
-        run: |
-          mkdir -p ${{ env.SITE_BASE }}
-          mv -v ${{ env.DistDir }}/*/ ${{ env.SITE_BASE }}
-          mv ${{ env.SITE_BASE }} ${{ env.DistDir }}/
+        run: mv ${{ env.DistDir }}/${{ env.SITE_BASE }}/next/cloudflare/* ${{ env.DistDir }}
 
       - name: Publish to Cloudflare Pages
         id: cloudflare-deployment
@@ -169,4 +162,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: github-deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
