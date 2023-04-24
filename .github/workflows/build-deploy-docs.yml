@@ -102,14 +102,14 @@ jobs:
           key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
 
       - name: Upload cloudflare-pages artifact
-        # if: github.repository_owner == 'aklivity'
+        if: github.repository_owner == 'aklivity'
         uses: actions/upload-artifact@v3
         with:
           name: cloudflare-pages
           path: ${{ env.DistDir }}
 
       - name: Upload github-pages artifact
-        # if: github.repository_owner != 'aklivity'
+        if: github.repository_owner != 'aklivity'
         uses: actions/upload-pages-artifact@v1
         with:
           path: ${{ env.DistDir }}/${{ env.SITE_BASE }}
@@ -135,13 +135,6 @@ jobs:
 
       - name: Move cloudflare files to root
         run: mv ${{ env.DistDir }}/${{ env.SITE_BASE }}/next/cloudflare/* ${{ env.DistDir }}
-
-      # - name: Update folder structure
-      #   if: env.SITE_BASE != ''
-      #   run: |
-      #     mkdir -p ${{ env.SITE_BASE }}
-      #     mv -v ${{ env.DistDir }}/*/ ${{ env.SITE_BASE }}
-      #     mv ${{ env.SITE_BASE }} ${{ env.DistDir }}/
 
       - name: Publish to Cloudflare Pages
         id: cloudflare-deployment
