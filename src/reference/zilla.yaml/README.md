@@ -1,6 +1,5 @@
 ---
 title: Zilla Runtime Configuration
-icon: "gears"
 order: 1
 category:
   - config

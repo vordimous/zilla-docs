@@ -8,12 +8,12 @@ heroText: APIs for Data-in-Motion
 tagline: Open source software connecting web and mobile applications to event-driven microservices using standard protocols, such as HTTP, Server-Sent Events and Kafka.
 actions:
   - text: " Zilla in Action"
-    link: examples/todo-app/build.md
+    link: /examples/todo-app/build.html
     type: primary
     icon: code
 
   - text: " Install"
-    link: get-started/install
+    link: /get-started/install/index.html
     icon: download
 
 features:
@@ -21,45 +21,44 @@ features:
   - title: Bindings
     icon: arrows-left-right-to-line
     details: Each configured binding represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol type.
-    link: reference/zilla.yaml/binding.md
+    link: /reference/zilla.yaml/binding.html
 
   - title: Vaults
     icon: vault
     details: Each configured vault represents a container for digital keys and certificates based on a specific implementation type.
-    link: reference/zilla.yaml/vault.md
+    link: /reference/zilla.yaml/vault.html
 
   - title: Guards
     icon: shield-halved
     details: Each configured guard represents a security checkpoint for one or more bindings based on a specific implementation type.
-    link: reference/zilla.yaml/guard.md
+    link: /reference/zilla.yaml/guard.html
 
   - title: Proxies
     icon: diagram-project
     details: Design and configure your API Endpoints such as REST API, SSE and more.
-    link: guides/kafka-proxies/rest-proxy.md
+    link: /guides/kafka-proxies/index.html
 
   - title: Amazon MSK
     icon: database
     details: Learn how to deploy a more secure Amazon MSK with Aklivity Public MSK Proxy.
-    link: get-started/connecting-to-kafka/amazon-msk.md
+    link: /get-started/connecting-to-kafka/amazon-msk.html
 
   - title: Avian
     icon: server
     details: Connect to Aiven Kafka from Zilla.
-    link: get-started/connecting-to-kafka/aiven.md
+    link: /get-started/connecting-to-kafka/aiven.html
 
   - title: Confluent Cloud
     icon: cloud
     details: Connect to Confluent Cloud from Zilla.
-    link: get-started/connecting-to-kafka/confluent-cloud.md
+    link: /get-started/connecting-to-kafka/confluent-cloud.html
 
   - title: RedPanda
     icon: bars-staggered
     details: Connect to Redpanda from Zilla.
-    link: get-started/connecting-to-kafka/redpanda.md
+    link: /get-started/connecting-to-kafka/redpanda.html
 
 copyright: false
-footer: Theme by <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> | MIT Licensed, Copyright © Aklivity, Inc. 2023
 ---
 
 

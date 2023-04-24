@@ -17,9 +17,9 @@ export const enNavbar = navbar([
       "zpm/",
     ],
   },
-  { text: "Blog", icon: "blog", link: "https://www.aklivity.io/blog", },
   // todo: remove and uncomment the below once there is multiple versions of the blogs to host
   // and add necessary items ({ "text": "v0.1", "key": "v0.1", "tag": "v0.1" }) to deploy-versions.json
   { "text": "Changelog", icon: "tag", "link": "https://github.com/orgs/aklivity/projects/4", },
   // { text: "version", icon: "list-ol", children: versionLinks },
+  { text: "Aklivity", icon: "home", link: "https://www.aklivity.io/", },
 ]);

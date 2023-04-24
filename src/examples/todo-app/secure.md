@@ -4,9 +4,9 @@ In this getting started exercise, you will enhance the [previously built Todo ap
 
 ![](/assets/todo-app-architecture@2x.png)
 
-Zilla has the concept of a [guard](../../reference/zilla.yaml/guard.md) that can be defined to control access to any route in the bindings configuration.
+Zilla has the concept of a [guard](/reference/zilla.yaml/guard.md) that can be defined to control access to any route in the bindings configuration.
 
-In this guide, you will use the [JWT guard](../../reference/zilla.yaml/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
+In this guide, you will use the [JWT guard](/reference/zilla.yaml/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
 
 ### Prerequisites
 
@@ -523,7 +523,7 @@ As you can see, the `GET /tasks` API is now secured against unauthorized access,
 
 ### Step 2: Test Drive
 
-Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to see the secured Todo Application.
+Open the browser and enter `http://localhost:8080/` to see the secured Todo Application.
 
 Initially you will see an error message caused by attempting to list the current tasks as an unauthorized user without the `read:tasks` role.
 

@@ -8,9 +8,9 @@ description: Encrypts secrets for secure storage
 
 The `zpm encrypt` command provides a convenient mechanism to encrypt secrets using a securely generated master secret.
 
-When Maven repositories requiring authorization are listed in [Zilla Manager Configuration](../zpm.json.md), then the output of this command can be used to provide encrypted credentials in [Zilla Manager Settings](../settings.json.md).
+When Maven repositories requiring authorization are listed in [Zilla Manager Configuration](/reference/zpm.json.md), then the output of this command can be used to provide encrypted credentials in [Zilla Manager Settings](/reference/settings.json.md).
 
-If a master secret does not already exist, it is generated in [Zilla Manager Security](../security.json.md).
+If a master secret does not already exist, it is generated in [Zilla Manager Security](/reference/security.json.md).
 
 ### Usage
 

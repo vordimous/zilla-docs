@@ -28,8 +28,6 @@ export default hopeTheme({
       navbar: enNavbar,
       sidebar: enSidebar,
 
-      footer: "Default footer",
-
       displayFooter: false,
 
       metaLocales: {

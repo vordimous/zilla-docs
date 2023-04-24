@@ -36,6 +36,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.6.1
         with:
           fail: true
-          args: -E --exclude "github.com/aklivity/zilla-docs" --exclude "docs.aklivity.io" --exclude-mail src/.vuepress/dist
+          args: --exclude="github.com" --exclude="docs.aklivity.io" --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

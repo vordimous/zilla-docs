@@ -1,6 +1,5 @@
 ---
 title: Zilla Manager CLI
-icon: "server"
 order: 3
 category:
   - CLI
@@ -11,7 +10,7 @@ description: >-
 
 # Zilla Manager CLI (zpm)
 
-The Zilla Manager command line interface uses the [Zilla Manager Configuration](../zpm.json.md) to package the [Zilla runtime](../zilla/) with minimal dependencies.
+The Zilla Manager command line interface uses the [Zilla Manager Configuration](/reference/zpm.json.md) to package the [Zilla runtime](/reference/zilla/README.md) with minimal dependencies.
 
 ### Commands
 

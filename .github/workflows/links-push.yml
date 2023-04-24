@@ -13,6 +13,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.6.1
         with:
           fail: true
-          args: --offline src
+          args: --exclude-mail src
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -6,7 +6,7 @@ description: Installs the generated runtime files
 
 ### Description
 
-The `zpm install` command resolves the [Zilla Manager Configuration](../zpm.json.md) to create a runtime with minimal dependencies, generating the `zilla` runtime executable.
+The `zpm install` command resolves the [Zilla Manager Configuration](/reference/zpm.json.md) to create a runtime with minimal dependencies, generating the `zilla` runtime executable.
 
 ### Usage
 

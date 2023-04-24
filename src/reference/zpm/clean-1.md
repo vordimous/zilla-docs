@@ -8,7 +8,7 @@ description: Cleans up the generated runtime files
 
 The `zpm clean` command removes files from its `.zpm/` output directory.
 
-Optionally, only the files necessary to execute the [Zilla Runtime](../zilla/) are kept intact, leaving a minimal installation footprint for deployment.
+Optionally, only the files necessary to execute the [Zilla Runtime](/reference/zilla/README.md) are kept intact, leaving a minimal installation footprint for deployment.
 
 ### Usage
 

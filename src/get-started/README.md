@@ -1,10 +1,10 @@
 # Get Started
 
-The Get Started guides below will walk you through the steps to build and secure a Todo application using Apache Kafka with the Zilla engine.
+The Get Started guides below will walk you through the steps to install zilla and connect zilla to your existing kafka installation.
 
 ## [Installing Zilla](install/)
 
-on prem or in the cloud
+Run on prem or in the cloud.
 
 ## [Connecting to Kafka](connecting-to-kafka/)
 

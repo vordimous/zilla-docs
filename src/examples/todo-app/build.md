@@ -412,7 +412,7 @@ The Zilla engine configuration defines a flow of named `bindings` representing e
 
 Let's configure `Zilla` for the Tasks API to interact with the `Todo` Kafka Streams service via Kafka topics.
 
-You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](https://docs.aklivity.io/zilla/reference/zilla.json).
+You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](/reference/zilla.yaml/README.md).
 |                       |                      |
 | --------------------- | -------------------- |
 | `tcp_server0`         | listens on port 8080 routes to http_server0 |
@@ -820,7 +820,7 @@ Make sure that `zilla.yaml`  config changes got applied after restarting the `Zi
 
 ### Step 5: Test Drive
 
-Open the browser and enter [`http://localhost:8080/`](http://localhost:8080/) to see the Todo Application.
+Open the browser and enter `http://localhost:8080/` to see the Todo Application.
 
 ![](./TodoAppNotLoggedIn.png)
 
