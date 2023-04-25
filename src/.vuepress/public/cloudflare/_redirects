@@ -1,5 +1,5 @@
-/zilla/next/library /zilla/next 302
-/zilla/next/get-started/build-todo-app /zilla/next/examples/todo-app/build 302
-/zilla/next/get-started/secure-todo-app /zilla/next/examples/todo-app/secure 302
-/zilla/next/configure-kafka-proxies/* /zilla/next/guides/kafka-proxies/:splat
-/zilla/next/connect-your-kafka/* /zilla/next/get-started/connecting-to-kafka/:splat
+/zilla/latest/library /zilla/latest 302
+/zilla/latest/get-started/build-todo-app /zilla/latest/examples/todo-app/build 302
+/zilla/latest/get-started/secure-todo-app /zilla/latest/examples/todo-app/secure 302
+/zilla/latest/configure-kafka-proxies/* /zilla/latest/guides/kafka-proxies/:splat
+/zilla/latest/connect-your-kafka/* /zilla/latest/get-started/connecting-to-kafka/:splat
