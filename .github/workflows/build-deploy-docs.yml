@@ -18,6 +18,7 @@ concurrency:
 env:
   DistDir: dist
   BuildDir: build
+  RepoUrl: ${{github.server_url}}/${{github.repository}}.git
   SITE_BASE: ${{ vars.SITE_BASE }}
 
 jobs:
@@ -50,20 +51,17 @@ jobs:
 
       - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         name: Pull versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for row in $(jq -rc '.[]' deploy-versions.json); do
             key=$(echo ${row} | jq -r '.key');
             tag=$(echo ${row} | jq -r '.tag');
             
-            gh release download "$tag" --archive=tar.gz --output "$tag.tar.gz" --skip-existing;
-            mkdir -p "$BuildDir/$key";
-            tar -xvf "$tag.tar.gz" -C "$BuildDir/$key" --strip-components 1;
+            git clone --depth 1 -b "$tag" $RepoUrl "$BuildDir/$key"
 
             cp versions.json "$BuildDir/$key/src/.vuepress/versions.json";
           done
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         name: Build versions
