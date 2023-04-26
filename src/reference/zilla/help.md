@@ -18,4 +18,4 @@ zilla help [command]
 
 ```bash:no-line-numbers
 ./zilla help start
-```bash:no-line-numbers
+```

@@ -47,6 +47,7 @@ Each verified JWT access token has an expiration time, and an optional challenge
 - [options](#options)
 - [options.issuer](#options-issuer)
 - [options.audience](#options-audience)
+- [options.challenge](#options-challenge)
 - [options.keys\*](#options-keys)
 - [keys\[\].kty\*](#keys-kty)
 - [keys\[\].kid\*](#keys-kid)
@@ -56,7 +57,6 @@ Each verified JWT access token has an expiration time, and an optional challenge
 - [keys\[\].crv](#keys-crv)
 - [keys\[\].x](#keys-x)
 - [keys\[\].y](#keys-y)
-- [options.challenge](#options-challenge)
 
 ::: right
 \* required
@@ -74,6 +74,7 @@ Each verified JWT access token has an expiration time, and an optional challenge
 options:
   issuer: https://auth.example.com
   audience: https://api.example.com
+  challenge: 30
   keys:
     - kty: EC
       crv: P-256
@@ -86,7 +87,6 @@ options:
       e: AQAB
       alg: RS256
       kid: '2011-04-29'
-  challenge: 30
 ```
 
 ### options.issuer
@@ -100,6 +100,12 @@ Issuer claim.
 > `string`
 
 Audience claim.
+
+### options.challenge
+
+> `number`
+
+Challenge period (seconds).
 
 ### options.keys\*
 
@@ -152,12 +158,6 @@ Key ID.
 > `string`
 
 `EC` point `y` coordinate.
-
-### options.challenge
-
-> `number`
-
-Challenge period (seconds).
 
 ---
 

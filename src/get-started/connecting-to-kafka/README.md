@@ -22,7 +22,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ## Connect to `PLAINTEXT` Kafka
 
-To connect to any Kafka on **PLAINTEXT** protocol is as simple as defining your TCP binding as shown below.
+To connect to any Kafka on `PLAINTEXT` protocol is as simple as defining your TCP binding as shown below.
 
 ### zilla.yaml
 
@@ -251,7 +251,7 @@ Zilla currently supports SASL PLAIN authentication to Kafka.
 Please add your feedback to the [SASL enhancement request](https://github.com/aklivity/zilla/issues/12).
 :::
 
-Let's configure zilla.json.
+## Configure Zilla
 
 ### zilla.yaml
 

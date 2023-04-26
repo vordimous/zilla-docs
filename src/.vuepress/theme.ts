@@ -9,6 +9,7 @@ export default hopeTheme({
   logo: "/logo-dark.png",
   logoDark: "/logo.png",
   iconAssets: "fontawesome-with-brands",
+  favicon: "favicon.ico",
 
   editLink: true,
   contributors: false,
@@ -23,6 +24,7 @@ export default hopeTheme({
     center: [],
     end: ["Search", "Links", "Repo", "Outlook"],
   },
+  pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
   locales: {
     "/": {
       navbar: enNavbar,

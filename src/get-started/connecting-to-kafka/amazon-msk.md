@@ -12,7 +12,7 @@ Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
 ::: warning
-MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [**Aklivity Public MSK Proxy**](https://docs.aklivity.io/aws/get-started/public-proxy). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
+MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Aklivity Public MSK Proxy](https://docs.aklivity.io/aws/get-started/public-proxy). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
 :::
 
 ## Set up mTLS Authentication between MSK and Zilla
@@ -33,7 +33,7 @@ Follow the [Create Client Certificate (ACM) guide](https://docs.aklivity.io/aws/
 
 ### Export Client and CA Certificates
 
-First**,** you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](https://docs.aklivity.io/aws/resources/create-certificate-authority-acm) used to issue the certificate, and run the following command:
+First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](https://docs.aklivity.io/aws/resources/create-certificate-authority-acm) used to issue the certificate, and run the following command:
 
 ```bash:no-line-numbers
 aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_ATHORITY_ARN \
@@ -89,7 +89,7 @@ openssl pkcs12 -export -in client.cert -inkey client-1.key.pem \
 
 ## Configure Zilla
 
-To configure Zilla you will be replacing the following values in the `zilla.json` config:
+To configure Zilla you will be replacing the following values in the `zilla.yaml` config:
 
 | Value                       | Description                                                                                                                      |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -100,7 +100,7 @@ To configure Zilla you will be replacing the following values in the `zilla.json
 | `BOOTSTRAP_SERVER_HOSTNAME` | Target MSK hostname. For example: `b-2-public.myTestCluster.v4ni96.c2.kafka.us-east-1.amazonaws.com`                             |
 | `BOOTSTRAP_SERVER_PORT`     | Target MSK port number. For example `9094`                                                                                       |
 
-Inside `zilla.json` create a `client_vault` that references your newly created `keystore`. After this, reference the the vault in the `tls_client0` binding. Your `zilla.json` should appear as follows:
+Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the the vault in the `tls_client0` binding. Your `zilla.yaml` should appear as follows:
 
 ### zilla.yaml
 
@@ -151,4 +151,4 @@ bindings:
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.
 :::
 
-Your Zilla can now connect to your MSK cluster! You can test your configuration by placing it into the `zilla.json` of the following Zilla [example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache) and running it as per the instructions.
+Your Zilla can now connect to your MSK cluster! You can test your configuration by placing it into the `zilla.yaml` of the following Zilla [example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache) and running it as per the instructions.

@@ -36,8 +36,6 @@ kcat -b BOOTSTRAP_SERVER_HOSTNAME:BOOTSTRAP_SERVER_PORT \
 
 ## Configure Zilla
 
-Let's configure `zilla.json`.
-
 ### zilla.yaml
 
 ::: code-tabs#yaml

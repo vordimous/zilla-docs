@@ -20,8 +20,6 @@ A brief explanation of replaceable values from the config examples below:
 
 ## Configure Zilla
 
-Let's configure `zilla.yaml`.
-
 ::: code-tabs#yaml
 
 @tab zilla.yaml
@@ -52,8 +50,8 @@ bindings:
       host: BOOTSTRAP_SERVER_HOSTNAME
       port: "BOOTSTRAP_SERVER_PORT"
     routes:
-    - when:
-      - cidr: 0.0.0.0/0
+      - when:
+        - cidr: 0.0.0.0/0
 
 ```
 

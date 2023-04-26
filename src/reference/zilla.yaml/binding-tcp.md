@@ -79,9 +79,9 @@ Hostname or IP address.
 
 ### options.port
 
-> `integer`
+> `integer` | `string` | `array` of  `integer` | `array` of `string`
 
-`string` | `array` of  `integer` | `array` of `string` | Port number(s), including port number ranges.
+Port number(s), including port number ranges.
 
 ### exit
 

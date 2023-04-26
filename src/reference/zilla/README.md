@@ -16,7 +16,7 @@ The Zilla Runtime command line interface supports the following commands.
 
 |                            |                          |
 | -------------------------- | ------------------------ |
-| [`zilla help`](clean.md)   | Display help information |
+| [`zilla help`](help.md)   | Display help information |
 | [`zilla load`](load.md) 🚧 | Show engine load         |
 | [`zilla start`](start.md)  | Start engine             |
 | [`zilla stop`](stop.md)    | Stop engine              |

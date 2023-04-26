@@ -6,7 +6,7 @@ description: Our Secure the Todo Application guide shows you how to secure the T
 
 In this getting started exercise, you will enhance the [previously built Todo application](build.md) to secure the Tasks API using JWT access tokens.
 
-![](/assets/todo-app-architecture@2x.png)
+![](/assets/todo-app-architecture-secured@2x.png)
 
 Zilla has the concept of a [guard](../../reference/zilla.yaml/guard.md) that can be defined to control access to any route in the bindings configuration.
 
@@ -106,18 +106,17 @@ if-match\[String] - Task etag
 
 **Get Tasks**
 
-Retrieves all tasks, with `etag` representing the **** latest value.
+Retrieves a stream of tasks, with via Server-Sent Events.
 
 **Parameters**
 
 **Header:**
 
-if-none-match\[String] - Tasks collection etag
+last-event-id\[String] - last received task event id
 
 **Responses:**
 
-* **200 OK** - Returns an array of Tasks
-* **304 Not Modified** - **** If Tasks collection etag matches
+* **200 OK** - Returns a stream of tasks
 
 :::
 

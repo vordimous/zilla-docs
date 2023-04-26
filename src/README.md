@@ -36,14 +36,14 @@ features:
   - title: Proxies
     icon: diagram-project
     details: Design and configure your API Endpoints such as REST API, SSE and more.
-    link: /guides/kafka-proxies/index.html
+    link: /guides/kafka-proxies/rest-proxy.html
 
   - title: Amazon MSK
     icon: database
     details: Learn how to deploy a more secure Amazon MSK with Aklivity Public MSK Proxy.
     link: /get-started/connecting-to-kafka/amazon-msk.html
 
-  - title: Avian
+  - title: Aiven
     icon: server
     details: Connect to Aiven Kafka from Zilla.
     link: /get-started/connecting-to-kafka/aiven.html

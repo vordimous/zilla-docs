@@ -16,7 +16,7 @@ server:
     keys:
       store: localhost.p12
       type: pkcs12
-      password: "{{env.KEYS_PASSWORD}}"
+      password: ${{env.KEYS_PASSWORD}}
 ```
 
 ## Summary
@@ -30,8 +30,6 @@ The [keys](#options-keys) option is used to identify the local peer in a `TLS` h
 The [trust](#options-trust) option is used to verify identity of the remote peer in a `TLS` handshake.
 
 The [signers](#options-signers) option is used to challenge for mutual authentication in a `TLS` handshake.
-
-Note that use of `{{env.*}}` syntax to read an environment variable currently requires setting `zilla.engine.config.syntax.mustache=true` in `.zilla/zilla.properties`.
 
 ## Configuration
 
@@ -68,7 +66,7 @@ options:
   keys:
     store: localhost.p12
     type: pkcs12
-    password: "{{env.KEYS_PASSWORD}}"
+    password: ${{env.KEYS_PASSWORD}}
 ```
 
 ### options.keys

@@ -17,11 +17,11 @@ proxy_server0:
   type: proxy
   kind: server
   routes:
-  - when:
-      - transport: stream
-        family: inet4
-        destination:
-          port: 443
+    - when:
+        - transport: stream
+          family: inet4
+          destination:
+            port: 443
       exit: tls_server0
 ```
 
@@ -89,7 +89,7 @@ routes:
         family: inet4
         destination:
           port: 443
-  exit: tls_server0
+    exit: tls_server0
 ```
 
 ### routes[].guarded
