@@ -4,7 +4,7 @@ description: Starts the engine
 
 # zilla start
 
-The `zilla start` command resolves the [Zilla Runtime Configuration](../zilla.yaml/) in `zilla.json` to start the runtime engine.
+The `zilla start` command resolves the [Zilla Runtime Configuration](../zilla.yaml/) in `zilla.yaml` to start the runtime engine.
 
 ### Usage
 

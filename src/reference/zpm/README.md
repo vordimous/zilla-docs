@@ -18,7 +18,7 @@ The Zilla Manager command line interface supports the following commands:
 
 |                             |                          |
 | --------------------------- | ------------------------ |
-| [`zpm help`](clean.md)      | Display help information |
+| [`zpm help`](help.md)      | Display help information |
 | [`zpm clean`](clean.md)     | Clean up runtime files   |
 | [`zpm encrypt`](encrypt.md) | Encrypt passwords        |
 | [`zpm install`](install.md) | Install dependencies     |

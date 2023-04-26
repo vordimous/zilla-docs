@@ -11,7 +11,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ### Configure Endpoints
 
-Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/zilla.yaml/binding-http-kafka.md) binding in zilla.json.
+Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/zilla.yaml/binding-http-kafka.md) binding in `zilla.yaml`.
 
 Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`, `DELETE`, and `PATCH` .
 
