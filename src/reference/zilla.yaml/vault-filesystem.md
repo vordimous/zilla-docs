@@ -31,8 +31,6 @@ The [trust](#options-trust) option is used to verify identity of the remote peer
 
 The [signers](#options-signers) option is used to challenge for mutual authentication in a `TLS` handshake.
 
-Note that use of `${{env.*}}` syntax to read an environment variable currently requires setting `zilla.engine.config.syntax.mustache=true` in `.zilla/zilla.properties`.
-
 ## Configuration
 
 :::: note Properties
