@@ -26,4 +26,4 @@ zpm clean
 
 ```bash:no-line-numbers
 ./zpmw clean --keep-image
-```bash:no-line-numbers
+```

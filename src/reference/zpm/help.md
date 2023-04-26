@@ -18,4 +18,4 @@ zpm help [command]
 
 ```bash:no-line-numbers
 ./zpmw help install
-```bash:no-line-numbers
+```

@@ -1,5 +1,5 @@
 ---
-description: Shows help information for commands
+description: In this guide, you will learn how to connect to Aiven Kafka from Zilla.
 ---
 # Aiven
 

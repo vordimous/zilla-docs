@@ -24,6 +24,7 @@ export default hopeTheme({
     center: [],
     end: ["Search", "Links", "Repo", "Outlook"],
   },
+  pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
   locales: {
     "/": {
       navbar: enNavbar,

@@ -135,7 +135,7 @@ Since `Zilla` config is very much modular it has the concept of [`guard`](../../
 The information about keys and other details such as issuer and audience you can get from `JWT` providers for example in the case of Auth0 you can use the command below.
 
 ```bash:no-line-numbers
-url -s https://AUTH_URL/.well-known/jwks.json | jq .keys
+curl -s https://AUTH_URL/.well-known/jwks.json | jq .keys
 ```
 
 ### zilla.yaml
