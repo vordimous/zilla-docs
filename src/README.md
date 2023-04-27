@@ -53,7 +53,7 @@ features:
     details: Connect to Confluent Cloud from Zilla.
     link: /get-started/connecting-to-kafka/confluent-cloud.html
 
-  - title: RedPanda
+  - title: Redpanda
     icon: bars-staggered
     details: Connect to Redpanda from Zilla.
     link: /get-started/connecting-to-kafka/redpanda.html
