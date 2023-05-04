@@ -1,10 +1,14 @@
 {
   "name": "zilla-docs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],
   "author": "aklivity.io",
   "license": "ISC",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=7"
+  },
   "scripts": {
     "info": "vuepress info",
     "build": "vuepress build src",

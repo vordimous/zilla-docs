@@ -1,4 +1,7 @@
-# Connect your Kafka
+---
+description: In this guide, you will learn how to connect to a generic Kafka from Zilla
+---
+# Generic Kafka
 
 ## Introduction
 

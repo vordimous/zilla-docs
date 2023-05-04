@@ -32,21 +32,24 @@ export const enSidebar = sidebar({
     "",
     {
       text: "Get Started",
-      prefix: "get-started/",
-      link: "get-started/",
+      icon: "play",
+      collapsible: true,
+      prefix: "get-started/",     
       children: [
         {
           text: "Install",
+          icon: "download",
           collapsible: false,
           prefix: "install/",
           link: "install/",
         },
         {
           text: "Connecting to Kafka",
-          collapsible: false,
+          icon: "plug",
+          collapsible: true,
           prefix: "connecting-to-kafka/",
-          link: "connecting-to-kafka/",
           children: [
+            "generic.md",
             "aiven.md",
             "amazon-msk.md",
             "confluent-cloud.md",
@@ -57,18 +60,34 @@ export const enSidebar = sidebar({
     },
     {
       text: "Guides",
+      icon: "bars-staggered",
       prefix: "guides/",
+      collapsible: true,
       children: [
         {
-          text: "Kafka Proxies",
+          text: "Configuring Kafka Proxies",
           collapsible: false,
           prefix: "kafka-proxies/",
-          children: "structure",
+          children: [
+            {
+              text: "REST Proxy",
+              icon: "arrow-right-arrow-left",
+              link: "rest-proxy.md",
+            },
+            {
+              text: "SSE Proxy",
+              icon: "fa-brands fa-html5",
+              link: "sse-proxy.md",
+            },            
+
+          ],
         },
       ],
     },
     {
       text: "Examples",
+      icon: "diagram-project",
+      collapsible: true,
       prefix: "examples/",
       children: [
         {
@@ -81,6 +100,7 @@ export const enSidebar = sidebar({
     },
     {
       text: "Reference",
+      icon: "book",
       prefix: "reference/",
       link: "reference/",
       children: ["zilla.yaml/", "zilla/", "zpm/"],

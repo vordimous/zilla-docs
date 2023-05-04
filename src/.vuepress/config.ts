@@ -10,10 +10,25 @@ export default defineUserConfig({
   locales: {
     "/": {
       lang: "en-US",
-      title: "Zilla Docs",
+      title: "Documentation",
       description: "The official documentation for the aklivity/zilla open-source project",
     },
   },
+  
+  head: [
+    ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
+      [
+        "link",
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+      ],
+      [
+        "link",
+        {
+          href: "https://fonts.googleapis.com/css2?family=Questrial&display=swap",
+          rel: "stylesheet",
+        },
+      ],
+  ],
 
   theme,
   
