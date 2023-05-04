@@ -42,6 +42,40 @@ export const enSidebar = sidebar({
           collapsible: false,
           prefix: "install/",
           link: "install/",
+        },        
+        {
+          text: "Quickstart",
+          collapsible: false,
+          prefix: "quickstart/",
+          children: [
+            "simple.md",
+            "rest.md"
+          ]
+        },
+        
+      ],
+    },
+    {
+      text: "Explainers",
+      prefix: "guides/",
+      children: [
+        {
+          text: "Kafka Proxies",
+          collapsible: false,
+          prefix: "kafka-proxies/",
+          children: "structure",
+        },
+      ],
+    },
+    {
+      text: "How-to Guides",
+      prefix: "examples/",
+      children: [
+        {
+          text: "Todo App",
+          collapsible: false,
+          prefix: "todo-app/",
+          children: "structure",
         },
         {
           text: "Connecting to Kafka",
