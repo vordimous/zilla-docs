@@ -5,6 +5,10 @@
   "keywords": [],
   "author": "aklivity.io",
   "license": "ISC",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=7"
+  },
   "scripts": {
     "info": "vuepress info",
     "build": "vuepress build src",

@@ -24,13 +24,17 @@ export default hopeTheme({
     center: [],
     end: ["Search", "Links", "Repo", "Outlook"],
   },
+
   pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
+
   locales: {
     "/": {
       navbar: enNavbar,
       sidebar: enSidebar,
 
-      displayFooter: false,
+      displayFooter: true,
+      footer: `<span style="display:flex;align-items:center"><a href="https://www.aklivity.io"><img src="aklivity-logo@2x.png" height="30" alt="aklivity" style="padding-right:25px"></a> <a href="https://github.com/aklivity/zilla"><i class="fa-brands fa-github" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.linkedin.com/company/aklivity/"><i class="fa-brands fa-linkedin" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.aklivity.io/slack"><i class="fa-brands fa-slack" style="font-size:25px;padding-right:6px"></i></a> <a href="https://www.twitter.com/aklivityinc"><i class="fa-brands fa-twitter" style="font-size:22px"></i></a></span>`,
+      copyright: "© aklivity, inc. 2022-2023",
 
       metaLocales: {
         editLink: "Edit this page on GitHub",
