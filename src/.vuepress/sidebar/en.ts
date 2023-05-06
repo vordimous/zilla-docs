@@ -69,12 +69,10 @@ export const enSidebar = sidebar({
             {
               text: "REST Proxy (wip)",
               icon: "arrow-right-arrow-left",
-              link: "rest-proxy.md",
             },
             {
               text: "SSE Proxy (wip)",
               icon: "fa-brands fa-html5",
-              link: "sse-proxy.md",
             },
           ],
         },
