@@ -36,15 +36,14 @@ bindings:
       - when:
           - method: POST
             path: /items
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: produce
           topic: items-snapshots
-          key: ${idempotencyKey}
       - when:
           - method: GET
             path: /items
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: fetch
           topic: items-snapshots
@@ -70,10 +69,11 @@ bindings:
     kind: client
     options:
       host: kafka
-      port: 29092
+      port: 9092
     routes:
       - when:
           - cidr: 0.0.0.0/0
+
 ```
 
 @tab docker-compose.yaml
@@ -82,12 +82,22 @@ bindings:
 version: '3'
 services:
   kafka:
-    image: docker.io/bitnami/kafka:3.4
+    image: docker.io/bitnami/kafka:latest
     container_name: kafka
     ports:
       - "9092:9092"
     environment:
       ALLOW_PLAINTEXT_LISTENER: "yes"
+
+  kafka-init:
+    image: docker.io/bitnami/kafka:latest
+    command: 
+      - "/bin/bash"
+      - "-c"
+      - "/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists --topic items-snapshots"
+    depends_on:
+      - kafka
+    init: true
 
   zilla:
     image: ghcr.io/aklivity/zilla:latest
@@ -102,8 +112,8 @@ services:
 
 networks:
   default:
-    external: true
     name: zilla-network
+    driver: bridge
 
 ```
 
@@ -115,18 +125,20 @@ networks:
 docker-compose up
 ```
 
-Once the Kafka service has started you will need to create the topic for Zilla to proxy the to. You will find the topic `items-snapshots` defined at `http_api_kafka_proxy.routes.with.topic`.
-
 ### Use `curl` to send a greeting
 
 ```bash:no-line-numbers
-curl -X POST http://zilla:8080/items -H 'Content-Type: application/json' -d '{"greeting":"Hello, world"}'
+curl -X POST http://localhost:8080/items -H 'Content-Type: application/json' -d '{"greeting":"Hello, world"}'
 ```
+
+::: note Wait for service to start
+if you get this response `curl: (52) Empty reply from server`, the likely cause is Zilla and Kafka are still starting up.
+:::
 
 ### Use `curl` to list all of the greetings
 
 ```bash:no-line-numbers
-curl http://zilla:8080/items
+curl http://localhost:8080/items
 ```
 
 output:
