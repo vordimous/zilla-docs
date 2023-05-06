@@ -1,11 +1,10 @@
 # Simple Quickstarts
 
-Get started using Zilla by deploying our Docker containers. Before proceeding, you need to run these quickstarts in an environment [with Docker](https://docs.docker.com/get-docker/)
+Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker](https://docs.docker.com/get-docker/).
 
 ## TCP connection
 
-Running this zilla setup will simply echo back any text sent to the server at port `12345`.
-
+Running this Zilla setup will simply echo back any text sent to the server over `tcp` at port `12345`.
 
 ::: code-tabs#yaml
 
@@ -28,7 +27,9 @@ bindings:
 
 :::
 
-### Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
+### Run Zilla
+
+Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
 
 ::: code-tabs#yaml
 
@@ -58,7 +59,9 @@ output:
 Hello, world
 ```
 
-### Remove the running container
+### Clean up
+
+Remove the running container
 
 ```bash:no-line-numbers
 docker rm -f zilla-quickstart
@@ -67,7 +70,6 @@ docker rm -f zilla-quickstart
 ## HTTP Echo
 
 Running this Zilla quickstart will simply echo back any text sent to the server at port `8080`.
-
 
 ::: code-tabs#yaml
 
@@ -99,7 +101,9 @@ bindings:
 
 :::
 
-### Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
+### Run Zilla
+
+Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
 
 ::: code-tabs#yaml
 
@@ -129,7 +133,9 @@ output:
 Hello, world
 ```
 
-### Remove the running container
+### Clean up
+
+Remove the running container
 
 ```bash:no-line-numbers
 docker rm -f zilla-quickstart

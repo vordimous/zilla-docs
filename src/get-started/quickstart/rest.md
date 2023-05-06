@@ -1,6 +1,6 @@
 # REST Quickstarts
 
-Get started using Zilla by deploying our Docker containers. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/)
+Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
 
 ## REST on a Kafka event stream
 
@@ -119,10 +119,10 @@ networks:
 
 :::
 
-### Run Zilla and Kafka with the `docker-compose` and `zilla.yaml` file in the same directory
+### Run Zilla and Kafka with the `docker-compose.yaml` and `zilla.yaml` file in the same directory
 
 ```bash:no-line-numbers
-docker-compose up
+docker-compose up -d
 ```
 
 ### Use `curl` to send a greeting
@@ -131,7 +131,7 @@ docker-compose up
 curl -X POST http://localhost:8080/items -H 'Content-Type: application/json' -d '{"greeting":"Hello, world"}'
 ```
 
-::: note Wait for service to start
+::: note Wait for the services to start
 if you get this response `curl: (52) Empty reply from server`, the likely cause is Zilla and Kafka are still starting up.
 :::
 
