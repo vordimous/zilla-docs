@@ -40,7 +40,7 @@ As shown above you can describe your event id in case you want to retrieve the m
 
 ### Authorization
 
-Similar to [REST Proxy](rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
+Similar to [REST Proxy](../../concepts/kafka-proxies/rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
 
 ### More
 

@@ -46,7 +46,7 @@ aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_ATHORITY_ARN
 ----BEGIN CERTIFICATE-----
 MIIEdzCCA1+gAwIBAgIQDLtFK9uDUb6VpObjhusyhTANBgkqhkiG9w0BAQsFADAS
 ......
------END CERTIFICATE-----       
+-----END CERTIFICATE-----
 
 -----BEGIN CERTIFICATE-----
 MIIC8TCCAdmgAwIBAgIRAIxnMlRU8x8CasAlsfpjghQwDQYJKoZIhvcNAQELBQAw

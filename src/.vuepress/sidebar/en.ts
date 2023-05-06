@@ -34,7 +34,7 @@ export const enSidebar = sidebar({
       text: "Get Started",
       icon: "play",
       collapsible: true,
-      prefix: "get-started/",     
+      prefix: "get-started/",
       children: [
         {
           text: "Install",
@@ -42,53 +42,16 @@ export const enSidebar = sidebar({
           collapsible: false,
           prefix: "install/",
           link: "install/",
-        },        
+        },
         {
           text: "Quickstart",
+          icon: "stopwatch",
           collapsible: false,
           prefix: "quickstart/",
           children: [
             "simple.md",
             "rest.md"
           ]
-        },
-        
-      ],
-    },
-    {
-      text: "Explainers",
-      prefix: "guides/",
-      children: [
-        {
-          text: "Kafka Proxies",
-          collapsible: false,
-          prefix: "kafka-proxies/",
-          children: "structure",
-        },
-      ],
-    },
-    {
-      text: "How-to Guides",
-      prefix: "examples/",
-      children: [
-        {
-          text: "Todo App",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
-        },
-        {
-          text: "Connecting to Kafka",
-          icon: "plug",
-          collapsible: true,
-          prefix: "connecting-to-kafka/",
-          children: [
-            "generic.md",
-            "aiven.md",
-            "amazon-msk.md",
-            "confluent-cloud.md",
-            "redpanda.md",
-          ],
         },
       ],
     },
@@ -104,6 +67,51 @@ export const enSidebar = sidebar({
           prefix: "kafka-proxies/",
           children: [
             {
+              text: "REST Proxy (wip)",
+              icon: "arrow-right-arrow-left",
+              link: "rest-proxy.md",
+            },
+            {
+              text: "SSE Proxy (wip)",
+              icon: "fa-brands fa-html5",
+              link: "sse-proxy.md",
+            },
+          ],
+        },
+        {
+          text: "Todo App",
+          icon: "check",
+          collapsible: false,
+          prefix: "todo-app/",
+          children: "structure",
+        },
+        {
+          text: "Connecting to Kafka",
+          icon: "plug",
+          collapsible: false,
+          prefix: "connecting-to-kafka/",
+          children: [
+            "generic.md",
+            "aiven.md",
+            "amazon-msk.md",
+            "confluent-cloud.md",
+            "redpanda.md",
+          ],
+        },
+      ],
+    },
+    {
+      text: "Concepts",
+      icon: "diagram-project",
+      prefix: "concepts/",
+      collapsible: true,
+      children: [
+        {
+          text: "What Is a Kafka Proxy",
+          collapsible: false,
+          prefix: "kafka-proxies/",
+          children: [
+            {
               text: "REST Proxy",
               icon: "arrow-right-arrow-left",
               link: "rest-proxy.md",
@@ -112,23 +120,8 @@ export const enSidebar = sidebar({
               text: "SSE Proxy",
               icon: "fa-brands fa-html5",
               link: "sse-proxy.md",
-            },            
-
+            },
           ],
-        },
-      ],
-    },
-    {
-      text: "Examples",
-      icon: "diagram-project",
-      collapsible: true,
-      prefix: "examples/",
-      children: [
-        {
-          text: "Todo App",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
         },
       ],
     },
