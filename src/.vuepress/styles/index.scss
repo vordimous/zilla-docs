@@ -9,9 +9,31 @@
 html[data-theme=dark] #app {
     --code-highlight-line-color: #0e5c49;
     --border-color: #0e5c49;
+    .footer {
+        .logo {
+            &.light {
+                display: none;
+            }
+        
+            &.dark {
+                display: inline-block;
+            }
+        }
+    }
 }
 
 html[data-theme=light] #app {
     --code-highlight-line-color: #8ef6dc;
     --border-color: #55877a;
+    .footer {
+        .logo {
+            &.light {
+                display: inline-block;
+            }
+
+            &.dark {
+                display: none;
+            }
+        }
+    }
 }
