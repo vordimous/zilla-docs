@@ -62,21 +62,6 @@ export const enSidebar = sidebar({
       collapsible: true,
       children: [
         {
-          text: "Configuring Kafka Proxies",
-          collapsible: false,
-          prefix: "kafka-proxies/",
-          children: [
-            {
-              text: "REST Proxy (wip)",
-              icon: "arrow-right-arrow-left",
-            },
-            {
-              text: "SSE Proxy (wip)",
-              icon: "fa-brands fa-html5",
-            },
-          ],
-        },
-        {
           text: "Todo App",
           icon: "check",
           collapsible: false,

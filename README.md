@@ -4,7 +4,7 @@ description: API Gateway for event-driven microservices
 
 # What is Zilla?
 
-![](/assets/zilla-logo.svg)
+![](./src/.vuepress/public/logo.svg)
 
 **Zilla** is amazing open source software connecting web and mobile applications to event-driven microservices using standard protocols, such as HTTP, Server-Sent Events and Kafka.
 
