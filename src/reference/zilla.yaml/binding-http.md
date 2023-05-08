@@ -28,7 +28,7 @@ http_server0:
         - headers:
             ":scheme": https
             ":authority": example.com:443
-    exit: echo_server0
+      exit: echo_server0
 ```
 
 ## Summary

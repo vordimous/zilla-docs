@@ -365,7 +365,7 @@ JSON Patch path to include each Kafka message in unified HTTP response.
 
 > `object`
 
-Kafka parameters for matched route when adapting `http` request-response streams to `kafka` topic pruduce streams.
+Kafka parameters for matched route when adapting `http` request-response streams to `kafka` topic produce streams.
 
 ```yaml
 with:
