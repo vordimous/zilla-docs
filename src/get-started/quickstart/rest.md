@@ -1,3 +1,7 @@
+---
+description: Running this Zilla quickstart will create a simple API to create and list items. All of the data will be stored on a Kafka topic.
+---
+
 # REST Quickstarts
 
 Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
