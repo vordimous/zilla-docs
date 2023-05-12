@@ -55,7 +55,7 @@ kind: server
 
 > `object`
 
-`filesystem`-specifc options for `filesystem` access.
+`filesystem`-specific options for `filesystem` access.
 
 ```yaml
 options:

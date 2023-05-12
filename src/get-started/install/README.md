@@ -2,11 +2,13 @@
 
 ## Running Zilla via Docker
 
-Run the latest Zilla release with default empty configuration via docker.
+Run the latest Zilla release with the default empty configuration via docker.
 
 ```bash:no-line-numbers
 docker run ghcr.io/aklivity/zilla:latest start -v
 ```
+
+output:
 
 ```bash:no-line-numbers
 {
@@ -15,39 +17,62 @@ docker run ghcr.io/aklivity/zilla:latest start -v
 started
 ```
 
-### Configure Zilla to behave as a `tcp` `echo` server in 2mins
+## Running Zilla via Helm
 
-First create a local `zilla.yaml` with the following contents.
+Run the latest Zilla release with the default empty configuration via Helm.
+
+```bash:no-line-numbers
+helm install zilla chart --namespace zilla --create-namespace --wait
+```
+
+::: code-tabs#yaml
+
+@tab service-zilla.yaml
 
 ```yaml
----
-name: example
-bindings:
-  tcp_server0:
-    type: tcp
-    kind: server
-    options:
-      host: 0.0.0.0
-      port: 12345
-    exit: echo_server0
-  echo_server0:
-    type: echo
-    kind: server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zilla
+  labels:
+    app.kubernetes.io/instance: zilla
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: zilla
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: zilla
+    spec:
+      containers:
+        - name: zilla
+          image: "ghcr.io/aklivity/zilla:latest"
+          args: ["start", "-v", "-e"]
+
 ```
 
-Then run Zilla again, this time mounting your local `zilla.yaml` as a docker volume file.
+@tab Chart.yaml
 
-```bash:no-line-numbers
-docker run -v `pwd`/zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
+```yaml
+apiVersion: v2
+name: zilla
+description: zilla example
+type: application
+version: 0.1.0
+appVersion: "latest"
+
 ```
 
-Now, try it out using `netcat`.
+:::
+
+output:
 
 ```bash:no-line-numbers
-nc localhost 12345
-```
-
-```bash:no-line-numbers
-Hello, world
-Hello, world
+NAME: zilla
+NAMESPACE: zilla
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 ```

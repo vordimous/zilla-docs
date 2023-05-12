@@ -99,7 +99,7 @@ Behave as an `http` `server` or `client`.
 
 > `object`
 
-`http`-specifc options.
+`http`-specific options.
 
 ```yaml
 options:

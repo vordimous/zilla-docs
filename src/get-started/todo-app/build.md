@@ -83,7 +83,6 @@ services:
       "
       # blocks until Kafka becomes reachable
       /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka.internal.net:29092 --list --topic 'task-.*'
-      
       echo '## Creating the Kafka topics'
       /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka.internal.net:29092 --create --if-not-exists --topic task-commands --partitions 1
       /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka.internal.net:29092 --create --if-not-exists --topic task-replies --partitions 1
@@ -147,7 +146,6 @@ services:
       do
         sleep 1
       done
-      
       echo '## Creating the Redpanda topics'
       rpk topic create --brokers kafka.internal.net:29092 --partitions 1 task-commands
       rpk topic create --brokers kafka.internal.net:29092 --partitions 1 task-replies
@@ -263,7 +261,6 @@ Open `stack.yml` file and add the Todo service into the stack:
 
 ```yaml
   ...
-  
   todo-service:
     image: "todo-service:latest"
     networks:
@@ -556,7 +553,6 @@ Now let's add the `zilla` service to the docker stack, mounting the `zilla.yaml`
 
 ```yaml
   ...
-  
   zilla:
     image: "ghcr.io/aklivity/zilla:latest"
     hostname: "zilla"
@@ -801,7 +797,6 @@ Open `stack.yml` file and add `- ./todo-app/dist:/app/dist:ro` to the `zilla` se
 
 ```yaml
   ...
-  
   zilla:
     image: "ghcr.io/aklivity/zilla:latest"
     hostname: "zilla"

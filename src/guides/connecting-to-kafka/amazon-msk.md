@@ -36,7 +36,7 @@ Follow the [Create Client Certificate (ACM) guide](https://docs.aklivity.io/aws/
 First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](https://docs.aklivity.io/aws/resources/create-certificate-authority-acm) used to issue the certificate, and run the following command:
 
 ```bash:no-line-numbers
-aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_ATHORITY_ARN \
+aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_AUTHORITY_ARN \
   --certificate-arn CERTIFICATE_ARN --output text
 ```
 
@@ -46,7 +46,7 @@ aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_ATHORITY_ARN
 ----BEGIN CERTIFICATE-----
 MIIEdzCCA1+gAwIBAgIQDLtFK9uDUb6VpObjhusyhTANBgkqhkiG9w0BAQsFADAS
 ......
------END CERTIFICATE-----       
+-----END CERTIFICATE-----
 
 -----BEGIN CERTIFICATE-----
 MIIC8TCCAdmgAwIBAgIRAIxnMlRU8x8CasAlsfpjghQwDQYJKoZIhvcNAQELBQAw

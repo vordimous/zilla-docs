@@ -35,7 +35,7 @@ Defines a binding with `tls` protocol support, with `server`, `client` or `proxy
 
 #### Server behavior
 
-The `server` kind tls binding decodes encrypted `TLS` protocol protocol on the inbound network stream, producing higher level cleartext application streams for each request.
+The `server` kind tls binding decodes encrypted `TLS` protocol on the inbound network stream, producing higher level cleartext application streams for each request.
 
 Certificates and keys required to complete the `TLS` handshake are provided by a `vault` referenced in the binding configuration.
 

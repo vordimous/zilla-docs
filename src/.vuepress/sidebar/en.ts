@@ -97,7 +97,7 @@ export const enSidebar = sidebar({
       text: "Get Started",
       icon: "play",
       collapsible: true,
-      prefix: "get-started/",     
+      prefix: "get-started/",
       children: [
         {
           text: "Install",
@@ -107,17 +107,23 @@ export const enSidebar = sidebar({
           link: "install/",
         },
         {
-          text: "Connecting to Kafka",
-          icon: "plug",
-          collapsible: true,
-          prefix: "connecting-to-kafka/",
+          text: "Quickstarts",
+          icon: "stopwatch",
+          collapsible: false,
+          prefix: "quickstart/",
           children: [
-            "generic.md",
-            "aiven.md",
-            "amazon-msk.md",
-            "confluent-cloud.md",
-            "redpanda.md",
-          ],
+            "simple.md",
+            "rest.md",
+            "grpc.md",
+            "sse.md",
+          ]
+        },
+        {
+          text: "Todo App",
+          icon: "check",
+          collapsible: false,
+          prefix: "todo-app/",
+          children: "structure",
         },
       ],
     },
@@ -129,9 +135,15 @@ export const enSidebar = sidebar({
       children: [
         {
           text: "Configuring Kafka Proxies",
+          icon: "gear",
           collapsible: false,
           prefix: "kafka-proxies/",
           children: [
+            {
+              text: "gRPC Proxy",
+              icon: "circle-nodes",
+              link: "grpc-proxy.md",
+            },
             {
               text: "REST Proxy",
               icon: "arrow-right-arrow-left",
@@ -141,26 +153,31 @@ export const enSidebar = sidebar({
               text: "SSE Proxy",
               icon: "fa-brands fa-html5",
               link: "sse-proxy.md",
-            },            
-
+            },
+          ],
+        },
+        {
+          text: "Connecting to Kafka",
+          icon: "plug",
+          collapsible: false,
+          prefix: "connecting-to-kafka/",
+          children: [
+            "generic.md",
+            "aiven.md",
+            "amazon-msk.md",
+            "confluent-cloud.md",
+            "redpanda.md",
           ],
         },
       ],
     },
-    {
-      text: "Examples",
-      icon: "diagram-project",
-      collapsible: true,
-      prefix: "examples/",
-      children: [
-        {
-          text: "Todo App",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
-        },
-      ],
-    },
+    // {
+    //   text: "Concepts",
+    //   icon: "diagram-project",
+    //   prefix: "concepts/",
+    //   collapsible: true,
+    //   children: "structure"
+    // },
     {
       text: "Reference",
       icon: "book",
