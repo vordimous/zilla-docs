@@ -33,7 +33,7 @@ jobs:
           link-checker src/.vuepress/dist
 
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v1.6.1
+        uses: lycheeverse/lychee-action@v1.7.0
         with:
           fail: true
           args: --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist

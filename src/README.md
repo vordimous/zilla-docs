@@ -13,7 +13,7 @@ actions:
     icon: stopwatch
 
   - text: " Install"
-    link: /get-started/install/index.html
+    link: /get-started/install.html
     icon: download
 
 features:
@@ -21,7 +21,7 @@ features:
   - title: Get Started
     icon: play
     details: Install Zilla, connect it to your Kafka Cluster, and define your first API endpoints.
-    link: /get-started/install/
+    link: /get-started/install.html
 
   - title: Todo App Example
     icon: diagram-project

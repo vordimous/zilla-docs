@@ -96,7 +96,7 @@ Requests including an `idempotency-key` `grpc` metadata header can be replayed a
 - [routes\[\].when](#routes-when)
   - [when\[\].method](#when-method)
   - [when\[\].metadata](#when-metadata)
-      - [metadata.base64](#metadata-base64)
+    - [metadata.base64](#metadata-base64)
 - [routes\[\].exit\*](#routes-exit)
 - [routes\[\].with\*](#routes-with)
 - [with.capability (fetch)](#with-capability-fetch)

@@ -56,7 +56,7 @@ Define individual route handlers for each method or specify the `*` wildcard to 
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/*
+      - method: routeguide.RouteGuide/*
 ```
 
 - Routes for individual service methods
@@ -64,7 +64,7 @@ routes:
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/GetFeature
+      - method: routeguide.RouteGuide/GetFeature
 ```
 
 ## Step 2: Handling message routing onto Kafka
@@ -82,7 +82,7 @@ For the `GetFeature` method, the `Point` request and `Feature` response create t
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/GetFeature
+      - method: routeguide.RouteGuide/GetFeature
     with:
       capability: produce
       topic: request-topic
@@ -96,7 +96,7 @@ For the `ListFeatures` method, we can have a dedicated stream of `Feature` messa
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/ListFeatures
+      - method: routeguide.RouteGuide/ListFeatures
     with:
       capability: produce
       topic: request-topic
@@ -110,7 +110,7 @@ For the `RecordRoute` method, the client sends a stream of `Point` messages to a
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/RecordRoute
+      - method: routeguide.RouteGuide/RecordRoute
     with:
       capability: produce
       topic: point-stream-topic
@@ -124,11 +124,10 @@ For the `RouteChat` method, we can have all of the messages on the same topic si
 ```yaml
 routes:
   - when:
-      - service: routeguide.RouteGuide/RouteChat
+      - method: routeguide.RouteGuide/RouteChat
     with:
       capability: produce
       topic: chat-topic
-      reply-to: chat-topic
 ```
 
 ### Fanout streaming RPC

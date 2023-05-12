@@ -50,7 +50,7 @@ The `client` kind `grpc` binding adapts `grpc` request-response streams to `http
 - [routes\[\].when](#routes-when)
   - [when\[\].method](#when-method)
   - [when\[\].metadata](#when-metadata)
-      - [metadata.base64](#metadata-base64)
+    - [metadata.base64](#metadata-base64)
 - [routes\[\].exit\*](#routes-exit)
 
 ::: right

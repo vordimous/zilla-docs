@@ -99,13 +99,8 @@ export const enSidebar = sidebar({
       collapsible: true,
       prefix: "get-started/",
       children: [
-        {
-          text: "Install",
-          icon: "download",
-          collapsible: false,
-          prefix: "install/",
-          link: "install/",
-        },
+        "install.md",
+        "vscode/README.md",
         {
           text: "Quickstarts",
           icon: "stopwatch",
