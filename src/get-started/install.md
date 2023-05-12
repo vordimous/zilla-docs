@@ -8,7 +8,7 @@ Run the latest Zilla release with the default empty configuration via docker.
 docker run ghcr.io/aklivity/zilla:latest start -v
 ```
 
-output:
+The output should display the zilla config and `started` to know zilla is ready for traffic.
 
 ```bash:no-line-numbers
 {
@@ -17,62 +17,36 @@ output:
 started
 ```
 
-## Running Zilla via Helm
-
-Run the latest Zilla release with the default empty configuration via Helm.
-
-```bash:no-line-numbers
-helm install zilla chart --namespace zilla --create-namespace --wait
-```
+Specify your own `zilla.yaml` file.
 
 ::: code-tabs#yaml
 
-@tab service-zilla.yaml
+@tab Docker 23
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: zilla
-  labels:
-    app.kubernetes.io/instance: zilla
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: zilla
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/instance: zilla
-    spec:
-      containers:
-        - name: zilla
-          image: "ghcr.io/aklivity/zilla:latest"
-          args: ["start", "-v", "-e"]
-
+```bash:no-line-numbers
+docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
 ```
 
-@tab Chart.yaml
+@tab Docker 20
 
-```yaml
-apiVersion: v2
-name: zilla
-description: zilla example
-type: application
-version: 0.1.0
-appVersion: "latest"
-
+```bash:no-line-numbers
+docker run -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
 ```
 
 :::
 
-output:
+## Running Zilla via Helm
 
-```bash:no-line-numbers
-NAME: zilla
-NAMESPACE: zilla
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
+Go to the [Zilla artifacthub](https://artifacthub.io/) page to find out more on how to install Zilla using Helm
+
+## TL;DR
+
+```shell
+helm install zilla . --namespace zilla --create-namespace --wait \
+    --values values.yaml \
+    --set-file zilla\\.yaml=zilla.yaml
 ```
+
+## Configuration
+
+Zilla specific configuration is in the `zilla.yaml` file which can be included in the helm install by adding `--set-file zilla\\.yaml=zilla.yaml` to your command.
