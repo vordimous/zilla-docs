@@ -1,5 +1,5 @@
 ---
-shortTitle: vault (filesystem)
+shortTitle: filesystem
 description: Zilla runtime filesystem vault
 category:
   - Vault

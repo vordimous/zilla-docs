@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (echo)
+shortTitle: echo 
 description: Zilla runtime echo binding
 category:
   - Binding

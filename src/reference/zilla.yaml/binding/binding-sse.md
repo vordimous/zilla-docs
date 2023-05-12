@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (sse)
+shortTitle: sse 
 description: Zilla runtime sse binding
 category:
   - Binding

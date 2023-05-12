@@ -1,5 +1,5 @@
 ---
-shortTitle: binding
+shortTitle: Bindings
 description: Zilla runtime bindings
 category:
   - Binding
@@ -9,7 +9,7 @@ tag:
   - Server
 ---
 
-# Binding
+# Bindings
 
 Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`.
 

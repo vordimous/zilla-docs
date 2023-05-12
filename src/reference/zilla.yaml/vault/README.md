@@ -1,11 +1,11 @@
 ---
-shortTitle: vault
+shortTitle: Vaults
 description: Zilla runtime vault type
 category:
   - Vault
 ---
 
-# Vault
+# Vaults
 
 Each configured `vault` represents a container for digital keys and certificates based on a specific implementation `type`.
 

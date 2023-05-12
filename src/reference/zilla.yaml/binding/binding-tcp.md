@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (tcp)
+shortTitle: tcp 
 description: Zilla runtime tcp binding
 category:
   - Binding

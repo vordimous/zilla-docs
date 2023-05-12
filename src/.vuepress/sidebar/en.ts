@@ -25,7 +25,70 @@ export const enSidebar = sidebar({
       collapsible: true,
       prefix: "zilla.yaml/",
       link: "zilla.yaml/",
-      children: "structure",
+      children: [
+        {
+          text: "Bindings",
+          collapsible: false,
+          prefix: "binding/",
+          link: "binding/",
+          children: [
+            "binding-amqp.md",
+            "binding-echo.md",
+            "binding-fan.md",
+            "binding-filesystem.md",
+            "binding-grpc-kafka.md",
+            "binding-grpc.md",
+            "binding-http-filesystem.md",
+            "binding-http-kafka.md",
+            "binding-http.md",
+            "binding-kafka-grpc.md",
+            "binding-kafka.md",
+            "binding-mqtt.md",
+            "binding-proxy.md",
+            "binding-sse-kafka.md",
+            "binding-sse.md",
+            "binding-tcp.md",
+            "binding-tls.md",
+            "binding-ws.md",
+          ],
+        },
+        {
+          text: "Guards",
+          collapsible: false,
+          prefix: "guard/",
+          link: "guard/",
+          children: [
+            "guard-jwt.md",
+          ],
+        },
+        {
+          text: "Vaults",
+          collapsible: false,
+          prefix: "vault/",
+          link: "vault/",
+          children: [
+            "vault-filesystem.md",
+          ]
+        },
+        {
+          text: "Telemetry",
+          collapsible: false,
+          prefix: "telemetry/",
+          link: "telemetry/",
+          children: [
+            "telemetry-metric.md",
+            {
+              text: "Exporters",
+              collapsible: false,
+              prefix: "exporter/",
+              link: "exporter/",
+              children: [
+                "exporter-prometheus.md",
+              ]
+            },
+          ],
+        },
+      ],
     },
   ],
   "/": [

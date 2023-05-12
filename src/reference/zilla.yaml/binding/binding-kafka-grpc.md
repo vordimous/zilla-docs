@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (kafka-grpc) 🚧
+shortTitle: kafka-grpc  🚧
 description: Zilla runtime kafka-grpc binding
 category:
   - Binding
@@ -108,7 +108,7 @@ options:
 
 #### options.acks
 
-> `string`
+> `enum` [ "none", "leader_only", "in_sync_replicas" ]
 
 The `kafka` acknowledgment mode.
 

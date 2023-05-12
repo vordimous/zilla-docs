@@ -99,7 +99,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
 ### zilla.yaml
 
@@ -145,7 +145,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/zilla.yaml/vault/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
 ## Connect to Kafka over `TLS/SSL` using client certificates
 

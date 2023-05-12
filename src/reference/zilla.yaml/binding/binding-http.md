@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (http)
+shortTitle: http 
 description: Zilla runtime http binding
 category:
   - Binding
@@ -41,7 +41,7 @@ The `server` kind `http` binding decodes `HTTP/1.1` protocol or `HTTP/2` protoco
 
 Cross-Origin Resource Sharing (CORS) is supported by specifying an access control policy of `cross-origin`. Further configuration allows for finer-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed.
 
-Authorization is enforced by a [`guard`](guard.md) and the credentials can be extracted from a cookie, header or query parameter.
+Authorization is enforced by a [`guard`](../guard/README.md) and the credentials can be extracted from a cookie, header or query parameter.
 
 Conditional routes based on `http` request headers are used to route these application streams to an `exit` binding.
 

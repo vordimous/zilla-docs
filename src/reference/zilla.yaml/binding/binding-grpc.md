@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (grpc) 🚧
+shortTitle: grpc  🚧
 description: Zilla runtime grpc binding
 category:
   - Binding

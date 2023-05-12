@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (amqp) 🚧
+shortTitle: amqp  🚧
 description: Zilla runtime amqp binding (incubator)
 category:
   - Binding

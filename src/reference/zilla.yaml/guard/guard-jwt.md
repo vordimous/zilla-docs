@@ -1,5 +1,5 @@
 ---
-shortTitle: guard (jwt)
+shortTitle: jwt
 description: Zilla runtime jwt guard
 category:
   - Binding

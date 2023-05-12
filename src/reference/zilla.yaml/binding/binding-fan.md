@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (fan)
+shortTitle: fan 
 description: Zilla runtime fan binding
 category:
   - Binding

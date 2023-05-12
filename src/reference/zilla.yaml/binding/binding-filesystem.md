@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (filesystem)
+shortTitle: filesystem 
 description: Zilla runtime filesystem binding
 category:
   - Binding

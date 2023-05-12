@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (ws)
+shortTitle: ws 
 description: Zilla runtime ws binding
 category:
   - Binding

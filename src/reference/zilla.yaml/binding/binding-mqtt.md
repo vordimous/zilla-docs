@@ -1,5 +1,5 @@
 ---
-shortTitle: binding (mqtt) 🚧
+shortTitle: mqtt  🚧
 description: Zilla runtime mqtt binding (incubator)
 category:
   - Binding
