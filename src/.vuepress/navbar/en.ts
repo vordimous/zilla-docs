@@ -10,8 +10,8 @@ const versionLinks = <{ text: string; link: string }[]>(
 );
 
 export const enNavbar = navbar([
-  { text: "Get Started", icon: "play", link: "/get-started/quickstart/simple.md" },
-  { text: "Guides", icon: "bars-staggered", link: "/guides/kafka-proxies/rest-proxy.md" },
+  { text: "Get Started", icon: "play", link: "/get-started/install.md" },
+  { text: "Guides", icon: "bars-staggered", link: "/guides/kafka-proxies/grpc-proxy.md" },
   // { text: "Concepts", icon: "diagram-project", link: "/concepts/" },
   { text: "Reference", icon: "book", link: "/reference/zilla.yaml/" },
   { text: "version", icon: "list-ol", children: versionLinks },
