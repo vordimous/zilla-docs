@@ -9,29 +9,29 @@ tag:
 
 # Exporters
 
-Description
+Each configured `exporter` integrates with an external monitoring system to expose Zilla metrics.
 
 ## Configuration
 
-:::: note Properties
+Each runtime `exporter` has a behavioral type to support an external monitoring system.
 
-- [type\*](#type)
-
-::: right
-\* required
-:::
-
-::::
-
-## exporters
-
-named objects
+### Properties (generic)
 
 ### type\*
 
 > `enum` \[\
 > ["prometheus"](exporter-prometheus.md),\
 > \]
+
+Behavioral type supporting a specific external monitoring system.
+
+### Properties (type-specific)
+
+### options
+
+> `object`
+
+Type-specific options to configure the exporter.
 
 ---
 

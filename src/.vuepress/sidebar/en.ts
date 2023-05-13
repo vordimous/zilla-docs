@@ -76,7 +76,7 @@ export const enSidebar = sidebar({
           prefix: "telemetry/",
           link: "telemetry/",
           children: [
-            "telemetry-metric.md",
+            "metrics/README.md",
             {
               text: "Exporters",
               collapsible: false,

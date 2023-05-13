@@ -38,6 +38,6 @@ Map of named vaults.
 
 ### telemetry
 
-> `object` as map of named [`vault`](vault/README.md) properties
+> `object` of [`telemetry`](telemetry/README.md) properties
 
-Map of named vaults.
+Telemetry properties.

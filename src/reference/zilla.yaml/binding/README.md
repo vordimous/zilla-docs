@@ -47,6 +47,19 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 
 Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
+
 ### Properties (type-specific)
 
 ### kind

@@ -1,11 +1,11 @@
 ---
 shortTitle: Telemetry
-description: Zilla runtime telemetry type
+description: Zilla runtime telemetry
 category:
   - Telemetry
 ---
 
-# Telemetry root
+# Telemetry
 
 Description
 
@@ -13,6 +13,10 @@ Description
 telemetry:
   attributes:
     service.namespace: example
+  exporters:
+    ...
+  metrics:
+    ...
 ```
 
 ## Configuration
@@ -21,7 +25,19 @@ telemetry:
 
 > `object`
 
-Behavioral attributes.
+Default attributes to optionally include when exporting metrics.
+
+### exporters
+
+> `object` as map of named [`exporter`](exporter/README.md) properties
+
+Map of named exporters.
+
+### metrics
+
+> `array` of `string` of named [`metrics`](metrics/README.md)
+
+Array of named metrics.
 
 ---
 
