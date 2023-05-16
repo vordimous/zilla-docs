@@ -14,7 +14,6 @@ export default defineUserConfig({
       description: "The official documentation for the aklivity/zilla open-source project",
     },
   },
-  
   head: [
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
       [
@@ -31,7 +30,6 @@ export default defineUserConfig({
   ],
 
   theme,
-  
   plugins: [
     googleAnalyticsPlugin({
       id: 'G-Q2XWKQS14L',

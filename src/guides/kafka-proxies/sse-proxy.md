@@ -1,6 +1,6 @@
 # SSE Proxy
 
-There is an increasing rise in integrating the event stream into frontends where companies are starting to adopt Server-sent Events (SSE) standards. `SSE` naturally fits into the event-driven architecture and you will be able to take advantage of all the benefits it provides such as SDK-free and the ability to auto-reconnect in case of an unstable connection(Be resilient to faults). Zilla supports SSE protocol that you can easily configure the frontend SSE with Kafka topic.
+There is an increasing rise in integrating the event stream into front ends where companies are starting to adopt Server-sent Events (SSE) standards. `SSE` naturally fits into the event-driven architecture and you will be able to take advantage of all the benefits it provides such as SDK-free and the ability to auto-reconnect in case of an unstable connection(Be resilient to faults). Zilla supports SSE protocol that you can easily configure the frontend SSE with Kafka topic.
 
 A brief explanation of replaceable values from the config examples below:
 
@@ -40,8 +40,8 @@ As shown above you can describe your event id in case you want to retrieve the m
 
 ### Authorization
 
-Similar to [REST Proxy](rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
+Similar to [REST Proxy](../../guides/kafka-proxies/rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
 
 ### More
 
-For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/zilla.yaml/binding-sse.md), [SSE-Kafka Binding](../../reference/zilla.yaml/binding-sse-kafka.md).
+For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/zilla.yaml/binding/binding-sse.md), [SSE-Kafka Binding](../../reference/zilla.yaml/binding/binding-sse-kafka.md).

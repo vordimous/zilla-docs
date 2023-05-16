@@ -14,10 +14,10 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 
 The Zilla Runtime command line interface supports the following commands.
 
-|                            |                          |
-| -------------------------- | ------------------------ |
-| [`zilla help`](help.md)   | Display help information |
-| [`zilla load`](load.md) 🚧 | Show engine load         |
-| [`zilla start`](start.md)  | Start engine             |
-| [`zilla stop`](stop.md)    | Stop engine              |
-| [`zilla tune`](tune.md)    | Tune engine              |
+|                               |                           |
+| ----------------------------- | ------------------------- |
+| [`zilla help`](help.md)       | Display help information  |
+| [`zilla metrics`](metrics.md) | Report metrics            |
+| [`zilla start`](start.md)     | Start engine              |
+| [`zilla stop`](stop.md)       | Stop engine               |
+| [`zilla tune`](tune.md) 🚧    | Tune engine               |

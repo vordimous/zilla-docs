@@ -11,7 +11,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ### Configure Endpoints
 
-Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/zilla.yaml/binding-http-kafka.md) binding in `zilla.yaml`.
+Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/zilla.yaml/binding/binding-http-kafka.md) binding in `zilla.yaml`.
 
 Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`, `DELETE`, and `PATCH` .
 
@@ -41,7 +41,7 @@ bindings:
 :::
 
 ::: info NOTE
-When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/zilla.yaml/binding-http-kafka.md#with-capability-produce) as well.
+When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/zilla.yaml/binding/binding-http-kafka.md#with-capability-produce) as well.
 :::
 
 Kafka **Fetch** capability with HTTP request methods such as `GET` :
@@ -102,7 +102,7 @@ bindings:
 
 ### CORS
 
-Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/zilla.yaml/binding-http.md).
+Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/zilla.yaml/binding/binding-http.md).
 
 ### zilla.yaml
 
@@ -130,7 +130,7 @@ http_server0:
 
 ### Authorization
 
-Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/zilla.yaml/guard.md) where you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../reference/zilla.yaml/guard-jwt.md)  mechanism to authorize the endpoint.
+Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/zilla.yaml/guard/README.md) where you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../reference/zilla.yaml/guard/guard-jwt.md)  mechanism to authorize the endpoint.
 
 The information about keys and other details such as issuer and audience you can get from `JWT` providers for example in the case of Auth0 you can use the command below.
 
@@ -200,4 +200,4 @@ bindings:
 
 ### More
 
-For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/zilla.yaml/binding-http.md), [HTTP-Kafka Binding](../../reference/zilla.yaml/binding-http-kafka.md), and [Guard(JWT)](../../reference/zilla.yaml/guard-jwt.md).
+For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/zilla.yaml/binding/binding-http.md), [HTTP-Kafka Binding](../../reference/zilla.yaml/binding/binding-http-kafka.md), and [Guard(JWT)](../../reference/zilla.yaml/guard/guard-jwt.md).

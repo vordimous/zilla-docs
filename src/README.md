@@ -7,13 +7,13 @@ heroImageDark: /zilla-rings@2x.png
 heroText: Introduction
 tagline: Zilla is an API Gateway for event-driven architectures. It securely interfaces web apps, IoT clients, and microservices to Apache Kafka® via declaratively defined API endpoints.
 actions:
-  - text: " Zilla in Action"
-    link: /examples/todo-app/build.html
+  - text: " Quickstart"
+    link: /get-started/quickstart/simple.html
     type: primary
-    icon: code
+    icon: stopwatch
 
   - text: " Install"
-    link: /get-started/install/index.html
+    link: /get-started/install.html
     icon: download
 
 features:
@@ -21,12 +21,12 @@ features:
   - title: Get Started
     icon: play
     details: Install Zilla, connect it to your Kafka Cluster, and define your first API endpoints.
-    link: /get-started/install/
+    link: /get-started/install.html
 
   - title: Todo App Example
     icon: diagram-project
     details: Create a Todo application using a CQRS design pattern that's backed by Apache Kafka and Zilla.
-    link: /examples/todo-app/build.html
+    link: /get-started/todo-app/build.html
 
   - title: Kafka Proxies
     icon: arrows-left-right-to-line

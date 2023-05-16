@@ -17,7 +17,6 @@ switch (versionKey) {
 }
 export const docsBranch = repoTree;
 
-
 console.log("Configured env variables:", {
     siteBase,
     dist,

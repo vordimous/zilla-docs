@@ -25,7 +25,70 @@ export const enSidebar = sidebar({
       collapsible: true,
       prefix: "zilla.yaml/",
       link: "zilla.yaml/",
-      children: "structure",
+      children: [
+        {
+          text: "Bindings",
+          collapsible: false,
+          prefix: "binding/",
+          link: "binding/",
+          children: [
+            "binding-amqp.md",
+            "binding-echo.md",
+            "binding-fan.md",
+            "binding-filesystem.md",
+            "binding-grpc-kafka.md",
+            "binding-grpc.md",
+            "binding-http-filesystem.md",
+            "binding-http-kafka.md",
+            "binding-http.md",
+            "binding-kafka-grpc.md",
+            "binding-kafka.md",
+            "binding-mqtt.md",
+            "binding-proxy.md",
+            "binding-sse-kafka.md",
+            "binding-sse.md",
+            "binding-tcp.md",
+            "binding-tls.md",
+            "binding-ws.md",
+          ],
+        },
+        {
+          text: "Guards",
+          collapsible: false,
+          prefix: "guard/",
+          link: "guard/",
+          children: [
+            "guard-jwt.md",
+          ],
+        },
+        {
+          text: "Vaults",
+          collapsible: false,
+          prefix: "vault/",
+          link: "vault/",
+          children: [
+            "vault-filesystem.md",
+          ]
+        },
+        {
+          text: "Telemetry",
+          collapsible: false,
+          prefix: "telemetry/",
+          link: "telemetry/",
+          children: [
+            "metrics/README.md",
+            {
+              text: "Exporters",
+              collapsible: false,
+              prefix: "exporter/",
+              link: "exporter/",
+              children: [
+                "exporter-prometheus.md",
+              ]
+            },
+          ],
+        },
+      ],
     },
   ],
   "/": [
@@ -34,27 +97,28 @@ export const enSidebar = sidebar({
       text: "Get Started",
       icon: "play",
       collapsible: true,
-      prefix: "get-started/",     
+      prefix: "get-started/",
       children: [
+        "install.md",
+        "vscode/README.md",
         {
-          text: "Install",
-          icon: "download",
+          text: "Quickstarts",
+          icon: "stopwatch",
           collapsible: false,
-          prefix: "install/",
-          link: "install/",
+          prefix: "quickstart/",
+          children: [
+            "simple.md",
+            "rest.md",
+            "grpc.md",
+            "sse.md",
+          ]
         },
         {
-          text: "Connecting to Kafka",
-          icon: "plug",
-          collapsible: true,
-          prefix: "connecting-to-kafka/",
-          children: [
-            "generic.md",
-            "aiven.md",
-            "amazon-msk.md",
-            "confluent-cloud.md",
-            "redpanda.md",
-          ],
+          text: "Todo App",
+          icon: "check",
+          collapsible: false,
+          prefix: "todo-app/",
+          children: "structure",
         },
       ],
     },
@@ -66,9 +130,15 @@ export const enSidebar = sidebar({
       children: [
         {
           text: "Configuring Kafka Proxies",
+          icon: "gear",
           collapsible: false,
           prefix: "kafka-proxies/",
           children: [
+            {
+              text: "gRPC Proxy",
+              icon: "circle-nodes",
+              link: "grpc-proxy.md",
+            },
             {
               text: "REST Proxy",
               icon: "arrow-right-arrow-left",
@@ -78,26 +148,31 @@ export const enSidebar = sidebar({
               text: "SSE Proxy",
               icon: "fa-brands fa-html5",
               link: "sse-proxy.md",
-            },            
-
+            },
+          ],
+        },
+        {
+          text: "Connecting to Kafka",
+          icon: "plug",
+          collapsible: false,
+          prefix: "connecting-to-kafka/",
+          children: [
+            "generic.md",
+            "aiven.md",
+            "amazon-msk.md",
+            "confluent-cloud.md",
+            "redpanda.md",
           ],
         },
       ],
     },
-    {
-      text: "Examples",
-      icon: "diagram-project",
-      collapsible: true,
-      prefix: "examples/",
-      children: [
-        {
-          text: "Todo App",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
-        },
-      ],
-    },
+    // {
+    //   text: "Concepts",
+    //   icon: "diagram-project",
+    //   prefix: "concepts/",
+    //   collapsible: true,
+    //   children: "structure"
+    // },
     {
       text: "Reference",
       icon: "book",
