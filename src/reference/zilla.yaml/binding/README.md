@@ -32,10 +32,13 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 > ["echo"](binding-echo.md),\
 > ["fan"](binding-fan.md),\
 > ["filesystem"](binding-filesystem.md),\
+> ["grpc"](binding-grpc.md),\
+> ["grpc-kafka"](binding-grpc-kafka.md),\
 > ["http"](binding-http.md),\
 > ["http-filesystem"](binding-http-filesystem.md),\
 > ["http-kafka"](binding-http-kafka.md),\
 > ["kafka"](binding-kafka.md),\
+> ["kafka-grpc"](binding-kafka-grpc.md),\
 > ["mqtt"](binding-mqtt.md),\
 > ["proxy"](binding-proxy.md),\
 > ["sse"](binding-sse.md),\

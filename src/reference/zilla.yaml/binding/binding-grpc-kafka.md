@@ -1,5 +1,5 @@
 ---
-shortTitle: grpc-kafka  🚧
+shortTitle: grpc-kafka
 description: Zilla runtime grpc-kafka binding
 category:
   - Binding
@@ -7,7 +7,7 @@ tag:
   - Proxy
 ---
 
-# grpc-kafka Binding 🚧
+# grpc-kafka Binding
 
 Zilla runtime grpc-kafka binding.
 
