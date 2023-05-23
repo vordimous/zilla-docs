@@ -23,7 +23,7 @@ export default hopeTheme({
   navbarLayout: {
     start: ["Brand"],
     center: [],
-    end: ["Search", "Links", "Repo", "Outlook"],
+    end: ["Links", "Search", "Repo", "Outlook"],
   },
 
   pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
