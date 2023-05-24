@@ -159,7 +159,7 @@ curl http://localhost:8080/items
 
 output:
 
-```bash:no-line-numbers
+```json:no-line-numbers
 [{"greeting":"Hello, world"}]
 ```
 

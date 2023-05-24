@@ -25,3 +25,8 @@ html[data-theme=light] #app {
         content: url("/assets/footer-logo.png");
     }
 }
+
+pre.language-bash:before {
+    content: "$ ";
+    font-weight: bold;
+}

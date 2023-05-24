@@ -507,7 +507,9 @@ Let's verify the Tasks API using `curl` as shown below.
 curl -v http://localhost:8080/tasks
 ```
 
-```bash:no-line-numbers
+output:
+
+```text:no-line-numbers
 > GET /tasks HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.79.1

@@ -10,10 +10,13 @@ docker run ghcr.io/aklivity/zilla:latest start -v
 
 The output should display the zilla config and `started` to know zilla is ready for traffic.
 
-```bash:no-line-numbers
+```text:no-line-numbers
+// default Zilla config
 {
   "name": "default"
 }
+
+// Zilla status
 started
 ```
 
@@ -39,14 +42,14 @@ docker run -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:lat
 
 Go to the [Zilla artifacthub](https://artifacthub.io/) page to find out more on how to install Zilla using Helm
 
-## TL;DR
+### TL;DR
 
-```shell
+```bash:no-line-numbers
 helm install zilla . --namespace zilla --create-namespace --wait \
     --values values.yaml \
     --set-file zilla\\.yaml=zilla.yaml
 ```
 
-## Configuration
+### Configuration
 
 Zilla specific configuration is in the `zilla.yaml` file which can be included in the helm install by adding `--set-file zilla\\.yaml=zilla.yaml` to your command.

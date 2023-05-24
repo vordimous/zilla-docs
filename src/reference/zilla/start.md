@@ -6,20 +6,20 @@ description: Starts the engine
 
 The `zilla start` command resolves the [Zilla Runtime Configuration](../zilla.yaml/) in `zilla.yaml` to start the runtime engine.
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zilla start
 ```
 
-### Options
+## Options
 
 |              |                                                          |
 | ------------ | -------------------------------------------------------- |
 | `--verbose`  | Show verbose output                                      |
 | `--workers`  | Worker count<br>Defaults to # CPU cores available        |
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zilla start --verbose

@@ -212,7 +212,7 @@ With the location input set to `http://localhost:8080/events` you can click the 
 
 output:
 
-```bash:no-line-numbers
+```text:no-line-numbers
 ...
 message: Hello, world Wed May 10 14:25:45 UTC 2023
 
@@ -473,7 +473,7 @@ With the location input set to `http://localhost:8080/events` you can click the 
 
 output:
 
-```bash:no-line-numbers
+```text:no-line-numbers
 ...
 message: Hello, world Wed May 10 14:25:45 UTC 2023
 

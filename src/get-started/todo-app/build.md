@@ -32,7 +32,7 @@ Run `docker swarm init if you already haven't done to initiate`Swarm orchestrato
 
 Let's create `stack.yml` and add `Apache Kafka` (or `Redpanda`).
 
-::: code-tabs#shell
+::: code-tabs#bash
 
 @tab Apache Kafka
 
@@ -181,11 +181,11 @@ docker service logs example_init-topics --follow --raw
 
 Make sure you see this output at the end of the `example_init-topics` service logs.
 
-::: code-tabs#shell
+::: code-tabs#text
 
 @tab Apache Kafka
 
-```bash:no-line-numbers
+```text:no-line-numbers
 ## Creating the Kafka topics
 Created topic task-commands.
 Created topic task-replies.
@@ -199,7 +199,7 @@ task-snapshots
 
 @tab Redpanda
 
-```bash:no-line-numbers
+```text:no-line-numbers
 CLUSTER
 =======
 redpanda.initializing
@@ -247,9 +247,9 @@ The `ValidateCommand` Kafka Streams processor implements optimistic locking by e
 Let's checkout and build the service by running the commands below.
 
 ```bash:no-line-numbers
-git clone https://github.com/aklivity/todo-service
-cd todo-service
-./mvnw clean install
+git clone https://github.com/aklivity/todo-service && \
+cd todo-service && \
+./mvnw clean install && \
 cd ..
 ```
 
@@ -257,8 +257,9 @@ This will checkout and build `todo-service:latest` image.
 
 Open `stack.yml` file and add the Todo service into the stack:
 
-### stack.yml
+::: code-tabs#yaml
 
+@tab stack.yml
 ```yaml
   ...
   todo-service:
@@ -273,25 +274,28 @@ Open `stack.yml` file and add the Todo service into the stack:
       TASK_REPLIES_TOPIC: task-replies
 ```
 
+:::
+
 Run the command below to deploy the `todo-service` to your existing stack.
 
 ```bash:no-line-numbers
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-Output:
-::: code-tabs#shell
+output:
+
+::: code-tabs#text
 
 @tab Apache Kafka
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Creating service example_todo-service
 Updating service example_kafka (id: st4hq1bwjsom5r0jxnc6i9rgr)
 ```
 
 @tab Redpanda
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Creating service example_todo-service
 Updating service example_redpanda (id: ilmfqpwf35b7ftd6cvzdis8au)
 ```
@@ -572,11 +576,11 @@ Run the below command as this will deploy the `zilla` service to the existing st
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-::: code-tabs#shell
+::: code-tabs#bash
 
 @tab Apache Kafka
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Updating service example_kafka (id: st4hq1bwjsom5r0jxnc6i9rgr)
 Updating service example_todo-service (id: ojbj2kbuft22egy854xqv8yo8)
 Creating service example_zilla
@@ -584,7 +588,7 @@ Creating service example_zilla
 
 @tab Redpanda
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Updating service example_redpanda (id: ilmfqpwf35b7ftd6cvzdis8au)
 Updating service example_todo-service (id: 1tq9nktlvcwxeh3wzhmj02cvd)
 Creating service example_zilla
@@ -609,7 +613,7 @@ curl -X POST http://localhost:8080/tasks \
 curl http://localhost:8080/tasks
 ```
 
-```bash:no-line-numbers
+```text:no-line-numbers
 id:["NTk1OEY5QTItODMxOS00ODZCLUJENDMtMkY4MEZERTg3MjIz","AQIAAg==/1"]
 data:{"name":"Read the docs"}
 ```
@@ -627,7 +631,7 @@ curl -X POST http://localhost:8080/tasks \
 
 The `GET /tasks` stream automatically receives the update when the new task is created.
 
-```bash:no-line-numbers
+```text:no-line-numbers
 id:["NUMxQTkwQTMtQUVCNS00OTZGLUJBMDAtNDJEMUQ4MDVCMjFC","AQIABA==/1"]
 data:{"name":"Join the Slack community"}
 

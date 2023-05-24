@@ -59,7 +59,7 @@ echo "Hello, world" | nc localhost 12345
 
 output:
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Hello, world
 ```
 
@@ -135,7 +135,7 @@ curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:
 
 output:
 
-```bash:no-line-numbers
+```text:no-line-numbers
 Hello, world
 ```
 

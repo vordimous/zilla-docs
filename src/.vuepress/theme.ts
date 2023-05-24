@@ -47,7 +47,6 @@ export default hopeTheme({
     autoCatalog: {
       level: 1
     },
-    // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,
       attrs: true,

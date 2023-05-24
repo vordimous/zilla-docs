@@ -42,7 +42,7 @@ aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_AUTHORITY_AR
 
 #### output
 
-```bash:no-line-numbers
+```text:no-line-numbers
 ----BEGIN CERTIFICATE-----
 MIIEdzCCA1+gAwIBAgIQDLtFK9uDUb6VpObjhusyhTANBgkqhkiG9w0BAQsFADAS
 ......
@@ -58,7 +58,7 @@ Copy first certificate and save it as `client.cert`
 
 #### client.cert
 
-```bash:no-line-numbers
+```text:no-line-numbers
 ----BEGIN CERTIFICATE-----
 MIIEdzCCA1+gAwIBAgIQDLtFK9uDUb6VpObjhusyhTANBgkqhkiG9w0BAQsFADAS
 ......
