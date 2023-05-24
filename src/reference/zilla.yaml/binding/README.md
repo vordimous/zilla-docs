@@ -40,6 +40,7 @@ Each runtime `binding` has a behavioral type supporting either encoding and deco
 > ["kafka"](binding-kafka.md),\
 > ["kafka-grpc"](binding-kafka-grpc.md),\
 > ["mqtt"](binding-mqtt.md),\
+> ["mqtt-kafka"](binding-mqtt-kafka.md),\
 > ["proxy"](binding-proxy.md),\
 > ["sse"](binding-sse.md),\
 > ["sse-kafka"](binding-sse-kafka.md),\

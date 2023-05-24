@@ -17,16 +17,16 @@ mqtt_server0:
   kind: server
   routes:
     - when:
-        - topic: echo
+        - topic: messages
           capabilities: publish_and_subscribe
-      exit: echo_server0
+      exit: mqtt_kafka_proxy0
 ```
 
 ## Summary
 
 Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
 
-The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`.
+The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`. The `session` state is also described by a higher level application stream.
 
 Conditional routes based on the `topic` `name` are used to route these application streams to an `exit` binding.
 
@@ -105,9 +105,9 @@ Topic name.
 
 #### when[].capabilities
 
-> `enum` [ "publish_only", "subscribe_only", "publish_and_subscribe" ]
+> `enum` [ "session", "publish_only", "subscribe_only", "publish_and_subscribe" ]
 
-Publish or subscribe, or both.\
+Session, publish, subscribe, or both publish and subscribe.\
 Defaults to `"publish_and_subscribe"`.
 
 ### routes[].exit\*
@@ -117,7 +117,7 @@ Defaults to `"publish_and_subscribe"`.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: mqtt_kafka_proxy0
 ```
 
 ---
