@@ -1,0 +1,73 @@
+name: Release latest with Gitflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      version-tag:
+        required: true
+        description: The version tag to use
+
+permissions: write-all
+
+concurrency:
+  group: "gitflow-release"
+  cancel-in-progress: true
+
+env:
+  DeployBranch: deploy/${{ github.event.inputs.version-tag }}
+
+jobs:
+  release:
+    if: ${{ github.ref == 'refs/heads/main' && (github.actor == github.repository_owner || github.actor.role == 'Maintainer') == true }}
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: validate version-tag
+        uses: actions-ecosystem/action-regex-match@v2.0.2
+        id: validate-version-tag
+        with:
+          text: ${{ github.event.inputs.version-tag }}
+          regex: '^v[0-9]+\.[0-9]+\.[0-9]+'
+
+      - if: ${{ steps.validate-version-tag.outputs.match != github.event.inputs.version-tag }}
+        name: Version must be "v#.#.#"
+        run: exit 1;
+
+      - uses: actions/checkout@v3
+      
+      - name: Merge and tag ${{ github.event.inputs.version-tag }} with HDBandit/gitflow-release-action
+        uses: vordimous/gitflow-release-action@main
+        with:
+          command: start_finish
+          tag: ${{ github.event.inputs.version-tag }}
+          main_branch: main
+
+      - name: update deployed version to ${{ github.event.inputs.version-tag }}
+        env:
+            TAG: ${{ github.event.inputs.version-tag }}
+        run: |
+          tmpfile=$(mktemp);
+
+          cp deploy-versions.json "$tmpfile";
+          jq -c --arg newtag "$TAG" \
+              '
+              (
+                  .. |
+                  select(type == "object" and .key? == "latest").tag
+              ) |= $newtag' deploy-versions.json >"$tmpfile";
+          mv "$tmpfile" deploy-versions.json;
+          rm -f "$tmpfile";
+          
+      - name: Create branch ${{ env.DeployBranch }} with stefanzweifel/git-auto-commit-action@v4
+        uses: vordimous/git-auto-commit-action@master
+        with:
+          commit_message: update deployed version to ${{ github.event.inputs.version-tag }}
+          branch: ${{ env.DeployBranch }}
+          create_branch: true
+          file_pattern: 'deploy-versions.json'
+
+      - name: create pull request
+        run: gh pr create -H $DeployBranch -B develop --title "Merge onto develop to set $TAG as latest" --body "Created by Github action"
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            TAG: ${{ github.event.inputs.version-tag }}
