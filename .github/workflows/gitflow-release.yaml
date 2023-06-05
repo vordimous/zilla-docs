@@ -1,0 +1,104 @@
+name: Release latest with Gitflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      version-change:
+        required: true
+        type: choice
+        description: Specify version to increment
+        options:
+          - patch
+          - minor
+          - major
+          - custom
+      custom-version:
+        description: The version tag to use
+
+concurrency:
+  group: "gitflow-release"
+  cancel-in-progress: true
+
+env:
+  IS_CUSTOM_VERSION: ${{ github.event.inputs.version-change == 'custom' }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check actor permission
+        uses: skjnldsv/check-actor-permission@v2.1
+        with:
+          require: Maintainer
+
+      - if: ${{ env.IS_CUSTOM_VERSION }}
+        name: validate custom-version
+        uses: actions-ecosystem/action-regex-match@v2.0.2
+        id: validate-custom-version
+        with:
+          text: ${{ github.event.inputs.custom-version }}
+          regex: '^[0-9]+\.[0-9]+\.[0-9]+'
+
+      - if: ${{ env.IS_CUSTOM_VERSION && steps.validate-custom-version.outputs.match != github.event.inputs.custom-version }}
+        name: Custom Version must be "#.#.#"
+        run: echo "Custom Version must be #.#.#" exit 1;
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
+
+      - name: get new version
+        id: new-version
+        run: |
+          if ${{ env.IS_CUSTOM_VERSION }}; then
+            tag=$(npm version ${{ github.event.inputs.custom-version }} --git-tag-version=false);
+          else
+            tag=$(npm version ${{ github.event.inputs.version-change }} --git-tag-version=false);
+          fi
+          echo "version=$(npm version --json=true | jq -r '.zilla_docs')" >> $GITHUB_OUTPUT;
+          echo "tag=$tag" >> $GITHUB_OUTPUT;
+
+      - name: merge and tag ${{ steps.new-version.outputs.tag }} with HDBandit/gitflow-release-action
+        uses: vordimous/gitflow-release-action@main
+        with:
+          command: start
+          tag: ${{ steps.new-version.outputs.tag }}
+          main_branch: main
+
+      - name: set owner of current branch # TODO: might be a symptom of the gitflow-release-action script
+        run: sudo chown -R $(whoami) ${{ github.workspace }};
+
+      - name: increment package.json version
+        run: npm version ${{ steps.new-version.outputs.version }} --git-tag-version=false
+
+      - name: update deployed version to ${{ steps.new-version.outputs.tag }}
+        env:
+          TAG: ${{ steps.new-version.outputs.tag }}
+        run: |
+          tmpfile=$(mktemp);
+
+          cp deploy-versions.json "$tmpfile";
+          jq -c --arg newtag "$TAG" \
+              '(
+                  .. |
+                  select(type == "object" and .key? == "latest").tag
+              ) |= $newtag' deploy-versions.json >"$tmpfile";
+          mv "$tmpfile" deploy-versions.json;
+          rm -f "$tmpfile";
+          cat deploy-versions.json;
+
+      - name: commit version changes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .;
+          git commit -m "CI: update version to ${{ steps.new-version.outputs.version }}";
+
+      - name: merge and tag ${{ steps.new-version.outputs.tag }} with HDBandit/gitflow-release-action
+        uses: vordimous/gitflow-release-action@main
+        with:
+          command: finish
+          tag: ${{ steps.new-version.outputs.tag }}
+          main_branch: main

@@ -35,7 +35,7 @@ jobs:
           key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2.2.4
         with:
           version: 8
           run_install: true
