@@ -3,7 +3,6 @@ import { enSidebar } from "./sidebar/index.js";
 import { enNavbar } from "./navbar/index.js";
 import { hostnameSEO, docsRepo, docsBranch } from "./env.js";
 
-
 export default hopeTheme({
   hostname: hostnameSEO,
   logo: "/logo-dark.png",

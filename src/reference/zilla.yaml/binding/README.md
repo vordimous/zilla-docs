@@ -63,7 +63,6 @@ Telemetry properties for the binding.
 
 Metric names to record for the binding.
 
-
 ### Properties (type-specific)
 
 ### kind

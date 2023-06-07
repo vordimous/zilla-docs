@@ -144,7 +144,6 @@ jobs:
           directory: ${{ env.DistDir }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
-
   deployGithubPages:
     if: github.repository_owner != 'aklivity'
     runs-on: ubuntu-latest
