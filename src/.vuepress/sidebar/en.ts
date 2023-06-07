@@ -119,7 +119,7 @@ export const enSidebar = sidebar({
           collapsible: false,
           prefix: "quickstart/",
           children: [
-            "simple.md",
+            "simple/README.md",
             "rest.md",
             "grpc.md",
             "sse.md",

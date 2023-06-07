@@ -14,7 +14,7 @@ Running this Zilla setup will simply echo back any text sent to the server over 
 
 @tab zilla.yaml
 
-@[code](tcp_zilla.yaml)
+@[code](./tcp_zilla.yaml)
 
 :::
 
@@ -55,57 +55,6 @@ Hello, world
 ```bash:no-line-numbers
 docker rm -f zilla-quickstart
 ```
-
-## Zilla Prometheus Metrics
-
-Running this Zilla quickstart will simply echo back any text sent to the server at port `8080`.
-
-::: code-tabs#yaml
-
-@tab zilla.yaml
-
-@[code](./metrics_zilla.yaml)
-
-:::
-
-### Run Zilla
-
-Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
-
-::: code-tabs#yaml
-
-@tab Docker 23
-
-```bash:no-line-numbers
-docker run -d -v ./zilla.yaml:/etc/zilla/zilla.yaml --name zilla-quickstart -p 8080:8080/tcp ghcr.io/aklivity/zilla:latest start -v
-```
-
-@tab Docker 20
-
-```bash:no-line-numbers
-docker run -d -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml --name zilla-quickstart -p 8080:8080 ghcr.io/aklivity/zilla:latest start -v
-```
-
-:::
-
-### Use `curl` to hear your echo
-
-```bash:no-line-numbers
-curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:8080/
-```
-
-output:
-
-```bash:no-line-numbers
-Hello, world
-```
-
-### Remove the running container
-
-```bash:no-line-numbers
-docker rm -f zilla-quickstart
-```
-
 
 ## HTTP Echo
 
@@ -149,6 +98,64 @@ output:
 
 ```text:no-line-numbers
 Hello, world
+```
+
+### Remove the running container
+
+```bash:no-line-numbers
+docker rm -f zilla-quickstart
+```
+
+## Zilla Prometheus Metrics
+
+Running this Zilla quickstart will collect basic metrics for an http service.
+
+::: code-tabs#yaml
+
+@tab zilla.yaml
+
+@[code](./metrics_zilla.yaml)
+
+:::
+
+### Run Zilla
+
+Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
+
+::: code-tabs#yaml
+
+@tab Docker 23
+
+```bash:no-line-numbers
+docker run -d -v ./zilla.yaml:/etc/zilla/zilla.yaml --name zilla-quickstart -p 8080:8080/tcp ghcr.io/aklivity/zilla:latest start -v
+```
+
+@tab Docker 20
+
+```bash:no-line-numbers
+docker run -d -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml --name zilla-quickstart -p 8080:8080 ghcr.io/aklivity/zilla:latest start -v
+```
+
+:::
+
+### Use `curl` to hear your echo
+
+```bash:no-line-numbers
+curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:8080/
+```
+
+output:
+
+```bash:no-line-numbers
+Hello, world
+```
+
+### Observe the Prometheus metrics
+
+Go to [http://localhost:8080/metrtics](http://localhost:8080/metrtics) to see the collected data or run the below `curl` command.
+
+```bash:no-line-numbers
+curl http://localhost:8080/metrtics
 ```
 
 ### Remove the running container
