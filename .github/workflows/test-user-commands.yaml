@@ -1,0 +1,22 @@
+name: Test User Commands
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  basic_quickstarts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check TCP-example
+        run: cd src/get-started/quickstart/basics && sh tcp_docker_run.sh
+        
+      - name: Check HTTP-example
+        run: cd src/get-started/quickstart/basics && sh http_docker_run.sh
+        
+      - name: Check Metrics-example
+        run: cd src/get-started/quickstart/basics && sh metric_docker_run.sh
