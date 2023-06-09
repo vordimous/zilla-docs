@@ -2,11 +2,11 @@
 description: Running these Zilla quickstarts will introduce some simple features.
 ---
 
-# Simple Quickstart
+# Basic Quickstarts
 
 Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker](https://docs.docker.com/get-docker/).
 
-## TCP connection
+## Simple TCP connection
 
 Running this Zilla setup will simply echo back any text sent to the server over `tcp` at port `12345`.
 
@@ -18,7 +18,7 @@ Running this Zilla setup will simply echo back any text sent to the server over 
 
 :::
 
-### Run Zilla
+### Run the TCP server
 
 Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
 
@@ -42,15 +42,15 @@ start -v;
 
 ### Use `netcat` to send a text payload
 
-@[code{30-30} bash:no-line-numbers](./tcp_docker_run.sh)
+@[code{31-31} bash:no-line-numbers](./tcp_docker_run.sh)
 
 > Hello, world
 
 Remove the running container
 
-@[code{33-33} bash:no-line-numbers](./tcp_docker_run.sh)
+@[code{34-34} bash:no-line-numbers](./tcp_docker_run.sh)
 
-## HTTP Echo
+## Simple HTTP Echo
 
 Running this Zilla quickstart will simply echo back any text sent to the server at port `8080`.
 
@@ -62,7 +62,7 @@ Running this Zilla quickstart will simply echo back any text sent to the server 
 
 :::
 
-### Run Zilla
+### Run the HTTP server
 
 Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
 
@@ -106,7 +106,7 @@ Running this Zilla quickstart will collect basic metrics for an http service.
 
 :::
 
-### Run Zilla
+### Run Zilla with telemetry
 
 Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
 
@@ -128,7 +128,7 @@ start -v;
 
 :::
 
-### Send a HTTP POST
+### Send an HTTP POST
 
 @[code{31-31} bash:no-line-numbers](./metrics_docker_run.sh)
 
@@ -167,3 +167,7 @@ Remove the running container
 ## Going Deeper
 
 Try out the other [Zilla examples](https://github.com/aklivity/zilla-examples).
+
+- [tcp.echo](https://github.com/aklivity/zilla-examples/tree/main/tcp.echo)
+- [http.echo](https://github.com/aklivity/zilla-examples/tree/main/http.echo)
+- [kubernetes.prometheus.autoscale](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale)

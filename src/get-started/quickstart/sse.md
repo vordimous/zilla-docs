@@ -208,9 +208,7 @@ If the page won't load the likely cause is Zilla and the SSE server are still st
 
 ### Click `Go`
 
-With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.
-
-output:
+With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
 
 ```text:no-line-numbers
 ...
@@ -469,9 +467,7 @@ If the page won't load the likely cause is Zilla and Kafka are still starting up
 
 ### Click `Go`
 
-With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.
-
-output:
+With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
 ```text:no-line-numbers
 ...
