@@ -157,11 +157,7 @@ if you get this response `curl: (52) Empty reply from server`, the likely cause 
 curl http://localhost:8080/items
 ```
 
-output:
-
-```json:no-line-numbers
-[{"greeting":"Hello, world"}]
-```
+> [{"greeting":"Hello, world"}]
 
 ### Remove the running containers
 

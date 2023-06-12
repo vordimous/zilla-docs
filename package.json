@@ -1,5 +1,5 @@
 {
-  "name": "zilla_docs",
+  "name": "zilla-docs",
   "version": "0.0.6",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],
@@ -17,11 +17,11 @@
     "update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.62",
-    "@vuepress/plugin-docsearch": "2.0.0-beta.62",
-    "@vuepress/plugin-google-analytics": "2.0.0-beta.62",
+    "@vuepress/client": "2.0.0-beta.63",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.63",
+    "@vuepress/plugin-google-analytics": "2.0.0-beta.63",
     "vue": "^3.3.4",
-    "vuepress": "2.0.0-beta.62",
-    "vuepress-theme-hope": "2.0.0-beta.212"
+    "vuepress": "2.0.0-beta.63",
+    "vuepress-theme-hope": "2.0.0-beta.223"
   }
 }

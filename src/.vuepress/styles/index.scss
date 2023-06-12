@@ -13,14 +13,23 @@
 html[data-theme=dark] #app {
     --code-highlight-line-color: #0e5c49;
     --border-color: #0e5c49;
+    --tab-nav-bg-color: var(--code-tabs-nav-bg-color);
+    --tab-nav-hover-color: var(--code-tabs-nav-hover-color);
+    --tab-bg-color: var(--code-bg-color);
+    --tab-nav-text-color: var(--code-tabs-nav-text-color);
     .footer img.logo {
         content: url("/assets/footer-logo-white.png");
     }
 }
 
 html[data-theme=light] #app {
-    --code-highlight-line-color: #8ef6dc;
+    --code-highlight-line-color: #79d4bd;
     --border-color: #55877a;
+    --code-bg-color: #f6f8fa;
+    --tab-nav-bg-color: var(--code-tabs-nav-bg-color);
+    --tab-nav-hover-color: var(--code-tabs-nav-hover-color);
+    --tab-bg-color: var(--code-bg-color);
+    --tab-nav-text-color: var(--code-tabs-nav-text-color);
     .footer img.logo {
         content: url("/assets/footer-logo.png");
     }

@@ -16,13 +16,13 @@ telemetry:
   metrics:
     - grpc.active.requests
     - grpc.duration
-    - grpc.response.size
+    - grpc.request.size
     - grpc.response.size
     - grpc.requests.per.rpc
     - grpc.responses.per.rpc
     - http.active.requests
     - http.duration
-    - http.response.size
+    - http.request.size
     - http.response.size
     - stream.active.received
     - stream.active.sent
@@ -65,7 +65,6 @@ telemetry:
     - [stream.closes.received](#stream-closes-received)
     - [stream.closes.sent](#stream-closes-sent)
 
-
 ::: right
 \* required
 :::
@@ -96,13 +95,13 @@ The duration of `grpc` requests in `nanoseconds`
 
 ##### grpc.request.size
 
-> `histogram` 
+> `histogram`
 
 The `grpc` request length in `bytes`.
 
 ##### grpc.response.size
 
-> `histogram` 
+> `histogram`
 
 The `grpc` response length in `bytes`.
 
@@ -117,7 +116,6 @@ The number of `grpc` request messages per RPC.
 > `histogram`
 
 The number of `grpc` response messages per RPC.
-
 
 #### http.*
 
@@ -137,16 +135,15 @@ The duration of `http` requests in `nanoseconds`
 
 ##### http.request.size
 
-> `histogram` 
+> `histogram`
 
 The `http` request content length in `bytes`.
 
 ##### http.response.size
 
-> `histogram` 
+> `histogram`
 
 The `http` response content length in `bytes`.
-
 
 #### stream.*
 

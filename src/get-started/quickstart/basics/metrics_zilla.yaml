@@ -1,0 +1,50 @@
+---
+name: Metrics-example
+telemetry:
+  attributes:
+    service.namespace: Metrics-example
+
+  # Desired metrics to track
+  metrics:
+    - http.request.size
+    - http.response.size
+    - stream.opens.sent
+    - stream.closes.sent
+
+  # Prometheus endpoint definition
+  exporters:
+    prometheus_metric_exporter:
+      type: prometheus
+      options:
+        endpoints:
+          - scheme: http
+            path: /metrics
+            port: 9090
+
+# Sample HTTP Echo service
+bindings:
+  tcp_server:
+    type: tcp
+    kind: server
+    options:
+      host: 0.0.0.0
+      port: 8080
+    telemetry:
+      metrics:
+        - stream.*
+    exit: http_server
+  http_server:
+    type: http
+    kind: server
+    routes:
+      - when:
+          - headers:
+              :scheme: http
+              :authority: localhost:8080
+        exit: echo_server
+    telemetry:
+      metrics:
+        - http.*
+  echo_server:
+    type: echo
+    kind: server
