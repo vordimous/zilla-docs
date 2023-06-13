@@ -1,5 +1,5 @@
 ---
-shortTitle: mqtt-kafka  🚧
+shortTitle: mqtt-kafka 🔜
 description: Zilla runtime mqtt-kafka binding (incubator)
 category:
   - Binding
@@ -7,7 +7,7 @@ tag:
   - Proxy
 ---
 
-# binding (mqtt-kafka) 🚧
+# mqtt-kafka Binding 🔜
 
 Zilla runtime mqtt-kafka binding (incubator).
 

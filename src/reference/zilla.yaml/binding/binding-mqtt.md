@@ -1,5 +1,5 @@
 ---
-shortTitle: mqtt  🚧
+shortTitle: mqtt 🔜
 description: Zilla runtime mqtt binding (incubator)
 category:
   - Binding
@@ -7,7 +7,7 @@ tag:
   - Server
 ---
 
-# binding (mqtt) 🚧
+# mqtt Binding 🔜
 
 Zilla runtime mqtt binding (incubator).
 

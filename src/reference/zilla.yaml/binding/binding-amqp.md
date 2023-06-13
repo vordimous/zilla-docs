@@ -1,5 +1,5 @@
 ---
-shortTitle: amqp  🚧
+shortTitle: amqp 🔜
 description: Zilla runtime amqp binding (incubator)
 category:
   - Binding
@@ -7,7 +7,7 @@ tag:
   - Server
 ---
 
-# amqp Binding 🚧
+# amqp Binding 🔜
 
 Zilla runtime amqp binding (incubator).
 
