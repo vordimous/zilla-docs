@@ -5,18 +5,20 @@
         "node_modules/**",
         "src/.vuepress/dist/**"
     ],
-    // words - list of words to be always considered correct
     "words": [
         "acks",
         "Aiven",
         "aklivity",
         "ALIES",
         "alpn",
+        "APIs",
+        "artifacthub",
         "Bidi",
         "bitnami",
         "cleartext",
         "confluentinc",
         "CQRS",
+        "cspell",
         "datagram",
         "docsearch",
         "etag",
@@ -53,6 +55,7 @@
         "TRUSTORE",
         "truststore",
         "Truststore",
+        "VSCode",
         "vuepress",
         "Zilla",
         "zpmw"

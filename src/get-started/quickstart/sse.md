@@ -203,7 +203,7 @@ docker-compose up -d
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
 ::: note Wait for the services to start
-If the page won't load the likely cause is Zilla and the SSE server are still starting up.
+If the page doesn't load wait for the Zilla and the SSE server to start.
 :::
 
 ### Click `Go`
@@ -219,7 +219,7 @@ message: Hello, world Wed May 10 14:25:40 UTC 2023
 open:
 ```
 
-Alternatively, you can send a message yourself using `netcat`:
+You can also send a message yourself using `netcat`:
 
 ```bash:no-line-numbers
 echo '{ "data": "Hello, world '`date`'" }' | nc -c localhost 7001
@@ -462,7 +462,7 @@ docker-compose up -d
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
 ::: note Wait for the services to start
-If the page won't load the likely cause is Zilla and Kafka are still starting up.
+If the page doesn't load wait for the Zilla and the Kafka server to start.
 :::
 
 ### Click `Go`

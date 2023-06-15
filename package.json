@@ -14,7 +14,8 @@
     "build": "vuepress build src",
     "clean-dev": "vuepress dev src --clean-cache --debug",
     "dev": "vuepress dev src",
-    "update-package": "pnpm dlx vp-update"
+    "update-package": "pnpm dlx vp-update",
+    "markdownlint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\""
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.63",
