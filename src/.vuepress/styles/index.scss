@@ -27,6 +27,30 @@ html[data-theme=light] #app {
     }
 }
 
+.zilla-plus-badge.hint-container.info {
+    border-color: #0e5c49;
+    background: var(--theme-color);
+    padding: 0;
+    a {
+        background-color: var(--theme-color);
+        cursor: pointer;
+        text-decoration: none!important;
+        color: white;
+        font-size: 17px;
+        text-align: center;
+        border-radius: 5px;
+        display: inline-block;
+        padding: .5em;
+        border-radius: 5px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .external-link-icon {
+        display: none;
+    }
+    
+}
+
 pre.language-bash:before {
     content: "$ ";
     font-weight: bold;

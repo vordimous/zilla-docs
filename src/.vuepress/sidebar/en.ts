@@ -170,6 +170,26 @@ export const enSidebar = sidebar({
             "redpanda.md",
           ],
         },
+        {
+          text: "Using MSK Proxies",
+          icon: "fa-brands fa-aws",
+          collapsible: false,
+          prefix: "msk-proxies/",
+          children: [
+            "private-proxy.md",
+            {
+              text: "Public Proxy",
+              collapsible: true,
+              prefix: "public-proxy/",
+              link: "public-proxy/",
+              children: [
+                "development.md",
+                "production.md",
+                "production-mutual-trust.md",
+              ],
+            },
+          ],
+        },
       ],
     },
     // {
