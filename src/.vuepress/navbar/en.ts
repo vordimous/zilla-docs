@@ -15,5 +15,6 @@ export const enNavbar = navbar([
   // { text: "Concepts", icon: "diagram-project", link: "/concepts/" },
   { text: "Reference", icon: "book", link: "/reference/zilla.yaml/" },
   { text: "version", icon: "list-ol", children: versionLinks },
+  { text: "Zilla Plus", icon: "globe", link: "https://docs.aklivity.io/msk-proxies/latest/" },
   { text: "aklivity", icon: "globe", link: "https://www.aklivity.io/" },
 ]);
