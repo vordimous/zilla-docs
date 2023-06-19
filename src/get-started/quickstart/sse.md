@@ -198,7 +198,7 @@ networks:
 docker-compose up -d
 ```
 
-### Open the browser
+- Open the browser
 
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
@@ -206,7 +206,7 @@ Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080
 If the page doesn't load wait for the Zilla and the SSE server to start.
 :::
 
-### Click `Go`
+- Click `Go`
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
 
@@ -225,7 +225,7 @@ You can also send a message yourself using `netcat`:
 echo '{ "data": "Hello, world '`date`'" }' | nc -c localhost 7001
 ```
 
-### Remove the running containers
+- Remove the running containers
 
 ```bash:no-line-numbers
 docker-compose down
@@ -457,7 +457,7 @@ networks:
 docker-compose up -d
 ```
 
-### Open the browser
+- Open the browser
 
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
@@ -465,7 +465,7 @@ Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080
 If the page doesn't load wait for the Zilla and the Kafka server to start.
 :::
 
-### Click `Go`
+- Click `Go`
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
@@ -478,7 +478,7 @@ message: Hello, world Wed May 10 14:25:40 UTC 2023
 open:
 ```
 
-### Remove the running containers
+- Remove the running containers
 
 ```bash:no-line-numbers
 docker-compose down

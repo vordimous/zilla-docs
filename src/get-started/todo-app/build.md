@@ -1,7 +1,8 @@
 ---
 description: Our Build the Todo Application guide shows you how to create your first application with Zilla, using Apache Kafka with Kafka Streams to implement the Tasks service that maintains a shared Todo List of tasks.
 ---
-
+<!-- TODO use alt text and remove when this doc is updated -->
+<!-- markdownlint-disable MD045 --> 
 # Build the Todo Application
 
 In this getting started exercise, you will create a simple Todo application using a CQRS design pattern that's backed by Apache Kafka and Zilla as the event-driven API gateway. Zilla lets you focus on your applications and business logic instead of spending time writing tons of code and this demo helps to ease CQRS complexity. This tutorial gives a basic introduction to Zilla and describes some straightforward capabilities.

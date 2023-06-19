@@ -1,6 +1,8 @@
 ---
 description: Our Secure the Todo Application guide shows you how to secure the Tasks API using JWT access tokens to allow read and write access only to authorized clients.
 ---
+<!-- TODO use alt text and remove when this doc is updated -->
+<!-- markdownlint-disable MD045 --> 
 
 # Secure the Todo Application
 
