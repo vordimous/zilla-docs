@@ -62,7 +62,7 @@ jobs:
           else
             tag=$(npm version ${{ github.event.inputs.version-change }} --git-tag-version=false);
           fi
-          echo "version=$(npm version --json=true | jq -r '.zilla_docs')" >> $GITHUB_OUTPUT;
+          echo "version=$(npm version --json=true | jq -r '."zilla-docs"')" >> $GITHUB_OUTPUT;
           echo "tag=$tag" >> $GITHUB_OUTPUT;
 
       - name: merge and tag ${{ steps.new-version.outputs.tag }} with HDBandit/gitflow-release-action
