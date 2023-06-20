@@ -4,25 +4,25 @@ description: Cleans up the generated runtime files
 
 # zpm clean
 
-### Description
+## Description
 
 The `zpm clean` command removes files from its `.zpm/` output directory.
 
 Optionally, only the files necessary to execute the [Zilla Runtime](../zilla/) are kept intact, leaving a minimal installation footprint for deployment.
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zpm clean
 ```
 
-### Options
+## Options
 
 |                |                                                                                   |
 | -------------- | --------------------------------------------------------------------------------- |
 | `--keep-image` | Clean up everything except runtime image<br>Defaults to `false` |
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zpmw clean --keep-image

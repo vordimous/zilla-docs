@@ -6,13 +6,13 @@ description: Stops the engine
 
 The `zilla stop` command signals the runtime engine to stop.
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zilla stop
 ```
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zilla start
@@ -22,9 +22,6 @@ started
 
 ```bash:no-line-numbers
 ./zilla stop
-```
-
-```bash:no-line-numbers
 ...
 stopped
 ```

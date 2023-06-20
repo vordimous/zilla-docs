@@ -1,5 +1,4 @@
 ---
-title: Reference
 text: "Reference"
 icon: "book"
 order: 2

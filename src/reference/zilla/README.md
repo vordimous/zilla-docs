@@ -1,5 +1,4 @@
 ---
-title: Zilla Runtime CLI
 order: 2
 category:
   - CLI

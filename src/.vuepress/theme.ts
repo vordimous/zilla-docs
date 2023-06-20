@@ -3,7 +3,6 @@ import { enSidebar } from "./sidebar/index.js";
 import { enNavbar } from "./navbar/index.js";
 import { hostnameSEO, docsRepo, docsBranch } from "./env.js";
 
-
 export default hopeTheme({
   hostname: hostnameSEO,
   logo: "/logo-dark.png",
@@ -23,7 +22,7 @@ export default hopeTheme({
   navbarLayout: {
     start: ["Brand"],
     center: [],
-    end: ["Search", "Links", "Repo", "Outlook"],
+    end: ["Links", "Search", "Repo", "Outlook"],
   },
 
   pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
@@ -47,7 +46,6 @@ export default hopeTheme({
     autoCatalog: {
       level: 1
     },
-    // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,
       attrs: true,

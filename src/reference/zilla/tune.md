@@ -6,13 +6,13 @@ description: Tunes the engine (incubator)
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zilla tune [NAME=VALUE]
 ```
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zilla start --workers 4

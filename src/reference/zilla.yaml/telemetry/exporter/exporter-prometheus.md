@@ -11,7 +11,6 @@ tag:
 
 Description
 
-
 ```yaml {3}
 exporters:
   prometheus0:

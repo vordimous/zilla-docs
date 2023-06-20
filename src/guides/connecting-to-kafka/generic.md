@@ -160,7 +160,7 @@ Kafka clients connecting to Kafka clusters that are configured for `TLS mutual a
 
 You can use the scripts shown below to generate `truststore.p12` and `keystore.p12` files using the three files.
 
-::: code-tabs#shell
+::: code-tabs#bash
 
 @tab truststore.p12
 

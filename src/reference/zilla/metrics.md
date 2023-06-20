@@ -6,7 +6,7 @@ description: Shows engine metrics
 
 The `zilla metrics` command provides metrics for each binding in the configuration.
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zilla metrics [binding]
@@ -14,13 +14,13 @@ zilla metrics [binding]
 
 Optionally specify a binding name to output metrics for that binding only.
 
-### Options
+## Options
 
 |                           |                               |
 | ------------------------- | ----------------------------- |
 | `--namespace <namespace>` | Filters bindings by namespace |
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zilla metrics echo_server0

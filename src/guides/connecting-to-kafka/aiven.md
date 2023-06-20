@@ -40,7 +40,7 @@ The next step is to generate the truststore and keystore.
 
 You can use the scripts shown below to generate `truststore.p12` and `keystore.p12` files using certificates and keys downloaded from `Aiven Kafka Console`. Please replace all caps lock words.
 
-::: code-tabs#shell
+::: code-tabs#bash
 
 @tab truststore.p12
 

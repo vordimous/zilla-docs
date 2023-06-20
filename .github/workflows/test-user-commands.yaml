@@ -1,0 +1,29 @@
+name: Test User Commands
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions: write-all
+
+jobs:
+  basic_quickstarts:
+    runs-on: ubuntu-latest
+    steps:
+      - run:  curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+
+      - uses: actions/checkout@v3
+        
+      - name: Check HTTP-example
+        run: cd src/get-started/quickstart/basics && ./http_docker_run.sh
+        shell: bash
+
+      - name: Check TCP-example
+        run: cd src/get-started/quickstart/basics && ./tcp_docker_run.sh
+        shell: bash
+        
+      - name: Check Metrics-example
+        run: cd src/get-started/quickstart/basics && ./metrics_docker_run.sh
+        shell: bash

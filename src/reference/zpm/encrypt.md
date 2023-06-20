@@ -4,7 +4,7 @@ description: Encrypts secrets for secure storage
 
 # zpm encrypt
 
-### Description
+## Description
 
 The `zpm encrypt` command provides a convenient mechanism to encrypt secrets using a securely generated master secret.
 
@@ -12,13 +12,13 @@ When Maven repositories requiring authorization are listed in [Zilla Manager Con
 
 If a master secret does not already exist, it is generated in [Zilla Manager Security](../security.json.md).
 
-### Usage
+## Usage
 
 ```bash:no-line-numbers
 zpm encrypt
 ```
 
-### Examples
+## Examples
 
 ```bash:no-line-numbers
 ./zpmw encrypt

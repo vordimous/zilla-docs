@@ -1,5 +1,4 @@
 ---
-title: Zilla Runtime Configuration
 order: 1
 category:
   - config
