@@ -23,10 +23,8 @@ env:
   IS_CUSTOM_VERSION: ${{ github.event.inputs.version-change == 'custom' }}
 
 jobs:
-  release:
+  validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Check actor permission
         uses: skjnldsv/check-actor-permission@v2.1
@@ -45,8 +43,15 @@ jobs:
         name: Custom Version must be "#.#.#"
         run: echo "Custom Version must be #.#.#" exit 1;
 
+  release:
+    runs-on: ubuntu-latest
+    needs: validate
+    permissions:
+      contents: write
+    steps:
       - uses: actions/checkout@v3
         with:
+          token: ${{secrets.PAT}}
           fetch-depth: "0"
 
       - name: get new version
