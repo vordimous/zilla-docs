@@ -7,9 +7,9 @@ tag:
   - Exporters
 ---
 
-# Exporters
+# prometheus Exporter
 
-Description
+Zilla runtime prometheus exporter
 
 ```yaml {3}
 exporters:

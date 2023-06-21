@@ -408,6 +408,18 @@ The Kafka message headers to inject with each message.
 
 The name of the Kafka topic for correlated responses.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ---
 
 ::: right

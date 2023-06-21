@@ -265,6 +265,18 @@ The `grpc` request scheme.
 
 The `grpc` request authority.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ---
 
 ::: right

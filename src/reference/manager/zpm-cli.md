@@ -9,7 +9,7 @@ description: >-
 
 # Zilla Manager CLI
 
-The Zilla Manager command line interface uses the [Zilla Manager Configuration](./README.md) to package the [Zilla runtime](../config/zilla-cli.md) with minimal dependencies.
+The Zilla Manager command line interface uses the [Zilla Manager Configuration](./configuration.md) to package the [Zilla runtime](../config/zilla-cli.md) with minimal dependencies.
 
 ## zpm help
 
@@ -51,9 +51,9 @@ Examples:
 
 The `zpm encrypt` command provides a convenient mechanism to encrypt secrets using a securely generated master secret.
 
-When Maven repositories requiring authorization are listed in [Zilla Manager Configuration](./README.md), then the output of this command can be used to provide encrypted credentials in [Zilla Manager Settings](./README.md#settings.json).
+When Maven repositories requiring authorization are listed in [Zilla Manager Configuration](./configuration.md), then the output of this command can be used to provide encrypted credentials in [Zilla Manager Settings](./configuration.md#settings.json).
 
-If a master secret does not already exist, it is generated in [Zilla Manager Security](./README.md#security.json).
+If a master secret does not already exist, it is generated in [Zilla Manager Security](./configuration.md#security.json).
 
 
 ```bash:no-line-numbers
@@ -70,7 +70,7 @@ Enter a password to `zpmw encrypt` via standard input, then the base64-encoded e
 
 ## zpm install
 
-The `zpm install` command resolves the [Zilla Manager Configuration](./README.md) to create a runtime with minimal dependencies, generating the `zilla` runtime executable.
+The `zpm install` command resolves the [Zilla Manager Configuration](./configuration.md) to create a runtime with minimal dependencies, generating the `zilla` runtime executable.
 
 ```bash:no-line-numbers
 zpm install

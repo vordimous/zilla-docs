@@ -139,6 +139,18 @@ Filesystem parameters used when adapting `http` data streams into `filesystem` d
 
 Topic name, optionally referencing path parameter such as `${params.path}`.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ---
 
 ::: right

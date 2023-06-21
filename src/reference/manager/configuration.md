@@ -4,6 +4,8 @@ description: Configures dependencies to be resolved when packaging the Zilla run
 
 # Zilla Manager Configuration
 
+These files configure the zilla manager CLI tool.
+
 ## zpm.json
 
 ### repositories

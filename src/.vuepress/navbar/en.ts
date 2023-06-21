@@ -10,7 +10,7 @@ const versionLinks = <{ text: string; link: string }[]>(
 );
 
 export const enNavbar = navbar([
-  { text: "Get Started", icon: "play", link: "/tutorials/install.md" },
+  { text: "Get Started", icon: "play", link: "/how-tos/install.md" },
   { text: "Reference", icon: "book", link: "/reference/config/" },
   { text: "version", icon: "list-ol", children: versionLinks },
   { text: "aklivity", icon: "globe", link: "https://www.aklivity.io/" },

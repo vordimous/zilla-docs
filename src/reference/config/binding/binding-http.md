@@ -317,6 +317,18 @@ Next binding when following this route.
 exit: echo_server0
 ```
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ---
 
 ::: right

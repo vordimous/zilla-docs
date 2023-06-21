@@ -415,6 +415,18 @@ Kafka reply-to topic name.
 
 HTTP response headers, with values optionally referencing path parameter or `${correlationId}`.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ---
 
 ::: right

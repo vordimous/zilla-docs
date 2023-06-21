@@ -172,6 +172,18 @@ Base64 encoded value for binary metadata header.
 
 Routed exit binding when conditional route matches.
 
+### telemetry
+
+> `object`
+
+Telemetry properties for the binding.
+
+### telemetry.metrics
+
+> `array` of `string`
+
+Metric names to record for the binding.
+
 ```yaml
 exit: echo_server0
 ```

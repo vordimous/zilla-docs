@@ -7,7 +7,7 @@ tag:
   - Server
 ---
 
-# echo binding
+# echo Binding
 
 Zilla runtime echo binding.
 
