@@ -2,12 +2,11 @@ import { sidebar } from "vuepress-theme-hope";
 
 export const enSidebar = sidebar({
   "/reference/": [
-    "",
     {
       text: "Zilla Configuration",
       collapsible: true,
-      prefix: "zilla.yaml/",
-      link: "zilla.yaml/",
+      prefix: "config/",
+      link: "config/",
       children: [
         {
           text: "CLI (zilla)",
@@ -22,45 +21,21 @@ export const enSidebar = sidebar({
               collapsible: false,
               prefix: "binding/",
               link: "binding/",
-              children: [
-                "binding-amqp.md",
-                "binding-echo.md",
-                "binding-fan.md",
-                "binding-filesystem.md",
-                "binding-grpc-kafka.md",
-                "binding-grpc.md",
-                "binding-http-filesystem.md",
-                "binding-http-kafka.md",
-                "binding-http.md",
-                "binding-kafka-grpc.md",
-                "binding-kafka.md",
-                "binding-mqtt-kafka.md",
-                "binding-mqtt.md",
-                "binding-proxy.md",
-                "binding-sse-kafka.md",
-                "binding-sse.md",
-                "binding-tcp.md",
-                "binding-tls.md",
-                "binding-ws.md",
-              ],
+              children: "structure",
             },
             {
               text: "Guards",
               collapsible: false,
               prefix: "guard/",
               link: "guard/",
-              children: [
-                "guard-jwt.md",
-              ],
+              children: "structure"
             },
             {
               text: "Vaults",
               collapsible: false,
               prefix: "vault/",
               link: "vault/",
-              children: [
-                "vault-filesystem.md",
-              ]
+              children: "structure"
             },
             {
               text: "Telemetry",
@@ -87,8 +62,8 @@ export const enSidebar = sidebar({
     {
       text: "Zilla Manager",
       collapsible: true,
-      prefix: "zpm.yaml/",
-      link: "zpm.yaml/",
+      prefix: "manager/",
+      link: "manager/",
       children: [
         {
           text: "CLI (zpm)",
@@ -98,7 +73,6 @@ export const enSidebar = sidebar({
     },
   ],
   "/": [
-    "",
     {
       text: "Get Started",
       icon: "play",
@@ -192,19 +166,12 @@ export const enSidebar = sidebar({
         },
       ],
     },
-    // {
-    //   text: "Concepts",
-    //   icon: "diagram-project",
-    //   prefix: "concepts/",
-    //   collapsible: true,
-    //   children: "structure"
-    // },
     {
       text: "Reference",
       icon: "book",
       prefix: "reference/",
       link: "reference/",
-      children: ["zilla.yaml/binding/", "zilla.yaml/telemetry/", "zilla.yaml/guard/", "zilla.yaml/vault/"],
+      children: ["config/binding/", "config/telemetry/", "config/guard/", "config/vault/"],
     },
   ],
 });

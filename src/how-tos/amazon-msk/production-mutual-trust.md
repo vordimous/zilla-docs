@@ -26,7 +26,7 @@ The following AWS services are used by [Aklivity Public MSK Proxy](http://aws.am
 The default AWS Service Quotas are sufficient.
 
 ::: info
-Check out the [Troubleshooting](../../reference/troubleshooting.md) guide if you run into any issues.
+Check out the [Troubleshooting](../../reference/amazon-msk/troubleshooting.md) guide if you run into any issues.
 :::
 
 ## Prerequisites
@@ -44,18 +44,18 @@ Before setting up internet access to your MSK Cluster, you will need the followi
 
 We need to create an MSK cluster in preparation for secure remote access via the internet. You can skip this step if you have already created an MSK cluster with equivalent configuration.
 
-Follow the [Create VPC](../../reference/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
+Follow the [Create VPC](../../reference/amazon-msk/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
 
 Name tag: `my-msk-cluster`\
 IPv4 CIDR block: `10.0.0.0/16`\
 Region: `us-east-1`\
-Follow the [Create Certificate Authority (ACM)](../../reference/create-certificate-authority-acm.md) guide with these parameters to create a private certificate authority to verify TLS client authentication.
+Follow the [Create Certificate Authority (ACM)](../../reference/amazon-msk/create-certificate-authority-acm.md) guide with these parameters to create a private certificate authority to verify TLS client authentication.
 
 ### Distinguished Name
 
 Common Name (CN): `Mutual Authentication CA`
 
-Then follow the [Create MSK Cluster (Mutual Trust)](../../reference/create-msk-cluster-mutual-trust.md) guide to create your MSK cluster with the following parameters.
+Then follow the [Create MSK Cluster (Mutual Trust)](../../reference/amazon-msk/create-msk-cluster-mutual-trust.md) guide to create your MSK cluster with the following parameters.
 
 Name: `aklivity`\
 VPC: `my-msk-cluster`\
@@ -67,7 +67,7 @@ Private Certificate Authority: `Mutual Authentication CA`
 This creates your MSK cluster in preparation for secure access via the internet.
 :::
 
-Follow the [Create Client Certificate (ACM)](../../reference/create-client-certificate-acm.md) guide to create a trusted client certificate with the following parameters.
+Follow the [Create Client Certificate (ACM)](../../reference/amazon-msk/create-client-certificate-acm.md) guide to create a trusted client certificate with the following parameters.
 
 Common Name: `client-1`\
 Private Certificate Authority: `Mutual Authentication CA`
@@ -84,7 +84,7 @@ Create additional client certificates for each different authorized client ident
 
 We need to create a VPC security group that will be used by the Public MSK Proxy instances when they are launched.
 
-Follow the [Create Security Group](../../reference/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
+Follow the [Create Security Group](../../reference/amazon-msk/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
 
 VPC: `my-msk-cluster`\
 Name: `my-msk-proxy`\
@@ -106,7 +106,7 @@ This creates your MSK proxy security group to allow Kafka clients and SSH access
 
 ### Update your MSK Cluster security group rules
 
-Follow the [Update Security Group](../../reference/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
+Follow the [Update Security Group](../../reference/amazon-msk/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
 
 VPC: `vpc-xxx (my-msk-cluster)`\
 Security Group: `default` `(MSK security group)`
@@ -122,7 +122,7 @@ This allows the MSK Proxy instances to access your MSK cluster.
 
 ### Create the MSK Proxy IAM security role
 
-Follow the [Create IAM Role](../../reference/create-iam-role.md) guide to create an IAM security role with the following parameters:
+Follow the [Create IAM Role](../../reference/amazon-msk/create-iam-role.md) guide to create an IAM security role with the following parameters:
 
 ::: tabs
 
@@ -189,7 +189,7 @@ You should now see `Aklivity Public MSK Proxy` listed in your [AWS Marketplace S
 
 We need a Public TLS Server Certificate for your custom DNS wildcard domain that can be trusted by a Kafka Client from anywhere.
 
-Follow the [Create Server Certificate (LetsEncrypt)](../../reference/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate for the your own custom wildcard DNS domain.
+Follow the [Create Server Certificate (LetsEncrypt)](../../reference/amazon-msk/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate for the your own custom wildcard DNS domain.
 
 Here we use the wildcard domain `*.example.aklivty.io`  to illustrate the steps.
 
@@ -231,7 +231,7 @@ Instance count: `2`\
 Instance type [3]: `t3.small`\
 Role: `aklivity-public-msk-proxy`\
 Security Groups: `my-msk-proxy`\
-Secrets Manager Secret ARN: [`<signed TLS certificate's private key secret ARN>`](../../reference/create-server-certificate-letsencrypt.md)
+Secrets Manager Secret ARN: [`<signed TLS certificate's private key secret ARN>`](../../reference/amazon-msk/create-server-certificate-letsencrypt.md)
 Public Wildcard DNS [4]: `*.example.aklivity.io`\
 Public Port: `9094`\
 Public Certificate Authority [2b]: `<private certificate authority ARN>`\
@@ -241,7 +241,7 @@ Key pair for SSH access [6]: `<key pair>`
 
 ### Step4. Review: `(review)`
 
-**[1]** Follow the [Lookup MSK Server Names](../../reference/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
+**[1]** Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
 
 **[2][a][b]** These can be the same Private Certificate Authority that authorizes existing clients connecting directly to MSK, allowing existing trusted client certificates to connect via Public MSK Proxy.
 
@@ -251,7 +251,7 @@ Key pair for SSH access [6]: `<key pair>`
 
 **[5]** This example pattern requires all trusted client certificate key secrets to be named `client-*`
 
-**[6]** Follow the [Create Key Pair](../../reference/create-key-pair.md) guide to create a new key pair used when launching EC2 instances with SSH access.
+**[6]** Follow the [Create Key Pair](../../reference/amazon-msk/create-key-pair.md) guide to create a new key pair used when launching EC2 instances with SSH access.
 
 Click `Create Stack`.
 

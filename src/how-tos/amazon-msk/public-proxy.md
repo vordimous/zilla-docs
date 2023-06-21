@@ -19,10 +19,10 @@ Both `Development` and `Production` deployment options are available.
 
 ### Development
 
-Follow the [Development](../development.md) guide to setup connectivity to your MSK cluster from your local development environment via the internet using a locally trusted TLS server certificate for the example wildcard DNS pattern `*.aklivity.example.com`.
+Follow the [Development](./development.md) guide to setup connectivity to your MSK cluster from your local development environment via the internet using a locally trusted TLS server certificate for the example wildcard DNS pattern `*.aklivity.example.com`.
 
 ### Production
 
-Follow the [Production](../production.md) guide to setup connectivity to your MSK cluster from anywhere on the internet using a globally trusted TLS server certificate for a wildcard DNS pattern under your control. We use `*.example.aklivity.io` to illustrate the steps.
+Follow the [Production](./production.md) guide to setup connectivity to your MSK cluster from anywhere on the internet using a globally trusted TLS server certificate for a wildcard DNS pattern under your control. We use `*.example.aklivity.io` to illustrate the steps.
 
-Follow the [Production (Mutual Trust)](../production-mutual-trust.md) guide instead if your MSK cluster is configured for TLS client authorization.
+Follow the [Production (Mutual Trust)](./production-mutual-trust.md) guide instead if your MSK cluster is configured for TLS client authorization.

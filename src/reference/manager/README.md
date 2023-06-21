@@ -4,7 +4,7 @@ description: Configures dependencies to be resolved when packaging the Zilla run
 
 # Zilla Manager Configuration
 
-## Configuration
+## zpm.json
 
 ### repositories
 
@@ -30,7 +30,7 @@ Pattern: `groupId:artifactId[:version]`
 
 List of Maven dependencies
 
-## Settings
+## settings.json
 
 ### credentials
 
@@ -56,7 +56,7 @@ Repository credentials username
 
 Repository credentials password (encrypted, base64)
 
-## Security
+## security.json
 
 ### secret
 

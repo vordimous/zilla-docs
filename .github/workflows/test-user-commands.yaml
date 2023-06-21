@@ -18,13 +18,13 @@ jobs:
       - uses: actions/checkout@v3
         
       - name: Check HTTP-example
-        run: cd src/get-started/quickstart/basics && ./http_docker_run.sh
+        run: cd src/tutorials/quickstart/basics && ./http_docker_run.sh
         shell: bash
 
       - name: Check TCP-example
-        run: cd src/get-started/quickstart/basics && ./tcp_docker_run.sh
+        run: cd src/tutorials/quickstart/basics && ./tcp_docker_run.sh
         shell: bash
         
       - name: Check Metrics-example
-        run: cd src/get-started/quickstart/basics && ./metrics_docker_run.sh
+        run: cd src/tutorials/quickstart/basics && ./metrics_docker_run.sh
         shell: bash

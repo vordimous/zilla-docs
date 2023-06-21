@@ -31,7 +31,7 @@ The following AWS services are used by [Aklivity Private MSK Proxy](https://aws.
 The default AWS Service Quotas are sufficient.
 
 ::: info
-Check out the [Troubleshooting](../reference/troubleshooting.md) guide if you run into any issues.
+Check out the [Troubleshooting](../../reference/amazon-msk/troubleshooting.md) guide if you run into any issues.
 :::
 
 ## Prerequisites
@@ -47,13 +47,13 @@ Before setting up cross-VPC access to your MSK Cluster, you will need the follow
 
 We need to create an MSK cluster in preparation for secure remote access outside the VPC. You can skip this step if you have already created an MSK cluster with equivalent configuration.
 
-Follow the [Create VPC](../reference/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
+Follow the [Create VPC](../../reference/amazon-msk/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
 
 Name tag: `my-msk-cluster`\
 IPv4 CIDR block: `10.0.0.0/16`\
 Region: `us-east-1`
 
-Then follow the [Create MSK Cluster](../reference/create-msk-cluster.md) guide to create your MSK cluster with the following parameters.
+Then follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-cluster.md) guide to create your MSK cluster with the following parameters.
 
 Name: `aklivity`\
 VPC: `my-msk-cluster`\
@@ -67,7 +67,7 @@ This creates your MSK cluster in preparation for secure access outside the VPC.
 
 We need to create a VPC security group that will be used by the Private MSK Proxy instances when they are launched.
 
-Follow the [Create Security Group](../reference/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
+Follow the [Create Security Group](../../reference/amazon-msk/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
 
 VPC: `my-msk-cluster`\
 Name: `my-msk-proxy`\
@@ -89,7 +89,7 @@ This creates your Private MSK proxy security group to allow Kafka clients and SS
 
 ### Update your MSK Cluster security group rules
 
-Follow the [Update Security Group](../reference/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
+Follow the [Update Security Group](../../reference/amazon-msk/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
 
 VPC: `vpc-xxx (my-msk-cluster)`\
 Security Group: `default` `(MSK security group)`
@@ -105,7 +105,7 @@ This allows the MSK Proxy instances to access your MSK cluster.
 
 ### Create the MSK Proxy IAM security role
 
-Follow the [Create IAM Role](../reference/create-iam-role.md) guide to create an IAM security role with the following parameters:
+Follow the [Create IAM Role](../../reference/amazon-msk/create-iam-role.md) guide to create an IAM security role with the following parameters:
 
 Name: `aklivity-private-msk-proxy`
 
@@ -166,7 +166,7 @@ Key pair for SSH access: `<key pair>`
 
 ### Step4. Review: `(review)`
 
-**[1]** Follow the [Lookup MSK Server Names](../reference/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
+**[1]** Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
 
 **[2]** Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
 
@@ -225,7 +225,7 @@ We can now create a VPC Endpoint to access your MSK cluster from Kafka clients i
 
 ### Create the VPC
 
-Follow the [Create VPC](../reference/create-vpc.md) guide to create a VPC for your Kafka clients with the following parameters.
+Follow the [Create VPC](../../reference/amazon-msk/create-vpc.md) guide to create a VPC for your Kafka clients with the following parameters.
 
 Name tag: `my-msk-client`\
 IPv4 CIDR block: `10.1.0.0/16`\
@@ -285,7 +285,7 @@ Wildcard DNS pattern [2]: **`*`**`.aklivity.[...].amazonaws.com`\
 
 **[1]** Locate the `Endpoint Service Name` from the `Outputs` tab of the `my-msk-endpoint-service` stack previously created in the same VPC as your MSK Cluster.
 
-**[2]** Follow the [Lookup MSK Server Names](../reference/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
+**[2]** Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
 
 Click `Create Stack`.
 
@@ -303,7 +303,7 @@ Now we must prepare a Kafka client running in the client VPC to verify connectiv
 
 ### Launch the EC2 Instance
 
-Follow the [`Launch EC2 Instance`](../reference/launch-ec2-instance.md) guide with the following parameters to launch an EC2 instance with remote SSH access and login to the instance via SSH.
+Follow the [`Launch EC2 Instance`](../../reference/amazon-msk/launch-ec2-instance.md) guide with the following parameters to launch an EC2 instance with remote SSH access and login to the instance via SSH.
 
 VPC: `my-msk-client`\
 Region: `us-east-1`
@@ -381,7 +381,7 @@ Use the Vim to create `client.properties.`Type `vi client.properties` in the SSH
 
 We can now verify that the Kafka client can successfully communicate with your MSK cluster via the VPC Endpoint in a different VPC to create a topic, then publish and subscribe to the same topic.
 
-Follow the [Lookup MSK Server Names](../reference/lookup-msk-server-names.md) guide to find the TLS bootstrap server names for your MSK cluster.
+Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to find the TLS bootstrap server names for your MSK cluster.
 
 #### Create a Topic
 

@@ -18,7 +18,7 @@
 
 <h3 align="center">
   <a href="https://docs.aklivity.io/zilla/"><b>Documentation</b></a> &bull;
-  <a href="https://docs.aklivity.io/zilla/latest/get-started/install/"><b>Get Started</b></a> &bull;
+  <a href="https://docs.aklivity.io/zilla/latest/guides/install/"><b>Get Started</b></a> &bull;
   <a href="https://github.com/aklivity/zilla-examples"><b>Examples</b></a> &bull; 
   <a href="https://www.aklivity.io/blog"><b>Blog</b></a>  
 </h3>

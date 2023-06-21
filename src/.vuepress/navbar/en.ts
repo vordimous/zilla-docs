@@ -10,11 +10,8 @@ const versionLinks = <{ text: string; link: string }[]>(
 );
 
 export const enNavbar = navbar([
-  { text: "Get Started", icon: "play", link: "/get-started/install.md" },
-  { text: "Guides", icon: "bars-staggered", link: "/guides/kafka-proxies/grpc-proxy.md" },
-  // { text: "Concepts", icon: "diagram-project", link: "/concepts/" },
-  { text: "Reference", icon: "book", link: "/reference/zilla.yaml/" },
+  { text: "Get Started", icon: "play", link: "/tutorials/install.md" },
+  { text: "Reference", icon: "book", link: "/reference/config/" },
   { text: "version", icon: "list-ol", children: versionLinks },
-  { text: "Zilla Plus", icon: "globe", link: "https://docs.aklivity.io/msk-proxies/latest/" },
   { text: "aklivity", icon: "globe", link: "https://www.aklivity.io/" },
 ]);

@@ -26,7 +26,7 @@ The following AWS services are used by [Aklivity Public MSK Proxy](http://aws.am
 The default AWS Service Quotas are sufficient.
 
 ::: info
-Check out the [Troubleshooting](../../reference/troubleshooting.md) guide if you run into any issues.
+Check out the [Troubleshooting](../../reference/amazon-msk/troubleshooting.md) guide if you run into any issues.
 :::
 
 ## Prerequisites
@@ -43,13 +43,13 @@ Before setting up internet access to your MSK Cluster, you will need the followi
 
 We need to create an MSK cluster in preparation for secure remote access via the internet. You can skip this step if you have already created an MSK cluster with equivalent configuration.
 
-Follow the [Create VPC](../../reference/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
+Follow the [Create VPC](../../reference/amazon-msk/create-vpc.md) guide to create a VPC for your MSK cluster with the following parameters.
 
 Name tag: `my-msk-cluster`\
 IPv4 CIDR block: `10.0.0.0/16`\
 Region: `us-east-1`
 
-Then follow the [Create MSK Cluster](../../reference/create-msk-cluster.md) guide to create your MSK cluster with the following parameters.
+Then follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-cluster.md) guide to create your MSK cluster with the following parameters.
 
 Name: `aklivity`\
 VPC: `my-msk-cluster`\
@@ -63,7 +63,7 @@ This creates your MSK cluster in preparation for secure access via the internet.
 
 We need to create a VPC security group that will be used by the Public MSK Proxy instances when they are launched.
 
-Follow the [Create Security Group](../../reference/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
+Follow the [Create Security Group](../../reference/amazon-msk/create-security-group.md) guide with the following parameters to create a security group in the same VPC as your MSK cluster.
 
 VPC: `my-msk-cluster`\
 Name: `my-msk-proxy`\
@@ -85,7 +85,7 @@ This creates your MSK proxy security group to allow Kafka clients and SSH access
 
 ### Update your MSK Cluster security group rules
 
-Follow the [Update Security Group](../../reference/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
+Follow the [Update Security Group](../../reference/amazon-msk/update-security-group.md) guide with the following parameters to allow the MSK Proxy instances to communicate with the MSK cluster.
 
 VPC: `vpc-xxx (my-msk-cluster)`\
 Security Group: `default` `(MSK security group)`
@@ -101,7 +101,7 @@ This allows the MSK Proxy instances to access your MSK cluster.
 
 ### Create the MSK Proxy IAM security role
 
-Follow the [Create IAM Role](../../reference/create-iam-role.md) guide to create an IAM security role with the following parameters:
+Follow the [Create IAM Role](../../reference/amazon-msk/create-iam-role.md) guide to create an IAM security role with the following parameters:
 
 Name: `aklivity-public-msk-proxy`\
 Managed Policies: `AWSMarketplaceMeteringFullAccess` `AWSCertificateManagerReadOnly`\
@@ -153,7 +153,7 @@ You should now see `Aklivity Public MSK Proxy` listed in your [AWS Marketplace S
 
 We need a TLS Server Certificate for your custom DNS wildcard domain that can be trusted by a Kafka Client from anywhere.
 
-Follow the [Create Server Certificate (LetsEncrypt)](../../reference/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate for the your own custom wildcard DNS domain.
+Follow the [Create Server Certificate (LetsEncrypt)](../../reference/amazon-msk/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate for the your own custom wildcard DNS domain.
 
 Here we use the wildcard domain `*.example.aklivty.io`  to illustrate the steps.
 
@@ -194,7 +194,7 @@ Instance count: `2`\
 Instance type [2]: `t3.small`\
 Role: `aklivity-public-msk-proxy`\
 Security Groups: `my-msk-proxy`\
-Secrets Manager Secret ARN [3]: [`<LetsEncrypt signed certificate's private key secret ARN>`](../../reference/create-server-certificate-letsencrypt.md)
+Secrets Manager Secret ARN [3]: [`<LetsEncrypt signed certificate's private key secret ARN>`](../../reference/amazon-msk/create-server-certificate-letsencrypt.md)
 Public Wildcard DNS [4]: `*.example.aklivity.io`\
 Public Port: `9094`\
 Key pair for SSH access [5]: `<key pair>`
@@ -203,15 +203,15 @@ Key pair for SSH access [5]: `<key pair>`
 
 ### Step4. Review: `(review)`
 
-**[1]** Follow the [Lookup MSK Server Names](../../reference/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
+**[1]** Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
 
 **[2]** Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
 
-**[3]** This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/create-server-certificate-letsencrypt.md) guide.
+**[3]** This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/amazon-msk/create-server-certificate-letsencrypt.md) guide.
 
 **[4]** Replace with your own custom wildcard DNS pattern.
 
-**[5]** Follow the [Create Key Pair](../../reference/create-key-pair.md) guide to create a new key pair used when launching EC2 instances with SSH access.
+**[5]** Follow the [Create Key Pair](../../reference/amazon-msk/create-key-pair.md) guide to create a new key pair used when launching EC2 instances with SSH access.
 
 Click `Create Stack`.
 
