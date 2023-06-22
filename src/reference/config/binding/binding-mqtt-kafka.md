@@ -12,7 +12,7 @@ tag:
 Zilla runtime mqtt-kafka binding (incubator).
 
 ```yaml {2}
-mqtt_server0:
+mqtt_server:
   type: mqtt-kafka
   kind: proxy
   exit: kafka_cache_client0

@@ -12,10 +12,10 @@ tag:
 Zilla runtime fan binding.
 
 ```yaml {2}
-fan_server0:
+fan_server:
   type: fan
   kind: server
-  exit: echo_server0
+  exit: echo_server
 ```
 
 ## Summary
@@ -52,7 +52,7 @@ Behave as an `fan-in` and `fan-out` `server`.
 Default exit binding.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

@@ -12,7 +12,7 @@ tag:
 Zilla runtime grpc-kafka binding.
 
 ```yaml {2}
-grpc_kafka_proxy0:
+grpc_kafka_proxy:
   type: grpc-kafka
   kind: proxy
   options:
@@ -207,7 +207,7 @@ Conditional `grpc-kafka`-specific routes for adapting `grpc` request-response st
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:messages
     when:
       - service: example.FanoutService
@@ -224,7 +224,7 @@ routes:
         headers:
           custom-text: custom-value
   - guarded:
-      test0:
+      test:
         - echo:messages
     when:
       - method: example.EchoService/*
@@ -252,7 +252,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:messages
 ```
 

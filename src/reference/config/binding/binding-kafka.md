@@ -12,22 +12,22 @@ tag:
 Zilla runtime kafka binding.
 
 ```yaml {2,10,17}
-kafka_cache_client0:
+kafka_cache_client:
   type: kafka
   kind: cache_client
   options:
     merged:
       - items-requests
       - items-responses
-  exit: kafka_cache_server0
-kafka_cache_server0:
+  exit: kafka_cache_server
+kafka_cache_server:
   type: kafka
   kind: cache_server
   options:
     bootstrap:
       - items-responses
   exit: kafka_client0
-kafka_client0:
+kafka_client:
   type: kafka
   kind: client
   exit: tcp_client0
@@ -169,7 +169,7 @@ SASL password.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -187,7 +187,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -210,7 +210,7 @@ Topic name pattern.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

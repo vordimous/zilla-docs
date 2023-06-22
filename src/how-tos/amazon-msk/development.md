@@ -1,10 +1,14 @@
 ---
+icon: plus
 description: >-
   Setup connectivity to your MSK cluster via the internet from your local
   development environment.
 ---
 
 # Development
+
+[Zilla Plus](https://www.aklivity.io/)
+{.zilla-plus-badge .hint-container .info}
 
 ::: tip Estimated time to complete 20-30 mins.
 :::

@@ -12,13 +12,13 @@ tag:
 Zilla runtime tcp binding.
 
 ```yaml {2}
-tcp_server0:
+tcp_server:
   type: tcp
   kind: server
   options:
     host: 0.0.0.0
     port: 12345
-  exit: echo_server0
+  exit: echo_server
 ```
 
 ## Summary
@@ -90,7 +90,7 @@ Port number(s), including port number ranges.
 Default exit binding when no conditional routes are viable, for kind `server` only.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes

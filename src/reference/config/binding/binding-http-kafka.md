@@ -12,7 +12,7 @@ tag:
 Zilla runtime http-kafka binding.
 
 ```yaml {2}
-http_kafka_proxy0:
+http_kafka_proxy:
   type: http-kafka
   kind: proxy
   routes:
@@ -227,7 +227,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 

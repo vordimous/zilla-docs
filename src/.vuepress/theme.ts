@@ -21,8 +21,8 @@ export default hopeTheme({
 
   navbarLayout: {
     start: ["Brand"],
-    center: [],
-    end: ["Links", "Search", "Repo", "Outlook"],
+    center: ["Search"],
+    end: ["Links", "Repo", "Outlook"],
   },
 
   pageInfo: ["ReadingTime", "Date", "Category", "Tag"],

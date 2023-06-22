@@ -12,7 +12,7 @@ tag:
 Zilla runtime sse binding.
 
 ```yaml {2}
-sse_server0:
+sse_server:
   type: sse
   kind: server
   exit: sse_kafka_proxy0
@@ -89,7 +89,7 @@ Conditional `sse`-specific routes.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
     when:
       - path: "/items"
@@ -105,7 +105,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 

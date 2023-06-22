@@ -12,13 +12,13 @@ tag:
 Zilla runtime http-filesystem binding.
 
 ```yaml {2}
-http_filesystem_proxy0:
+http_filesystem_proxy:
   type: http-filesystem
   kind: proxy
   routes:
     - when:
         - path: "/{path}"
-      exit: filesystem_server0
+      exit: filesystem_server
       with:
         path: "${params.path}"
 ```
@@ -68,7 +68,7 @@ kind: proxy
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: filesystem_server0
+exit: filesystem_server
 ```
 
 ### routes
@@ -81,7 +81,7 @@ Conditional `http-kafka`-specific routes for adapting `http` data streams into `
 routes:
   - when:
       - path: "/{path}"
-    exit: filesystem_server0
+    exit: filesystem_server
     with:
       path: "${params.path}"
 ```
@@ -95,7 +95,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -124,7 +124,7 @@ Path with optional embedded parameter names, such as `/{path}`.
 Next binding when following this route.
 
 ```yaml
-exit: filesystem_server0
+exit: filesystem_server
 ```
 
 ### routes[].with

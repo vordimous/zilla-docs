@@ -12,7 +12,7 @@ tag:
 Zilla runtime tls binding.
 
 ```yaml {2}
-tls_server0:
+tls_server:
   type: tls
   kind: server
   vault: server
@@ -26,7 +26,7 @@ tls_server0:
   routes:
     - when:
         - alpn: echo
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ## Summary
@@ -168,7 +168,7 @@ Defaults to `"none"`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -181,7 +181,7 @@ Conditional `tls`-specific routes.
 routes:
   - when:
       - alpn: echo
-  exit: echo_server0
+  exit: echo_server
 ```
 
 ### routes[].guarded
@@ -193,7 +193,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -228,7 +228,7 @@ Application protocol.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

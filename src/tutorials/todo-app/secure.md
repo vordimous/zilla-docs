@@ -448,21 +448,21 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-  http_filesystem_proxy0:
+  http_filesystem_proxy:
     type: http-filesystem
     kind: proxy
     routes:
       - when:
           - path: /
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: index.html
       - when:
           - path: /{path}
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: ${params.path}
-  filesystem_server0:
+  filesystem_server:
     type: filesystem
     kind: server
     options:

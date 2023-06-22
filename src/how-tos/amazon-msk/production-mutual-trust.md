@@ -1,8 +1,12 @@
 ---
+icon: plus
 description: Setup mutual authentication to your MSK cluster from anywhere on the internet.
 ---
 
 # Production (Mutual Trust)
+
+[Zilla Plus](https://www.aklivity.io/)
+{.zilla-plus-badge .hint-container .info}
 
 ::: tip Estimated time to complete 20-30 mins.
 :::

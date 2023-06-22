@@ -12,7 +12,7 @@ tag:
 Zilla runtime sse-kafka binding.
 
 ```yaml {2}
-sse_kafka_proxy0:
+sse_kafka_proxy:
   type: sse-kafka
   kind: proxy
   routes:
@@ -107,7 +107,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 

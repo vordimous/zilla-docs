@@ -13,7 +13,7 @@ Zilla runtime prometheus exporter
 
 ```yaml {3}
 exporters:
-  prometheus0:
+  prometheus:
     type: prometheus
     options:
       endpoints:

@@ -12,7 +12,7 @@ tag:
 Zilla runtime filesystem binding.
 
 ```yaml {2}
-filesystem_server0:
+filesystem_server:
   type: filesystem
   kind: server
   options:

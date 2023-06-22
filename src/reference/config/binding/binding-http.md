@@ -12,14 +12,14 @@ tag:
 Zilla runtime http binding.
 
 ```yaml {2}
-http_server0:
+http_server:
   type: http
   kind: server
   options:
     access-control:
       policy: cross-origin
     authorization:
-      jwt0:
+      jwt:
         credentials:
           headers:
             authorization: Bearer {credentials}
@@ -28,7 +28,7 @@ http_server0:
         - headers:
             ":scheme": https
             ":authority": example.com:443
-      exit: echo_server0
+      exit: echo_server
 ```
 
 ## Summary
@@ -106,7 +106,7 @@ options:
   access-control:
     policy: cross-origin
   authorization:
-    jwt0:
+    jwt:
       credentials:
         headers:
           authorization: Bearer {credentials}
@@ -213,7 +213,7 @@ Authorization by guard for the `HTTP/1.1` and `HTTP/2` protocols.
 
 ```yaml
 authorization:
-  jwt0:
+  jwt:
     credentials:
       headers:
         authorization: Bearer {credentials}
@@ -256,7 +256,7 @@ Request header overrides.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -271,7 +271,7 @@ routes:
       - headers:
           ":scheme": https
           ":authority": example.com:443
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ### routes[].guarded
@@ -283,7 +283,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -314,7 +314,7 @@ Header name value pairs (all match).
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### telemetry

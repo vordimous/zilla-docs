@@ -13,7 +13,7 @@ tag:
 Zilla runtime grpc binding.
 
 ```yaml {2}
-grpc_server0:
+grpc_server:
   type: grpc
   kind: server
   options:
@@ -26,7 +26,7 @@ grpc_server0:
             custom-text: custom value
             custom-binary:
               base64: Y3VzdG9tIHZhbHVl
-      exit: echo_server0
+      exit: echo_server
 ```
 
 ## Summary
@@ -94,7 +94,7 @@ Protobuf service definition filenames, typically with `.proto` filename extensio
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -106,7 +106,7 @@ Conditional `grpc`-specific routes.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - echo:messages
     when:
       - method: example.EchoService/*
@@ -114,7 +114,7 @@ routes:
           custom-text: custom value
           custom-binary:
             base64: Y3VzdG9tIHZhbHVl
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ### routes[].guarded
@@ -126,7 +126,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - echo:messages
 ```
 
@@ -185,7 +185,7 @@ Telemetry properties for the binding.
 Metric names to record for the binding.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

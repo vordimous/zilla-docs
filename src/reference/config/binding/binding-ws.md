@@ -12,13 +12,13 @@ tag:
 Zilla runtime ws binding.
 
 ```yaml {2}
-ws_server0:
+ws_server:
   type: ws
   kind: server
   routes:
     - when:
         - protocol: echo
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ## Summary
@@ -113,7 +113,7 @@ Path.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -126,7 +126,7 @@ Conditional `ws`-specific routes.
 routes:
   - when:
       - protocol: echo
-  exit: echo_server0
+  exit: echo_server
 ```
 
 ### routes[].guarded
@@ -138,7 +138,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -185,7 +185,7 @@ Path pattern.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

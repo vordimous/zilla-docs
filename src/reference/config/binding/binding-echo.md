@@ -12,7 +12,7 @@ tag:
 Zilla runtime echo binding.
 
 ```yaml {2}
-echo_server0:
+echo_server:
     type: echo
     kind: server
 ```

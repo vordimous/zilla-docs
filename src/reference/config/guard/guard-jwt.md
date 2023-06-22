@@ -12,7 +12,7 @@ tag:
 Zilla runtime jwt guard.
 
 ```yaml {2}
-jwt0:
+jwt:
   type: jwt
   options:
     issuer: https://auth.example.com

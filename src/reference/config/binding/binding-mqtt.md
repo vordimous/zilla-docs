@@ -12,7 +12,7 @@ tag:
 Zilla runtime mqtt binding (incubator).
 
 ```yaml {2}
-mqtt_server0:
+mqtt_server:
   type: mqtt
   kind: server
   routes:
@@ -62,7 +62,7 @@ Behave as a `mqtt` `server`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -80,7 +80,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 

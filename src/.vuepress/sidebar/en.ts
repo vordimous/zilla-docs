@@ -72,16 +72,21 @@ export const enSidebar = sidebar({
     },
   ],
   "/": [
-
-    "how-tos/install.md",
-    "tutorials/quickstart",
+    {
+      text: "Installing Zilla",
+      link: "how-tos/install.md",
+    },
+    {
+      text: "Quickstart",
+      link: "tutorials/quickstart/",
+    },
     {
       text: "Configuration",
-      collapsible: true,
+      collapsible: false,
       children: [
         {
           text: "Connecting to Kafka",
-          collapsible: false,
+          collapsible: true,
           prefix: "how-tos/connecting-to-kafka/",
           children: [
             "generic.md",
@@ -102,39 +107,50 @@ export const enSidebar = sidebar({
       ],
     },
     {
-      text: "Configuring Kafka Proxies",
+      text: "Apache Kafka Proxying",
       collapsible: false,
       children: [
         {
-          text: "gRPC Proxy",
-          link: "kafka-proxies/grpc-proxy.md",
+          text: "gRPC-Kafka Proxy",
+          link: "concepts/kafka-proxies/grpc-proxy.md",
         },
         {
-          text: "REST Proxy",
-          link: "kafka-proxies/rest-proxy.md",
+          text: "REST-Kafka Proxy",
+          link: "concepts/kafka-proxies/rest-proxy.md",
         },
         {
-          text: "SSE Proxy",
-          link: "kafka-proxies/sse-proxy.md",
+          text: "SSE-Kafka Proxy",
+          link: "concepts/kafka-proxies/sse-proxy.md",
+        },
+        {
+          text: "Amazon MSK Pubic Proxy",
+          collapsible: true,
+          prefix: "how-tos/amazon-msk/",
+          icon: "plus",
+          link: "how-tos/amazon-msk/public-proxy.md",
+          children: [
+            "development.md",
+            "production.md",
+            "production-mutual-trust.md",
+          ],
         },
         {
           text: "Amazon MSK Private Proxy",
-          collapsible: false,
-          prefix: "msk-proxies/",
-          children: [
-            "private-proxy.md",
-            {
-              text: "Public Proxy",
-              collapsible: true,
-              prefix: "public-proxy/",
-              link: "public-proxy/",
-              children: [
-                "development.md",
-                "production.md",
-                "production-mutual-trust.md",
-              ],
-            },
-          ],
+          icon: "plus",
+          link: "how-tos/amazon-msk/private-proxy.md",
+        },
+      ],
+    },
+    {
+      text: "SSE Proxying",
+      collapsible: false,
+      children: [
+        {
+          text: "JWT Continuous Authorization",
+          link: "https://github.com/aklivity/zilla-examples/tree/main/sse.proxy.jwt",
+        },        {
+          text: "SSE-Kafka Proxy",
+          link: "concepts/kafka-proxies/sse-proxy.md",
         },
       ],
     },

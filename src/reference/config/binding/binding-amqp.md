@@ -12,14 +12,14 @@ tag:
 Zilla runtime amqp binding (incubator).
 
 ```yaml {2}
-amqp_server0:
+amqp_server:
   type: amqp
   kind: server
   routes:
     - when:
         - address: echo
           capabilities: send_and_receive
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ## Summary
@@ -69,7 +69,7 @@ routes:
   - when:
       - address: echo
         capabilities: send_and_receive
-    exit: echo_server0
+    exit: echo_server
 ```
 
 ### routes[].guarded
@@ -81,7 +81,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -118,7 +118,7 @@ Defaults to `"send_and_receive"`.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

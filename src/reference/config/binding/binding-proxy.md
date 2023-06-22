@@ -13,7 +13,7 @@ tag:
 Zilla runtime proxy binding.
 
 ```yaml {2}
-proxy_server0:
+proxy_server:
   type: proxy
   kind: server
   routes:
@@ -22,7 +22,7 @@ proxy_server0:
           family: inet4
           destination:
             port: 443
-      exit: tls_server0
+      exit: tls_server
 ```
 
 ## Summary
@@ -73,7 +73,7 @@ Behave as `proxy` `client` or `server`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ### routes
@@ -89,7 +89,7 @@ routes:
         family: inet4
         destination:
           port: 443
-    exit: tls_server0
+    exit: tls_server
 ```
 
 ### routes[].guarded
@@ -101,7 +101,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test0:
+      test:
         - read:items
 ```
 
@@ -166,7 +166,7 @@ Port number.
 Next binding when following this route.
 
 ```yaml
-exit: echo_server0
+exit: echo_server
 ```
 
 ---

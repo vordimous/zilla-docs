@@ -2,7 +2,7 @@
 description: Running these Zilla quickstarts will introduce some simple features.
 ---
 
-# Basic Quickstarts
+# Zilla Quickstarts
 
 Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker](https://docs.docker.com/get-docker/).
 

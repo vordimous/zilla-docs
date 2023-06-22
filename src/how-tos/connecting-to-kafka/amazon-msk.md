@@ -118,11 +118,11 @@ vaults:
         type: STORE_TYPE
         password: KEYSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tls_client0
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -133,7 +133,7 @@ bindings:
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:
