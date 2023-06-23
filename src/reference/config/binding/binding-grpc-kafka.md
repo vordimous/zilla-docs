@@ -8,6 +8,7 @@ tag:
 ---
 
 # grpc-kafka Binding
+<!-- markdownlint-disable MD024 -->
 
 Zilla runtime grpc-kafka binding.
 

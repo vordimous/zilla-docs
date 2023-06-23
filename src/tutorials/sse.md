@@ -10,7 +10,7 @@ Get started using Zilla by deploying our Docker container. Before proceeding, yo
 
 Running this Zilla quickstart will create a simple SSE server that sends a `Hello, World` message.
 
-### Setup
+### Setup SSE echo server
 
 Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the same directory.
 
@@ -239,7 +239,7 @@ Go deeper into this concept with the [sse.proxy.jwt](https://github.com/aklivity
 
 Running this Zilla quickstart will fanout `Hello, World` from a Kafka topic acting as a SSE server
 
-### Setup
+### Setup SSE Kafka Proxy
 
 Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the same directory.
 

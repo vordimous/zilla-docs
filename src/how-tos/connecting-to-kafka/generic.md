@@ -3,6 +3,9 @@ description: In this guide, you will learn how to connect to a generic Kafka fro
 ---
 # Generic Kafka
 
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
+
 ## Introduction
 
 In this guide, you will explore how to connect to your own Kafka from Zilla.

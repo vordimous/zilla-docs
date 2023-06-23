@@ -3,6 +3,8 @@ description: Securely access an Amazon MSK cluster across VPCs via AWS PrivateLi
 ---
 
 # Private MSK Proxy
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 [Zilla Plus](https://www.aklivity.io/)
 {.zilla-plus-badge .hint-container .info}

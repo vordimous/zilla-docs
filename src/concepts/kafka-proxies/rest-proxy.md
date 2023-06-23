@@ -1,4 +1,6 @@
 # REST Proxy
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 Zilla lets you configure application-centric REST API endpoints that unlock `Apache Kafka` event-driven architectures. An application-centric REST API for Kafka gives the developer freedom to define their own HTTP mapping to Kafka, with control over the topic, message key, message headers, message value, and reply-to topic. This guide will explain all the aspects of configuring Zilla with REST API endpoints.
 

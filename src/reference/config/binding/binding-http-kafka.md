@@ -8,6 +8,7 @@ tag:
 ---
 
 # http-kafka Binding
+<!-- markdownlint-disable MD024 -->
 
 Zilla runtime http-kafka binding.
 

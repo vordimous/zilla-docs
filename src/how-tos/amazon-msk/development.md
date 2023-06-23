@@ -6,6 +6,8 @@ description: >-
 ---
 
 # Development
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 [Zilla Plus](https://www.aklivity.io/)
 {.zilla-plus-badge .hint-container .info}
@@ -13,6 +15,7 @@ description: >-
 ::: tip Estimated time to complete 20-30 minutes.
 :::
 
+<!-- markdownlint-disable MD033 -->
 <YouTube id="0nBx6qjFDyc" />
 
 ## Overview

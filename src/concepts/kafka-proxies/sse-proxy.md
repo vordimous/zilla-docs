@@ -7,7 +7,7 @@ A brief explanation of replaceable values from the config examples below:
 - `ENDPOINT_PATH`: HTTP path for example `/tasks`
 - `KAFKA_TOPIC`: The Kafka topic that you want to stream from
 
-### Configure Endpoint
+## Configure Endpoint
 
 Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is shown below:
 

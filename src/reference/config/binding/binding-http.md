@@ -35,7 +35,7 @@ http_server:
 
 Defines a binding with `http` protocol support, with `server` or `client` behavior.
 
-#### Server behavior
+### Server behavior
 
 The `server` kind `http` binding decodes `HTTP/1.1` protocol or `HTTP/2` protocol on the inbound network stream, producing higher level application streams for each request.
 
@@ -45,7 +45,7 @@ Authorization is enforced by a [`guard`](../../config/guard/) and the credential
 
 Conditional routes based on `http` request headers are used to route these application streams to an `exit` binding.
 
-#### Client behavior
+### Client behavior
 
 The `client` kind `http` binding receives inbound application streams and encodes each request as a network stream via `HTTP/1.1` protocol. Note that the same network stream can be reused to encode multiple `HTTP/1.1` requests.
 

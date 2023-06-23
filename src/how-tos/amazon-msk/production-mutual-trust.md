@@ -4,6 +4,8 @@ description: Setup mutual authentication to your MSK cluster from anywhere on th
 ---
 
 # Production (Mutual Trust)
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 [Zilla Plus](https://www.aklivity.io/)
 {.zilla-plus-badge .hint-container .info}

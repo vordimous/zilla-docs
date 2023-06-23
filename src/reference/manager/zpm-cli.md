@@ -98,8 +98,6 @@ Examples:
 
 ## zpm wrap
 
-### zpm wrap
-
 The `zpm wrap` command generates an executable `zpmw` wrapper script that automatically downloads `zpm` if necessary before passing the arguments to `zpm`.
 
 This approach avoids the need to manually install `zpm` and allows greater control over the version of `zpm` being used.
