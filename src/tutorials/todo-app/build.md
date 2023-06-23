@@ -420,7 +420,7 @@ The Zilla engine configuration defines a flow of named `bindings` representing e
 
 Let's configure `Zilla` for the Tasks API to interact with the `Todo` Kafka Streams service via Kafka topics.
 
-You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](../../reference/config/).
+You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](../../reference/config/overview.md).
 
 |                       |                      |
 | --------------------- | -------------------- |

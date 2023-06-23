@@ -7,7 +7,7 @@ The Zilla Visual Studio Code extension enables you to manage your Zilla.yaml con
 The VS Code extension includes:
 
 - [Zilla Diagram](#zilla-diagram), which provides a visual representation of your Zilla config similar to a network diagram. It displays all of the configured Zilla elements and how they connect.
-- [Yaml IntelliSense](#yaml-intellisense), which helps you write and maintain your [zilla.yaml](../../reference/config/) config.
+- [Yaml IntelliSense](#yaml-intellisense), which helps you write and maintain your [zilla.yaml](../overview.md) config.
 
 ## Install the VS Code extension
 

@@ -8,12 +8,16 @@ export const enSidebar = sidebar({
       prefix: "config/",
       children: [
         {
-          text: "CLI (zilla)",
-          link: "zilla-cli.md",
-        },
-        {
           text: "zilla.yaml Overview",
           link: "overview.md",
+        },
+        {
+          text: "VS Code Extension",
+          link: "vscode/README.md",
+        },
+        {
+          text: "CLI (zilla)",
+          link: "zilla-cli.md",
         },
         {
           text: "Bindings",
