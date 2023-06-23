@@ -11,7 +11,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ### Configure Endpoints
 
-Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/amazon-msk/config/binding/binding-http-kafka.mdng in `zilla.yaml`.
+Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/config/binding/binding-http-kafka.md) binding in `zilla.yaml`.
 
 Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`, `DELETE`, and `PATCH` .
 
@@ -41,7 +41,7 @@ bindings:
 :::
 
 ::: info NOTE
-When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/amazon-msk/config/binding/binding-http-kafka.mdapability-produce) as well.
+When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/config/binding/binding-http-kafka.md#capability-produce) as well.
 :::
 
 Kafka **Fetch** capability with HTTP request methods such as `GET` :

@@ -70,6 +70,20 @@ export const enSidebar = sidebar({
         },
       ],
     },
+    {
+      text: "Amazon MSK",
+      collapsible: true,
+      prefix: "amazon-msk/",
+      link: "amazon-msk/",
+      children: "structure",
+    },
+    {
+      text: "Troubleshooting",
+      collapsible: true,
+      prefix: "troubleshooting/",
+      link: "troubleshooting/",
+      children: "structure",
+    },
   ],
   "/": [
     {
@@ -109,10 +123,15 @@ export const enSidebar = sidebar({
     {
       text: "Apache Kafka Proxying",
       collapsible: false,
+      link: "concepts/kafka-proxies/grpc-proxy.md",
       children: [
         {
-          text: "gRPC-Kafka Proxy",
+          text: "gRPC-Kafka Proxy into",
           link: "concepts/kafka-proxies/grpc-proxy.md",
+        },
+        {
+          text: "gRPC-Kafka Proxy walkthrough",
+          link: "how-tos/kafka-proxies/grpc-proxy.md",
         },
         {
           text: "REST-Kafka Proxy",
@@ -158,7 +177,7 @@ export const enSidebar = sidebar({
       text: "Reference",
       prefix: "reference/",
       link: "reference/config/overview.md",
-      children: ["config/binding/", "config/guard/", "config/vault/", "config/telemetry/"],
+      children: ["config/binding/", "config/guard/", "config/vault/", "config/telemetry/", "amazon-msk/", "vscode/", "troubleshooting/"], // todo add aws stuff
     },
   ],
 });

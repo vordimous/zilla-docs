@@ -10,7 +10,7 @@ In this getting started exercise, you will enhance the [previously built Todo ap
 
 ![](/assets/todo-app-architecture-secured@2x.png)
 
-Zilla has the concept of a [guard](../../reference/config/guard/README.md) that can be defined to control access to any route in the bindings configuration.
+Zilla has the concept of a [guard](../../reference/config/guard/) that can be defined to control access to any route in the bindings configuration.
 
 In this guide, you will use the [JWT guard](../../reference/config/guard/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
 

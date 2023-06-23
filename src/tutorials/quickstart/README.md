@@ -14,7 +14,7 @@ Running this Zilla setup will simply echo back any text sent to the server over 
 
 @tab zilla.yaml
 
-@[code](./basics/tcp_zilla.yaml)
+@[code](./tcp_zilla.yaml)
 
 :::
 
@@ -26,7 +26,7 @@ Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
 
 @tab Docker 23
 
-@[code{14-18} bash:no-line-numbers](./basics/tcp_docker_run.sh)
+@[code{14-18} bash:no-line-numbers](./tcp_docker_run.sh)
 
 @tab Docker 20
 
@@ -42,13 +42,13 @@ start -v;
 
 ### Use `netcat` to send a text payload
 
-@[code{31-31} bash:no-line-numbers](./basics/tcp_docker_run.sh)
+@[code{31-31} bash:no-line-numbers](./tcp_docker_run.sh)
 
 > Hello, world
 
 Remove the running container
 
-@[code{34-34} bash:no-line-numbers](./basics/tcp_docker_run.sh)
+@[code{34-34} bash:no-line-numbers](./tcp_docker_run.sh)
 
 ## Simple HTTP Echo
 
@@ -58,7 +58,7 @@ Running this Zilla quickstart will simply echo back any text sent to the server 
 
 @tab zilla.yaml
 
-@[code](./basics/http_zilla.yaml)
+@[code](./http_zilla.yaml)
 
 :::
 
@@ -70,7 +70,7 @@ Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
 
 @tab Docker 23
 
-@[code{14-18} bash:no-line-numbers](./basics/http_docker_run.sh)
+@[code{14-18} bash:no-line-numbers](./http_docker_run.sh)
 
 @tab Docker 20
 
@@ -86,13 +86,13 @@ start -v;
 
 ### Use `curl` to hear your echo
 
-@[code{31-31} bash:no-line-numbers](./basics/http_docker_run.sh)
+@[code{31-31} bash:no-line-numbers](./http_docker_run.sh)
 
 > Hello, world
 
 Remove the running container
 
-@[code{34-34} bash:no-line-numbers](./basics/http_docker_run.sh)
+@[code{34-34} bash:no-line-numbers](./http_docker_run.sh)
 
 ## Prometheus Metrics
 
@@ -102,7 +102,7 @@ Running this Zilla quickstart will collect basic metrics for an http service.
 
 @tab zilla.yaml
 
-@[code](./basics/metrics_zilla.yaml)
+@[code](./metrics_zilla.yaml)
 
 :::
 
@@ -114,7 +114,7 @@ Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted
 
 @tab Docker 23
 
-@[code{14-18} bash:no-line-numbers](./basics/metrics_docker_run.sh)
+@[code{14-18} bash:no-line-numbers](./metrics_docker_run.sh)
 
 @tab Docker 20
 
@@ -130,7 +130,7 @@ start -v;
 
 ### Send an HTTP POST
 
-@[code{31-31} bash:no-line-numbers](./basics/metrics_docker_run.sh)
+@[code{31-31} bash:no-line-numbers](./metrics_docker_run.sh)
 
 > Hello, world
 
@@ -138,7 +138,7 @@ start -v;
 
 Go to [http://localhost:9090/metrtics](http://localhost:9090/metrtics) to see the collected data or run the below `curl` command.
 
-@[code{32-32} bash:no-line-numbers](./basics/metrics_docker_run.sh)
+@[code{32-32} bash:no-line-numbers](./metrics_docker_run.sh)
 
 ```text
 # TYPE stream_opens_sent_total counter
@@ -159,7 +159,7 @@ http_response_size_bytes_sum{namespace="Metrics-example",binding="http_server"} 
 
 Remove the running container
 
-@[code{35-35} bash:no-line-numbers](./basics/metrics_docker_run.sh)
+@[code{35-35} bash:no-line-numbers](./metrics_docker_run.sh)
 
 ## Going Deeper
 

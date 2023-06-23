@@ -2,7 +2,7 @@
 description: Common errors and how to handle them
 ---
 
-# Troubleshooting
+# Amazon MSK Troubleshooting
 
 ::: note Table of contents
 
@@ -20,7 +20,7 @@ The CloudFormation stack will timeout if the launched instances are unable to ca
 
 This can occur if the target VPC has no attached Internet Gateway, or if the main Route Table for the VPC has not been updated to add a default route to the Internet Gateway.
 
-Make sure to [attach the Internet Gateway](create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](create-vpc.md#route-to-the-internet-gateway), then try again.
+Make sure to [attach the Internet Gateway](../amazon-msk/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../amazon-msk/create-vpc.md#route-to-the-internet-gateway), then try again.
 
 ## Why does my SSH client reject access to the MSK Proxy instances?
 
@@ -38,7 +38,7 @@ The SSH client will timeout if some or all of the network traffic is being dropp
 
 This can occur if the target VPC has no attached Internet Gateway, or if the main Route Table for the VPC has not been updated to add a default route to the Internet Gateway.
 
-Make sure to [attach the Internet Gateway](create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](create-vpc.md#route-to-the-internet-gateway), then try again.
+Make sure to [attach the Internet Gateway](../amazon-msk/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../amazon-msk/create-vpc.md#route-to-the-internet-gateway), then try again.
 
 ## Why does the `msk-proxy` service keep restarting on the MSK Proxy instances?
 
@@ -82,7 +82,7 @@ openssl s_client \
   -key client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
 ```shell:no-line-numbers
 openssl s_client \
@@ -116,7 +116,7 @@ kcat \
   -X ssl.key.location=client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
 ```shell:no-line-numbers
 kcat \

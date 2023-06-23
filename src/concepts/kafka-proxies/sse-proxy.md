@@ -40,8 +40,8 @@ As shown above you can describe your event id in case you want to retrieve the m
 
 ### Authorization
 
-Similar to [REST Proxy](../../guides/kafka-proxies/rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
+Similar to [REST Proxy](./rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
 
 ### More
 
-For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/zilla.yaml/binding/binding-sse.md), [SSE-Kafka Binding](../../reference/zilla.yaml/binding/binding-sse-kafka.md).
+For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/config/binding/binding-sse.md), [SSE-Kafka Binding](../../reference/config/binding/binding-sse-kafka.md).

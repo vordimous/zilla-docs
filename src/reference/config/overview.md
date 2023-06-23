@@ -7,7 +7,7 @@ description: Defines the Zilla runtime engine configuration in zilla.yaml
 
 # Zilla Runtime Configuration
 
-The Zilla runtime configuration defines the [`bindings`](binding/README.md), [`guards`](guard/README.md) and [`vaults`](vault/README.md) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
+The Zilla runtime configuration defines the [`bindings`](binding/), [`guards`](guard/), [`vaults`](vault/), and [`telemetry`](telemetry/) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
 
 ```yaml {2}
 ---
@@ -120,12 +120,12 @@ Default attributes to optionally include when exporting metrics.
 
 #### exporters
 
-> `object` as map of named [`exporter`](telemetry/exporter/README.md) properties
+> `object` as map of named [`exporter`](telemetry/exporter/) properties
 
 Map of named exporters.
 
 #### metrics
 
-> `array` of `string` of named [`metrics`](telemetry/metrics/README.md)
+> `array` of `string` of named [`metrics`](telemetry/metrics/)
 
 Array of named metrics.

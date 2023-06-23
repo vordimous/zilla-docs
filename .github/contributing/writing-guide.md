@@ -15,19 +15,52 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
 
 ## Organization
 
-- **Installation/Integration**: Provide a thorough overview of how to integrate the software into as many different kinds of projects as necessary.
-- **Introduction/Getting Started**:
-  - Provide a less than 10 minute overview of the problems the project solves and why it exists.
-  - Provide a less than 30 minute overview of the problems the project solves and how, including when and why to use the project and some simple code examples. At the end, link to both the Installation page and the beginning of the Essentials Guide.
-- **Guide**: Make users feel smart, powerful, and curious, then maintain this state so that users maintain the motivation and cognitive capacity to keep learning more. Guide pages are meant to be read sequentially, so should generally be ordered from the highest to lowest power/effort ratio.
-  - **Essentials**: It should take no longer than 5 hours to read the Essentials, though shorter is better. Its goal is to provide the 20% of knowledge that will help users handle 80% of use cases. Essentials can link to more advanced guides and the API, though, in most cases, you should avoid such links. When they are provided, you need also provide a context so users are aware if they should follow this link on their first reading. Otherwise, many users end up exhausting their cognitive capacity link-hopping, trying to fully learn every aspect of a feature before moving on, and as a result, never finish that first read-through of the Essentials. Remember that a smooth read is more important than being thorough. We want to give people the information they need to avoid a frustrating experience, but they can always come back and read further, or Google a less common problem when they encounter it.
-  - **Advanced**: While the Essentials helps people handle ~80% of use cases, subsequent guides help get users to 95% of use cases, plus more detailed information on non-essential features (e.g. transitions, animations), more complex convenience features (e.g. mixins, custom directives), and dev experience improvements (e.g. JSX, plugins). The final 5% of use cases that are more niche, complex, and/or prone to abuse will be left to the cookbook and API reference, which can be linked to from these advanced guides.
-- **Reference/API**: Provide a complete list of features, including type information, descriptions of the problem each solves, examples of every combination of options, and links to guides, cookbook recipes, and other internal resources providing more detail. Unlike other pages, this one is not meant to be read top-to-bottom, so plenty of detail can be provided. These references must also be more easily skimmable than the guides, so the format should be closer to dictionary entries than the story-telling format of the guides.
-- **Migrations**:
-  - **Versions**: When important changes are made, it's useful to include a full list of changes, including a detailed explanation of why the change was made and how to migrate their projects.
-  - **From other projects**: How does this software compare to similar software? This is important to help users understand what additional problems we might solve or create for them, and to what extent they can transfer knowledge they already have.
-- **Style Guide**: There are necessarily some key pieces in development that need a decision, but are not core to the API. The style guide provides educated, opinionated recommendations to help guide these decisions. They shouldn't be followed blindly, but can help teams save time by being aligned on smaller details.
-- **Cookbook**: Recipes in the cookbook are written with some assumption of familiarity with Vue and its ecosystem. Each is a highly structured document that walks through some common implementation details that a Vue dev might encounter.
+The docs will be organized according to the [Diataxis](https://diataxis.fr/) framework and the user navigation will be based on primary features.
+
+The Diataxis framework will dictate what content should be created and and keep the conent scoped to a purpose: Tutorials, How-Tos, Concepts, Reference.
+
+The user navigation can be a collection of any content organized by primary feature. This way a user can find the solution to their problem and  see different kinds of content all related to that solution.
+
+### File structure
+
+- [**Tutorials**](https://diataxis.fr/tutorials/): A tutorial must help a beginner achieve basic competence with a product, so that they can go on to use the product for their own purposes.
+
+A tutorial also needs to show the learner that they can be successful with the product - by having them do something both meaningful and attainable.
+
+Tutorials - learning-oriented guides that describe practical steps and are intended to serve our study.
+A tutorial in other words is a lesson - a lesson concerned with learning how rather than learning that, because it’s concerned with skill: practical, not theoretical knowledge.
+
+Having completed a tutorial, the learner should be in a position to start to make sense of the rest of the documentation, and the product itself.
+
+For a product, a tutorial turns new learners into users. An inadequate tutorial can prevent a project from acquiring new users.
+
+- [**How-Tos**](https://diataxis.fr/how-to-guides/): How-to guides can be thought of as recipes, directions that guide the reader through the steps to achieve a specific end.
+
+How-to guides - task oriented, practical steps, that serve our work
+Examples could be: how to calibrate the radar array; how to use fixtures in pytest; how to configure reconnection back-off policies. On the other hand, how to build a web application is not - that’s not addressing a specific goal or problem, it’s a vastly open-ended sphere of skill.
+
+How-to guides matter not just because users need to be able to accomplish things: the list of how-to guides in your documentation helps frame the picture of what your product can actually do. A rich list of how-to guides is an encouraging suggestion of a product’s capabilities.
+
+If they’re well-written and address the right subjects, you’re likely to find that how-to guides are the most-read sections of your documentation.
+
+- [**Concepts**](https://diataxis.fr/explanation/): Explanation(Concepts) clarifies, deepens and broadens the reader’s understanding of a subject.
+
+Explanation - understanding oriented, theoretical knowledge, that serves our study
+It’s not concerned with what the user might be doing, like tutorials and how-to guides. It’s not a close-up view of the machinery, like reference material. It’s documentation that approaches a topic from a higher perspective, and from different angles.
+
+This allows explanation to become discussion, a more relaxed, freer way to consider something. Explanation joins things together. It’s documentation that it makes sense to read while away from the product itself.
+
+- [**Reference**](https://diataxis.fr/reference/): The only purpose of a reference guide is to describe, as succinctly as possible, and in an orderly way. Whereas the content of tutorials and how-to guides are led by needs of the user, reference material is led by the product it describes.
+
+Reference - information oriented, theoretical knowledge, that serves our work
+In the case of software, reference guides describe the software itself - APIs, classes, functions and so on - and how to use them.
+
+Your users need reference material because they need truth and certainty - firm platforms on which to stand while they work. Good technical reference is essential to provide users with the confidence to do their work.
+
+### Nav Structure
+
+- **Get Started**: This is where users will start and learn what they need to be successful
+- **Reference**: This is an echo of the Diataxis definition and should remain as dry and generated as possible. The structure is set up for direct linking to individual components that readers may need more context on. Each component should have some sort of example to give context for it's usage
 
 ## Writing & Grammar
 
@@ -100,8 +133,10 @@ We appreciate small, focused PRs. If you'd like to make an extremely large chang
 ### Software
 
 - [Grammarly](https://www.grammarly.com/): Desktop app and browser extension for checking spelling and grammar (though grammar checking doesn't catch everything and occasionally shows a false positive).
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): An extension for VS Code to help you check spelling within markdown and code examples.
+- Spell checking with cspell using the extension [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) and the command `npx cspell "**/*.{md,ts,js}"`
 - [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): An extension for VS Code to help you check spelling within markdown and code examples.
+- Table of Contents are generated by the [VSCode Markdown](https://github.com/yzhang-gh/vscode-markdown#table-of-contents) extension using the `markdown.extension.toc.slugifyMode`:`gitea`
+- [Diataxis](https://diataxis.fr/)
 
 ### Books
 

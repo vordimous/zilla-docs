@@ -30,7 +30,7 @@ The following AWS services are used by [Aklivity Public MSK Proxy](http://aws.am
 The default AWS Service Quotas are sufficient.
 
 ::: info
-Check out the [Troubleshooting](../../reference/amazon-msk/troubleshooting.md) guide if you run into any issues.
+Check out the [Troubleshooting](../../reference/troubleshooting/amazon-msk.md) guide if you run into any issues.
 :::
 
 ## Prerequisites
