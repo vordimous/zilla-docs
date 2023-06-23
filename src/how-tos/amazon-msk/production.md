@@ -8,7 +8,7 @@ description: Setup connectivity to your MSK cluster from anywhere on the interne
 [Zilla Plus](https://www.aklivity.io/)
 {.zilla-plus-badge .hint-container .info}
 
-::: tip Estimated time to complete 20-30 mins.
+::: tip Estimated time to complete 20-30 minutes.
 :::
 
 ## Overview
@@ -24,8 +24,8 @@ The following AWS services are used by [Aklivity Public MSK Proxy](http://aws.am
 | Marketplace Metering        | Yes                                                                                    | Startup, then hourly | [None](https://docs.aws.amazon.com/general/latest/gr/aws-marketplace.html)                    |
 | Resource Groups and Tagging | Yes                                                                                    | Startup only         | [None](https://docs.aws.amazon.com/general/latest/gr/arg.html#arg-quotas)                     |
 | Secrets Manager             | Yes                                                                                    | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/asm.html#limits\_secrets-manager) |
-| Certificate Manager         | No<br><br>Private key and certificate can be inlined in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm.html#limits\_acm)             |
-| Private Certificate Manager | No<br><br>Private key and certificate can be inlined in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm-pca.html#limits\_acm-pca)     |
+| Certificate Manager         | No<br><br>Private key and certificate can be inline in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm.html#limits\_acm)             |
+| Private Certificate Manager | No<br><br>Private key and certificate can be inline in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm-pca.html#limits\_acm-pca)     |
 
 The default AWS Service Quotas are sufficient.
 

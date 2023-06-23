@@ -7,7 +7,7 @@ description: Securely access your Amazon MSK cluster via the internet.
 [Zilla Plus](https://www.aklivity.io/)
 {.zilla-plus-badge .hint-container .info}
 
-::: tip Estimated time to complete 20-30 mins.
+::: tip Estimated time to complete 20-30 minutes.
 :::
 
 ## Overview

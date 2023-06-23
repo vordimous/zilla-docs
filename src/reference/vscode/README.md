@@ -33,7 +33,7 @@ The Zilla extension can be installed on vscode.dev for those users who don't hav
 
 ## Zilla Diagram
 
-The extension will render the active zilla yaml file when the `Toggle Diagram View` ![Toggle Diagram View](./toggle.png) button in the top right corner is pressed.
+The extension will render the active `zilla.yaml` file when the `Toggle Diagram View` ![Toggle Diagram View](./toggle.png) button in the top right corner is pressed.
 
 - Clicking anywhere on the diagram will take your cursor to that location in the zilla.yaml file.
 - the `?` icon that appears on a clicked element will take you to the appropriate docs page

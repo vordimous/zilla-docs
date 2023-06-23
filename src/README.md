@@ -21,17 +21,7 @@ features:
     details: Check markdown links
     link: ./guide/markdown/others.html#link-check
 
-  - title: Kafka Proxying - Filtering
-    icon: clipboard-check
-    details: Check markdown links
-    link: ./guide/markdown/others.html#link-check
-
   - title: REST-Kafka Proxy - Correlated Request-Response
-    icon: box-archive
-    details: Decorate Markdown content with styles
-    link: ./guide/markdown/container.html
-
-  - title: REST-Kafka Proxy - Oneway
     icon: box-archive
     details: Decorate Markdown content with styles
     link: ./guide/markdown/container.html
@@ -41,17 +31,7 @@ features:
     details: Group similar content with tabs and switch them together
     link: ./guide/markdown/tabs.html
 
-  - title: SSE-Kafka Proxy - Continuous  Authorization
-    icon: table-columns
-    details: Group similar content with tabs and switch them together
-    link: ./guide/markdown/tabs.html
-
   - title: gRPC-Kafka Proxy - Correlated Request-Response
-    icon: code
-    details: Group similar codes with tabs
-    link: ./guide/markdown/code-tabs.html
-
-  - title: gRPC-Kafka Proxy - Reliable Delivery
     icon: code
     details: Group similar codes with tabs
     link: ./guide/markdown/code-tabs.html
@@ -60,16 +40,6 @@ features:
     icon: align-center
     details: Let you decide to align paragraphs in the way you like
     link: ./guide/markdown/align.html
-
-  - title: Deployment - Auto-reconfigure
-    icon: align-center
-    details: Let you decide to align paragraphs in the way you like
-    link: ./guide/markdown/align.html
-
-  - title: Monitoring - Prometheus
-    icon: code
-    details: Allow you to add attributes for Markdown content
-    link: ./guide/markdown/attrs.html
 
   - title: Monitoring - Auto-scaling
     icon: code
