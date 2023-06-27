@@ -1,7 +1,7 @@
 ---
 description: In this guide, you will learn how to connect to a generic Kafka from Zilla
 ---
-# Generic Kafka
+# Apache Kafka
 
 <!-- TODO enable -->
 <!-- markdownlint-disable -->

@@ -1,4 +1,5 @@
 ---
+icon: plus
 description: Securely access your Amazon MSK cluster via the internet.
 ---
 

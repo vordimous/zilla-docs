@@ -101,26 +101,24 @@ export const enSidebar = sidebar({
     {
       text: "Configuration",
       collapsible: false,
+      link: "concepts/config-intro.md",
       children: [
         {
+          text: "Intro to zilla.yaml",
+          link: "concepts/config-intro.md",
+        },
+        {
           text: "Connecting to Kafka",
-          collapsible: true,
+          collapsible: false,
           prefix: "how-tos/connecting-to-kafka/",
+          link: "how-tos/connecting-to-kafka/apache-kafka.md",
           children: [
-            "generic.md",
+            "apache-kafka.md",
             "aiven.md",
             "amazon-msk.md",
             "confluent-cloud.md",
             "redpanda.md",
           ],
-        },
-        {
-          text: "Enable Metrics",
-          link: "reference/config/telemetry/",
-        },
-        {
-          text: "Manage CORS",
-          link: "reference/config/bindings/binding-http.md#options-access-control",
         },
       ],
     },
@@ -130,7 +128,7 @@ export const enSidebar = sidebar({
       link: "concepts/kafka-proxies/grpc-proxy.md",
       children: [
         {
-          text: "gRPC-Kafka Proxy into",
+          text: "Kafka Proxying with Zilla",
           link: "concepts/kafka-proxies/grpc-proxy.md",
         },
         {
@@ -149,9 +147,9 @@ export const enSidebar = sidebar({
           text: "Amazon MSK Pubic Proxy",
           collapsible: true,
           prefix: "how-tos/amazon-msk/",
-          icon: "plus",
           link: "how-tos/amazon-msk/public-proxy.md",
           children: [
+            "public-proxy.md",
             "development.md",
             "production.md",
             "production-mutual-trust.md",
@@ -159,7 +157,6 @@ export const enSidebar = sidebar({
         },
         {
           text: "Amazon MSK Private Proxy",
-          icon: "plus",
           link: "how-tos/amazon-msk/private-proxy.md",
         },
       ],

@@ -25,10 +25,6 @@ bindings:
   ...
 ```
 
-## Summary
-
-This binding supports the `echo` protocol and is run with the `server` behavior. It reads inbound messages and writes it back to the sender.
-
 ## Configuration
 
 :::: note Properties

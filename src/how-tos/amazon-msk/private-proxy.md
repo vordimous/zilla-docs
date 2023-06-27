@@ -1,4 +1,5 @@
 ---
+icon: plus
 description: Securely access an Amazon MSK cluster across VPCs via AWS PrivateLink.
 ---
 
