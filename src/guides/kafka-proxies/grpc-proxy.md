@@ -10,7 +10,7 @@ Let's take a look at how Zilla would be configured with a full featured gRPC ser
 
 ## Step 1: Declaring the service
 
-Zilla lets you use your service proto file(s) to specify the service definitions. This will let you create one or many [grpc-kafka](../../reference/zilla.yaml/binding/binding-grpc-kafka.md) proxy handlers to be used by the whole service or individual methods.
+Zilla lets you use your service proto file(s) to specify the service definitions. This will let you create one or many [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) proxy handlers to be used by the whole service or individual methods.
 
 Here is the service we will be enhancing with Zilla and Kafka.
 
@@ -69,7 +69,7 @@ routes:
 
 ## Step 2: Handling message routing onto Kafka
 
-This maps the proto service method's request and response messages directly to Kafka topics defined by the `topic` and `reply-to` attributes respectively. The messages are linked by the `zilla:correlation-id` header for individual calls into the gRPC service. Read more about it and how the `idempotency-key` enables safe message replays in the [grpc-kafka](../../reference/zilla.yaml/binding/binding-grpc-kafka.md#produce-capability) reference section.
+This maps the proto service method's request and response messages directly to Kafka topics defined by the `topic` and `reply-to` attributes respectively. The messages are linked by the `zilla:correlation-id` header for individual calls into the gRPC service. Read more about it and how the `idempotency-key` enables safe message replays in the [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md#produce-capability) reference section.
 
 ### Message routing for RPC request and response types
 
@@ -132,7 +132,7 @@ routes:
 
 ### Fanout streaming RPC
 
-An additional method for getting messages from a service onto Kafka is using the [grpc-kafka](../../reference/zilla.yaml/binding/binding-grpc-kafka.md) fetch capability. This enables message filtering and reliable message delivery. Read more about the [fetch capability](../../reference/zilla.yaml/binding/binding-grpc-kafka.md#fetch-capability) in the reference section.
+An additional method for getting messages from a service onto Kafka is using the [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) fetch capability. This enables message filtering and reliable message delivery. Read more about the [fetch capability](../../reference/config/bindings/binding-grpc-kafka.md#fetch-capability) in the reference section.
 
 The service will need a method that accepts the `google/protobuf/empty.proto` and produce the massage to be fanned out onto the Kafka topic.
 
@@ -145,7 +145,7 @@ service FanoutService
 }
 ```
 
-Here we set the [fetch capability](../../reference/zilla.yaml/binding/binding-grpc-kafka.md#fetch-capability) and a filter.
+Here we set the [fetch capability](../../reference/config/bindings/binding-grpc-kafka.md#fetch-capability) and a filter.
 
 ```yaml
 grpc_kafka:
@@ -165,7 +165,7 @@ grpc_kafka:
 
 ## Step 3: Calling services from Kafka
 
-Now that messages are in Kafka we need to send them to the gRPC services responsible for processing them. For this, we will be using the [kafka-grpc](../../reference/zilla.yaml/binding/binding-kafka-grpc.md) binding.
+Now that messages are in Kafka we need to send them to the gRPC services responsible for processing them. For this, we will be using the [kafka-grpc](../../reference/config/bindings/binding-kafka-grpc.md) binding.
 
 ```yaml
 remote_server:
@@ -224,7 +224,7 @@ tcp_client:
 
 ### Gateway Ingress
 
-Using a `tcp` and `tls` server we can route the gRPC traffic through an `http` server, `<ingress_host>`:`<ingress_port>`, to our desired gRPC server at the `<grpc_server_binding_name>`. This sets up the ingress section and by defining a [filesystem vault](../../reference/zilla.yaml/vault/vault-filesystem.md) a tls certificate can be used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server.
+Using a `tcp` and `tls` server we can route the gRPC traffic through an `http` server, `<ingress_host>`:`<ingress_port>`, to our desired gRPC server at the `<grpc_server_binding_name>`. This sets up the ingress section and by defining a [filesystem vault](../../reference/config/vaults/vault-filesystem.md) a tls certificate can be used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server.
 
 ```yaml
   tcp_server:

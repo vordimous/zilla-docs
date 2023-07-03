@@ -27,7 +27,33 @@ html[data-theme=light] #app {
     }
 }
 
+// make bash code blocks have $ prefix
 pre.language-bash:before {
     content: "$ ";
     font-weight: bold;
+}
+
+// remove table borders
+table.no-boarder {
+    td, th, tr {
+        padding: 0.5em;
+        border: none!important;
+        background: none!important;
+     }
+}
+// remove table header
+table.no-head {
+    thead {
+        display: none!important;
+    }
+}
+
+// full width search
+.vp-navbar-center {
+    div {
+        width: 100%;
+        button.DocSearch {
+            width: 100%;
+        }
+    }
 }

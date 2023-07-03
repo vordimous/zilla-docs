@@ -10,7 +10,7 @@ Get started using Zilla by deploying our Docker container. Before proceeding, yo
 
 Running this Zilla quickstart will create a simple SSE server that sends a `Hello, World` message.
 
-### Setup
+### Setup SSE echo server
 
 Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the same directory.
 
@@ -198,15 +198,15 @@ networks:
 docker-compose up -d
 ```
 
-### Open the browser
+- Open the browser
 
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
 ::: note Wait for the services to start
-If the page won't load the likely cause is Zilla and the SSE server are still starting up.
+If the page doesn't load wait for the Zilla and the SSE server to start.
 :::
 
-### Click `Go`
+- Click `Go`
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
 
@@ -219,13 +219,13 @@ message: Hello, world Wed May 10 14:25:40 UTC 2023
 open:
 ```
 
-Alternatively, you can send a message yourself using `netcat`:
+You can also send a message yourself using `netcat`:
 
 ```bash:no-line-numbers
 echo '{ "data": "Hello, world '`date`'" }' | nc -c localhost 7001
 ```
 
-### Remove the running containers
+- Remove the running containers
 
 ```bash:no-line-numbers
 docker-compose down
@@ -239,7 +239,7 @@ Go deeper into this concept with the [sse.proxy.jwt](https://github.com/aklivity
 
 Running this Zilla quickstart will fanout `Hello, World` from a Kafka topic acting as a SSE server
 
-### Setup
+### Setup SSE Kafka Proxy
 
 Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the same directory.
 
@@ -457,15 +457,15 @@ networks:
 docker-compose up -d
 ```
 
-### Open the browser
+- Open the browser
 
 Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
 ::: note Wait for the services to start
-If the page won't load the likely cause is Zilla and Kafka are still starting up.
+If the page doesn't load wait for the Zilla and the Kafka server to start.
 :::
 
-### Click `Go`
+- Click `Go`
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
@@ -478,7 +478,7 @@ message: Hello, world Wed May 10 14:25:40 UTC 2023
 open:
 ```
 
-### Remove the running containers
+- Remove the running containers
 
 ```bash:no-line-numbers
 docker-compose down

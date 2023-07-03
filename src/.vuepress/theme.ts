@@ -21,8 +21,8 @@ export default hopeTheme({
 
   navbarLayout: {
     start: ["Brand"],
-    center: [],
-    end: ["Links", "Search", "Repo", "Outlook"],
+    center: ["Search"],
+    end: ["Links", "Repo", "Outlook"],
   },
 
   pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
@@ -31,6 +31,7 @@ export default hopeTheme({
     "/": {
       navbar: enNavbar,
       sidebar: enSidebar,
+      headerDepth: 3,
 
       displayFooter: true,
       footer: `<span style="display:flex;align-items:center"><a href="https://www.aklivity.io"><img class="logo" alt="aklivity"></a> <a href="https://github.com/aklivity/zilla"><i class="fa-brands fa-github" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.linkedin.com/company/aklivity/"><i class="fa-brands fa-linkedin" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.aklivity.io/slack"><i class="fa-brands fa-slack" style="font-size:25px;padding-right:6px"></i></a> <a href="https://www.twitter.com/aklivityinc"><i class="fa-brands fa-twitter" style="font-size:22px"></i></a></span>`,

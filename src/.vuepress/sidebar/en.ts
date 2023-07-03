@@ -2,103 +2,73 @@ import { sidebar } from "vuepress-theme-hope";
 
 export const enSidebar = sidebar({
   "/reference/": [
-    "",
+    "vscode/README.md",
     {
-      text: "Zilla Manager CLI (zpm)",
-      collapsible: true,
-      prefix: "zpm/",
-      link: "zpm/",
+      text: "Zilla Configuration",
+      collapsible: false,
+      prefix: "config/",
+      link: "config/overview.md",
       children: [
-        "help.md",
-        "install.md",
-        "clean.md",
-        "encrypt.md",
-        "wrap.md",
-      ],
-    },
-    { text: "Zilla Manager Configuration", link: "/reference/zpm.json.md" },
-    { text: "Zilla Manager Settings", link: "/reference/settings.json.md" },
-    { text: "Zilla Manager Security", link: "/reference/security.json.md" },
-    {
-      text: "Zilla Runtime CLI (zilla)",
-      collapsible: true,
-      prefix: "zilla/",
-      link: "zilla/",
-      children: [
-        "help.md",
-        "start.md",
-        "stop.md",
-        "metrics.md",
-        "tune.md",
-      ],
-    },
-    {
-      text: "Zilla Runtime Configuration",
-      collapsible: true,
-      prefix: "zilla.yaml/",
-      link: "zilla.yaml/",
-      children: [
+        {
+          text: "zilla.yaml Overview",
+          link: "overview.md",
+        },
+        {
+          text: "CLI (zilla)",
+          link: "zilla-cli.md",
+        },
         {
           text: "Bindings",
           collapsible: false,
-          prefix: "binding/",
-          link: "binding/",
-          children: [
-            "binding-amqp.md",
-            "binding-echo.md",
-            "binding-fan.md",
-            "binding-filesystem.md",
-            "binding-grpc-kafka.md",
-            "binding-grpc.md",
-            "binding-http-filesystem.md",
-            "binding-http-kafka.md",
-            "binding-http.md",
-            "binding-kafka-grpc.md",
-            "binding-kafka.md",
-            "binding-mqtt.md",
-            "binding-proxy.md",
-            "binding-sse-kafka.md",
-            "binding-sse.md",
-            "binding-tcp.md",
-            "binding-tls.md",
-            "binding-ws.md",
-          ],
+          prefix: "bindings/",
+          children: "structure",
         },
         {
           text: "Guards",
           collapsible: false,
-          prefix: "guard/",
-          link: "guard/",
-          children: [
-            "guard-jwt.md",
-          ],
+          prefix: "guards/",
+          children: "structure"
         },
         {
           text: "Vaults",
           collapsible: false,
-          prefix: "vault/",
-          link: "vault/",
-          children: [
-            "vault-filesystem.md",
-          ]
+          prefix: "vaults/",
+          children: "structure"
         },
         {
           text: "Telemetry",
           collapsible: false,
           prefix: "telemetry/",
-          link: "telemetry/",
           children: [
-            "metrics/README.md",
+            {
+              text: "Metrics",
+              collapsible: false,
+              prefix: "metrics/",
+              children: "structure"
+            },
             {
               text: "Exporters",
               collapsible: false,
               prefix: "exporter/",
-              link: "exporter/",
-              children: [
-                "exporter-prometheus.md",
-              ]
+              children: "structure"
             },
           ],
+        },
+      ],
+    },
+    {
+      text: "Zilla Manager",
+      collapsible: false,
+      prefix: "manager/",
+      link: "manager/overview.md",
+      children: [
+        {
+          text: "zpm Overview",
+          link: "overview.md",
+        },
+        {
+          text: "CLI (zpm)",
+          link: "zpm-cli.md",
         },
       ],
     },
@@ -112,7 +82,6 @@ export const enSidebar = sidebar({
       prefix: "get-started/",
       children: [
         "install.md",
-        "vscode/README.md",
         {
           text: "Quickstarts",
           icon: "stopwatch",
@@ -178,19 +147,12 @@ export const enSidebar = sidebar({
         },
       ],
     },
-    // {
-    //   text: "Concepts",
-    //   icon: "diagram-project",
-    //   prefix: "concepts/",
-    //   collapsible: true,
-    //   children: "structure"
-    // },
     {
       text: "Reference",
       icon: "book",
       prefix: "reference/",
-      link: "reference/",
-      children: ["zilla.yaml/", "zilla/", "zpm/"],
+      link: "reference/config/overview.md",
+      children: ["config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "vscode/"],
     },
   ],
 });

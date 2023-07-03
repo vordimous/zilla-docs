@@ -14,14 +14,19 @@
     "build": "vuepress build src",
     "clean-dev": "vuepress dev src --clean-cache --debug",
     "dev": "vuepress dev src",
-    "update-package": "pnpm dlx vp-update"
+    "update-package": "pnpm dlx vp-update",
+    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
+    "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
+    "link-checker": "pnpm build && link-checker src/.vuepress/dist"
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.63",
     "@vuepress/plugin-docsearch": "2.0.0-beta.63",
     "@vuepress/plugin-google-analytics": "2.0.0-beta.63",
+    "link-checker": "^1.4.2",
+    "markdownlint-cli2": "^0.8.1",
     "vue": "^3.3.4",
     "vuepress": "2.0.0-beta.63",
-    "vuepress-theme-hope": "2.0.0-beta.223"
+    "vuepress-theme-hope": "2.0.0-beta.228"
   }
 }
