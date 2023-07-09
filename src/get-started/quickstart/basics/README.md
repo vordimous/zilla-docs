@@ -151,7 +151,6 @@ stream_closes_sent_total{namespace="Metrics-example",binding="tcp_server"} 2
 ...
 http_request_size_bytes_sum{namespace="Metrics-example",binding="http_server"} 30
 
-
 # HELP http_response_size_bytes HTTP response content length
 ...
 http_response_size_bytes_sum{namespace="Metrics-example",binding="http_server"} 30

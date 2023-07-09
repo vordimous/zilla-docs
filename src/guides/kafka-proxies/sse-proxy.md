@@ -44,4 +44,4 @@ Similar to [REST Proxy](../../guides/kafka-proxies/rest-proxy.md) you can secure
 
 ### More
 
-For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/zilla.yaml/binding/binding-sse.md), [SSE-Kafka Binding](../../reference/zilla.yaml/binding/binding-sse-kafka.md).
+For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/config/bindings/binding-sse.md), [SSE-Kafka Binding](../../reference/config/bindings/binding-sse-kafka.md).
