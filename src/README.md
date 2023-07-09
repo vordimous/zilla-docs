@@ -8,7 +8,7 @@ heroText: Introduction
 tagline: Zilla is an API Gateway for event-driven architectures. It securely interfaces web apps, IoT clients, and microservices to Apache Kafka® via declaratively defined API endpoints.
 actions:
   - text: " Quickstart"
-    link: /get-started/quickstart/basics/index.html
+    link: /get-started/quickstart/index.html
     type: primary
     icon: stopwatch
 
