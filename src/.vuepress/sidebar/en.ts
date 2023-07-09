@@ -83,16 +83,10 @@ export const enSidebar = sidebar({
       children: [
         "install.md",
         {
-          text: "Quickstarts",
+          text: "Quickstart",
           icon: "stopwatch",
           collapsible: false,
-          prefix: "quickstart/",
-          children: [
-            "basics/README.md",
-            "rest.md",
-            "grpc.md",
-            "sse.md",
-          ]
+          link: "quickstart/kafka-proxies.md"
         },
         {
           text: "Todo App",

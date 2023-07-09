@@ -90,7 +90,6 @@ Show verbose output
 
 Worker count
 
-
 Examples:
 
 ```bash:no-line-numbers

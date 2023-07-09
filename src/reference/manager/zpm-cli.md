@@ -11,7 +11,6 @@ description: >-
 
 The Zilla Manager command line interface uses the [Zilla Manager Configuration](./overview.md) to package the [Zilla runtime](../config/zilla-cli.md) with minimal dependencies.
 
-
 :::: note Commands
 
 - [zpm help](#zpm-help)
@@ -74,7 +73,6 @@ The `zpm encrypt` command provides a convenient mechanism to encrypt secrets usi
 When Maven repositories requiring authorization are listed in [Zilla Manager Configuration](./overview.md), then the output of this command can be used to provide encrypted credentials in [Zilla Manager Settings](./overview.md#settings.json).
 
 If a master secret does not already exist, it is generated in [Zilla Manager Security](./overview.md#security.json).
-
 
 ```bash:no-line-numbers
 zpm encrypt

@@ -46,7 +46,7 @@ inkey
 jceks
 jq
 jwt
-kafka
+Kafka
 kafkacat
 kcat
 Kerberos

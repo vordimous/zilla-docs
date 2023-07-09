@@ -30,7 +30,6 @@ telemetry:
   - [http.request.size](#http-request-size)
   - [http.response.size](#http-response-size)
 
-
 ::: right
 \* required
 :::
