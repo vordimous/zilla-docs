@@ -93,6 +93,7 @@ Each configured `vault` represents a container for digital keys and certificates
 Vaults can be used by specific protocol bindings, such as `tls`, to negotiate shared encryption keys.
 
 See each of the specific `vault` types linked below for more detailed examples.
+
 ### telemetry
 
 > `object` of [`telemetry`](./telemetry/) properties

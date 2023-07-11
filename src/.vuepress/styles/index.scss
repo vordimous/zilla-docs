@@ -48,6 +48,41 @@ table.no-head {
     }
 }
 
+// Zilla plus icon indicator
+.vp-sidebar-link, button.vp-sidebar-heading {
+    display: flex !important;
+    flex-direction: row;
+    span.icon {
+        order: 2;
+        margin-left: auto;
+        color: var(--theme-color);
+    }
+}
+// Zilla plus container styles
+.zilla-plus-badge.hint-container.info {
+    border-color: #0e5c49;
+    background: var(--theme-color);
+    padding: 0;
+    a {
+        background-color: var(--theme-color);
+        cursor: pointer;
+        text-decoration: none!important;
+        color: white;
+        font-size: 17px;
+        text-align: center;
+        border-radius: 5px;
+        display: inline-block;
+        padding: .5em;
+        border-radius: 5px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .external-link-icon {
+        display: none;
+    }
+    
+}
+
 // full width search
 .vp-navbar-center {
     div {

@@ -72,67 +72,46 @@ export const enSidebar = sidebar({
         },
       ],
     },
-  ],
-  "/": [
-    "",
     {
-      text: "Get Started",
-      icon: "play",
+      text: "Amazon MSK",
       collapsible: true,
-      prefix: "get-started/",
-      children: [
-        "install.md",
-        {
-          text: "Quickstart",
-          icon: "stopwatch",
-          collapsible: false,
-          link: "quickstart/kafka-proxies.md"
-        },
-        {
-          text: "Todo App",
-          icon: "check",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
-        },
-      ],
+      prefix: "amazon-msk/",
+      link: "amazon-msk/",
+      children: "structure",
     },
     {
-      text: "Guides",
-      icon: "bars-staggered",
-      prefix: "guides/",
+      text: "Troubleshooting",
       collapsible: true,
+      prefix: "troubleshooting/",
+      link: "troubleshooting/",
+      children: "structure",
+    },
+  ],
+  "/": [
+    {
+      text: "Installing Zilla",
+      link: "how-tos/install.md",
+    },
+    {
+      text: "Quickstart",
+      link: "tutorials/quickstart/",
+    },
+    {
+      text: "Configuration",
+      collapsible: false,
+      link: "concepts/config-intro.md",
       children: [
         {
-          text: "Configuring Kafka Proxies",
-          icon: "gear",
-          collapsible: false,
-          prefix: "kafka-proxies/",
-          children: [
-            {
-              text: "gRPC Proxy",
-              icon: "circle-nodes",
-              link: "grpc-proxy.md",
-            },
-            {
-              text: "REST Proxy",
-              icon: "arrow-right-arrow-left",
-              link: "rest-proxy.md",
-            },
-            {
-              text: "SSE Proxy",
-              icon: "fa-brands fa-html5",
-              link: "sse-proxy.md",
-            },
-          ],
+          text: "Intro to zilla.yaml",
+          link: "concepts/config-intro.md",
         },
         {
           text: "Connecting to Kafka",
-          icon: "plug",
           collapsible: false,
-          prefix: "connecting-to-kafka/",
+          prefix: "how-tos/connecting-to-kafka/",
+          link: "how-tos/connecting-to-kafka/apache-kafka.md",
           children: [
-            "generic.md",
+            "apache-kafka.md",
             "aiven.md",
             "amazon-msk.md",
             "confluent-cloud.md",
@@ -142,11 +121,62 @@ export const enSidebar = sidebar({
       ],
     },
     {
+      text: "Apache Kafka Proxying",
+      collapsible: false,
+      link: "concepts/kafka-proxies/grpc-proxy.md",
+      children: [
+        {
+          text: "Kafka Proxying with Zilla",
+          link: "concepts/kafka-proxies/grpc-proxy.md",
+        },
+        {
+          text: "gRPC-Kafka Proxy walkthrough",
+          link: "how-tos/kafka-proxies/grpc-proxy.md",
+        },
+        {
+          text: "REST-Kafka Proxy",
+          link: "concepts/kafka-proxies/rest-proxy.md",
+        },
+        {
+          text: "SSE-Kafka Proxy",
+          link: "concepts/kafka-proxies/sse-proxy.md",
+        },
+        {
+          text: "Amazon MSK Pubic Proxy",
+          collapsible: true,
+          prefix: "how-tos/amazon-msk/",
+          link: "how-tos/amazon-msk/public-proxy.md",
+          children: [
+            "public-proxy.md",
+            "development.md",
+            "production.md",
+            "production-mutual-trust.md",
+          ],
+        },
+        {
+          text: "Amazon MSK Private Proxy",
+          link: "how-tos/amazon-msk/private-proxy.md",
+        },
+      ],
+    },
+    {
+      text: "SSE Proxying",
+      collapsible: false,
+      children: [
+        {
+          text: "JWT Continuous Authorization",
+          link: "https://github.com/aklivity/zilla-examples/tree/main/sse.proxy.jwt",
+        },        {
+          text: "SSE-Kafka Proxy",
+          link: "concepts/kafka-proxies/sse-proxy.md",
+        },
+      ],
+    },
+    {
       text: "Reference",
-      icon: "book",
       prefix: "reference/",
       link: "reference/config/overview.md",
-      children: ["config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "vscode/"],
+      children: ["config/binding/", "config/guard/", "config/vault/", "config/telemetry/", "amazon-msk/", "vscode/", "troubleshooting/"], // todo add aws stuff
     },
   ],
 });

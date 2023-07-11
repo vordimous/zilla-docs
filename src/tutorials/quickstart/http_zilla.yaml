@@ -1,0 +1,26 @@
+---
+name: HTTP-example
+bindings:
+
+# Gateway ingress config
+  tcp_server:
+    type: tcp
+    kind: server
+    options:
+      host: 0.0.0.0
+      port: 8080
+    exit: http_server
+  http_server:
+    type: http
+    kind: server
+    routes:
+      - when:
+          - headers:
+              :scheme: http
+              :authority: localhost:8080
+        exit: echo_server
+
+# Service running in Zilla
+  echo_server:
+    type: echo
+    kind: server

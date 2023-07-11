@@ -1,7 +1,10 @@
 ---
 description: In this guide, you will learn how to connect to a generic Kafka from Zilla
 ---
-# Generic Kafka
+# Apache Kafka
+
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 ## Introduction
 
@@ -35,11 +38,11 @@ To connect to any Kafka on `PLAINTEXT` protocol is as simple as defining your TC
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -73,11 +76,11 @@ The `exit` from `kafka_client0` binding now changes to `tls_client0`.
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tls_client0
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     options:
@@ -85,7 +88,7 @@ bindings:
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -99,7 +102,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vault/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
 ### zilla.yaml
 
@@ -117,11 +120,11 @@ vaults:
         type: STORE_TYPE
         password: TRUSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tls_client0
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -131,7 +134,7 @@ bindings:
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -145,7 +148,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
+However, if the `Kafka` cluster is secured by a `TLS` server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vault/vault-filesystem.md) to provide access to certificates needed by the `TLS` client binding.
 
 ## Connect to Kafka over `TLS/SSL` using client certificates
 
@@ -201,11 +204,11 @@ vaults:
         type: STORE_TYPE
         password: KEYSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tls_client0
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -217,7 +220,7 @@ bindings:
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -264,7 +267,7 @@ Please add your feedback to the [SASL enhancement request](https://github.com/ak
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
     exit: tls_client0
@@ -273,7 +276,7 @@ bindings:
         mechanism: plain
         username: SASL_USERNAME
         password: SASL_PASSWORD
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     options:
@@ -281,7 +284,7 @@ bindings:
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
     exit: tcp_client0
-  tcp_client0:
+  tcp_client:
     type: tcp
     kind: client
     options:

@@ -11,9 +11,9 @@ In this getting started exercise, you will enhance the [previously built Todo ap
 
 ![](/assets/todo-app-architecture-secured@2x.png)
 
-Zilla has the concept of a [guard](../../reference/config/overview.md#guards) that can be defined to control access to any route in the bindings configuration.
+Zilla has the concept of a [guard](../../reference/config/guard/) that can be defined to control access to any route in the bindings configuration.
 
-In this guide, you will use the [JWT guard](../../reference/config/guards/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
+In this guide, you will use the [JWT guard](../../reference/config/guard/guard-jwt.md) to enforce authorization of the `read:tasks` and `write:tasks` roles when calling the Tasks API.
 
 ### Prerequisites
 
@@ -449,21 +449,21 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-  http_filesystem_proxy0:
+  http_filesystem_proxy:
     type: http-filesystem
     kind: proxy
     routes:
       - when:
           - path: /
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: index.html
       - when:
           - path: /{path}
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: ${params.path}
-  filesystem_server0:
+  filesystem_server:
     type: filesystem
     kind: server
     options:
