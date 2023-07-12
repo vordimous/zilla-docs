@@ -2,7 +2,7 @@
 description: Running these Zilla quickstarts will introduce some gRPC features.
 ---
 
-# gRPC Quickstart
+# gRPC Intro
 
 Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
 

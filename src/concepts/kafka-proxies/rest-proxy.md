@@ -13,7 +13,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ### Configure Endpoints
 
-Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/config/binding/binding-http-kafka.md) binding in `zilla.yaml`.
+Zilla can be configured to map REST APIs to Kafka using the [http-kafka](../../reference/config/bindings/binding-http-kafka.md) binding in `zilla.yaml`.
 
 Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`, `DELETE`, and `PATCH` .
 
@@ -43,7 +43,7 @@ bindings:
 :::
 
 ::: info NOTE
-When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/config/binding/binding-http-kafka.md#capability-produce) as well.
+When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/config/bindings/binding-http-kafka.md#capability-produce) as well.
 :::
 
 Kafka **Fetch** capability with HTTP request methods such as `GET` :
@@ -104,7 +104,7 @@ bindings:
 
 ### CORS
 
-Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/amazon-msk/config/binding/binding-http.md
+Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/amazon-msk/config/bindings/binding-http.md
 
 ### zilla.yaml
 
@@ -132,7 +132,7 @@ http_server:
 
 ### Authorization
 
-Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/amazon-msk/config/guard/README.md you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../r../../reference/amazon-msk/config/guard/guard-jwt.mdo authorize the endpoint.
+Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/amazon-msk/config/guards/README.md you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../r../../reference/amazon-msk/config/guards/guard-jwt.mdo authorize the endpoint.
 
 The information about keys and other details such as issuer and audience you can get from `JWT` providers for example in the case of Auth0 you can use the command below.
 
@@ -202,4 +202,4 @@ bindings:
 
 ### More
 
-For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/amazon-msk/config/binding/binding-http.mdP-Kafka Binding](../../r../../reference/amazon-msk/config/binding/binding-http-kafka.mdJWT)](../../referenc../../reference/amazon-msk/config/guard/guard-jwt.md
+For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/amazon-msk/config/bindings/binding-http.mdP-Kafka Binding](../../r../../reference/amazon-msk/config/bindings/binding-http-kafka.mdJWT)](../../referenc../../reference/amazon-msk/config/guards/guard-jwt.md

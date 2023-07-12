@@ -8,7 +8,7 @@ heroText: Introduction
 tagline: Zilla is an API Gateway for event-driven architectures. It securely interfaces web apps, IoT clients, and microservices to Apache Kafka® via declaratively defined API endpoints.
 actions:
   - text: Quickstart
-    link: /tutorials/quickstart/
+    link: /tutorials/quickstart/kafka-proxies.md
     type: primary
 
   - text: Install
@@ -19,32 +19,32 @@ features:
   - title: Kafka Proxying - Realtime Cache
     icon: clipboard-check
     details: Check markdown links
-    link: ./guide/markdown/others.html#link-check
+    # link: ./guide/markdown/others.html#link-check
 
   - title: REST-Kafka Proxy - Correlated Request-Response
     icon: box-archive
     details: Decorate Markdown content with styles
-    link: ./guide/markdown/container.html
+    # link: ./guide/markdown/container.html
 
   - title: SSE-Kafka Proxy - Filtering
     icon: table-columns
     details: Group similar content with tabs and switch them together
-    link: ./guide/markdown/tabs.html
+    # link: ./guide/markdown/tabs.html
 
   - title: gRPC-Kafka Proxy - Correlated Request-Response
     icon: code
     details: Group similar codes with tabs
-    link: ./guide/markdown/code-tabs.html
+    # link: ./guide/markdown/code-tabs.html
 
   - title: Deployment - Helm Chart
     icon: align-center
     details: Let you decide to align paragraphs in the way you like
-    link: ./guide/markdown/align.html
+    # link: ./guide/markdown/align.html
 
   - title: Monitoring - Auto-scaling
     icon: code
     details: Allow you to add attributes for Markdown content
-    link: ./guide/markdown/attrs.html
+    # link: ./guide/markdown/attrs.html
 
 ---
 

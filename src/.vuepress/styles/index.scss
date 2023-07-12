@@ -1,10 +1,5 @@
-.vp-footer img.logo {
-    padding-right: 25px;
-}
-.vp-sidebar-sub-headers a {
-    color: var(--light-grey);
-}
 
+// Dark theme settings
 html[data-theme=dark] #app {
     --code-highlight-line-color: #0e5c49;
     --border-color: #0e5c49;
@@ -17,6 +12,7 @@ html[data-theme=dark] #app {
     }
 }
 
+// Light theme settings
 html[data-theme=light] #app {
     --code-highlight-line-color: #79d4bd;
     --border-color: #55877a;
@@ -51,8 +47,41 @@ table.no-head {
     }
 }
 
+
+// Header
+// full width search
+.vp-navbar-center {
+    div {
+        width: 100%;
+        button.DocSearch {
+            width: 100%;
+        }
+    }
+}
+// Footer
+.vp-footer img.logo {
+    padding-right: 25px;
+}
+
+// Improve sidebar hierarchy
+.vp-sidebar {
+    .vp-sidebar-title {
+        font-size: larger;
+    }
+    .vp-sidebar-heading {
+        font-size: large;
+    }
+    .vp-sidebar-page {
+        font-size: medium;
+    }
+    // .vp-sidebar-sub-headers a {
+    //     color: var(--light-grey);
+    // }
+}
+
+
 // Zilla plus icon indicator
-.vp-sidebar-link, button.vp-sidebar-heading {
+.vp-sidebar-link, .vp-sidebar-heading {
     display: flex !important;
     flex-direction: row;
     span.icon {
@@ -84,14 +113,4 @@ table.no-head {
         display: none;
     }
     
-}
-
-// full width search
-.vp-navbar-center {
-    div {
-        width: 100%;
-        button.DocSearch {
-            width: 100%;
-        }
-    }
 }

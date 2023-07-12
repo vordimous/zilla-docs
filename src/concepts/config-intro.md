@@ -1,6 +1,6 @@
 # Intro to zilla.yaml
 
-The Zilla runtime configuration defines the [`bindings`](../reference/config/binding/), [`guards`](../reference/config/guard/), [`vaults`](../reference/config/vault/), and [`telemetry`](../reference/config/telemetry/) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
+The Zilla runtime configuration defines the [`bindings`](../reference/config/bindings/), [`guards`](../reference/config/guards/), [`vaults`](../reference/config/vaults/), and [`telemetry`](../reference/config/telemetry/) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
 
 [msk](/how-tos/amazon-msk/public-proxy.md)
 
