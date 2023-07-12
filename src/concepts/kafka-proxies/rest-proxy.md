@@ -132,7 +132,7 @@ http_server:
 
 ### Authorization
 
-Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/amazon-msk/config/guards/README.md you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../r../../reference/amazon-msk/config/guards/guard-jwt.mdo authorize the endpoint.
+Since `Zilla` config is very much modular it has the concept of [`guard`](../../reference/config/overview.md#guards) where you define your `guard` configuration and reference that `guard` to authorize a specific endpoint. Currently, `Zilla`  supports [`JSON Web Token (JWT)`](../../reference/config/guards/guard-jwt.md)  mechanism to authorize the endpoint.
 
 The information about keys and other details such as issuer and audience you can get from `JWT` providers for example in the case of Auth0 you can use the command below.
 
@@ -202,4 +202,4 @@ bindings:
 
 ### More
 
-For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/amazon-msk/config/bindings/binding-http.mdP-Kafka Binding](../../r../../reference/amazon-msk/config/bindings/binding-http-kafka.mdJWT)](../../referenc../../reference/amazon-msk/config/guards/guard-jwt.md
+For a more detailed explanation please check out Zilla Runtime Configuration Reference doc for [HTTP Binding](../../reference/config/bindings/binding-http.md), [HTTP-Kafka Binding](../../reference/config/bindings/binding-http-kafka.md), and [Guard(JWT)](../../reference/config/guards/guard-jwt.md).

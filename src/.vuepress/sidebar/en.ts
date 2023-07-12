@@ -206,7 +206,7 @@ export const enSidebar = sidebar({
       text: "Reference",
       prefix: "reference/",
       link: "reference/config/overview.md",
-      children: ["config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "amazon-msk/", "vscode/", "troubleshooting/"],
+      children: ["vscode/", "config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "amazon-msk/",  "troubleshooting/"],
     },
   ],
 });
