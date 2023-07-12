@@ -41,7 +41,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client
@@ -65,7 +65,7 @@ By default, Kafka communicates in `PLAINTEXT`, which means that all data is sent
 If the `Kafka` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority, then configure `Zilla` add a `TLS` client binding as shown below with the `trustcacerts` option to set to `true`.
 
 ::: info NOTE
-The `exit` from `kafka_client0` binding now changes to `tls_client0`.
+The `exit` from `kafka_client` binding now changes to `tls_client`.
 :::
 
 ### zilla.yaml
@@ -79,7 +79,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
   tls_client:
     type: tls
     kind: client
@@ -87,7 +87,7 @@ bindings:
       trustcacerts: true
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client
@@ -123,7 +123,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
   tls_client:
     type: tls
     kind: client
@@ -133,7 +133,7 @@ bindings:
         - CA_CERT_ALIAS
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client
@@ -182,7 +182,7 @@ openssl pkcs12 -export -in service.cert -inkey service.key
 
 :::
 
-You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client0` binding.
+You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
 
 ### zilla.yaml
 
@@ -207,7 +207,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
   tls_client:
     type: tls
     kind: client
@@ -219,7 +219,7 @@ bindings:
         - SIGNED_CLIENT_CERT_ALIAS
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client
@@ -270,7 +270,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
     options:
       sasl:
         mechanism: plain
@@ -283,7 +283,7 @@ bindings:
       trustcacerts: true
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client

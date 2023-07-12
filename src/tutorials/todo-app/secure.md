@@ -306,13 +306,13 @@ guards:
 
 </details>
 
-This allows the Zilla engine to validate the API caller's JWT access token at the `http_server0` binding so that routes further along in the pipeline can verify the caller has the required roles.
+This allows the Zilla engine to validate the API caller's JWT access token at the `http_server` binding so that routes further along in the pipeline can verify the caller has the required roles.
 
-The `sse_kafka_proxy0` binding is `guarded` on the `/tasks` route, requiring `read:tasks` role.
+The `sse_kafka_proxy` binding is `guarded` on the `/tasks` route, requiring `read:tasks` role.
 
-The `http_kafka_proxy0` binding is `guarded` on the `POST`, `PUT` and `DELETE` routes, requiring `write:tasks` role.
+The `http_kafka_proxy` binding is `guarded` on the `POST`, `PUT` and `DELETE` routes, requiring `write:tasks` role.
 
-Then, add the `http_filesystem_proxy0` and `filesystem_server0` bindings to `zilla.yaml` giving the following updated configuration.
+Then, add the `http_filesystem_proxy` and `filesystem_server` bindings to `zilla.yaml` giving the following updated configuration.
 
 <details>
 
@@ -359,7 +359,7 @@ bindings:
               :method: DELETE
               :path: /tasks/*
         exit: http-kafka_proxyab9279f6-00aa-40a9-b10a-268c5ebfd800
-    exit: http_filesystem_proxy0
+    exit: http_filesystem_proxy
   sse_serverab9279f6-00aa-40a9-b10a-268c5ebfd800:
     type: sse
     kind: server

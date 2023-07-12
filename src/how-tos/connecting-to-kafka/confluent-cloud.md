@@ -47,7 +47,7 @@ bindings:
   kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
     options:
       sasl:
         mechanism: plain
@@ -60,7 +60,7 @@ bindings:
       trustcacerts: true
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
+    exit: tcp_client
   tcp_client:
     type: tcp
     kind: client

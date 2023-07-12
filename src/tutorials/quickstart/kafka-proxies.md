@@ -16,7 +16,7 @@ Fork each of these collections into your own workspace.
 - [Zilla - SSE Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/28401168-09c165b3-6e68-45c2-aedb-494f130bc354?action=share&creator=28401168)
 - [Zilla - gRPC Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/64a85751808733dd197c599f?action=share&creator=28401168)
 
-![Collection header > View more actions > Create a Fork](./create-fork.png)
+![Collection header > View more actions > Create a Fork](../../get-started/quickstart/create-fork.png)
 
 ::: info App or Desktop Agent
 Once the collections are forked you can run them against the local stack if you have either the [Postman App](https://www.postman.com/downloads/) or [Postman Desktop Agent](https://www.postman.com/downloads/postman-agent/) installed.

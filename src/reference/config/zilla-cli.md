@@ -59,18 +59,18 @@ Filters bindings by namespace
 Examples:
 
 ```bash:no-line-numbers
-./zilla metrics echo_server0
+./zilla metrics echo_server
 ```
 
 > namespace    binding         metric                    value
-> example      echo_server0    stream.opens.received        24
-> example      echo_server0    stream.opens.sent            24
-> example      echo_server0    stream.closes.received       24
-> example      echo_server0    stream.closes.sent           24
-> example      echo_server0    stream.data.received         13
-> example      echo_server0    stream.data.sent             13
-> example      echo_server0    stream.errors.received        0
-> example      echo_server0    stream.errors.sent            0
+> example      echo_server    stream.opens.received        24
+> example      echo_server    stream.opens.sent            24
+> example      echo_server    stream.closes.received       24
+> example      echo_server    stream.closes.sent           24
+> example      echo_server    stream.data.received         13
+> example      echo_server    stream.data.sent             13
+> example      echo_server    stream.errors.received        0
+> example      echo_server    stream.errors.sent            0
 
 ### zilla start
 
@@ -98,7 +98,7 @@ Examples:
     "name": "example",
     "bindings":
     {
-        "tcp0":
+        "tcp":
         {
             "type" : "tcp",
             "kind": "server",
@@ -107,9 +107,9 @@ Examples:
                 "host": "0.0.0.0",
                 "port": [ 12345, 12346 ]
             },
-            "exit": "echo0"
+            "exit": "echo"
         },
-        "echo0":
+        "echo":
         {
             "type" : "echo",
             "kind": "server"
@@ -167,18 +167,18 @@ Examples:
 ./zilla tune
 ```
 
-> `xxxx  example.tcp0`\
-> `xxxx  example.echo0`
+> `xxxx  example.tcp`\
+> `xxxx  example.echo`
 
 ```bash:no-line-numbers
-./zilla tune example.echo0=2
+./zilla tune example.echo=2
 ```
 
-> `..x.  example.echo0`
+> `..x.  example.echo`
 
 ```bash:no-line-numbers
 ./zilla tune
 ```
 
-> `xxxx  example.tcp0`\
-> `.x..  example.echo0`
+> `xxxx  example.tcp`\
+> `.x..  example.echo`

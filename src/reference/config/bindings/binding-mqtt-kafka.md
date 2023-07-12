@@ -21,7 +21,7 @@ This is currently in the incubator. Follow the [Zilla repo](https://github.com/a
 mqtt_server:
   type: mqtt-kafka
   kind: proxy
-  exit: kafka_cache_client0
+  exit: kafka_cache_client
 ```
 
 ## Summary
@@ -54,7 +54,7 @@ Behave as a `mqtt-kafka` `proxy`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ---

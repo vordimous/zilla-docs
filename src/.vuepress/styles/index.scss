@@ -1,6 +1,9 @@
 .vp-footer img.logo {
     padding-right: 25px;
 }
+.vp-sidebar-sub-headers a {
+    color: var(--light-grey);
+}
 
 html[data-theme=dark] #app {
     --code-highlight-line-color: #0e5c49;

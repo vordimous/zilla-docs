@@ -35,7 +35,7 @@ grpc_kafka_proxy:
             custom-text: custom value
             custom-binary:
               base64: Y3VzdG9tIHZhbHVl
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         capability: fetch
         topic: messages
@@ -49,7 +49,7 @@ grpc_kafka_proxy:
             custom-text: custom value
             custom-binary:
               base64: Y3VzdG9tIHZhbHVl
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         capability: produce
         topic: requests
@@ -216,7 +216,7 @@ routes:
           custom-text: custom value
           custom-binary:
             base64: Y3VzdG9tIHZhbHVl
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       capability: fetch
       topic: messages
@@ -233,7 +233,7 @@ routes:
           custom-text: custom value
           custom-binary:
             base64: Y3VzdG9tIHZhbHVl
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       capability: produce
       topic: requests
@@ -300,7 +300,7 @@ Base64 encoded value for binary metadata header.
 Next binding when following this route.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ### routes[].with\*

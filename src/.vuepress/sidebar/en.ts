@@ -94,7 +94,7 @@ export const enSidebar = sidebar({
     },
     {
       text: "Quickstart",
-      link: "tutorials/quickstart/",
+      link: "tutorials/quickstart/kafka-proxies",
     },
     {
       text: "Configuration",
@@ -176,7 +176,7 @@ export const enSidebar = sidebar({
       text: "Reference",
       prefix: "reference/",
       link: "reference/config/overview.md",
-      children: ["config/binding/", "config/guard/", "config/vault/", "config/telemetry/", "amazon-msk/", "vscode/", "troubleshooting/"], // todo add aws stuff
+      children: ["config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "amazon-msk/", "vscode/", "troubleshooting/"],
     },
   ],
 });

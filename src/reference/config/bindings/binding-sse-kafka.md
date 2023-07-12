@@ -18,7 +18,7 @@ sse_kafka_proxy:
   routes:
     - when:
         - path: "/items"
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         topic: items-snapshots
         event:
@@ -78,7 +78,7 @@ Behave as a `sse-kafka` `proxy`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ### routes
@@ -91,7 +91,7 @@ Conditional `sse-kafka`-specific routes for adapting `sse` data streams to `kafk
 routes:
   - when:
       - path: "/items"
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       topic: items-snapshots
       event:
@@ -136,7 +136,7 @@ Path with optional embedded parameter names, such as `/{topic}`.
 Next binding when following this route.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ### routes[].with

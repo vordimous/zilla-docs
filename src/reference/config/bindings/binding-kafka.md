@@ -26,11 +26,11 @@ kafka_cache_server:
   options:
     bootstrap:
       - items-responses
-  exit: kafka_client0
+  exit: kafka_client
 kafka_client:
   type: kafka
   kind: client
-  exit: tcp_client0
+  exit: tcp_client
 ```
 
 ## Summary

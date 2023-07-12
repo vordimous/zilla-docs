@@ -19,7 +19,7 @@ Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is s
 sse_server:
   type: sse
   kind: server
-  exit: sse_kafka_proxy0
+  exit: sse_kafka_proxy
 sse_kafka_proxy:
   type: sse-kafka
   kind: proxy
@@ -30,7 +30,7 @@ sse_kafka_proxy:
         topic: KAFKA_TOPIC
         event:
           id: '["${base64(key)}","${etag}"]'
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
 
 ```
 

@@ -32,7 +32,7 @@ bindings:
       - when:
           - method: POST
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: produce
           topic: KAFKA_TOPIC
@@ -63,7 +63,7 @@ bindings:
       - when:
           - method: GET
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: fetch
           topic: KAFKA_TOPIC
@@ -91,7 +91,7 @@ bindings:
       - when:
           - method: GET
             path: /tasks/{id}
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: fetch
           topic: KAFKA_TOPIC
@@ -189,7 +189,7 @@ bindings:
         when:
           - method: POST
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: produce
           topic: KAFKA_TOPIC
