@@ -2,10 +2,12 @@ import { sidebar } from "vuepress-theme-hope";
 
 export const enSidebar = sidebar({
   "/reference/": [
-    "vscode/README.md",
+    {
+      text: "VS Code extension",
+      link: "vscode/README.md",
+    },
     {
       text: "Zilla Configuration",
-      collapsible: false,
       prefix: "config/",
       link: "config/overview.md",
       children: [
@@ -19,38 +21,32 @@ export const enSidebar = sidebar({
         },
         {
           text: "Bindings",
-          collapsible: false,
           prefix: "bindings/",
           children: "structure",
         },
         {
           text: "Guards",
-          collapsible: false,
           prefix: "guards/",
-          children: "structure"
+          children: "structure",
         },
         {
           text: "Vaults",
-          collapsible: false,
           prefix: "vaults/",
-          children: "structure"
+          children: "structure",
         },
         {
           text: "Telemetry",
-          collapsible: false,
           prefix: "telemetry/",
           children: [
             {
               text: "Metrics",
-              collapsible: false,
               prefix: "metrics/",
-              children: "structure"
+              children: "structure",
             },
             {
               text: "Exporters",
-              collapsible: false,
               prefix: "exporter/",
-              children: "structure"
+              children: "structure",
             },
           ],
         },
@@ -58,7 +54,6 @@ export const enSidebar = sidebar({
     },
     {
       text: "Zilla Manager",
-      collapsible: false,
       prefix: "manager/",
       link: "manager/overview.md",
       children: [
@@ -74,79 +69,131 @@ export const enSidebar = sidebar({
     },
   ],
   "/": [
-    "",
     {
-      text: "Get Started",
-      icon: "play",
-      collapsible: true,
-      prefix: "get-started/",
-      children: [
-        "install.md",
-        {
-          text: "Quickstart",
-          icon: "stopwatch",
-          collapsible: false,
-          link: "quickstart/kafka-proxies.md"
-        },
-        {
-          text: "Todo App",
-          icon: "check",
-          collapsible: false,
-          prefix: "todo-app/",
-          children: "structure",
-        },
-      ],
+      text: "Installing Zilla",
+      link: "how-tos/install.md",
     },
     {
-      text: "Guides",
-      icon: "bars-staggered",
-      prefix: "guides/",
-      collapsible: true,
+      text: "Quickstart",
+      link: "tutorials/quickstart/kafka-proxies",
+    },
+    {
+      text: "Configuration",
+      link: "concepts/config-intro.md",
       children: [
         {
-          text: "Configuring Kafka Proxies",
-          icon: "gear",
-          collapsible: false,
-          prefix: "kafka-proxies/",
-          children: [
-            {
-              text: "gRPC Proxy",
-              icon: "circle-nodes",
-              link: "grpc-proxy.md",
-            },
-            {
-              text: "REST Proxy",
-              icon: "arrow-right-arrow-left",
-              link: "rest-proxy.md",
-            },
-            {
-              text: "SSE Proxy",
-              icon: "fa-brands fa-html5",
-              link: "sse-proxy.md",
-            },
-          ],
+          text: "Intro to zilla.yaml",
+          link: "concepts/config-intro.md",
         },
         {
           text: "Connecting to Kafka",
-          icon: "plug",
-          collapsible: false,
-          prefix: "connecting-to-kafka/",
+          collapsible: true,
+          prefix: "how-tos/connecting-to-kafka/",
+          link: "how-tos/connecting-to-kafka/apache-kafka.md",
           children: [
-            "generic.md",
+            "apache-kafka.md",
             "aiven.md",
             "amazon-msk.md",
             "confluent-cloud.md",
             "redpanda.md",
           ],
         },
+        {
+          text: "Prometheus Metrics",
+          link: "tutorials/metrics/prometheus-intro.md",
+        },
+      ],
+    },
+    {
+      text: "Apache Kafka Proxying",
+      link: "concepts/kafka-proxies/rest-proxy.md",
+      children: [
+        {
+          text: "REST-Kafka Proxy",
+          collapsible: true,
+          link: "concepts/kafka-proxies/rest-proxy.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/kafka-proxies/rest-proxy.md",
+            },
+            {
+              text: "Create a Simple REST API",
+              link: "tutorials/rest/rest-intro.md",
+            },
+            {
+              text: "Build a CQRS Todo App",
+              link: "tutorials/todo-app/build.md",
+              children: [
+                {
+                  text: "Application Setup",
+                  link: "tutorials/todo-app/build.md",
+                },
+                {
+                  text: "Adding Auth",
+                  link: "tutorials/todo-app/secure.md",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: "SSE-Kafka Proxy",
+          collapsible: true,
+          link: "concepts/kafka-proxies/sse-proxy.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/kafka-proxies/sse-proxy.md",
+            },
+            {
+              text: "Create a Simple SSE Stream",
+              link: "tutorials/sse/sse-intro.md",
+            },
+            {
+              text: "Build a CQRS Todo App",
+              link: "tutorials/sse/sse-todo-build.md",
+              children: [
+                {
+                  text: "Application Setup",
+                  link: "tutorials/sse/sse-todo-build.md",
+                },
+                {
+                  text: "Adding Auth",
+                  link: "tutorials/sse/sse-todo-secure.md",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: "gRPC-Kafka Proxy",
+          collapsible: true,
+          link: "concepts/kafka-proxies/grpc-proxy.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/kafka-proxies/grpc-proxy.md",
+            },
+            {
+              text: "Expose a Simple gRPC Server",
+              link: "tutorials/grpc/grpc-intro.md",
+            },
+          ],
+        },
       ],
     },
     {
       text: "Reference",
-      icon: "book",
       prefix: "reference/",
       link: "reference/config/overview.md",
-      children: ["config/bindings/", "config/guards/", "config/vaults/", "config/telemetry/", "vscode/"],
+      children: [
+        "vscode/",
+        "config/bindings/",
+        "config/guards/",
+        "config/vaults/",
+        "config/telemetry/",
+      ],
     },
   ],
 });

@@ -71,7 +71,7 @@ pnpm dev
   Running compiled site link checking:
 
   ```sh
-  pnpm build && lychee --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist
+  pnpm link-checker && lychee --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist
   ```
 
 ## Provide feedback

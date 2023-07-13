@@ -43,7 +43,7 @@ Let's create `stack.yml` and add `Apache Kafka` (or `Redpanda`).
 version: "3"
 
 networks:
-  net0:
+  net:
     driver: overlay
 
 services:
@@ -102,7 +102,7 @@ services:
 version: "3"
 
 networks:
-  net0:
+  net:
     driver: overlay
 
 services:
@@ -424,13 +424,13 @@ You will add the following bindings to support the Tasks API as shown `zilla.yam
 
 |                       |                      |
 | --------------------- | -------------------- |
-| `tcp_server0`         | listens on port 8080 routes to http_server0 |
-| `http_server0`        | decodes HTTP protocol routes Tasks API to http_kafka_proxy0 |
-| `http_kafka_proxy0`   | transforms HTTP to Kafka routes POST, PUT and DELETE Tasks API requests to task-commands topic with task-replies reply-to topic via kafka_cache_client0 routes GET Tasks API requests to task-snapshots topic via kafka_cache_client0 |
-| `kafka_cache_client0` | reads from local Kafka topic message cache routes to kafka_cache_server0 |
-| `kafka_cache_server0` | writes to local Kafka topic message cache as new messages arrive from Kafka routes to kafka_client0 |
-| `kafka_client0`       | encodes Kafka protocol routes to kafka_client0 |
-| `tcp_client0`         | connects to Kafka brokers |
+| `tcp_server`         | listens on port 8080 routes to http_server |
+| `http_server`        | decodes HTTP protocol routes Tasks API to http_kafka_proxy |
+| `http_kafka_proxy`   | transforms HTTP to Kafka routes POST, PUT and DELETE Tasks API requests to task-commands topic with task-replies reply-to topic via kafka_cache_client routes GET Tasks API requests to task-snapshots topic via kafka_cache_client |
+| `kafka_cache_client` | reads from local Kafka topic message cache routes to kafka_cache_server |
+| `kafka_cache_server` | writes to local Kafka topic message cache as new messages arrive from Kafka routes to kafka_client |
+| `kafka_client`       | encodes Kafka protocol routes to kafka_client |
+| `tcp_client`         | connects to Kafka brokers |
 
 Using [Zilla Studio](https://zilla-studio.aklivity.io/), select the `Build the Todo App` template from the `Load Template` dropdown and then press `Generate Config` to download the corresponding `zilla.yaml` configuration file.
 
@@ -656,7 +656,7 @@ cd ..
 
 This will generate `dist` folder with necessary artifacts. Now you can configure Zilla to host the app so that both API and app can be served under the same hostname and port.
 
-First, add the `http_filesystem_proxy0` and `filesystem_server0` bindings to `zilla.yaml` giving the following updated configuration.
+First, add the `http_filesystem_proxy` and `filesystem_server` bindings to `zilla.yaml` giving the following updated configuration.
 
 ::: details zilla.yaml (updated)
 
@@ -694,7 +694,7 @@ bindings:
               :method: DELETE
               :path: /tasks/*
         exit: http-kafka_proxyab9279f6-00aa-40a9-b10a-268c5ebfd800
-    exit: http_filesystem_proxy0
+    exit: http_filesystem_proxy
   sse_serverab9279f6-00aa-40a9-b10a-268c5ebfd800:
     type: sse
     kind: server
@@ -772,21 +772,21 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-  http_filesystem_proxy0:
+  http_filesystem_proxy:
     type: http-filesystem
     kind: proxy
     routes:
       - when:
           - path: /
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: index.html
       - when:
           - path: /{path}
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: ${params.path}
-  filesystem_server0:
+  filesystem_server:
     type: filesystem
     kind: server
     options:
@@ -831,4 +831,4 @@ Open the browser and enter `http://localhost:8080/` to see the Todo Application.
 
 Notice that there is no need to `Login` as the Tasks API is initially available to anonymous clients.
 
-Next up: [Secure the Todo Application](secure.md) Tasks API with JWT access tokens.
+Next up: [Secure the Todo Application](./secure.md) Tasks API with JWT access tokens.

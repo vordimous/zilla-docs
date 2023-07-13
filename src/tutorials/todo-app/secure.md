@@ -7,7 +7,7 @@ description: Our Secure the Todo Application guide shows you how to secure the T
 
 # Secure the Todo Application
 
-In this getting started exercise, you will enhance the [previously built Todo application](build.md) to secure the Tasks API using JWT access tokens.
+In this getting started exercise, you will enhance the [previously built Todo application](./build.md) to secure the Tasks API using JWT access tokens.
 
 ![](/assets/todo-app-architecture-secured@2x.png)
 
@@ -21,11 +21,11 @@ In this guide, you will use the [JWT guard](../../reference/config/guards/guard-
 * Git `2.32.0`
 * npm `8.3.1`  and above
 * jq `1.6` and above
-* completed [Build the Todo Application](build.md) with Docker stack still running
+* completed [Build the Todo Application](./build.md) with Docker stack still running
 
 ### Step 1: Zilla
 
-In [Build a Todo Application](build.md#step-3-zilla), you defined a Tasks API to send commands to the `Todo` service via Kafka and retrieve a continuously updated stream of tasks from Kafka as needed by the Tasks UX.
+In [Build a Todo Application](./build.md#step-3-zilla), you defined a Tasks API to send commands to the `Todo` service via Kafka and retrieve a continuously updated stream of tasks from Kafka as needed by the Tasks UX.
 
 ![](./post-tasks.png)
 
@@ -129,7 +129,7 @@ Now we secure the Tasks API by requiring the caller to have `read:tasks` role fo
 
 The Zilla engine configuration defines a flow of named `bindings` representing each step in the pipeline as inbound network traffic is decoded and transformed then encoded into outbound network traffic as needed.
 
-In [Build the Todo Application, Step 3: Zilla](build.md#step-3-zilla), you created `zilla.yaml` that defined the Tasks API without security.
+In [Build the Todo Application, Step 3: Zilla](./build.md#step-3-zilla), you created `zilla.yaml` that defined the Tasks API without security.
 
 When routing at each binding, Zilla can guard a route to require that specific roles have been granted to the caller. If the caller does not have the required roles, then the route is ignored. If no routes are viable, then the HTTP request fails with `404 Not Found`.
 
@@ -306,13 +306,13 @@ guards:
 
 </details>
 
-This allows the Zilla engine to validate the API caller's JWT access token at the `http_server0` binding so that routes further along in the pipeline can verify the caller has the required roles.
+This allows the Zilla engine to validate the API caller's JWT access token at the `http_server` binding so that routes further along in the pipeline can verify the caller has the required roles.
 
-The `sse_kafka_proxy0` binding is `guarded` on the `/tasks` route, requiring `read:tasks` role.
+The `sse_kafka_proxy` binding is `guarded` on the `/tasks` route, requiring `read:tasks` role.
 
-The `http_kafka_proxy0` binding is `guarded` on the `POST`, `PUT` and `DELETE` routes, requiring `write:tasks` role.
+The `http_kafka_proxy` binding is `guarded` on the `POST`, `PUT` and `DELETE` routes, requiring `write:tasks` role.
 
-Then, add the `http_filesystem_proxy0` and `filesystem_server0` bindings to `zilla.yaml` giving the following updated configuration.
+Then, add the `http_filesystem_proxy` and `filesystem_server` bindings to `zilla.yaml` giving the following updated configuration.
 
 <details>
 
@@ -359,7 +359,7 @@ bindings:
               :method: DELETE
               :path: /tasks/*
         exit: http-kafka_proxyab9279f6-00aa-40a9-b10a-268c5ebfd800
-    exit: http_filesystem_proxy0
+    exit: http_filesystem_proxy
   sse_serverab9279f6-00aa-40a9-b10a-268c5ebfd800:
     type: sse
     kind: server
@@ -449,21 +449,21 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-  http_filesystem_proxy0:
+  http_filesystem_proxy:
     type: http-filesystem
     kind: proxy
     routes:
       - when:
           - path: /
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: index.html
       - when:
           - path: /{path}
-        exit: filesystem_server0
+        exit: filesystem_server
         with:
           path: ${params.path}
-  filesystem_server0:
+  filesystem_server:
     type: filesystem
     kind: server
     options:

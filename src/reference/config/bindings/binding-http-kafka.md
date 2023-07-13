@@ -20,7 +20,7 @@ http_kafka_proxy:
     - when:
         - method: GET
           path: "/items"
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         capability: fetch
         topic: items-snapshots
@@ -29,7 +29,7 @@ http_kafka_proxy:
     - when:
         - method: GET
           path: "/items/{id}"
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         capability: fetch
         topic: items-snapshots
@@ -39,7 +39,7 @@ http_kafka_proxy:
         - path: "/items/{id}"
         - method: GET
           path: "/items/{id};{correlationId}"
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
       with:
         capability: produce
         topic: items-requests
@@ -191,7 +191,7 @@ routes:
   - when:
       - method: GET
         path: "/items"
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       capability: fetch
       topic: items-snapshots
@@ -200,7 +200,7 @@ routes:
   - when:
       - method: GET
         path: "/items/{id}"
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       capability: fetch
       topic: items-snapshots
@@ -210,7 +210,7 @@ routes:
       - path: "/items/{id}"
       - method: GET
         path: "/items/{id};{correlationId}"
-    exit: kafka_cache_client0
+    exit: kafka_cache_client
     with:
       capability: produce
       topic: items-requests
@@ -264,7 +264,7 @@ Path with optional embedded parameter names, such as `/{topic}`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ### routes[].with

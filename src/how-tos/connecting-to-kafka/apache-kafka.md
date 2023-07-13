@@ -1,7 +1,10 @@
 ---
 description: In this guide, you will learn how to connect to a generic Kafka from Zilla
 ---
-# Generic Kafka
+# Apache Kafka
+
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 ## Introduction
 
@@ -35,11 +38,11 @@ To connect to any Kafka on `PLAINTEXT` protocol is as simple as defining your TC
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -62,7 +65,7 @@ By default, Kafka communicates in `PLAINTEXT`, which means that all data is sent
 If the `Kafka` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority, then configure `Zilla` add a `TLS` client binding as shown below with the `trustcacerts` option to set to `true`.
 
 ::: info NOTE
-The `exit` from `kafka_client0` binding now changes to `tls_client0`.
+The `exit` from `kafka_client` binding now changes to `tls_client`.
 :::
 
 ### zilla.yaml
@@ -73,19 +76,19 @@ The `exit` from `kafka_client0` binding now changes to `tls_client0`.
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
-  tls_client0:
+    exit: tls_client
+  tls_client:
     type: tls
     kind: client
     options:
       trustcacerts: true
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -117,11 +120,11 @@ vaults:
         type: STORE_TYPE
         password: TRUSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
-  tls_client0:
+    exit: tls_client
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -130,8 +133,8 @@ bindings:
         - CA_CERT_ALIAS
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -179,7 +182,7 @@ openssl pkcs12 -export -in service.cert -inkey service.key
 
 :::
 
-You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client0` binding.
+You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
 
 ### zilla.yaml
 
@@ -201,11 +204,11 @@ vaults:
         type: STORE_TYPE
         password: KEYSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
-  tls_client0:
+    exit: tls_client
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -216,8 +219,8 @@ bindings:
         - SIGNED_CLIENT_CERT_ALIAS
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:
@@ -264,24 +267,24 @@ Please add your feedback to the [SASL enhancement request](https://github.com/ak
 
 ```yaml
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
+    exit: tls_client
     options:
       sasl:
         mechanism: plain
         username: SASL_USERNAME
         password: SASL_PASSWORD
-  tls_client0:
+  tls_client:
     type: tls
     kind: client
     options:
       trustcacerts: true
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:

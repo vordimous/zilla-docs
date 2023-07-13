@@ -1,14 +1,14 @@
 ---
-description: Running these Zilla quickstarts will introduce some REST features.
+description: Running these Zilla samples will introduce some REST features.
 ---
 
-# REST Quickstart
+# REST Intro
 
-Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
+Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
 ## CRUD on a Kafka event stream
 
-Running this Zilla quickstart will create a simple API to create and list items. All of the data will be stored on a Kafka topic.
+Running this Zilla sample will create a simple API to create and list items. All of the data will be stored on a Kafka topic.
 
 ### Setup
 

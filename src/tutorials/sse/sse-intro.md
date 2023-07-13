@@ -1,14 +1,14 @@
 ---
-description: Running these Zilla quickstarts will introduce some SSE features.
+description: Running these Zilla samples will introduce some SSE features.
 ---
 
-# SSE Quickstart
+# SSE Intro
 
-Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
+Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
 ## Hello, World with SSE
 
-Running this Zilla quickstart will create a simple SSE server that sends a `Hello, World` message.
+Running this Zilla sample will create a simple SSE server that sends a `Hello, World` message.
 
 ### Setup SSE echo server
 
@@ -237,7 +237,7 @@ Go deeper into this concept with the [sse.proxy.jwt](https://github.com/aklivity
 
 ## SSE messages from Kafka
 
-Running this Zilla quickstart will fanout `Hello, World` from a Kafka topic acting as a SSE server
+Running this Zilla sample will fanout `Hello, World` from a Kafka topic acting as a SSE server
 
 ### Setup SSE Kafka Proxy
 
