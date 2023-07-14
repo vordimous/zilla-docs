@@ -1,4 +1,6 @@
 # REST Proxy
+<!-- TODO enable -->
+<!-- markdownlint-disable -->
 
 Zilla lets you configure application-centric REST API endpoints that unlock `Apache Kafka` event-driven architectures. An application-centric REST API for Kafka gives the developer freedom to define their own HTTP mapping to Kafka, with control over the topic, message key, message headers, message value, and reply-to topic. This guide will explain all the aspects of configuring Zilla with REST API endpoints.
 
@@ -23,14 +25,14 @@ Kafka **Produce** capability and HTTP request method types such as `POST`, `PUT`
 
 ```yaml
 bindings:
-  http_kafka_proxy0:
+  http_kafka_proxy:
     type: http-kafka
     kind: proxy
     routes:
       - when:
           - method: POST
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: produce
           topic: KAFKA_TOPIC
@@ -41,7 +43,7 @@ bindings:
 :::
 
 ::: info NOTE
-When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/config/bindings/binding-http-kafka.md#with-capability-produce) as well.
+When the POST request is received by Zilla, a message is produced to the requests topic, with HTTP headers delivered as the Kafka message headers and the HTTP payload delivered as the Kafka message value. You have the option to [override headers](../../reference/config/bindings/binding-http-kafka.md#capability-produce) as well.
 :::
 
 Kafka **Fetch** capability with HTTP request methods such as `GET` :
@@ -54,14 +56,14 @@ Kafka **Fetch** capability with HTTP request methods such as `GET` :
 
 ```yaml
 bindings:
-  http_kafka_proxy0:
+  http_kafka_proxy:
     type: http-kafka
     kind: proxy
     routes:
       - when:
           - method: GET
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: fetch
           topic: KAFKA_TOPIC
@@ -82,14 +84,14 @@ It's a common case when you want to work with a specific entity e.g. `/tasks/123
 
 ```yaml
 bindings:
-  http_kafka_proxy0:
+  http_kafka_proxy:
     type: http-kafka
     kind: proxy
     routes:
       - when:
           - method: GET
             path: /tasks/{id}
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: fetch
           topic: KAFKA_TOPIC
@@ -102,7 +104,7 @@ bindings:
 
 ### CORS
 
-Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/config/bindings/binding-http.md).
+Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/config/bindings/binding-http.md
 
 ### zilla.yaml
 
@@ -111,7 +113,7 @@ Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify f
 @tab zilla.yaml
 
 ```yaml
-http_server0:
+http_server:
   type: http
   kind: server
   options:
@@ -122,7 +124,7 @@ http_server0:
         - headers:
             ':scheme': https
             ':authority': example.com:443
-      exit: echo_server0
+      exit: echo_server
 
 ```
 
@@ -146,7 +148,7 @@ curl -s https://AUTH_URL/.well-known/jwks.json | jq .keys
 
 ```yaml
 guards:
-  jwt0:
+  jwt:
     type: jwt
     options:
       issuer: https://auth.example.com
@@ -166,28 +168,28 @@ guards:
           kid: '2011-04-29'
       challenge: 30
 bindings:
-  http_server0:
+  http_server:
     type: http
     kind: server
     options:
       authorization:
-        jwt0:
+        jwt:
           credentials:
             headers:
               authorization: Bearer {credentials}
             query:
               access_token: '{credentials}'
-  http_kafka_proxy0:
+  http_kafka_proxy:
     type: http-kafka
     kind: proxy
     routes:
       - guarded:
-          jwt0:
+          jwt:
             - write:tasks
         when:
           - method: POST
             path: ENDPOINT_PATH
-        exit: kafka_cache_client0
+        exit: kafka_cache_client
         with:
           capability: produce
           topic: KAFKA_TOPIC

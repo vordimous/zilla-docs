@@ -15,7 +15,7 @@ Zilla runtime kafka-grpc binding.
 kafka_grpc_proxy:
   type: kafka-grpc
   kind: remote_server
-  entry: kafka_cache_client0
+  entry: kafka_cache_client
   options:
     acks: leader_only
     idempotency:
@@ -31,7 +31,7 @@ kafka_grpc_proxy:
         - topic: requests
           reply-to: responses
           method: example.EchoService/*
-      exit: grpc0
+      exit: grpc
       with:
         scheme: http
         authority: localhost:8080
@@ -180,7 +180,7 @@ routes:
       - topic: requests
         reply-to: responses
         method: example.EchoService/*
-    exit: grpc0
+    exit: grpc
     with:
       scheme: http
       authority: localhost:8080
@@ -238,7 +238,7 @@ Pattern matching the fully qualified name of a `grpc` service method, in the for
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: kafka_cache_client0
+exit: kafka_cache_client
 ```
 
 ### routes[].with

@@ -1,14 +1,14 @@
 ---
-description: Running these Zilla quickstarts will introduce some gRPC features.
+description: Running these Zilla samples will introduce some gRPC features.
 ---
 
-# gRPC Quickstart
+# gRPC Intro
 
-Get started using Zilla by deploying our Docker container. Before proceeding, you need to run these quickstarts in an environment [with Docker Compose](https://docs.docker.com/compose/gettingstarted/).
+Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
 ## Echo on a Kafka event stream
 
-Running this Zilla quickstart will create a gRPC service to echo any message sent through a Kafka topic.
+Running this Zilla sample will create a gRPC service to echo any message sent through a Kafka topic.
 
 ### Setup
 

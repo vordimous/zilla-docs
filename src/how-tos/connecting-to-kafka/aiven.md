@@ -62,7 +62,7 @@ openssl pkcs12 -export -in service.cert -inkey service.key \
 
 ## Configure Zilla
 
-And the final step is to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client0` binding.
+And the final step is to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
 
 ### zilla.yaml
 
@@ -84,11 +84,11 @@ vaults:
         type: STORE_TYPE
         password: KEYSTORE_PASSWORD
 bindings:
-  kafka_client0:
+  kafka_client:
     type: kafka
     kind: client
-    exit: tls_client0
-  tls_client0:
+    exit: tls_client
+  tls_client:
     type: tls
     kind: client
     vault: client_vault
@@ -99,8 +99,8 @@ bindings:
         - SIGNED_CLIENT_CERT_ALIAS
       sni:
         - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client0
-  tcp_client0:
+    exit: tcp_client
+  tcp_client:
     type: tcp
     kind: client
     options:

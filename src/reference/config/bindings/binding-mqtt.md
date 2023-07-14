@@ -25,7 +25,7 @@ mqtt_server:
     - when:
         - topic: messages
           capabilities: publish_and_subscribe
-      exit: mqtt_kafka_proxy0
+      exit: mqtt_kafka_proxy
 ```
 
 ## Summary
@@ -123,7 +123,7 @@ Defaults to `"publish_and_subscribe"`.
 Next binding when following this route.
 
 ```yaml
-exit: mqtt_kafka_proxy0
+exit: mqtt_kafka_proxy
 ```
 
 ---

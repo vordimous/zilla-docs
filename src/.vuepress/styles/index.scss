@@ -1,7 +1,5 @@
-.vp-footer img.logo {
-    padding-right: 25px;
-}
 
+// Dark theme settings
 html[data-theme=dark] #app {
     --code-highlight-line-color: #0e5c49;
     --border-color: #0e5c49;
@@ -14,6 +12,7 @@ html[data-theme=dark] #app {
     }
 }
 
+// Light theme settings
 html[data-theme=light] #app {
     --code-highlight-line-color: #79d4bd;
     --border-color: #55877a;
@@ -48,6 +47,8 @@ table.no-head {
     }
 }
 
+
+// Header
 // full width search
 .vp-navbar-center {
     div {
@@ -56,4 +57,50 @@ table.no-head {
             width: 100%;
         }
     }
+}
+// Footer
+.vp-footer img.logo {
+    padding-right: 25px;
+}
+
+// Improve sidebar hierarchy
+.vp-sidebar {
+    .vp-sidebar-sub-headers a {
+        color: var(--light-grey);
+    }
+}
+
+// Zilla plus icon indicator
+.vp-sidebar-link, .vp-sidebar-heading {
+    display: flex !important;
+    flex-direction: row;
+    span.icon {
+        order: 2;
+        margin-left: auto;
+        color: var(--theme-color);
+    }
+}
+// Zilla plus container styles
+.zilla-plus-badge.hint-container.info {
+    border-color: #0e5c49;
+    background: var(--theme-color);
+    padding: 0;
+    a {
+        background-color: var(--theme-color);
+        cursor: pointer;
+        text-decoration: none!important;
+        color: white;
+        font-size: 17px;
+        text-align: center;
+        border-radius: 5px;
+        display: inline-block;
+        padding: .5em;
+        border-radius: 5px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .external-link-icon {
+        display: none;
+    }
+    
 }

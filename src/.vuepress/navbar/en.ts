@@ -10,9 +10,7 @@ const versionLinks = <{ text: string; link: string }[]>(
 );
 
 export const enNavbar = navbar([
-  { text: "Get Started", icon: "play", link: "/get-started/install.md" },
-  { text: "Guides", icon: "bars-staggered", link: "/guides/kafka-proxies/grpc-proxy.md" },
-  // { text: "Concepts", icon: "diagram-project", link: "/concepts/" },
+  { text: "Get Started", icon: "play", link: "/tutorials/quickstart/kafka-proxies.md" },
   { text: "Reference", icon: "book", link: "/reference/config/overview.md" },
   { text: "version", icon: "list-ol", children: versionLinks },
   { text: "aklivity", icon: "globe", link: "https://www.aklivity.io/" },

@@ -15,7 +15,7 @@ Zilla runtime sse binding.
 sse_server:
   type: sse
   kind: server
-  exit: sse_kafka_proxy0
+  exit: sse_kafka_proxy
 ```
 
 ## Summary
@@ -77,7 +77,7 @@ Defaults to `2000`.
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: sse_kafka_proxy0
+exit: sse_kafka_proxy
 ```
 
 ### routes
@@ -93,7 +93,7 @@ routes:
         - read:items
     when:
       - path: "/items"
-    exit: sse_kafka_proxy0
+    exit: sse_kafka_proxy
 ```
 
 ### routes[].guarded
@@ -134,7 +134,7 @@ Path pattern.
 Next binding when following this route.
 
 ```yaml
-exit: sse_kafka_proxy0
+exit: sse_kafka_proxy
 ```
 
 ---

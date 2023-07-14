@@ -7,7 +7,7 @@ A brief explanation of replaceable values from the config examples below:
 - `ENDPOINT_PATH`: HTTP path for example `/tasks`
 - `KAFKA_TOPIC`: The Kafka topic that you want to stream from
 
-### Configure Endpoint
+## Configure Endpoint
 
 Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is shown below:
 
@@ -16,11 +16,11 @@ Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is s
 @tab zilla.yaml
 
 ```yaml
-sse_server0:
+sse_server:
   type: sse
   kind: server
-  exit: sse_kafka_proxy0
-sse_kafka_proxy0:
+  exit: sse_kafka_proxy
+sse_kafka_proxy:
   type: sse-kafka
   kind: proxy
   routes:
@@ -30,7 +30,7 @@ sse_kafka_proxy0:
         topic: KAFKA_TOPIC
         event:
           id: '["${base64(key)}","${etag}"]'
-      exit: kafka_cache_client0
+      exit: kafka_cache_client
 
 ```
 
@@ -40,7 +40,7 @@ As shown above you can describe your event id in case you want to retrieve the m
 
 ### Authorization
 
-Similar to [REST Proxy](../../guides/kafka-proxies/rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
+Similar to [REST Proxy](./rest-proxy.md) you can secure the `SSE` endpoints as well which allows you to continuously authorize the stream which unlike `HTTP` request, `SSE` is a long-lived connection.
 
 ### More
 

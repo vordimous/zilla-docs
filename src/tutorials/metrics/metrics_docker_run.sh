@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tmp_dir=tmp_quickstart;
+tmp_dir=tmp_sample;
 endpoint=http://localhost:8080/;
 timeout=30;
 msg="Hello, world";
@@ -13,7 +13,7 @@ cd $tmp_dir;
 # Run Zilla - Coppied to md file
 docker pull ghcr.io/aklivity/zilla:latest && \
 docker run -d -v ./zilla.yaml:/etc/zilla/zilla.yaml \
---name zilla-quickstart -p 8080:8080/tcp -p 9090:9090/tcp \
+--name zilla-sample -p 8080:8080/tcp -p 9090:9090/tcp \
 ghcr.io/aklivity/zilla:latest \
 start -v;
 
@@ -25,14 +25,14 @@ until [ "$result" == "$msg" ] || [ "$count" -eq "$timeout" ]; do
     echo "try:$((++count)), $result";
     sleep 1; 
 done
-docker logs zilla-quickstart;
+docker logs zilla-sample;
 
 # Test Zilla - Coppied to md file
 curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:8080/;
 curl http://localhost:9090/metrics;
 
 # Cleanup
-docker rm -f zilla-quickstart;
+docker rm -f zilla-sample;
 cd ../;
 rm -rf $tmp_dir;
 

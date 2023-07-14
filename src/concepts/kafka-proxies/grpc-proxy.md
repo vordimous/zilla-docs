@@ -264,7 +264,7 @@ Using a `tcp` and `tls` server we can route the gRPC traffic through an `http` s
 
 ### Connecting to Kafka
 
-A gRPC server can connect to Kafka the same as any other binding in Zilla. [See the docs](../connecting-to-kafka/generic.md) on the different connection options.
+A gRPC server can connect to Kafka the same as any other binding in Zilla. [See the docs](../../how-tos/connecting-to-kafka/apache-kafka.md) on the different connection options.
 
 ```yaml
   kafka_cache_client:
