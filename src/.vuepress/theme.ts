@@ -13,7 +13,7 @@ export default hopeTheme({
   repo: "aklivity/zilla",
   editLink: true,
   contributors: false,
-  lastUpdated: true,
+  lastUpdated: false,
   docsRepo,
   docsDir: "src",
   docsBranch,
@@ -25,7 +25,7 @@ export default hopeTheme({
     end: ["Links", "Repo", "Outlook"],
   },
 
-  pageInfo: ["ReadingTime", "Date", "Category", "Tag"],
+  pageInfo: ["Category", "Tag"],
 
   locales: {
     "/": {
@@ -59,6 +59,7 @@ export default hopeTheme({
       include: true,
       mark: true,
       tabs: true,
+      gfm: true,
     },
   },
 });

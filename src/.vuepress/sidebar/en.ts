@@ -7,36 +7,40 @@ export const enSidebar = sidebar({
       link: "vscode/README.md",
     },
     {
-      text: "Zilla Configuration",
+      text: "Zilla Runtime",
       prefix: "config/",
-      link: "config/overview.md",
+      link: "config/zilla-cli.md",
       children: [
-        {
-          text: "zilla.yaml Overview",
-          link: "overview.md",
-        },
         {
           text: "CLI (zilla)",
           link: "zilla-cli.md",
         },
         {
+          text: "Config Overview",
+          link: "overview.md",
+        },
+        {
           text: "Bindings",
           prefix: "bindings/",
+          link: "bindings/",
           children: "structure",
         },
         {
           text: "Guards",
           prefix: "guards/",
+          link: "guards/",
           children: "structure",
         },
         {
           text: "Vaults",
           prefix: "vaults/",
+          link: "vaults/",
           children: "structure",
         },
         {
           text: "Telemetry",
           prefix: "telemetry/",
+          link: "telemetry/",
           children: [
             {
               text: "Metrics",
@@ -55,15 +59,15 @@ export const enSidebar = sidebar({
     {
       text: "Zilla Manager",
       prefix: "manager/",
-      link: "manager/overview.md",
+      link: "manager/zpm-cli.md",
       children: [
-        {
-          text: "zpm Overview",
-          link: "overview.md",
-        },
         {
           text: "CLI (zpm)",
           link: "zpm-cli.md",
+        },
+        {
+          text: "Config Overview",
+          link: "overview.md",
         },
       ],
     },
@@ -99,7 +103,7 @@ export const enSidebar = sidebar({
           ],
         },
         {
-          text: "Prometheus Metrics",
+          text: "Add Prometheus Metrics",
           link: "tutorials/metrics/prometheus-intro.md",
         },
       ],

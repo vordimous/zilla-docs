@@ -1,5 +1,11 @@
 ---
 description: Running this Zilla quickstart will introduce some of Zilla's main features.
+category:
+  - Kafka Proxies
+tag:
+  - REST
+  - SSE
+  - gRPC
 ---
 
 # Zilla Kafka Proxy Quickstart
@@ -88,7 +94,7 @@ Zilla can expose a Kafka topic as a Server-sent Events (SSE) stream, enabling a 
 - **GET:SSE** - Stream all of the events published on the `event-sse` Kafka topic.
 
 ::: note Going Deeper
-Zilla can be configured for more usecases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
+Zilla can be configured for more use cases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
 
 - [REST proxy guide](../../concepts/kafka-proxies/sse-proxy.md)
 - [Kafka fanout example](https://github.com/aklivity/zilla-examples/tree/main/sse.kafka.fanout)
@@ -103,7 +109,7 @@ Zilla maps the service method's request and response messages directly to Kafka 
 - **EchoService** - Zilla implements a simple message echo service.
 
 ::: note Going Deeper
-Zilla can be configured for more usecases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
+Zilla can be configured for more use cases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
 
 - [gRPC proxy guide](../../concepts/kafka-proxies/grpc-proxy.md)
 - [gRPC proxy example](https://github.com/aklivity/zilla-examples/tree/main/grpc.proxy)
