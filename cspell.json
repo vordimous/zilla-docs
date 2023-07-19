@@ -30,6 +30,7 @@
         "Grammarly",
         "grpcurl",
         "GSSAPI",
+        "hostnames",
         "idempotency",
         "inet",
         "inkey",
