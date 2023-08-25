@@ -58,18 +58,14 @@ Choose a use case: `EC2`
 #### Managed Policy
 
 Name: `AWSMarketplaceMeteringFullAccess`\
-Type: `AWS managed policy`
+Type: `AWS managed`\
+Role name: `my-role`
 
-### Tags
-
-### Review
-
-Role name: `my-role`\
-Click `Create role`.
+Click `Create role`
 
 Now click the newly created role `my-role` to show the details so we can add inline policies.
 
-Click on `+ Add inline policy` and fill out the `Create policy` form with the following parameters.
+In the Permissions policies section in the `Add Permissions` dropdown click on `Create inline policy` in the  and fill out the `Create policy` form with the following parameters.
 
 ### Create policy
 

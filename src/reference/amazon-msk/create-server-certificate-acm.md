@@ -22,7 +22,7 @@ Note the ARN of the private certificate authority.
 
 We need to create a new key that will be used with the certificate, and store the key in `pkcs8` format. In this example we will be creating the key for a wildcard certificate with `*.aklivity.example.com` as the common name.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 openssl genrsa -out wildcard.aklivity.example.com.key.pem 4096
 openssl pkcs8 -topk8 -nocrypt -in wildcard.aklivity.example.com.key.pem -out wildcard.aklivity.example.com.pkcs8.pem
 ```
@@ -31,9 +31,11 @@ openssl pkcs8 -topk8 -nocrypt -in wildcard.aklivity.example.com.key.pem -out wil
 
 Next we need to create a certificate corresponding to the key, with metadata about the owner of the certificate and the common name. This is done by first creating a certificate signing request.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 openssl req -new -key wildcard.aklivity.example.com.key.pem -out wildcard.aklivity.example.com.csr
+```
 
+```text:no-line-numbers
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
@@ -65,7 +67,7 @@ Now that the certificate signing request has been prepared, it can be used to is
 
 In this example, we issue the certificate to be valid for `365 days`. You should choose a validity period that best suits your specific use case.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 aws acm-pca issue-certificate \
   --region us-east-1 \
   --certificate-authority-arn <private-certificate-authority-arn> \
@@ -77,7 +79,7 @@ aws acm-pca issue-certificate \
 
 This command returns the ARN of the newly signed certificate.
 
-```shell:no-line-numbers
+```json:no-line-numbers
 {
     "CertificateArn": "arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."
 }
@@ -99,7 +101,7 @@ make sure that you have retrieved and [set your AWS credentials for CLI use](htt
 
 Now we need to create the secret value using the `pkcs8` encoded private key as the secret value and with secret tags `certificate-authority-arn` referencing the private certificate authority, and `certificate-arn` referencing the newly signed certificate.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 aws secretsmanager create-secret \
   --region us-east-1 \
   --name "wildcard.aklivity.example.com" \
@@ -107,7 +109,7 @@ aws secretsmanager create-secret \
   --tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
 ```
 
-This secret can now be used by the Aklivity Public MSK Proxy to resolve private keys and their corresponding signed certificates to support custom TLS bootstrap server names.
+This secret can now be used by the Zilla Plus (Public MSK Proxy) to resolve private keys and their corresponding signed certificates to support custom TLS bootstrap server names.
 
 ::: info
 Note the ARN of the newly created secret for the signed certificate's private key.

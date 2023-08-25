@@ -12,7 +12,7 @@ Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
 ::: warning
-MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Aklivity Public MSK Proxy](https://docs.aklivity.io/aws/get-started/public-proxy). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
+MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Zilla Plus (Public MSK Proxy)](https://docs.aklivity.io/aws/get-started/public-proxy). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
 :::
 
 ## Set up mTLS Authentication between MSK and Zilla
@@ -24,7 +24,7 @@ Once your MSK cluster is reachable over the internet, it will rely on Mutual TLS
 3. Create a PKCS12 KeyStore containing the exported certificates that will be referenced by Zilla to complete the `mTLS` handshake with your MSK cluster.
 
 ::: info NOTE
-If you deployed the Aklivity Public MSK Proxy, then you should already have a Client Certificate that Zilla can use and you can go straight to the second step.
+If you deployed the Zilla Plus (Public MSK Proxy), then you should already have a Client Certificate that Zilla can use and you can go straight to the second step.
 :::
 
 ### Create a Client Certificate

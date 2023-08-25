@@ -27,7 +27,7 @@ Under the `Resources by Region` section, select the `Instances` resource box to 
 
 ### Step1: Choose AMI: `Amazon Linux 2 AMI (HVM),` `SSD Volume Type,` `64-bit (x86)`
 
-### Step2: Choose an Instance Type: `t3.small`
+### Step2: Choose an Instance Type: `t3.micro`
 
 ### Step 3:Configure Instance Details
 

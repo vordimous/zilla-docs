@@ -66,7 +66,7 @@ nc -v <b-1-broker-dns-name> 9094
 
 The `nc` output should be as shown below:
 
-```shell:no-line-numbers
+```text:no-line-numbers
 Connection to <b-1-broker-dns-name> port 9094 [tcp/*] succeeded!
 ```
 
@@ -84,7 +84,7 @@ openssl s_client \
 
 Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 openssl s_client \
   -connect <b-1-broker-dns-name>:9094 \
   -servername <b-1-broker-dns-name> \
@@ -95,7 +95,7 @@ openssl s_client \
 
 The `openssl` output should be as shown below:
 
-```shell:no-line-numbers
+```text:no-line-numbers
 ...
     Verify return code: 0 (ok)
 ---
@@ -107,7 +107,7 @@ Note: If the backend TLS handshake from proxy-to-msk fails for any reason, then 
 
 You can verify Kafka connectivity with client key and signed client certificate using the following command:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 kcat \
   -L \
   -b <b-1-broker-dns-name>:9094 \
@@ -118,7 +118,7 @@ kcat \
 
 Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 kcat \
   -L \
   -b <b-1-broker-dns-name>:9094 \

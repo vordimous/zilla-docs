@@ -15,13 +15,13 @@ description: Securely access an Amazon MSK cluster across VPCs via AWS PrivateLi
 
 ## Overview
 
-The [Aklivity Private MSK Proxy](https://aws.amazon.com/marketplace/pp/B09BY55VLH) enables cross-account connectivity between Kafka clients and Amazon MSK clusters.
+The [Zilla Plus (Private MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek) enables cross-account connectivity between Kafka clients and Amazon MSK clusters.
 
 Bundled CloudFormation templates provide automated configuration of a VPC Endpoint Service for your Amazon MSK cluster as well as corresponding VPC Endpoints. These VPC endpoints enable secure access to your MSK cluster via [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-overview.html) from an outside VPC, even if that VPC is owned by a different AWS account. Authorized Kafka clients in each consuming VPC will be able to connect, publish messages and subscribe to topics in your Amazon MSK cluster.
 
-In this guide we will deploy the Aklivity Private MSK Proxy and showcase cross VPC connectivity between an MSK cluster and a Kafka client.
+In this guide we will deploy the Zilla Plus (Private MSK Proxy) and showcase cross VPC connectivity between an MSK cluster and a Kafka client.
 
-The following AWS services are used by [Aklivity Private MSK Proxy](https://aws.amazon.com/marketplace/pp/B09BY55VLH) for this deployment.
+The following AWS services are used by [Zilla Plus (Private MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek) for this deployment.
 
 | Service                     | Required                                                                               | Usage                | Quota                                                                                         |
 | --------------------------- | -------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------- |
@@ -43,7 +43,7 @@ Before setting up cross-VPC access to your MSK Cluster, you will need the follow
 
 * an MSK Cluster configured for TLS encrypted client access
 * an VPC security group for MSK Proxy instances
-* subscription to Aklivity Private MSK Proxy via AWS Marketplace
+* subscription to Zilla Plus (Private MSK Proxy) via AWS Marketplace
 
 ### Create MSK Cluster
 
@@ -77,7 +77,8 @@ Description: Kafka clients and SSH access
 
 ### Inbound Rule
 
-Type: `TCP 9094`\
+Type: `Custom TCP`\
+Port: `9094`\
 Source: `<Any IPv4>`
 
 ### Inbound Rule
@@ -98,7 +99,8 @@ Security Group: `default` `(MSK security group)`
 
 ### Inbound Rule
 
-Type: `TCP 9094`\
+Type: `Custom TCP`\
+Port: `9094`\
 Source: `Custom Security groups`: `my-msk-proxy`
 
 ::: tip
@@ -107,17 +109,17 @@ This allows the MSK Proxy instances to access your MSK cluster.
 
 ### Subscribe via AWS Marketplace
 
-The Aklivity Private MSK Proxy is [available](https://aws.amazon.com/marketplace/pp/B09BY55VLH) through the AWS Marketplace. You can skip this step if you have already subscribed to Aklivity Private MSK Proxy via AWS Marketplace.
+The Zilla Plus (Private MSK Proxy) is [available](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek) through the AWS Marketplace. You can skip this step if you have already subscribed to Zilla Plus (Private MSK Proxy) via AWS Marketplace.
 
-To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.com/marketplace/pp/B09BY55VLH) and `Subscribe` to the offering.
+To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek) and `Subscribe` to the offering.
 
 ::: info
-You should now see `Aklivity Private MSK Proxy` listed in your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace).
+You should now see `Zilla Plus (Private MSK Proxy)` listed in your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace).
 :::
 
 ## Create the VPC Endpoint Service
 
-Navigate to your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace) and select `Aklivity Private MSK Proxy` to show the details page. Then select `Launch CloudFormation stack` from the `Actions` menu in the `Agreement` section.
+Navigate to your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace) and select `Zilla Plus (Private MSK Proxy)` to show the details page. Then select `Launch CloudFormation stack` from the `Actions` menu in the `Agreement` section.
 
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`, and then click `Continue to Launch`. Choose the action `Launch CloudFormation`, then click `Launch` to complete the `Create stack` wizard with the following details:
 
@@ -160,7 +162,7 @@ Key pair for SSH access: `<key pair>`
 Click `Create Stack`.
 
 ::: tip
-This initiates creation of a VPC Endpoint Service using the Aklivity Private MSK Proxy stack via CloudFormation.
+This initiates creation of a VPC Endpoint Service using the Zilla Plus (Private MSK Proxy) stack via CloudFormation.
 :::
 
 ::: info
@@ -175,7 +177,7 @@ Under the `Resources by Region` section, select the `Instances` resource box to 
 
 Find the `Public IPv4 Address` and then SSH into the instance.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 ```
 
@@ -187,7 +189,7 @@ systemctl status zilla-plus.service
 
 Verify that the `msk-proxy` service is active and logging output similar to that shown below.
 
-```shell:no-line-numbers
+```text:no-line-numbers
 ● zilla-plus.service - Zilla Plus
    Loaded: loaded (/etc/systemd/system/zilla-plus.service; enabled; vendor preset: disabled)
    Active: active (running) since Tue 2021-08-24 20:56:51 UTC; 1 day 19h ago
@@ -307,13 +309,13 @@ First, we must install a Java runtime that can be used by the Kafka client.
 
 After logging into the instance via SSH, run the following command:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 sudo yum install java-1.8.0
 ```
 
 Now we are ready to install the Kafka client:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
 cd kafka_2.13-2.8.0
@@ -321,13 +323,13 @@ cd kafka_2.13-2.8.0
 
 After changing the directory to `kafka_2.13-2.8.0` we must copy the Kafka clients trustore:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 cp /usr/lib/jvm/<JDKFolder>/lib/security/cacerts /tmp/kafka.client.truststore.jks
 ```
 
 You can get the value for **** `<JDKFolder>`**** by typing
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 cp /usr/lib/jvm/j **double tap TAB**
 ```
 
@@ -335,7 +337,7 @@ and the selecting the longer entry that starts with "**jre-1.8.0-openjdk...."**
 
 A sample full copy command command of a Kafka client's trustore will appear as follows:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 cp /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64/lib/security/cacerts /tmp/kafka.client.truststore.jks
 ```
 
@@ -349,7 +351,7 @@ The MSK Proxy relies on TLS so we need to create a file called `client.propertie
 
 @tab client.properties
 
-```bash:no-line-numbers
+```toml:no-line-numbers
 security.protocol=SSL
 ssl.truststore.location=/tmp/kafka.client.truststore.jks
 ```
@@ -389,13 +391,13 @@ A quick summary of what just happened:
 
 Publish two messages to the newly created topic via the following producer command:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 bin/kafka-console-producer.sh --topic vpce-test --producer.config client.properties --broker-list <tls-bootstrap-server-names>
 ```
 
 A prompt will appear for you to type in the messages:
 
-```shell:no-line-numbers
+```text:no-line-numbers
 >This is my first event
 >This is my second event
 ```
@@ -404,19 +406,19 @@ A prompt will appear for you to type in the messages:
 
 Read these messages back via the following consumer command:
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 bin/kafka-console-consumer.sh --topic vpce-test --from-beginning --consumer.config client.properties --bootstrap-server <tls-bootstrap-server-names>
 ```
 
 You should see the `This is my first event` and `This is my second event` messages.
 
-```shell:no-line-numbers
+```text:no-line-numbers
 This is my first event
 This is my second event
 ```
 
 ::: tip
-This verifies cross-VPC connectivity to your MSK cluster via [Aklivity Private MSK Proxy](https://aws.amazon.com/marketplace/pp/B09BY55VLH)!
+This verifies cross-VPC connectivity to your MSK cluster via [Zilla Plus (Private MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek)!
 :::
 
 ## Monitor the VPC Endpoint Service
@@ -434,11 +436,11 @@ You can use [CloudWatch](https://console.aws.amazon.com/cloudwatch) to create a 
 
 ## Upgrade the VPC Endpoint Service
 
-Navigate to your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace) and select `Aklivity Private MSK Proxy` to show the details page. Then select `Launch CloudFormation stack` from the `Actions` menu in the `Agreement` section.
+Navigate to your [AWS Marketplace Subscriptions](https://console.aws.amazon.com/marketplace) and select `Zilla Plus (Private MSK Proxy)` to show the details page. Then select `Launch CloudFormation stack` from the `Actions` menu in the `Agreement` section.
 
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`, and then click `Continue to Launch`. Choose the action `Launch CloudFormation`, then click `Launch` to show the URL of the CloudFormation template.
 
-Copy the CloudFormation template Amazon S3 URL and then select your existing CloudFormation Stack from a previous deployment of `Aklivity Private MSK Proxy`. Click `Update` and `Replace current template` with the copied Amazon S3 URL. Then complete the wizard to deploy the updated stack.
+Copy the CloudFormation template Amazon S3 URL and then select your existing CloudFormation Stack from a previous deployment of `Zilla Plus (Private MSK Proxy)`. Click `Update` and `Replace current template` with the copied Amazon S3 URL. Then complete the wizard to deploy the updated stack.
 
 CloudFormation will incrementally deploy the MSK Proxy instances for the new version behind the same Network Load Balancer, checking for successful deployment before terminating the MSK Proxy instances for the previous version.
 

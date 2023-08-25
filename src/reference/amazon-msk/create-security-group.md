@@ -39,7 +39,8 @@ Description: `Allow Kafka clients and SSH access`
 
 In the `Inbound rules` section, click `Add rule` and fill in the new inbound rule with the following details.
 
-Type: `TCP 9094`\
+Type: `Custom TCP`\
+Port: `9094`\
 Source: `0.0.0.0/0`
 
 In the `Inbound rules` section, click `Add rule` and fill in the new inbound rule with the following details.
