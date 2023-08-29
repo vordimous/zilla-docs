@@ -21,18 +21,6 @@ Bundled CloudFormation templates provide automated configuration of a VPC Endpoi
 
 In this guide we will deploy the Zilla Plus (Private MSK Proxy) and showcase cross VPC connectivity between an MSK cluster and a Kafka client.
 
-The following AWS services are used by [Zilla Plus (Private MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-asox2tvjdn5ek) for this deployment.
-
-| Service                     | Required                                                                               | Usage                | Quota                                                                                         |
-| --------------------------- | -------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------- |
-| Marketplace Metering        | Yes                                                                                    | Startup, then hourly | [None](https://docs.aws.amazon.com/general/latest/gr/aws-marketplace.html)                    |
-| Resource Groups and Tagging | Yes                                                                                    | Startup only         | [None](https://docs.aws.amazon.com/general/latest/gr/arg.html#arg-quotas)                     |
-| Secrets Manager             | Yes                                                                                    | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/asm.html#limits\_secrets-manager) |
-| Certificate Manager         | No<br><br>Private key and certificate can be inline in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm.html#limits\_acm)             |
-| Private Certificate Manager | No<br><br>Private key and certificate can be inline in Secrets Manager instead | Startup only         | [Not reached](https://docs.aws.amazon.com/general/latest/gr/acm-pca.html#limits\_acm-pca)     |
-
-The default AWS Service Quotas are sufficient.
-
 ::: info
 Check out the [Troubleshooting](../../reference/troubleshooting/amazon-msk.md) guide if you run into any issues.
 :::
