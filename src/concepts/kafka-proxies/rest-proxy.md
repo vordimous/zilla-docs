@@ -104,7 +104,7 @@ bindings:
 
 ### CORS
 
-Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/config/bindings/binding-http.md
+Zilla supports Cross-Origin Resource Sharing (CORS)  and allows you to specify fine-grained access control including specific request origins, methods and headers allowed, and specific response headers exposed. Since it acts more like a guard and has no dependency on Apache Kafka configuration, you need to define it in the [http binding](../../reference/config/bindings/binding-http.md)
 
 ### zilla.yaml
 

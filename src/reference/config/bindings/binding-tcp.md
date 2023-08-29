@@ -45,6 +45,7 @@ Conditional routes based on the hostname authority and network address mask are 
 - [routes\[\].when](#routes-when)
   - [when\[\].authority](#when-authority)
   - [when\[\].cidr](#when-cidr)
+  - [when\[\].port](#when-port)
 - [routes\[\].exit\*](#routes-exit)
 
 ::: right
@@ -122,6 +123,12 @@ Associated authority.
 > `string`
 
 CIDR mask.
+
+#### when[].port
+
+> `integer` | `string` | `array` of  `integer` | `array` of `string`
+
+Port number(s), including port number ranges.
 
 ### routes[].exit\*
 

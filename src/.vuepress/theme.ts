@@ -60,6 +60,7 @@ export default hopeTheme({
       mark: true,
       tabs: true,
       gfm: true,
+      linkify: false,
     },
   },
 });

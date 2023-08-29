@@ -34,7 +34,7 @@ The Zilla Manager command line interface uses the [Zilla Manager Configuration](
 
 The `zpm help` command shows help information about available commands, or more information for a specific command.
 
-```shell:no-line-numbers
+```bash:no-line-numbers
 zpm help [command]
 ```
 
