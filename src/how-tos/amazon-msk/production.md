@@ -59,6 +59,7 @@ Then follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-clust
 Name: `aklivity`\
 VPC: `my-msk-cluster`\
 Subnets: `my-msk-cluster-1a` `my-msk-cluster-1b` `my-msk-cluster-1c`
+
 Access control methods: `SASL/SCRAM authentication`
 
 Review and create the MSK Cluster.

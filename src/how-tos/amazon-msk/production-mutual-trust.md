@@ -66,7 +66,10 @@ Name: `aklivity`\
 VPC: `my-msk-cluster`\
 Subnets: `my-msk-cluster-1a` `my-msk-cluster-1b` `my-msk-cluster-1c`
 
-Private Certificate Authority: `Mutual Authentication CA`
+Access control methods: `TLS client certificates`\
+AWS Private CAs: `Mutual Authentication CA`
+
+Review and create the MSK Cluster.
 
 ::: tip
 This creates your MSK cluster in preparation for secure access via the internet.
