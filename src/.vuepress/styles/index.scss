@@ -104,3 +104,25 @@ table.no-head {
     }
     
 }
+
+
+.language-output {
+    border-radius: 0px !important;
+    background: transparent !important;
+    
+    pre {
+        border-inline-start: 0.2rem solid #333;
+        margin: 1rem 0;
+        padding: 0.25rem 0 0.25rem 1rem;
+        font-size: 1rem;
+        overflow-wrap: break-word;
+        code {
+            color: #666 !important;
+            
+        }
+    }
+
+    .copy-code-button {
+        display: none;
+    }
+}

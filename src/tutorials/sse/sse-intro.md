@@ -210,7 +210,7 @@ If the page doesn't load wait for the Zilla and the SSE server to start.
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
 
-```text:no-line-numbers
+```output:no-line-numbers
 ...
 message: Hello, world Wed May 10 14:25:45 UTC 2023
 
@@ -469,7 +469,7 @@ If the page doesn't load wait for the Zilla and the Kafka server to start.
 
 With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
-```text:no-line-numbers
+```output:no-line-numbers
 ...
 message: Hello, world Wed May 10 14:25:45 UTC 2023
 

@@ -66,13 +66,13 @@ bindings:
   kafka_cache_client:
     type: kafka
     kind: cache_client
-    options:
-      bootstrap:
-        - items-snapshots
     exit: kafka_cache_server
   kafka_cache_server:
     type: kafka
     kind: cache_server
+    options:
+      bootstrap:
+        - items-snapshots
     exit: kafka_client
 
 # Connect to local Kafka

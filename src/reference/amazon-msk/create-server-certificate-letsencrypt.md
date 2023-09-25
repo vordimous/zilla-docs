@@ -25,7 +25,7 @@ This will require you to respond to the challenge by adding a custom DNS record 
 
 When `certbot` completes, the relevant files for the certificate chain and private key have been generated, called `fullchain.pem and` `privkey.pem`.
 
-```text:no-line-numbers
+```output:no-line-numbers
  - Congratulations! Your certificate and chain have been saved at:
    /etc/letsencrypt/live/example.aklivity.io/fullchain.pem
    Your key file has been saved at:

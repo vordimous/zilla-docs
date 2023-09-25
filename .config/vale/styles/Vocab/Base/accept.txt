@@ -1,17 +1,18 @@
+(?i)config
+(?i)datacenter
 (?i)http
 (?i)https
 (?i)jwt
 (?i)keystore
+(?i)middleware
+(?i)otlp
 (?i)pkcs12
 (?i)prometheus
+(?i)proxying
+(?i)realtime
 (?i)subnet(s)?
 (?i)todo
 (?i)truststore
-(?i)proxying
-(?i)realtime
-(?i)datacenter
-(?i)middleware
-(?i)config
 (?i)yaml
 acks
 Aiven
@@ -20,9 +21,11 @@ alpn
 amqp
 APIs
 artifacthub
+async
 Bidi
 bitnami
 BOMs
+CA(s)?
 cleartext
 CLIs
 config
@@ -30,6 +33,7 @@ confluentinc
 CQRS
 cspell
 datagram
+declaratively
 docsearch
 etag
 fanout
@@ -38,6 +42,8 @@ gitea
 grpc
 grpcurl
 GSSAPI
+heroImage
+heroText
 hostname
 http
 idempotency
@@ -80,6 +86,7 @@ tcp
 tls
 Todo
 trustcacerts
+UUID(s)
 VPC(s)?
 VSCode
 vuepress
@@ -88,6 +95,3 @@ yaml
 Zilla
 zpm
 zpmw
-heroImage
-heroText
-declaratively

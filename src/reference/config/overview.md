@@ -66,7 +66,7 @@ See each of the specific `binding` types linked below for more detailed examples
 Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
 
 #### routes.exit
-<!--  TODO move to individual reference docs -->
+<!-- TODO move to individual reference docs -->
 
 > `string`
 

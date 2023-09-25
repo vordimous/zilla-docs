@@ -177,7 +177,7 @@ systemctl status zilla-plus.service
 
 Verify that the `msk-proxy` service is active and logging output similar to that shown below.
 
-```text:no-line-numbers
+```output:no-line-numbers
 ● zilla-plus.service - Zilla Plus
    Loaded: loaded (/etc/systemd/system/zilla-plus.service; enabled; vendor preset: disabled)
    Active: active (running) since Tue 2021-08-24 20:56:51 UTC; 1 day 19h ago
@@ -385,9 +385,9 @@ bin/kafka-console-producer.sh --topic vpce-test --producer.config client.propert
 
 A prompt will appear for you to type in the messages:
 
-```text:no-line-numbers
->This is my first event
->This is my second event
+```output:no-line-numbers
+This is my first event
+This is my second event
 ```
 
 #### Receive messages
@@ -400,7 +400,7 @@ bin/kafka-console-consumer.sh --topic vpce-test --from-beginning --consumer.conf
 
 You should see the `This is my first event` and `This is my second event` messages.
 
-```text:no-line-numbers
+```output:no-line-numbers
 This is my first event
 This is my second event
 ```

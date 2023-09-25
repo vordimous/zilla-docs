@@ -19,7 +19,7 @@ In this guide, you will use the [JWT guard](../../reference/config/guards/guard-
 
 * Docker `20.10.14`
 * Git `2.32.0`
-* npm `8.3.1`  and above
+* npm `8.3.1` and above
 * jq `1.6` and above
 * completed [Build the Todo Application](./build.md) with Docker stack still running
 
@@ -510,9 +510,7 @@ Let's verify the Tasks API using `curl` as shown below.
 curl -v http://localhost:8080/tasks
 ```
 
-output:
-
-```text:no-line-numbers
+```output:no-line-numbers
 > GET /tasks HTTP/1.1
 > Host: localhost:8080
 > User-Agent: curl/7.79.1

@@ -173,7 +173,10 @@ Base64 encoded value for binary metadata header.
 Routed exit binding when conditional route matches.
 
 ```yaml
-exit: echo_server
+routes:
+  - when:
+    ...
+    exit: echo_server
 ```
 
 ---

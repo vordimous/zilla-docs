@@ -66,7 +66,7 @@ nc -v <b-1-broker-dns-name> 9094
 
 The `nc` output should be as shown below:
 
-```text:no-line-numbers
+```output:no-line-numbers
 Connection to <b-1-broker-dns-name> port 9094 [tcp/*] succeeded!
 ```
 
@@ -95,7 +95,7 @@ openssl s_client \
 
 The `openssl` output should be as shown below:
 
-```text:no-line-numbers
+```output:no-line-numbers
 ...
     Verify return code: 0 (ok)
 ---

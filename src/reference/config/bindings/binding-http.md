@@ -314,7 +314,10 @@ Header name value pairs (all match).
 Next binding when following this route.
 
 ```yaml
-exit: echo_server
+routes:
+  - when:
+    ...
+    exit: echo_server
 ```
 
 ---

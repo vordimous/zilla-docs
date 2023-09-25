@@ -1,0 +1,58 @@
+name: MQTT-intro
+bindings:
+
+# Gateway ingress config
+  tcp_server:
+    type: tcp
+    kind: server
+    options:
+      host: 0.0.0.0
+      port:
+        - 1883
+    exit: mqtt_server
+
+# MQTT Broker With an exit to Kafka
+  mqtt_server:
+    type: mqtt
+    kind: server
+    exit: mqtt_kafka_proxy
+
+# Proxy MQTT messages to Kafka
+  mqtt_kafka_proxy:
+    type: mqtt-kafka
+    kind: proxy
+    options:
+      topics:
+        sessions: mqtt-sessions
+        messages: mqtt-messages
+        retained: mqtt-retained
+    exit: kafka_cache_client
+
+# Kafka caching layer
+  kafka_cache_client:
+    type: kafka
+    kind: cache_client
+    exit: kafka_cache_server
+  kafka_cache_server:
+    type: kafka
+    kind: cache_server
+    options:
+      bootstrap:
+        - mqtt-sessions
+        - mqtt-retained
+    exit: kafka_client
+
+# Connect to local Kafka
+  kafka_client:
+    type: kafka
+    kind: client
+    exit: kafka_tcp_client
+  kafka_tcp_client:
+    type: tcp
+    kind: client
+    options:
+      host: kafka
+      port: 29092
+    routes:
+      - when:
+          - cidr: 0.0.0.0/0

@@ -138,7 +138,7 @@ Remote Maven repository URL
 
 #### --version `<version>`
 
-Require `zpm`  wrapper to use `<version>`
+Require `zpm` wrapper to use `<version>`
 
 Example:
 

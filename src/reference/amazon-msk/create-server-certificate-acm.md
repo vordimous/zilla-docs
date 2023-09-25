@@ -35,7 +35,7 @@ Next we need to create a certificate corresponding to the key, with metadata abo
 openssl req -new -key wildcard.aklivity.example.com.key.pem -out wildcard.aklivity.example.com.csr
 ```
 
-```text:no-line-numbers
+```output:no-line-numbers
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.

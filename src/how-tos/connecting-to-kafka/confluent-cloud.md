@@ -30,7 +30,7 @@ Before we proceed further let's use the below command to verify connectivity to 
 ```bash:no-line-numbers
 kcat -b BOOTSTRAP_SERVER_HOSTNAME:BOOTSTRAP_SERVER_PORT \
 -X security.protocol=sasl_ssl -X sasl.mechanisms=PLAIN \
--X sasl.username=API_KEY_KEY  -X sasl.password=API_KEY_SECRET  \
+-X sasl.username=API_KEY_KEY -X sasl.password=API_KEY_SECRET \
 -L
 ```
 

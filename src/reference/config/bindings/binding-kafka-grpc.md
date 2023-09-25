@@ -238,7 +238,10 @@ Pattern matching the fully qualified name of a `grpc` service method, in the for
 Default exit binding when no conditional routes are viable.
 
 ```yaml
-exit: kafka_cache_client
+routes:
+  - when:
+    ...
+    exit: kafka_cache_client
 ```
 
 ### routes[].with

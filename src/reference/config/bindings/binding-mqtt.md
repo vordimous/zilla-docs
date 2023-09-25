@@ -1,6 +1,6 @@
 ---
-shortTitle: mqtt 🔜
-description: Zilla runtime mqtt binding (incubator)
+shortTitle: mqtt
+description: Zilla runtime mqtt binding
 category:
   - Binding
 tag:
@@ -11,28 +11,27 @@ tag:
 
 Zilla runtime mqtt binding.
 
-::: info Feature Coming Soon
-
-This is currently in the incubator. Follow the [Zilla repo](https://github.com/aklivity/zilla/releases) to know when it will be released!
-
-:::
-
 ```yaml {2}
 mqtt_server:
   type: mqtt
   kind: server
   routes:
     - when:
-        - topic: messages
-          capabilities: publish_and_subscribe
-      exit: mqtt_kafka_proxy
+        - session:
+            - client-id: "*"
+        - publish:
+            - topic: command/one
+            - topic: command/two
+        - subscribe:
+            - topic: reply
+  exit: mqtt_kafka_proxy
 ```
 
 ## Summary
 
-Defines a binding with `mqtt 5.0` protocol support, with `server` behavior.
+Defines a binding with [MQTT v5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html) protocol support, with `server` behavior.
 
-The `server` kind `mqtt` binding decodes `mqtt 5.0` protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`. The `session` state is also described by a higher level application stream.
+The `server` kind `mqtt` binding decodes the MQTT protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`. The `session` state is also described by a higher level application stream.
 
 Conditional routes based on the `topic` `name` are used to route these application streams to an `exit` binding.
 
@@ -45,8 +44,12 @@ Conditional routes based on the `topic` `name` are used to route these applicati
 - [routes](#routes)
 - [routes\[\].guarded](#routes-guarded)
 - [routes\[\].when](#routes-when)
-  - [when\[\].topic\*](#when-topic)
-  - [when\[\].capabilities](#when-capabilities)
+  - [when\[\].session](#when-session)
+    - [session.client-id](#session-client-id)
+  - [when\[\].publish](#when-publish)
+    - [publish.topic](#publish-topic)
+  - [when\[\].subscribe](#when-subscribe)
+    - [subscribe.topic](#subscribe-topic)
 - [routes\[\].exit\*](#routes-exit)
 
 ::: right
@@ -99,22 +102,55 @@ List of conditions (any match) to match this route.
 ```yaml
 routes:
   - when:
-      - topic: echo
-        capabilities: publish_and_subscribe
+      # any required
+      - session:
+          - client-id: "*"
+      - publish:
+          - topic: command/one
+      - subscribe:
+          - topic: reply
+  - when:
+      # all required
+      - session:
+          - client-id: "*"
+        publish:
+          - topic: command/two
+        subscribe:
+          - topic: reply
 ```
 
-#### when[].topic\*
+#### when[].session
+
+> `array` of `object`
+
+Array of mqtt session properties
+
+##### session.client-id
 
 > `string`
 
-Topic name.
+An MQTT client identifier, allowing the usage of wildcards.
 
-#### when[].capabilities
+#### when[].publish
 
-> `enum` [ "session", "publish_only", "subscribe_only", "publish_and_subscribe" ]
+> `array` of `object`
 
-Session, publish, subscribe, or both publish and subscribe.\
-Defaults to `"publish_and_subscribe"`.
+Array of MQTT topic names for publish capability.
+
+##### publish.topic
+
+> `string`
+
+#### when[].subscribe
+
+> `array` of `object`
+
+Array of MQTT topic names for subscribe capability.
+
+##### subscribe.topic
+
+> `string`
+
 
 ### routes[].exit\*
 
@@ -123,7 +159,10 @@ Defaults to `"publish_and_subscribe"`.
 Next binding when following this route.
 
 ```yaml
-exit: mqtt_kafka_proxy
+routes:
+  - when:
+    ...
+    exit: mqtt_kafka_proxy
 ```
 
 ---
