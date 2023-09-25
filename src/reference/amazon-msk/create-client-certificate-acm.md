@@ -123,7 +123,7 @@ Next we need to create a certificate corresponding to the key, with metadata abo
 openssl req -new -key client-1.key.pem -out client-1.csr
 ```
 
-```text:no-line-numbers
+```output:no-line-numbers
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.

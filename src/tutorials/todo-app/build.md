@@ -23,7 +23,7 @@ This Todo Application tutorial has the following goals:
 
 * Docker `20.10.14`
 * Git `2.32.0`
-* npm `8.3.1`  and above
+* npm `8.3.1` and above
 
 ### Step 1: Kafka (or Redpanda)
 
@@ -188,7 +188,7 @@ Make sure you see this output at the end of the `example_init-topics` service lo
 
 @tab Apache Kafka
 
-```text:no-line-numbers
+```output:no-line-numbers
 ## Creating the Kafka topics
 Created topic task-commands.
 Created topic task-replies.
@@ -202,7 +202,7 @@ task-snapshots
 
 @tab Redpanda
 
-```text:no-line-numbers
+```output:no-line-numbers
 CLUSTER
 =======
 redpanda.initializing
@@ -231,7 +231,7 @@ task-snapshots  1           1
 
 ### Step 2: Todo Service
 
-Next, you will need to build a todo service that is implemented using `Spring boot + Kafka Streams` to process commands and generate relevant output.  This `Todo` service can deliver near real-time updates when a `Task` is created, renamed, or deleted, and produces a message to the Kafka `task-snapshots` topic with the updated value.
+Next, you will need to build a todo service that is implemented using `Spring boot + Kafka Streams` to process commands and generate relevant output. This `Todo` service can deliver near real-time updates when a `Task` is created, renamed, or deleted, and produces a message to the Kafka `task-snapshots` topic with the updated value.
 
 Combining this with `cleanup-policy: compact` for the `task-snapshots` topic causes the topic to behave more like a table, where only the most recent message for each distinct message key is retained.
 
@@ -285,20 +285,18 @@ Run the command below to deploy the `todo-service` to your existing stack.
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-output:
-
 ::: code-tabs#text
 
 @tab Apache Kafka
 
-```text:no-line-numbers
+```output:no-line-numbers
 Creating service example_todo-service
 Updating service example_kafka (id: st4hq1bwjsom5r0jxnc6i9rgr)
 ```
 
 @tab Redpanda
 
-```text:no-line-numbers
+```output:no-line-numbers
 Creating service example_todo-service
 Updating service example_redpanda (id: ilmfqpwf35b7ftd6cvzdis8au)
 ```
@@ -644,7 +642,7 @@ Each new update arrives automatically, even when changes are made by other clien
 
 ### Step 4: Web App
 
-Next, you will build the `Todo` app that's implemented using [VueJs](https://vuejs.org/) framework.  Run the commands below in the root directory.
+Next, you will build the `Todo` app that's implemented using [VueJs](https://vuejs.org/) framework. Run the commands below in the root directory.
 
 ```bash:no-line-numbers
 git clone https://github.com/aklivity/todo-app && \
@@ -821,7 +819,7 @@ Finally, run
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-Make sure that `zilla.yaml`  config changes got applied after restarting the `Zilla` service. Check the `example_zilla` service log.
+Make sure that `zilla.yaml` config changes got applied after restarting the `Zilla` service. Check the `example_zilla` service log.
 
 ### Step 5: Test Drive
 

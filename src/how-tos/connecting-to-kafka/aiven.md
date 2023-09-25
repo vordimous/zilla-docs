@@ -23,7 +23,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ## Aiven Parameters
 
-The Aiven Kafka requires clients to connect via `TLS mutual authentication` and provides the following files  `Client Key`, `Client Certificate`, and `CA Certificate` to achieve that. You can download them by going to `Aiven Console` -> `Kafka Cluster` -> `Overview Tab` as shown below.
+The Aiven Kafka requires clients to connect via `TLS mutual authentication` and provides the following files `Client Key`, `Client Certificate`, and `CA Certificate` to achieve that. You can download them by going to `Aiven Console` -> `Kafka Cluster` -> `Overview Tab` as shown below.
 
 ![Connection Info](./aivien-connection-information.png)
 
@@ -35,8 +35,8 @@ you should have the following files:
 
 The next step is to generate the truststore and keystore.
 
-* `truststore.p12` -  contains the trusted server certificates or certificate authorities
-* `keystore.p12` -  contains the signed client certificates
+* `truststore.p12` - contains the trusted server certificates or certificate authorities
+* `keystore.p12` - contains the signed client certificates
 
 You can use the scripts shown below to generate `truststore.p12` and `keystore.p12` files using certificates and keys downloaded from `Aiven Kafka Console`. Please replace all caps lock words.
 
@@ -62,7 +62,7 @@ openssl pkcs12 -export -in service.cert -inkey service.key \
 
 ## Configure Zilla
 
-And the final step is to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
+And the final step is to configure a `vault` with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
 
 ### zilla.yaml
 

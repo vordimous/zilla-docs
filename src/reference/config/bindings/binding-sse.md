@@ -134,7 +134,10 @@ Path pattern.
 Next binding when following this route.
 
 ```yaml
-exit: sse_kafka_proxy
+routes:
+  - when:
+    ...
+    exit: sse_kafka_proxy
 ```
 
 ---

@@ -136,6 +136,13 @@ Port number(s), including port number ranges.
 
 Next binding when following this route, for kind `server` only.
 
+```yaml
+routes:
+  - when:
+    ...
+    exit: echo_server
+```
+
 ---
 
 ::: right

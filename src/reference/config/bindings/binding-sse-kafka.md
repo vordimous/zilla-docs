@@ -27,7 +27,7 @@ sse_kafka_proxy:
 
 ## Summary
 
-Defines a binding with `sse-kafka`  support, with `proxy` behavior.
+Defines a binding with `sse-kafka` support, with `proxy` behavior.
 
 The `proxy` kind `sse-kafka` binding adapts `sse` data streams into `kafka` data streams, so that `kafka` messages can be delivered to `sse` clients.
 
@@ -136,7 +136,10 @@ Path with optional embedded parameter names, such as `/{topic}`.
 Next binding when following this route.
 
 ```yaml
-exit: kafka_cache_client
+routes:
+  - when:
+    ...
+    exit: kafka_cache_client
 ```
 
 ### routes[].with

@@ -14,24 +14,25 @@ Get started with Zilla by deploying our Docker Compose stack. Before proceeding,
 
 ## Postman Collections
 
-This quickstart is designed to use Aklivity’s public [Postman Workspace](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview) to give you fast and easy way to try out Zilla’s multi-protocol Kafka proxying capabilities.
+This quickstart uses Aklivity's public [Postman Workspace](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview) to give you a fast and easy way to try out Zilla's multi-protocol Kafka proxying capabilities.
 
 ::: note App or Desktop Agent
-Once the collections are forked you can run them against the local stack if you have either the [Postman App](https://www.postman.com/downloads/) or [Postman Desktop Agent](https://www.postman.com/downloads/postman-agent/) installed.
+Once the collections are forked, you can run them against the local stack if you have either the [Postman App](https://www.postman.com/downloads/) or [Postman Desktop Agent](https://www.postman.com/downloads/postman-agent/) installed.
 :::
 
-Fork each of these collections into your own workspace.
+Fork each of these collections into your personal/team workspace.
 
-- [Zilla - REST Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/28401168-6941d1fa-698c-4da1-9789-2f806acf9fbb?action=share&creator=28401168)
-- [Zilla - SSE Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/28401168-09c165b3-6e68-45c2-aedb-494f130bc354?action=share&creator=28401168)
-- [Zilla - gRPC Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/64a85751808733dd197c599f?action=share&creator=28401168)
+- [Zilla - REST Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/28401168-6941d1fa-698c-4da1-9789-2f806acf9fbb)
+- [Zilla - SSE Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/28401168-09c165b3-6e68-45c2-aedb-494f130bc354)
+- [Zilla - gRPC Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/64a85751808733dd197c599f)
+- [Zilla - MQTT Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/collection/651072f021cfcbd1388fe5e9)
 
 ![Collection header > View more actions > Create a Fork](./create-fork.png)
 
 
 ## Zilla Docker Compose Stack
 
-Download the [zilla.quickstart](https://github.com/aklivity/zilla-examples/tree/main/zilla.quickstart) folder from the zilla-examples repo. The docker compose file will create everything you need for this quickstart. The `setup.sh` script will start and restart the backend. The `teardown.sh` script stops and destroys all of the containers. 
+Download the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart) folder from the zilla-examples repo. The docker compose file will create everything you need for this quickstart. The `setup.sh` script will start and restart the backend. The `teardown.sh` script stops and destroys all containers. 
 
 The key components this script will setup:
 
@@ -39,18 +40,19 @@ The key components this script will setup:
 - Kafka instance and topics
 - [Kafka UI](http://localhost/ui/clusters/local/all-topics) for browsing topics & messages
 - gRPC Route Guide server
+- MQTT message simulator
 
 ::: code-tabs#bash
 
 @tab Start and Restart
 
-```bash
+"`bash:no-line-numbers
 ./setup.sh
 ```
 
 @tab Shutdown
 
-```bash
+"`bash:no-line-numbers
 ./teardown.sh
 ```
 
@@ -58,29 +60,34 @@ The key components this script will setup:
 
 ### Kafka topics
 
-This Zilla quickstart hosts a UI for the Kafka cluster. Go to the [topics page](http://localhost/ui/clusters/local/all-topics) to browse the data.
+This Zilla quickstart hosts a UI for the Kafka cluster. To browse the data, go to the [topics page](http://localhost/ui/clusters/local/all-topics).
 
-- **items-crud** - REST CRUD messages
-- **events-sse** - SSE event messages
-- **echo-service-messages** - gRPC echo messages
-- **route-guide-requests** - gRPC RouteGuide requests
-- **route-guide-responses** - gRPC RouteGuide responses
+- [items-crud](http://localhost/ui/clusters/local/all-topics/items-crud/messages) - REST CRUD messages
+- [events-sse](http://localhost/ui/clusters/local/all-topics/events-sse/messages) - SSE event messages
+- [echo-service-messages](http://localhost/ui/clusters/local/all-topics/echo-service-messages/messages) - gRPC echo messages
+- [route-guide-requests](http://localhost/ui/clusters/local/all-topics/route-guide-requests/messages) - gRPC RouteGuide requests
+- [route-guide-responses](http://localhost/ui/clusters/local/all-topics/route-guide-responses/messages) - gRPC RouteGuide responses
+- [iot-messages](http://localhost/ui/clusters/local/all-topics/iot-messages/messages) - MQTT messages responses
+- [iot-retained](http://localhost/ui/clusters/local/all-topics/iot-retained/messages) - MQTT messages with the retained flag
+- [iot-sessions](http://localhost/ui/clusters/local/all-topics/iot-sessions/messages) - MQTT sessions
 
 ## REST Kafka proxy
 
-Zilla can expose common entity CRUD endpoints with the entity data being stored on Kafka topics. Leveraging the `cleanup.policy=compact` feature of Kafka, Zilla enables a standard REST backend architecture with Kafka as the storage layer. Adding a `Idempotency-Key` header during creation will set the message `key` and acts as the `ID` for the record. A UUID is generated if no key is sent.
+Zilla can expose common entity CRUD endpoints with the entity data being stored on Kafka topics. Leveraging Kafka's `cleanup.policy=compact` feature, Zilla enables a standard REST backend architecture with Kafka as the storage layer. Adding an `Idempotency-Key` header during creation will set the message `key` and act as the `ID` for the record. A UUID is generated if no key is sent.
 
 - **GET** - Fetches all items on the topic or Fetch one item by its key using `/:key`.
 - **POST** - Create a new item with the `Idempotency-Key` header setting the key. 
 - **PUT** - Update an item based on its key using `/:key`.
 - **DELETE** - Delete an item based on its key using `/:key`.
 
+The [items-crud](http://localhost/ui/clusters/local/all-topics/items-crud/messages) Kafka topic will have all the objects you posted, updated, and deleted.
+
 ::: note Going Deeper
-Zilla can be configured for request-response over Kafka topics both synchronously and asynchronously, and more that we aren't able to cover in this quickstart. Here are some other resources you will want to check out.
+Zilla can be configured for request-response over Kafka topics both synchronously and asynchronously, and more that we can't cover in this quickstart. Here are some other resources you will want to check out.
 
 - [REST proxy guide](../../concepts/kafka-proxies/rest-proxy.md)
 - [HTTP proxy example](https://github.com/aklivity/zilla-examples/tree/main/http.proxy)
-- [JWT example](https://github.com/aklivity/zilla-examples/tree/main/http.echo.jwt)
+- [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/http.echo.jwt)
 - [Kafka cache example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache)
 - [Kafka sync example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sync)
 - [Kafka async example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.async)
@@ -93,12 +100,14 @@ Zilla can expose a Kafka topic as a Server-sent Events (SSE) stream, enabling a 
 - **POST** - Push a new event.
 - **GET:SSE** - Stream all of the events published on the `event-sse` Kafka topic.
 
+The [events-sse](http://localhost/ui/clusters/local/all-topics/events-sse/messages) Kafka topic will have a record of each new event sent over HTTP to the SSE stream.
+
 ::: note Going Deeper
-Zilla can be configured for more use cases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
+Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
 
 - [REST proxy guide](../../concepts/kafka-proxies/sse-proxy.md)
 - [Kafka fanout example](https://github.com/aklivity/zilla-examples/tree/main/sse.kafka.fanout)
-- [JWT example](https://github.com/aklivity/zilla-examples/tree/main/sse.proxy.jwt)
+- [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/sse.proxy.jwt)
 :::
 
 ## gRPC Kafka proxy
@@ -108,8 +117,14 @@ Zilla maps the service method's request and response messages directly to Kafka 
 - **RouteGuide** - Proxy messages through Kafka to a running gRPC server.
 - **EchoService** - Zilla implements a simple message echo service.
 
+Check out the Kafka topics:
+
+The [echo-service-messages](http://localhost/ui/clusters/local/all-topics/echo-service-messages/messages) Kafka topic will have both the request and response record for each of the echo messages sent. You can see the records with the same generated UUIDs and `header` values.
+
+The [route-guide-requests](http://localhost/ui/clusters/local/all-topics/route-guide-requests/messages) Kafka topic will have every proto request object, meaning every message that is sent to the `server`. The [route-guide-responses](http://localhost/ui/clusters/local/all-topics/route-guide-responses/messages) Kafka topic will have every proto response object, meaning every message returned from the `server`.
+
 ::: note Going Deeper
-Zilla can be configured for more use cases that we aren't able to cover in this quickstart. Here are some other interesting examples you will want to check out.
+Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
 
 - [gRPC proxy guide](../../concepts/kafka-proxies/grpc-proxy.md)
 - [gRPC proxy example](https://github.com/aklivity/zilla-examples/tree/main/grpc.proxy)
@@ -117,6 +132,30 @@ Zilla can be configured for more use cases that we aren't able to cover in this 
 - [Kafka proxy example](https://github.com/aklivity/zilla-examples/tree/main/grpc.kafka.proxy)
 :::
 
+## MQTT Kafka proxy
+
+Zilla provides an MQTT broker by implementing the v5 Specification. Clients can connect and send MQTT messages where zilla will store them in one of three defined Kafka topics. This quickstart manages all messages, messages marked with the `retained` flag, and sessions on any topic.
+
+::: info Postman MQTT in BETA
+Postman recently released MQTT support into [public BETA](https://blog.postman.com/postman-supports-mqtt-apis/), and we are using it for this quickstart. Be mindful that there may be minor issues encountered using it.
+:::
+
+- **Pub/Sub** - Publish your own messages
+- **Simulated Topics** - Subscribe to simulated traffic
+
+Setting the `retain` flag to true on your topic will send that message to the `retained` Kafka topic. After those messages are published, a new subscription will get the last message sent for that topic.
+
+The [iot-messages](http://localhost/ui/clusters/local/all-topics/iot-messages/messages) Kafka topic will store every message sent to the broker. The [iot-retained](http://localhost/ui/clusters/local/all-topics/iot-retained/messages) Kafka topic will store only messages sent with the `retain` flag set to true. By log compacting this topic, it will only return the most recent copy of the message to a newly subscribed client. The [iot-sessions](http://localhost/ui/clusters/local/all-topics/iot-sessions/messages) Kafka topic will have a record for each connection that Zilla has managed between it and the clients. You can see the `client-id` in the key and the `topic` in the value when necessary.
+
+An [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) is included in the quickstart that will produce mock messages and send them to Zilla. The simulator uses the Python `paho-mqtt` library and the MQTT v5 specification.
+
+::: note Going Deeper
+Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
+
+- [MQTT Kafka example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect)
+- [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect.jwt)
+:::
+
 ## Metrics
 
-This Zilla quickstart collects basic metrics for the [streaming](../../reference/config/telemetry/metrics/metric-stream.md), [HTTP](../../reference/config/telemetry/metrics/metric-http.md), and [gRPC](../../reference/config/telemetry/metrics/metric-grpc.md) services. Go to [http://localhost:9090/metrics](http://localhost:9090/metrics) to see the the [Prometheus](../../reference/config/telemetry/exporter/exporter-prometheus.md) exported data.
+This Zilla quickstart collects basic metrics for the [streaming](../../reference/config/telemetry/metrics/metric-stream.md), [HTTP](../../reference/config/telemetry/metrics/metric-http.md), and [gRPC](../../reference/config/telemetry/metrics/metric-grpc.md) services. Go to [http://localhost:7190/metrics](http://localhost:7190/metrics) to see the the [Prometheus](../../reference/config/telemetry/exporter/exporter-prometheus.md) exported data.

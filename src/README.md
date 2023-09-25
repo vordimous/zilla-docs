@@ -2,10 +2,10 @@
 home: true
 icon: home
 title: Home
-heroImage: /zilla-rings@2x.png
-heroImageDark: /zilla-rings@2x.png
+heroImage: /zilla-rings.webp
+heroImageDark: /zilla-rings.webp
 heroText: Introduction
-tagline: Zilla is an API Gateway for event-driven architectures. It securely interfaces web apps, IoT clients, and microservices to Apache Kafka® via declaratively defined API endpoints.
+tagline: Zilla is a multi-protocol, edge and service proxy. It abstracts Apache Kafka® for non-native clients, such as browsers and IoT devices, by exposing Kafka topics via user-defined REST, Server-Sent Events (SSE), MQTT, or gRPC API entry points.
 actions:
   - text: Quickstart
     link: /tutorials/quickstart/kafka-proxies.md

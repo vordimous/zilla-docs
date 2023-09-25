@@ -119,11 +119,11 @@ export const enSidebar = sidebar({
       ],
     },
     {
-      text: "Apache Kafka Proxying",
+      text: "Kafka Proxying",
       link: "concepts/kafka-proxies/rest-proxy.md",
       children: [
         {
-          text: "REST-Kafka Proxy",
+          text: "REST Kafka Proxy",
           collapsible: true,
           link: "concepts/kafka-proxies/rest-proxy.md",
           children: [
@@ -152,7 +152,7 @@ export const enSidebar = sidebar({
           ],
         },
         {
-          text: "SSE-Kafka Proxy",
+          text: "SSE Kafka Proxy",
           collapsible: true,
           link: "concepts/kafka-proxies/sse-proxy.md",
           children: [
@@ -181,7 +181,7 @@ export const enSidebar = sidebar({
           ],
         },
         {
-          text: "gRPC-Kafka Proxy",
+          text: "gRPC Kafka Proxy",
           collapsible: true,
           link: "concepts/kafka-proxies/grpc-proxy.md",
           children: [
@@ -193,6 +193,25 @@ export const enSidebar = sidebar({
               text: "Expose a Simple gRPC Server",
               link: "tutorials/grpc/grpc-intro.md",
             },
+          ],
+        },
+        {
+          text: "MQTT Kafka Proxy",
+          collapsible: true,
+          link: "concepts/kafka-proxies/mqtt-proxy.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/kafka-proxies/mqtt-proxy.md",
+            },
+            {
+              text: "Run the Taxi Demo",
+              link: "https://github.com/aklivity/zilla-demos/tree/main/taxi",
+            },
+            {
+              text: "Create a Simple MQTT Broker",
+              link: "tutorials/mqtt/mqtt-intro.md",
+            }
           ],
         },
         {

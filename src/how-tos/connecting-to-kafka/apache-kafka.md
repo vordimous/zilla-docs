@@ -60,7 +60,7 @@ As usual, you need to define the host and port and flush the data to the network
 
 ## Connect to Kafka over `TLS/SSL`
 
-By default, Kafka communicates in `PLAINTEXT`, which means that all data is sent without encryption.  However, Kafka running in production needs to expose only a secure connection that encrypts communication, and you should therefore configure Zilla to use TLS/SSL encrypted communication.
+By default, Kafka communicates in `PLAINTEXT`, which means that all data is sent without encryption. However, Kafka running in production needs to expose only a secure connection that encrypts communication, and you should therefore configure Zilla to use TLS/SSL encrypted communication.
 
 If the `Kafka` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority, then configure `Zilla` add a `TLS` client binding as shown below with the `trustcacerts` option to set to `true`.
 
@@ -156,8 +156,8 @@ Next, you will explore how to connect to `Kafka` cluster over `TLS/SSL` using cl
 
 The following items need to be prepared:
 
-* `truststore.p12` -  contains the trusted server certificates or certificate authorities
-* `keystore.p12` -  contains the signed client certificates
+* `truststore.p12` - contains the trusted server certificates or certificate authorities
+* `keystore.p12` - contains the signed client certificates
 
 Kafka clients connecting to Kafka clusters that are configured for `TLS mutual authentication` require three files; a `Client Key`, a `Client Certificate`, and a `CA Certificate`.
 
@@ -182,7 +182,7 @@ openssl pkcs12 -export -in service.cert -inkey service.key
 
 :::
 
-You also need to configure a `vault`  with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
+You also need to configure a `vault` with `truststore` and `keystore`, then reference the vault in the `tls_client` binding.
 
 ### zilla.yaml
 

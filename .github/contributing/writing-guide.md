@@ -19,7 +19,7 @@ The docs will be organized according to the [Diataxis](https://diataxis.fr/) fra
 
 The Diataxis framework will dictate what content should be created and and keep the conent scoped to a purpose: Tutorials, How-Tos, Concepts, Reference.
 
-The user navigation can be a collection of any content organized by primary feature. This way a user can find the solution to their problem and  see different kinds of content all related to that solution.
+The user navigation can be a collection of any content organized by primary feature. This way a user can find the solution to their problem and see different kinds of content all related to that solution.
 
 ### File structure
 
@@ -61,6 +61,33 @@ Your users need reference material because they need truth and certainty - firm 
 
 - **Get Started**: This is where users will start and learn what they need to be successful
 - **Reference**: This is an echo of the Diataxis definition and should remain as dry and generated as possible. The structure is set up for direct linking to individual components that readers may need more context on. Each component should have some sort of example to give context for it's usage
+
+### Links and References
+
+Links to other md files should use the local files path reference to the new document in order for any file render to correctly add links.
+
+- `[grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md)`
+
+When referencing specific attributes of the Zilla api always use and highlight the syntactically correct words found in the reference docs or config. Add any extra descriptive words before or after.
+
+- `[grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) Binding`
+- `[jwt](../../reference/config/guards/guard-jwt.md) Guard`
+- `[produce capability](../../reference/config/bindings/binding-grpc-kafka.md#produce-capability)`
+
+[Reference-style links](https://www.markdownguide.org/basic-syntax/#reference-style-links) should only be used to clarify reading the raw text document when it is needed. This should be used in lists, tables, or complicated paragraphs. When used the reference definition should be placed in a group with other references and as close the the usage as makes sense. Exact highlighted context should be used unless there is a case when reuse of the same link is needed in the same section.
+
+Good examples improve readability without adding extra work for a plain text reader:
+
+- [vuejs-example]
+- [github-example]
+
+A bad example has no consistency which doesn't improve readability while navigation and maintenance are worse:
+
+- [electron-example]
+
+[vuejs-example]: https://github.com/vuejs/vue/blob/main/README.md?plain=1
+[github-example]: https://github.com/github/gitignore/blob/main/README.md?plain=1
+[electron-example]: https://github.com/electron/electron/blob/main/docs/faq.md?plain=1
 
 ## Writing & Grammar
 

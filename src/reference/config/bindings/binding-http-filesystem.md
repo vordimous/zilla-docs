@@ -25,7 +25,7 @@ http_filesystem_proxy:
 
 ## Summary
 
-Defines a binding with `http-filesystem`  support, with `proxy` behavior.
+Defines a binding with `http-filesystem` support, with `proxy` behavior.
 
 The `proxy` kind `http-filesystem` binding adapts `http` data streams into `filesystem` data streams by mapping the path from an inbound `http` `GET` request into a filesystem relative path.
 
@@ -124,7 +124,10 @@ Path with optional embedded parameter names, such as `/{path}`.
 Next binding when following this route.
 
 ```yaml
-exit: filesystem_server
+routes:
+  - when:
+    ...
+    exit: filesystem_server
 ```
 
 ### routes[].with

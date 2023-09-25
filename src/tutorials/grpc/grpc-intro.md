@@ -70,13 +70,13 @@ bindings:
   kafka_cache_client:
     type: kafka
     kind: cache_client
-    options:
-      bootstrap:
-        - echo-messages
     exit: kafka_cache_server
   kafka_cache_server:
     type: kafka
     kind: cache_server
+    options:
+      bootstrap:
+        - echo-messages
     exit: kafka_client
 
 # Connect to local Kafka
@@ -148,12 +148,6 @@ package example;
 service EchoService
 {
   rpc EchoSimple(EchoMessage) returns (EchoMessage);
-
-  rpc EchoClientStream(stream EchoMessage) returns (EchoMessage);
-
-  rpc EchoServerStream( EchoMessage) returns (stream EchoMessage);
-
-  rpc EchoBidiStream(stream EchoMessage) returns (stream EchoMessage);
 }
 
 message EchoMessage
@@ -174,7 +168,7 @@ docker-compose up -d
 ### Use [grpcurl](https://github.com/fullstorydev/grpcurl) to send a greeting
 
 ```bash:no-line-numbers
-grpcurl -plaintext -proto echo.proto  -d '{"message":"Hello World"}' localhost:8080 example.EchoService.EchoSimple
+grpcurl -plaintext -proto echo.proto -d '{"message":"Hello World"}' localhost:8080 example.EchoService.EchoSimple
 ```
 
 ::: note Wait for the services to start

@@ -1,4 +1,4 @@
-# SSE Proxy
+# SSE Kafka Proxy
 
 There is an increasing rise in integrating the event stream into front ends where companies are starting to adopt Server-sent Events (SSE) standards. `SSE` naturally fits into the event-driven architecture and you will be able to take advantage of all the benefits it provides such as SDK-free and the ability to auto-reconnect in case of an unstable connection(Be resilient to faults). Zilla supports SSE protocol that you can easily configure the frontend SSE with Kafka topic.
 
@@ -9,7 +9,7 @@ A brief explanation of replaceable values from the config examples below:
 
 ## Configure Endpoint
 
-Configuring `Zilla` with SSE endpoint  and Kafka binding is as simple as it is shown below:
+Configuring `Zilla` with SSE endpoint and Kafka binding is as simple as it is shown below:
 
 ::: code-tabs#yaml
 
@@ -44,4 +44,4 @@ Similar to [REST Proxy](./rest-proxy.md) you can secure the `SSE` endpoints as w
 
 ### More
 
-For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [SSE Binding](../../reference/config/bindings/binding-sse.md), [SSE-Kafka Binding](../../reference/config/bindings/binding-sse-kafka.md).
+For the full capability of `SSE` configure you can check out Zilla Runtime Configuration Reference: [sse](../../reference/config/bindings/binding-sse.md) Binding, [sse-kafka](../../reference/config/bindings/binding-sse-kafka.md) Binding.

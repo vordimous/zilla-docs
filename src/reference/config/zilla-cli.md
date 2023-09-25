@@ -15,7 +15,7 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 - [zilla metrics](#zilla-metrics)
   - [--namespace `<namespace>`](#namespace-namespace)
 - [zilla start](#zilla-start)
-  - [--verbose](#verbose)
+  - [-v --verbose](#v-verbose)
   - [--workers](#workers)
 - [zilla stop](#zilla-stop)
 - [zilla tune](#zilla-tune)
@@ -62,15 +62,17 @@ Examples:
 ./zilla metrics echo_server
 ```
 
-> namespace    binding         metric                    value
-> example      echo_server    stream.opens.received        24
-> example      echo_server    stream.opens.sent            24
-> example      echo_server    stream.closes.received       24
-> example      echo_server    stream.closes.sent           24
-> example      echo_server    stream.data.received         13
-> example      echo_server    stream.data.sent             13
-> example      echo_server    stream.errors.received        0
-> example      echo_server    stream.errors.sent            0
+```output:no-line-numbers
+namespace    binding         metric                    value
+example      echo_server    stream.opens.received        24
+example      echo_server    stream.opens.sent            24
+example      echo_server    stream.closes.received       24
+example      echo_server    stream.closes.sent           24
+example      echo_server    stream.data.received         13
+example      echo_server    stream.data.sent             13
+example      echo_server    stream.errors.received        0
+example      echo_server    stream.errors.sent            0
+```
 
 ### zilla start
 
@@ -80,44 +82,39 @@ The `zilla start` command resolves the [Zilla Runtime Configuration](./) in `zil
 zilla start
 ```
 
-#### --verbose
+> started
+
+#### -v --verbose
 
 Show verbose output
+
+```bash:no-line-numbers
+zilla start -v
+```
+
+```output:no-line-numbers
+name: example
+bindings:
+  tcp:
+    type: tcp
+    kind: server
+    options:
+      host: 0.0.0.0
+      port:
+      - 12345
+      - 12346
+    exit: echo
+  echo:
+    type: echo
+    kind: server
+started
+```
 
 #### --workers
 
 > Defaults to # CPU cores available
 
 Worker count
-
-Examples:
-
-```bash:no-line-numbers
-./zilla start --verbose
-{
-    "name": "example",
-    "bindings":
-    {
-        "tcp":
-        {
-            "type" : "tcp",
-            "kind": "server",
-            "options":
-            {
-                "host": "0.0.0.0",
-                "port": [ 12345, 12346 ]
-            },
-            "exit": "echo"
-        },
-        "echo":
-        {
-            "type" : "echo",
-            "kind": "server"
-        }
-    }
-}
-started
-```
 
 ### zilla stop
 
@@ -127,26 +124,12 @@ The `zilla stop` command signals the runtime engine to stop.
 zilla stop
 ```
 
-Examples:
-
-```bash:no-line-numbers
-./zilla start
-started
-...
-```
-
-```bash:no-line-numbers
-./zilla stop
-...
-stopped
-```
+> stopped
 
 ### zilla tune
 
-::: info Feature Coming Soon
-
-This is currently in the incubator. Follow the [Zilla repo](https://github.com/aklivity/zilla/releases) to know when it will be released!
-
+::: info Feature Coming Soon <HopeIcon icon="circle-right"/>
+This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.
@@ -155,30 +138,28 @@ The `zilla tune` command tunes the mapping from runtime engine workers to bindin
 zilla tune [NAME=VALUE]
 ```
 
-Examples:
-
-```bash:no-line-numbers
-./zilla start --workers 4
-```
-
-> started
-
 ```bash:no-line-numbers
 ./zilla tune
 ```
 
-> `xxxx  example.tcp`\
-> `xxxx  example.echo`
+```output:no-line-numbers
+xxxx  example.tcp
+xxxx  example.echo
+```
 
 ```bash:no-line-numbers
 ./zilla tune example.echo=2
 ```
 
-> `..x.  example.echo`
+```output:no-line-numbers
+..x.  example.echo
+```
 
 ```bash:no-line-numbers
 ./zilla tune
 ```
 
-> `xxxx  example.tcp`\
-> `.x..  example.echo`
+```output:no-line-numbers
+xxxx  example.tcp
+.x..  example.echo
+```
