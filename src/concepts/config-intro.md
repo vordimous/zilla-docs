@@ -20,16 +20,71 @@ bindings:
 
 ## Bindings
 
-Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`.
+Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`. Bindings are organized by behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
 
-A `binding` also has a `kind`, indicating how it should behave, such as `server`, `proxy` or `client`.
+Bindings have a `kind`, indicating how it should behave, such as:
 
-As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding, or rejects the stream if no routes are viable. Route matching conditions are defined in terms specific to each `binding` type.
+- `proxy` - Handles the translate or encode behaviors between components.
+- `server` - Exists to decode a protocol on the inbound network stream, producing higher level application streams for each request.
+- `client` - Receives inbound application streams and encodes each as a network stream.
+- `remote_server` - Exists to adapt `kafka` topic streams to higher level application streams. Read more in the [kafka-grpc binding](../reference/config/bindings/binding-kafka-grpc.md#summary).
+- `cache_client` & `cache_server` - Combined provide a persistent cache of `kafka` messages per `topic` `partition` honoring the `kafka` `topic` configuration for message expiration and compaction. Read more in the [kafka binding](../reference/config/bindings/binding-kafka.md#cache-behavior).
 
-See each of the specific `binding` types linked below for more detailed examples.
+### Routes
 
-Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
+A Route's matching conditions are defined in terms specific to each `binding` type with some common design principles. As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding or rejects the stream if no routes are viable.
 
+::: info Order Matters
+Messages on a data stream will use the first route with a matching `when` clause in the list. Put the more specific routes first and generic routes last. Often, that looks like a wildcard route last to catch any messages that don't have a previous matching route.
+:::
+
+### Route Exit
+
+A route exists to direct messages on the stream to a desired exit point.
+
+### When a Route matches
+
+Each route can list conditions (any match) to match entry data streams. Attributes like headers, metadata, source, destination, etc., are used `when` determining the correct `exit` for a message.
+
+#### Path and Method matches
+
+Patterns for `path` and `method` routing require an exact match.
+
+- `/api/items`
+- `routeguide.RouteGuide/GetFeature`
+
+Wildcards in paths and method signatures `/*` will match multiple patterns.
+
+- `/api/*`
+- `routeguide.RouteGuide/*`
+
+### Routing With extra params
+
+After the route logic matches, additional parameters are applied `with` the inbound data streams.
+
+#### The Fetch capability
+
+Routes with the `fetch` capability map retrieval requests from a Kafka topic, supporting filtered or unfiltered retrieval of messages from the topic partitions, merged into a unified response. Filtering can apply to the Kafka message key, message headers, or a combination of both message key and headers.
+
+The [http-kafka binding](../reference/config/bindings/binding-http-kafka.md) provides additional support for extracting parameter values from the inbound HTTP request path. Successful `200 OK` HTTP responses include an `etag` header that can be used with `if-none-match` for subsequent conditional `GET` requests to check for updates. Rather than polling, HTTP requests can also include the `prefer wait=N` header to wait a maximum of `N` seconds before responding with `304 Not Modified` if not modified. When a new message arrives on the topic that would modify the response, all `prefer: wait=N` clients receive the response immediately with a corresponding new `etag`.
+
+#### Reliable message delivery
+
+With the [grpc-kafka binding](../reference/config/bindings/binding-grpc-kafka.md), using the fetch capability, reliable message delivery is achieved by capturing the value of the `reliability` `field` injected into each response stream message at the gRPC client, and replaying the value via the `reliability` `metadata` header when reestablishing the stream with a new gRPC request. This allows interrupted streams to pick up where they left off without missing messages in the response stream.
+
+#### The Produce capability
+
+Routes with the `produce` capability map any request-response network call to a correlated stream of Kafka messages. The request message(s) are sent to a `requests` topic with a `zilla:correlation-id` header. When the request message(s) are received and processed by the Kafka `requests` topic consumer, it produces response message(s) to the `responses` topic, with the same `zilla:correlation-id` header to correlate the response.
+
+Requests with an `idempotency-key` header can be replayed and receive the same response. This requires the Kafka consumer to detect and ignore the duplicate request with the same `idempotency-key` and `zilla:correlation-id`. For this purpose, A log compacted topic can selectively remove records where a more recent update with the same primary key exists.
+
+In the [http-kafka binding](../reference/config/bindings/binding-http-kafka.md), specifying `async` allows clients to include a `prefer: respond-async` header in the HTTP request to receive `202 Accepted` response with `location` response header.
+
+A corresponding `routes[].when` object with a matching `GET` method and `location` path is also required for follow-up `GET` requests to return the same response as would have been returned if the `prefer: respond-async` request header had been omitted.
+
+### Guarded Routes
+
+A route is considered guarded if a [guard](#guards) is specified. Any guard can be configured, enabling different use cases when protecting data sent over a stream.
 
 ## Guards
 
@@ -48,7 +103,6 @@ Each configured `vault` represents a container for digital keys and certificates
 Vaults can be used by specific protocol bindings, such as `tls`, to negotiate shared encryption keys.
 
 See each of the specific `vault` types linked below for more detailed examples.
-
 
 ## Telemetry
 
