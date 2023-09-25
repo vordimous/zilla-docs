@@ -158,4 +158,4 @@ Zilla can be configured for more use cases we can't cover in this quickstart. He
 
 ## Metrics
 
-This Zilla quickstart collects basic metrics for the [streaming](../../reference/config/telemetry/metrics/metric-stream.md), [HTTP](../../reference/config/telemetry/metrics/metric-http.md), and [gRPC](../../reference/config/telemetry/metrics/metric-grpc.md) services. Go to [http://localhost:7190/metrics](http://localhost:7190/metrics) to see the the [Prometheus](../../reference/config/telemetry/exporter/exporter-prometheus.md) exported data.
+This Zilla quickstart collects basic metrics for the [streaming](../../reference/config/telemetry/metrics/metric-stream.md), [HTTP](../../reference/config/telemetry/metrics/metric-http.md), and [gRPC](../../reference/config/telemetry/metrics/metric-grpc.md) services. Go to [http://localhost:7190/metrics](http://localhost:7190/metrics) to see the [Prometheus](../../reference/config/telemetry/exporter/exporter-prometheus.md) exported data.

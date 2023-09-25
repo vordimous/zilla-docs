@@ -8,11 +8,11 @@ This guide will walk through the way Zilla manages MQTT Pub/Sub connections and 
 
 An MQTT server acts as a broker between publishers and subscribers. This requires a complex protocol to manage the wide range of IoT devices and use cases. By proxying these messages on and off of Kafka with the [mqtt-kafka](../../reference/config/bindings/binding-mqtt-kafka.md) binding, IoT devices can transmit data to a wider range of tech stacks, adapting to more business needs.
 
-Unlike other proxies, Zilla manages the different MQTT topics instead of blindly passing them down to Kafka. This way the Kafka architecture can be optimized for MQTT Pub/Sub. MQTT client subscribers and publishers will communicate with Zilla the same as any broker.
+Zilla uses specific Kafka topics to store and route MQTT messages, meaning the Kafka architecture can be optimized for MQTT Pub/Sub. MQTT client subscribers and publishers will communicate with Zilla the same as any broker.
 
 ## Step 1: Declaring the broker
 
-A Zilla MQTT server can manage client sessions and broker all of the messages sent.
+A Zilla MQTT server can manage client sessions and broker all messages sent.
 
 ```yaml
 mqtt_server:
@@ -48,12 +48,12 @@ The Zilla MQTT `server` supports the [MQTT v5.0 Specification].
 The Zilla MQTT `server` supports the "At most once (QoS 0)" Quality of Service flag.
 
 ::: info Feature Coming Soon <HopeIcon icon="circle-right"/>
-At least once (QoS 1) and Exactly once (QoS 2) delivery will be support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
+At least once (QoS 1) and Exactly once (QoS 2) delivery support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
 :::
 
 ## Step 2: Pub/Sub message reflect with Kafka
 
-Zilla manages MQTT pub/sub using three kafka topics. The specific topic names can be configured using the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) property.
+Zilla manages MQTT pub/sub using three Kafka topics. The specific topic names can be configured using the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) property.
 
 ```yaml
 topics:
@@ -64,7 +64,7 @@ topics:
 
 ### Messages on Kafka
 
-All MQTT messages brokered by Zilla are published on the `messages` Kafka topic. The MQTT message topic becomes the kafka key
+All MQTT messages brokered by Zilla are published on the `messages` Kafka topic. The MQTT message topic becomes the Kafka key.
 
 ### Retaining Messages
 

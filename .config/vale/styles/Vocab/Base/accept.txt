@@ -21,6 +21,7 @@ alpn
 amqp
 APIs
 artifacthub
+async
 Bidi
 bitnami
 BOMs
@@ -85,6 +86,7 @@ tcp
 tls
 Todo
 trustcacerts
+UUID(s)
 VPC(s)?
 VSCode
 vuepress

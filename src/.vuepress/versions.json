@@ -1,4 +1,5 @@
 [
-    { "text": "Changelog", "icon": "tag", "link": "https://github.com/orgs/aklivity/projects/4" },
+    { "text": "Roadmap", "icon": "bars-progress", "link": "https://github.com/orgs/aklivity/projects/4" },
+    { "text": "Changelog", "icon": "tag", "link": "https://github.com/aklivity/zilla/releases" },
     { "text": "@next", "key": "next" }
 ]
