@@ -111,4 +111,4 @@ bindings:
 
 ## Try it out
 
-Go check out the [MQTT Kafka Reflect example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect) or the [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect.jwt) example for a full implementation of an MQTT proxy.
+Go check out the [MQTT Kafka Reflect example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker) or the [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker.jwt) example for a full implementation of an MQTT proxy.

@@ -152,8 +152,8 @@ An [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) is includ
 ::: note Going Deeper
 Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
 
-- [MQTT Kafka example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect)
-- [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect.jwt)
+- [MQTT Kafka example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker)
+- [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker.jwt)
 :::
 
 ## Metrics
