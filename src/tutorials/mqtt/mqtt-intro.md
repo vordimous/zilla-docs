@@ -170,12 +170,12 @@ docker-compose down
 ```
 
 ::: tip See more of what Zilla can do
-Go deeper into this concept with the [mqtt.kafka.reflect](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect) example.
+Go deeper into this concept with the [mqtt.kafka.broker](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker) example.
 :::
 
 ## Going Deeper
 
 Try out more MQTT examples:
 
-- [mqtt.kafka.reflect](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect)
-- [mqtt.kafka.reflect.jwt](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.reflect.jwt)
+- [mqtt.kafka.broker](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker)
+- [mqtt.kafka.broker.jwt](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker.jwt)
