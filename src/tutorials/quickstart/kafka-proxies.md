@@ -46,13 +46,13 @@ The key components this script will setup:
 
 @tab Start and Restart
 
-"`bash:no-line-numbers
+```bash:no-line-numbers
 ./setup.sh
 ```
 
 @tab Shutdown
 
-"`bash:no-line-numbers
+```bash:no-line-numbers
 ./teardown.sh
 ```
 
