@@ -122,19 +122,19 @@ Protocol version.
 
 > `array` of `string`
 
-Vault key refs.
+A list of reference names for the Vault key.
 
 ### options.trust
 
 > `array` of `string`
 
-Vault certificate refs.
+A list of reference names for the Vault certificate.
 
 ### options.signers
 
 > `array` of `string`
 
-Vault signer certificate refs.
+A list of reference names for the Vault signer certificate.
 
 ### options.trustcacerts
 
@@ -146,7 +146,7 @@ Trust CA certificates.
 
 > `array` of `string`
 
-Server names.
+A list of the Server Name Indications.
 
 ### options.alpn
 

@@ -12,9 +12,7 @@ The output should display the zilla config and `started` to know zilla is ready 
 
 ```output:no-line-numbers
 // default Zilla config
-{
-  "name": "default"
-}
+name: default
 
 // Zilla status
 started
@@ -45,7 +43,7 @@ Go to the [Zilla artifacthub](https://artifacthub.io/) page to find out more on 
 ### TL;DR
 
 ```bash:no-line-numbers
-helm install zilla . --namespace zilla --create-namespace --wait \
+helm install zilla oci://ghcr.io/aklivity/charts/zilla --namespace zilla --create-namespace --wait \
     --values values.yaml \
     --set-file zilla\\.yaml=zilla.yaml
 ```
