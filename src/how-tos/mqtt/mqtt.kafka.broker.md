@@ -91,7 +91,7 @@ Then restart the `mosquitto_sub` above. The latest retained message is delivered
 
 ### Start a Kafka instance
 
-You can use your own Kafka or set up a local Kafka with [resource.kafka.compose](https://github.com/aklivity/zilla-examples/releases/latest/download/resource.kafka.compose.tar.gz) and follow the setup instructions in the `README.md`.
+You can use your own Kafka or set up a local Kafka with [kafka.broker](https://github.com/aklivity/zilla-examples/releases/latest/download/kafka.broker.tar.gz) and follow the setup instructions in the `README.md`.
 
 Export these env variables or overwrite them with your remote Kafka if you skipped the local setup.
 
