@@ -29,10 +29,9 @@ Fork each of these collections into your personal/team workspace.
 
 ![Collection header > View more actions > Create a Fork](./create-fork.png)
 
-
 ## Zilla Docker Compose Stack
 
-Download the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart) folder from the zilla-examples repo. The docker compose file will create everything you need for this quickstart. The `setup.sh` script will start and restart the backend. The `teardown.sh` script stops and destroys all containers. 
+Download the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart) folder from the zilla-examples repo. The docker compose file will create everything you need for this quickstart. The `setup.sh` script will start and restart the backend. The `teardown.sh` script stops and destroys all containers.
 
 The key components this script will setup:
 
@@ -76,7 +75,7 @@ This Zilla quickstart hosts a UI for the Kafka cluster. To browse the data, go t
 Zilla can expose common entity CRUD endpoints with the entity data being stored on Kafka topics. Leveraging Kafka's `cleanup.policy=compact` feature, Zilla enables a standard REST backend architecture with Kafka as the storage layer. Adding an `Idempotency-Key` header during creation will set the message `key` and act as the `ID` for the record. A UUID is generated if no key is sent.
 
 - **GET** - Fetches all items on the topic or Fetch one item by its key using `/:key`.
-- **POST** - Create a new item with the `Idempotency-Key` header setting the key. 
+- **POST** - Create a new item with the `Idempotency-Key` header setting the key.
 - **PUT** - Update an item based on its key using `/:key`.
 - **DELETE** - Delete an item based on its key using `/:key`.
 
