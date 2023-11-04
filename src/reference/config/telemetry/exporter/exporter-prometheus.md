@@ -18,7 +18,7 @@ exporters:
     options:
       endpoints:
         - scheme: http
-          port: 9090
+          port: 7190
           path: /metrics
 ```
 
@@ -48,7 +48,7 @@ exporters:
 options:
   endpoints:
     - scheme: http
-      port: 9090
+      port: 7190
       path: /metrics
 ```
 

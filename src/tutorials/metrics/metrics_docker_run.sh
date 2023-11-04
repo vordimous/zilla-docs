@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tmp_dir=tmp_sample;
-endpoint=http://localhost:8080/;
+endpoint=http://localhost:7114/;
 timeout=30;
 msg="Hello, world";
 
@@ -11,9 +11,8 @@ cp metrics_zilla.yaml $tmp_dir/zilla.yaml;
 cd $tmp_dir;
 
 # Run Zilla - Coppied to md file
-docker pull ghcr.io/aklivity/zilla:latest && \
-docker run -d -v ./zilla.yaml:/etc/zilla/zilla.yaml \
---name zilla-sample -p 8080:8080/tcp -p 9090:9090/tcp \
+docker run -d --pull=always -v ./zilla.yaml:/etc/zilla/zilla.yaml \
+--name zilla-sample -p 7114:7114 -p 7190:7190 \
 ghcr.io/aklivity/zilla:latest \
 start -v;
 
@@ -28,8 +27,8 @@ done
 docker logs zilla-sample;
 
 # Test Zilla - Coppied to md file
-curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:8080/;
-curl http://localhost:9090/metrics;
+curl -d "Hello, world" -H "Content-Type: text/plain" -X "POST" http://localhost:7114/;
+curl http://localhost:7190/metrics;
 
 # Cleanup
 docker rm -f zilla-sample;
@@ -38,4 +37,4 @@ rm -rf $tmp_dir;
 
 # Fail if results aren't correct
 if [ "$result" != "$msg" ]; then echo "bad result: $result"; exit 0; fi
-if [ "$(curl -o /dev/null -Isw '%{http_code}\n' http://localhost:9090/metrics)" -eq 200 ]; then echo "no metrics"; exit 0; fi
+if [ "$(curl -o /dev/null -Isw '%{http_code}\n' http://localhost:7190/metrics)" -eq 200 ]; then echo "no metrics"; exit 0; fi

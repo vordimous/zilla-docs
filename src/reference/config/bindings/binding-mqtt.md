@@ -151,7 +151,6 @@ Array of MQTT topic names for subscribe capability.
 
 > `string`
 
-
 ### routes[].exit\*
 
 > `string`

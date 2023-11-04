@@ -14,7 +14,9 @@ Running this Zilla sample will collect basic metrics for an http service.
 
 @tab zilla.yaml
 
-@[code](./metrics_zilla.yaml)
+```yaml {6-9,19,29-31,42-44}
+<!-- @include: ./metrics_zilla.yaml -->
+```
 
 :::
 
@@ -22,37 +24,23 @@ Running this Zilla sample will collect basic metrics for an http service.
 
 Run the Zilla docker image as a daemon with the `zilla.yaml` file volume mounted.
 
-::: code-tabs#yaml
-
-@tab Docker 23
-
-@[code{14-18} bash:no-line-numbers](./metrics_docker_run.sh)
-
-@tab Docker 20
-
-```bash:no-line-numbers
-docker pull ghcr.io/aklivity/zilla:latest && \
-docker run -d -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml \
---name zilla-sample -p 8080:8080/tcp \
-ghcr.io/aklivity/zilla:latest \
-start -v;
-```
-
-:::
+@[code{14-17} bash:no-line-numbers](./metrics_docker_run.sh)
 
 ### Send an HTTP POST
 
-@[code{31-31} bash:no-line-numbers](./metrics_docker_run.sh)
+@[code{30-30} bash:no-line-numbers](./metrics_docker_run.sh)
 
-> Hello, world
+```output:no-line-numbers
+Hello, world
+```
 
 ### View Metrics
 
-Go to [http://localhost:9090/metrtics](http://localhost:9090/metrtics) to see the collected data or run the below `curl` command.
+Go to [http://localhost:7190/metrtics](http://localhost:7190/metrtics) to see the collected data or run the below `curl` command.
 
-@[code{32-32} bash:no-line-numbers](./metrics_docker_run.sh)
+@[code{31-31} bash:no-line-numbers](./metrics_docker_run.sh)
 
-```text
+```output:no-line-numbers
 # TYPE stream_opens_sent_total counter
 stream_opens_sent_total{namespace="Metrics-example",binding="tcp_server"} 2
 
@@ -70,7 +58,7 @@ http_response_size_bytes_sum{namespace="Metrics-example",binding="http_server"} 
 
 Remove the running container
 
-@[code{35-35} bash:no-line-numbers](./metrics_docker_run.sh)
+@[code{34-34} bash:no-line-numbers](./metrics_docker_run.sh)
 
 ## Going Deeper
 

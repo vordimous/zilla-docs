@@ -34,7 +34,7 @@ kafka_grpc_proxy:
       exit: grpc
       with:
         scheme: http
-        authority: localhost:8080
+        authority: localhost:7151
 ```
 
 ## Summary
@@ -183,7 +183,7 @@ routes:
     exit: grpc
     with:
       scheme: http
-      authority: localhost:8080
+      authority: localhost:7151
 ```
 
 ### routes[].guarded
@@ -253,7 +253,7 @@ Kafka parameters for matched route when adapting `grpc` request-response streams
 ```yaml
 with:
   scheme: http
-  authority: localhost:8080
+  authority: localhost:7151
 ```
 
 #### with.scheme

@@ -47,7 +47,7 @@ Optional:
 
 ### Check the Kafka topics
 
-Run the docker command under the `Verify the Kafka topics created` section of the script output. Verify these topics are listed. Read more on the data in these topics in [the overview](../../concepts/kafka-proxies/mqtt-proxy.html#step-2-pub-sub-message-reflect-with-kafka).
+Run the docker command under the `Verify the Kafka topics created` section of the script output. Verify these topics are listed. Read more on the data in these topics in [the overview](../../concepts/kafka-proxies/mqtt-proxy.md#step-2-pub-sub-message-reflect-with-kafka).
 
 ```output:no-line-numbers
 mqtt-messages
@@ -119,8 +119,8 @@ Create a new file called `zilla.yaml` and append the below yaml to it.
 
 This will configure Zilla for accepting all of the `mqtt` traffic.
 
-```yaml{14-16}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{-20} -->
+```yaml{12-15}
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml{-15} -->
 ```
 
 ::: right
@@ -133,20 +133,20 @@ This will configure Zilla for accepting all of the `mqtt` traffic.
 The service definitions will define how the clients using this service will interact with Kafka through Zilla.
 
 ```yaml{7-9}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{22-31} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml{17-27} -->
 ```
 
 ::: right
 [More on binding-mqtt-kafka](../../reference/config/bindings/binding-mqtt-kafka.md)
-[More on topic data](../../concepts/kafka-proxies/mqtt-proxy.html#step-2-pub-sub-message-reflect-with-kafka)
+[More on topic data](../../concepts/kafka-proxies/mqtt-proxy.md#step-2-pub-sub-message-reflect-with-kafka)
 :::
 
 ### Add a Kafka sync layer
 
-The Zilla [cache_client and cache_server](../../reference/config/bindings/binding-kafka.html#kind) helps manage the smooth data transfer between the service definition and Kafka.
+The Zilla [cache_client and cache_server](../../reference/config/bindings/binding-kafka.md#kind) helps manage the smooth data transfer between the service definition and Kafka.
 
 ```yaml{11-12}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{33-46} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml{28-40} -->
 ```
 
 ::: right
@@ -158,7 +158,7 @@ The Zilla [cache_client and cache_server](../../reference/config/bindings/bindin
 This will define the location and connection for Zilla to communicate with Kafka.
 
 ```yaml{10-11}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{47-} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml{42-} -->
 ```
 
 ::: details Full zilla.yaml

@@ -21,7 +21,25 @@ mqtt_kafka_proxy:
       sessions: mqtt-sessions
       messages: mqtt-messages
       retained: mqtt-retained
-  exit: kafka_cache_client
+    clients:
+      - /clients/{identity}/#
+  routes:
+    - when:
+        - publish:
+            - topic: /clients/#
+        - subscribe:
+            - topic: /clients/#
+      with:
+        messages: mqtt-clients
+      exit: kafka_cache_client
+    - when:
+        - subscribe:
+            - topic: /sensor-clients/#
+        - subscribe:
+            - topic: /device-clients/#
+      with:
+        messages: mqtt-devices
+      exit: kafka_cache_client
 ```
 
 ## Summary
@@ -39,6 +57,16 @@ Defines a binding with `mqtt-kafka` support, with `proxy` behavior.
     - [topics.sessions\*](#topics-sessions)
     - [topics.messages\*](#topics-messages)
     - [topics.retained\*](#topics-retained)
+  - [options.clients](#options-clients)
+- [routes](#routes)
+- [routes\[\].guarded](#routes-guarded)
+- [routes\[\].when](#routes-when)
+  - [when\[\].publish\[\]](#when-publish)
+    - [publish\[\].topic](#publish-topic)
+  - [when\[\].subscribe\[\]](#when-subscribe)
+    - [subscribe\[\].topic](#subscribe-topic)
+- [routes\[\].with](#routes-with)
+  - [with.messages](#with-messages)
 - [exit](#exit)
 
 ::: right
@@ -101,6 +129,123 @@ Kafka topic used for routing mqtt messages.
 > `string`
 
 Compacted Kafka topic for storing mqtt retained messages.
+
+#### options.clients
+
+> `array` of `string`
+
+Pattern defining how to extract client identity from the topic. Using this we can ensure that all messages for the same client identity are produced to Kafka on the same topic partition.
+
+```yaml
+options:
+  clients:
+    - /clients/{identity}/#
+```
+
+### routes
+
+> `array` of `object`
+
+Conditional `mqtt-kafka`-specific routes when adapting `mqtt` topic streams to `kafka` topic streams.
+
+```yaml
+routes:
+  - when:
+      - publish:
+          - topic: /clients/#
+      - subscribe:
+          - topic: /clients/#
+    with:
+      messages: mqtt-clients
+    exit: kafka_cache_client
+  - when:
+      - subscribe:
+          - topic: /sensor-clients/#
+      - subscribe:
+          - topic: /device-clients/#
+    with:
+      messages: mqtt-devices
+    exit: kafka_cache_client
+```
+
+### routes[].guarded
+
+> `object` as named map of `string:string` `array`
+
+List of roles required by each named guard to authorize this route.
+
+```yaml
+routes:
+  guarded:
+    test:
+      - publish:clients
+```
+
+### routes[].when
+
+> `array` of `object`
+
+List of conditions (any match) to match this route when adapting `mqtt` topic streams to `kafka` topic streams.
+
+```yaml
+routes:
+  - when:
+      - publish:
+          - topic: /clients/#
+      - subscribe:
+          - topic: /clients/#
+```
+
+#### when[].publish[]
+
+> `array`
+
+Array of `mqtt` topic filters matching topic names for publish.
+
+```yaml
+- publish:
+    - topic: /clients/#
+```
+
+##### publish[].topic
+
+> `string`
+
+`mqtt` topic filter pattern.
+
+#### when[].subscribe[]
+
+> `array`
+
+Array of `mqtt` topic filters matching topic names for subscribe.
+
+```yaml
+- subscribe:
+    - topic: /clients/#
+```
+
+##### subscribe[].topic
+
+> `string`
+
+`mqtt` topic filter pattern.
+
+### routes[].with
+
+> `object`
+
+Kafka parameters for matched route when adapting `mqtt` topic streams to `kafka` topic streams.
+
+```yaml
+with:
+  messages: mqtt-devices
+```
+
+#### with.messages
+
+> `string`
+
+Kafka topic to use for the route.
 
 ### exit
 

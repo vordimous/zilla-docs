@@ -1,13 +1,10 @@
 default: true
 
 # markdownlint relaxed rules https://github.com/DavidAnson/markdownlint/blob/main/style/relaxed.json
-whitespace: false
 line-length: false
 ul-start-left: false
 ul-indent: false
 no-inline-html: false
-no-bare-urls: false
-fenced-code-language: false
 first-line-h1: false
 
 # zilla-docs rules
