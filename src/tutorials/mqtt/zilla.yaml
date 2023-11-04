@@ -1,24 +1,23 @@
 name: MQTT-intro
 bindings:
 
-# Gateway ingress config
-  tcp_server:
+# Proxy service entrypoint
+  north_tcp_server:
     type: tcp
     kind: server
     options:
       host: 0.0.0.0
-      port:
-        - 1883
-    exit: mqtt_server
+      port: 7183
+    exit: north_mqtt_server
 
 # MQTT Broker With an exit to Kafka
-  mqtt_server:
+  north_mqtt_server:
     type: mqtt
     kind: server
-    exit: mqtt_kafka_proxy
+    exit: north_mqtt_kafka_mapping
 
 # Proxy MQTT messages to Kafka
-  mqtt_kafka_proxy:
+  north_mqtt_kafka_mapping:
     type: mqtt-kafka
     kind: proxy
     options:
@@ -26,33 +25,33 @@ bindings:
         sessions: mqtt-sessions
         messages: mqtt-messages
         retained: mqtt-retained
-    exit: kafka_cache_client
+    exit: north_kafka_cache_client
 
-# Kafka caching layer
-  kafka_cache_client:
+# Kafka sync layer
+  north_kafka_cache_client:
     type: kafka
     kind: cache_client
-    exit: kafka_cache_server
-  kafka_cache_server:
+    exit: south_kafka_cache_server
+  south_kafka_cache_server:
     type: kafka
     kind: cache_server
     options:
       bootstrap:
         - mqtt-sessions
         - mqtt-retained
-    exit: kafka_client
+    exit: south_kafka_client
 
 # Connect to local Kafka
-  kafka_client:
+  south_kafka_client:
     type: kafka
     kind: client
-    exit: kafka_tcp_client
-  kafka_tcp_client:
+    exit: south_kafka_tcp_client
+  south_kafka_tcp_client:
     type: tcp
     kind: client
     options:
-      host: kafka
-      port: 29092
+      host: ${{env.KAFKA_HOST}}
+      port: ${{env.KAFKA_PORT}}
     routes:
       - when:
           - cidr: 0.0.0.0/0

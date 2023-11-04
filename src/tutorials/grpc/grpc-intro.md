@@ -19,142 +19,19 @@ Create each of these files `zilla.yaml`, `docker-compose.yaml`, and `echo.proto`
 @tab zilla.yaml
 
 ```yaml{40,44,46}
-name: gRPC-example
-bindings:
-
-# Gateway ingress config
-  tcp_server:
-    type: tcp
-    kind: server
-    options:
-      host: 0.0.0.0
-      port: 8080
-    exit: http_server
-  http_server:
-    type: http
-    kind: server
-    routes:
-      - when:
-          - headers:
-              :scheme: http
-              :authority: localhost:8080
-        exit: grpc_server
-
-# gRPC service definition
-  grpc_server:
-    type: grpc
-    kind: server
-    options:
-      services:
-        - proto/echo.proto
-    routes:
-      - when:
-          - method: example.EchoService/*
-        exit: grpc_kafka
-
-# Proxy a gRPC service to a Kafka topic
-  grpc_kafka:
-    type: grpc-kafka
-    kind: proxy
-    routes:
-      - when:
-          - method: example.EchoService/*
-        exit: kafka_cache_client
-        with:
-          capability: produce
-          topic: echo-messages
-          acks: leader_only
-          reply-to: echo-messages
-
-# Kafka caching layer
-  kafka_cache_client:
-    type: kafka
-    kind: cache_client
-    exit: kafka_cache_server
-  kafka_cache_server:
-    type: kafka
-    kind: cache_server
-    options:
-      bootstrap:
-        - echo-messages
-    exit: kafka_client
-
-# Connect to local Kafka
-  kafka_client:
-    type: kafka
-    kind: client
-    exit: kafka_tcp_client
-  kafka_tcp_client:
-    type: tcp
-    kind: client
-    options:
-      host: kafka
-      port: 9092
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
-
+<!-- @include: ./zilla.yaml -->
 ```
 
 @tab docker-compose.yaml
 
 ```yaml
-version: '3'
-services:
-  kafka:
-    image: docker.io/bitnami/kafka:latest
-    container_name: kafka
-    ports:
-      - "9092:9092"
-    environment:
-      ALLOW_PLAINTEXT_LISTENER: "yes"
-
-  kafka-init:
-    image: docker.io/bitnami/kafka:latest
-    command: 
-      - "/bin/bash"
-      - "-c"
-      - "/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists --topic echo-messages"
-    depends_on:
-      - kafka
-    init: true
-
-  zilla:
-    image: ghcr.io/aklivity/zilla:latest
-    container_name: zilla
-    depends_on:
-      - kafka
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./zilla.yaml:/etc/zilla/zilla.yaml
-      - ./echo.proto:/etc/zilla/proto/echo.proto
-    command: start -v
-
-networks:
-  default:
-    name: zilla-network
-    driver: bridge
-
+<!-- @include: ./docker-compose.yaml -->
 ```
 
 @tab echo.proto
 
 ```protobuf
-syntax = "proto3";
-
-package example;
-
-service EchoService
-{
-  rpc EchoSimple(EchoMessage) returns (EchoMessage);
-}
-
-message EchoMessage
-{
-  string message = 1;
-}
-
+<!-- @include: ./echo.proto -->
 ```
 
 :::
@@ -165,15 +42,12 @@ message EchoMessage
 docker-compose up -d
 ```
 
-### Use [grpcurl](https://github.com/fullstorydev/grpcurl) to send a greeting
+### Send a greeting
 
 ```bash:no-line-numbers
-grpcurl -plaintext -proto echo.proto -d '{"message":"Hello World"}' localhost:8080 example.EchoService.EchoSimple
+docker run -v ./echo.proto:/proto/echo.proto -it --rm fullstorydev/grpcurl \
+-plaintext -proto proto/echo.proto -d '{"message":"Hello World"}' host.docker.internal:7151 example.EchoService.EchoSimple
 ```
-
-::: note Wait for the services to start
-if you get this response `curl: (52) Empty reply from server`, the likely cause is Zilla and Kafka are still starting up.
-:::
 
 ### Remove the running containers
 

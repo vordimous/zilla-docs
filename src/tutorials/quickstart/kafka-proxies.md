@@ -6,6 +6,7 @@ tag:
   - REST
   - SSE
   - gRPC
+  - MQTT
 ---
 
 # Zilla Kafka Proxy Quickstart
@@ -31,44 +32,34 @@ Fork each of these collections into your personal/team workspace.
 
 ## Zilla Docker Compose Stack
 
-Download the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart) folder from the zilla-examples repo. The docker compose file will create everything you need for this quickstart. The `setup.sh` script will start and restart the backend. The `teardown.sh` script stops and destroys all containers.
+Download and run the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart). This [startup.sh](https://github.com/aklivity/zilla-examples/releases/latest/download/startup.sh) script will start Zilla and everything you need for this quickstart. 
+
+```bash:no-line-numbers
+wget -qO- https://raw.githubusercontent.com/aklivity/zilla-examples/main/startup.sh | sh -
+```
 
 The key components this script will setup:
 
 - Configured Zilla instance
 - Kafka instance and topics
-- [Kafka UI](http://localhost/ui/clusters/local/all-topics) for browsing topics & messages
+- [Kafka UI](http://localhost:8080/ui/clusters/local/all-topics) for browsing topics & messages
 - gRPC Route Guide server
 - MQTT message simulator
 
-::: code-tabs#bash
-
-@tab Start and Restart
-
-```bash:no-line-numbers
-./setup.sh
-```
-
-@tab Shutdown
-
-```bash:no-line-numbers
-./teardown.sh
-```
-
-:::
-
 ### Kafka topics
 
-This Zilla quickstart hosts a UI for the Kafka cluster. To browse the data, go to the [topics page](http://localhost/ui/clusters/local/all-topics).
+This Zilla quickstart hosts a UI for the Kafka cluster. To browse the data, go to the [topics page](http://localhost:8080/ui/clusters/local/all-topics).
 
-- [items-crud](http://localhost/ui/clusters/local/all-topics/items-crud/messages) - REST CRUD messages
-- [events-sse](http://localhost/ui/clusters/local/all-topics/events-sse/messages) - SSE event messages
-- [echo-service-messages](http://localhost/ui/clusters/local/all-topics/echo-service-messages/messages) - gRPC echo messages
-- [route-guide-requests](http://localhost/ui/clusters/local/all-topics/route-guide-requests/messages) - gRPC RouteGuide requests
-- [route-guide-responses](http://localhost/ui/clusters/local/all-topics/route-guide-responses/messages) - gRPC RouteGuide responses
-- [iot-messages](http://localhost/ui/clusters/local/all-topics/iot-messages/messages) - MQTT messages responses
-- [iot-retained](http://localhost/ui/clusters/local/all-topics/iot-retained/messages) - MQTT messages with the retained flag
-- [iot-sessions](http://localhost/ui/clusters/local/all-topics/iot-sessions/messages) - MQTT sessions
+Find the docker command in the `Verify the Kafka topics were created` section of the `startup.sh` script output. Verify these topics are listed:
+
+- [items-crud](http://localhost:8080/ui/clusters/local/all-topics/items-crud/messages) - REST CRUD messages
+- [events-sse](http://localhost:8080/ui/clusters/local/all-topics/events-sse/messages) - SSE event messages
+- [echo-service-messages](http://localhost:8080/ui/clusters/local/all-topics/echo-service-messages/messages) - gRPC echo messages
+- [route-guide-requests](http://localhost:8080/ui/clusters/local/all-topics/route-guide-requests/messages) - gRPC RouteGuide requests
+- [route-guide-responses](http://localhost:8080/ui/clusters/local/all-topics/route-guide-responses/messages) - gRPC RouteGuide responses
+- [iot-messages](http://localhost:8080/ui/clusters/local/all-topics/iot-messages/messages) - MQTT messages responses
+- [iot-retained](http://localhost:8080/ui/clusters/local/all-topics/iot-retained/messages) - MQTT messages with the retained flag
+- [iot-sessions](http://localhost:8080/ui/clusters/local/all-topics/iot-sessions/messages) - MQTT sessions
 
 ## REST Kafka proxy
 
@@ -79,7 +70,7 @@ Zilla can expose common entity CRUD endpoints with the entity data being stored 
 - **PUT** - Update an item based on its key using `/:key`.
 - **DELETE** - Delete an item based on its key using `/:key`.
 
-The [items-crud](http://localhost/ui/clusters/local/all-topics/items-crud/messages) Kafka topic will have all the objects you posted, updated, and deleted.
+The [items-crud](http://localhost:8080/ui/clusters/local/all-topics/items-crud/messages) Kafka topic will have all the objects you posted, updated, and deleted.
 
 ::: note Going Deeper
 Zilla can be configured for request-response over Kafka topics both synchronously and asynchronously, and more that we can't cover in this quickstart. Here are some other resources you will want to check out.
@@ -99,7 +90,7 @@ Zilla can expose a Kafka topic as a Server-sent Events (SSE) stream, enabling a 
 - **POST** - Push a new event.
 - **GET:SSE** - Stream all of the events published on the `event-sse` Kafka topic.
 
-The [events-sse](http://localhost/ui/clusters/local/all-topics/events-sse/messages) Kafka topic will have a record of each new event sent over HTTP to the SSE stream.
+The [events-sse](http://localhost:8080/ui/clusters/local/all-topics/events-sse/messages) Kafka topic will have a record of each new event sent over HTTP to the SSE stream.
 
 ::: note Going Deeper
 Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
@@ -118,9 +109,9 @@ Zilla maps the service method's request and response messages directly to Kafka 
 
 Check out the Kafka topics:
 
-The [echo-service-messages](http://localhost/ui/clusters/local/all-topics/echo-service-messages/messages) Kafka topic will have both the request and response record for each of the echo messages sent. You can see the records with the same generated UUIDs and `header` values.
+The [echo-service-messages](http://localhost:8080/ui/clusters/local/all-topics/echo-service-messages/messages) Kafka topic will have both the request and response record for each of the echo messages sent. You can see the records with the same generated UUIDs and `header` values.
 
-The [route-guide-requests](http://localhost/ui/clusters/local/all-topics/route-guide-requests/messages) Kafka topic will have every proto request object, meaning every message that is sent to the `server`. The [route-guide-responses](http://localhost/ui/clusters/local/all-topics/route-guide-responses/messages) Kafka topic will have every proto response object, meaning every message returned from the `server`.
+The [route-guide-requests](http://localhost:8080/ui/clusters/local/all-topics/route-guide-requests/messages) Kafka topic will have every proto request object, meaning every message that is sent to the `server`. The [route-guide-responses](http://localhost:8080/ui/clusters/local/all-topics/route-guide-responses/messages) Kafka topic will have every proto response object, meaning every message returned from the `server`.
 
 ::: note Going Deeper
 Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
@@ -144,14 +135,14 @@ Postman recently released MQTT support into [public BETA](https://blog.postman.c
 
 Setting the `retain` flag to true on your topic will send that message to the `retained` Kafka topic. After those messages are published, a new subscription will get the last message sent for that topic.
 
-The [iot-messages](http://localhost/ui/clusters/local/all-topics/iot-messages/messages) Kafka topic will store every message sent to the broker. The [iot-retained](http://localhost/ui/clusters/local/all-topics/iot-retained/messages) Kafka topic will store only messages sent with the `retain` flag set to true. By log compacting this topic, it will only return the most recent copy of the message to a newly subscribed client. The [iot-sessions](http://localhost/ui/clusters/local/all-topics/iot-sessions/messages) Kafka topic will have a record for each connection that Zilla has managed between it and the clients. You can see the `client-id` in the key and the `topic` in the value when necessary.
+The [iot-messages](http://localhost:8080/ui/clusters/local/all-topics/iot-messages/messages) Kafka topic will store every message sent to the broker. The [iot-retained](http://localhost:8080/ui/clusters/local/all-topics/iot-retained/messages) Kafka topic will store only messages sent with the `retain` flag set to true. By log compacting this topic, it will only return the most recent copy of the message to a newly subscribed client. The [iot-sessions](http://localhost:8080/ui/clusters/local/all-topics/iot-sessions/messages) Kafka topic will have a record for each connection that Zilla has managed between it and the clients. You can see the `client-id` in the key and the `topic` in the value when necessary.
 
 An [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) is included in the quickstart that will produce mock messages and send them to Zilla. The simulator uses the Python `paho-mqtt` library and the MQTT v5 specification.
 
 ::: note Going Deeper
 Zilla can be configured for more use cases we can't cover in this quickstart. Here are some other interesting examples you will want to check out.
 
-- [MQTT Kafka example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker)
+- [Running an MQTT Kafka broker](../../how-tos/mqtt/mqtt.kafka.broker.md)
 - [JWT Auth example](https://github.com/aklivity/zilla-examples/tree/main/mqtt.kafka.broker.jwt)
 :::
 

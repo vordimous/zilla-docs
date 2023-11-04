@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  zilla:
+    image: ghcr.io/aklivity/zilla:latest
+    pull_policy: always
+    ports:
+      - 7114:7114
+    environment:
+      SSE_SERVER_HOST: sse-server
+      SSE_SERVER_PORT: 8001
+    volumes:
+      - ./zilla.yaml:/etc/zilla/zilla.yaml
+      - ./index.html:/var/www/index.html
+    command: start -v -e
+
+  sse-server:
+    image: zilla-examples/sse-server:local
+    hostname: sse-server
+    tty: true
+    ports:
+      - 8001:8001
+      - 7001:7001
+    command: -v -p 8001 -i 7001
+
+  sse_publisher:
+    image: busybox:latest
+    depends_on:
+      - sse-server
+    command: 
+      - "/bin/sh"
+      - "-c"
+      - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | nc sse-server 7001; echo "message sent, waiting 5 sec"; sleep 5; done'

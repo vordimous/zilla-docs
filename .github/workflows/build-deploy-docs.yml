@@ -2,7 +2,7 @@ name: Site versioned build & deploy
 
 on:
   push:
-    branches: [develop, feature/vuepress-rewrite]
+    branches: [develop]
   workflow_dispatch:
 
 permissions:
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
 
       - name: build versions.json

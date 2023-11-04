@@ -10,7 +10,7 @@ Get started with Zilla by deploying our Docker Compose stack. Before proceeding,
 
 Running this Zilla sample will create a simple SSE server that sends a `Hello, World` message.
 
-### Setup SSE echo server
+### Setup SSE proxy server
 
 Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the same directory.
 
@@ -19,180 +19,32 @@ Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the
 @tab zilla.yaml
 
 ```yaml{19-24}
-name: SSE-example
-bindings:
-
-# Gateway ingress config
-  tcp_server:
-    type: tcp
-    kind: server
-    options:
-      host: 0.0.0.0
-      port: 8080
-    exit: http_server
-  http_server:
-    type: http
-    kind: server
-    options:
-      access-control:
-        policy: cross-origin
-    routes:
-      - when:
-          - headers:
-              :scheme: http
-              :authority: localhost:8080
-              :path: /events
-        exit: sse_server
-      - when:
-          - headers:
-              :scheme: http
-              :authority: localhost:8080
-        exit: http_filesystem_proxy
-
-# UI html file server
-  http_filesystem_proxy:
-    type: http-filesystem
-    kind: proxy
-    routes:
-      - when:
-          - path: /{path}
-        with:
-          path: ${params.path}
-        exit: filesystem_server
-  filesystem_server:
-    type: filesystem
-    kind: server
-    options:
-      location: /var/www/
-
-# SSE Server
-  sse_server:
-    type: sse
-    kind: server
-    routes:
-      - exit: sse_client
-  sse_client:
-    type: sse
-    kind: client
-    exit: http_client
-  http_client:
-    type: http
-    kind: client
-    options:
-      versions:
-        - http/1.1
-    exit: tcp_client
-  tcp_client:
-    type: tcp
-    kind: client
-    options:
-      host: sse-server
-      port: 8001
-
+ <!-- @include: ./proxy/zilla.yaml -->
 ```
 
 @tab docker-compose.yaml
 
 ```yaml
-version: '3'
-services:
-  zilla:
-    image: ghcr.io/aklivity/zilla:latest
-    container_name: zilla
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./zilla.yaml:/etc/zilla/zilla.yaml
-      - ./index.html:/var/www/index.html
-    command: start -v -e
-
-  sse-server:
-    image: zilla-examples/sse-server:latest
-    container_name: sse-server
-    tty: true
-    ports:
-      - "8001:8001"
-      - "7001:7001"
-    command: -v -p 8001 -i 7001
-
-  messenger:
-    image: busybox:latest
-    container_name: sse_messenger
-    depends_on:
-      - sse-server
-    command: 
-      - "/bin/sh"
-      - "-c"
-      - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | nc sse-server 7001; echo "message sent, waiting 5 sec"; sleep 5; done'
-
-networks:
-  default:
-    name: zilla-network
-    driver: bridge
-
+ <!-- @include: ./proxy/docker-compose.yaml -->
 ```
 
 @tab index.html
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Welcome to Zilla!</title>
-    <style type="text/css">
-      .row {
-        overflow: hidden;
-        padding: 10px;
-        width: 300px;
-      }
-      .col {
-        float: left;
-        width: 50%;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="col">
-      <h3>Event Source</h3>
-
-      <div class="row">
-        <label for="location">Location</label>
-        <input id="location" value="http://localhost:8080/events" style="width: 200px" />
-      </div>
-      <div class="row">
-        <button onclick="javascript:attachEventSource()">Go</button>
-      </div>
-
-      <h3>Messages</h3>
-      <div id="messages"></div>
-    </div>
-    <script>
-        async function attachEventSource() {
-          const location = document.getElementById("location");
-          const messages = document.getElementById("messages");
-  
-          const es = new EventSource(`${location.value}`);
-          const handleEvent = (event) => {
-              var text = document.createTextNode(`${event.type}: ${event.data ? event.data : ""}`);
-              var line = document.createElement("p");
-              line.appendChild(text);
-    
-              messages.insertBefore(line, messages.firstChild);
-            };
-          es.onmessage = handleEvent;
-          es.onopen = handleEvent;
-          es.onerror = handleEvent;
-        }
-      </script>
-  </body>
-</html>
-
+ <!-- @include: ./proxy/index.html -->
 ```
 
 :::
 
 ### Run Zilla and the SSE server
+
+Fist build the local `sse-server`.
+
+```bash:no-line-numbers
+docker build -t zilla-examples/sse-server:local https://github.com/aklivity/zilla-examples.git#v2:sse.proxy.jwt
+```
+
+Start the example.
 
 ```bash:no-line-numbers
 docker-compose up -d
@@ -200,15 +52,11 @@ docker-compose up -d
 
 - Open the browser
 
-Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
-
-::: note Wait for the services to start
-If the page doesn't load wait for the Zilla and the SSE server to start.
-:::
+Navigate to the browser [http://localhost:7114/index.html](http://localhost:7114/index.html).
 
 - Click `Go`
 
-With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
+With the location input set to `http://localhost:7114/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker. The stream of messages will render on the page.
 
 ```output:no-line-numbers
 ...
@@ -248,205 +96,19 @@ Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the
 @tab zilla.yaml
 
 ```yaml{19-24,56-60}
-name: SSE-example
-bindings:
-
-# Gateway ingress config
-  tcp_server:
-    type: tcp
-    kind: server
-    options:
-      host: 0.0.0.0
-      port: 8080
-    exit: http_server
-  http_server:
-    type: http
-    kind: server
-    options:
-      access-control:
-        policy: cross-origin
-    routes:
-      - when:
-          - headers:
-              :scheme: http
-              :authority: localhost:8080
-              :path: /events
-        exit: sse_server
-      - when:
-          - headers:
-              :scheme: http
-              :authority: localhost:8080
-        exit: http_filesystem_proxy
-
-# UI html file server
-  http_filesystem_proxy:
-    type: http-filesystem
-    kind: proxy
-    routes:
-      - when:
-          - path: /{path}
-        with:
-          path: ${params.path}
-        exit: filesystem_server
-  filesystem_server:
-    type: filesystem
-    kind: server
-    options:
-      location: /var/www/
-
-# SSE Server With an exit to Kafka
-  sse_server:
-    type: sse
-    kind: server
-    exit: sse_kafka_proxy
-  sse_kafka_proxy:
-    type: sse-kafka
-    kind: proxy
-    routes:
-      - when:
-          - path: /events
-        exit: kafka_cache_client
-        with:
-          topic: events
-
-# Kafka caching layer
-  kafka_cache_client:
-    type: kafka
-    kind: cache_client
-    exit: kafka_cache_server
-  kafka_cache_server:
-    type: kafka
-    kind: cache_server
-    options:
-      bootstrap:
-        - events
-    exit: kafka_client
-
-# Connect to local Kafka
-  kafka_client:
-    type: kafka
-    kind: client
-    exit: tcp_client
-  tcp_client:
-    type: tcp
-    kind: client
-    options:
-      host: kafka
-      port: 9092
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
-
+<!-- @include: ./kafka.fanout/zilla.yaml -->
 ```
 
 @tab docker-compose.yaml
 
 ```yaml
-version: '3'
-services:
-  kafka:
-    image: docker.io/bitnami/kafka:latest
-    container_name: kafka
-    ports:
-      - "9092:9092"
-    environment:
-      ALLOW_PLAINTEXT_LISTENER: "yes"
-
-  kafka-init:
-    image: docker.io/bitnami/kafka:latest
-    command: 
-      - "/bin/bash"
-      - "-c"
-      - "/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists --topic events"
-    depends_on:
-      - kafka
-    init: true
-
-  zilla:
-    image: ghcr.io/aklivity/zilla:latest
-    container_name: zilla
-    depends_on:
-      - kafka
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./zilla.yaml:/etc/zilla/zilla.yaml
-      - ./index.html:/var/www/index.html
-    command: start -v -e
-
-  messenger:
-    image: confluentinc/cp-kafkacat:latest.amd64
-    container_name: kafka_messenger
-    depends_on:
-      - kafka
-    command: 
-      - "/bin/sh"
-      - "-c"
-      - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | kafkacat -P -b kafka:9092 -t events -k 1; echo "message sent, waiting 5 sec"; sleep 5; done'
-
-networks:
-  default:
-    name: zilla-network
-    driver: bridge
-
+<!-- @include: ./kafka.fanout/docker-compose.yaml -->
 ```
 
 @tab index.html
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Welcome to Zilla!</title>
-    <style type="text/css">
-      .row {
-        overflow: hidden;
-        padding: 10px;
-        width: 300px;
-      }
-      .col {
-        float: left;
-        width: 50%;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="col">
-      <h3>Event Source</h3>
-
-      <div class="row">
-        <label for="location">Location</label>
-        <input id="location" value="http://localhost:8080/events" style="width: 200px" />
-      </div>
-      <div class="row">
-        <button onclick="javascript:attachEventSource()">Go</button>
-      </div>
-
-      <h3>Messages</h3>
-      <div id="messages"></div>
-    </div>
-    <script>
-        async function attachEventSource() {
-          const location = document.getElementById("location");
-          const messages = document.getElementById("messages");
-  
-          const es = new EventSource(`${location.value}`);
-          const handleEvent = (event) => {
-              var text = document.createTextNode(`${event.type}: ${event.data ? event.data : ""}`);
-              var line = document.createElement("p");
-              line.appendChild(text);
-    
-              messages.insertBefore(line, messages.firstChild);
-            };
-          es.onmessage = handleEvent;
-          es.onopen = handleEvent;
-          es.onerror = handleEvent;
-        }
-      </script>
-  </body>
-</html>
-
+<!-- @include: ./kafka.fanout/index.html -->
 ```
 
 :::
@@ -459,15 +121,11 @@ docker-compose up -d
 
 - Open the browser
 
-Navigate to the browser [http://localhost:8080/index.html](http://localhost:8080/index.html).
-
-::: note Wait for the services to start
-If the page doesn't load wait for the Zilla and the Kafka server to start.
-:::
+Navigate to the browser [http://localhost:7114/index.html](http://localhost:7114/index.html).
 
 - Click `Go`
 
-With the location input set to `http://localhost:8080/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
+With the location input set to `http://localhost:7114/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
 ```output:no-line-numbers
 ...

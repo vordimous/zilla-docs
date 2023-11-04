@@ -70,7 +70,7 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://localhost:9092,INTERNAL://kafka.internal.net:29092
     ports:
-      - "9092:9092"
+      - 9092:9092
   init-topics:
     image: "bitnami/kafka:3"
     networks:

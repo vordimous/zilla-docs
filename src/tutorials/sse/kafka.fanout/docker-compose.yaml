@@ -7,12 +7,13 @@ services:
     depends_on:
       - kafka
     ports:
-      - 7183:7183
+      - 7114:7114
     environment:
       KAFKA_HOST: kafka
       KAFKA_PORT: 29092
     volumes:
       - ./zilla.yaml:/etc/zilla/zilla.yaml
+      - ./index.html:/var/www/index.html
     command: start -v -e
 
   kafka:
@@ -41,9 +42,16 @@ services:
       - "/bin/bash"
       - "-c"
       -  |
-        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic mqtt-messages
-        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic mqtt-sessions --config cleanup.policy=compact
-        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic mqtt-retained --config cleanup.policy=compact
+        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic events
     depends_on:
       - kafka
     init: true
+
+  kafka_messenger:
+    image: confluentinc/cp-kafkacat:7.1.9
+    depends_on:
+      - kafka
+    command: 
+      - "/bin/sh"
+      - "-c"
+      - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | kafkacat -P -b kafka:29092 -t events -k 1; echo "message sent, waiting 5 sec"; sleep 5; done'
