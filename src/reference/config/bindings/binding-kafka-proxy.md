@@ -10,6 +10,9 @@ tag:
 
 # kafka-proxy Binding
 
+[Zilla Plus](https://www.aklivity.io/products/zilla-plus)
+{.zilla-plus-badge .hint-container .info}
+
 Zilla runtime kafka-proxy binding.
 
 ```yaml {2}
