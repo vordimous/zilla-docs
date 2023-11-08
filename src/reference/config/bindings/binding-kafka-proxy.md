@@ -38,14 +38,14 @@ Defines a binding with `kafka-proxy`  support, with `proxy` behavior.
 :::: note Properties
 
 - [kind\*](#kind)
-- [options](#options)
-- [options.external](#options-external)
-  - [external.host](#external-host)
-  - [external.port](#external-port)
-- [options.internal](#options-internal)
-  - [internal.host](#internal-host)
-  - [internal.port](#internal-port)
-- [exit](#exit)
+- [options\*](#options)
+- [options.external\*](#options-external)
+  - [external.host\*](#external-host)
+  - [external.port\*](#external-port)
+- [options.internal\*](#options-internal)
+  - [internal.host\*](#internal-host)
+  - [internal.port\*](#internal-port)
+- [exit\*](#exit)
 
 ::: right
 \* required
@@ -59,7 +59,7 @@ Defines a binding with `kafka-proxy`  support, with `proxy` behavior.
 
 Behave as a `proxy`.
 
-### options
+### options\*
 
 > `object`
 
@@ -75,7 +75,7 @@ options:
     port: 9094
 ```
 
-### options.external
+### options.external\*
 
 > `object`
 
@@ -87,19 +87,19 @@ external:
   port: 9093
 ```
 
-#### external.host
+#### external.host\*
 
 > `string`
 
 Hostname pattern for external Kafka broker names, where `#` is an integer.
 
-#### external.port
+#### external.port\*
 
 > `integer`
 
 Port number for external Kafka broker.
 
-### options.internal
+### options.internal\*
 
 > `object`
 
@@ -111,19 +111,19 @@ internal:
   port: 9094
 ```
 
-#### internal.host
+#### internal.host\*
 
 > `string`
 
 Hostname pattern for internal Kafka broker names, where `#` is an integer.
 
-#### internal.port
+#### internal.port\*
 
 > `integer`
 
 Port number for internal Kafka broker.
 
-### exit
+### exit\*
 
 > `string`
 
