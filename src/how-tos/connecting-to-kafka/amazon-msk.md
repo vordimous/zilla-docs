@@ -12,12 +12,12 @@ Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
 ::: warning
-MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Zilla Plus (Public MSK Proxy)](https://docs.aklivity.io/aws/get-started/public-proxy). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
+MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Zilla Plus (Public MSK Proxy)](../amazon-msk/public-proxy.md). The Proxy is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
 :::
 
 ## Set up mTLS Authentication between MSK and Zilla
 
-Once your MSK cluster is reachable over the internet, it will rely on Mutual TLS to authenticate external clients. Setting up `mTLS` between MSK and Zilla is done in three steps:
+Once your MSK cluster is reachable over the internet, it will rely on `mTLS` to authenticate external clients. Setting up `mTLS` between MSK and Zilla is done in three steps:
 
 1. Create a trusted Client Certificate in Amazon Certificate Manager (ACM).
 2. Export the Client Certificate as well as the Certificate Authority (CA) Certificate.
@@ -29,11 +29,11 @@ If you deployed the Zilla Plus (Public MSK Proxy), then you should already have 
 
 ### Create a Client Certificate
 
-Follow the [Create Client Certificate (ACM) guide](https://docs.aklivity.io/aws/resources/create-client-certificate-acm#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
+Follow the [Create Client Certificate (ACM) guide](../../reference/amazon-msk/create-client-certificate-acm.md#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
 
 ### Export Client and CA Certificates
 
-First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](https://docs.aklivity.io/aws/resources/create-certificate-authority-acm) used to issue the certificate, and run the following command:
+First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](../../reference/amazon-msk/create-certificate-authority-acm.md) used to issue the certificate, and run the following command:
 
 ```bash:no-line-numbers
 aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_AUTHORITY_ARN \

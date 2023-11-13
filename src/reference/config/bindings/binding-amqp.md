@@ -9,7 +9,7 @@ tag:
 
 # amqp Binding
 
-::: info Feature Coming Soon <HopeIcon icon="circle-right"/>
+::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
 This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 

@@ -17,11 +17,11 @@ In this guide, you will use the [JWT guard](../../reference/config/guards/guard-
 
 ### Prerequisites
 
-* Docker `20.10.14`
-* Git `2.32.0`
-* npm `8.3.1` and above
-* jq `1.6` and above
-* completed [Build the Todo Application](./build.md) with Docker stack still running
+- Docker `20.10.14`
+- Git `2.32.0`
+- npm `8.3.1`  and above
+- jq `1.6` and above
+- completed [Build the Todo Application](./build.md) with Docker stack still running
 
 ### Step 1: Zilla
 
@@ -69,8 +69,8 @@ if-match\[String] - Task etag
 
 **Responses:**
 
-* **204 No Content** - Task renamed successfully
-* **412 Precondition Failed** - Task rename failed, etag does not match
+- **204 No Content** - Task renamed successfully
+- **412 Precondition Failed** - Task rename failed, etag does not match
 
 :::
 
@@ -98,8 +98,8 @@ if-match\[String] - Task etag
 
 **Responses:**
 
-* **204 No Content** - **** Task deleted successfully
-* **412 Precondition Failed** - **** Task delete failed, etag does not match
+- **204 No Content** - **** Task deleted successfully
+- **412 Precondition Failed** - **** Task delete failed, etag does not match
 
 :::
 
@@ -119,7 +119,7 @@ last-event-id\[String] - last received task event id
 
 **Responses:**
 
-* **200 OK** - Returns a stream of tasks
+- **200 OK** - Returns a stream of tasks
 
 :::
 
@@ -135,7 +135,7 @@ When routing at each binding, Zilla can guard a route to require that specific r
 
 Zilla trusts JWT tokens based on the token `issuer`, `audience` and public `key` of the token provider.
 
-In this example, tokens are issued by [`Auth0`](https://auth0.com/) at `https://aklivity.us.auth0.com/` and the intended token usage, or audience, is this local Todo app Tasks API at `http://localhost:8080/tasks`.
+In this example, tokens are issued by [Auth0](https://auth0.com/) at `https://aklivity.us.auth0.com/` and the intended token usage, or audience, is this local Todo app Tasks API at `http://localhost:8080/tasks`.
 
 Using [Zilla Studio](https://zilla-studio.aklivity.io/), select the `Secure the Todo App` template from the `Load Template` dropdown and then press `Generate Config` to download the corresponding `zilla.yaml` configuration file.
 

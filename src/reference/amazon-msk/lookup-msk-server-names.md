@@ -1,15 +1,17 @@
 ---
-description: >-
-  Discover the wildcard DNS pattern matching all bootstrap server names in an
-  MSK cluster.
+description: Discover the wildcard DNS pattern matching all bootstrap server names in an MSK cluster.
 ---
 
 # Lookup MSK Server Names
 
-Navigate to the [MSK Management Console](https://console.aws.amazon.com/msk) and make sure you have selected the desired region in the upper right corner, such as `US East (N. Virginia) us-east-1`. Then click on your MSK cluster name to see the details.
+Navigate to the [MSK Management Console](https://console.aws.amazon.com/msk). Then click on your MSK cluster name to see the details.
+
+::: note Check your selected region
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+:::
 
 ::: info
-If you followed the [Create MSK Cluster](./create-msk-cluster.md) guide or the [Create MSK Cluster (Mutual Trust)](./create-msk-cluster-mutual-trust.md) guide then click on the MSK cluster named `aklivity` to see the details.
+If you followed the [Create MSK Cluster](./create-msk-cluster.md) guide then click on the MSK cluster named `aklivity` to see the details.
 :::
 
 Click `View client information` in the `Cluster summary` section to show the `Client integration information`.

@@ -1,7 +1,5 @@
 ---
-description: >-
-  Create a server certificate signed by a public certificate authority using
-  LetsEncrypt.
+description: Create a server certificate signed by a public certificate authority using LetsEncrypt.
 ---
 
 # Create Server Certificate (LetsEncrypt)
@@ -12,6 +10,9 @@ After logging into the launched EC2 instance via SSH, install `certbot` to inter
 
 ```bash:no-line-numbers
 sudo amazon-linux-extras install -y epel
+```
+
+```bash:no-line-numbers
 sudo yum install -y certbot
 ```
 

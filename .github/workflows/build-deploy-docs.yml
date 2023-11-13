@@ -54,10 +54,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          for row in $(jq -rc '.[]' deploy-versions.json); do
-            key=$(echo ${row} | jq -r '.key');
-            tag=$(echo ${row} | jq -r '.tag');
-            
+          for row in $(jq -rc '.[] | @base64' deploy-versions.json); do
+            _jq() {
+              echo ${row} | base64 --decode | jq -r ${1}
+            }
+            key=$(echo $(_jq '.key'));
+            tag=$(echo $(_jq '.tag'));
+
             git clone --depth 1 -b "$tag" $RepoUrl "$BuildDir/$key"
 
             cp versions.json "$BuildDir/$key/src/.vuepress/versions.json";
@@ -69,8 +72,11 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
           wrkdir=$(pwd);
-          for row in $(jq -rc '.[]' deploy-versions.json); do
-            key=$(echo ${row} | jq -r '.key');
+          for row in $(jq -rc '.[] | @base64' deploy-versions.json); do
+            _jq() {
+              echo ${row} | base64 --decode | jq -r ${1}
+            }
+            key=$(echo $(_jq '.key'));
 
             export DIST_DIR="$wrkdir/$DistDir";
             export SITE_VERSION_KEY="$key";

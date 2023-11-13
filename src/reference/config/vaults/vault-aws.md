@@ -1,7 +1,7 @@
 ---
 shortTitle: aws
 description: Zilla runtime aws vault
-icon: plus
+icon: aky-zilla-plus
 category:
   - Vault
 ---

@@ -29,14 +29,14 @@ The Aiven Kafka requires clients to connect via `TLS mutual authentication` and 
 
 you should have the following files:
 
-* `service.key` - Access Key
-* `service.cert` - Access Certificate
-* `ca.pem` - CA Certificate
+- `service.key` - Access Key
+- `service.cert` - Access Certificate
+- `ca.pem` - CA Certificate
 
 The next step is to generate the truststore and keystore.
 
-* `truststore.p12` - contains the trusted server certificates or certificate authorities
-* `keystore.p12` - contains the signed client certificates
+- `truststore.p12` - contains the trusted server certificates or certificate authorities
+- `keystore.p12` - contains the signed client certificates
 
 You can use the scripts shown below to generate `truststore.p12` and `keystore.p12` files using certificates and keys downloaded from `Aiven Kafka Console`. Please replace all caps lock words.
 

@@ -9,8 +9,8 @@ In this guide, you will learn how to connect to Confluent Cloud from Zilla. You 
 
 ### Prerequisites
 
-* Cluster Bootstrap server - see [Confluent Cloud Cluster Settings](https://docs.confluent.io/cloud/current/clusters/broker-config.html).
-* API Keys(Key, Secret) - see [API Keys to Control Access](https://docs.confluent.io/cloud/current/access-management/authenticate/api-keys/api-keys.html).
+- Cluster Bootstrap server - see [Confluent Cloud Cluster Settings](https://docs.confluent.io/cloud/current/clusters/broker-config.html)
+- API Keys(Key, Secret) - see [API Keys to Control Access](https://docs.confluent.io/cloud/current/access-management/authenticate/api-keys/api-keys.html)
 
 ## Confluent Cloud Parameters
 

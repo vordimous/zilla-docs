@@ -34,7 +34,7 @@ mqtt_kafka_proxy:
 
 The Zilla MQTT `server` supports the [MQTT v5.0 Specification].
 
-::: info Feature Coming Soon <HopeIcon icon="circle-right"/>
+::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
 [MQTT v3.1.1 Specification] support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
 :::
 
@@ -47,7 +47,7 @@ The Zilla MQTT `server` supports the [MQTT v5.0 Specification].
 
 The Zilla MQTT `server` supports the "At most once (QoS 0)" Quality of Service flag.
 
-::: info Feature Coming Soon <HopeIcon icon="circle-right"/>
+::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
 At least once (QoS 1) and Exactly once (QoS 2) delivery support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
 :::
 

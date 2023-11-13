@@ -1,7 +1,7 @@
 ---
 shortTitle: kafka-proxy 
 description: Zilla runtime kafka-proxy binding
-icon: plus
+icon: aky-zilla-plus
 category:
   - Binding
 tag:
@@ -10,7 +10,7 @@ tag:
 
 # kafka-proxy Binding
 
-[Zilla Plus](https://www.aklivity.io/products/zilla-plus)
+[Available in Zilla Plus<sup>+</sup>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
 
 Zilla runtime kafka-proxy binding.
