@@ -219,7 +219,7 @@ export const enSidebar = sidebar({
           ],
         },
         {
-          text: "Amazon MSK Pubic Proxy",
+          text: "Amazon MSK Public Proxy",
           collapsible: true,
           icon: "aky-zilla-plus",
           prefix: "how-tos/amazon-msk/",

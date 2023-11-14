@@ -331,7 +331,7 @@ cp /usr/lib/jvm/j **double tap TAB**
 
 and the selecting the longer entry that starts with "**jre-1.8.0-openjdk...."**
 
-A sample full copy command command of a Kafka client's trustore will appear as follows:
+A sample full copy command of a Kafka client's trustore will appear as follows:
 
 ```bash:no-line-numbers
 cp /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64/lib/security/cacerts /tmp/kafka.client.truststore.jks

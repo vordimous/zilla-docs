@@ -11,8 +11,10 @@
 (?i)proxying
 (?i)realtime
 (?i)subnet(s)?
+(?i)quickstart(s)?
 (?i)todo
 (?i)truststore
+(?i)yaml
 (?i)yaml
 acks
 Aiven
@@ -37,6 +39,7 @@ declaratively
 docsearch
 etag
 fanout
+fas
 fontawesome
 gitea
 grpc
@@ -70,8 +73,6 @@ overprovisioned
 prometheus
 proto
 protobuf
-Quickstart
-quickstarts
 really 
 Redpanda
 repo(s)?

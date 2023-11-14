@@ -73,7 +73,7 @@ This maps the proto service method's request and response messages directly to K
 
 ### Message routing for RPC request and response types
 
-Let's look at some of the common service definitions and how Zilla can route their messages.
+Let's look at some common service definitions and how Zilla can route their messages.
 
 #### Simple RPC
 

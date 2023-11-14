@@ -100,7 +100,7 @@ To configure Zilla you will be replacing the following values in the `zilla.yaml
 | `BOOTSTRAP_SERVER_HOSTNAME` | Target MSK hostname. For example: `b-2-public.myTestCluster.v4ni96.c2.kafka.us-east-1.amazonaws.com`                             |
 | `BOOTSTRAP_SERVER_PORT`     | Target MSK port number. For example `9094`                                                                                       |
 
-Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the the vault in the `tls_client` binding. Your `zilla.yaml` should appear as follows:
+Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the vault in the `tls_client` binding. Your `zilla.yaml` should appear as follows:
 
 ### zilla.yaml
 
