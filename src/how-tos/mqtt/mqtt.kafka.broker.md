@@ -47,7 +47,7 @@ Optional:
 
 ### Check the Kafka topics
 
-Run the docker command under the `Verify the Kafka topics created` section of the script output. Verify these topics are listed. Read more on the data in these topics in [the overview](../../concepts/kafka-proxies/mqtt-proxy.md#step-2-pub-sub-message-reflect-with-kafka).
+Run the docker command under the `Verify the Kafka topics created` section of the script output. Verify these topics are listed. Read more on the data in these topics in [the overview.](../../concepts/kafka-proxies/mqtt-proxy.md#step-2-pub-sub-message-reflect-with-kafka)
 
 ```output:no-line-numbers
 mqtt-messages
@@ -57,7 +57,7 @@ mqtt-sessions
 
 ### Listen for messages
 
-Run the docker command under the `Start a topic consumer to listen for messages` section of the script output. If you didn't use your own Kafka, you can also see all the topics in the [Kafka UI](http://localhost:8080/ui/clusters/local/all-topics).
+Run the docker command under the `Start a topic consumer to listen for messages` section of the script output. If you didn't use your own Kafka, you can also see all the topics in the [Kafka UI.](http://localhost:8080/ui/clusters/local/all-topics)
 
 ### Send a greeting
 

@@ -9,7 +9,7 @@ description: Common errors and how to handle them
 - [Why does CloudFormation stack creation timeout and rollback?](#why-does-cloudformation-stack-creation-timeout-and-rollback)
 - [Why does my SSH client reject access to the MSK Proxy instances?](#why-does-my-ssh-client-reject-access-to-the-msk-proxy-instances)
 - [Why does my SSH client timeout when attempting to access the MSK Proxy instances?](#why-does-my-ssh-client-timeout-when-attempting-to-access-the-msk-proxy-instances)
-- [Why does the `msk-proxy` service keep restarting on the MSK Proxy instances?](#why-does-the-msk-proxy-service-keep-restarting-on-the-msk-proxy-instances)
+- [Why does the `zilla-plus` service keep restarting on the MSK Proxy instances?](#why-does-the-zilla-plus-service-keep-restarting-on-the-msk-proxy-instances)
 - [Why does my Kafka Client fail to connect via Public MSK Proxy?](#why-does-my-kafka-client-fail-to-connect-via-public-msk-proxy)
 
 :::
@@ -40,7 +40,7 @@ This can occur if the target VPC has no attached Internet Gateway, or if the mai
 
 Make sure to [attach the Internet Gateway](../amazon-msk/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../amazon-msk/create-vpc.md#route-to-the-internet-gateway), then try again.
 
-## Why does the `msk-proxy` service keep restarting on the MSK Proxy instances?
+## Why does the `zilla-plus` service keep restarting on the MSK Proxy instances?
 
 This can occur if the IAM Role associated with your MSK Proxy instances has insufficient privileges to use the AWS Services needed by MSK Proxy.
 
@@ -50,7 +50,7 @@ Check the policies attached to your MSK Proxy instance IAM Role based on the dep
 - Public MSK Proxy
   - [Development](../../how-tos/amazon-msk/development.md#create-the-msk-proxy-iam-security-role)
   - [Production](../../how-tos/amazon-msk/production.md#create-the-msk-proxy-iam-security-role)
-  - [Production (Mutual Trust)](../../how-tos/amazon-msk/production-mutual-trust.md#create-the-msk-proxy-iam-security-role)
+  - [Production (Mutual TLS)](../../how-tos/amazon-msk/production-mutual-tls.md#create-the-msk-proxy-iam-security-role)
 
 ## Why does my Kafka Client fail to connect via Public MSK Proxy?
 
@@ -82,7 +82,7 @@ openssl s_client \
   -key client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 openssl s_client \
@@ -90,7 +90,7 @@ openssl s_client \
   -servername <b-1-broker-dns-name> \
   -cert client.cert \
   -key client.key.pem
-  -CAfile Certificate.cer
+  -CAfile Certificate.pem
 ```
 
 The `openssl` output should be as shown below:
@@ -116,7 +116,7 @@ kcat \
   -X ssl.key.location=client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the Certificate Authority certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 kcat \
@@ -125,7 +125,7 @@ kcat \
   -X security.protocol=ssl \
   -X ssl.certificate.location=client.cert \
   -X ssl.key.location=client.key.pem \
-  -X ssl.ca.location=Certificate.cer
+  -X ssl.ca.location=Certificate.pem
 ```
 
 The `kcat` output should show the list of brokers and topics accessible to the client.

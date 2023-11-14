@@ -32,7 +32,7 @@ Fork each of these collections into your personal/team workspace.
 
 ## Zilla Docker Compose Stack
 
-Download and run the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart). This [startup.sh](https://github.com/aklivity/zilla-examples/releases/latest/download/startup.sh) script will start Zilla and everything you need for this quickstart. 
+Download and run the Zilla [quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart). This [startup.sh](https://github.com/aklivity/zilla-examples/releases/latest/download/startup.sh) script will start Zilla and everything you need for this quickstart.
 
 ```bash:no-line-numbers
 wget -qO- https://raw.githubusercontent.com/aklivity/zilla-examples/main/startup.sh | sh -

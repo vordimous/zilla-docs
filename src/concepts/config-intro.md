@@ -157,4 +157,4 @@ Each configured `metric` represents a stat Zilla collects and each configured `e
 
 Metrics are separated by protocol where the `stream` metrics relate to Zilla's internal message handler. The other protocols have common metrics you would expect to find.
 
-The configured exporters will determine how the collected metrics are exposed. By adding the [Prometheus](../reference/config/telemetry/exporter/exporter-prometheus.md) exporter Zilla will host the the `/metrics` endpoint that is needed to collect the prometheus formatted metrics.
+The configured exporters will determine how the collected metrics are exposed. By adding the [Prometheus](../reference/config/telemetry/exporter/exporter-prometheus.md) exporter Zilla will host the `/metrics` endpoint that is needed to collect the prometheus formatted metrics.

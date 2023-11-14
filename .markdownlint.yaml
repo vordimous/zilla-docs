@@ -12,3 +12,5 @@ header-style:
   style: consistent
 link-fragments: false
 no-hard-tabs: false
+ul-style:
+  style: dash

@@ -6,70 +6,79 @@ description: Create a new IAM security role with managed or inline policies.
 
 ## Resource Parameters
 
-The following parameters are needed when following these steps to create a new security role with policies.
-
-* Name
-* Managed Policies
-  * Name
-* Inline Policies
-  * Name
-  * Summary
-
 Throughout this guide we use the following example IAM Role parameters.
 
-* Name `my-role`
-* Managed Policies
-  * Name `AWSMarketplaceMeteringFullAccess`
-* Inline Policies
-  * Name `MySecretsManagerRead`
-  * Summary
+- Role Name: `my-role`
 
-      ```json:no-line-numbers
-      {
-        "Version": "2012-10-17",
-        "Statement": [
-          {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-              "secretsmanager:GetSecretValue",
-              "secretsmanager:DescribeSecret"
-            ],
-            "Resource": [
-              "arn:aws:secretsmanager:*:*:secret*"
-            ]
-          }
-        ]
-      }
-      ```
+- Managed Policies:
+
+::: code-tabs
+
+@tab Name
+
+```text:no-line-numbers
+AWSMarketplaceMeteringFullAccess
+```
+
+:::
+
+- Inline Policies:
+
+::: code-tabs
+
+@tab Name
+
+```text:no-line-numbers
+MySecretsManagerRead
+```
+
+@tab JSON Summary
+
+```json:no-line-numbers
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": [
+        "arn:aws:secretsmanager:*:*:secret*"
+      ]
+    }
+  ]
+}
+```
+
+:::
 
 ## Create the IAM Security Role
 
-Navigate to the [IAM Management Console](https://console.aws.amazon.com/iam) and note the `Global` region.
+Navigate to the [Create role](https://console.aws.amazon.com/iamv2/home#/roles/create) form and fill out the form with the following details:
 
-Under the `Access management` section, select the `Roles` menu item to show your `Roles`.
-
-Click `Create role` and fill out the `Create role` form with the following details:
-
-Choose a use case: `EC2`
-
-### Permissions
-
-#### Managed Policy
-
-Name: `AWSMarketplaceMeteringFullAccess`\
-Type: `AWS managed`\
-Role name: `my-role`
+- Region: `Global`
+- Choose a use case: `EC2`
+- Add Permissions
+  - Policy name: `AWSMarketplaceMeteringFullAccess`
+  - Type: `AWS managed`
+- Role name: `my-role`
 
 Click `Create role`
 
+### Specify Permissions
+
 Now click the newly created role `my-role` to show the details so we can add inline policies.
 
-In the Permissions policies section in the `Add Permissions` dropdown click on `Create inline policy` in the  and fill out the `Create policy` form with the following parameters.
+In the Permissions policies section in the `Add Permissions` dropdown click on `Create inline policy`.
 
-### Create policy
+In the `Policy editor` specify `JSON` and add the below policy.
 
-JSON (tab):
+::: code-tabs
+
+@tab JSON
 
 ```json:no-line-numbers
 {
@@ -90,9 +99,12 @@ JSON (tab):
 }
 ```
 
+:::
+
 ### Review policy
 
-Name: `MySecretsManagerRead`\
+- Policy name: `MySecretsManagerRead`
+
 Click `Create policy` to create the inline policy so it shows in the `Permissions` for `my-role`.
 
 ::: danger

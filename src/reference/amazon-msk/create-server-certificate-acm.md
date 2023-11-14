@@ -1,7 +1,5 @@
 ---
-description: >-
-  Create a server certificate signed by a private certificate authority using
-  AWS Certificate Manager.
+description: Create a server certificate signed by a private certificate authority using AWS Certificate Manager.
 ---
 
 # Create Server Certificate (ACM)
@@ -57,7 +55,7 @@ A challenge password []:
 An optional company name []:
 ```
 
-::: tip
+::: info
 This creates the signing request in `wildcard.aklivity.example.com.csr`.
 :::
 
@@ -94,7 +92,7 @@ If you see the following error when attempting to run the command
 
 `An error occurred (UnrecognizedClientException) when calling the IssueCertificate operation: The security token included in the request is invalid`
 
-make sure that you have retrieved and [set your AWS credentials for CLI use](https://aws.amazon.com/blogs/security/aws-single-sign-on-now-enables-command-line-interface-access-for-aws-accounts-using-corporate-credentials/).
+make sure that you have retrieved and set [your AWS credentials](https://aws.amazon.com/blogs/security/aws-single-sign-on-now-enables-command-line-interface-access-for-aws-accounts-using-corporate-credentials/) for CLI use.
 :::
 
 ## Store the encrypted secret

@@ -7,7 +7,7 @@ export default hopeTheme({
   hostname: hostnameSEO,
   logo: "/logo.png",
   logoDark: "/logo-dark.png",
-  iconAssets: "fontawesome-with-brands",
+  iconAssets: ["fontawesome-with-brands"],
   favicon: "favicon.ico",
 
   repo: "aklivity/zilla",

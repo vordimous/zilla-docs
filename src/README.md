@@ -1,6 +1,6 @@
 ---
 home: true
-icon: home
+icon: fas fa-home
 title: Home
 heroImage: /zilla-rings.webp
 heroImageDark: /zilla-rings.webp
@@ -17,22 +17,22 @@ actions:
 features:
 
   - title: Get Started
-    icon: play
+    icon: fas fa-play
     details: Install Zilla, connect it to your Kafka Cluster, and define your first API endpoints.
     link: /how-tos/install.html
 
   - title: Todo App Example
-    icon: diagram-project
+    icon: fas fa-diagram-project
     details: Create a Todo application using a CQRS design pattern that's backed by Apache Kafka and Zilla.
     link: /tutorials/todo-app/build.html
 
   - title: Kafka Proxies
-    icon: arrows-left-right-to-line
+    icon: fas fa-arrows-left-right-to-line
     details: Define REST, SSE, gRPC and MQTT endpoints that map to Kafka topic streams.
     link: /concepts/kafka-proxies/rest-proxy.html
 
   - title: Reference
-    icon: book
+    icon: fas fa-book
     details: Learn about Zilla command and configuration properties.
     link: /reference/config/overview.html
 

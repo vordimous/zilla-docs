@@ -1,5 +1,5 @@
 [
-    { "text": "Roadmap", "icon": "bars-progress", "link": "https://github.com/orgs/aklivity/projects/4" },
-    { "text": "Changelog", "icon": "tag", "link": "https://github.com/aklivity/zilla/releases" },
-    { "text": "@next", "key": "next" }
+    { "text": "Roadmap", "icon": "fas fa-bars-progress", "link": "https://github.com/orgs/aklivity/projects/4" },
+    { "text": "Changelog", "icon": "fas fa-tag", "link": "https://github.com/aklivity/zilla/releases" },
+    { "text": "@next", "icon": "fas fa-circle-right", "key": "next" }
 ]

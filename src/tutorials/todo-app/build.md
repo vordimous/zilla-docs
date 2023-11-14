@@ -13,17 +13,17 @@ In this getting started exercise, you will create a simple Todo application usin
 
 This Todo Application tutorial has the following goals:
 
-* Provide a list of Todo tasks that is shared by all clients
-* Support optimistic locking with conflict detection when attempting to update a Todo task
-* Deliver updates in near real-time when a Todo task is created, modified, or deleted
-* Demonstrate a user interface driving the Tasks API
-* Support scaling Todo task reads and writes
+- Provide a list of Todo tasks that is shared by all clients
+- Support optimistic locking with conflict detection when attempting to update a Todo task
+- Deliver updates in near real-time when a Todo task is created, modified, or deleted
+- Demonstrate a user interface driving the Tasks API
+- Support scaling Todo task reads and writes
 
 ### Prerequisites
 
-* Docker `20.10.14`
-* Git `2.32.0`
-* npm `8.3.1` and above
+- Docker `20.10.14`
+- Git `2.32.0`
+- npm `8.3.1` and above
 
 ### Step 1: Kafka (or Redpanda)
 
@@ -357,8 +357,8 @@ if-match\[String] - Task etag
 
 **Responses:**
 
-* **204 No Content** - Task renamed successfully
-* **412 Precondition Failed** - Task rename failed, etag does not match
+- **204 No Content** - Task renamed successfully
+- **412 Precondition Failed** - Task rename failed, etag does not match
 
 :::
 
@@ -386,8 +386,8 @@ if-match\[String] - Task etag
 
 **Responses:**
 
-* **204 No Content** - **** Task deleted successfully
-* **412 Precondition Failed** - **** Task delete failed, etag does not match
+- **204 No Content** - **** Task deleted successfully
+- **412 Precondition Failed** - **** Task delete failed, etag does not match
 
 :::
 
@@ -407,8 +407,8 @@ if-none-match\[String] - Tasks collection etag
 
 **Responses:**
 
-* **200 OK** - Returns an array of Tasks
-* **304 Not Modified** - **** If Tasks collection etag matches
+- **200 OK** - Returns an array of Tasks
+- **304 Not Modified** - **** If Tasks collection etag matches
 
 :::
 

@@ -2,9 +2,7 @@
 order: 3
 category:
   - CLI
-description: >-
-  The command line interface to manage Zilla dependencies and package the Zilla
-  runtime.
+description: The command line interface to manage Zilla dependencies and package the Zilla runtime.
 ---
 
 # Zilla Manager CLI
@@ -22,7 +20,7 @@ The Zilla Manager command line interface uses the [Zilla Manager Configuration](
   - [--exclude-local-repository](#exclude-local-repository)
   - [--exclude-remote-repositories](#exclude-remote-repositories)
 - [zpm wrap](#zpm-wrap)
-  - [--local-repository `<locaRepolDir>`](#local-repository-locarepoldir)
+  - [--local-repository `<localRepoDir>`](#local-repository-locarepoldir)
   - [--remote-repository `<repoURL>`](#remote-repository-repourl)
   - [--version `<version>`](#version-version)
 

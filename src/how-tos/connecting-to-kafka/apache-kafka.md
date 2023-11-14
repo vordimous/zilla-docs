@@ -156,8 +156,8 @@ Next, you will explore how to connect to `Kafka` cluster over `TLS/SSL` using cl
 
 The following items need to be prepared:
 
-* `truststore.p12` - contains the trusted server certificates or certificate authorities
-* `keystore.p12` - contains the signed client certificates
+- `truststore.p12` - contains the trusted server certificates or certificate authorities
+- `keystore.p12` - contains the signed client certificates
 
 Kafka clients connecting to Kafka clusters that are configured for `TLS mutual authentication` require three files; a `Client Key`, a `Client Certificate`, and a `CA Certificate`.
 
@@ -244,12 +244,12 @@ Apache Kafka brokers support client authentication using SASL. SASL authenticati
 
 Apache Kafka supports the following SASL mechanisms are:
 
-* GSSAPI (Kerberos authentication)
-* OAUTHBEARER
-* SCRAM
-* PLAIN
-* Delegation Tokens
-* LDAP
+- GSSAPI (Kerberos authentication)
+- OAUTHBEARER
+- SCRAM
+- PLAIN
+- Delegation Tokens
+- LDAP
 
 ::: info NOTE
 Zilla currently supports SASL PLAIN authentication to Kafka.

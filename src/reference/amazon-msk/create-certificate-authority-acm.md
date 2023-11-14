@@ -8,41 +8,33 @@ description: Create a new private certificate authority using AWS Certificate Ma
 
 The following parameters are needed when following these steps to create a new VPC.
 
-* Distinguished Name
+- Distinguished Name
 
 Throughout this guide we use the following example certificate authority parameters.
 
-* Distinguished Name
-  * Common Name (CN) `Test CA`
+- Distinguished Name
+  - Common Name (CN) `Test CA`
 
 ## Create the CA
 
-Navigate to the [ACM PCA Management Console](https://console.aws.amazon.com/acm-pca) and make sure you have selected the desired region in the upper right corner, such as `US East (N. Virginia) us-east-1`.
+> This creates a new private certificate authority in ACM.
 
-Click `Create CA` to complete the `Create certificate authority` wizard with the following details:
+Navigate to the [Create private certificate authority (CA)](https://console.aws.amazon.com/acm-pca/home#/wizard) wizard.
 
-### Step1: Select CA type: `Root CA`
-
-### Step 2: Configure CA subject name
-
-Common Name (CN): `Test CA`
-
-### Step3: Configure CA key algorithm: `RSA 2048`
-
-### Step4: Configure revocation: `(defaults)`
-
-### Step5: Add Tags: `(defaults)`
-
-### Step6: Configure CA permissions: `(defaults)`
-
-### Step 7: Review and create
-
-Pricing: `Click to confirm`\
-Click `Confirm and create`.
-
-::: tip
-This creates a new private certificate authority in ACM.
+::: note Check your selected region
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
 :::
+
+- Mode options: `General-purpose`
+- CA type options: `Root`
+- Subject distinguished name options
+  - Common Name (CN): `Test CA`
+- Key algorithm options: `RSA 2048`
+- Certificate revocation options: `(defaults)`
+- Add Tags: `(defaults)`
+- Configure CA permissions: `(defaults)`
+
+Click `Create CA`.
 
 ::: info
 Note the ARN of the newly created certificate authority.
@@ -50,10 +42,16 @@ Note the ARN of the newly created certificate authority.
 
 ## Export the CA Certificate
 
-Navigate to the [ACM PCA Management Console](https://console.aws.amazon.com/acm-pca) and make sure you have selected the desired region in the upper right corner, such as `US East (N. Virginia) us-east-1`.
+Navigate to the [ACM PCA Management Console](https://console.aws.amazon.com/acm-pca/home#/certificateAuthorities).
 
-Select the `Test CA` certificate authority and choose `Get Certificate` from the `Actions` menu, then click `Export to a file` to download the certificate authority certificate.
+::: note Check your selected region
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+:::
+
+Select the `Test CA` certificate authority.
+
+From the `Actions` menu > select `Get CA Certificate` then click `Export certificate body to a file` to download the CA certificate.
 
 ::: info
-Note the `Certificate.cer` filename location where you download the CA certificate.
+Note the `Certificate.pem` filename location where you download the CA certificate.
 :::

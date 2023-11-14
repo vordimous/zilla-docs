@@ -1,9 +1,9 @@
 ---
 icon: aky-zilla-plus
-description: Setup connectivity to your MSK cluster via the internet from your local development environment.
+description: Setup mutual authentication to your MSK cluster from anywhere on the internet.
 ---
 
-# Development
+# Production (Mutual TLS)
 
 [Available in Zilla Plus<sup>+</sup>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
@@ -11,14 +11,11 @@ description: Setup connectivity to your MSK cluster via the internet from your l
 ::: tip Estimated time to complete 20-30 minutes.
 :::
 
-<!-- markdownlint-disable MD033 -->
-<YouTube id="0nBx6qjFDyc" />
-
 ## Overview
 
 The [Zilla Plus (Public MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
 
-In this guide we will deploy the Zilla Plus (Public MSK Proxy) and verify locally trusted public internet connectivity to your MSK cluster from a Kafka client in your development environment, using the wildcard domain `*.aklivity.example.com`.
+In this guide we will deploy the Zilla Plus (Public MSK Proxy) and showcase globally trusted public internet connectivity to an MSK cluster from a Kafka client, using the custom wildcard domain `*.example.aklivity.io`. Kafka clients will use TLS client certificates to verify trusted client identity.
 
 ### AWS services used
 
@@ -35,15 +32,33 @@ Default [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_s
 
 Before setting up internet access to your MSK Cluster, you will need the following:
 
-- an MSK Cluster configured for TLS encrypted client access
-- subscription to Zilla Plus (Public MSK Proxy) via AWS Marketplace
+- an MSK Cluster configured for TLS encrypted client access and TLS client authentication
 - an VPC security group for MSK Proxy instances
 - an IAM security role for MSK Proxy instances
-- permission to modify local DNS resolution files, such as `/etc/hosts` on MacOS
+- subscription to Zilla Plus (Public MSK Proxy) via AWS Marketplace
+- permission to modify global DNS records for a custom domain
+- permission to generate client certificates signed by a private certificate authority
 
 ::: tip
 Check out the [Troubleshooting](../../reference/troubleshooting/amazon-msk.md) guide if you run into any issues.
 :::
+
+### Create Certificate Authority (ACM) for mTLS
+
+> This creates a new private certificate authority in ACM.
+
+Follow the [Create Certificate Authority (ACM)](../../reference/amazon-msk/create-certificate-authority-acm.md) to create a private certificate authority to verify TLS client authentication.
+
+- Distinguished Name
+  ::: code-tabs
+
+  @tab Common Name (CN)
+
+  ```text:no-line-numbers
+  Mutual Authentication CA
+  ```
+
+  :::
 
 ### Create the MSK Cluster
 
@@ -54,11 +69,23 @@ An MSK cluster is needed for secure remote access via the internet. You can skip
 Follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-cluster.md) guide to setup the a new MSK cluster. We will use the bellow resource names to reference the AWS resources needed in this guide.
 
 - Cluster Name: `my-msk-cluster`
-- Access control methods: `Unauthenticated access`
+- Access control methods: `TLS client certificates`
+- AWS Private CAs: `Mutual Authentication CA`
 - VPC: `my-msk-cluster-vpc`
 - Subnet: `my-msk-cluster-subnet-*`
 - Route tables: `my-msk-cluster-rtb-*`
 - Internet gateway: `my-msk-cluster-igw`
+
+### Create Client Certificate (ACM) for mTLS
+
+This allows an authorized Kafka client to connect directly to your MSK cluster with Mutual TLS (mTLS). Follow the [Create Client Certificate (ACM)](../../reference/amazon-msk/create-client-certificate-acm.md) to create a private certificate authority.
+
+You can create additional client certificates for each different authorized client identity that will connect via the internet to your MSK Public Proxy deployment.
+
+[Update the security settings](https://docs.aws.amazon.com/msk/latest/developerguide/msk-update-security.html) of your MSK cluster. Update your Access control methods to include
+
+Common Name: `client-1`\
+Private Certificate Authority: `Mutual Authentication CA`
 
 ### Create the MSK Proxy security group
 
@@ -152,13 +179,18 @@ MSKProxySecretsManagerRead
         "secretsmanager:DescribeSecret"
       ],
       "Resource": [
-        "arn:aws:secretsmanager:*:*:secret:wildcard.aklivity.example.com-*"
+        "arn:aws:secretsmanager:*:*:secret:wildcard.example.aklivity.io-*",
+        "arn:aws:secretsmanager:*:*:secret:client-*"
       ]
     }
   ]
 }
 ```
 
+:::
+
+::: note
+This example pattern requires all trusted client certificate key secrets to be named `client-*`.
 :::
 
 ::: info If you used a different secret name for your certificate key.
@@ -177,28 +209,24 @@ The [Zilla Plus (Public MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodvi
 
 To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) and `Subscribe` to the offering. You should now see `Zilla Plus (Public MSK Proxy)` listed in your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions.
 
-## Create the Server Certificate
+## Create the Public TLS Server Certificate
 
-We need a TLS Server Certificate for the wildcard domain `*.aklivity.example.com` that can be trusted by a Kafka Client in your local development environment.
+We need a Public TLS Server Certificate for your custom DNS wildcard domain that can be trusted by a Kafka Client from anywhere.
 
-Follow the [Create Server Certificate (ACM)](../../reference/amazon-msk/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
+Follow the [Create Server Certificate (LetsEncrypt)](../../reference/amazon-msk/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
 
 ::: info
 Note the server certificate secret ARN as we will need to reference it from the Public MSK Proxy CloudFormation template.
 :::
 
-::: warning
-Store the private CA certificate in a file called `pca.pem` as we will need it to configure trust when testing the Kafka client.
-:::
-
 ## Deploy the Public MSK Proxy
 
-> This initiates deployment of the Zilla Plus (Public MSK Proxy) stack via CloudFormation.
+> This initiates deployment of the Zilla Plus (Public MSK Proxy) (Mutual TLS) stack via CloudFormation.
 
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus (Public MSK Proxy)` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Public MSK Proxy` fulfillment option
+- Select the `Public MSK Proxy (Mutual TLS)` fulfillment option
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`
@@ -231,20 +259,23 @@ Parameters:
 - MSK Configuration
   - Wildcard DNS pattern: `*.aklivity.[...].amazonaws.com` *1
   - Port number: `9094`
+  - Private Certificate Authority: `<private certificate authority ARN>` *2a
 - MSK Proxy Configuration
   - Instance count: `2`
-  - Instance type: `t3.small` *2
+  - Instance type: `t3.small` *3
   - Role: `aklivity-public-msk-proxy`
   - Security Groups: `my-msk-proxy`
   - Secrets Manager Secret ARN: `<TLS certificate private key secret ARN>` *3
-  - Public Wildcard DNS: `*.aklivity.example.com`
+  - Public Wildcard DNS: `*.example.aklivity.io` *4
   - Public Port: `9094`
-  - Key pair for SSH access: `my-key-pair` *4
+  - Private Certificate Authority: `<private certificate authority ARN>` *2
+  - Key pair for SSH access: `my-key-pair` *5
 - *Configuration Reference
   1. Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
-  2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (ACM)](../../reference/amazon-msk/create-server-certificate-acm.md#store-the-encrypted-secret) guide.
-  4. Follow the [Create Key Pair](../../reference/amazon-msk/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
+  2. These can be the same Private Certificate Authority that authorizes existing clients connecting directly to MSK, allowing existing trusted client certificates to connect via Public MSK Proxy.
+  3. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
+  4. Replace with your own custom wildcard DNS pattern.
+  5. Follow the [Create Key Pair](../../reference/amazon-msk/create-key-pair.md) guide to create a new key pair used when launching EC2 instances with SSH access.
 
 ### Step 3. Configure stack options: `(use defaults)`
 
@@ -297,6 +328,26 @@ Aug 26 06:56:54 ip-10-0-3-104.ec2.internal zilla[1803]: Recorded usage for recor
 
 Repeat these steps for each of the other Public MSK Proxy instances launched by the CloudFormation template.
 
+### Configure Global DNS
+
+> This ensures that any new Kafka brokers added to the MSK cluster can still be reached via the Public MSK Proxy.
+
+When using a wildcard DNS name for your own domain, such as `*.example.aklivity.io` then the DNS entries are setup in your DNS provider.
+
+Navigate to the [CloudFormation console](https://console.aws.amazon.com/cloudformation). Then select the `my-public-msk-proxy` stack to show the details.
+
+::: note Check your selected region
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+:::
+
+In the stack `Outputs` tab, find the public DNS name of the `NetworkLoadBalancer.`
+
+You need to create a `CNAME` record mapping your public DNS wildcard pattern to the public DNS name of the Network Load Balancer.
+
+::: info
+You might prefer to use an Elastic IP address for each NLB public subnet, providing DNS targets for your `CNAME` record that can remain stable even after restarting the stack.
+:::
+
 ## Verify Kafka Client Connectivity
 
 To verify that we have successfully enabled public internet connectivity to our MSK cluster from the local development environment, we will use a generic Kafka client to create a topic, publish messages and then subscribe to receive these messages from our MSK cluster via the public internet.
@@ -321,23 +372,22 @@ cd kafka_2.13-2.8.0
 We use a generic Kafka client here, however the setup for any Kafka client, including [KaDeck](https://www.xeotek.com/apache-kafka-monitoring-management/), [Conduktor](https://www.conduktor.io/download/), and [akhq.io](https://akhq.io/) will be largely similar. With the Public MSK Proxy you can use these GUI Kafka clients to configure and monitor your MSK applications, clusters and streams.
 :::
 
-#### Trust the Private Certificate Authority
-
-Import the private CA certificate into your trust store.
-
-```bash:no-line-numbers
-keytool -importcert -keystore /tmp/kafka.client.truststore.jks -storetype jks -storepass generated -alias pca -file Certificate.pem
-```
-
-::: info
-When you followed the [Create Certificate Authority (ACM)](../../reference/amazon-msk/create-certificate-authority-acm.md) guide, you exported the private CA certificate to a file called `Certificate.pem`.
-:::
-
 ### Configure the Kafka Client
 
 With the Kaka client now installed we are ready to configure it and point it at the Public MSK Proxy.
 
-The MSK Proxy relies on TLS so we need to create a file called `client.properties` that tells the Kafka client to use SSL as the security protocol and to trust your private certificate authority as the signer of the `*.aklivity.example.com` certificate.
+We need to import the trusted client certificate and corresponding private key into the local key store used by the Kafka client when connecting to the Public MSK Proxy.
+
+```bash:no-line-numbers
+openssl pkcs12 -export -in client-1.cert.pem -inkey client-1.pkcs8.key.pem -out client-1.p12 -name client-1
+keytool -importkeystore -destkeystore /tmp/kafka.client.keystore.jks -deststorepass generated -srckeystore client-1.p12 -srcstoretype PKCS12 -srcstorepass generated -alias client-1
+```
+
+In this example, we are importing a private key and certificate with `Common Name` `client-1` signed by a private certificate authority. First the private key and signed certificate are converted into a `p12` formatted key store.
+
+Then the key store is converted to `/tmp/kafka.client.keystore.jks` in `JKS` format. When prompted, use a consistent password for each command. We use the password `generated` to illustrate these steps.
+
+The MSK Proxy relies on TLS so we need to create a file called `client.properties` that tells the Kafka client to use SSL as the security protocol and to specify the key store containing authorized client certificates.
 
 ::: code-tabs
 
@@ -345,64 +395,16 @@ The MSK Proxy relies on TLS so we need to create a file called `client.propertie
 
 ```toml:no-line-numbers
 security.protocol=SSL
-ssl.truststore.location=/tmp/kafka.client.truststore.jks
+ssl.keystore.location=/tmp/kafka.client.keystore.jks
+ssl.keystore.password=generated
 ```
 
 :::
 
-### Configure Local DNS
+The password configured in `client.properties` should match the password used in the commands above used to create the key store.
 
-When using an example wildcard DNS such as `*.aklivity.example.com` then the DNS entries are setup locally.
-
-Navigate to the [CloudFormation console.](https://console.aws.amazon.com/cloudformation) Then select the `my-public-msk-proxy` stack to show the details.
-
-::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
-:::
-
-In the stack `Outputs` tab, find the public DNS name of the `NetworkLoadBalancer`, and lookup the public IP addresses, as shown in the following example.
-
-```bash:no-line-numbers
-nslookup my-pu-Netwo-xxxxxxxxxxxx-yyyyyyyyyyyyyyyy.elb.us-east-1.amazonaws.com
-```
-
-```output:no-line-numbers
-Server:  10.5.1.21
-Address: 10.5.1.21#53
-
-Non-authoritative answer:
-Name: my-pu-Netwo-xxxxxxxxxxxx-yyyyyyyyyyyyyyyy.elb.us-east-1.amazonaws.com
-Address: 107.21.117.233
-Name: my-pu-Netwo-xxxxxxxxxxxx-yyyyyyyyyyyyyyyy.elb.us-east-1.amazonaws.com
-Address: 54.235.158.55
-Name: my-pu-Netwo-xxxxxxxxxxxx-yyyyyyyyyyyyyyyy.elb.us-east-1.amazonaws.com
-Address: 3.226.64.246
-```
-
-Then add local DNS entries for the bootstrap proxy names needed by the Kafka client to `/etc/hosts`.
-
-::: code-tabs
-
-@tab /etc/hosts
-
-```text:no-line-numbers
-107.21.117.233  b-1.aklivity.example.com b-2.aklivity.example.com b-3.aklivity.example.com
-54.235.158.55   b-1.aklivity.example.com b-2.aklivity.example.com b-3.aklivity.example.com
-3.226.64.246    b-1.aklivity.example.com b-2.aklivity.example.com b-3.aklivity.example.com
-```
-
-:::
-
-This allows Kafka clients to use the following TLS bootstrap proxy names for privately signed TLS wildcard certificate:
-
-```text:no-line-numbers
-b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example.com:9094
-```
-
-You can use these bootstrap server names when connecting to your MSK cluster from your local development environment.
-
-::: warning
-If you add another broker to your MSK cluster, then you will need to add another local DNS entry to your development environment, such as `b-4.aklivity.example.com`. This is required only for [Development](./development.md) deployments, not [Production](./production.md) deployments.
+::: tip
+As the TLS certificate is signed by a globally trusted certificate authority, there is no need to configure your Kafka client to override the trusted certificate authorities.
 :::
 
 ### Test the Kafka Client
@@ -411,11 +413,15 @@ If you add another broker to your MSK cluster, then you will need to add another
 
 We can now verify that the Kafka client can successfully communicate with your MSK cluster via the internet from your local development environment to create a topic, then publish and subscribe to the same topic.
 
-Use the following as TLS bootstrap server names for the Kafka client:
+If using the wildcard DNS pattern `*.example.aklivity.io`, then we use the following as TLS bootstrap server names for the Kafka client:
 
 ```text:no-line-numbers
-b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example.com:9094
+b-1.example.aklivity.io:9094,b-2.example.aklivity.io:9094,b-3.example.aklivity.io:9094
 ```
+
+::: warning
+Replace these TLS bootstrap server names accordingly for your own custom wildcard DNS pattern.
+:::
 
 #### Create a Topic
 
@@ -430,9 +436,11 @@ bin/kafka-topics.sh --create --topic public-proxy-test --partitions 3 --replicat
 1. The Kafka client with access to the public internet issued a request to create a new topic
 2. This request was directed to the internet-facing Network Load Balancer
 3. The Network Load Balancer forwarded the request to the Zilla Plus (Public MSK Proxy)
-4. The Zilla Plus (Public MSK Proxy) routed the request to the appropriate MSK broker
-5. The topic was created in the MSK broker
-6. Public access was verified
+4. The Zilla Plus (Public MSK Proxy) verified the client identity of the Kafka client
+5. The Zilla Plus (Public MSK Proxy) selected a matching client certificate to propagate client identity
+6. The Zilla Plus (Public MSK Proxy) routed the request to the appropriate MSK broker
+7. The topic was created in the MSK broker
+8. Public access was verified, authorized by trusted client certificate
 
 :::
 
