@@ -4,59 +4,69 @@ The Zilla runtime configuration defines the [`bindings`](../reference/config/ove
 
 ```yaml {2}
 ---
-name: zilla config
-telemetry:
-  ...
-
-vaults:
+name: zilla-namespace
+bindings:
   ...
 
 guards:
   ...
 
-bindings:
+vaults:
+  ...
+
+telemetry:
   ...
 ```
 
 ## Bindings
 
-Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`. Bindings are organized by behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
+Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`. Bindings are organized by behavioral type, supporting either encoding and decoding for a specific protocol or translation between protocols.
 
-Bindings have a `kind`, indicating how it should behave, such as:
+Bindings have a `kind`, indicating how they should behave, such as:
 
 - `proxy` - Handles the translate or encode behaviors between components.
-- `server` - Exists to decode a protocol on the inbound network stream, producing higher level application streams for each request.
+- `server` - Exists to decode a protocol on the inbound network stream, producing higher-level application streams for each request.
 - `client` - Receives inbound application streams and encodes each as a network stream.
-- `remote_server` - Exists to adapt `kafka` topic streams to higher level application streams. Read more in the [kafka-grpc binding](../reference/config/bindings/binding-kafka-grpc.md#summary).
+- `remote_server` - Exists to adapt `kafka` topic streams to higher-level application streams. Read more in the [kafka-grpc binding](../reference/config/bindings/binding-kafka-grpc.md#summary).
 - `cache_client` & `cache_server` - Combined provide a persistent cache of `kafka` messages per `topic` `partition` honoring the `kafka` `topic` configuration for message expiration and compaction. Read more in the [kafka binding](../reference/config/bindings/binding-kafka.md#cache-behavior).
 
 ### Routes
 
-A Route's matching conditions are defined in terms specific to each `binding` type with some common design principles. As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding or rejects the stream if no routes are viable.
+A Route's matching conditions are defined in terms specific to each `binding` type with some common design principles. As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding or rejects the stream if no routes are viable. Bindings can define a default `exit` for streams that do not match any route.
 
 ::: info Order Matters
-Messages on a data stream will use the first route with a matching `when` clause in the list. Put the more specific routes first and generic routes last. Often, that looks like a wildcard route last to catch any messages that don't have a previous matching route.
+Messages on a data stream will use the first route with a matching `when` condition in the list. Order the more specific routes first and generic routes last. Often, that looks like a wildcard route last to catch any messages that don't have a previous matching route.
 :::
-
-### Route Exit
-
-A route exists to direct messages on the stream to a desired exit point.
 
 ### When a Route matches
 
-Each route can list conditions (any match) to match entry data streams. Attributes like headers, metadata, source, destination, etc., are used `when` determining the correct `exit` for a message.
+Each route can list one or many conditions to match data streams. Attributes like headers, metadata, source, destination, etc., are used `when` determining the stream's correct [exit](#route-exit) for the stream.
 
-#### Path and Method matches
+A route matches if any of its `when` conditions match the data stream (any match). An individual condition in a route is matched if all parts of the condition match (all match). This means that if multiple `when` headers are supplied for HTTP routing, then all of those headers must match the specific when condition.
 
-Patterns for `path` and `method` routing require an exact match.
+#### Pattern matching
 
-- `/api/items`
-- `routeguide.RouteGuide/GetFeature`
+A condition will attempt to match the target stream exactly against the configured pattern. Routes with multiple patterns listed will match any defined pattern. Some route properties allow for wildcards in patterns and will match multiple values. A solo wildcard will match all incoming streams. MQTT topics allow naming per the [wildcard spec.](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901241)
 
-Wildcards in paths and method signatures `/*` will match multiple patterns.
+- path: [http-kafka], [sse-kafka]
+  - `/api/items`
+  - `/api/*`
+- method: [grpc-kafka], [kafka-grpc]
+  - `routeguide.RouteGuide/GetFeature`
+  - `routeguide.RouteGuide/*`
+- topic: [mqtt-kafka]
+  - `command/one`
+  - `command/#`
+  - `command/+/test`
+- client-id: [mqtt-kafka]
+  - `client-123`
+  - `client-*`
 
-- `/api/*`
-- `routeguide.RouteGuide/*`
+[http-kafka]:../reference/config/bindings/binding-http-kafka.md#routes
+[sse-kafka]:../reference/config/bindings/binding-sse-kafka.md#routes
+[grpc-kafka]:../reference/config/bindings/binding-grpc-kafka.md#routes
+[kafka-grpc]:../reference/config/bindings/binding-kafka-grpc.md#routes
+[mqtt-kafka]:../reference/config/bindings/binding-mqtt-kafka.md#routes
 
 ### Routing With extra params
 
@@ -82,9 +92,13 @@ In the [http-kafka binding](../reference/config/bindings/binding-http-kafka.md),
 
 A corresponding `routes[].when` object with a matching `GET` method and `location` path is also required for follow-up `GET` requests to return the same response as would have been returned if the `prefer: respond-async` request header had been omitted.
 
+### Route Exit
+
+A route exists to direct a data stream to a desired exit point. This is the next binding needed to parse the the stream data. Bindings like [tcp](../reference/config/bindings/binding-tcp.md) are frequently used to route incoming streams to different exit points. Once a valid exit point is determined messages can flow to the correct `exit` destination.
+
 ### Guarded Routes
 
-A route is considered guarded if a [guard](#guards) is specified. Any guard can be configured, enabling different use cases when protecting data sent over a stream.
+A route is considered `guarded` if a [guard](#guards) is specified. The guard condition short circuits any other route conditions and evaluates if a stream is allowed to use the route. If the `guarded` check fails, route evaluation falls through to the next defined route. Any guard can be configured, enabling different use cases when protecting data sent over a stream.
 
 ## Guards
 

@@ -111,6 +111,7 @@ List of roles required by each named guard to authorize this route.
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 #### when[].authority
 
