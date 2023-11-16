@@ -1,5 +1,5 @@
 ---
-shortTitle: http 
+shortTitle: http
 description: Zilla runtime http binding
 category:
   - Binding
@@ -156,10 +156,9 @@ options:
 
 #### access-control.allow
 
-> `object`
-
-Allowed cross-origin request origins, methods, headers and credentials.\
-Defaults to all origins, methods and headers, without credentials.
+> `object` | Default: all origins, methods and headers, without credentials
+ 
+Allowed cross-origin request origins, methods, headers and credentials.
 CORS allowed request origins, methods, headers and credentials for the `HTTP` protocol.
 
 ##### allow.origins
@@ -194,10 +193,9 @@ Maximum cache age (in seconds) for allowed headers and methods.
 
 #### access-control.expose
 
-> `object`
-
-Exposed cross-origin response headers.\
-Defaults to all response headers.
+> `object` | Default: all response headers
+ 
+Exposed cross-origin response headers.
 
 ##### expose.headers
 

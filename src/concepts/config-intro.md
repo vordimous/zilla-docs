@@ -140,11 +140,11 @@ bindings:
     kind: server
     options:
       host: 0.0.0.0
-      port: 
+      port:
         - 80
         - 443
     routes:
-        - when: 
+        - when:
             - port: 80
           exit: http_server
         - when:

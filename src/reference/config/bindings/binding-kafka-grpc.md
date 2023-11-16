@@ -120,10 +120,10 @@ Metadata header used to specify the idempotency key when adapting `kafka` topic 
 
 ##### idempotency.metadata
 
-> `string`
+> `string` | Default: `"idempotency-key"`.
 
-The `grpc` metadata header name for idempotency key.\
-Defaults to `"idempotency-key"`.
+The `grpc` metadata header name for idempotency key.
+
 
 #### options.correlation
 
@@ -139,31 +139,27 @@ Kafka request message correlation header names used when adapting `kafka` topic 
 
 ##### headers.service
 
-> `string`
-
-Kafka header name for `grpc` service.\
-Defaults to `"zilla:service"`.
+> `string` | Default: `"zilla:service"`
+ 
+Kafka header name for `grpc` service.
 
 ##### headers.method
 
-> `string`
-
-Kafka header name for `grpc` method.\
-Defaults to `"zilla:method"`.
+> `string` | Default: `"zilla:method"`
+ 
+Kafka header name for `grpc` method.
 
 ##### headers.correlation-id
 
-> `string`
-
-Kafka header name for request-response correlation identifier.\
-Defaults to `"zilla:correlation-id"`.
+> `string` | Default: `"zilla:correlation-id"`
+ 
+Kafka header name for request-response correlation identifier.
 
 ##### headers.reply-to
 
-> `string`
-
-Kafka header name for reply-to topic.\
-Defaults to `"zilla:reply-to"`.
+> `string` | Default: `"zilla:reply-to"`
+ 
+Kafka header name for reply-to topic.
 
 ### routes
 

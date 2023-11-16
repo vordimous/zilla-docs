@@ -1,5 +1,5 @@
 ---
-shortTitle: tls 
+shortTitle: tls
 description: Zilla runtime tls binding
 category:
   - Binding
@@ -156,10 +156,9 @@ Application protocols.
 
 ### options.mutual
 
-> `enum` [ "required", "requested", "none" ]
-
-Mutual authentication\
-Defaults to `"none"`.
+> `enum` [ "required", "requested", "none" ] | Default: `"none"`
+ 
+Mutual authentication
 
 ### exit
 

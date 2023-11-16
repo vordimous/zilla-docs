@@ -520,7 +520,7 @@ curl -v http://localhost:8080/tasks
 < HTTP/1.1 404 Not Found
 < Content-Length: 0
 < Access-Control-Allow-Origin: *
-< 
+<
 ```
 
 As you can see, the `GET /tasks` API is now secured against unauthorized access, _without_ leaking any information about failed security checks.

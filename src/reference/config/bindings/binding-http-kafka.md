@@ -1,5 +1,5 @@
 ---
-shortTitle: http-kafka 
+shortTitle: http-kafka
 description: Zilla runtime http-kafka binding
 category:
   - Binding
@@ -149,10 +149,9 @@ HTTP request header used to specify the idempotency key when adapting `http` req
 
 ##### idempotency.header
 
-> `string`
-
-HTTP request header name for idempotency key.\
-Defaults to `"idempotency-key"`.
+> `string` | Default: `"idempotency-key"`
+ 
+HTTP request header name for idempotency key.
 
 #### options.correlation
 
@@ -168,17 +167,15 @@ Kafka request message reply to and correlation id header names injected when ada
 
 ##### headers.reply-to
 
-> `string`
-
-Kafka header name for reply-to topic.\
-Defaults to `"zilla:reply-to"`.
+> `string` | Default: `"zilla:reply-to"`
+ 
+Kafka header name for reply-to topic.
 
 ##### headers.correlation-id
 
-> `string`
-
-Kafka header name for request-response correlation identifier.\
-Defaults to `"zilla:correlation-id"`.
+> `string` | Default: `"zilla:correlation-id"`
+ 
+Kafka header name for request-response correlation identifier.
 
 ### routes
 
@@ -391,10 +388,9 @@ Kafka topic name, optionally referencing path parameter such as `${params.topic}
 
 #### with.acks
 
-> `enum` [ "none", "leader_only", "in_sync_replicas" ]
-
-Kafka acknowledgement mode\
-Defaults to `"in_sync_replicas"`.
+> `enum` [ "none", "leader_only", "in_sync_replicas" ] | Default: `"in_sync_replicas"`
+ 
+Kafka acknowledgement mode
 
 #### with.key
 

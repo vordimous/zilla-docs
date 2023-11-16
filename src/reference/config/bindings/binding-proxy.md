@@ -1,5 +1,5 @@
 ---
-shortTitle: proxy 
+shortTitle: proxy
 description: Zilla runtime proxy binding
 category:
   - Binding

@@ -34,13 +34,13 @@
         async function attachEventSource() {
           const location = document.getElementById("location");
           const messages = document.getElementById("messages");
-  
+ 
           const es = new EventSource(`${location.value}`);
           const handleEvent = (event) => {
               var text = document.createTextNode(`${event.type}: ${event.data ? event.data : ""}`);
               var line = document.createElement("p");
               line.appendChild(text);
-    
+   
               messages.insertBefore(line, messages.firstChild);
             };
           es.onmessage = handleEvent;

@@ -1,5 +1,5 @@
 ---
-shortTitle: sse-kafka 
+shortTitle: sse-kafka
 description: Zilla runtime sse-kafka binding
 category:
   - Binding
@@ -187,10 +187,9 @@ Defines the SSE event syntax used when delivering Kafka messages to SSE clients.
 
 ##### event.id\*
 
-> `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ]
-
-Format of `id` field in `sse` `event`\
-Defaults to `"${etag}"`.
+> `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ] | Default: `"${etag}"`
+ 
+Format of `id` field in `sse` `event`
 
 ---
 

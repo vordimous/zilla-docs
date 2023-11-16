@@ -22,7 +22,7 @@ count=0;
 until [ "$result" == "$msg" ] || [ "$count" -eq "$timeout" ]; do
     result=$(curl -s -m 1 -d "$msg" -H "Content-Type: text/plain" -X "POST" $endpoint);
     echo "try:$((++count)), $result";
-    sleep 1; 
+    sleep 1;
 done
 docker logs zilla-sample;
 

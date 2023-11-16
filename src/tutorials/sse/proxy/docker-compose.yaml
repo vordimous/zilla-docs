@@ -27,7 +27,7 @@ services:
     image: busybox:latest
     depends_on:
       - sse-server
-    command: 
+    command:
       - "/bin/sh"
       - "-c"
       - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | nc sse-server 7001; echo "message sent, waiting 5 sec"; sleep 5; done'

@@ -38,7 +38,7 @@ services:
 
   kafka-init:
     image: bitnami/kafka:3.2
-    command: 
+    command:
       - "/bin/bash"
       - "-c"
       -  |
