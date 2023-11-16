@@ -1,5 +1,5 @@
 ---
-shortTitle: tls 
+shortTitle: tls
 description: Zilla runtime tls binding
 category:
   - Binding
@@ -33,7 +33,7 @@ tls_server:
 
 Defines a binding with `tls` protocol support, with `server`, `client` or `proxy` behavior.
 
-### Server behavior
+## Server behavior
 
 The `server` kind tls binding decodes encrypted `TLS` protocol on the inbound network stream, producing higher level cleartext application streams for each request.
 
@@ -41,7 +41,7 @@ Certificates and keys required to complete the `TLS` handshake are provided by a
 
 Conditional routes based on `tls` hostname authority or negotiated ALPN protocol are used to route these streams to an `exit` binding.
 
-### Client behavior
+## Client behavior
 
 The `client` kind `tls` binding receives inbound application streams and encodes each as an encrypted network stream via `TLS` protocol.
 
@@ -49,7 +49,7 @@ Certificates and keys required to complete the `TLS` handshake are provided by a
 
 Conditional routes based on `tls` hostname authority or negotiated ALPN protocol are used to route these streams to an `exit` binding.
 
-### Proxy behavior
+## Proxy behavior
 
 The `proxy` kind `tls` binding detects `ClientHello` `server_name` extension to provide TLS virtual hosting by routing based on server name.
 
@@ -156,10 +156,9 @@ Application protocols.
 
 ### options.mutual
 
-> `enum` [ "required", "requested", "none" ]
-
-Mutual authentication\
-Defaults to `"none"`.
+> `enum` [ "required", "requested", "none" ] | Default: `"none"`
+ 
+Mutual authentication
 
 ### exit
 
@@ -202,6 +201,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 ```yaml
 routes:

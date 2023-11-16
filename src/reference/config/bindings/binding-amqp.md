@@ -94,6 +94,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 ```yaml
 routes:
@@ -110,10 +111,9 @@ Link address.
 
 #### when[].capabilities
 
-> `enum` [ "send_only", "receive_only", "send_and_receive" ]
-
-Send or receive, or both.\
-Defaults to `"send_and_receive"`.
+> `enum` [ "send_only", "receive_only", "send_and_receive" ] | Default: `"send_and_receive"`
+ 
+Send or receive, or both.
 
 ### routes[].exit\*
 

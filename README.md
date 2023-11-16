@@ -10,17 +10,17 @@
 <h1 align="center">Event-driven API Gateway</h1>
 
 <div align="center">
-  
+ 
   [![Build Status][build-status-image]][build-status]
   [![Slack Community][community-image]][community-join]
-  
+ 
 </div>
 
 <h3 align="center">
   <a href="https://docs.aklivity.io/zilla/"><b>Documentation</b></a> &bull;
   <a href="https://docs.aklivity.io/zilla/latest/guides/install/"><b>Get Started</b></a> &bull;
-  <a href="https://github.com/aklivity/zilla-examples"><b>Examples</b></a> &bull; 
-  <a href="https://www.aklivity.io/blog"><b>Blog</b></a>  
+  <a href="https://github.com/aklivity/zilla-examples"><b>Examples</b></a> &bull;
+  <a href="https://www.aklivity.io/blog"><b>Blog</b></a> 
 </h3>
 <!-- markdownlint-restore -->
 
@@ -47,7 +47,7 @@ pnpm dev
 - Markdown linting
 
   run:
-  
+ 
   ```sh
   pnpm lint
   ```

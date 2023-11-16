@@ -1,5 +1,5 @@
 ---
-shortTitle: kafka 
+shortTitle: kafka
 description: Zilla runtime kafka binding
 category:
   - Binding
@@ -126,10 +126,9 @@ Topic name.
 
 #### topics[].defaultOffset
 
-> `enum` [ "live", "historical" ]
-
-Fetch offset to use for new consumers\
-Defaults to `"historical"`.
+> `enum` [ "live", "historical" ] | Default: `"historical"`
+ 
+Fetch offset to use for new consumers
 
 ### options.sasl
 
@@ -196,6 +195,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 #### when[].topic\*
 

@@ -38,7 +38,7 @@ services:
 
   kafka-init:
     image: bitnami/kafka:3.2
-    command: 
+    command:
       - "/bin/bash"
       - "-c"
       -  |
@@ -51,7 +51,7 @@ services:
     image: confluentinc/cp-kafkacat:7.1.9
     depends_on:
       - kafka
-    command: 
+    command:
       - "/bin/sh"
       - "-c"
       - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | kafkacat -P -b kafka:29092 -t events -k 1; echo "message sent, waiting 5 sec"; sleep 5; done'

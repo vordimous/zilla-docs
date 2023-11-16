@@ -26,6 +26,7 @@ html[data-theme=light] #app {
     --tab-nav-hover-color: var(--code-tabs-nav-hover-color);
     --tab-bg-color: #e6f0f9;
     --tab-nav-text-color: var(--code-tabs-nav-text-color);
+    --info-bg-color: var(--info-bg-color);
     .vp-footer img.logo {
         content: url("/assets/footer-logo.png");
     }
@@ -118,14 +119,14 @@ ul li p {
     .external-link-icon {
         display: none;
     }
-    
+   
 }
 
 
 .language-output {
     border-radius: 0px !important;
     background: transparent !important;
-    
+   
     pre {
         border-inline-start: 0.2rem solid #333;
         margin: 1rem 0;
@@ -134,7 +135,7 @@ ul li p {
         overflow-wrap: break-word;
         code {
             color: #666 !important;
-            
+           
         }
     }
 

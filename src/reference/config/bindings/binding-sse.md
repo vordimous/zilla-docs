@@ -1,5 +1,5 @@
 ---
-shortTitle: sse 
+shortTitle: sse
 description: Zilla runtime sse binding
 category:
   - Binding
@@ -65,10 +65,9 @@ options:
 
 ### options.retry
 
-> `integer`
-
-Retry delay (ms)\
-Defaults to `2000`.
+> `integer` | Default: `2000`
+ 
+Retry delay (ms)
 
 ### exit
 
@@ -114,6 +113,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 ```yaml
 routes:

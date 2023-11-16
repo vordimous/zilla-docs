@@ -1,5 +1,5 @@
 ---
-shortTitle: http 
+shortTitle: http
 description: Zilla runtime http binding
 category:
   - Binding
@@ -35,7 +35,7 @@ http_server:
 
 Defines a binding with `http` protocol support, with `server` or `client` behavior.
 
-### Server behavior
+## Server behavior
 
 The `server` kind `http` binding decodes `HTTP/1.1` protocol or `HTTP/2` protocol on the inbound network stream, producing higher level application streams for each request.
 
@@ -45,7 +45,7 @@ Authorization is enforced by a [`guard`](../../config/overview.md#guards) and th
 
 Conditional routes based on `http` request headers are used to route these application streams to an `exit` binding.
 
-### Client behavior
+## Client behavior
 
 The `client` kind `http` binding receives inbound application streams and encodes each request as a network stream via `HTTP/1.1` protocol. Note that the same network stream can be reused to encode multiple `HTTP/1.1` requests.
 
@@ -156,10 +156,9 @@ options:
 
 #### access-control.allow
 
-> `object`
-
-Allowed cross-origin request origins, methods, headers and credentials.\
-Defaults to all origins, methods and headers, without credentials.
+> `object` | Default: all origins, methods and headers, without credentials
+ 
+Allowed cross-origin request origins, methods, headers and credentials.
 CORS allowed request origins, methods, headers and credentials for the `HTTP` protocol.
 
 ##### allow.origins
@@ -194,10 +193,9 @@ Maximum cache age (in seconds) for allowed headers and methods.
 
 #### access-control.expose
 
-> `object`
-
-Exposed cross-origin response headers.\
-Defaults to all response headers.
+> `object` | Default: all response headers
+ 
+Exposed cross-origin response headers.
 
 ##### expose.headers
 
@@ -292,6 +290,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
+Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
 
 ```yaml
 routes:

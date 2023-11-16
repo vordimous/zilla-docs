@@ -124,13 +124,13 @@ zpm wrap
 
 #### --local-repository `<locaRepolDir>`
 
-> Defaults to `${user.home}/.m2/repository`
+> Default: `${user.home}/.m2/repository`
 
 Local Maven repository directory
 
 #### --remote-repository `<repoURL>`
 
-> Defaults to `https://maven.packages.aklivity.io`
+> Default: `https://maven.packages.aklivity.io`
 
 Remote Maven repository URL
 

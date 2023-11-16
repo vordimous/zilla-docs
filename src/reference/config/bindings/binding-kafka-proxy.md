@@ -1,5 +1,5 @@
 ---
-shortTitle: kafka-proxy 
+shortTitle: kafka-proxy
 description: Zilla runtime kafka-proxy binding
 icon: aky-zilla-plus
 category:

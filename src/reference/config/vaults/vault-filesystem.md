@@ -135,7 +135,7 @@ Relative path to keystore.
 
 > `string`
 
-Keystore type,\
+Keystore type.\
 defaults to `"pkcs12"`
 
 #### signers.password
