@@ -28,10 +28,6 @@ An MQTT client can use any Quality of Service flag.
 - QoS 1 - At least once
 - QoS 2 - Exactly once
 
-### Payload format? WIP
-
-An MQTT client can use payload format and schema indicators.
-
 ### MQTT over WebSocket
 
 The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections. Zilla natively handles WebSockets and can manage the MQTT protocol over an active connection.
