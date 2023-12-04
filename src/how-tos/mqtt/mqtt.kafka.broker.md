@@ -117,7 +117,7 @@ Export these env variables or overwrite them with your remote Kafka if you skipp
 
 ```output:no-line-numbers
 export KAFKA_HOST=host.docker.internal
-export KAFKA_PORT=29092
+export KAFKA_PORT=9092
 ```
 
 ### Bootstrap Kafka
@@ -223,18 +223,17 @@ With your `zilla.yaml` config, follow the [Zilla install instructions](../instal
 @tab Docker
 
 ```bash:no-line-numbers
---env KAFKA_HOST="$KAFKA_HOST" --env KAFKA_PORT="$KAFKA_PORT"
+--env KAFKA_HOST="host.docker.internal" --env KAFKA_PORT="9092"
 ```
 
 @tab Helm values.yaml
 
 ```yaml:no-line-numbers
-# use the values from $KAFKA_HOST $KAFKA_PORT variables
 extraEnv:
   - name: KAFKA_HOST
-    value: "host.docker.internal"
+    value: "kafka.zilla-kafka-broker.svc.cluster.local"
   - name: KAFKA_PORT
-    value: "29092"
+    value: "9092"
 ```
 
 :::

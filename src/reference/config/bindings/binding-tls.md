@@ -157,7 +157,7 @@ Application protocols.
 ### options.mutual
 
 > `enum` [ "required", "requested", "none" ] | Default: `"none"`
- 
+
 Mutual authentication
 
 ### exit

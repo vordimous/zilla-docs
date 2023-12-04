@@ -52,7 +52,8 @@ export default hopeTheme({
       attrs: true,
       chart: false,
       codetabs: true,
-      container: true,
+      component: true,
+      hint: true,
       figure: true,
       imgLazyload: true,
       imgSize: true,
@@ -61,6 +62,12 @@ export default hopeTheme({
       tabs: true,
       gfm: true,
       linkify: false,
+    },
+    components: {
+      components: [
+        "VPBanner",
+        "VPCard",
+      ],
     },
   },
 });

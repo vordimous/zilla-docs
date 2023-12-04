@@ -124,7 +124,6 @@ Metadata header used to specify the idempotency key when adapting `kafka` topic 
 
 The `grpc` metadata header name for idempotency key.
 
-
 #### options.correlation
 
 > `object`
@@ -140,25 +139,25 @@ Kafka request message correlation header names used when adapting `kafka` topic 
 ##### headers.service
 
 > `string` | Default: `"zilla:service"`
- 
+
 Kafka header name for `grpc` service.
 
 ##### headers.method
 
 > `string` | Default: `"zilla:method"`
- 
+
 Kafka header name for `grpc` method.
 
 ##### headers.correlation-id
 
 > `string` | Default: `"zilla:correlation-id"`
- 
+
 Kafka header name for request-response correlation identifier.
 
 ##### headers.reply-to
 
 > `string` | Default: `"zilla:reply-to"`
- 
+
 Kafka header name for reply-to topic.
 
 ### routes

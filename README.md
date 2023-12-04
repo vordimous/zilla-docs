@@ -47,7 +47,7 @@ pnpm dev
 - Markdown linting
 
   run:
- 
+
   ```sh
   pnpm lint
   ```
@@ -86,6 +86,5 @@ Copyright Aklivity, Inc. 2023, released under the [Apache 2.0 license](https://g
 
 [build-status-image]: https://github.com/aklivity/zilla/workflows/build/badge.svg
 [build-status]: https://github.com/aklivity/zilla/actions
-
 [community-image]: https://img.shields.io/badge/slack-@aklivitycommunity-blue.svg?logo=slack
 [community-join]: https://www.aklivity.io/slack

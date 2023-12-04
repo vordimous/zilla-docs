@@ -91,7 +91,7 @@ Conditional routes based on `http` request headers are used to route these netwo
 
 ### kind\*
 
-> `enum` [ "server",  "client" ]
+> `enum` [ "server", "client" ]
 
 Behave as an `http` `server` or `client`.
 
@@ -157,7 +157,7 @@ options:
 #### access-control.allow
 
 > `object` | Default: all origins, methods and headers, without credentials
- 
+
 Allowed cross-origin request origins, methods, headers and credentials.
 CORS allowed request origins, methods, headers and credentials for the `HTTP` protocol.
 
@@ -194,7 +194,7 @@ Maximum cache age (in seconds) for allowed headers and methods.
 #### access-control.expose
 
 > `object` | Default: all response headers
- 
+
 Exposed cross-origin response headers.
 
 ##### expose.headers

@@ -1,5 +1,7 @@
 ---
 description: Zilla lets you configure application-centric REST API endpoints that unlock Kafka event-driven architectures.
+prev: false
+next: /tutorials/rest/rest-intro.md
 ---
 
 # REST Kafka Proxy

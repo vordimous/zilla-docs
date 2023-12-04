@@ -22,7 +22,8 @@ The [Zilla Manager command line interface](./zpm-cli.md) uses the Zilla Manager 
 - [security.json](#security-json)
   - [secret](#secret)
 
-::: right \* required
+::: right
+\* required
 :::
 
 ::::
