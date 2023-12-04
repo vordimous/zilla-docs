@@ -127,7 +127,7 @@ Topic name.
 #### topics[].defaultOffset
 
 > `enum` [ "live", "historical" ] | Default: `"historical"`
- 
+
 Fetch offset to use for new consumers
 
 ### options.sasl

@@ -66,7 +66,7 @@ options:
 ### options.retry
 
 > `integer` | Default: `2000`
- 
+
 Retry delay (ms)
 
 ### exit

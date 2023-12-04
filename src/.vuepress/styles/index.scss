@@ -11,7 +11,7 @@ html[data-theme=dark] #app {
     --info-bg-color: var(--bg-color);
     --tip-bg-color: #001c00;
     --warning-bg-color: #1d1500;
-    --danger-bg-color: #340c0d;
+    --caution-bg-color: #340c0d;
     .vp-footer img.logo {
         content: url("/assets/footer-logo-white.png");
     }
@@ -97,6 +97,7 @@ ul li p {
         margin-left: .2em;
     }
 }
+
 // Zilla plus container styles
 .zilla-plus-badge.hint-container.info {
     border-color: #0e5c49;
@@ -122,7 +123,12 @@ ul li p {
    
 }
 
+// Fix VPCard spacing
+.vp-card {
+    max-width: 330px;
+}
 
+// Style text output in a code block
 .language-output {
     border-radius: 0px !important;
     background: transparent !important;
@@ -135,7 +141,6 @@ ul li p {
         overflow-wrap: break-word;
         code {
             color: #666 !important;
-           
         }
     }
 

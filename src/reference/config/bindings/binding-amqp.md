@@ -112,7 +112,7 @@ Link address.
 #### when[].capabilities
 
 > `enum` [ "send_only", "receive_only", "send_and_receive" ] | Default: `"send_and_receive"`
- 
+
 Send or receive, or both.
 
 ### routes[].exit\*

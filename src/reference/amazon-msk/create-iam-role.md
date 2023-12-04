@@ -107,6 +107,6 @@ In the `Policy editor` specify `JSON` and add the below policy.
 
 Click `Create policy` to create the inline policy so it shows in the `Permissions` for `my-role`.
 
-::: danger
+::: caution
 Make sure to limit your policies to least privilege, granting only the permissions necessary. This includes narrowing the regular expressions to match only the resources needed.
 :::

@@ -1,5 +1,7 @@
 ---
 description: This guide will walk through each unique gRPC message request and response design and how Zilla is configured to manage the connection for each.
+prev: false
+next: /tutorials/grpc/grpc-intro.md
 ---
 
 # gRPC Kafka Proxy

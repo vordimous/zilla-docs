@@ -188,7 +188,7 @@ Defines the SSE event syntax used when delivering Kafka messages to SSE clients.
 ##### event.id\*
 
 > `enum` [ `"${etag}"`, `"["${base64(key)}","${etag}"]"` ] | Default: `"${etag}"`
- 
+
 Format of `id` field in `sse` `event`
 
 ---

@@ -8,6 +8,7 @@ tag:
 ---
 
 # grpc-kafka Binding
+
 <!-- markdownlint-disable MD024 -->
 
 Zilla runtime grpc-kafka binding.
@@ -155,7 +156,7 @@ Metadata header used to specify the idempotency key when adapting `grpc` request
 ##### idempotency.metadata
 
 > `string` | Default: `"idempotency-key"`
- 
+
 The `grpc` metadata header name for idempotency key.
 
 #### options.correlation
@@ -173,25 +174,25 @@ Kafka request message reply to and correlation id header names injected when ada
 ##### headers.service
 
 > `string` | Default: `"zilla:service"`
- 
+
 Kafka header name for `grpc` service.
 
 ##### headers.method
 
 > `string` | Default: `"zilla:method"`
- 
+
 Kafka header name for `grpc` method.
 
 ##### headers.correlation-id
 
 > `string` | Default: `"zilla:correlation-id"`
- 
+
 Kafka header name for request-response correlation identifier.
 
 ##### headers.reply-to
 
 > `string` | Default: `"zilla:reply-to"`
- 
+
 Kafka header name for reply-to topic.
 
 ### routes
@@ -386,7 +387,7 @@ The name of a Kafka topic for requests.
 #### with.acks
 
 > `enum` [ "none", "leader_only", "in_sync_replicas" ] | Default: `"in_sync_replicas"`
- 
+
 Kafka acknowledgment mode
 
 #### with.key
