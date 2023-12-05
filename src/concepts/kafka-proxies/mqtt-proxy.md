@@ -18,24 +18,15 @@ A Zilla MQTT server can manage client sessions and broker all traffic, adhering 
 
 ### Protocol versions
 
-An MQTT client can use either the [MQTT v5.0 Specification].
-
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-[MQTT v3.1.1 Specification] support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
-:::
-
-[MQTT v5.0 Specification]:https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
-[MQTT v3.1.1 Specification]:http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html
-[Zilla roadmap]:https://github.com/orgs/aklivity/projects/4?pane=issue&itemId=41583155
-[Zilla repo]:https://github.com/aklivity/zilla/releases
+An MQTT client can use either the [MQTT v5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html) and [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) specifications.
 
 ### QOS
 
-An MQTT client can use the "At most once (QoS 0)" Quality of Service flag.
+An MQTT client can use any Quality of Service flag.
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-At least once (QoS 1) and Exactly once (QoS 2) delivery support is currently on the [Zilla roadmap]. Star and watch the [Zilla repo] for new releases!
-:::
+- QoS 0 - At most once
+- QoS 1 - At least once
+- QoS 2 - Exactly once
 
 ### MQTT over WebSocket
 
