@@ -119,6 +119,40 @@ export const enSidebar = sidebar({
       ],
     },
     {
+      text: "Secure Public Access",
+      icon: "aky-zilla-plus",
+      link: "concepts/kafka-proxies/secure-public-access.md",
+      children: [
+        {
+          text: "Overview",
+          icon: "aky-zilla-plus",
+          link: "concepts/kafka-proxies/secure-public-access.md",
+        },
+        {
+          text: "Amazon MSK",
+          collapsible: true,
+          icon: "aky-zilla-plus",
+          prefix: "how-tos/amazon-msk/secure-public-access/",
+          link: "how-tos/amazon-msk/secure-public-access/production.md",
+          children: [
+            {
+              text: "Overview",
+              icon: "aky-zilla-plus",
+              link: "overview.md",
+            },
+            "development.md",
+            "production.md",
+            "production-mutual-tls.md",
+          ],
+        },
+        {
+          text: "Confluent Cloud",
+          icon: "aky-zilla-plus",
+          link: "how-tos/confluent-cloud/secure-public-access.md",
+        },
+      ],
+    },
+    {
       text: "Kafka Proxying",
       link: "concepts/kafka-proxies/rest-proxy.md",
       children: [
@@ -218,29 +252,7 @@ export const enSidebar = sidebar({
             },
           ],
         },
-        {
-          text: "Amazon MSK Public Proxy",
-          collapsible: true,
-          icon: "aky-zilla-plus",
-          prefix: "how-tos/amazon-msk/",
-          link: "how-tos/amazon-msk/public-proxy.md",
-          children: [
-            {
-              text: "Overview",
-              icon: "aky-zilla-plus",
-              link: "public-proxy.md",
-            },
-            "development.md",
-            "production.md",
-            "production-mutual-tls.md",
-          ],
-        },
-        {
-          text: "Amazon MSK Private Proxy",
-          icon: "aky-zilla-plus",
-          link: "how-tos/amazon-msk/private-proxy.md",
-        },
-      ],
+      ]
     },
     {
       text: "Reference",
@@ -252,11 +264,7 @@ export const enSidebar = sidebar({
         "config/guards/",
         "config/vaults/",
         "config/telemetry/",
-        {
-          text: "Amazon MSK",
-          link: "amazon-msk/",
-        },
-        "troubleshooting/",
+        "troubleshooting/aws.md",
       ],
     },
   ],

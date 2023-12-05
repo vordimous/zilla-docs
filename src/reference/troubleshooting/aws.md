@@ -2,15 +2,15 @@
 description: Common errors and how to handle them
 ---
 
-# Amazon MSK Troubleshooting
+# AWS Troubleshooting
 
 ::: note Table of contents
 
 - [Why does CloudFormation stack creation timeout and rollback?](#why-does-cloudformation-stack-creation-timeout-and-rollback)
-- [Why does my SSH client reject access to the MSK Proxy instances?](#why-does-my-ssh-client-reject-access-to-the-msk-proxy-instances)
-- [Why does my SSH client timeout when attempting to access the MSK Proxy instances?](#why-does-my-ssh-client-timeout-when-attempting-to-access-the-msk-proxy-instances)
-- [Why does the `zilla-plus` service keep restarting on the MSK Proxy instances?](#why-does-the-zilla-plus-service-keep-restarting-on-the-msk-proxy-instances)
-- [Why does my Kafka Client fail to connect via Public MSK Proxy?](#why-does-my-kafka-client-fail-to-connect-via-public-msk-proxy)
+- [Why does my SSH client reject access to the Zilla proxy instances?](#why-does-my-ssh-client-reject-access-to-the-zilla-proxy-instances)
+- [Why does my SSH client timeout when attempting to access the Zilla proxy instances?](#why-does-my-ssh-client-timeout-when-attempting-to-access-the-zilla-proxy-instances)
+- [Why does the `zilla-plus` service keep restarting on the Zilla proxy instances?](#why-does-the-zilla-plus-service-keep-restarting-on-the-zilla-proxy-instances)
+- [Why does my Kafka Client fail to connect via Zilla proxy?](#why-does-my-kafka-client-fail-to-connect-via-zilla-proxy)
 
 :::
 
@@ -20,11 +20,11 @@ The CloudFormation stack will timeout if the launched instances are unable to ca
 
 This can occur if the target VPC has no attached Internet Gateway, or if the main Route Table for the VPC has not been updated to add a default route to the Internet Gateway.
 
-Make sure to [attach the Internet Gateway](../amazon-msk/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../amazon-msk/create-vpc.md#route-to-the-internet-gateway), then try again.
+Make sure to [attach the Internet Gateway](../aws/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../aws/create-vpc.md#route-to-the-internet-gateway), then try again.
 
-## Why does my SSH client reject access to the MSK Proxy instances?
+## Why does my SSH client reject access to the Zilla proxy instances?
 
-The SSH client will actively reject unauthorized connection attempts to the MSK Proxy instances.
+The SSH client will actively reject unauthorized connection attempts to the Zilla proxies.
 
 This can occur if you are not using the same Launch Key as specified during CloudFormation stack creation.
 
@@ -32,27 +32,26 @@ This can occur if you are not using the `ec2-user` username to login via SSH.
 
 Try again, making sure to use the same Launch Key as specified during CloudFormation stack creation, and the username `ec2-user`.
 
-## Why does my SSH client timeout when attempting to access the MSK Proxy instances?
+## Why does my SSH client timeout when attempting to access the Zilla proxy instances?
 
-The SSH client will timeout if some or all of the network traffic is being dropped between the launched MSK Proxy instances and the SSH client.
+The SSH client will timeout if some or all of the network traffic is being dropped between the launched Zilla proxies and the SSH client.
 
 This can occur if the target VPC has no attached Internet Gateway, or if the main Route Table for the VPC has not been updated to add a default route to the Internet Gateway.
 
-Make sure to [attach the Internet Gateway](../amazon-msk/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../amazon-msk/create-vpc.md#route-to-the-internet-gateway), then try again.
+Make sure to [attach the Internet Gateway](../aws/create-vpc.md#attach-the-internet-gateway) and [route to the Internet Gateway](../aws/create-vpc.md#route-to-the-internet-gateway), then try again.
 
-## Why does the `zilla-plus` service keep restarting on the MSK Proxy instances?
+## Why does the `zilla-plus` service keep restarting on the Zilla proxy instances?
 
-This can occur if the IAM Role associated with your MSK Proxy instances has insufficient privileges to use the AWS Services needed by MSK Proxy.
+This can occur if the IAM Role associated with your Zilla proxies has insufficient privileges to use the AWS Services needed by Zilla proxy.
 
-Check the policies attached to your MSK Proxy instance IAM Role based on the deployment type, then try again.
+Check the policies attached to your Zilla proxy instance IAM Role based on the deployment type, then try again.
 
-- [Private MSK Proxy](../../how-tos/amazon-msk/private-proxy.md#create-the-msk-proxy-iam-security-role)
-- Public MSK Proxy
-  - [Development](../../how-tos/amazon-msk/development.md#create-the-msk-proxy-iam-security-role)
-  - [Production](../../how-tos/amazon-msk/production.md#create-the-msk-proxy-iam-security-role)
-  - [Production (Mutual TLS)](../../how-tos/amazon-msk/production-mutual-tls.md#create-the-msk-proxy-iam-security-role)
+- Zilla proxy
+  - [Development](../../how-tos/amazon-msk/secure-public-access/development.md#create-the-zilla-proxy-iam-security-role)
+  - [Production](../../how-tos/amazon-msk/secure-public-access/production.md#create-the-zilla-proxy-iam-security-role)
+  - [Production (Mutual TLS)](../../how-tos/amazon-msk/secure-public-access/production-mutual-tls.md#create-the-zilla-proxy-iam-security-role)
 
-## Why does my Kafka Client fail to connect via Public MSK Proxy?
+## Why does my Kafka Client fail to connect via Zilla proxy?
 
 This can occur if the DNS names are not setup correctly to point to the NLB Load Balancer deployed via a provided CloudFormation template, or if the `client.properties` file is not configured to use the correct `keystore` or `truststore`.
 
@@ -82,7 +81,7 @@ openssl s_client \
   -key client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../aws/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../aws/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../aws/create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 openssl s_client \
@@ -116,7 +115,7 @@ kcat \
   -X ssl.key.location=client.key.pem
 ```
 
-Note: if you followed [Create Server Certificate (ACM)](../amazon-msk/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../amazon-msk/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../amazon-msk/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
+Note: if you followed [Create Server Certificate (ACM)](../aws/create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](../aws/create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](../aws/create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 kcat \

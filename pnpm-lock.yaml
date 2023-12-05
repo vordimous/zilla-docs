@@ -14,6 +14,12 @@ devDependencies:
   '@vuepress/plugin-google-analytics':
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0
+  '@vuepress/plugin-register-components':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
+  '@vuepress/utils':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
   link-checker:
     specifier: ^1.4.2
     version: 1.4.2
@@ -2608,6 +2614,18 @@ packages:
     dependencies:
       '@vuepress/core': 2.0.0-rc.0
       prismjs: 1.29.0
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - supports-color
+      - typescript
+    dev: true
+
+  /@vuepress/plugin-register-components@2.0.0-rc.0:
+    resolution: {integrity: sha512-yN71x93j8ce99bqOwHn3lVfgiwsfhv21ByW/3em1kGXANjzOOoXOvt7ITbXNa5g6bsfjdJpoeUkUtFPwfK8dNA==}
+    dependencies:
+      '@vuepress/core': 2.0.0-rc.0
+      '@vuepress/utils': 2.0.0-rc.0
+      chokidar: 3.5.3
     transitivePeerDependencies:
       - '@vue/composition-api'
       - supports-color

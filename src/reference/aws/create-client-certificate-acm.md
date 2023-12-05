@@ -195,12 +195,12 @@ aws secretsmanager create-secret \
   --tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
 ```
 
-This secret can now be used by the Zilla Plus (Public MSK Proxy) to resolve private keys and their corresponding signed certificates to support TLS client authentication.
+This secret can now be used by the Zilla Plus for Amazon MSK to resolve private keys and their corresponding signed certificates to support TLS client authentication.
 
 ::: info
 Note the ARN of the newly created secret for the client certificate's private key.
 :::
 
 ::: warning
-In the example above, private certificates are valid for `365 days`, so you will need to renew the certificate and update the secret value accordingly before expiration. The latest secret value and corresponding private certificate are obtained automatically upon restarting the MSK Proxy instance.
+In the example above, private certificates are valid for `365 days`, so you will need to renew the certificate and update the secret value accordingly before expiration. The latest secret value and corresponding private certificate are obtained automatically upon restarting the Zilla proxy instance.
 :::

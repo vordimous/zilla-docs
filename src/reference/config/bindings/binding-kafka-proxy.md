@@ -10,7 +10,7 @@ tag:
 
 # kafka-proxy Binding
 
-[Available in Zilla Plus<sup>+</sup>](https://www.aklivity.io/products/zilla-plus)
+[Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
 
 Zilla runtime kafka-proxy binding.
