@@ -73,13 +73,41 @@ Now you will need to [Setup AWS PrivateLink](https://docs.aws.amazon.com/vpc/lat
 
 Finish the `zilla_plus_privatelink_service` connection wizard with the `PrivateLink Endpoint ID` found in your `my-cce-privatelink-vpce` from the [Endpoints table](https://console.aws.amazon.com/vpcconsole/home#Endpoints:)
 
+### Create the Route53 Hosted zone
+
+> This creates a Route53 Hosted zone to for a a generic DNS record can point to the Confluent Cloud with AWS PrivateLink used by the <ZillaPlus/> proxy.
+
+Follow the [Create Hosted Zone](https://console.aws.amazon.com/route53/v2/hostedzones#CreateHostedZone) wizard with the following parameters and defaults.
+
+- Domain name: `<Region>.aws.private.confluent.cloud`
+- Type: `Private`
+- Region: `<CC Cluster Region>`
+- VPC: `my-cce-privatelink-vpc`
+- Create the hosted zone
+
+You will need to add an A Record for the wildcard to your `zilla_plus_privatelink_service` `my-cce-privatelink-vpce` VPC Endpoint has a DNS.
+
+- Record Name: `*`
+- Record Type: `A`
+- Alias: `True`
+- Route Traffic: `Alias to VPC Endpoint`
+  - Region: `<CC Cluster Region>`
+  - Select the `*.vpce-svc-*` DNS address
+- Routing policy: `Simple Routing`
+- Evaluate Target Heath: `Yes`
+- Create the record
+
 ### Create the <ZillaPlus/> proxy security group
 
 > This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
 
 A VPC security group is needed for the <ZillaPlus/> proxies when they are launched.
 
-Follow the [Create Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html#creating-security-groups) docs with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
+Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/home#CreateSecurityGroup:) wizard with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
+
+::: note Check your selected region
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+:::
 
 - Name: `my-zilla-proxy-sg`
 - VPC: `my-cce-privatelink-vpc`
@@ -91,30 +119,14 @@ Follow the [Create Security Group](https://docs.aws.amazon.com/vpc/latest/usergu
 - Add Inbound Rule
   - Type: `SSH`
   - Source type: `My IP`
+- Create the Security Group
 
-### Update the default security group rules
+Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table. Select the `my-zilla-proxy-sg` security group you just created. You will create an inbound rule to allow all traffic inside itself.
 
-> This allows the <ZillaPlus/> proxies to communicate with your Confluent Cloud cluster.
-
-Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table.
-
-::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
-:::
-
-Filter the security groups by selecting a `VPC` and select the `default` security group.
-
-- VPC: `my-cce-privatelink-vpc`
-- Security Group: `default`
-
-#### Add a Custom TCP Rule
-
-Add this Inbound Rule to allow the <ZillaPlus/> proxies to communicate with the Confluent Cloud cluster.
-
-- Type: `Custom TCP`
-- Port Range: `9092`
-- Source type: `Custom`
-- Source: `my-zilla-proxy-sg`
+- Add Inbound Rule
+  - Type: `All Traffic`
+  - Source type: `Custom`
+  - Source: `my-zilla-proxy-sg`
 
 ### Create the <ZillaPlus/> proxy IAM security role
 
@@ -196,7 +208,8 @@ We need a TLS Server Certificate for your custom DNS wildcard domain that can be
 Follow the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
 
 ::: info
-Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
+Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template. 
+Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
 :::
 
 ## Deploy the Zilla Plus Secure Public Access Proxy
@@ -235,14 +248,14 @@ Parameters:
 
 - Network Configuration
   - VPC: `my-cce-privatelink-vpc`
-  - Subnets: `my-cc-cluster-public-1a` `my-cc-cluster-public-1b`
+  - Subnets: `my-cce-privatelink-subnet-public-1a` `my-cce-privatelink-subnet-public-1b`
 - Confluent Cloud Configuration
-  - Bootstrap server: `<Cluster ID>.us-east-1.aws.private.confluent.cloud:9092` \*1
+  - Bootstrap server: `<Cluster ID>.<Region>.aws.private.confluent.cloud:9092` \*1
 - Zilla Plus Configuration
   - Instance count: `2`
   - Instance type: `t3.small` \*2
   - Role: `aklivity-zilla-proxy`
-  - Security Groups: `my-zilla-proxy`
+  - Security Groups: `my-zilla-proxy-sg`
   - Secrets Manager Secret ARN: `<TLS certificate private key secret ARN>` \*3
   - Public Wildcard DNS: `*.example.aklivity.io` \*4
   - Public Port: `9092`
@@ -250,7 +263,7 @@ Parameters:
 - \*Configuration Reference
   1. Follow the steps in the [Test Connectivity to Confluent Cloud](https://docs.confluent.io/cloud/current/networking/testing.html#test-connectivity-to-ccloud) docs to get your clusters Bootstrap server URL.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide.
+  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide. Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
   4. Replace with your own custom wildcard DNS pattern.
   5. Follow the [Create Key Pair](../../reference/aws/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
 
@@ -286,22 +299,48 @@ ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 
 After logging in via SSH, check the status of the `zilla-plus` system service.
 
+::: tabs
+
+@tab Service is running
+
+Verify that the `zilla-plus` service is active and logging output similar to that shown below.
+
 ```bash:no-line-numbers
 systemctl status zilla-plus.service
 ```
 
-Verify that the `zilla-plus` service is active and logging output similar to that shown below.
-
 ```output:no-line-numbers
 zilla-plus.service - Zilla Plus
    Loaded: loaded (/etc/systemd/system/zilla-plus.service; enabled; vendor preset: disabled)
-   Active: active (running) since Tue 2021-08-24 20:56:51 UTC; 1 day 19h ago
- Main PID: 1803 (java)
-   CGroup: /system.slice/zilla-plus.service
-           └─...
-
-Aug 26 06:56:54 ip-10-0-3-104.ec2.internal zilla[1803]: Recorded usage for record id ...
+   Active: active (running) since...
 ```
+
+@tab Check Ports
+
+Check for the active ports with `netstat`.
+
+```bash:no-line-numbers
+netstat -ntlp
+```
+
+```output:no-line-numbers
+tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
+```
+
+@tab Check Logs
+
+You can get an stdout dump of the `zilla-plus.service` using `journalctl`.
+
+```bash:no-line-numbers
+journalctl -e -u zilla-plus.service | tee -a /tmp/zilla.log
+```
+
+```output:no-line-numbers
+systemd[1]: Started zilla-plus.service - Zilla Plus.
+...
+```
+
+:::
 
 Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template.
 
@@ -387,7 +426,7 @@ We can now verify that the Kafka client can successfully communicate with your C
 If using the wildcard DNS pattern `*.example.aklivity.io`, then we use the following as TLS bootstrap server names for the Kafka client:
 
 ```text:no-line-numbers
-b-1.example.aklivity.io:9096,b-2.example.aklivity.io:9096,b-3.example.aklivity.io:9096
+b-1.example.aklivity.io:9092,b-2.example.aklivity.io:9092,b-3.example.aklivity.io:9092
 ```
 
 ::: warning
@@ -474,7 +513,7 @@ You can use [CloudWatch](https://console.aws.amazon.com/cloudwatch) to create a 
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for Amazon MSK` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Secure Public Access` fulfillment option
+- Select the `CloudFormation Template` fulfillment option with the `Secure Public Access` template.
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`

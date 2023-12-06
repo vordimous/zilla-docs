@@ -93,7 +93,7 @@ Private Certificate Authority: `Mutual Authentication CA`
 
 A VPC security group is needed for the <ZillaPlus/> proxies when they are launched.
 
-Follow the [Create Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html#creating-security-groups) docs with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
+Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/home#CreateSecurityGroup:) wizard with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
 
 - VPC: `my-msk-cluster-vpc`
 - Name: `my-zilla-proxy-sg`
