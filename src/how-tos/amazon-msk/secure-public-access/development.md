@@ -51,7 +51,7 @@ Check out the [Troubleshooting](../../../reference/troubleshooting/aws.md) guide
 
 An MSK cluster is needed for secure remote access via the internet. You can skip this step if you have already created an MSK cluster with equivalent configuration.
 
-Follow the [Create MSK Cluster](../../../reference/aws/create-msk-cluster.md) guide to setup the a new MSK cluster. We will use the bellow resource names to reference the AWS resources needed in this guide.
+Follow the [Create MSK Cluster](../../../reference/aws/create-msk-cluster.md) guide to setup the a new MSK cluster. We will use the below resource names to reference the AWS resources needed in this guide.
 
 - Cluster Name: `my-msk-cluster`
 - Access control methods: `Unauthenticated access`

@@ -94,7 +94,7 @@ A corresponding `routes[].when` object with a matching `GET` method and `locatio
 
 ### Route Exit
 
-A route exists to direct a data stream to a desired exit point. This is the next binding needed to parse the the stream data. Bindings like [tcp](../reference/config/bindings/binding-tcp.md) are frequently used to route incoming streams to different exit points. Once a valid exit point is determined messages can flow to the correct `exit` destination.
+A route exists to direct a data stream to a desired exit point. This is the next binding needed to parse the stream data. Bindings like [tcp](../reference/config/bindings/binding-tcp.md) are frequently used to route incoming streams to different exit points. Once a valid exit point is determined messages can flow to the correct `exit` destination.
 
 ### Guarded Routes
 

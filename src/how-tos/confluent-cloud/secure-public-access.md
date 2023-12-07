@@ -45,7 +45,7 @@ Check out the [Troubleshooting](../../reference/troubleshooting/aws.md) guide if
 
 > This creates your Confluent Cloud cluster with AWS PrivateLink in preparation for secure access via the internet.
 
-An Confluent Cloud cluster deployed in AWS is needed for secure remote access via the internet. The [Confluent Cloud Quickstart](https://docs.confluent.io/cloud/current/get-started/index.html) will walk you through creating one. You can skip this step if you have already created an Confluent Cloud cluster with equivalent configuration. We will use the bellow resource names to reference the AWS resources needed in this guide.
+An Confluent Cloud cluster deployed in AWS is needed for secure remote access via the internet. The [Confluent Cloud Quickstart](https://docs.confluent.io/cloud/current/get-started/index.html) will walk you through creating one. You can skip this step if you have already created an Confluent Cloud cluster with equivalent configuration. We will use the below resource names to reference the AWS resources needed in this guide.
 
 - Cluster Name: `my-cc-cluster`
 - Cluster Type: `Enterprise`
@@ -57,13 +57,13 @@ Your Confluent Cloud Enterprise cluster will need a network connection. You will
   - Name: `zilla_plus_privatelink_service`
   - Save the `PrivateLink Service Id`
 
-Confluent Cloud Enterprise needs an AWS PrivateLink connection, for this we will [Create a VPC plus other VPC resources](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html#create-vpc-and-other-resources) with the bellow resource names.
+Confluent Cloud Enterprise needs an AWS PrivateLink connection, for this we will [Create a VPC plus other VPC resources](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html#create-vpc-and-other-resources) with the below resource names.
 
 - Name tag auto-generation: `my-cce-privatelink`
 - VPC endpoints: `none`
 - Create the VPC
 
-Now you will need to [Setup AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/create-interface-endpoint.html) with the bellow resource names.
+Now you will need to [Setup AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/create-interface-endpoint.html) with the below resource names.
 
 - Endpoint Name: `my-cce-privatelink-vpce`
 - Service Name: the `PrivateLink Service Id` value you saved earlier
@@ -75,7 +75,7 @@ Finish the `zilla_plus_privatelink_service` connection wizard with the `PrivateL
 
 ### Create the Route53 Hosted zone
 
-> This creates a Route53 Hosted zone to for a a generic DNS record can point to the Confluent Cloud with AWS PrivateLink used by the <ZillaPlus/> proxy.
+> This creates a Route53 Hosted zone to for a generic DNS record can point to the Confluent Cloud with AWS PrivateLink used by the <ZillaPlus/> proxy.
 
 Follow the [Create Hosted Zone](https://console.aws.amazon.com/route53/v2/hostedzones#CreateHostedZone) wizard with the following parameters and defaults.
 
