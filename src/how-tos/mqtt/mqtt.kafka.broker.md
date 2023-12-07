@@ -113,7 +113,7 @@ You can check the [Kafka UI](http://localhost:8080/ui/clusters/local/all-topics)
 
 You can use your own Kafka or set up a local Kafka with [kafka.broker](https://github.com/aklivity/zilla-examples/releases/latest/download/kafka.broker.tar.gz) and follow the setup instructions in the `README.md`.
 
-Export these env variables or overwrite them with your remote Kafka if you skipped the local setup.
+Export these environment variables or overwrite them with your remote Kafka if you skipped the local setup.
 
 ```output:no-line-numbers
 export KAFKA_HOST=host.docker.internal
@@ -147,7 +147,7 @@ This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../
 [More on binding-tcp](../../reference/config/bindings/binding-tcp.md)
 :::
 
-A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handle any MQTT over websocket using the `mqtt` protocol. The [mqtt](../../reference/config/bindings/binding-mqtt.md) binding then handles all of the MQTT message traffic that needs to go to Kafka.
+A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handle any MQTT over WebSocket using the `mqtt` protocol. The [mqtt](../../reference/config/bindings/binding-mqtt.md) binding then handles all of the MQTT message traffic that needs to go to Kafka.
 
 ```yaml{17,22}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml{21-44} -->
@@ -160,7 +160,7 @@ A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handl
 
 ### Service definition
 
-The service definition defines how the clients using this service will interact with Kafka through Zilla. The required set of Kafka topics are defined in the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) where Zilla manages any MQTT required features. A client identity can be determined by pulling the identifier out of the topic using th [options.clients](../../reference/config/bindings/binding-mqtt-kafka.md#options-clients) property.
+The service definition defines how the clients using this service will interact with Kafka through Zilla. The required set of Kafka topics are defined in the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) where Zilla manages any MQTT required features. A client identity can be determined by pulling the identifier out of the topic using the [options.clients](../../reference/config/bindings/binding-mqtt-kafka.md#options-clients) property.
 
 ```yaml{7-9,21}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml{46-68} -->

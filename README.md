@@ -60,6 +60,10 @@ pnpm dev
   vale src
   ```
 
+  ```sh
+  vale --ignore-syntax src/.vuepress/sidebar/en.ts
+  ```
+
 - Link checking
 
   Install [Lychee](https://github.com/lycheeverse/lychee) then run:

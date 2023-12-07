@@ -5,7 +5,7 @@ description: Setup connectivity to your MSK cluster via the internet from your l
 
 # Development
 
-[Available in Zilla Plus<sup>+</sup>](https://www.aklivity.io/products/zilla-plus)
+[Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
 
 ::: tip Estimated time to complete 20-30 minutes.
@@ -16,9 +16,9 @@ description: Setup connectivity to your MSK cluster via the internet from your l
 
 ## Overview
 
-The [Zilla Plus (Public MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
+The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
 
-In this guide we will deploy the Zilla Plus (Public MSK Proxy) and verify locally trusted public internet connectivity to your MSK cluster from a Kafka client in your development environment, using the wildcard domain `*.aklivity.example.com`.
+In this guide we will deploy the Zilla Plus for Amazon MSK Secure Public Access proxy and verify locally trusted public internet connectivity to your MSK cluster from a Kafka client in your development environment, using the wildcard domain `*.aklivity.example.com`.
 
 ### AWS services used
 
@@ -36,13 +36,13 @@ Default [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_s
 Before setting up internet access to your MSK Cluster, you will need the following:
 
 - an MSK Cluster configured for TLS encrypted client access
-- subscription to Zilla Plus (Public MSK Proxy) via AWS Marketplace
-- an VPC security group for MSK Proxy instances
-- an IAM security role for MSK Proxy instances
+- subscription to Zilla Plus for Amazon MSK via AWS Marketplace
+- an VPC security group for the <ZillaPlus/> proxies
+- an IAM security role for the <ZillaPlus/> proxies
 - permission to modify local DNS resolution files, such as `/etc/hosts` on MacOS
 
 ::: tip
-Check out the [Troubleshooting](../../reference/troubleshooting/amazon-msk.md) guide if you run into any issues.
+Check out the [Troubleshooting](../../../reference/troubleshooting/aws.md) guide if you run into any issues.
 :::
 
 ### Create the MSK Cluster
@@ -51,7 +51,7 @@ Check out the [Troubleshooting](../../reference/troubleshooting/amazon-msk.md) g
 
 An MSK cluster is needed for secure remote access via the internet. You can skip this step if you have already created an MSK cluster with equivalent configuration.
 
-Follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-cluster.md) guide to setup the a new MSK cluster. We will use the bellow resource names to reference the AWS resources needed in this guide.
+Follow the [Create MSK Cluster](../../../reference/aws/create-msk-cluster.md) guide to setup the a new MSK cluster. We will use the below resource names to reference the AWS resources needed in this guide.
 
 - Cluster Name: `my-msk-cluster`
 - Access control methods: `Unauthenticated access`
@@ -60,16 +60,16 @@ Follow the [Create MSK Cluster](../../reference/amazon-msk/create-msk-cluster.md
 - Route tables: `my-msk-cluster-rtb-*`
 - Internet gateway: `my-msk-cluster-igw`
 
-### Create the MSK Proxy security group
+### Create the <ZillaPlus/> proxy security group
 
-> This creates your Public MSK proxy security group to allow Kafka clients and SSH access.
+> This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
 
-A VPC security group is needed for the Public MSK Proxy instances when they are launched.
+A VPC security group is needed for the <ZillaPlus/> proxies when they are launched.
 
-Follow the [Create Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html#creating-security-groups) docs with the following parameters and defaults. This creates your MSK proxy security group to allow Kafka clients and SSH access.
+Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/home#CreateSecurityGroup:) wizard with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
 
 - VPC: `my-msk-cluster-vpc`
-- Name: `my-msk-proxy-sg`
+- Name: `my-zilla-proxy-sg`
 - Description: `Kafka clients and SSH access`
 - Add Inbound Rule
   - Type: `CUSTOM TCP`
@@ -81,7 +81,7 @@ Follow the [Create Security Group](https://docs.aws.amazon.com/vpc/latest/usergu
 
 ### Update the default security group rules
 
-> This allows the MSK Proxy instances to communicate with your MSK cluster.
+> This allows the <ZillaPlus/> proxies to communicate with your MSK cluster.
 
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table.
 
@@ -96,31 +96,30 @@ Filter the security groups by selecting a `VPC` and select the `default` securit
 
 #### Add a Custom TCP Rule
 
-Add this Inbound Rule to allow the MSK Proxy instances to communicate with the MSK cluster.
+Add this Inbound Rule to allow the <ZillaPlus/> proxies to communicate with the MSK cluster.
 
 - Type: `Custom TCP`
 - Port Range: `9094`
 - Source type: `Custom`
-- Source: `my-msk-proxy-sg`
+- Source: `my-zilla-proxy-sg`
 
-### Create the MSK Proxy IAM security role
+### Create the <ZillaPlus/> proxy IAM security role
 
-> This creates an IAM security role to enable the required AWS services for the MSK Proxy instances.
+> This creates an IAM security role to enable the required AWS services for the <ZillaPlus/> proxies.
 
-Follow the [Create IAM Role](../../reference/amazon-msk/create-iam-role.md) guide to create an IAM security role with the following parameters:
+Follow the [Create IAM Role](../../../reference/aws/create-iam-role.md) guide to create an IAM security role with the following parameters:
 
 ::: code-tabs
 
 @tab Name
 
 ```text:no-line-numbers
-aklivity-public-msk-proxy
+aklivity-zilla-proxy
 ```
 
 @tab Policies
 
 ```text:no-line-numbers
-AWSMarketplaceMeteringFullAccess
 AWSCertificateManagerReadOnly
 AWSCertificateManagerPrivateCAReadOnly
 ResourceGroupsandTagEditorReadOnlyAccess
@@ -129,6 +128,8 @@ ResourceGroupsandTagEditorReadOnlyAccess
 :::
 
 #### IAM role Inline Policies
+
+This creates an IAM security role to enable the required AWS services for the <ZillaPlus/> proxies.
 
 ::: code-tabs
 
@@ -173,32 +174,32 @@ MSKProxySecretsManagerRead
 
 ## Subscribe via AWS Marketplace
 
-The [Zilla Plus (Public MSK Proxy)](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) is available through the AWS Marketplace. You can skip this step if you have already subscribed to Zilla Plus (Public MSK Proxy) via AWS Marketplace.
+The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) is available through the AWS Marketplace. You can skip this step if you have already subscribed to Zilla Plus for Amazon MSK via AWS Marketplace.
 
-To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) and `Subscribe` to the offering. You should now see `Zilla Plus (Public MSK Proxy)` listed in your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions.
+To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) and `Subscribe` to the offering. You should now see `Zilla Plus for Amazon MSK` listed in your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions.
 
 ## Create the Server Certificate
 
 We need a TLS Server Certificate for the wildcard domain `*.aklivity.example.com` that can be trusted by a Kafka Client in your local development environment.
 
-Follow the [Create Server Certificate (ACM)](../../reference/amazon-msk/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
+Follow the [Create Server Certificate (ACM)](../../../reference/aws/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
 
 ::: info
-Note the server certificate secret ARN as we will need to reference it from the Public MSK Proxy CloudFormation template.
+Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
 :::
 
 ::: warning
 Store the private CA certificate in a file called `pca.pem` as we will need it to configure trust when testing the Kafka client.
 :::
 
-## Deploy the Public MSK Proxy
+## Deploy the Zilla Plus Secure Public Access Proxy
 
-> This initiates deployment of the Zilla Plus (Public MSK Proxy) stack via CloudFormation.
+> This initiates deployment of the Zilla Plus for Amazon MSK stack via CloudFormation.
 
-Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus (Public MSK Proxy)` to show the manage subscription page.
+Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for Amazon MSK` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Public MSK Proxy` fulfillment option
+- Select the `Secure Public Access` fulfillment option
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`
@@ -218,7 +219,7 @@ Click `Launch` to complete the `Create stack` wizard with the following details:
 @tab Stack name
 
 ```text:no-line-numbers
-my-public-msk-proxy
+my-zilla-proxy
 ```
 
 :::
@@ -231,20 +232,20 @@ Parameters:
 - MSK Configuration
   - Wildcard DNS pattern: `*.aklivity.[...].amazonaws.com` *1
   - Port number: `9094`
-- MSK Proxy Configuration
+- Secure Public Access Configuration
   - Instance count: `2`
   - Instance type: `t3.small` *2
-  - Role: `aklivity-public-msk-proxy`
-  - Security Groups: `my-msk-proxy`
+  - Role: `aklivity-zilla-proxy`
+  - Security Groups: `my-zilla-proxy`
   - Secrets Manager Secret ARN: `<TLS certificate private key secret ARN>` *3
   - Public Wildcard DNS: `*.aklivity.example.com`
   - Public Port: `9094`
   - Key pair for SSH access: `my-key-pair` *4
 - *Configuration Reference
-  1. Follow the [Lookup MSK Server Names](../../reference/amazon-msk/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
+  1. Follow the [Lookup MSK Server Names](../../../reference/aws/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (ACM)](../../reference/amazon-msk/create-server-certificate-acm.md#store-the-encrypted-secret) guide.
-  4. Follow the [Create Key Pair](../../reference/amazon-msk/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
+  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (ACM)](../../../reference/aws/create-server-certificate-acm.md#store-the-encrypted-secret) guide.
+  4. Follow the [Create Key Pair](../../../reference/aws/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
 
 ### Step 3. Configure stack options: `(use defaults)`
 
@@ -253,10 +254,10 @@ Parameters:
 Confirm the stack details are correct and `Submit` to start the CloudFormation deploy.
 
 ::: info
-When your Public MSK Proxy is ready, the [CloudFormation console](https://console.aws.amazon.com/cloudformation) will show `CREATE_COMPLETE` for the newly created stack.
+When your <ZillaPlus/> proxy is ready, the [CloudFormation console](https://console.aws.amazon.com/cloudformation) will show `CREATE_COMPLETE` for the newly created stack.
 :::
 
-## Verify Public MSK Proxy Service
+## Verify <ZillaPlus/> proxy Service
 
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
@@ -264,10 +265,10 @@ Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.co
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
 :::
 
-Select either of the Public MSK Proxy instances launched by the CloudFormation template to show the details.
+Select either of the <ZillaPlus/> proxies launched by the CloudFormation template to show the details.
 
 ::: info
-They each have an IAM Role name starting with `aklivity-public-msk-proxy`.
+They each have an IAM Role name starting with `aklivity-zilla-proxy`.
 :::
 
 Find the `Public IPv4 Address` and then SSH into the instance.
@@ -285,7 +286,7 @@ systemctl status zilla-plus.service
 Verify that the `zilla-plus` service is active and logging output similar to that shown below.
 
 ```output:no-line-numbers
-● zilla-plus.service - Zilla Plus
+zilla-plus.service - Zilla Plus
    Loaded: loaded (/etc/systemd/system/zilla-plus.service; enabled; vendor preset: disabled)
    Active: active (running) since Tue 2021-08-24 20:56:51 UTC; 1 day 19h ago
  Main PID: 1803 (java)
@@ -295,7 +296,7 @@ Verify that the `zilla-plus` service is active and logging output similar to tha
 Aug 26 06:56:54 ip-10-0-3-104.ec2.internal zilla[1803]: Recorded usage for record id ...
 ```
 
-Repeat these steps for each of the other Public MSK Proxy instances launched by the CloudFormation template.
+Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template.
 
 ## Verify Kafka Client Connectivity
 
@@ -318,7 +319,7 @@ cd kafka_2.13-2.8.0
 ```
 
 ::: tip
-We use a generic Kafka client here, however the setup for any Kafka client, including [KaDeck](https://www.xeotek.com/apache-kafka-monitoring-management/), [Conduktor](https://www.conduktor.io/download/), and [akhq.io](https://akhq.io/) will be largely similar. With the Public MSK Proxy you can use these GUI Kafka clients to configure and monitor your MSK applications, clusters and streams.
+We use a generic Kafka client here, however the setup for any Kafka client, including [KaDeck](https://www.xeotek.com/apache-kafka-monitoring-management/), [Conduktor](https://www.conduktor.io/download/), and [akhq.io](https://akhq.io/) will be largely similar. With the <ZillaPlus/> proxy you can use these GUI Kafka clients to configure and monitor your MSK applications, clusters and streams.
 :::
 
 #### Trust the Private Certificate Authority
@@ -330,14 +331,14 @@ keytool -importcert -keystore /tmp/kafka.client.truststore.jks -storetype jks -s
 ```
 
 ::: info
-When you followed the [Create Certificate Authority (ACM)](../../reference/amazon-msk/create-certificate-authority-acm.md) guide, you exported the private CA certificate to a file called `Certificate.pem`.
+When you followed the [Create Certificate Authority (ACM)](../../../reference/aws/create-certificate-authority-acm.md) guide, you exported the private CA certificate to a file called `Certificate.pem`.
 :::
 
 ### Configure the Kafka Client
 
-With the Kaka client now installed we are ready to configure it and point it at the Public MSK Proxy.
+With the Kaka client now installed we are ready to configure it and point it at the <ZillaPlus/> proxy.
 
-The MSK Proxy relies on TLS so we need to create a file called `client.properties` that tells the Kafka client to use SSL as the security protocol and to trust your private certificate authority as the signer of the `*.aklivity.example.com` certificate.
+The <ZillaPlus/> proxy relies on TLS so we need to create a file called `client.properties` that tells the Kafka client to use SSL as the security protocol and to trust your private certificate authority as the signer of the `*.aklivity.example.com` certificate.
 
 ::: code-tabs
 
@@ -354,7 +355,7 @@ ssl.truststore.location=/tmp/kafka.client.truststore.jks
 
 When using an example wildcard DNS such as `*.aklivity.example.com` then the DNS entries are setup locally.
 
-Navigate to the [CloudFormation console.](https://console.aws.amazon.com/cloudformation) Then select the `my-public-msk-proxy` stack to show the details.
+Navigate to the [CloudFormation console.](https://console.aws.amazon.com/cloudformation) Then select the `my-zilla-proxy` stack to show the details.
 
 ::: note Check your selected region
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
@@ -407,7 +408,7 @@ If you add another broker to your MSK cluster, then you will need to add another
 
 ### Test the Kafka Client
 
-> This verifies internet connectivity to your MSK cluster via Zilla Plus (Public MSK Proxy).
+> This verifies internet connectivity to your MSK cluster via Zilla Plus for Amazon MSK.
 
 We can now verify that the Kafka client can successfully communicate with your MSK cluster via the internet from your local development environment to create a topic, then publish and subscribe to the same topic.
 
@@ -419,18 +420,18 @@ b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example
 
 #### Create a Topic
 
-Use the Kafka client to create a topic called `public-proxy-test`, replacing `<tls-bootstrap-server-names>` in the command below with the TLS proxy names of your Public MSK Proxy:
+Use the Kafka client to create a topic called `zilla-proxy-test`, replacing `<tls-bootstrap-server-names>` in the command below with the TLS proxy names of your <ZillaPlus/> proxy:
 
 ```bash:no-line-numbers
-bin/kafka-topics.sh --create --topic public-proxy-test --partitions 3 --replication-factor 3 --command-config client.properties --bootstrap-server <tls-bootstrap-server-names>
+bin/kafka-topics.sh --create --topic zilla-proxy-test --partitions 3 --replication-factor 3 --command-config client.properties --bootstrap-server <tls-bootstrap-server-names>
 ```
 
 ::: tip A quick summary of what just happened
 
 1. The Kafka client with access to the public internet issued a request to create a new topic
 2. This request was directed to the internet-facing Network Load Balancer
-3. The Network Load Balancer forwarded the request to the Zilla Plus (Public MSK Proxy)
-4. The Zilla Plus (Public MSK Proxy) routed the request to the appropriate MSK broker
+3. The Network Load Balancer forwarded the request to the <ZillaPlus/> proxy
+4. The <ZillaPlus/> proxy routed the request to the appropriate MSK broker
 5. The topic was created in the MSK broker
 6. Public access was verified
 
@@ -441,7 +442,7 @@ bin/kafka-topics.sh --create --topic public-proxy-test --partitions 3 --replicat
 Publish two messages to the newly created topic via the following producer command:
 
 ```bash:no-line-numbers
-bin/kafka-console-producer.sh --topic public-proxy-test --producer.config client.properties --broker-list <tls-bootstrap-server-names>
+bin/kafka-console-producer.sh --topic zilla-proxy-test --producer.config client.properties --broker-list <tls-bootstrap-server-names>
 ```
 
 A prompt will appear for you to type in the messages:
@@ -456,7 +457,7 @@ A prompt will appear for you to type in the messages:
 Read these messages back via the following consumer command:
 
 ```bash:no-line-numbers
-bin/kafka-console-consumer.sh --topic public-proxy-test --from-beginning --consumer.config client.properties --bootstrap-server <tls-bootstrap-server-names>
+bin/kafka-console-consumer.sh --topic zilla-proxy-test --from-beginning --consumer.config client.properties --bootstrap-server <tls-bootstrap-server-names>
 ```
 
 You should see the `This is my first event` and `This is my second event` messages.
@@ -466,14 +467,14 @@ This is my first event
 This is my second event
 ```
 
-::: info Monitor the Public MSK Proxy
+::: info Monitor the <ZillaPlus/> proxy
 
-Follow the [Monitoring the Public MSK Proxy](./public-proxy.md#monitoring-the-public-msk-proxy) instructions
+Follow the [Monitoring the <ZillaPlus/> proxy](./overview.md#monitoring-the-zilla-proxy) instructions
 
 :::
 
-::: info Upgrade the Public MSK Proxy
+::: info Upgrade the <ZillaPlus/> proxy
 
-Follow the [Upgrading the Public MSK Proxy](./public-proxy.md#upgrading-the-public-msk-proxy) instructions
+Follow the [Upgrading the <ZillaPlus/> proxy](./overview.md#upgrading-the-zilla-proxy) instructions
 
 :::

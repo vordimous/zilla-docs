@@ -55,5 +55,5 @@ Note the returned secret ARN as it will be needed later.
 :::
 
 ::: warning
-LetsEncrypt certificates are [valid for 90 days](https://letsencrypt.org/docs/faq/#what-is-the-lifetime-for-let-s-encrypt-certificates-for-how-long-are-they-valid), so you will need to renew the certificate and update the secret value accordingly before expiration. The latest secret value is obtained automatically upon restarting the MSK Proxy instance.
+LetsEncrypt certificates are [valid for 90 days](https://letsencrypt.org/docs/faq/#what-is-the-lifetime-for-let-s-encrypt-certificates-for-how-long-are-they-valid), so you will need to renew the certificate and update the secret value accordingly before expiration. The latest secret value is obtained automatically upon restarting the Zilla proxy instance.
 :::

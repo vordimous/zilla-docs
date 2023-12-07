@@ -1,8 +1,12 @@
 import { defineUserConfig } from "vuepress";
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-import { docsearchPlugin } from '@vuepress/plugin-docsearch';
+import { getDirname, path } from "@vuepress/utils";
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import theme from "./theme.js";
 import { base, siteBase, dest, versionKey } from "./env.js";
+
+const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
   base: `/${base}/`,
@@ -12,7 +16,8 @@ export default defineUserConfig({
     "/": {
       lang: "en-US",
       title: "Documentation",
-      description: "The official documentation for the aklivity/zilla open-source project",
+      description:
+        "The official documentation for the aklivity/zilla open-source project",
     },
   },
   head: [
@@ -20,40 +25,49 @@ export default defineUserConfig({
     ["meta", { name: "docsearch:version", content: versionKey }],
     [
       "link",
-      { rel: "preconnect", href: "https://H6RNUBSB6E-dsn.algolia.net", crossorigin: "" },
+      {
+        rel: "preconnect",
+        href: "https://H6RNUBSB6E-dsn.algolia.net",
+        crossorigin: "",
+      },
     ],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
-      [
-        "link",
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-      ],
-      [
-        "link",
-        {
-          href: "https://fonts.googleapis.com/css2?family=Questrial&display=swap",
-          rel: "stylesheet",
-        },
-      ],
+    [
+      "link",
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+    ],
+    [
+      "link",
+      {
+        href: "https://fonts.googleapis.com/css2?family=Questrial&display=swap",
+        rel: "stylesheet",
+      },
+    ],
   ],
 
   theme,
   plugins: [
     googleAnalyticsPlugin({
-      id: 'G-Q2XWKQS14L',
+      id: "G-Q2XWKQS14L",
     }),
     docsearchPlugin({
-      appId: 'H6RNUBSB6E',
-      indexName: 'aklivity',
-      apiKey: 'bae72797404a23ba5466230146919cae',
+      appId: "H6RNUBSB6E",
+      indexName: "aklivity",
+      apiKey: "bae72797404a23ba5466230146919cae",
       indexBase: `/${base}/`,
       searchParameters: {
         facetFilters: [`version:${versionKey}`, `product:${siteBase}`],
       },
     }),
+    registerComponentsPlugin({
+      components: {
+        ZillaPlus: path.resolve(__dirname, "./components/ZillaPlus.vue"),
+      },
+    }),
   ],
   markdown: {
     headers: {
-      level: [2,3,4]
-    }
-  }
+      level: [2, 3, 4],
+    },
+  },
 });

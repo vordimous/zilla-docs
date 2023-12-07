@@ -108,7 +108,7 @@ ul li p {
         cursor: pointer;
         text-decoration: none!important;
         color: white;
-        font-size: 17px;
+        font-size: 18px;
         text-align: center;
         border-radius: 5px;
         display: inline-block;
@@ -116,11 +116,23 @@ ul li p {
         border-radius: 5px;
         box-sizing: border-box;
         width: 100%;
+        sup {
+            span.icon {
+                color: white;
+            }
+        }
     }
     .external-link-icon {
         display: none;
     }
    
+}
+
+// set supper plus icons to the theme color
+sup {
+    span.icon {
+        color: var(--theme-color)
+    }
 }
 
 // Fix VPCard spacing
