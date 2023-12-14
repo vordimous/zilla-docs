@@ -1,9 +1,9 @@
 ---
 icon: aky-zilla-plus
-description: Setup connectivity to your MSK cluster from anywhere on the internet.
+description: Setup connectivity to your SASL/SCRAM Amazon MSK cluster from anywhere on the internet.
 ---
 
-# Production
+# Amazon MSK SASL/SCRAM authentication
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
@@ -203,7 +203,7 @@ Note the server certificate secret ARN as we will need to reference it from the 
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for Amazon MSK` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Secure Public Access` fulfillment option
+- Select the `Secure Public Access (Unauthorized/SASL)` fulfillment option
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`
@@ -438,12 +438,12 @@ This is my second event
 
 ::: info Monitor the <ZillaPlus/> proxy
 
-Follow the [Monitoring the <ZillaPlus/> proxy](./overview.md#monitoring-the-zilla-proxy) instructions
+Follow the [Monitoring the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#monitoring) instructions
 
 :::
 
 ::: info Upgrade the <ZillaPlus/> proxy
 
-Follow the [Upgrading the <ZillaPlus/> proxy](./overview.md#upgrading-the-zilla-proxy) instructions
+Follow the [Upgrading the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#upgrading) instructions
 
 :::

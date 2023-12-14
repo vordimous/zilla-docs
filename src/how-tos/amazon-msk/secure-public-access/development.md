@@ -1,9 +1,9 @@
 ---
 icon: aky-zilla-plus
-description: Setup connectivity to your MSK cluster via the internet from your local development environment.
+description: Setup connectivity to your Unauthorized access Amazon MSK cluster via the internet.
 ---
 
-# Development
+# Amazon MSK Unauthorized access
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
@@ -11,14 +11,11 @@ description: Setup connectivity to your MSK cluster via the internet from your l
 ::: tip Estimated time to complete 20-30 minutes.
 :::
 
-<!-- markdownlint-disable MD033 -->
-<YouTube id="0nBx6qjFDyc" />
-
 ## Overview
 
 The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
 
-In this guide we will deploy the Zilla Plus for Amazon MSK Secure Public Access proxy and verify locally trusted public internet connectivity to your MSK cluster from a Kafka client in your development environment, using the wildcard domain `*.aklivity.example.com`.
+In this guide we will deploy the Zilla Plus for Amazon MSK Secure Public Access proxy and verify locally trusted public internet connectivity to your MSK cluster from a Kafka client, using the wildcard domain `*.aklivity.example.com`.
 
 ### AWS services used
 
@@ -180,7 +177,7 @@ To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.
 
 ## Create the Server Certificate
 
-We need a TLS Server Certificate for the wildcard domain `*.aklivity.example.com` that can be trusted by a Kafka Client in your local development environment.
+We need a TLS Server Certificate for the wildcard domain `*.aklivity.example.com` that can be trusted by a Kafka Client.
 
 Follow the [Create Server Certificate (ACM)](../../../reference/aws/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
 
@@ -199,7 +196,7 @@ Store the private CA certificate in a file called `pca.pem` as we will need it t
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for Amazon MSK` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Secure Public Access` fulfillment option
+- Select the `Secure Public Access (Unauthorized/SASL)` fulfillment option
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`
@@ -300,7 +297,7 @@ Repeat these steps for each of the other <ZillaPlus/> proxies launched by the Cl
 
 ## Verify Kafka Client Connectivity
 
-To verify that we have successfully enabled public internet connectivity to our MSK cluster from the local development environment, we will use a generic Kafka client to create a topic, publish messages and then subscribe to receive these messages from our MSK cluster via the public internet.
+To verify that we have successfully enabled public internet connectivity to our MSK cluster, we will use a generic Kafka client to create a topic, publish messages and then subscribe to receive these messages from our MSK cluster via the public internet.
 
 ### Install the Kafka Client
 
@@ -400,17 +397,17 @@ This allows Kafka clients to use the following TLS bootstrap proxy names for pri
 b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example.com:9094
 ```
 
-You can use these bootstrap server names when connecting to your MSK cluster from your local development environment.
+You can use these bootstrap server names when connecting to your MSK cluster.
 
 ::: warning
-If you add another broker to your MSK cluster, then you will need to add another local DNS entry to your development environment, such as `b-4.aklivity.example.com`. This is required only for [Development](./development.md) deployments, not [Production](./production.md) deployments.
+If you add another broker to your MSK cluster, then you will need to add another local DNS entry, such as `b-4.aklivity.example.com`. This is required only for [MSK Unauthorized access](./development.md) deployments, not [MSK SASL/SCRAM authentication](./production.md) or [MSK mTLS authentication](./production-mutual-tls.md)deployments.
 :::
 
 ### Test the Kafka Client
 
 > This verifies internet connectivity to your MSK cluster via Zilla Plus for Amazon MSK.
 
-We can now verify that the Kafka client can successfully communicate with your MSK cluster via the internet from your local development environment to create a topic, then publish and subscribe to the same topic.
+We can now verify that the Kafka client can successfully communicate with your MSK cluster via the internet to create a topic, then publish and subscribe to the same topic.
 
 Use the following as TLS bootstrap server names for the Kafka client:
 
@@ -469,12 +466,12 @@ This is my second event
 
 ::: info Monitor the <ZillaPlus/> proxy
 
-Follow the [Monitoring the <ZillaPlus/> proxy](./overview.md#monitoring-the-zilla-proxy) instructions
+Follow the [Monitoring the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#monitoring) instructions
 
 :::
 
 ::: info Upgrade the <ZillaPlus/> proxy
 
-Follow the [Upgrading the <ZillaPlus/> proxy](./overview.md#upgrading-the-zilla-proxy) instructions
+Follow the [Upgrading the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#upgrading) instructions
 
 :::

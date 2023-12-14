@@ -133,16 +133,28 @@ export const enSidebar = sidebar({
           collapsible: true,
           icon: "aky-zilla-plus",
           prefix: "how-tos/amazon-msk/secure-public-access/",
-          link: "how-tos/amazon-msk/secure-public-access/production.md",
+          link: "how-tos/amazon-msk/secure-public-access/overview.md",
           children: [
             {
               text: "Overview",
               icon: "aky-zilla-plus",
               link: "overview.md",
             },
-            "development.md",
-            "production.md",
-            "production-mutual-tls.md",
+            {
+              text: "via SASL/SCRAM",
+              icon: "aky-zilla-plus",
+              link: "production.md",
+            },
+            {
+              text: "via mTLS",
+              icon: "aky-zilla-plus",
+              link: "production-mutual-tls.md",
+            },
+            {
+              text: "via Unauthorized access",
+              icon: "aky-zilla-plus",
+              link: "development.md",
+            },
           ],
         },
         {

@@ -1,9 +1,9 @@
 ---
 icon: aky-zilla-plus
-description: Setup mutual authentication to your MSK cluster from anywhere on the internet.
+description: Setup mutual authentication to your mTLS Amazon MSK cluster from anywhere on the internet.
 ---
 
-# Production (Mutual TLS)
+# Amazon MSK Mutual TLS authentication
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
@@ -222,12 +222,12 @@ Note the server certificate secret ARN as we will need to reference it from the 
 
 ## Deploy the Zilla Plus Secure Public Access Proxy
 
-> This initiates deployment of the Zilla Plus for Amazon MSK (Mutual TLS) stack via CloudFormation.
+> This initiates deployment of the Zilla Plus for Amazon MSK stack via CloudFormation.
 
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for Amazon MSK` to show the manage subscription page.
 
 - From the `Agreement` section > `Actions` menu > select `Launch CloudFormation stack`
-- Select the `Secure Public Access (Mutual TLS)` fulfillment option
+- Select the `Secure Public Access (mTLS)` fulfillment option
 - Make sure you have selected the desired region selected, such as `us-east-1`
 - Click `Continue to Launch`
   - Choose the action `Launch CloudFormation`
@@ -477,12 +477,12 @@ This is my second event
 
 ::: info Monitor the <ZillaPlus/> proxy
 
-Follow the [Monitoring the <ZillaPlus/> proxy](./overview.md#monitoring-the-zilla-proxy) instructions
+Follow the [Monitoring the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#monitoring) instructions
 
 :::
 
 ::: info Upgrade the <ZillaPlus/> proxy
 
-Follow the [Upgrading the <ZillaPlus/> proxy](./overview.md#upgrading-the-zilla-proxy) instructions
+Follow the [Upgrading the <ZillaPlus/> proxy](../../../concepts/kafka-proxies/secure-public-access.md#upgrading) instructions
 
 :::
