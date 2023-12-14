@@ -42,20 +42,28 @@ pre.language-bash:before {
 table.no-boarder {
     td, th, tr {
         padding: 0.5em;
-        border: none!important;
-        background: none!important;
+        border: none !important;
+        background: none !important;
      }
 }
 // remove table header
 table.no-head {
     thead {
-        display: none!important;
+        display: none !important;
     }
 }
 
 // remove extra list margins
 ul li p {
     margin: 0px;
+}
+
+// don't hyphenate word breaks
+p {
+    -webkit-hyphens: none !important;
+    -moz-hyphens: none !important;
+    -ms-hyphens: none !important;
+    hyphens: none !important;
 }
 
 // Header
@@ -160,7 +168,6 @@ sup {
         display: none;
     }
 }
-
 
 // === ICONS ===
 .aky-zilla-plus {
