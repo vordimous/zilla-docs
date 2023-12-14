@@ -91,7 +91,7 @@ routes:
       test:
         - read:items
     when:
-      - path: "/items"
+      - path: /items
     exit: sse_kafka_proxy
 ```
 
@@ -118,7 +118,7 @@ Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route
 ```yaml
 routes:
   - when:
-      - path: "/items"
+      - path: /items
 ```
 
 #### when[].path\*

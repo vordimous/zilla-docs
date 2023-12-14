@@ -17,7 +17,7 @@ sse_kafka_proxy:
   kind: proxy
   routes:
     - when:
-        - path: "/items"
+        - path: /items
       exit: kafka_cache_client
       with:
         topic: items-snapshots
@@ -90,7 +90,7 @@ Conditional `sse-kafka`-specific routes for adapting `sse` data streams to `kafk
 ```yaml
 routes:
   - when:
-      - path: "/items"
+      - path: /items
     exit: kafka_cache_client
     with:
       topic: items-snapshots
@@ -121,7 +121,7 @@ Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route
 ```yaml
 routes:
   - when:
-      - path: "/items"
+      - path: /items
 ```
 
 #### when[].path\*

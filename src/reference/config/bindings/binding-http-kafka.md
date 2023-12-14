@@ -20,7 +20,7 @@ http_kafka_proxy:
   routes:
     - when:
         - method: GET
-          path: "/items"
+          path: /items
       exit: kafka_cache_client
       with:
         capability: fetch
@@ -29,7 +29,7 @@ http_kafka_proxy:
           content-type: application/json
     - when:
         - method: GET
-          path: "/items/{id}"
+          path: /items/{id}
       exit: kafka_cache_client
       with:
         capability: fetch
@@ -37,9 +37,9 @@ http_kafka_proxy:
         filters:
           - key: "${params.id}"
     - when:
-        - path: "/items/{id}"
+        - path: /items/{id}
         - method: GET
-          path: "/items/{id};{correlationId}"
+          path: /items/{id};{correlationId}
       exit: kafka_cache_client
       with:
         capability: produce
@@ -188,7 +188,7 @@ Conditional `http-kafka`-specific routes for adapting `http` request-response st
 routes:
   - when:
       - method: GET
-        path: "/items"
+        path: /items
     exit: kafka_cache_client
     with:
       capability: fetch
@@ -197,7 +197,7 @@ routes:
         content-type: application/json
   - when:
       - method: GET
-        path: "/items/{id}"
+        path: /items/{id}
     exit: kafka_cache_client
     with:
       capability: fetch
@@ -205,9 +205,9 @@ routes:
       filters:
         - key: "${params.id}"
   - when:
-      - path: "/items/{id}"
+      - path: /items/{id}
       - method: GET
-        path: "/items/{id};{correlationId}"
+        path: /items/{id};{correlationId}
     exit: kafka_cache_client
     with:
       capability: produce
@@ -241,7 +241,7 @@ Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route
 routes:
   - when:
       - method: GET
-        path: "/items/{id};{correlationId}"
+        path: /items/{id};{correlationId}
 ```
 
 #### when[].method
