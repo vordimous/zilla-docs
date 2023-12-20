@@ -11,6 +11,12 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 
 :::: note Commands
 
+- [zilla dump](#zilla-dump)
+  - [-a --affinity `<affinity>`](#a-affinity-affinity)
+  - [-b --bindings `<bindings>`](#b-bindings-bindings)
+  - [-i --install `<plugin-directory>`](#i-install-plugin-directory)
+  - [-v --verbose](#v-verbose)
+  - [-w --write `<output>`](#w-write-output)
 - [zilla generate](#zilla-generate)
   - [-t --template `<template>`](#t-template-template)
   - [-i --input `<input-file>`](#i-input-input-file)
@@ -27,6 +33,58 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 ::::
 
 ## Commands
+
+### zilla dump
+
+::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
+This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+:::
+
+The `zilla dump` command creates a `pcap` file that can be opened in Wireshark. Using the Zilla dissector plugin, Wireshark shows detailed information about the internal state of the current Zilla instance.
+
+#### -a --affinity `<affinity>`
+
+Only dump the frames that match the specified affinity mask.
+
+#### -b --bindings `<bindings>`
+
+Only dump the frames for the specified bindings.
+
+#### -i --install `<plugin-directory>`
+
+Install the dissector plugin `zilla.lua` to the plugin directory of Wireshark. This is only necessary if you run the `dump` command for the first time or if you want to update the plugin to the current version.
+
+To find the Wireshark plugin directory navigate the menu: About Wireshark -> Folders -> Personal Lua Plugins; or use this command:
+
+```bash:no-line-numbers
+tshark -G folders | grep "Personal Lua Plugins"
+```
+
+To find out the plugin version navigate the menu: About Wireshark -> Plugins -> search: zilla; or use this command:
+
+```bash:no-line-numbers
+tshark -G plugins | grep zilla
+```
+
+You may need to reload Lua plugins from the menu: Analyze -> Reload Lua Plugins or with the keyboard shortcut (Command+Shift+L or Ctrl+Shift+L).
+
+Example:
+```bash:no-line-numbers
+./zilla dump -v -w zilla.pcap -i ~/.local/lib/wireshark/plugins
+```
+
+#### -v --verbose
+
+Show verbose output
+
+#### -w --write `<output>`
+
+Write the `pcap` output to this file. 
+
+Example:
+```bash:no-line-numbers
+./zilla dump -v -w zilla.pcap
+```
 
 ### zilla generate
 
