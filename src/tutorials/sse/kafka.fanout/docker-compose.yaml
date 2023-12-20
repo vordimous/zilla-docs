@@ -39,19 +39,20 @@ services:
   kafka-init:
     image: bitnami/kafka:3.2
     command:
-      - "/bin/bash"
-      - "-c"
-      -  |
-        /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic events
+        - /bin/sh
+        - -c
+        - |
+          /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server kafka:29092 --create --if-not-exists --topic events
     depends_on:
       - kafka
     init: true
 
   kafka_messenger:
     image: confluentinc/cp-kafkacat:7.1.9
+    command:
+        - /bin/sh
+        - -c
+        - |
+          while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | kafkacat -P -b kafka:29092 -t events -k 1; echo "message sent, waiting 5 sec"; sleep 5; done
     depends_on:
       - kafka
-    command:
-      - "/bin/sh"
-      - "-c"
-      - 'while true; do echo "{ \"data\": \"Hello, world $(date)\" }" | kafkacat -P -b kafka:29092 -t events -k 1; echo "message sent, waiting 5 sec"; sleep 5; done'

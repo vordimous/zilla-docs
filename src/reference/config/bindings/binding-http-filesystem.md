@@ -17,10 +17,10 @@ http_filesystem_proxy:
   kind: proxy
   routes:
     - when:
-        - path: "/{path}"
+        - path: /{path}
       exit: filesystem_server
       with:
-        path: "${params.path}"
+        path: ${params.path}
 ```
 
 ## Summary
@@ -80,10 +80,10 @@ Conditional `http-kafka`-specific routes for adapting `http` data streams into `
 ```yaml
 routes:
   - when:
-      - path: "/{path}"
+      - path: /{path}
     exit: filesystem_server
     with:
-      path: "${params.path}"
+      path: ${params.path}
 ```
 
 ### routes[].guarded
@@ -109,7 +109,7 @@ Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route
 ```yaml
 routes:
   - when:
-      - path: "/{path}"
+      - path: /{path}
 ```
 
 #### when[].path\*
