@@ -35,20 +35,21 @@ http_kafka_proxy:
         capability: fetch
         topic: items-snapshots
         filters:
-          - key: "${params.id}"
+          - key: ${params.id}
     - when:
-        - path: /items/{id}
+        - method: PUT
+          path: /items/{id}
         - method: GET
-          path: /items/{id};{correlationId}
+          path: /items/{id};cid={correlationId}
       exit: kafka_cache_client
       with:
         capability: produce
         topic: items-requests
         acks: leader_only
-        key: "${params.id}"
+        key: ${params.id}
         reply-to: items-responses
         async:
-          location: "/items/${params.id};${correlationId}"
+          location: /items/${params.id};cid=${correlationId}
 ```
 
 ## Summary
@@ -184,8 +185,38 @@ Kafka header name for request-response correlation identifier.
 
 Conditional `http-kafka`-specific routes for adapting `http` request-response streams to `kafka` topic streams.
 
+Correlated Request-Response route:
+
 ```yaml
 routes:
+  - when:
+      - method: PUT
+        path: /items/{id}
+      - method: GET
+        path: /items/{id};cid={correlationId}
+    exit: kafka_cache_client
+    with:
+      capability: produce
+      topic: items-requests
+      acks: leader_only
+      key: ${params.id}
+      reply-to: items-responses
+      async:
+        location: /items/${params.id};cid=${correlationId}
+```
+
+Single topic CRUD routes:
+
+```yaml
+routes:
+  - when:
+      - method: POST
+        path: /items
+    exit: kafka_cache_client
+    with:
+      capability: produce
+      topic: items-crud
+      key: ${idempotencyKey}
   - when:
       - method: GET
         path: /items
@@ -203,18 +234,14 @@ routes:
       capability: fetch
       topic: items-snapshots
       filters:
-        - key: "${params.id}"
+        - key: ${params.id}
   - when:
       - path: /items/{id}
-      - method: GET
-        path: /items/{id};{correlationId}
     exit: kafka_cache_client
     with:
       capability: produce
-      topic: items-requests
-      acks: leader_only
-      key: "${params.id}"
-      reply-to: items-responses
+      topic: items-crud
+      key: ${params.id}
 ```
 
 ### routes[].guarded
@@ -241,7 +268,7 @@ Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route
 routes:
   - when:
       - method: GET
-        path: /items/{id};{correlationId}
+        path: /items/{id};cid={correlationId}
 ```
 
 #### when[].method
@@ -298,7 +325,7 @@ with:
   capability: fetch
   topic: items-snapshots
   filters:
-    - key: "${params.id}"
+    - key: ${params.id}
   merge:
     content-type: application/json
     patch:
@@ -375,10 +402,10 @@ with:
   capability: produce
   topic: items-requests
   acks: leader_only
-  key: "${params.id}"
+  key: ${params.id}
   reply-to: items-responses
   async:
-    location: "/items/${params.id};${correlationId}"
+    location: /items/${params.id};cid=${correlationId}
 ```
 
 #### with.topic
@@ -415,7 +442,13 @@ Kafka reply-to topic name.
 
 > `object`
 
-HTTP response headers, with values optionally referencing path parameter or `${correlationId}`.
+Allows an HTTP response to be retrieved asynchronously
+
+##### async.location
+
+> `string`
+
+Path where the async result can be fetched, with values optionally referencing path parameter or `${correlationId}`.
 
 ---
 

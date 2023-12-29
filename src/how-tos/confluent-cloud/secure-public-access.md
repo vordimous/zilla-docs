@@ -208,7 +208,7 @@ We need a TLS Server Certificate for your custom DNS wildcard domain that can be
 Follow the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
 
 ::: info
-Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template. 
+Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
 :::
 

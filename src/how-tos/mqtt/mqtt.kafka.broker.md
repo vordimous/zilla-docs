@@ -137,7 +137,7 @@ Create a new file called `zilla.yaml` and append the below yaml to it.
 
 ### Entrypoint
 
-This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports zilla will accept traffic for both MQTT and WebSocket connections.
+This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections.
 
 ```yaml{11,12,15,18}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml{-19} -->

@@ -16,7 +16,7 @@ In this guide, you will learn how to connect to Confluent Cloud from Zilla. You 
 
 Confluent Cloud is exposed over `SASL_SSL` authentication protocols and the `Confluent Cloud` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority.
 
-For a better understanding of the `Zilla` config, please use a brief explanation of replaceable values :
+For a better understanding of the Zilla config, please use a brief explanation of replaceable values :
 
 | Value                       | Description                           |
 | --------------------------- | ------------------------------------- |

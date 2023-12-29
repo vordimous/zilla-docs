@@ -48,7 +48,7 @@ bindings:
     kind: client
     options:
       host: BOOTSTRAP_SERVER_HOSTNAME
-      port: "BOOTSTRAP_SERVER_PORT"
+      port: BOOTSTRAP_SERVER_PORT
     routes:
       - when:
         - cidr: 0.0.0.0/0

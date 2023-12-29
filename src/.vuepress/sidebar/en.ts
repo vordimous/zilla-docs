@@ -166,20 +166,24 @@ export const enSidebar = sidebar({
     },
     {
       text: "Kafka Proxying",
-      link: "concepts/kafka-proxies/rest-proxy.md",
+      link: "concepts/kafka-proxies/http-proxy.md",
       children: [
         {
-          text: "REST Kafka Proxy",
+          text: "HTTP Kafka Proxy",
           collapsible: true,
-          link: "concepts/kafka-proxies/rest-proxy.md",
+          link: "concepts/kafka-proxies/http-proxy.md",
           children: [
             {
               text: "Overview",
-              link: "concepts/kafka-proxies/rest-proxy.md",
+              link: "concepts/kafka-proxies/http-proxy.md",
             },
             {
-              text: "Create a Simple REST API",
+              text: "Create a Simple CRUD API",
               link: "tutorials/rest/rest-intro.md",
+            },
+            {
+              text: "Create a Simple SSE Stream",
+              link: "tutorials/sse/sse-intro.md",
             },
             {
               text: "Build a CQRS Todo App",
@@ -192,35 +196,6 @@ export const enSidebar = sidebar({
                 {
                   text: "Adding Auth",
                   link: "tutorials/todo-app/secure.md",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          text: "SSE Kafka Proxy",
-          collapsible: true,
-          link: "concepts/kafka-proxies/sse-proxy.md",
-          children: [
-            {
-              text: "Overview",
-              link: "concepts/kafka-proxies/sse-proxy.md",
-            },
-            {
-              text: "Create a Simple SSE Stream",
-              link: "tutorials/sse/sse-intro.md",
-            },
-            {
-              text: "Build a CQRS Todo App",
-              link: "tutorials/sse/sse-todo-build.md",
-              children: [
-                {
-                  text: "Application Setup",
-                  link: "tutorials/sse/sse-todo-build.md",
-                },
-                {
-                  text: "Adding Auth",
-                  link: "tutorials/sse/sse-todo-secure.md",
                 },
               ],
             },

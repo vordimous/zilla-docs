@@ -62,7 +62,7 @@ As usual, you need to define the host and port and flush the data to the network
 
 By default, Kafka communicates in `PLAINTEXT`, which means that all data is sent without encryption. However, Kafka running in production needs to expose only a secure connection that encrypts communication, and you should therefore configure Zilla to use TLS/SSL encrypted communication.
 
-If the `Kafka` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority, then configure `Zilla` add a `TLS` client binding as shown below with the `trustcacerts` option to set to `true`.
+If the `Kafka` cluster is secured by a `TLS` server certificate that is provided by a public certificate authority, then configure Zilla add a `TLS` client binding as shown below with the `trustcacerts` option to set to `true`.
 
 ::: info NOTE
 The `exit` from `kafka_client` binding now changes to `tls_client`.
