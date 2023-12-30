@@ -75,6 +75,9 @@ Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/hom
 - Add Inbound Rule
   - Type: `SSH`
   - Source type: `My IP`
+- Add Outbound Rule (if not exists)
+  - Type: `All traffic`
+  - Destination: `Anywhere-IPv4`
 
 ### Update the default security group rules
 
@@ -276,22 +279,60 @@ ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 
 After logging in via SSH, check the status of the `zilla-plus` system service.
 
+::: tabs
+
+@tab Service is running
+
+Verify that the `zilla-plus` service is active and logging output similar to that shown below.
+
 ```bash:no-line-numbers
 systemctl status zilla-plus.service
 ```
 
-Verify that the `zilla-plus` service is active and logging output similar to that shown below.
-
 ```output:no-line-numbers
 zilla-plus.service - Zilla Plus
    Loaded: loaded (/etc/systemd/system/zilla-plus.service; enabled; vendor preset: disabled)
-   Active: active (running) since Tue 2021-08-24 20:56:51 UTC; 1 day 19h ago
- Main PID: 1803 (java)
-   CGroup: /system.slice/zilla-plus.service
-           └─...
-
-Aug 26 06:56:54 ip-10-0-3-104.ec2.internal zilla[1803]: Recorded usage for record id ...
+   Active: active (running) since...
 ```
+
+@tab Check Ports
+
+Check for the active ports with `netstat`.
+
+```bash:no-line-numbers
+netstat -ntlp
+```
+
+```output:no-line-numbers
+tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
+```
+
+@tab Check Zilla Logs
+
+You can get an stdout dump of the `zilla-plus.service` using `journalctl`.
+
+```bash:no-line-numbers
+journalctl -e -u zilla-plus.service | tee -a /tmp/zilla.log
+```
+
+```output:no-line-numbers
+systemd[1]: Started zilla-plus.service - Zilla Plus.
+...
+```
+
+@tab Check Cloud Init Logs
+
+All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
+
+```bash:no-line-numbers
+cat /var/log/cloud-init-output.log 
+```
+
+```output:no-line-numbers
+Cloud-init v. 22.2.2 running 'init'...
+```
+
+:::
 
 Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template.
 

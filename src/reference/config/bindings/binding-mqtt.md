@@ -29,7 +29,7 @@ mqtt_server:
 
 ## Summary
 
-Defines a binding with [MQTT v5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html) protocol support, with `server` behavior.
+Defines a binding with `mqtt` protocol support, with `server` behavior.
 
 The `server` kind `mqtt` binding decodes the MQTT protocol on the inbound network stream, producing higher level application streams for each `publish` or `subscribe` `topic`. The `session` state is also described by a higher level application stream.
 

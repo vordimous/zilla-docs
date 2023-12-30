@@ -416,7 +416,7 @@ if-none-match\[String] - Tasks collection etag
 
 The Zilla engine configuration defines a flow of named `bindings` representing each step in the pipeline as inbound network traffic is decoded and transformed then encoded into outbound network traffic as needed.
 
-Let's configure `Zilla` for the Tasks API to interact with the `Todo` Kafka Streams service via Kafka topics.
+Let's configure Zilla for the Tasks API to interact with the `Todo` Kafka Streams service via Kafka topics.
 
 You will add the following bindings to support the Tasks API as shown `zilla.yaml` below. To understand each binding type in more detail please visit [Zilla Runtime Configuration](../../reference/config/overview.md).
 
@@ -794,7 +794,7 @@ guards: {}
 
 :::
 
-The last step is to mount the `dist` folder into the `Zilla` container.
+The last step is to mount the `dist` folder into the Zilla container.
 
 Open `stack.yml` file and add `- ./todo-app/dist:/app/dist:ro` to the `zilla` service `volumes`.
 
@@ -819,7 +819,7 @@ Finally, run
 docker stack deploy -c stack.yml example --resolve-image never
 ```
 
-Make sure that `zilla.yaml` config changes got applied after restarting the `Zilla` service. Check the `example_zilla` service log.
+Make sure that `zilla.yaml` config changes got applied after restarting the Zilla service. Check the `example_zilla` service log.
 
 ### Step 5: Test Drive
 

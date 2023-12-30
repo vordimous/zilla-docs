@@ -1,16 +1,14 @@
 ---
-description: Running these Zilla samples will introduce some REST features.
+description: Running these Zilla samples will implement a simple CRUD API features.
 ---
 
-# REST Intro
+# CRUD API on Kafka
 
 Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
-## CRUD on a Kafka event stream
-
 Running this Zilla sample will create a simple API to create and list items. All of the data will be stored on a Kafka topic.
 
-### Setup
+## Setup
 
 Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same directory.
 
@@ -30,19 +28,19 @@ Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same director
 
 :::
 
-### Run Zilla and Kafka
+## Run Zilla and Kafka
 
 ```bash:no-line-numbers
 docker-compose up -d
 ```
 
-### Use `curl` to send a greeting
+## Use `curl` to send a greeting
 
 ```bash:no-line-numbers
 curl -X POST http://localhost:7114/items -H 'Content-Type: application/json' -d '{"greeting":"Hello, world"}'
 ```
 
-### Use `curl` to list all of the greetings
+## Use `curl` to list all of the greetings
 
 ```bash:no-line-numbers
 curl http://localhost:7114/items
@@ -52,7 +50,7 @@ curl http://localhost:7114/items
 [{"greeting":"Hello, world"}]
 ```
 
-### Remove the running containers
+## Remove the running containers
 
 ```bash:no-line-numbers
 docker-compose down
@@ -64,13 +62,8 @@ Go deeper into this concept with the [http.kafka.crud](https://github.com/aklivi
 
 ## Going Deeper
 
-Try out more HTTP examples:
+Try out more HTTP Kafka examples:
 
-- [http.echo](https://github.com/aklivity/zilla-examples/tree/main/http.echo)
-- [http.echo.jwt](https://github.com/aklivity/zilla-examples/tree/main/http.echo.jwt)
-- [http.proxy](https://github.com/aklivity/zilla-examples/tree/main/http.proxy)
-- [http.filesystem](https://github.com/aklivity/zilla-examples/tree/main/http.filesystem)
-- [http.filesystem.config.server](https://github.com/aklivity/zilla-examples/tree/main/http.filesystem.config.server)
 - [http.kafka.async](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.async)
 - [http.kafka.cache](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache)
 - [http.kafka.crud](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.crud)

@@ -29,7 +29,7 @@ features:
   - title: Kafka Proxies
     icon: fas fa-arrows-left-right-to-line
     details: Define REST, SSE, gRPC and MQTT endpoints that map to Kafka topic streams.
-    link: /concepts/kafka-proxies/rest-proxy.html
+    link: /concepts/kafka-proxies/http-proxy.html
 
   - title: Reference
     icon: fas fa-book

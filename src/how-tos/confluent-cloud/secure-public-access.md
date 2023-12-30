@@ -119,6 +119,9 @@ Make sure you have selected the desired region, such as `US East (N. Virginia) u
 - Add Inbound Rule
   - Type: `SSH`
   - Source type: `My IP`
+- Add Outbound Rule (if not exists)
+  - Type: `All traffic`
+  - Destination: `Anywhere-IPv4`
 - Create the Security Group
 
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table. Select the `my-zilla-proxy-sg` security group you just created. You will create an inbound rule to allow all traffic inside itself.
@@ -208,7 +211,7 @@ We need a TLS Server Certificate for your custom DNS wildcard domain that can be
 Follow the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
 
 ::: info
-Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template. 
+Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
 Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
 :::
 
@@ -327,7 +330,7 @@ netstat -ntlp
 tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
 ```
 
-@tab Check Logs
+@tab Check Zilla Logs
 
 You can get an stdout dump of the `zilla-plus.service` using `journalctl`.
 
@@ -338,6 +341,18 @@ journalctl -e -u zilla-plus.service | tee -a /tmp/zilla.log
 ```output:no-line-numbers
 systemd[1]: Started zilla-plus.service - Zilla Plus.
 ...
+```
+
+@tab Check Cloud Init Logs
+
+All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
+
+```bash:no-line-numbers
+cat /var/log/cloud-init-output.log 
+```
+
+```output:no-line-numbers
+Cloud-init v. 22.2.2 running 'init'...
 ```
 
 :::

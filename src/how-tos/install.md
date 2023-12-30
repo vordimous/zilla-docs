@@ -8,7 +8,7 @@ Run the latest Zilla release with the default empty configuration via docker.
 docker run ghcr.io/aklivity/zilla:latest start -v
 ```
 
-The output should display the zilla config and `started` to know zilla is ready for traffic.
+The output should display the Zilla config and `started` to know Zilla is ready for traffic.
 
 ```output:no-line-numbers
 // default Zilla config
