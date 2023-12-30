@@ -61,6 +61,9 @@ Filter the security groups by selecting a `VPC` and select the `default` securit
 - Add Inbound Rule
   - Type: `SSH`
   - Source type: `My IP`
+- Add Outbound Rule (if not exists)
+  - Type: `All traffic`
+  - Destination: `Anywhere-IPv4`
 
 ::: info
 This makes the launched EC2 instance accessible via `SSH`.
