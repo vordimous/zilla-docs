@@ -1,10 +1,11 @@
 # Intro to zilla.yaml
 
-The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#bindings), [`guards`](../reference/config/overview.md#guards), [`vaults`](../reference/config/overview.md#vaults), and [`telemetry`](../reference/config/overview.md#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
+The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#bindings), [`guards`](../reference/config/overview.md#guards), [`vaults`](../reference/config/overview.md#vaults), [`catalogs`](../reference/config/overview.md#catalogs), and [`telemetry`](../reference/config/overview.md#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
 
 ```yaml {2}
 ---
 name: zilla-namespace
+
 bindings:
   ...
 
@@ -12,6 +13,9 @@ guards:
   ...
 
 vaults:
+  ...
+
+catalogs:
   ...
 
 telemetry:
@@ -169,10 +173,12 @@ bindings:
     exit: http_server
 ```
 
+## Catalogs
+
 ## Telemetry
 
 Each configured `metric` represents a stat Zilla collects and each configured `exporter` represents how to export the collected metrics.
 
 Metrics are separated by protocol where the `stream` metrics relate to Zilla's internal message handler. The other protocols have common metrics you would expect to find.
 
-The configured exporters will determine how the collected metrics are exposed. By adding the [Prometheus](../reference/config/telemetry/exporter/exporter-prometheus.md) exporter Zilla will host the `/metrics` endpoint that is needed to collect the prometheus formatted metrics.
+The configured exporters will determine how the collected metrics are exposed. By adding the [Prometheus](../reference/config/telemetry/exporters/exporter-prometheus.md) exporter Zilla will host the `/metrics` endpoint that is needed to collect the prometheus formatted metrics.
