@@ -647,6 +647,7 @@ Next, you will build the `Todo` app that's implemented using [VueJs](https://vue
 ```bash:no-line-numbers
 git clone https://github.com/aklivity/todo-app && \
 cd todo-app && \
+nvm install && nvm use \
 npm install && \
 npm run build && \
 cd ..
