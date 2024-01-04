@@ -7,21 +7,25 @@ description: Defines the Zilla runtime engine configuration in zilla.yaml
 
 # Zilla Runtime Configuration
 
-The Zilla runtime configuration defines the [`bindings`](#bindings), [`guards`](#guards), [`vaults`](#vaults), and [`telemetry`](#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
+The Zilla runtime configuration defines the [`bindings`](#bindings), [`guards`](#guards), [`vaults`](#vaults), [`catalogs`](#catalogs), and [`telemetry`](#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expressions of the form `${{env.VARIABLE}}` to resolve a local environment variable value instead.
 
 ```yaml {2}
 ---
-name: zilla config
-telemetry:
-  ...
+name: zilla-namespace
 
-vaults:
+bindings:
   ...
 
 guards:
   ...
 
-bindings:
+vaults:
+  ...
+
+catalogs:
+  ...
+
+telemetry:
   ...
 ```
 
@@ -94,6 +98,10 @@ Vaults can be used by specific protocol bindings, such as `tls`, to negotiate sh
 
 See each of the specific `vault` types linked below for more detailed examples.
 
+### catalogs
+
+> `object` as map of named [`catalog`](./catalogs/) properties
+
 ### telemetry
 
 > `object` of [`telemetry`](./telemetry/) properties
@@ -110,13 +118,13 @@ telemetry:
 
 #### attributes
 
-> `object`
+> `object` | Default: zilla namespace [name](#name)
 
 Default attributes to optionally include when exporting metrics.
 
 #### exporters
 
-> `object` as map of named [`exporter`](./telemetry/exporter/) properties
+> `object` as map of named [`exporter`](./telemetry/exporters/) properties
 
 Map of named exporters.
 

@@ -38,6 +38,12 @@ export const enSidebar = sidebar({
           children: "structure",
         },
         {
+          text: "Catalogs",
+          prefix: "catalogs/",
+          link: "catalogs/",
+          children: "structure",
+        },
+        {
           text: "Telemetry",
           prefix: "telemetry/",
           link: "telemetry/",
