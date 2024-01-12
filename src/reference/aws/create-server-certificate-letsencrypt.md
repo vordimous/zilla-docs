@@ -19,7 +19,7 @@ sudo yum install -y certbot
 Then issue the wildcard certificate such as `*.example.aklivity.io`.
 
 ```bash:no-line-numbers
-sudo certbot -d *.example.aklivity.io --manual --preferred-challenges dns certonly
+sudo certbot -d *.example.aklivity.io --manual --preferred-challenges dns --key-type rsa certonly
 ```
 
 This will require you to respond to the challenge by adding a custom DNS record proving ownership of the wildcard domain, such as `*.example.aklivity.io`.
