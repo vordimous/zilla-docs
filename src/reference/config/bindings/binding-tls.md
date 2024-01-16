@@ -76,6 +76,7 @@ A `vault` is not required to proxy `TLS` protocol as the handshake is only obser
 - [routes\[\].when](#routes-when)
   - [when\[\].authority](#when-authority)
   - [when\[\].alpn](#when-alpn)
+  - [when\[\].port](#when-port)
 - [routes\[\].exit\*](#routes-exit)
 
 ::: right
@@ -220,6 +221,12 @@ Associated authority.
 > `string`
 
 Application protocol.
+
+#### when[].port
+
+> `integer` | `string` | `array` of  `integer` | `array` of `string`
+
+Port number(s), including port number ranges.
 
 ### routes[].exit\*
 
