@@ -71,7 +71,7 @@ Now you will need to [Setup AWS PrivateLink](https://docs.aws.amazon.com/vpc/lat
 - Subnets: Select `public` subnets for each availability zone
 - Create the Endpoint
 
-Finish the `zilla_plus_privatelink_service` connection wizard with the `PrivateLink Endpoint ID` found in your `my-cce-privatelink-vpce` from the [Endpoints table](https://console.aws.amazon.com/vpcconsole/home#Endpoints:)
+Finish the `zilla_plus_privatelink_service` connection wizard with the `PrivateLink Endpoint ID` found in your `my-cce-privatelink-vpce` from the [Endpoints table](https://console.aws.amazon.com/vpcconsole/home#Endpoints:).
 
 ### Create the Route53 Hosted zone
 
@@ -130,6 +130,15 @@ Navigate to the VPC Management Console [Security Groups](https://console.aws.ama
   - Type: `All Traffic`
   - Source type: `Custom`
   - Source: `my-zilla-proxy-sg`
+
+Add the `my-zilla-proxy-sg` security group to your VPC Endpoint by finding your `my-cce-privatelink-vpce` from the [Endpoints table](https://console.aws.amazon.com/vpcconsole/home#Endpoints:).
+
+- Select your VPC endpoint
+- `Actions` menu > select `Manage Security Groups`
+- Select both security groups:
+  - `default`
+  - `my-zilla-proxy-sg`
+- Save the changes
 
 ### Create the <ZillaPlus/> proxy IAM security role
 
@@ -282,6 +291,8 @@ When your <ZillaPlus/> proxy is ready, the [CloudFormation console](https://cons
 
 ## Verify <ZillaPlus/> proxy Service
 
+> This checks that the services and networking were properly configured.
+
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
 ::: note Check your selected region
@@ -357,7 +368,42 @@ Cloud-init v. 22.2.2 running 'init'...
 
 :::
 
-Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template.
+Check the networking of the <ZillaPlus/> proxy instances to confluent cloud.
+
+::: tabs
+
+@tab DNS resolving
+
+Verify that the instance can resolve the private Route53 DNS address.
+
+```bash:no-line-numbers
+nslookup <Cluster ID>.<Region>.aws.private.confluent.cloud
+```
+
+```output:no-line-numbers
+Server:		***
+Address:	***
+
+Non-authoritative answer:
+Name:	<Cluster ID>.<Region>.aws.private.confluent.cloud
+Address: ***
+```
+
+@tab Check Ports
+
+Check the communication over necessary ports with `netcat`.
+
+```bash:no-line-numbers
+nc -vz <Cluster ID>.<Region>.aws.private.confluent.cloud 9092
+```
+
+```output:no-line-numbers
+Connection to <Cluster ID>.<Region>.aws.private.confluent.cloud port 9092 [tcp/italk] succeeded!
+```
+
+:::
+
+Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template if necessary.
 
 ### Configure Global DNS
 

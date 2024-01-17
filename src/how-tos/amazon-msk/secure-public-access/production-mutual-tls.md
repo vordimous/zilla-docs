@@ -293,6 +293,8 @@ When your <ZillaPlus/> proxy is ready, the [CloudFormation console](https://cons
 
 ## Verify <ZillaPlus/> proxy Service
 
+> This checks that the services and networking were properly configured.
+
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
 ::: note Check your selected region
@@ -369,7 +371,42 @@ Cloud-init v. 22.2.2 running 'init'...
 
 :::
 
-Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template.
+Check the networking of the <ZillaPlus/> proxy instances to MSK.
+
+::: tabs
+
+@tab DNS resolving
+
+Verify that the instance can resolve the private Route53 DNS address.
+
+```bash:no-line-numbers
+nslookup *.aklivity.[...].amazonaws.com
+```
+
+```output:no-line-numbers
+Server:		***
+Address:	***
+
+Non-authoritative answer:
+Name:	*.aklivity.[...].amazonaws.com
+Address: ***
+```
+
+@tab Check Ports
+
+Check the communication over necessary ports with `netcat`.
+
+```bash:no-line-numbers
+nc -vz *.aklivity.[...].amazonaws.com 9094
+```
+
+```output:no-line-numbers
+Connection to *.aklivity.[...].amazonaws.com port 9094 [tcp/italk] succeeded!
+```
+
+:::
+
+Repeat these steps for each of the other <ZillaPlus/> proxies launched by the CloudFormation template if necessary.
 
 ### Configure Global DNS
 

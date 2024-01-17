@@ -78,8 +78,8 @@ export const enSidebar = sidebar({
       ],
     },
     {
-      text: "Amazon MSK",
-      prefix: "amazon-msk/",
+      text: "AWS",
+      prefix: "aws/",
       children: "structure",
     },
     {
