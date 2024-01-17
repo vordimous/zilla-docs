@@ -117,7 +117,7 @@ Audience claim.
 
 ### options.challenge
 
-> `number`
+> `integer`
 
 Challenge period (seconds).
 

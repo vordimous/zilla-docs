@@ -1,16 +1,18 @@
 ---
-description: Zilla lets you configure application-centric REST API and SSE stream endpoints that unlock Kafka event-driven architectures.
+description: The Zilla HTTP Kafka Proxy lets you configure application-centric REST APIs and SSE streams that unlock Kafka event-driven architectures.
 prev: false
 next: /tutorials/rest/rest-intro.md
 ---
 
 # HTTP Kafka Proxy
 
-Zilla lets you configure application-centric REST APIs and SSE streams that unlock Kafka event-driven architectures. A developer has the freedom to define their own HTTP mapping to Kafka, with control over the topics, message key, message headers, and payload. Any HTTP client can interact with Kafka without navigating Kafka-specific paradigms.
+The Zilla HTTP Kafka Proxy lets you configure application-centric REST APIs and SSE streams that unlock Kafka event-driven architectures.
+
+A developer has the freedom to define their own HTTP mapping to Kafka, with control over the topics, message key, message headers, and payload. Any HTTP client can interact with Kafka without navigating Kafka-specific paradigms.
 
 ## Configure Endpoints
 
-Zilla can map REST APIs to Kafka using the [http-kafka](../../reference/config/bindings/binding-http-kafka.md) binding in `zilla.yaml`. Zilla routes REST urls using [wildcard pattern matching](../../concepts/config-intro.md#pattern-matching) and [dynamic path params](../../concepts/config-intro.md#dynamic-path-parameters). Dynamic path matching and custom message routing from endpoints to Kafka topics help prevent API lock-in.
+Zilla can map REST APIs to Kafka using the [http-kafka](../../reference/config/bindings/binding-http-kafka.md) binding in a [zilla.yaml](../../reference/config/overview.md) config. Zilla routes REST urls using [wildcard pattern matching](../../concepts/config-intro.md#pattern-matching) and [dynamic path params](../../concepts/config-intro.md#dynamic-path-parameters). Dynamic path matching and custom message routing from endpoints to Kafka topics help prevent API lock-in.
 
 ### HTTP request methods
 

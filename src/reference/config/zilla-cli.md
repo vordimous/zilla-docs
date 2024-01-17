@@ -176,7 +176,7 @@ example      echo_server    stream.errors.sent            0
 
 ### zilla start
 
-The `zilla start` command resolves the [Zilla Runtime Configuration](./overview.md) in `zilla.yaml` to start the runtime engine.
+The `zilla start` command resolves the [Zilla Runtime Configuration](./overview.md) in a `zilla.yaml` to start the runtime engine.
 
 ```bash:no-line-numbers
 zilla start
