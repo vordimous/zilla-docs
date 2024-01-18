@@ -139,7 +139,7 @@ A list of reference names for the Vault signer certificate.
 
 ### options.trustcacerts
 
-> `boolean`
+> `boolean` | Default: `true` when trust is `null`
 
 Trust CA certificates.
 
