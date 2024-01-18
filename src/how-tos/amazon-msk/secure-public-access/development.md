@@ -78,6 +78,11 @@ Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/hom
 - Add Outbound Rule (if not exists)
   - Type: `All traffic`
   - Destination: `Anywhere-IPv4`
+- Create the Security Group
+
+::: warning Check your network settings
+Your IP may be different when you SSH into the EC2 instance. VPNs and other networking infrastructure may cause the `My IP` inbound rule to fail. Instead, you can use one of the other ways AWS provides to execute commands in an EC2 instance.
+:::
 
 ### Update the default security group rules
 

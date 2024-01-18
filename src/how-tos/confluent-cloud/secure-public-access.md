@@ -124,6 +124,10 @@ Make sure you have selected the desired region, such as `US East (N. Virginia) u
   - Destination: `Anywhere-IPv4`
 - Create the Security Group
 
+::: warning Check your network settings
+Your IP may be different when you SSH into the EC2 instance. VPNs and other networking infrastructure may cause the `My IP` inbound rule to fail. Instead, you can use one of the other ways AWS provides to execute commands in an EC2 instance.
+:::
+
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table. Select the `my-zilla-proxy-sg` security group you just created. You will create an inbound rule to allow all traffic inside itself.
 
 - Add Inbound Rule
