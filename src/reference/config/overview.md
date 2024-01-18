@@ -2,7 +2,7 @@
 order: 1
 category:
   - config
-description: Defines the Zilla runtime engine configuration in zilla.yaml
+description: Defines the Zilla runtime engine configuration in a zilla.yaml
 ---
 
 # Zilla Runtime Configuration

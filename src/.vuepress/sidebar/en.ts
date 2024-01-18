@@ -78,8 +78,8 @@ export const enSidebar = sidebar({
       ],
     },
     {
-      text: "Amazon MSK",
-      prefix: "amazon-msk/",
+      text: "AWS",
+      prefix: "aws/",
       children: "structure",
     },
     {
@@ -219,6 +219,10 @@ export const enSidebar = sidebar({
             {
               text: "Expose a Simple gRPC Server",
               link: "tutorials/grpc/grpc-intro.md",
+            },
+            {
+              text: "Implement the Route Guide example",
+              link: "how-tos/grpc/grpc.route-guide.service.md",
             },
           ],
         },

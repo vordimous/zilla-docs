@@ -18,11 +18,11 @@ grpc_kafka_proxy:
   type: grpc-kafka
   kind: proxy
   options:
+    idempotency:
+      metadata: idempotency-key
     reliability:
       field: 32767
       metadata: last-message-id
-    idempotency:
-      metadata: idempotency-key
     correlation:
       headers:
         service: zilla:service
@@ -87,6 +87,9 @@ Requests including an `idempotency-key` `grpc` metadata header can be replayed a
 - [options](#options)
   - [options.idempotency](#options-idempotency)
     - [idempotency.metadata](#idempotency-metadata)
+  - [options.reliability](#options-reliability)
+    - [reliability.field](#reliability-field)
+    - [reliability.metadata](#reliability-metadata)
   - [options.correlation](#options-correlation)
     - [correlation.headers](#correlation-headers)
     - [headers.service](#headers-service)
@@ -139,6 +142,9 @@ kind: proxy
 options:
   idempotency:
     metadata: idempotency-key
+  reliability:
+    field: 32767
+    metadata: last-message-id
   correlation:
     headers:
       service: zilla:service
@@ -158,6 +164,25 @@ Metadata header used to specify the idempotency key when adapting `grpc` request
 > `string` | Default: `"idempotency-key"`
 
 The `grpc` metadata header name for idempotency key.
+
+
+#### options.reliability
+
+> `object`
+
+Properties used when handling stream recovery.
+
+##### reliability.field
+
+> `integer` | Default: `32767`
+
+The `grpc` unknown field number to send the `message-id`.
+
+##### reliability.metadata
+
+> `string` | Default: `"last-message-id"`
+
+The `grpc` metadata header name for the last `message-id` seen when resuming a stream.
 
 #### options.correlation
 
