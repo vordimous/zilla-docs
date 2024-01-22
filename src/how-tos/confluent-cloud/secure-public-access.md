@@ -488,12 +488,6 @@ As the TLS certificate is signed by a globally trusted certificate authority, th
 
 We can now verify that the Kafka client can successfully communicate with your Confluent Cloud cluster via the internet from your local development environment to create a topic, then publish and subscribe to the same topic.
 
-If using the wildcard DNS pattern `*.example.aklivity.io`, then we use the following as TLS bootstrap server names for the Kafka client:
-
-```text:no-line-numbers
-b-1.example.aklivity.io:9092,b-2.example.aklivity.io:9092,b-3.example.aklivity.io:9092
-```
-
 ::: warning
 Replace these TLS bootstrap server names accordingly for your own custom wildcard DNS pattern.
 :::
