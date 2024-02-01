@@ -44,6 +44,12 @@ export const enSidebar = sidebar({
           children: "structure",
         },
         {
+          text: "Models",
+          prefix: "models/",
+          link: "models/",
+          children: "structure",
+        },
+        {
           text: "Telemetry",
           prefix: "telemetry/",
           link: "telemetry/",
@@ -261,6 +267,8 @@ export const enSidebar = sidebar({
         "config/guards/",
         "config/vaults/",
         "config/telemetry/",
+        "config/catalogs/",
+        "config/models/",
         "troubleshooting/aws.md",
       ],
     },

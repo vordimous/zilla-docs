@@ -38,6 +38,7 @@ telemetry:
   - [routes.exit](#routes-exit)
 - [guards](#guards)
 - [vaults](#vaults)
+- [catalogs](#catalogs)
 - [telemetry](#telemetry)
   - [attributes](#attributes)
   - [exporters](#exporters)
@@ -101,6 +102,12 @@ See each of the specific `vault` types linked below for more detailed examples.
 ### catalogs
 
 > `object` as map of named [`catalog`](./catalogs/) properties
+
+Each configured `catalog` represent a catalog of schemas of various format based on a specific implementation `type`.
+
+Catalogs can be used by specific protocol bindings to enforce validation.
+
+See each of the specific `catalog` types linked below for more detailed examples.
 
 ### telemetry
 
