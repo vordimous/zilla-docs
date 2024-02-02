@@ -273,4 +273,75 @@ export const enSidebar = sidebar({
       ],
     },
   ],
+  "/solutions/": [
+    {
+      text: "Secure Public Access",
+      icon: "aky-zilla-plus",
+      link: "concepts/kafka-proxies/secure-public-access.md",
+      children: [
+        {
+          text: "Overview",
+          link: "concepts/kafka-proxies/secure-public-access.md",
+        },
+        {
+          text: "Amazon MSK",
+          collapsible: true,
+          prefix: "how-tos/amazon-msk/secure-public-access/",
+          link: "how-tos/amazon-msk/secure-public-access/overview.md",
+          children: [
+            {
+              text: "Overview",
+              link: "overview.md",
+            },
+            {
+              text: "via SASL/SCRAM",
+              link: "production.md",
+            },
+            {
+              text: "via mTLS",
+              link: "production-mutual-tls.md",
+            },
+            {
+              text: "via Unauthorized access",
+              link: "development.md",
+            },
+          ],
+        },
+        {
+          text: "Confluent Cloud",
+          link: "how-tos/confluent-cloud/secure-public-access.md",
+        },
+      ],
+    },
+    {
+      text: "IoT Ingest and Control",
+      icon: "aky-zilla-plus",
+      link: "concepts/kafka-proxies/iot-ingest-control.md",
+      children: [
+        {
+          text: "Overview",
+          link: "concepts/kafka-proxies/iot-ingest-control.md",
+        },
+        {
+          text: "Confluent Cloud",
+          link: "how-tos/confluent-cloud/iot-ingest-control.md",
+        },
+        {
+          text: "Redpanda",
+          link: "how-tos/redpanda/iot-ingest-control.md",
+        },
+      ],
+    },
+    {
+      text: "Other Resources",
+      children: [
+        {
+          text: "AWS",
+          prefix: "how-tos/aws-services/",
+          link: "how-tos/aws-services/",
+          children: "structure"
+        },
+      ]
+    },
+  ],
 });
