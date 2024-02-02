@@ -7,7 +7,7 @@ description: Create a new MSK cluster with 3 brokers, each in a different availa
 The following parameters are needed when following these steps to create a new MSK cluster.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 - Name

@@ -91,7 +91,7 @@ Your IP may be different when you SSH into the EC2 instance. VPNs and other netw
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Filter the security groups by selecting a `VPC` and select the `default` security group.
@@ -269,7 +269,7 @@ When your <ZillaPlus/> proxy is ready, the [CloudFormation console](https://cons
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Select either of the <ZillaPlus/> proxies launched by the CloudFormation template to show the details.
@@ -438,7 +438,7 @@ When using an example wildcard DNS such as `*.aklivity.example.com` then the DNS
 Navigate to the [CloudFormation console.](https://console.aws.amazon.com/cloudformation) Then select the `my-zilla-proxy` stack to show the details.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 In the stack `Outputs` tab, find the public DNS name of the `NetworkLoadBalancer`, and lookup the public IP addresses, as shown in the following example.

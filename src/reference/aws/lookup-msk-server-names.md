@@ -7,7 +7,7 @@ description: Discover the wildcard DNS pattern matching all bootstrap server nam
 Navigate to the [MSK Management Console](https://console.aws.amazon.com/msk). Then click on your MSK cluster name to see the details.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 ::: info

@@ -26,7 +26,7 @@ Throughout this guide we use the following example EC2 Instance parameters.
 Navigate to the [EC2 Launch an instance](https://console.aws.amazon.com/ec2/home#LaunchInstances:) form.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Complete the wizard with the following details:
@@ -50,7 +50,7 @@ Click `Launch`
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Filter the security groups by selecting a `VPC` and select the `default` security group.
@@ -76,7 +76,7 @@ This makes the launched EC2 instance accessible via `SSH`.
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Select your recently launched EC2 instance to see the instance details. Copy the `Public IPv4 address` to the clipboard and note the `Key pair name`.

@@ -5,7 +5,7 @@ description: Create a server certificate signed by a public certificate authorit
 # Create Server Certificate (LetsEncrypt)
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Follow the [Launch EC2 Instance](./launch-ec2-instance.md) guide to launch an Amazon 2 Linux instance in a VPC with attached Internet Gateway.

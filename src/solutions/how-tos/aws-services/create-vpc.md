@@ -31,7 +31,7 @@ Although traffic can be routed from the internet to resources in your VPC via an
 Navigate to the [VPC Management console.](https://console.aws.amazon.com/vpc)
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Under the `Resources by Region` section, select the `Route Tables` resource box to show your `Route tables`. Click on the Route table associated with the VPC named `my-vpc` to show the `Details` page.

@@ -22,7 +22,7 @@ Throughout this guide we use the following example certificate authority paramet
 Navigate to the [Create private certificate authority (CA)](https://console.aws.amazon.com/acm-pca/home#/wizard) wizard.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 - Mode options: `General-purpose`
@@ -45,7 +45,7 @@ Note the ARN of the newly created certificate authority.
 Navigate to the [ACM PCA Management Console](https://console.aws.amazon.com/acm-pca/home#/certificateAuthorities).
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Select the `Test CA` certificate authority.

@@ -13,6 +13,7 @@ export default defineUserConfig({
     viteOptions: {},
     vuePluginOptions: {},
   }),
+  pagePatterns: ['**/*.md', '!.vuepress', '!node_modules', '!**/_partials'],
   base: `/${base}/`,
   dest,
 
