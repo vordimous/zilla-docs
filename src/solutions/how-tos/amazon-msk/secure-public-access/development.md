@@ -187,7 +187,7 @@ To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.
 
 We need a TLS Server Certificate for the wildcard domain `*.aklivity.example.com` that can be trusted by a Kafka Client.
 
-Follow the [Create Server Certificate (ACM)](./../../aws-services/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
+Follow the [Create Server Certificate](./../../aws-services/create-server-certificate-acm.md) guide to create a new TLS Server Certificate for the example wildcard domain `*.aklivity.example.com`.
 
 ::: info
 Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
@@ -249,7 +249,7 @@ Parameters:
 - *Configuration Reference
   1. Follow the [Lookup MSK Server Names](./../../aws-services/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (ACM)](./../../aws-services/create-server-certificate-acm.md#store-the-encrypted-secret) guide.
+  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate](./../../aws-services/create-server-certificate-acm.md#store-the-encrypted-secret) guide.
   4. Follow the [Create Key Pair](./../../aws-services/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
 
 ### Step 3. Configure stack options: `(use defaults)`
@@ -411,7 +411,7 @@ keytool -importcert -keystore /tmp/kafka.client.truststore.jks -storetype jks -s
 ```
 
 ::: info
-When you followed the [Create Certificate Authority (ACM)](./../../aws-services/create-certificate-authority-acm.md) guide, you exported the private CA certificate to a file called `Certificate.pem`.
+When you followed the [Create Certificate Authority](./../../aws-services/create-certificate-authority-acm.md) guide, you exported the private CA certificate to a file called `Certificate.pem`.
 :::
 
 ### Configure the Kafka Client

@@ -2,7 +2,7 @@
 description: Create a AWS Certificate Manager client certificate to authenticate Kafka client identity.
 ---
 
-# Create Client Certificate (ACM)
+# Create Client Certificate
 
 You can use the following script to create a client certificate signed by an AWS Private Certificate Authority and upload the client private key to AWS SecretsManager.
 
@@ -84,7 +84,7 @@ aws acm-pca get-certificate \
 
 ## Resource Parameters
 
-The following parameters are needed when following these steps to create a new client certificate using AWS Certificate Manager (ACM).
+The following parameters are needed when following these steps to create a new client certificate using AWS Certificate Manager.
 
 - Common Name
 - Private Certificate Authority
@@ -98,7 +98,7 @@ Throughout this guide we use the following example client certificate parameters
 
 ## Create the Certificate Authority
 
-If you do not already have one, follow the [Create Certificate Authority (ACM)](./create-certificate-authority-acm.md) guide to create a new private certificate authority in AWS Certificate Manager.
+If you do not already have one, follow the [Create Certificate Authority](./create-certificate-authority-acm.md) guide to create a new private certificate authority in AWS Certificate Manager.
 
 ::: info
 Note the ARN of the private certificate authority.

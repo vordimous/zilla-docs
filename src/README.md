@@ -36,4 +36,19 @@ features:
     details: Learn about the zilla.yaml configuration.
     link: /concepts/config-intro.html
 
+  - title: Amazon MSK<br/>Secure Public Access
+    icon: aky-zilla-plus
+    details: This allows Kafka clients from outside the private network access to the full functionality of your Amazon MSK cluster.
+    link: /solutions/how-tos/amazon-msk/secure-public-access/overview.html
+
+  - title: Confluent Cloud<br/>Secure Public Access
+    icon: aky-zilla-plus
+    details: This allows Confluent and Kafka clients from outside the private network access to the full functionality of your Confluent Cloud cluster.
+    link: /solutions/how-tos/confluent-cloud/secure-public-access.html
+
+  - title: Confluent Cloud<br/>IoT Access and Control
+    icon: aky-zilla-plus
+    details: Your Confluent Cloud cluster is turned into a fully-fledged MQTT broker.
+    link: /solutions/how-tos/confluent-cloud/iot-ingest-control.html
+
 ---

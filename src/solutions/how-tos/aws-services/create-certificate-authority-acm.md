@@ -2,7 +2,7 @@
 description: Create a new private certificate authority using AWS Certificate Manager.
 ---
 
-# Create Certificate Authority (ACM)
+# Create Certificate Authority
 
 ## Resource Parameters
 

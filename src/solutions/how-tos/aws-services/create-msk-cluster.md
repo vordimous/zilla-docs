@@ -50,7 +50,7 @@ Storage: `10 GiB`
   - `SASL/SCRAM authentication`
   > -- or --
   - For mTLS
-    - `TLS client authentication (ACM)`
+    - `TLS client authentication`
     - ACM Private CAs: `Mutual Authentication CA`
   > -- or --
   - `Unauthenticated access`

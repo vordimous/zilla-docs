@@ -2,11 +2,11 @@
 description: Create a server certificate signed by a private certificate authority using AWS Certificate Manager.
 ---
 
-# Create Server Certificate (ACM)
+# Create Server Certificate
 
 ## Create the Certificate Authority
 
-Follow the [Create Certificate Authority (ACM)](./create-certificate-authority-acm.md) guide with these parameters to create a new private certificate authority in AWS Certificate Manager.
+Follow the [Create Certificate Authority](./create-certificate-authority-acm.md) guide with these parameters to create a new private certificate authority in AWS Certificate Manager.
 
 ### Distinguished Name
 

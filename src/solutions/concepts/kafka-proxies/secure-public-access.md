@@ -3,7 +3,7 @@ icon: aky-zilla-plus
 description: Securely access your Kafka cluster via the internet.
 ---
 
-# Zilla Plus Secure Public Access
+# Secure Public Access
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}

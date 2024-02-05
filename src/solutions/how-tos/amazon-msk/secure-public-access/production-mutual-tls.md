@@ -43,11 +43,11 @@ Before setting up internet access to your MSK Cluster, you will need the followi
 Check out the [Troubleshooting](./../../aws-services/troubleshooting.md) guide if you run into any issues.
 :::
 
-### Create Certificate Authority (ACM) for mTLS
+### Create Certificate Authority for mTLS
 
 > This creates a new private certificate authority in ACM.
 
-Follow the [Create Certificate Authority (ACM)](./../../aws-services/create-certificate-authority-acm.md) to create a private certificate authority to verify TLS client authentication.
+Follow the [Create Certificate Authority](./../../aws-services/create-certificate-authority-acm.md) to create a private certificate authority to verify TLS client authentication.
 
 - Distinguished Name
   ::: code-tabs
@@ -76,9 +76,9 @@ Follow the [Create MSK Cluster](./../../aws-services/create-msk-cluster.md) guid
 - Route tables: `my-msk-cluster-rtb-*`
 - Internet gateway: `my-msk-cluster-igw`
 
-### Create Client Certificate (ACM) for mTLS
+### Create Client Certificate for mTLS
 
-This allows an authorized Kafka client to connect directly to your MSK cluster with Mutual TLS (mTLS). Follow the [Create Client Certificate (ACM)](./../../aws-services/create-client-certificate-acm.md) to create a private certificate authority.
+This allows an authorized Kafka client to connect directly to your MSK cluster with Mutual TLS (mTLS). Follow the [Create Client Certificate](./../../aws-services/create-client-certificate-acm.md) to create a private certificate authority.
 
 You can create additional client certificates for each different authorized client identity that will connect via the internet to your <ZillaPlus/> proxy deployment.
 
