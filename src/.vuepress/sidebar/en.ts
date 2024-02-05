@@ -20,6 +20,10 @@ export const enSidebar = sidebar({
           link: "overview.md",
         },
         {
+          text: "Resolvers",
+          link: "resolvers.md",
+        },
+        {
           text: "Bindings",
           prefix: "bindings/",
           link: "bindings/",
