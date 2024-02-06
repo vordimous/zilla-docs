@@ -20,6 +20,10 @@ export const enSidebar = sidebar({
           link: "overview.md",
         },
         {
+          text: "Resolvers",
+          link: "resolvers.md",
+        },
+        {
           text: "Bindings",
           prefix: "bindings/",
           link: "bindings/",
@@ -41,6 +45,12 @@ export const enSidebar = sidebar({
           text: "Catalogs",
           prefix: "catalogs/",
           link: "catalogs/",
+          children: "structure",
+        },
+        {
+          text: "Models",
+          prefix: "models/",
+          link: "models/",
           children: "structure",
         },
         {
@@ -88,6 +98,77 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
+  "/solutions/": [
+    {
+      text: "Secure Public Access",
+      icon: "aky-zilla-plus",
+      link: "concepts/kafka-proxies/secure-public-access.md",
+      children: [
+        {
+          text: "Overview",
+          link: "concepts/kafka-proxies/secure-public-access.md",
+        },
+        {
+          text: "Amazon MSK",
+          collapsible: true,
+          prefix: "how-tos/amazon-msk/secure-public-access/",
+          link: "how-tos/amazon-msk/secure-public-access/overview.md",
+          children: [
+            {
+              text: "Overview",
+              link: "overview.md",
+            },
+            {
+              text: "via SASL/SCRAM",
+              link: "production.md",
+            },
+            {
+              text: "via mTLS",
+              link: "production-mutual-tls.md",
+            },
+            {
+              text: "via Unauthorized access",
+              link: "development.md",
+            },
+          ],
+        },
+        {
+          text: "Confluent Cloud",
+          link: "how-tos/confluent-cloud/secure-public-access.md",
+        },
+      ],
+    },
+    {
+      text: "IoT Ingest and Control",
+      icon: "aky-zilla-plus",
+      link: "concepts/kafka-proxies/iot-ingest-control.md",
+      children: [
+        {
+          text: "Overview",
+          link: "concepts/kafka-proxies/iot-ingest-control.md",
+        },
+        {
+          text: "Confluent Cloud",
+          link: "how-tos/confluent-cloud/iot-ingest-control.md",
+        },
+        // {
+        //   text: "Redpanda",
+        //   link: "how-tos/redpanda/iot-ingest-control.md",
+        // },
+      ],
+    },
+    {
+      text: "Other Resources",
+      children: [
+        {
+          text: "AWS",
+          prefix: "how-tos/aws-services/",
+          link: "how-tos/aws-services/",
+          children: "structure"
+        },
+      ]
+    },
+  ],
   "/": [
     {
       text: "Installing Zilla",
@@ -121,52 +202,6 @@ export const enSidebar = sidebar({
         {
           text: "Add Prometheus Metrics",
           link: "tutorials/metrics/prometheus-intro.md",
-        },
-      ],
-    },
-    {
-      text: "Secure Public Access",
-      icon: "aky-zilla-plus",
-      link: "concepts/kafka-proxies/secure-public-access.md",
-      children: [
-        {
-          text: "Overview",
-          icon: "aky-zilla-plus",
-          link: "concepts/kafka-proxies/secure-public-access.md",
-        },
-        {
-          text: "Amazon MSK",
-          collapsible: true,
-          icon: "aky-zilla-plus",
-          prefix: "how-tos/amazon-msk/secure-public-access/",
-          link: "how-tos/amazon-msk/secure-public-access/overview.md",
-          children: [
-            {
-              text: "Overview",
-              icon: "aky-zilla-plus",
-              link: "overview.md",
-            },
-            {
-              text: "via SASL/SCRAM",
-              icon: "aky-zilla-plus",
-              link: "production.md",
-            },
-            {
-              text: "via mTLS",
-              icon: "aky-zilla-plus",
-              link: "production-mutual-tls.md",
-            },
-            {
-              text: "via Unauthorized access",
-              icon: "aky-zilla-plus",
-              link: "development.md",
-            },
-          ],
-        },
-        {
-          text: "Confluent Cloud",
-          icon: "aky-zilla-plus",
-          link: "how-tos/confluent-cloud/secure-public-access.md",
         },
       ],
     },
@@ -252,6 +287,14 @@ export const enSidebar = sidebar({
       ]
     },
     {
+      text: "Solutions",
+      prefix: "solutions/",
+      children: [
+        "concepts/kafka-proxies/secure-public-access.md",
+        "concepts/kafka-proxies/iot-ingest-control.md",
+      ],
+    },
+    {
       text: "Reference",
       prefix: "reference/",
       link: "reference/config/overview.md",
@@ -261,6 +304,8 @@ export const enSidebar = sidebar({
         "config/guards/",
         "config/vaults/",
         "config/telemetry/",
+        "config/catalogs/",
+        "config/models/",
         "troubleshooting/aws.md",
       ],
     },

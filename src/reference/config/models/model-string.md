@@ -1,0 +1,41 @@
+---
+shortTitle: string
+description: Zilla runtime string model
+category:
+  - Models
+---
+
+# string Model
+
+::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
+This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+:::
+
+Zilla runtime string model
+
+```yaml {1}
+model: string
+encoding: utf_8
+```
+
+## Summary
+
+Defines a model to enforce validation for string data.
+
+## Configuration
+
+:::: note Properties
+
+- [encoding\*](#encoding)
+
+::: right
+\* required
+:::
+
+::::
+
+### encoding\*
+
+> `string`
+
+Define character encoding for unicode.

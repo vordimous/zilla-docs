@@ -106,7 +106,7 @@ A VPC security group is needed for the <ZillaPlus/> proxies when they are launch
 Follow the [Create Security Group](https://console.aws.amazon.com/vpcconsole/home#CreateSecurityGroup:) wizard with the following parameters and defaults. This creates your <ZillaPlus/> proxy security group to allow Kafka clients and SSH access.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 - Name: `my-zilla-proxy-sg`
@@ -123,6 +123,10 @@ Make sure you have selected the desired region, such as `US East (N. Virginia) u
   - Type: `All traffic`
   - Destination: `Anywhere-IPv4`
 - Create the Security Group
+
+::: warning Check your network settings
+Your IP may be different when you SSH into the EC2 instance. VPNs and other networking infrastructure may cause the `My IP` inbound rule to fail. Instead, you can use one of the other ways AWS provides to execute commands in an EC2 instance.
+:::
 
 Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table. Select the `my-zilla-proxy-sg` security group you just created. You will create an inbound rule to allow all traffic inside itself.
 
@@ -221,7 +225,7 @@ Follow the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-
 
 ::: info
 Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 ## Deploy the Zilla Plus Secure Public Access Proxy
@@ -275,7 +279,7 @@ Parameters:
 - \*Configuration Reference
   1. Follow the steps in the [Test Connectivity to Confluent Cloud](https://docs.confluent.io/cloud/current/networking/testing.html#test-connectivity-to-ccloud) docs to get your clusters Bootstrap server URL.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide. Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../../reference/aws/create-server-certificate-letsencrypt.md) guide. Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
   4. Replace with your own custom wildcard DNS pattern.
   5. Follow the [Create Key Pair](../../reference/aws/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
 
@@ -296,7 +300,7 @@ When your <ZillaPlus/> proxy is ready, the [CloudFormation console](https://cons
 Navigate to the [EC2 running instances dashboard.](https://console.aws.amazon.com/ec2/home#Instances:instanceState=running)
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 Select either of the <ZillaPlus/> proxies launched by the CloudFormation template to show the details.
@@ -414,7 +418,7 @@ When using a wildcard DNS name for your own domain, such as `*.example.aklivity.
 Navigate to the [CloudFormation console](https://console.aws.amazon.com/cloudformation). Then select the `my-zilla-proxy` stack to show the details.
 
 ::: note Check your selected region
-Make sure you have selected the desired region, such as `US East (N. Virginia) us-east-1`.
+Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
 :::
 
 In the stack `Outputs` tab, find the public DNS name of the `NetworkLoadBalancer.`
@@ -483,12 +487,6 @@ As the TLS certificate is signed by a globally trusted certificate authority, th
 > This verifies internet connectivity to your Confluent Cloud cluster via Zilla Plus for Confluent Cloud.
 
 We can now verify that the Kafka client can successfully communicate with your Confluent Cloud cluster via the internet from your local development environment to create a topic, then publish and subscribe to the same topic.
-
-If using the wildcard DNS pattern `*.example.aklivity.io`, then we use the following as TLS bootstrap server names for the Kafka client:
-
-```text:no-line-numbers
-b-1.example.aklivity.io:9092,b-2.example.aklivity.io:9092,b-3.example.aklivity.io:9092
-```
 
 ::: warning
 Replace these TLS bootstrap server names accordingly for your own custom wildcard DNS pattern.

@@ -69,6 +69,9 @@ Conditional routes based on `kafka` `topic` names are used to route these networ
 - [options.topics](#options-topics)
   - [topics\[\].name\*](#topics-name)
   - [topics\[\].defaultOffset](#topics-defaultoffset)
+  - [topics\[\].key](#topics-key)
+  - [topics\[\].value](#topics-value)
+- [options.servers](#options-servers)
 - [options.sasl](#options-sasl)
   - [sasl.name](#sasl-name)
   - [sasl.mechanism\*](#sasl-mechanism)
@@ -129,6 +132,24 @@ Topic name.
 > `enum` [ "live", "historical" ] | Default: `"historical"`
 
 Fetch offset to use for new consumers
+
+#### topics[].key
+
+> `object` of a named [`model`](../models/)
+
+Enforce validation for key
+
+#### topics[].value
+
+> `object` of a named [`model`](../models/)
+
+Enforce validation for value
+
+### options.servers
+
+> `array` of `string`
+
+Bootstrap servers to use when connecting to `kafka` cluster.
 
 ### options.sasl
 

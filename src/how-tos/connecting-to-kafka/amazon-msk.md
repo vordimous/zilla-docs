@@ -19,7 +19,7 @@ MSK's “Public Access” feature directly exposes your brokers to the internet,
 
 Once your MSK cluster is reachable over the internet, it will rely on `mTLS` to authenticate external clients. Setting up `mTLS` between MSK and Zilla is done in three steps:
 
-1. Create a trusted Client Certificate in Amazon Certificate Manager (ACM).
+1. Create a trusted Client Certificate in Amazon Certificate Manager.
 2. Export the Client Certificate as well as the Certificate Authority (CA) Certificate.
 3. Create a PKCS12 KeyStore containing the exported certificates that will be referenced by Zilla to complete the `mTLS` handshake with your MSK cluster.
 
@@ -29,7 +29,7 @@ If you deployed the Zilla Plus for Amazon MSK, then you should already have a Cl
 
 ### Create a Client Certificate
 
-Follow the [Create Client Certificate (ACM) guide](../../reference/aws/create-client-certificate-acm.md#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
+Follow the [Create Client Certificate guide](../../reference/aws/create-client-certificate-acm.md#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
 
 ### Export Client and CA Certificates
 
