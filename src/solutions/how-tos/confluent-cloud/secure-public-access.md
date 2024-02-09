@@ -38,7 +38,7 @@ Before setting up internet access to your Confluent Cloud Cluster, you will need
 - permission to modify global DNS records for a custom domain
 
 ::: tip
-Check out the [Troubleshooting](./../aws-services/troubleshooting.md) guide if you run into any issues.
+Check out the [Troubleshooting](../aws-services/troubleshooting.md) guide if you run into any issues.
 :::
 
 ### Create the Confluent Cloud Cluster in AWS with PrivateLink
@@ -148,7 +148,7 @@ Add the `my-zilla-proxy-sg` security group to your VPC Endpoint by finding your 
 
 > This creates an IAM security role to enable the required AWS services for the <ZillaPlus/> proxies.
 
-Follow the [Create IAM Role](./../aws-services/create-iam-role.md) guide to create an IAM security role with the following parameters:
+Follow the [Create IAM Role](../aws-services/create-iam-role.md) guide to create an IAM security role with the following parameters:
 
 ::: code-tabs
 
@@ -221,7 +221,7 @@ To get started, visit the Proxy's Marketplace [Product Page](https://aws.amazon.
 
 We need a TLS Server Certificate for your custom DNS wildcard domain that can be trusted by a Kafka Client from anywhere.
 
-Follow the [Create Server Certificate (LetsEncrypt)](./../aws-services/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
+Follow the [Create Server Certificate (LetsEncrypt)](../aws-services/create-server-certificate-letsencrypt.md) guide to create a new TLS Server Certificate. Use your own custom wildcard DNS domain in place of the example wildcard domain `*.example.aklivity.io`.
 
 ::: info
 Note the server certificate secret ARN as we will need to reference it from the Secure Public Access CloudFormation template.
@@ -279,9 +279,9 @@ Parameters:
 - \*Configuration Reference
   1. Follow the steps in the [Test Connectivity to Confluent Cloud](https://docs.confluent.io/cloud/current/networking/testing.html#test-connectivity-to-ccloud) docs to get your clusters Bootstrap server URL.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
-  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](./../aws-services/create-server-certificate-letsencrypt.md) guide. Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
+  3. This is the ARN of the created secret for the signed certificate's private key that was returned in the last step of the [Create Server Certificate (LetsEncrypt)](../aws-services/create-server-certificate-letsencrypt.md) guide. Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
   4. Replace with your own custom wildcard DNS pattern.
-  5. Follow the [Create Key Pair](./../aws-services/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
+  5. Follow the [Create Key Pair](../aws-services/create-key-pair.md) guide to create a new key pair to access EC2 instances via SSH.
 
 ### Step 3. Configure stack options: `(use defaults)`
 
@@ -342,7 +342,7 @@ netstat -ntlp
 ```
 
 ```output:no-line-numbers
-tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
+tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin
 ```
 
 @tab Check Zilla Logs
@@ -363,7 +363,7 @@ systemd[1]: Started zilla-plus.service - Zilla Plus.
 All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
 
 ```bash:no-line-numbers
-cat /var/log/cloud-init-output.log 
+cat /var/log/cloud-init-output.log
 ```
 
 ```output:no-line-numbers
@@ -411,47 +411,11 @@ Repeat these steps for each of the other <ZillaPlus/> proxies launched by the Cl
 
 ### Configure Global DNS
 
-> This ensures that any new Kafka brokers added to the Confluent Cloud cluster can still be reached via the <ZillaPlus/> proxy.
-
-When using a wildcard DNS name for your own domain, such as `*.example.aklivity.io` then the DNS entries are setup in your DNS provider.
-
-Navigate to the [CloudFormation console](https://console.aws.amazon.com/cloudformation). Then select the `my-zilla-proxy` stack to show the details.
-
-::: note Check your selected region
-Make sure you have selected the desired region, ex: `US East (N. Virginia) us-east-1`.
-:::
-
-In the stack `Outputs` tab, find the public DNS name of the `NetworkLoadBalancer.`
-
-You need to create a `CNAME` record mapping your public DNS wildcard pattern to the public DNS name of the Network Load Balancer.
-
-::: info
-You might prefer to use an Elastic IP address for each NLB public subnet, providing DNS targets for your `CNAME` record that can remain stable even after restarting the stack.
-:::
+<!-- @include: @partials/secure-public-access/configure-global-dns.md  -->
 
 ## Verify Kafka Client Connectivity
 
-To verify that we have successfully enabled public internet connectivity to our Confluent Cloud cluster from the local development environment, we will use a generic Kafka client to create a topic, publish messages and then subscribe to receive these messages from our Confluent Cloud cluster via the public internet.
-
-### Install the Kafka Client
-
-First, we must install a Java runtime that can be used by the Kafka client.
-
-```bash:no-line-numbers
-sudo yum install java-1.8.0
-```
-
-Now we are ready to install the Kafka client:
-
-```bash:no-line-numbers
-wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
-tar -xzf kafka_2.13-2.8.0.tgz
-cd kafka_2.13-2.8.0
-```
-
-::: tip
-We use a generic Kafka client here, however the setup for any Kafka client, including [KaDeck](https://www.xeotek.com/apache-kafka-monitoring-management/), [Conduktor](https://www.conduktor.io/download/), and [akhq.io](https://akhq.io/) will be largely similar. With the <ZillaPlus/> proxy you can use these GUI Kafka clients to configure and monitor your Confluent Cloud applications, clusters and streams.
-:::
+<!-- @include: @partials/secure-public-access/verify-kafka-connect.md  -->
 
 ### Configure the Kafka Client
 
@@ -556,12 +520,12 @@ This is my second event
 
 ::: info Monitor the <ZillaPlus/> proxy
 
-Follow the [Monitoring the <ZillaPlus/> proxy](./../aws-services/manage-cloudformation-stack.md#monitoring) instructions
+Follow the [Monitoring the <ZillaPlus/> proxy](../aws-services/manage-cloudformation-stack.md#monitoring) instructions
 
 :::
 
 ::: info Upgrade the <ZillaPlus/> proxy
 
-Follow the [Upgrading the <ZillaPlus/> proxy](./../aws-services/manage-cloudformation-stack.md#upgrading) instructions
+Follow the [Upgrading the <ZillaPlus/> proxy](../aws-services/manage-cloudformation-stack.md#upgrading) instructions
 
 :::

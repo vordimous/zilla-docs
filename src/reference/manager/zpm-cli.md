@@ -1,5 +1,4 @@
 ---
-order: 3
 category:
   - CLI
 description: The command line interface to manage Zilla dependencies and package the Zilla runtime.

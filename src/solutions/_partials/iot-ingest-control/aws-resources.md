@@ -89,7 +89,7 @@ Open the newly created role
         ],
         "Resource": [
           "arn:aws:secretsmanager:*:*:secret:<TLS certificate private key secret name>*",
-          "arn:aws:secretsmanager:*:*:secret:my-zilla-iot-access-secret*"
+          "arn:aws:secretsmanager:*:*:secret:<SASL/SCRAM auth secret name>*"
         ]
       }
     ]

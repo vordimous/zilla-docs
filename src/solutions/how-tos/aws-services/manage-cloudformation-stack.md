@@ -6,7 +6,7 @@ description: Create a new private certificate authority using AWS Certificate Ma
 
 Once you have deployed a <ZillaPlus/> Cloudformation stack you can manage it in the following ways.
 
-### Monitoring
+## Monitoring
 
 The CloudFormation template used to deploy the <ZillaPlus/> proxy includes a Network Load Balancer that can be monitored via [CloudWatch](https://console.aws.amazon.com/cloudwatch) to verify continuous health.
 
@@ -17,7 +17,7 @@ Network Load Balancers have [many available metrics](https://docs.aws.amazon.com
 
 You can use [CloudWatch](https://console.aws.amazon.com/cloudwatch) to create a dashboard to monitor these metrics and set alarms to alert you when specific metric thresholds are reached.
 
-### Upgrading
+## Upgrading
 
 Navigate to your [AWS Marketplace](https://console.aws.amazon.com/marketplace) subscriptions and select `Zilla Plus for *` to show the manage subscription page.
 

@@ -12,7 +12,7 @@ Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
 ::: warning
-MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Secure Public Access](../amazon-msk/secure-public-access/overview.md) solution using [Zilla Plus for Amazon MSK](../amazon-msk/secure-public-access/overview.md). The solution is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
+MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Secure Public Access](../../solutions/how-tos/amazon-msk/secure-public-access/overview.md) solution using [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44). The solution is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
 :::
 
 ## Set up mTLS Authentication between MSK and Zilla
@@ -29,11 +29,11 @@ If you deployed the Zilla Plus for Amazon MSK, then you should already have a Cl
 
 ### Create a Client Certificate
 
-Follow the [Create Client Certificate guide](../../reference/aws/create-client-certificate-acm.md#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
+Follow the [Create Client Certificate guide](../../solutions/how-tos/aws-services/create-client-certificate-acm.md#issue-the-signed-certificate). Upon completion you will have created a client certificate inside ACM and should have a local `client-1.key.pem` file containing the client certificate's RSA key as well as the `ARN` of the certificate.
 
 ### Export Client and CA Certificates
 
-First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](../../reference/aws/create-certificate-authority-acm.md) used to issue the certificate, and run the following command:
+First, you will export the Client Certificate to a local file called `client.cert`. To do this you will need the `ARN` of the client certificate as well as of the [certificate authority](../../solutions/how-tos/aws-services/create-certificate-authority-acm.md) used to issue the certificate, and run the following command:
 
 ```bash:no-line-numbers
 aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_AUTHORITY_ARN \

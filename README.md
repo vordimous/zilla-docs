@@ -28,7 +28,7 @@ This repository contains the documentation website code and Markdown source file
 
 ## Contributing Guide
 
-Before submitting your contribution, please read through the following guide. We also suggest you read the [Writing Guide](.github/contributing/writing-guide.md) in this repo.
+Before submitting your contribution, please read through the following guide. We also suggest you read the [Writing Guide](./.github/contributing/writing-guide.md) in this repo.
 
 ### Repo Setup
 

@@ -1,5 +1,4 @@
 ---
-order: 2
 category:
   - CLI
 description: The command line interface to control the Zilla runtime.
