@@ -2,8 +2,8 @@
 
 <!-- markdownlint-disable -->
 <div align="center">
-  <img src="./src/.vuepress/public/logo.png#gh-light-mode-only" height="100">
-  <img src="./src/.vuepress/public/logo-dark.png#gh-dark-mode-only" height="100">
+  <img src="./src/.vuepress/public/logo.webp#gh-light-mode-only" height="100">
+  <img src="./src/.vuepress/public/logo-dark.webp#gh-dark-mode-only" height="100">
 </div>
 
 </br>

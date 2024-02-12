@@ -15,10 +15,10 @@ const __dirname = getDirname(import.meta.url);
 
 export default hopeTheme({
   hostname: hostnameSEO,
-  logo: "/logo.png",
-  logoDark: "/logo-dark.png",
+  logo: "/logo.webp",
+  logoDark: "/logo-dark.webp",
   iconAssets: ["fontawesome-with-brands"],
-  favicon: "favicon.ico",
+  favicon: "/favicon.ico",
 
   repo: "aklivity/zilla",
   editLink: true,

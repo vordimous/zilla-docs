@@ -13,7 +13,7 @@ html[data-theme=dark] #app {
     --warning-bg-color: #1d1500;
     --caution-bg-color: #340c0d;
     .vp-footer img.logo {
-        content: url("/assets/footer-logo-white.png");
+        content: url("/footer-logo-white.webp");
     }
 }
 
@@ -28,7 +28,7 @@ html[data-theme=light] #app {
     --tab-nav-text-color: var(--code-tabs-nav-text-color);
     --info-bg-color: var(--info-bg-color);
     .vp-footer img.logo {
-        content: url("/assets/footer-logo.png");
+        content: url("/footer-logo.webp");
     }
 }
 
