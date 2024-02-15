@@ -189,7 +189,7 @@ Every page has an `Edit this page on GitHub` link at the bottom for you to check
 
 ## Copyright and license
 
-Copyright Aklivity, Inc. 2023, released under the [Apache 2.0 license](https://github.com/aklivity/zilla/blob/main/LICENSE).
+Copyright Aklivity, Inc. 2024, released under the [Apache 2.0 license](https://github.com/aklivity/zilla/blob/main/LICENSE).
 
 [build-status-image]: https://github.com/aklivity/zilla/workflows/build/badge.svg
 [build-status]: https://github.com/aklivity/zilla/actions
