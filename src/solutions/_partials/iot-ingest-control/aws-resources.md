@@ -41,13 +41,6 @@ Make sure you have selected the desired region, ex: `US East (N. Virginia) us-ea
 Your IP may be different when you SSH into the EC2 instance. VPNs and other networking infrastructure may cause the `My IP` inbound rule to fail. Instead, you can use one of the other ways AWS provides to execute commands in an EC2 instance.
 :::
 
-Navigate to the VPC Management Console [Security Groups](https://console.aws.amazon.com/vpc/home#securityGroups:) table. Select the `my-zilla-iot-proxy-sg` security group you just created. You will create an inbound rule to allow all traffic inside itself.
-
-- Add Inbound Rule
-  - Type: `All Traffic`
-  - Source type: `Custom`
-  - Source: `my-zilla-iot-proxy-sg`
-
 ### Create the IAM security role
 
 > This creates an IAM security role to enable the required AWS services for the <ZillaPlus/> proxies.
