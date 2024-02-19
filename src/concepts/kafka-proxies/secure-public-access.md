@@ -14,11 +14,11 @@ You will need to choose a wildcard DNS pattern to use for public internet access
 
 ## Amazon MSK
 
-The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet. Follow the [guide](../../how-tos/amazon-msk/secure-public-access/overview.md) to get started.
+The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet. Follow the [guide](../../solutions/how-tos/amazon-msk/secure-public-access/overview.md) to get started.
 
 ## Confluent Cloud
 
-The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet. Follow the [guide](../../how-tos/confluent-cloud/secure-public-access.md) to get started.
+The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet. Follow the [guide](../../solutions/how-tos/confluent-cloud/secure-public-access.md) to get started.
 
 ## The <ZillaPlus/> proxy
 

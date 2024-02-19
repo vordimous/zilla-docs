@@ -65,7 +65,7 @@ export const enSidebar = sidebar({
             },
             {
               text: "Exporters",
-              prefix: "exporter/",
+              prefix: "exporters/",
               children: "structure",
             },
           ],
@@ -148,13 +148,17 @@ export const enSidebar = sidebar({
           link: "concepts/kafka-proxies/iot-ingest-control.md",
         },
         {
+          text: "Amazon MSK",
+          link: "how-tos/amazon-msk/iot-ingest-control.md",
+        },
+        {
           text: "Confluent Cloud",
           link: "how-tos/confluent-cloud/iot-ingest-control.md",
         },
-        // {
-        //   text: "Redpanda",
-        //   link: "how-tos/redpanda/iot-ingest-control.md",
-        // },
+        {
+          text: "Redpanda",
+          link: "how-tos/redpanda/iot-ingest-control.md",
+        },
       ],
     },
     {
@@ -306,7 +310,6 @@ export const enSidebar = sidebar({
         "config/telemetry/",
         "config/catalogs/",
         "config/models/",
-        "troubleshooting/aws.md",
       ],
     },
   ],

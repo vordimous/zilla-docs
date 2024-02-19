@@ -1,7 +1,4 @@
 ---
-order: 3
-category:
-  - config
 description: A variable syntax for inserting values into the zilla.yaml
 ---
 

@@ -18,7 +18,7 @@ A Zilla MQTT server can manage client sessions and broker all traffic, adhering 
 
 ### Protocol versions
 
-An MQTT client can use either the [MQTT v5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html) and [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) specifications.
+An MQTT client can use either the [MQTT v5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html) and [MQTT v3.1.1](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) specifications.
 
 ### QOS
 
