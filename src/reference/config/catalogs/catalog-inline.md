@@ -7,8 +7,8 @@ category:
 
 # inline Catalog
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 Zilla runtime inline catalog

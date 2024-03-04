@@ -35,8 +35,8 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 
 ### zilla dump
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla dump` command creates a `pcap` file that can be opened in Wireshark. Using the Zilla dissector plugin, Wireshark shows detailed information about the internal state of the current Zilla instance.
@@ -87,8 +87,8 @@ Example:
 
 ### zilla generate
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla generate` command generates a zilla configuration file from an OpenAPI or AsyncAPI service definition.
@@ -227,8 +227,8 @@ zilla stop
 
 ### zilla tune
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.
