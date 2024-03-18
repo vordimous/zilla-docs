@@ -34,7 +34,7 @@ Defines a catalog with schemas, AsyncAPI/OpenAPI definitions pulled from a remot
 - [options](#options)
   - [options.url\*](#options-url)
   - [options.group-id](#options-group-id)
-  - [options.use-id](#options-v-id)
+  - [options.use-id](#options-use-id)
   - [options.id-encoding](#options-id-encoding)
 
 ::: right

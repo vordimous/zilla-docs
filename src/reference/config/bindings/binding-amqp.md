@@ -62,6 +62,16 @@ Behave as an `amqp 1.0` `proxy`.
 kind: proxy
 ```
 
+### exit
+
+> `string`
+
+Default exit binding when no conditional routes are viable.
+
+```yaml
+exit: echo_server
+```
+
 ### routes
 
 > `array` of `object`

@@ -25,13 +25,13 @@ ws_server:
 
 Defines a binding with `WebSockets` protocol support, with `server` or `client` behavior.
 
-### Server behavior
+## Server behavior
 
 The `server` kind `ws` binding converts inbound `http` request-response streams into `ws` full-duplex streams.
 
 Conditional routes based on `ws` scheme, authority, path or negotiated subprotocol are used to route these streams to an `exit` binding.
 
-### Client behavior
+## Client behavior
 
 The `client` kind `ws` binding converts inbound `ws` full duplex streams into `http` request-response streams.
 

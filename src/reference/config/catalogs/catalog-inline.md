@@ -62,7 +62,7 @@ Defines a catalog with schemas to enforce validation. The schemas are defined in
 
 #### options.subjects\*
 
-> `object` as map of named properties
+> `object` as map of named objects
 
 Unique identifier for schema categorization in the registry.
 

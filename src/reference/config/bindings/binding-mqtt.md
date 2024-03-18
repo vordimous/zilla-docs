@@ -118,7 +118,7 @@ routes:
 
 Array of mqtt session properties
 
-##### session.client-id
+##### session[].client-id
 
 > `string`
 
@@ -130,7 +130,7 @@ An MQTT client identifier, allowing the usage of wildcards.
 
 Array of MQTT topic names for publish capability.
 
-##### publish.topic
+##### publish[].topic
 
 > `string`
 
@@ -140,7 +140,7 @@ Array of MQTT topic names for publish capability.
 
 Array of MQTT topic names for subscribe capability.
 
-##### subscribe.topic
+##### subscribe[].topic
 
 > `string`
 

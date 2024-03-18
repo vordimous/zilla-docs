@@ -45,7 +45,7 @@ exporters:
 
 ::::
 
-### options*
+### options
 
 > `object`
 
@@ -74,7 +74,7 @@ Interval in seconds to push data to the Open Telemetry collector. Default: 30 se
 Specifies what signals should be exported. Currently only `metrics` is supported. The default
 behaviour is to export all supported signals.
 
-#### options.endpoint*
+#### options.endpoint
 
 > `object`
 
@@ -86,7 +86,7 @@ Contains details for the Open Telemetry collector endpoint.
 
 Specifies the protocol to use for exporting data. Currently only `http` is supported. The default is `http`.
 
-##### endpoint.location*
+##### endpoint.location\*
 
 > `string`
 
