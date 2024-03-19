@@ -10,7 +10,7 @@ tag:
 
 # openapi Binding
 
-Zilla runtime openapi binding.
+Zilla runtime `openapi` binding.
 
 ```yaml {2}
 openapi_server:
@@ -18,7 +18,7 @@ openapi_server:
   kind: server
   options:
     specs:
-      openapi-id: spec/openapi.yaml
+      my-openapi-spec: spec/openapi.yaml
   exit: openapi_client
 openapi_client:
   type: openapi
@@ -28,8 +28,7 @@ openapi_client:
       host: localhost
       port: 8080
     specs:
-      openapi-id: spec/petstore.yaml
-
+      my-openapi-spec: spec/petstore.yaml
 ```
 
 ## Summary
@@ -43,28 +42,28 @@ The `client` kind `openapi` binding creates composite of `http`, `tls`, and `tcp
 ## Configuration
 
 :::: note Properties
-π
+
 - [kind\*](#kind)
 - [options](#options)
-- [options.tcp](#options-tcp)
-- [tpc.host](#tpc-host)
-- [tcp.port](#tcp-port)
-- [options.tls](#options-tls)
-- [tls.version](#tls-version)
-- [tls.keys](#tls-keys)
-- [tls.trust](#tls-trust)
-- [tls.signers](#tls-signers)
-- [tls.trustcacerts](#tls-trustcacerts)
-- [tls.sni\*](#tls-sni)
-- [tls.alpn](#tls-alpn)
-- [tls.mutual](#tls-mutual)
-- [options.http](#options-http)
-- [http.authorization](#http-authorization)
-  - [authorization.credentials](#authorization-credentials)
+  - [options.spec](#options-spec)
+  - [options.http](#options-http)
+    - [http.authorization](#http-authorization)
+    - [authorization.credentials](#authorization-credentials)
     - [credentials.cookies](#credentials-cookies)
     - [credentials.headers](#credentials-headers)
     - [credentials.query](#credentials-query)
-  - [options.spec](#options-spec)
+  - [options.tcp](#options-tcp)
+    - [tcp.host](#tcp-host)
+    - [tcp.port](#tcp-port)
+  - [options.tls](#options-tls)
+    - [tls.version](#tls-version)
+    - [tls.keys](#tls-keys)
+    - [tls.trust](#tls-trust)
+    - [tls.signers](#tls-signers)
+    - [tls.trustcacerts](#tls-trustcacerts)
+    - [tls.sni\*](#tls-sni)
+    - [tls.alpn](#tls-alpn)
+    - [tls.mutual](#tls-mutual)
 - [exit](#exit)
 
 ::: right
@@ -92,88 +91,22 @@ kind: server
 ```yaml
 options:
   spec:
-    openapi-id: spec/openapi.yaml
+    my-openapi-spec: spec/openapi.yaml
 ```
 
-### options.tcp
+#### options.spec
 
-> `object`
+> `map` of `name: value` properties
 
-`client` specific `tcp` options.
+OpenAPI spec definition filename mapped by a unique API spec identifier.
 
-### tpc.host
-
-> `string`
-
-Hostname or IP address.
-
-### tcp.port
-
-> `integer` | `string` | `array` of  `integer` | `array` of `string`
-
-Port number(s), including port number ranges.
-
-### options.tls
-
-> `object`
-
-`tls` specific options.
-
-### tls.version
-
-> `string`
-
-Protocol version.
-
-### tls.keys
-
-> `array` of `string`
-
-A list of reference names for the Vault key.
-
-### tls.trust
-
-> `array` of `string`
-
-A list of reference names for the Vault certificate.
-
-### tls.signers
-
-> `array` of `string`
-
-A list of reference names for the Vault signer certificate.
-
-### tls.trustcacerts
-
-> `boolean` | Default: `true` when trust is `null`
-
-Trust CA certificates.
-
-### tls.sni\*
-
-> `array` of `string`
-
-A list of the Server Name Indications.
-
-### tls.alpn
-
-> `array` of `string`
-
-Application protocols.
-
-### tls.mutual
-
-> `enum` [ "required", "requested", "none" ] | Default: `"none"`
-
-Mutual authentication.
-
-### options.http
+#### options.http
 
 > `object`
 
 `http` specific options.
 
-### http.authorization
+##### http.authorization
 
 > `object` as map of named properties
 
@@ -187,7 +120,7 @@ authorization:
         authorization: Bearer {credentials}
 ```
 
-#### authorization.credentials
+##### authorization.credentials
 
 > `object`
 
@@ -211,11 +144,77 @@ Named header value pattern with `{credentials}`, e.g. `"Bearer` `{credentials}"`
 
 Named query parameter value pattern with `{credentials}`.
 
-#### options.spec
+#### options.tcp
 
 > `object`
 
-OpenAPI spec definition filenames and its unique id.
+`client` specific `tcp` options.
+
+##### tcp.host
+
+> `string`
+
+Hostname or IP address.
+
+##### tcp.port
+
+> `integer` | `string` | `array` of `integer` | `array` of `string`
+
+Port number(s), including port number ranges.
+
+#### options.tls
+
+> `object`
+
+`tls` specific options.
+
+##### tls.version
+
+> `string`
+
+Protocol version.
+
+##### tls.keys
+
+> `array` of `string`
+
+A list of reference names for the Vault key.
+
+##### tls.trust
+
+> `array` of `string`
+
+A list of reference names for the Vault certificate.
+
+##### tls.signers
+
+> `array` of `string`
+
+A list of reference names for the Vault signer certificate.
+
+##### tls.trustcacerts
+
+> `boolean` | Default: `true` when trust is `null`
+
+Trust CA certificates.
+
+##### tls.sni\*
+
+> `array` of `string`
+
+A list of the Server Name Indications.
+
+##### tls.alpn
+
+> `array` of `string`
+
+Application protocols.
+
+##### tls.mutual
+
+> `enum` [ "required", "requested", "none" ] | Default: `"none"`
+
+Mutual authentication.
 
 ### exit
 
@@ -227,7 +226,8 @@ Default exit binding.
 exit: echo_server
 ```
 
-  ---
+---
+
 ::: right
 \* required
 :::
