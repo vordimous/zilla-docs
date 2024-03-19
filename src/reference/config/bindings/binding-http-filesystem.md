@@ -137,7 +137,7 @@ routes:
 
 Filesystem parameters used when adapting `http` data streams into `filesystem` data streams.
 
-#### with[].path\*
+#### with.path\*
 
 > `string`
 

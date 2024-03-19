@@ -60,17 +60,17 @@ Each verified JWT access token has an expiration time, and an optional challenge
 
 - [options](#options)
 - [options.issuer](#options-issuer)
-- [options.audience](#options-audience)
-- [options.challenge](#options-challenge)
-- [options.keys](#options-keys)
-- [keys\[\].kty](#keys-kty)
-- [keys\[\].kid](#keys-kid)
-- [keys\[\].n](#keys-n)
-- [keys\[\].e](#keys-e)
-- [keys\[\].alg](#keys-alg)
-- [keys\[\].crv](#keys-crv)
-- [keys\[\].x](#keys-x)
-- [keys\[\].y](#keys-y)
+  - [options.audience](#options-audience)
+  - [options.challenge](#options-challenge)
+  - [options.keys](#options-keys)
+    - [keys\[\].kty](#keys-kty)
+    - [keys\[\].kid](#keys-kid)
+    - [keys\[\].n](#keys-n)
+    - [keys\[\].e](#keys-e)
+    - [keys\[\].alg](#keys-alg)
+    - [keys\[\].crv](#keys-crv)
+    - [keys\[\].x](#keys-x)
+    - [keys\[\].y](#keys-y)
 
 ::: right
 \* required
@@ -109,67 +109,67 @@ options:
 
 Issuer claim.
 
-### options.audience
+#### options.audience
 
 > `string`
 
 Audience claim.
 
-### options.challenge
+#### options.challenge
 
 > `integer`
 
 Challenge period (seconds).
 
-### options.keys
+#### options.keys
 
 > `array` of `object`
 
 If not provided, relies on the `issuer` to infer the location of a remote `.well-known/jwks.json` file.
 
-### keys[].kty
+##### keys[].kty
 
 > `string`
 
 Key type, e.g. `RSA` , `EC`.
 
-### keys[].kid
+##### keys[].kid
 
 > `string`
 
 Key ID.
 
-### keys[].n
+##### keys[].n
 
 > `string`
 
 `RSA` `modulus`.
 
-### keys[].e
+##### keys[].e
 
 > `string`
 
 `RSA` `exponent`.
 
-### keys[].alg
+##### keys[].alg
 
 > `string`
 
 `RSA` algorithm, e.g. `RS256`.
 
-### keys[].crv
+##### keys[].crv
 
 > `string`
 
 `EC` curve name.
 
-### keys[].x
+##### keys[].x
 
 > `string`
 
 `EC` point `x` coordinate.
 
-### keys[].y
+##### keys[].y
 
 > `string`
 

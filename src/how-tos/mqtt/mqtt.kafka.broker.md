@@ -67,24 +67,21 @@ Using [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto) subscribe 
 
 ```bash:no-line-numbers
 docker run -it --rm eclipse-mosquitto \
-mosquitto_sub -V 'mqttv5' --topic 'zilla' \
---host 'host.docker.internal' --port 7183 --debug
+mosquitto_sub --url mqtt://host.docker.internal:7183/zilla
 ```
 
 In a separate session, publish a message on the `zilla` topic.
 
 ```bash:no-line-numbers
 docker run -it --rm eclipse-mosquitto \
-mosquitto_pub -V 'mqttv5' --topic 'zilla' --message 'Hello, world' \
---host 'host.docker.internal' --port 7183 --debug --insecure
+mosquitto_pub --url mqtt://host.docker.internal:7183/zilla --message 'Hello, world'
 ```
 
 Send messages with the retained flag.
 
 ```bash:no-line-numbers
 docker run -it --rm eclipse-mosquitto \
-mosquitto_pub -V 'mqttv5' --topic 'zilla' --message 'Hello, retained' --retain \
---host 'host.docker.internal' --port 7183 --debug --insecure
+mosquitto_pub --url mqtt://host.docker.internal:7183/zilla --message 'Hello, retained' --retain
 ```
 
 Then restart the `mosquitto_sub` above. The latest retained message is delivered, and the other messages are not.
@@ -95,14 +92,12 @@ Send a message from a device and a sensor.
 
 ```bash:no-line-numbers
 docker run -it --rm eclipse-mosquitto \
-mosquitto_pub -V 'mqttv5' --topic 'place/01/device/01' --message 'I am device01' \
---host 'host.docker.internal' --port 7183 --debug --insecure
+mosquitto_pub --url mqtt://host.docker.internal:7183/place/01/device/01 --message 'I am device01'
 ```
 
 ```bash:no-line-numbers
 docker run -it --rm eclipse-mosquitto \
-mosquitto_pub -V 'mqttv5' --topic 'place/01/sensor/01' --message 'I am sensor01' \
---host 'host.docker.internal' --port 7183 --debug --insecure
+mosquitto_pub --url mqtt://host.docker.internal:7183/place/01/sensor/01 --message 'I am sensor01'
 ```
 
 You can check the [Kafka UI](http://localhost:8080/ui/clusters/local/all-topics) and see that device01's message was delivered to the `mqtt-devices` topic while sensor01's message is on the `mqtt-messages` topic.

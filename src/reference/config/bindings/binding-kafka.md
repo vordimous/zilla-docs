@@ -15,10 +15,6 @@ Zilla runtime kafka binding.
 kafka_cache_client:
   type: kafka
   kind: cache_client
-  options:
-    merged:
-      - items-requests
-      - items-responses
   exit: kafka_cache_server
 kafka_cache_server:
   type: kafka
@@ -37,7 +33,7 @@ kafka_client:
 
 Defines a binding with `kafka` protocol support, with `cache_client`, `cache_server` or `client` behavior.
 
-### Cache behavior
+## Cache behavior
 
 The `cache_client` and `cache_server` kinds combine to provide a persistent cache of `kafka` messages per `topic` `partition` honoring the `kafka` `topic` configuration for message expiration and compaction. Messages ordering is guaranteed per `partition` and messages are merged into a unified stream for the `topic` spanning all `partitions`.
 
@@ -53,7 +49,7 @@ When the `kafka` `topic` is not compacted, then the binding can be configured to
 
 The `cache_client` and `cache_server` also combine to provide a staging area when producing new messages as `kafka` requires exact message length up front when producing new messages and `kafka` does not support producing multiple messages in parallel over the same network connection.
 
-### Client behavior
+## Client behavior
 
 The `client` kind `kafka` binding receives inbound application streams and encodes each as a network stream via `kafka` request-response protocol. Note that the same network stream can be reused to encode multiple `kafka` requests, including both `fetch` and `produce` requests.
 
@@ -73,7 +69,6 @@ Conditional routes based on `kafka` `topic` names are used to route these networ
   - [topics\[\].value](#topics-value)
 - [options.servers](#options-servers)
 - [options.sasl](#options-sasl)
-  - [sasl.name](#sasl-name)
   - [sasl.mechanism\*](#sasl-mechanism)
   - [sasl.username](#sasl-username)
   - [sasl.password](#sasl-password)
@@ -104,9 +99,12 @@ Behave as a `kafka` `cache_client`, `cache_server` or `client`.
 
 ```yaml
 options:
-  merged:
+  bootstrap:
     - items-requests
     - items-responses
+  topics:
+    - name: items-requests
+      defaultOffset: live
 ```
 
 ### options.bootstrap
@@ -156,12 +154,6 @@ Bootstrap servers to use when connecting to `kafka` cluster.
 > `object`
 
 SASL credentials to use when connecting to `kafka` brokers.
-
-#### sasl.name
-
-> `string`
-
-Mechanism name.
 
 #### sasl.mechanism\*
 

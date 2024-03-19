@@ -55,7 +55,6 @@ When a `kafka` tombstone (`null` value) message is received by the `sse-kafka` b
   - [with.filters](#with-filters)
     - [filters\[\].key](#filters-key)
     - [filters\[\].headers](#filters-headers)
-    - [filters\[\].event](#filters-event)
   - [with.event](#with-event)
     - [event.id\*](#event-id)
 
@@ -171,13 +170,9 @@ Message key, optionally referencing path parameter such as `${params.key}`.
 
 ##### filters[].headers
 
-> `object`
+> `map` of `name: value` properties
 
 Message headers, with value optionally referencing path parameter such as `${params.headerX}`.
-
-##### filters[].event
-
-> `object`
 
 #### with.event
 

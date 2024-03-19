@@ -104,12 +104,12 @@ Requests including an `idempotency-key` `grpc` metadata header can be replayed a
     - [metadata.base64](#metadata-base64)
 - [routes\[\].exit\*](#routes-exit)
 - [routes\[\].with\*](#routes-with)
-- [with.capability (fetch)](#with-capability-fetch)
+- [with.capability: fetch](#with-capability-fetch)
   - [with.topic](#with-topic)
   - [with.filters](#with-filters)
     - [filters\[\].key](#filters-key)
     - [filters\[\].headers](#filters-headers)
-- [with.capability (produce)](#with-capability-produce)
+- [with.capability: produce](#with-capability-produce)
   - [with.topic](#with-topic-1)
   - [with.acks](#with-acks)
   - [with.key](#with-key)
@@ -192,7 +192,7 @@ Kafka request message headers injected when adapting `grpc` request-response str
 
 ##### correlation.headers
 
-> `object`
+> `map` of `name: value` properties
 
 Kafka request message reply to and correlation id header names injected when adapting `grpc` request-response streams to `kafka` topic streams.
 
@@ -303,7 +303,7 @@ Pattern matching the fully qualified name of a `grpc` service method, in the for
 
 #### when[].metadata
 
-> `object` of name-value headers
+> `map` of `name: value` properties
 
 Metadata header name value pairs (all match).
 
@@ -346,7 +346,7 @@ with:
   capability: produce
 ```
 
-### with.capability (fetch)
+### with.capability: fetch
 
 > `object`
 
@@ -382,11 +382,11 @@ The filter criteria for the Kafka message key.
 
 ##### filters[].headers
 
-> `object`
+> `map` of `name: value` properties
 
 The filter criteria for the Kafka message headers.
 
-### with.capability (produce)
+### with.capability: produce
 
 > `object`
 

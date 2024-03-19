@@ -38,9 +38,7 @@ docker run -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:lat
 
 ## Running Zilla via Helm
 
-Go to the [Zilla artifacthub](https://artifacthub.io/packages/helm/zilla/zilla) page to find out more on how to install Zilla using Helm
-
-### TL;DR
+Go to the [Zilla artifacthub](https://artifacthub.io/packages/helm/zilla/zilla) page to find out more on how to install Zilla using Helm.
 
 ```bash:no-line-numbers
 helm install zilla oci://ghcr.io/aklivity/charts/zilla --namespace zilla --create-namespace --wait \
@@ -48,11 +46,9 @@ helm install zilla oci://ghcr.io/aklivity/charts/zilla --namespace zilla --creat
     --set-file zilla\\.yaml=zilla.yaml
 ```
 
-### Configuration
-
 Zilla specific configuration is in the `zilla.yaml` file which can be included in the helm install by adding `--set-file zilla\\.yaml=zilla.yaml` to your command.
 
-## zilla.yaml Auto Reconfigure
+## Auto Reconfigure
 
 Zilla loads the configuration from the `zilla.yaml` file on startup and logs the configured settings. Restarting Zilla or its container may not be an option, so Zilla creates a file watcher to detect changes to the file and reloads the config if a change is detected.
 
@@ -63,3 +59,15 @@ This feature is demonstrated in the above Helm install command. Running a `helm 
 ## Auto Scaling
 
 Zilla will start workers that default to the CPU cores it is allowed to use. This makes horizontal scaling easy with a 1:1 ratio of instances to workers. Any of the default scaling metrics based on server CPU usage will enable Zilla to handle traffic spikes. Additionally, Zilla [Telemetry](../reference/config/overview.md#telemetry) configuration provides more data when determining how to scale. The [Prometheus autoscale example](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale) demonstrates using metrics from the [Prometheus exporter](../reference/config/telemetry/exporters/exporter-prometheus.md) to horizontally scale Zilla on k8s.
+
+## Enable Incubator Features
+
+> Progress on incubator features can be found on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4).
+
+Zilla maintains functioning features that may have more work or design changes in a separate install directory called `incubator`. These are released with Zilla for the community to use and provide feedback or suggestions on how to improve the feature. The package name doesn't change meaning incubator features can be added to the zilla runtime engine whenever they are ready or needed. Incubator features are loaded when the `zilla.incubator.enabled` java property is set to true.
+
+The `ZILLA_INCUBATOR_ENABLED` environment variable will set the incubator java option when set to `true`. Add the environment variable wherever you are running zilla.
+
+```text
+ZILLA_INCUBATOR_ENABLED=true
+```

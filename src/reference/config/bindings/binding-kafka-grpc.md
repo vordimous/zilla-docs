@@ -215,6 +215,18 @@ routes:
 
 The name of a Kafka topic for requests.
 
+#### when[].key
+
+> `string`
+
+The name of a Kafka topic for requests.
+
+#### when[].headers
+
+> `map` of `name: value` properties
+
+Header name value pairs (all match).
+
 #### when[].reply-to
 
 > `string`

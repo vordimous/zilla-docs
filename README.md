@@ -195,3 +195,46 @@ Copyright Aklivity, Inc. 2024, released under the [Apache 2.0 license](https://g
 [build-status]: https://github.com/aklivity/zilla/actions
 [community-image]: https://img.shields.io/badge/slack-@aklivitycommunity-blue.svg?logo=slack
 [community-join]: https://www.aklivity.io/slack
+
+
+binding http [
+  'options.requests',
+  'params.path',
+  'params.query',
+  'requests[].content-type',
+  'requests[].headers',
+  'requests[].method',
+  'requests[].params',
+  'requests[].path',
+  'requests[].responses',
+  'responses[].content-type',
+  'responses[].headers',
+  'responses[].status'
+]
+binding kafka [ 'options.servers' ]
+binding mqtt [
+  'authorization.credentials',
+  'connect.password',
+  'connect.username',
+  'credentials.connect',
+  'options',
+  'options.authorization',
+  'options.topics',
+  'options.versions',
+  'topics[].name'
+]
+binding proxy [
+  'info.alpn',
+  'info.authority',
+  'info.identity',
+  'info.namespace',
+  'info.secure',
+  'secure.cipher',
+  'secure.key',
+  'secure.name',
+  'secure.signature',
+  'secure.version',
+  'when[].info'
+]
+catalog schema-registry [ 'options.max-age' ]
+exporter otlp [ 'endpoint.overrides', 'overrides.metrics' ]

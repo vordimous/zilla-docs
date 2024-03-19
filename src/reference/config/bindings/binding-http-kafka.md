@@ -93,7 +93,7 @@ A corresponding `routes[].when` object with matching `GET` method and `location`
   - [when\[\].path](#when-path)
 - [routes\[\].exit\*](#routes-exit)
 - [routes\[\].with](#routes-with)
-- [with.capability (fetch)](#with-capability-fetch)
+- [with.capability: fetch](#with-capability-fetch)
   - [with.topic](#with-topic)
   - [with.filters](#with-filters)
     - [filters\[\].key](#filters-key)
@@ -103,7 +103,7 @@ A corresponding `routes[].when` object with matching `GET` method and `location`
     - [merge.patch](#merge-patch)
     - [patch.initial](#patch-initial)
     - [patch.path](#patch-path)
-- [with.capability (produce)](#with-capability-produce)
+- [with.capability: produce](#with-capability-produce)
   - [with.topic](#with-topic-1)
   - [with.acks](#with-acks)
   - [with.key](#with-key)
@@ -163,7 +163,7 @@ Kafka request message headers injected when adapting `http` request-response str
 
 ##### correlation.headers
 
-> `object`
+> `map` of `name: value` properties
 
 Kafka request message reply to and correlation id header names injected when adapting `http` request-response streams to `kafka` topic streams.
 
@@ -314,7 +314,7 @@ with:
   capability: produce
 ```
 
-### with.capability (fetch)
+### with.capability: fetch
 
 > `object`
 
@@ -353,7 +353,7 @@ Message key, optionally referencing path parameter such as `${params.key}`.
 
 ##### filters[].headers
 
-> `object`
+> `map` of `name: value` properties
 
 Message headers, with value optionally referencing path parameter such as `${params.headerX}`.
 
@@ -365,7 +365,7 @@ Merge multiple Kafka messages into a unified HTTP response. Kafka merge configur
 
 ##### merge.content-type
 
-> `const` "application/json"
+> `const` | Value: application/json
 
 Content type of merged HTTP response.
 
@@ -381,17 +381,17 @@ Describes how to patch initial HTTP response to include one or more Kafka messag
 
 ##### patch.initial
 
-> `string`
+> `const` | Value: "[]"
 
 Initial JSON value.
 
 ##### patch.path
 
-> `const` "/-"
+> `const` | Value: /-
 
 JSON Patch path to include each Kafka message in unified HTTP response.
 
-### with.capability (produce)
+### with.capability: produce
 
 > `object`
 
@@ -428,7 +428,7 @@ Kafka message key, optionally referencing path parameter such as `${params.id}`.
 
 #### with.overrides
 
-> `object`
+> `map` of `name: value` properties
 
 Kafka message headers, with values optionally referencing path parameter.
 
@@ -440,15 +440,11 @@ Kafka reply-to topic name.
 
 #### with.async
 
-> `object`
+> `map` of `name: value` properties
 
-Allows an HTTP response to be retrieved asynchronously
+Allows an HTTP response to be retrieved asynchronously.
 
-##### async.location
-
-> `string`
-
-Path where the async result can be fetched, with values optionally referencing path parameter or `${correlationId}`.
+A `location: <path>` property can be used to define the path where an async result can be fetched, with the `<path>` value optionally referencing route path parameters or the `${correlationId}`.
 
 ---
 

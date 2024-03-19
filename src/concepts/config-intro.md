@@ -175,6 +175,8 @@ bindings:
 
 ## Catalogs
 
+Each configured `catalog` represents a resource for defining schemas. Schemas are used to validate messages brokered by Zilla. Message validation can be configured for inbound or outbound resources.
+
 ## Telemetry
 
 Each configured `metric` represents a stat Zilla collects and each configured `exporter` represents how to export the collected metrics.
