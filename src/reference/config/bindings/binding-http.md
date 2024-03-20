@@ -19,7 +19,7 @@ http_server:
     access-control:
       policy: cross-origin
     authorization:
-      jwt:
+      my_jwt_guard:
         credentials:
           headers:
             authorization: Bearer {credentials}
@@ -106,7 +106,7 @@ options:
   access-control:
     policy: cross-origin
   authorization:
-    jwt:
+    my_jwt_guard:
       credentials:
         headers:
           authorization: Bearer {credentials}
@@ -207,11 +207,11 @@ Exposed response headers.
 
 > `object` as map of named objects
 
-Authorization by guard for the `HTTP/1.1` and `HTTP/2` protocols.
+Authorization by a named guard for the `HTTP/1.1` and `HTTP/2` protocols.
 
 ```yaml
 authorization:
-  jwt:
+  my_jwt_guard:
     credentials:
       headers:
         authorization: Bearer {credentials}

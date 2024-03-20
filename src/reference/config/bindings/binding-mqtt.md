@@ -15,6 +15,15 @@ Zilla runtime mqtt binding.
 mqtt_server:
   type: mqtt
   kind: server
+  options:
+    authorization:
+      my_jwt_guard:
+        credentials:
+          connect:
+            username: Bearer {credentials}
+    versions:
+      - v5
+      - v3.1.1
   routes:
     - when:
         - session:
@@ -41,15 +50,25 @@ Conditional routes based on the `topic` `name` are used to route these applicati
 
 - [kind\*](#kind)
 - [exit](#exit)
+- [options](#options)
+- [options.authorization](#options-authorization)
+  - [authorization.credentials](#authorization-credentials)
+    - [credentials.connect](#credentials-connect)
+    - [connect.username](#connect-username)
+    - [connect.password](#connect-password)
+- [options.versions](#options-versions)
+- [options.topics](#options-topics)
+  - [topics\[\].name\*](#topics-name)
+  - [topics\[\].content](#topics-content)
 - [routes](#routes)
 - [routes\[\].guarded](#routes-guarded)
 - [routes\[\].when](#routes-when)
   - [when\[\].session](#when-session)
-    - [session.client-id](#session-client-id)
+    - [session\[\].client-id](#session-client-id)
   - [when\[\].publish](#when-publish)
-    - [publish.topic](#publish-topic)
+    - [publish\[\].topic](#publish-topic)
   - [when\[\].subscribe](#when-subscribe)
-    - [subscribe.topic](#subscribe-topic)
+    - [subscribe\[\].topic](#subscribe-topic)
 - [routes\[\].exit\*](#routes-exit)
 
 ::: right
@@ -73,6 +92,86 @@ Default exit binding when no conditional routes are viable.
 ```yaml
 exit: echo_server
 ```
+
+### options
+
+> `object`
+
+`mqtt`-specific options.
+
+```yaml
+options:
+  authorization:
+    my_jwt_guard:
+      credentials:
+        connect:
+          username: Bearer {credentials}
+  versions:
+    - v5
+    - v3.1.1
+```
+
+### options.authorization
+
+> `object` as map of named objects
+
+Authorization by a named guard.
+
+```yaml
+authorization:
+  my_jwt_guard:
+    credentials:
+      connect:
+        username: Bearer {credentials}
+```
+
+#### authorization.credentials
+
+> `object`
+
+Defines how to extract credentials from the MQTT connect packet.
+
+##### credentials.connect
+
+> `object`
+
+MQTT connect packet properties
+
+##### connect.username
+
+> `string`
+
+Extract credentials from the MQTT connect packet username property with `{credentials}`, e.g. `"Bearer` `{credentials}"`.
+
+##### connect.password
+
+> `string`
+
+Extract credentials from the MQTT connect packet password property with `{credentials}`, e.g. `"Bearer` `{credentials}"`.
+
+### options.versions
+
+> `array` of `enum` [ "v5", "v3.1.1" ]
+
+Supported protocol versions.
+
+### options.topics
+
+> `array` of `object`
+
+Topic configuration.
+
+#### topics[].name\*
+
+> `string`
+
+Topic name.
+
+#### topics[].content
+
+> `object` of a named [`model`](../models/)
+
+Enforce validation for content
 
 ### routes
 
