@@ -15,7 +15,7 @@ If using an Identity Provider that exposes a `.well-known/jwks.json` file, simpl
 
 ```yaml {2}
 guards:
-  jwt:
+  my_jwt_guard:
     type: jwt
     options:
       issuer: https://auth.example.com
@@ -26,7 +26,7 @@ Manual configuration is also supported.
 
 ```yaml {2}
 guards:
-  jwt:
+  my_jwt_guard:
     type: jwt
     options:
       issuer: https://auth.example.com

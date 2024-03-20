@@ -30,7 +30,7 @@ bindings:
       specs:
         my-mqtt-api-spec: mqtt/asyncapi.yaml
         my-kafka-api-spec: kafka/asyncapi.yaml
-      mqtt_kafka:
+      mqtt-kafka:
         channels:
           sessions: mqttSessions
           retained: mqttRetained
@@ -78,7 +78,7 @@ The `client` kind `asyncapi` binding creates composite of `kafka` or `mqtt` or `
 
 - [kind\*](#kind)
 - [options](#options)
-  - [options.spec](#options-spec)
+  - [options.specs](#options-specs)
   - [options.tcp](#options-tcp)
     - [tpc.host](#tpc-host)
     - [tcp.port](#tcp-port)
@@ -97,8 +97,8 @@ The `client` kind `asyncapi` binding creates composite of `kafka` or `mqtt` or `
     - [tls.sni\*](#tls-sni)
     - [tls.alpn](#tls-alpn)
     - [tls.mutual](#tls-mutual)
-- [mqtt\_kafka](#mqtt-kafka)
-  - [mqtt\_kafka.channels](#mqtt-kafka-channels)
+- [mqtt-kafka](#mqtt-kafka)
+  - [mqtt-kafka.channels](#mqtt-kafka-channels)
     - [channels.sessions](#channels-sessions)
     - [channels.retained](#channels-retained)
     - [channels.messages](#channels-messages)
@@ -139,7 +139,7 @@ options:
     my-asyncapi-spec: spec/asyncapi.yaml
 ```
 
-#### options.spec
+#### options.specs
 
 > `map` of `name: value` properties
 
@@ -265,16 +265,16 @@ Mutual authentication.
 
 > `object`
 
-`mqtt_kafka` specific options.
+`mqtt-kafka` binding specific options.
 
-#### mqtt_kafka.channels
+#### mqtt-kafka.channels
 
 > `object`
 
 AsyncAPI Kafka channels describing the necessary topics for the MQTT-Kafka mapping.
 
 ```yaml
-mqtt_kafka:
+mqtt-kafka:
   channels:
     sessions: mqttSessions
     retained: mqttRetained

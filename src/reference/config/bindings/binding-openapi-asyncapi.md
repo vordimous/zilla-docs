@@ -39,9 +39,10 @@ The `proxy` kind `openapi-asyncapi` binding adapts OpenAPI request-response stre
 
 - [kind\*](#kind)
 - [options](#options)
-  - [options.spec](#options-spec)
+  - [options.specs](#options-specs)
     - [specs.openapi](#specs-openapi)
     - [specs.asyncapi](#specs-asyncapi)
+- [routes](#routes)
 - [routes\[\].when](#routes-when)
   - [when\[\].api-id](#when-api-id)
   - [when\[\].operation-id](#when-operation-id)
@@ -81,7 +82,7 @@ options:
       my-asyncapi-spec: spec/asyncapi.yaml
 ```
 
-#### options.spec
+#### options.specs
 
 > `object`
 
@@ -98,6 +99,12 @@ OpenAPI spec definition filename mapped by a unique API spec identifier.
 > `map` of `name: value` properties
 
 AsyncAPI spec definition filename mapped by a unique API spec identifier.
+
+### routes
+
+> `array` of `object`
+
+Conditional `openapi-asyncapi`-specific routes for adapting `openapi` operations to `asyncapi` operations.
 
 ### routes[].when
 
