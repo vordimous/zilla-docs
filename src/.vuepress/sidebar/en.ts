@@ -204,6 +204,10 @@ export const enSidebar = sidebar({
           ],
         },
         {
+          text: "Using OpenAPI and AsyncAPI",
+          link: "concepts/composite-bindings.md",
+        },
+        {
           text: "Add Prometheus Metrics",
           link: "tutorials/metrics/prometheus-intro.md",
         },

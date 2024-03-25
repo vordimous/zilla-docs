@@ -36,6 +36,11 @@ features:
     details: Learn about the zilla.yaml configuration.
     link: /concepts/config-intro.html
 
+  - title: Open&AsyncAPI
+    icon: fas fa-circle-nodes
+    details: Easily configure Zilla using interface definition languages from the open-source OpenAPI and AsyncAPI foundations.
+    link: /concepts/composite-bindings.html
+
   - title: Amazon MSK<br/>Secure Public Access
     icon: aky-zilla-plus
     details: This allows Kafka clients from outside the private network access to the full functionality of your Amazon MSK cluster.
