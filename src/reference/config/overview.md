@@ -63,10 +63,6 @@ A `binding` also has a `kind`, indicating how it should behave, such as `server`
 
 As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding, or rejects the stream if no routes are viable. Route matching conditions are defined in terms specific to each `binding` type.
 
-See each of the specific `binding` types linked below for more detailed examples.
-
-Behavioral type supporting either encoding and decoding for a specific protocol or translation between protocols.
-
 #### routes.exit
 <!-- TODO move to individual reference docs -->
 
@@ -84,8 +80,6 @@ Guards can be used by specific protocol bindings to enforce authorization requir
 
 Associated roles can be enforced during routing by only following routes `guarded` by specific role requirements when authorized. This implicitly supports falling through to lower privilege routes when `guarded` higher privilege routes are not authorized.
 
-See each of the specific `guard` types linked below for more detailed examples.
-
 ### vaults
 
 > `object` as map of named [`vault`](./vaults/) properties
@@ -94,8 +88,6 @@ Each configured `vault` represents a container for digital keys and certificates
 
 Vaults can be used by specific protocol bindings, such as `tls`, to negotiate shared encryption keys.
 
-See each of the specific `vault` types linked below for more detailed examples.
-
 ### catalogs
 
 > `object` as map of named [`catalog`](./catalogs/) properties
@@ -103,8 +95,6 @@ See each of the specific `vault` types linked below for more detailed examples.
 Each configured `catalog` represent a catalog of schemas of various format based on a specific implementation `type`.
 
 Catalogs can be used by specific protocol bindings to enforce validation.
-
-See each of the specific `catalog` types linked below for more detailed examples.
 
 ### telemetry
 

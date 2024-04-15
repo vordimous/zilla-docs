@@ -193,7 +193,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - read:items
 ```
 

@@ -253,7 +253,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - read:items
 ```
 
@@ -404,6 +404,8 @@ with:
   acks: leader_only
   key: ${params.id}
   reply-to: items-responses
+  overrides:
+    custom-text: custom-value
   async:
     location: /items/${params.id};cid=${correlationId}
 ```

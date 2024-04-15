@@ -112,7 +112,7 @@ options:
         servers:
           - url: http://localhost:9090
         catalog:
-          catalog0:
+          my_catalog:
             subject: petstore
             version: latest
 ```

@@ -4,7 +4,7 @@ description: A variable syntax for inserting values into the zilla.yaml
 
 # Resolvers
 
-Resolvers are a variable syntax for executing zilla runtime functions that insert dynamic values into the zilla.yaml. Validation occurs before and after resolvers have been converted.
+Resolvers are a variable syntax for executing Zilla runtime functions that insert dynamic values into the zilla.yaml. Validation occurs before and after resolvers have been converted.
 
 :::: note Functions
 

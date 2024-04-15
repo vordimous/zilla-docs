@@ -211,7 +211,7 @@ This will define the location and connection for Zilla to communicate with Kafka
 
 ### Start Zilla
 
-With your `zilla.yaml` config, follow the [Zilla install instructions](../install.md) using your method of choice. Set the necessary Kafka environment variables.
+With your `zilla.yaml` config, follow the [Zilla install instructions](../deploy-operate.md) using your method of choice. Set the necessary Kafka environment variables.
 
 ::: code-tabs#bash
 

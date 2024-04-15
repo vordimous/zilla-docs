@@ -175,14 +175,6 @@ export const enSidebar = sidebar({
   ],
   "/": [
     {
-      text: "Installing Zilla",
-      link: "how-tos/install.md",
-    },
-    {
-      text: "Quickstart",
-      link: "tutorials/quickstart/kafka-proxies",
-    },
-    {
       text: "Configuration",
       link: "concepts/config-intro.md",
       children: [
@@ -203,9 +195,15 @@ export const enSidebar = sidebar({
             "redpanda.md",
           ],
         },
+      ],
+    },
+    {
+      text: "Deploy & Operate",
+      link: "how-tos/deploy-operate.md",
+      children: [
         {
-          text: "Using OpenAPI and AsyncAPI",
-          link: "concepts/composite-bindings.md",
+          text: "Installing Zilla",
+          link: "how-tos/deploy-operate.md",
         },
         {
           text: "Add Prometheus Metrics",

@@ -24,8 +24,8 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 - [zilla metrics](#zilla-metrics)
   - [--namespace `<namespace>`](#namespace-namespace)
 - [zilla start](#zilla-start)
-  - [-v --verbose](#v-verbose)
-  - [--workers](#workers)
+  - [-v --verbose](#v-verbose-1)
+  - [-w --workers](#w-workers)
 - [zilla stop](#zilla-stop)
 - [zilla tune](#zilla-tune)
 
@@ -36,7 +36,7 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 ### zilla dump
 
 ::: important Feature is in Incubator
-Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla dump` command creates a `pcap` file that can be opened in Wireshark. Using the Zilla dissector plugin, Wireshark shows detailed information about the internal state of the current Zilla instance.
@@ -68,6 +68,7 @@ tshark -G plugins | grep zilla
 You may need to reload Lua plugins from the menu: Analyze -> Reload Lua Plugins or with the keyboard shortcut (Command+Shift+L or Ctrl+Shift+L).
 
 Example:
+
 ```bash:no-line-numbers
 ./zilla dump -v -w zilla.pcap -i ~/.local/lib/wireshark/plugins
 ```
@@ -78,9 +79,10 @@ Show verbose output
 
 #### -w --write `<output>`
 
-Write the `pcap` output to this file. 
+Write the `pcap` output to this file.
 
 Example:
+
 ```bash:no-line-numbers
 ./zilla dump -v -w zilla.pcap
 ```
@@ -88,7 +90,7 @@ Example:
 ### zilla generate
 
 ::: important Feature is in Incubator
-Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla generate` command generates a zilla configuration file from an OpenAPI or AsyncAPI service definition.
@@ -209,7 +211,7 @@ bindings:
 started
 ```
 
-#### --workers
+#### -w --workers
 
 > Defaults to # CPU cores available
 
@@ -228,7 +230,7 @@ zilla stop
 ### zilla tune
 
 ::: important Feature is in Incubator
-Read how to [enable incubator features](../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.

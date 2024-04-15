@@ -9,10 +9,6 @@ tag:
 
 # Open Telemetry Exporter
 
-::: important Feature is in Incubator
-Read how to [enable incubator features](../../../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
-:::
-
 Zilla runtime Open Telemetry exporter
 
 ```yaml {3}

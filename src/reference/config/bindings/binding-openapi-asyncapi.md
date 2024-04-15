@@ -138,13 +138,13 @@ Catalog artifact version to use.
 
 > `string`
 
-`catalog` subject name.
+Subject name used when storing the catalog artifact.
 
 #### catalog.version
 
 > `string`
 
-`catalog` version.
+Catalog artifact version to use.
 
 ### routes
 

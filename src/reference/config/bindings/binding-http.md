@@ -110,6 +110,8 @@ options:
       credentials:
         headers:
           authorization: Bearer {credentials}
+  overrides:
+    custom-text: custom-value
 ```
 
 ### options.versions
@@ -243,7 +245,7 @@ Named query parameter value pattern with `{credentials}`.
 
 ### options.overrides
 
-> `object` of name-value header overrides
+> `map` of `name: value` properties
 
 Request header overrides.
 
@@ -281,7 +283,7 @@ List of roles required by each named guard to authorize this route.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - read:items
 ```
 
