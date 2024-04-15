@@ -28,8 +28,18 @@ bindings:
     kind: proxy
     options:
       specs:
-        my-mqtt-api-spec: mqtt/asyncapi.yaml
-        my-kafka-api-spec: kafka/asyncapi.yaml
+        my-mqtt-api-spec:
+          my-kafka-api-spec:
+            catalog:
+              my_catalog:
+                subject: petstore
+                version: latest
+        my-kafka-api-spec:
+          my-kafka-api-spec:
+            catalog:
+              my_catalog:
+                subject: petstore
+                version: latest
       mqtt-kafka:
         channels:
           sessions: mqttSessions
@@ -55,7 +65,11 @@ bindings:
     kind: client
     options:
       specs:
-        my-kafka-api-spec: kafka/asyncapi.yaml
+        my-kafka-api-spec:
+          catalog:
+            my_catalog:
+              subject: petstore
+              version: latest
       tcp:
         host: localhost
         port:
@@ -79,6 +93,13 @@ The `client` kind `asyncapi` binding creates composite of `kafka` or `mqtt` or `
 - [kind\*](#kind)
 - [options](#options)
   - [options.specs](#options-specs)
+    - [specs.catalog](#specs-catalog)
+      - [catalog.subject](#catalog-subject)
+      - [catalog.version](#catalog-version)
+    - [specs.servers](#specs-servers)
+      - [servers.url](#servers-url)
+      - [servers.host](#servers-host)
+      - [servers.pathname](#servers-pathname)
   - [options.tcp](#options-tcp)
     - [tpc.host](#tpc-host)
     - [tcp.port](#tcp-port)
@@ -134,16 +155,61 @@ kind: server
 `asyncapi`-specific options.
 
 ```yaml
-options:
-  spec:
-    my-asyncapi-spec: spec/asyncapi.yaml
+specs:
+  http_api:
+    servers:
+      - name: plain
+    catalog:
+      my_catalog:
+        subject: petstore
+        version: latest
 ```
 
 #### options.specs
 
-> `map` of `name: value` properties
+> `object` as map of named properties
 
-AsyncAPI spec definition filename mapped by a unique API spec identifier.
+specs specific options
+
+##### specs.catalog
+
+> `object` as map of named properties
+
+catalog specific options.
+
+###### catalog.subject
+
+> `string`
+
+Subject name used when storing the catalog artifact.
+
+###### catalog.version
+
+> `string`
+
+Catalog artifact version to use.
+
+##### specs.servers
+
+> `object`
+
+###### servers.url
+
+> `string`
+
+The server to match based on the server's `url` in an asyncapi `2.x` spec only.
+
+###### servers.host
+
+> `string`
+
+The server to match based on the server's `host` in an asyncapi `3.x` spec only.
+
+###### servers.pathname
+
+> `string`
+
+The server pathname to match based on the server's `pathname` in an asyncapi `3.x` spec only.
 
 #### options.tcp
 
@@ -167,7 +233,7 @@ Port number(s), including port number ranges.
 
 > `object`
 
-`http` specific options.
+http specific options.
 
 ##### http.authorization
 

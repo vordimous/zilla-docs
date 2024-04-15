@@ -1,6 +1,6 @@
 # Intro to zilla.yaml
 
-The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#bindings), [`guards`](../reference/config/overview.md#guards), [`vaults`](../reference/config/overview.md#vaults), [`catalogs`](../reference/config/overview.md#catalogs), and [`telemetry`](../reference/config/overview.md#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expression [resolvers](../reference/config/resolvers.md).
+The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#overview.md#bindings), [`guards`](../reference/config/overview.md#overview.md#guards), [`vaults`](../reference/config/overview.md#overview.md#vaults), [`catalogs`](../reference/config/overview.md#overview.md#catalogs), and [`telemetry`](../reference/config/overview.md#overview.md#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expression [resolvers](../reference/config/resolvers.md).
 
 ```yaml {2}
 ---
@@ -24,7 +24,7 @@ telemetry:
 
 ## Bindings
 
-Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`. Bindings are organized by behavioral type, supporting either encoding and decoding for a specific protocol or translation between protocols.
+Each configured [`binding`](../reference/config/overview.md#bindings) represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`. Bindings are organized by behavioral type, supporting either encoding and decoding for a specific protocol or translation between protocols.
 
 Bindings have a `kind`, indicating how they should behave, such as:
 
@@ -110,7 +110,7 @@ A route is considered `guarded` if a [guard](#guards) is specified. The guard co
 
 ## Guards
 
-Each configured `guard` represents a security checkpoint for one or more bindings based on a specific implementation `type`.
+Each configured [`guard`](../reference/config/overview.md#guards) represents a security checkpoint for one or more bindings based on a specific implementation `type`.
 
 Guards can be used by specific protocol bindings to enforce authorization requirements.
 
@@ -175,12 +175,12 @@ bindings:
 
 ## Catalogs
 
-Each configured `catalog` represents a resource for defining schemas. Schemas are used to validate messages brokered by Zilla. Message validation can be configured for inbound or outbound resources.
+Each configured [`catalog`](../reference/config/overview.md#catalogs) represents a resource for referencing versioned assets. Catalogs are used to make configuring Zilla more agnostic to specific API and Model design. A catalog will provide Zilla bindings with schemas, specs and other files needed to implement the binding. For example, schema models are used to validate messages brokered by Zilla. Message validation can be configured for inbound or outbound resources.
 
 ## Telemetry
 
-Each configured `metric` represents a stat Zilla collects and each configured `exporter` represents how to export the collected metrics.
+Each configured [`metric`](../reference/config/overview.md#metrics) represents a stat Zilla collects and each configured `exporter` represents how to export the collected metrics.
 
 Metrics are separated by protocol where the `stream` metrics relate to Zilla's internal message handler. The other protocols have common metrics you would expect to find.
 
-The configured exporters will determine how the collected metrics are exposed. By adding the [Prometheus](../reference/config/telemetry/exporters/exporter-prometheus.md) exporter Zilla will host the `/metrics` endpoint that is needed to collect the prometheus formatted metrics.
+The configured exporters will determine how the collected metrics are exposed. For example, by adding the [Prometheus](../reference/config/telemetry/exporters/exporter-prometheus.md) exporter Zilla will expose the `/metrics` endpoint that is needed to collect prometheus formatted metrics.

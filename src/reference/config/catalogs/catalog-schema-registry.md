@@ -8,7 +8,7 @@ category:
 # schema-registry Catalog
 
 ::: important Feature is in Incubator
-Read how to [enable incubator features](../../../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+Read how to [enable incubator features](../../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 Zilla runtime schema-registry catalog

@@ -165,7 +165,6 @@ Metadata header used to specify the idempotency key when adapting `grpc` request
 
 The `grpc` metadata header name for idempotency key.
 
-
 #### options.reliability
 
 > `object`
@@ -229,7 +228,7 @@ Conditional `grpc-kafka`-specific routes for adapting `grpc` request-response st
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - read:messages
     when:
       - service: example.FanoutService
@@ -246,7 +245,7 @@ routes:
         headers:
           custom-text: custom-value
   - guarded:
-      test:
+      my_guard:
         - echo:messages
     when:
       - method: example.EchoService/*
@@ -274,7 +273,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - read:messages
 ```
 
@@ -423,7 +422,7 @@ The Kafka message key to include with each message.
 
 #### with.overrides
 
-> `object`
+> `map` of `name: value` properties
 
 The Kafka message headers to inject with each message.
 

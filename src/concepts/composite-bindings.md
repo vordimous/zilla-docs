@@ -1,12 +1,9 @@
 # Zilla Composite Bindings
 
-Composite bindings provide the ability to configure multiple bindings at once. A composite binding is used when multiple zilla bindings are needed to define a common interface. Composite bindings will use sensible defaults and are designed to reduce the configuration complexity.
+Composite bindings provide the ability to configure multiple bindings at once. A composite binding is used when multiple Zilla bindings are needed to define a common interface. Composite bindings will use sensible defaults and are designed to reduce the configuration complexity.
 
 ## OpenAPI and AsyncAPI
 
-::: important Feature is in Incubator
-Read how to [enable incubator features](../how-tos/install.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
-:::
 
 The Zilla config uses many of the same parameters as the public and open-source interface definition languages [OpenAPI](https://www.openapis.org/) and [AsyncAPI](https://www.asyncapi.com/). Services and tools are available to describe your existing APIs and infrastructure using OpenAPI and AsynceAPI definitions. This enables more consistent documentation, versioning, and code generation. Using the [openapi](../reference/config/bindings/binding-openapi.md) and [asyncapi](../reference/config/bindings/binding-asyncapi.md) composite bindings enables the use of existing interface specs to configure Zilla.
 

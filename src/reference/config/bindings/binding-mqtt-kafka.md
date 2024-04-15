@@ -162,9 +162,9 @@ List of roles required by each named guard to authorize this route.
 
 ```yaml
 routes:
-  guarded:
-    test:
-      - publish:clients
+  - guarded:
+      my_guard:
+        - publish:clients
 ```
 
 ### routes[].when

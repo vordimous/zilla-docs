@@ -169,7 +169,7 @@ Conditional `kafka-grpc`-specific routes for adapting `kafka` topic streams to `
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - echo:messages
     when:
       - topic: requests
@@ -190,7 +190,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - echo:messages
 ```
 

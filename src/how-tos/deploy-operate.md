@@ -1,4 +1,4 @@
-# Installing Zilla
+# Deploy and Operating Zilla
 
 ## Running Zilla via Docker
 
@@ -20,21 +20,9 @@ started
 
 Specify your own `zilla.yaml` file.
 
-::: code-tabs#yaml
-
-@tab Docker 23
-
 ```bash:no-line-numbers
 docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
 ```
-
-@tab Docker 20
-
-```bash:no-line-numbers
-docker run -v $(pwd)/zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
-```
-
-:::
 
 ## Running Zilla via Helm
 
@@ -52,7 +40,7 @@ Zilla specific configuration is in the `zilla.yaml` file which can be included i
 
 Zilla loads the configuration from the `zilla.yaml` file on startup and logs the configured settings. Restarting Zilla or its container may not be an option, so Zilla creates a file watcher to detect changes to the file and reloads the config if a change is detected.
 
-Errors and misconfigured parts of the `zilla.yaml` file are detected by zilla and reported via stdout. The original config remains in place and can only be replaced by a valid config.
+Errors and misconfigured parts of the `zilla.yaml` file are detected by Zilla and reported via stdout. The original config remains in place and can only be replaced by a valid config.
 
 This feature is demonstrated in the above Helm install command. Running a `helm update ...` with changes to the `zilla.yaml`, k8s will update the config map, which writes the new content into the running pods. Zilla will detect those file changes and load the new config.
 
@@ -64,7 +52,7 @@ Zilla will start workers that default to the CPU cores it is allowed to use. Thi
 
 > Progress on incubator features can be found on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4).
 
-Zilla maintains functioning features that may have more work or design changes in a separate install directory called `incubator`. These are released with Zilla for the community to use and provide feedback or suggestions on how to improve the feature. The package name doesn't change meaning incubator features can be added to the zilla runtime engine whenever they are ready or needed. Incubator features are loaded when the `zilla.incubator.enabled` java property is set to true.
+Zilla maintains functioning features that may have more work or design changes in a separate install directory called `incubator`. These are released with Zilla for the community to use and provide feedback or suggestions on how to improve the feature. The package name doesn't change meaning incubator features can be added to the Zilla runtime engine whenever they are ready or needed. Incubator features are loaded when the `zilla.incubator.enabled` java property is set to true.
 
 The `ZILLA_INCUBATOR_ENABLED` environment variable will set the incubator java option when set to `true`. Add the environment variable wherever you are running zilla.
 

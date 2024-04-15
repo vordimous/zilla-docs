@@ -106,7 +106,7 @@ Conditional `grpc`-specific routes.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - echo:messages
     when:
       - method: example.EchoService/*
@@ -126,7 +126,7 @@ Roles required by named guard.
 ```yaml
 routes:
   - guarded:
-      test:
+      my_guard:
         - echo:messages
 ```
 

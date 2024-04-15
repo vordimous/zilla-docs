@@ -18,9 +18,17 @@ openapi_asyncapi_proxy:
   options:
     specs:
       openapi:
-        my-openapi-spec: spec/openapi.yaml
+        my-openapi-spec:
+          catalog:
+            my_catalog:
+              subject: petstore
+              version: latest
       asyncapi:
-        my-asyncapi-spec: spec/asyncapi.yaml
+        my-asyncapi-spec:
+          catalog:
+              my_catalog:
+                subject: petstore
+                version: latest
   routes:
     - when:
         - api-id: my-openapi-spec
@@ -41,7 +49,13 @@ The `proxy` kind `openapi-asyncapi` binding adapts OpenAPI request-response stre
 - [options](#options)
   - [options.specs](#options-specs)
     - [specs.openapi](#specs-openapi)
+        - [openapi.catalog](#openapi-catalog)
+          - [catalog.subject](#catalog-subject)
+          - [catalog.version](#catalog-version)
     - [specs.asyncapi](#specs-asyncapi)
+        - [asyncapi.catalog](#asyncapi-catalog)
+          - [catalog.subject](#catalog-subject)
+          - [catalog.version](#catalog-version)
 - [routes](#routes)
 - [routes\[\].when](#routes-when)
   - [when\[\].api-id](#when-api-id)
@@ -86,19 +100,51 @@ options:
 
 > `object`
 
-OpenAPI and AsyncAPI specs definition filenames.
+OpenAPI and AsyncAPI specs definition.
 
 ##### specs.openapi
 
-> `map` of `name: value` properties
+> `object` of `name: value` properties
 
-OpenAPI spec definition filename mapped by a unique API spec identifier.
+#### openapi.catalog
+
+> `object` as map of named properties
+
+catalog specific options.
+
+#### catalog.subject
+
+> `string`
+
+Subject name used when storing the catalog artifact.
+
+#### catalog.version
+
+> `string`
+
+Catalog artifact version to use.
 
 ##### specs.asyncapi
 
-> `map` of `name: value` properties
+> `object` of `name: value` properties
 
-AsyncAPI spec definition filename mapped by a unique API spec identifier.
+#### asyncapi.catalog
+
+> `object` as map of named properties
+
+`catalog` catalog specific options.
+
+#### catalog.subject
+
+> `string`
+
+Subject name used when storing the catalog artifact.
+
+#### catalog.version
+
+> `string`
+
+Catalog artifact version to use.
 
 ### routes
 
