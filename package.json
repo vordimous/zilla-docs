@@ -29,13 +29,8 @@
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
-    "vue": "^3.4.21",
-    "vuepress": "2.0.0-rc.7",
-    "vuepress-theme-hope": "2.0.0-rc.24"
-  },
-  "pnpm": {
-    "overrides": {
-      "rollup": "npm:@rollup/wasm-node"
-    }
+    "vue": "^3.4.26",
+    "vuepress": "2.0.0-rc.9",
+    "vuepress-theme-hope": "2.0.0-rc.38"
   }
 }
