@@ -66,6 +66,20 @@ p {
     hyphens: none !important;
 }
 
+// don't adjust image boarders
+.theme-hope-content figure img {
+    overflow: auto;
+    border-radius: unset;
+}
+
+// Increase H tag headers font weight
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    a {
+        font-weight: 800;
+    }
+}
+
 // Header
 // full width search
 .vp-navbar-center {
@@ -104,15 +118,6 @@ p {
         order: 2;
         margin-left: .2em;
     }
-}
-
-#main-title {
-    font-size: 2.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-}
-#main-description {
-    margin: 1.5rem 0;
 }
 
 // Zilla plus container styles

@@ -165,8 +165,12 @@ export const enSidebar = sidebar({
   ],
   "/": [
     {
-      text: "Introduction",
-      link: "/README.md",
+      text: "What is Zilla?",
+      link: "/",
+    },
+    {
+      text: "Quickstart",
+      link: "how-tos/quickstart.md",
     },
     {
       text: "Configuration",
