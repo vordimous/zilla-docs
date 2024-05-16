@@ -13,7 +13,7 @@ export const enNavbar = navbar([
     text: "Get Started",
     icon: "fas fa-play",
     activeMatch: '^\/(concepts|how\-tos|tutorials)',
-    link: "/tutorials/quickstart/kafka-proxies.md",
+    link: "/how-tos/quickstart.md",
   },
   {
     text: "Solutions",

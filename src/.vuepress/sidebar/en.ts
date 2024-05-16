@@ -87,16 +87,6 @@ export const enSidebar = sidebar({
         },
       ],
     },
-    {
-      text: "AWS",
-      prefix: "aws/",
-      children: "structure",
-    },
-    {
-      text: "Troubleshooting",
-      prefix: "troubleshooting/",
-      children: "structure",
-    },
   ],
   "/solutions/": [
     {
@@ -174,6 +164,14 @@ export const enSidebar = sidebar({
     },
   ],
   "/": [
+    {
+      text: "What is Zilla?",
+      link: "/",
+    },
+    {
+      text: "Quickstart",
+      link: "how-tos/quickstart.md",
+    },
     {
       text: "Configuration",
       link: "concepts/config-intro.md",
