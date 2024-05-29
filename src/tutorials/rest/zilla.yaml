@@ -1,7 +1,6 @@
 name: REST-example
 bindings:
-
-# Proxy service entrypoint
+  # Proxy service entrypoint
   north_tcp_server:
     type: tcp
     kind: server
@@ -19,7 +18,7 @@ bindings:
               :authority: localhost:7114
         exit: north_http_kafka_mapping
 
-# Proxy REST endpoints to Kafka a topic
+  # Proxy REST endpoints to Kafka a topic
   north_http_kafka_mapping:
     type: http-kafka
     kind: proxy
@@ -41,7 +40,7 @@ bindings:
           merge:
             content-type: application/json
 
-# Kafka sync layer
+  # Kafka sync layer
   north_kafka_cache_client:
     type: kafka
     kind: cache_client
@@ -54,17 +53,19 @@ bindings:
         - items-snapshots
     exit: south_kafka_client
 
-# Connect to local Kafka
+  # Connect to local Kafka
   south_kafka_client:
     type: kafka
     kind: client
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
     exit: south_kafka_tcp_client
   south_kafka_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: ${{env.KAFKA_HOST}}
-      port: ${{env.KAFKA_PORT}}
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

@@ -1,7 +1,6 @@
 name: gRPC-example
 bindings:
-
-# Proxy service entrypoint
+  # Proxy service entrypoint
   north_tcp_server:
     type: tcp
     kind: server
@@ -19,7 +18,7 @@ bindings:
         policy: cross-origin
     exit: north_grpc_server
 
-# gRPC service definition
+  # gRPC service definition
   north_grpc_server:
     type: grpc
     kind: server
@@ -31,7 +30,7 @@ bindings:
           - method: example.EchoService/*
         exit: north_grpc_kafka_mapping
 
-# Proxy a gRPC service to a Kafka topic
+  # Proxy a gRPC service to a Kafka topic
   north_grpc_kafka_mapping:
     type: grpc-kafka
     kind: proxy
@@ -55,16 +54,20 @@ bindings:
       bootstrap:
         - echo-messages
     exit: south_kafka_client
+
+  # Connect to Kafka
   south_kafka_client:
     type: kafka
     kind: client
-    exit: south_tcp_client
-  south_tcp_client:
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
+    exit: south_kafka_tcp_client
+  south_kafka_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: ${{env.KAFKA_HOST}}
-      port: ${{env.KAFKA_PORT}}
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

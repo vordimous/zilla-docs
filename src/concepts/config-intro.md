@@ -1,6 +1,6 @@
 # Intro to zilla.yaml
 
-The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#bindings), [`guards`](../reference/config/overview.md#guards), [`vaults`](../reference/config/overview.md#vaults), [`catalogs`](../reference/config/overview.md#catalogs), and [`telemetry`](../reference/config/overview.md#telemetry) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expression [resolvers](../reference/config/resolvers.md).
+The Zilla runtime configuration defines the [`bindings`](../reference/config/overview.md#bindings), [`guards`](../reference/config/overview.md#guards), [`vaults`](../reference/config/overview.md#vaults), and [`catalogs`](../reference/config/overview.md#catalogs) used by the Zilla runtime engine. The values of properties in the configuration can be literals or expression [resolvers](../reference/config/resolvers.md).
 
 ```yaml {2}
 ---
@@ -16,9 +16,6 @@ vaults:
   ...
 
 catalogs:
-  ...
-
-telemetry:
   ...
 ```
 
@@ -176,11 +173,3 @@ bindings:
 ## Catalogs
 
 Each configured [`catalog`](../reference/config/overview.md#catalogs) represents a resource for referencing versioned assets. Catalogs are used to make configuring Zilla more agnostic to specific API and Model design. A catalog will provide Zilla bindings with schemas, specs and other files needed to implement the binding. For example, schema models are used to validate messages brokered by Zilla. Message validation can be configured for inbound or outbound resources.
-
-## Telemetry
-
-Each configured [`metric`](../reference/config/overview.md#metrics) represents a stat Zilla collects and each configured `exporter` represents how to export the collected metrics.
-
-Metrics are separated by protocol where the `stream` metrics relate to Zilla's internal message handler. The other protocols have common metrics you would expect to find.
-
-The configured exporters will determine how the collected metrics are exposed. For example, by adding the [Prometheus](../reference/config/telemetry/exporters/exporter-prometheus.md) exporter Zilla will expose the `/metrics` endpoint that is needed to collect prometheus formatted metrics.

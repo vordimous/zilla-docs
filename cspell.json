@@ -41,6 +41,7 @@
         "kcat",
         "keytool",
         "lycheeverse",
+        "mosquitto",
         "mvnw",
         "netcat",
         "OAUTHBEARER",

@@ -39,7 +39,7 @@ Create each of these files `zilla.yaml`, `docker-compose.yaml`, and `echo.proto`
 ### Run Zilla and Kafka
 
 ```bash:no-line-numbers
-docker-compose up -d
+docker-compose up --detach
 ```
 
 ### Send a greeting

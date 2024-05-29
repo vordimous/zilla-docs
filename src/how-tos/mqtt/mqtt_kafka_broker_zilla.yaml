@@ -86,13 +86,15 @@ bindings:
   south_kafka_client:
     type: kafka
     kind: client
-    exit: south_tcp_client
-  south_tcp_client:
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
+    exit: south_kafka_tcp_client
+  south_kafka_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: ${{env.KAFKA_HOST}}
-      port: ${{env.KAFKA_PORT}}
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

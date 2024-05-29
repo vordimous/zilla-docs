@@ -411,11 +411,11 @@ Repeat these steps for each of the other <ZillaPlus/> proxies launched by the Cl
 
 ### Configure Global DNS
 
-<!-- @include: @partials/secure-public-access/configure-global-dns.md  -->
+<!-- @include: @partials/secure-public-access/configure-global-dns.md-->
 
 ## Verify Kafka Client Connectivity
 
-<!-- @include: @partials/secure-public-access/verify-kafka-connect.md  -->
+<!-- @include: @partials/secure-public-access/verify-kafka-connect.md-->
 
 ### Configure the Kafka Client
 
@@ -462,12 +462,12 @@ Use the Kafka client to create a topic called `zilla-proxy-test`, replacing `<tl
 
 ```bash:no-line-numbers
 bin/kafka-topics.sh \
-  --create \
-  --topic zilla-plus-test \
-  --partitions 3 \
-  --replication-factor 3 \
-  --command-config confluent.properties \
-  --bootstrap-server <tls-bootstrap-server-names>
+--create \
+--topic zilla-plus-test \
+--partitions 3 \
+--replication-factor 3 \
+--command-config confluent.properties \
+--bootstrap-server <tls-bootstrap-server-names>
 ```
 
 ::: tip A quick summary of what just happened
@@ -487,9 +487,9 @@ Publish two messages to the newly created topic via the following producer comma
 
 ```bash:no-line-numbers
 bin/kafka-console-producer.sh \
-  --topic zilla-plus-test \
-  --producer.config confluent.properties \
-  --broker-list <tls-bootstrap-server-names>
+--topic zilla-plus-test \
+--producer.config confluent.properties \
+--broker-list <tls-bootstrap-server-names>
 ```
 
 A prompt will appear for you to type in the messages:
@@ -505,10 +505,10 @@ Read these messages back via the following consumer command:
 
 ```bash:no-line-numbers
 bin/kafka-console-consumer.sh \
-  --topic zilla-plus-test \
-  --from-beginning \
-  --consumer.config confluent.properties \
-  --bootstrap-server <tls-bootstrap-server-names>
+--topic zilla-plus-test \
+--from-beginning \
+--consumer.config confluent.properties \
+--bootstrap-server <tls-bootstrap-server-names>
 ```
 
 You should see the `This is my first event` and `This is my second event` messages.

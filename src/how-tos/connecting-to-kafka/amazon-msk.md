@@ -1,6 +1,7 @@
 ---
 description: Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the internet
 ---
+
 # Amazon MSK
 
 ## Introduction
@@ -37,7 +38,7 @@ First, you will export the Client Certificate to a local file called `client.cer
 
 ```bash:no-line-numbers
 aws acm-pca get-certificate --certificate-authority-arn CERTIFICATE_AUTHORITY_ARN \
-  --certificate-arn CERTIFICATE_ARN --output text
+--certificate-arn CERTIFICATE_ARN --output text
 ```
 
 #### output
@@ -83,22 +84,22 @@ With the `bootstrap server name` in hand, run the following command to create th
 
 ```bash:no-line-numbers
 openssl pkcs12 -export -in client.cert -inkey client-1.key.pem \
-               -out keystore.p12 -name SIGNED_CLIENT_CERT_ALIES \
-               -CAfile ca.pem
+-out keystore.p12 -name SIGNED_CLIENT_CERT_ALIES \
+-CAfile ca.pem
 ```
 
 ## Configure Zilla
 
 To configure Zilla you will be replacing the following values in the `zilla.yaml` config:
 
-| Value                       | Description                                                                                                                      |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `KEYSTORE_PATH`             | The path to the local `keystore.p12` file that was generated above.                                                              |
-| `KEYSTORE_PASSWORD`         | Keystore password to `keystore.p12`  file that was generated above.                                                              |
-| `STORE_TYPE`                | Keystore types such as `pkcs12`, `jceks`, and etc                                                                                |
-| `SIGNED_CLIENT_CERT_ALIAS`  | A unique string that identifies the key cert entry chain in the `keystore.p12`. For example, use the MSK bootstrap server name.  |
-| `BOOTSTRAP_SERVER_HOSTNAME` | Target MSK hostname. For example: `b-2-public.myTestCluster.v4ni96.c2.kafka.us-east-1.amazonaws.com`                             |
-| `BOOTSTRAP_SERVER_PORT`     | Target MSK port number. For example `9094`                                                                                       |
+| Value                       | Description                                                                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `KEYSTORE_PATH`             | The path to the local `keystore.p12` file that was generated above.                                                             |
+| `KEYSTORE_PASSWORD`         | Keystore password to `keystore.p12` file that was generated above.                                                              |
+| `STORE_TYPE`                | Keystore types such as `pkcs12`, `jceks`, and etc                                                                               |
+| `SIGNED_CLIENT_CERT_ALIAS`  | A unique string that identifies the key cert entry chain in the `keystore.p12`. For example, use the MSK bootstrap server name. |
+| `BOOTSTRAP_SERVER_HOSTNAME` | Target MSK hostname. For example: `b-2-public.myTestCluster.v4ni96.c2.kafka.us-east-1.amazonaws.com`                            |
+| `BOOTSTRAP_SERVER_PORT`     | Target MSK port number. For example `9094`                                                                                      |
 
 Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the vault in the `tls_client` binding. Your `zilla.yaml` should appear as follows:
 
@@ -142,7 +143,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::

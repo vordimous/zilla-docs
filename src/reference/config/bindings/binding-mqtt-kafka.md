@@ -187,7 +187,7 @@ routes:
 
 > `array` of `object`
 
-Array of `mqtt` topic filters matching topic names for publish.
+Array of MQTT topic filters matching topic names for publish.
 
 ```yaml
 - publish:
@@ -199,13 +199,13 @@ Array of `mqtt` topic filters matching topic names for publish.
 
 > `string`
 
-`mqtt` topic filter pattern.
+MQTT topic filter pattern.
 
 #### when[].subscribe
 
 > `array` of `object`
 
-Array of `mqtt` topic filters matching topic names for subscribe.
+Array of MQTT topic filters matching topic names for subscribe.
 
 ```yaml
 - subscribe:
@@ -217,7 +217,7 @@ Array of `mqtt` topic filters matching topic names for subscribe.
 
 > `string`
 
-`mqtt` topic filter pattern.
+MQTT topic filter pattern.
 
 ### routes[].exit\*
 

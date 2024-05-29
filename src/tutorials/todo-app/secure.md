@@ -135,7 +135,7 @@ When routing at each binding, Zilla can guard a route to require that specific r
 
 Zilla trusts JWT tokens based on the token `issuer`, `audience` and public `key` of the token provider.
 
-In this example, tokens are issued by [Auth0](https://auth0.com/) at `https://aklivity.us.auth0.com/` and the intended token usage, or audience, is this local Todo app Tasks API at `http://localhost:8080/tasks`.
+In this example, tokens are issued by [Auth0](https://auth0.com/) at `https://aklivity.us.auth0.com/` and the intended token usage, or audience, is this local Todo app Tasks API at <http://localhost:8080/tasks>.
 
 Using [Zilla Studio](https://zilla-studio.aklivity.io/), select the `Secure the Todo App` template from the `Load Template` dropdown and then press `Generate Config` to download the corresponding `zilla.yaml` configuration file.
 
@@ -527,13 +527,13 @@ As you can see, the `GET /tasks` API is now secured against unauthorized access,
 
 ### Step 2: Test Drive
 
-Open the browser and enter `http://localhost:8080/` to see the secured Todo Application.
+Open the browser and enter <http://localhost:8080/> to see the secured Todo Application.
 
 Initially you will see an error message caused by attempting to list the current tasks as an unauthorized user without the `read:tasks` role.
 
 Click the `Login` button and follow the flow to become an authorized user, then you will see your profile picture in the upper right corner in place of the login button.
 
-For the purposes of this guide, all authorized users are implicitly granted both `read:tasks` and `write:tasks` roles for the Tasks API at `http://localhost:8080/tasks`.
+For the purposes of this guide, all authorized users are implicitly granted both `read:tasks` and `write:tasks` roles for the Tasks API at <http://localhost:8080/tasks>.
 
 The Todo Application now behaves as expected, with authorized-only access to the Tasks API.
 

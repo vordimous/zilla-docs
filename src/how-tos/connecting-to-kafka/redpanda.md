@@ -52,7 +52,6 @@ bindings:
     routes:
       - when:
         - cidr: 0.0.0.0/0
-
 ```
 
 :::

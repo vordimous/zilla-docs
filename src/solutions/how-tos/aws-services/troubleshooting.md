@@ -75,21 +75,21 @@ You can verify TLS connectivity with client key and signed client certificate us
 
 ```bash:no-line-numbers
 openssl s_client \
-  -connect <b-1-broker-dns-name>:9094 \
-  -servername <b-1-broker-dns-name> \
-  -cert client.cert \
-  -key client.key.pem
+-connect <b-1-broker-dns-name>:9094 \
+-servername <b-1-broker-dns-name> \
+-cert client.cert \
+-key client.key.pem
 ```
 
 Note: if you followed [Create Server Certificate](./create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](./create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](./create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 openssl s_client \
-  -connect <b-1-broker-dns-name>:9094 \
-  -servername <b-1-broker-dns-name> \
-  -cert client.cert \
-  -key client.key.pem
-  -CAfile Certificate.pem
+-connect <b-1-broker-dns-name>:9094 \
+-servername <b-1-broker-dns-name> \
+-cert client.cert \
+-key client.key.pem
+-CAfile Certificate.pem
 ```
 
 The `openssl` output should be as shown below:
@@ -108,23 +108,23 @@ You can verify Kafka connectivity with client key and signed client certificate 
 
 ```bash:no-line-numbers
 kcat \
-  -L \
-  -b <b-1-broker-dns-name>:9094 \
-  -X security.protocol=ssl \
-  -X ssl.certificate.location=client.cert \
-  -X ssl.key.location=client.key.pem
+-L \
+-b <b-1-broker-dns-name>:9094 \
+-X security.protocol=ssl \
+-X ssl.certificate.location=client.cert \
+-X ssl.key.location=client.key.pem
 ```
 
 Note: if you followed [Create Server Certificate](./create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](./create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](./create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
 ```bash:no-line-numbers
 kcat \
-  -L \
-  -b <b-1-broker-dns-name>:9094 \
-  -X security.protocol=ssl \
-  -X ssl.certificate.location=client.cert \
-  -X ssl.key.location=client.key.pem \
-  -X ssl.ca.location=Certificate.pem
+-L \
+-b <b-1-broker-dns-name>:9094 \
+-X security.protocol=ssl \
+-X ssl.certificate.location=client.cert \
+-X ssl.key.location=client.key.pem \
+-X ssl.ca.location=Certificate.pem
 ```
 
 The `kcat` output should show the list of brokers and topics accessible to the client.

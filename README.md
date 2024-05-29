@@ -34,11 +34,11 @@ Before submitting your contribution, please read through the following guide. We
 
 To develop locally, fork this repository and clone it in your local machine. Then run these commands from the root directory:
 
-```sh
+```bash
 pnpm i
 ```
 
-```sh
+```bash
 pnpm dev
 ```
 
@@ -48,7 +48,7 @@ pnpm dev
 
   run:
 
-  ```sh
+  ```bash
   pnpm lint
   ```
 
@@ -56,11 +56,11 @@ pnpm dev
 
   Install [Vale](https://github.com/errata-ai/vale) then run:
 
-  ```sh
+  ```bash
   vale src
   ```
 
-  ```sh
+  ```bash
   vale --ignore-syntax src/.vuepress/sidebar/en.ts
   ```
 
@@ -68,13 +68,13 @@ pnpm dev
 
   Install [Lychee](https://github.com/lycheeverse/lychee) then run:
 
-  ```sh
+  ```bash
   lychee --exclude-mail src
   ```
 
   Running compiled site link checking:
 
-  ```sh
+  ```bash
   pnpm link-checker && lychee --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist
   ```
 
@@ -178,7 +178,6 @@ parentArray:
 > `type`
 
 Description.
-
 ````
 
 ## Provide feedback

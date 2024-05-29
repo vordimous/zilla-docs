@@ -31,7 +31,7 @@ Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same director
 ## Run Zilla and Kafka
 
 ```bash:no-line-numbers
-docker-compose up -d
+docker-compose up --detach
 ```
 
 ## Use `curl` to send a greeting

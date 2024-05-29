@@ -6,7 +6,6 @@ description: Running these Zilla samples will introduce some SSE features.
 
 Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
-
 Running this Zilla sample will fanout `Hello, World` from a Kafka topic acting as a SSE server
 
 ## Setup SSE Kafka Proxy
@@ -38,16 +37,16 @@ Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the
 ## Run Zilla and Kafka
 
 ```bash:no-line-numbers
-docker-compose up -d
+docker-compose up --detach
 ```
 
 - Open the browser
 
-Navigate to the browser [http://localhost:7114/index.html](http://localhost:7114/index.html).
+Navigate to the browser <http://localhost:7114/index.html>.
 
 - Click `Go`
 
-With the location input set to `http://localhost:7114/events` you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
+With the location input set to <http://localhost:7114/events> you can click the `Go` button to connect to the SSE server. Messages will stream in as long as you have the `messenger` service running in docker.The stream of messages will render on the page.
 
 ```output:no-line-numbers
 ...

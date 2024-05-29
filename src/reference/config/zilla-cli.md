@@ -20,6 +20,10 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 - [zilla metrics](#zilla-metrics)
   - [--namespace `<namespace>`](#namespace-namespace)
 - [zilla start](#zilla-start)
+  - [-c --config](#c-config)
+  - [-e --exception-traces](#e-exception-traces)
+  - [-p --properties](#p-properties)
+  - [-P --property](#p-property)
   - [-v --verbose](#v-verbose-1)
   - [-w --workers](#w-workers)
 - [zilla stop](#zilla-stop)
@@ -138,17 +142,7 @@ example      echo_server    stream.errors.sent            0
 The `zilla start` command resolves the [Zilla Runtime Configuration](./overview.md) in a `zilla.yaml` to start the runtime engine.
 
 ```bash:no-line-numbers
-zilla start
-```
-
-> started
-
-#### -v --verbose
-
-Show verbose output
-
-```bash:no-line-numbers
-zilla start -v
+zilla start -ve
 ```
 
 ```output:no-line-numbers
@@ -169,11 +163,65 @@ bindings:
 started
 ```
 
+#### -c --config
+
+> `string`
+
+Set the path to the local `zilla.yaml` configuration file.
+
+```bash:no-line-numbers
+zilla start -c ./path/to/zilla.yaml
+```
+
+#### -e --exception-traces
+
+> `flag`
+
+Log exception traces to `stdout`.
+
+```bash:no-line-numbers
+zilla start -e
+```
+
+#### -p --properties
+
+> `string`
+
+Set Zilla properties via a file.
+
+```bash:no-line-numbers
+zilla start -p /path/to/zilla.properties
+```
+
+#### -P --property
+
+> `name=value`
+
+Set individual Zilla properties.
+
+```bash:no-line-numbers
+zilla start -P zilla.engine.prop=value -P zilla.other.thing=value
+```
+
+#### -v --verbose
+
+> `flag`
+
+Log verbose output to `stdout`.
+
+```bash:no-line-numbers
+zilla start -v
+```
+
 #### -w --workers
 
-> Defaults to # CPU cores available
+> `integer` | Default: CPU cores
 
-Worker count
+Set the Worker count in Zilla. Defaults to the number of CPU cores available.
+
+```bash:no-line-numbers
+zilla start -w 2
+```
 
 ### zilla stop
 

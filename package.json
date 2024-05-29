@@ -1,20 +1,20 @@
 {
   "name": "zilla-docs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],
   "author": "aklivity.io",
   "license": "ISC",
   "engines": {
-    "node": ">=14",
-    "pnpm": ">=7"
+    "node": ">=18",
+    "pnpm": ">=9"
   },
   "scripts": {
-    "info": "vuepress info",
-    "build": "vuepress build src",
-    "clean-dev": "vuepress dev src --clean-cache --debug",
-    "dev": "vuepress dev src",
-    "update-package": "pnpm dlx vp-update",
+    "info": "vuepress-vite info",
+    "build": "vuepress-vite build src",
+    "clean-dev": "vuepress-vite dev src --clean-cache",
+    "dev": "vuepress-vite dev src",
+    "update-package": "pnpm add -g pnpm && pnpm dlx vp-update",
     "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
     "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
     "link-checker": "pnpm build && link-checker src/.vuepress/dist",
@@ -24,13 +24,19 @@
     "@vuepress/bundler-vite": "2.0.0-rc.7",
     "@vuepress/plugin-catalog": "2.0.0-rc.14",
     "@vuepress/plugin-docsearch": "2.0.0-rc.14",
+    "@vuepress/plugin-prismjs": "2.0.0-rc.15",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.15",
     "@vuepress/plugin-register-components": "2.0.0-rc.14",
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
     "vue": "^3.4.26",
-    "vuepress": "2.0.0-rc.9",
+    "vuepress": "2.0.0-rc.7",
     "vuepress-theme-hope": "2.0.0-rc.38"
+  },
+  "pnpm": {
+    "overrides": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
   }
 }

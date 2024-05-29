@@ -1,6 +1,7 @@
 ---
 description: In this guide, you will learn how to connect to Confluent Cloud from Zilla
 ---
+
 # Confluent Cloud
 
 ## Introduction
@@ -70,7 +71,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::

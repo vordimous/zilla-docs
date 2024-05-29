@@ -1,7 +1,6 @@
 name: SSE-example
 bindings:
-
-# Proxy service entrypoint
+  # Proxy service entrypoint
   north_tcp_server:
     type: tcp
     kind: server
@@ -28,7 +27,7 @@ bindings:
               :authority: localhost:7114
         exit: east_http_filesystem_mapping
 
-# UI html file server
+  # UI html file server
   east_http_filesystem_mapping:
     type: http-filesystem
     kind: proxy
@@ -44,7 +43,7 @@ bindings:
     options:
       location: /var/www/
 
-# SSE Server With an exit to Kafka
+  # SSE Server With an exit to Kafka
   north_sse_server:
     type: sse
     kind: server
@@ -59,7 +58,7 @@ bindings:
           topic: events
         exit: north_kafka_cache_client
 
-# Kafka sync layer
+  # Kafka sync layer
   north_kafka_cache_client:
     type: kafka
     kind: cache_client
@@ -72,17 +71,19 @@ bindings:
         - events
     exit: south_kafka_client
 
-# Connect to local Kafka
+  # Connect to Kafka
   south_kafka_client:
     type: kafka
     kind: client
-    exit: south_tcp_client
-  south_tcp_client:
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
+    exit: south_kafka_tcp_client
+  south_kafka_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: ${{env.KAFKA_HOST}}
-      port: ${{env.KAFKA_PORT}}
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

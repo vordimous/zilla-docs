@@ -9,12 +9,10 @@ tag:
 
 # Stdout Exporter
 
-Zilla runtime stdout exporter
+The Zilla runtime stdout exporter logs telemetry events to the application standard out.
 
 ```yaml
 exporters:
   stdout:
     type: stdout
 ```
-
-Prints events to stdout.
