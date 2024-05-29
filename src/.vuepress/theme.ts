@@ -58,6 +58,7 @@ export default hopeTheme({
       level: 1,
     },
     docsearch: {
+      disableUserPersonalization: true,
       appId: "H6RNUBSB6E",
       indexName: "aklivity",
       apiKey: "bae72797404a23ba5466230146919cae",
@@ -66,6 +67,7 @@ export default hopeTheme({
         facetFilters: [`version:${versionKey}`, `product:${siteBase}`],
       },
     },
+    prismjs: true,
     mdEnhance: {
       align: true,
       attrs: true,

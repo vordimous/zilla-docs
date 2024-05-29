@@ -67,19 +67,19 @@ In this example, we issue the certificate to be valid for `365 days`. You should
 
 ```bash:no-line-numbers
 aws acm-pca issue-certificate \
-  --region us-east-1 \
-  --certificate-authority-arn <private-certificate-authority-arn> \
-  --csr fileb://wildcard.aklivity.example.com.csr \
-  --signing-algorithm "SHA256WITHRSA" \
-  --validity Value=365,Type="DAYS" \
-  --idempotency-token 1234
+--region us-east-1 \
+--certificate-authority-arn <private-certificate-authority-arn> \
+--csr fileb://wildcard.aklivity.example.com.csr \
+--signing-algorithm "SHA256WITHRSA" \
+--validity Value=365,Type="DAYS" \
+--idempotency-token 1234
 ```
 
 This command returns the ARN of the newly signed certificate.
 
 ```json:no-line-numbers
 {
-    "CertificateArn": "arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."
+  "CertificateArn": "arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."
 }
 ```
 
@@ -101,10 +101,10 @@ Now we need to create the secret value using the `pkcs8` encoded private key as 
 
 ```bash:no-line-numbers
 aws secretsmanager create-secret \
-  --region us-east-1 \
-  --name "wildcard.aklivity.example.com" \
-  --secret-string file://wildcard.aklivity.example.com.pkcs8.pem \
-  --tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
+--region us-east-1 \
+--name "wildcard.aklivity.example.com" \
+--secret-string file://wildcard.aklivity.example.com.pkcs8.pem \
+--tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
 ```
 
 This secret can now be used by the Zilla Plus for Amazon MSK to resolve private keys and their corresponding signed certificates to support custom TLS bootstrap server names.

@@ -285,7 +285,6 @@ Find the `Public IPv4 Address` and then SSH into the instance.
 ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 ```
 
-
 After logging in via SSH, check the status of the `zilla-plus` system service.
 
 ::: tabs
@@ -313,7 +312,7 @@ netstat -ntlp
 ```
 
 ```output:no-line-numbers
-tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
+tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin
 ```
 
 @tab Check Zilla Logs
@@ -334,7 +333,7 @@ systemd[1]: Started zilla-plus.service - Zilla Plus.
 All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
 
 ```bash:no-line-numbers
-cat /var/log/cloud-init-output.log 
+cat /var/log/cloud-init-output.log
 ```
 
 ```output:no-line-numbers

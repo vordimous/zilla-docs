@@ -77,7 +77,6 @@ aws acm-pca get-certificate \
   --certificate-arn "$clientCertArn" \
   --certificate-authority-arn "$acm_pca_certificate_authority" \
   --output text | sed "s/\t/\n/g" > "$client_name".cert
-
 ```
 
 :::
@@ -155,12 +154,12 @@ In this example, we issue the certificate to be valid for `365 days`. You should
 
 ```bash:no-line-numbers
 aws acm-pca issue-certificate \
-  --region us-east-1 \
-  --certificate-authority-arn <private-certificate-authority-arn> \
-  --csr fileb://client-1.csr \
-  --signing-algorithm "SHA256WITHRSA" \
-  --validity Value=365,Type="DAYS" \
-  --idempotency-token 1234
+--region us-east-1 \
+--certificate-authority-arn <private-certificate-authority-arn> \
+--csr fileb://client-1.csr \
+--signing-algorithm "SHA256WITHRSA" \
+--validity Value=365,Type="DAYS" \
+--idempotency-token 1234
 ```
 
 This command returns the ARN of the newly signed certificate.
@@ -175,10 +174,10 @@ Now the signed certificate can be retrieved from AWS Private Certificate Authori
 
 ```bash:no-line-numbers
 aws acm-pca get-certificate \
-  --region us-east-1 \
-  --certificate-arn <client-certificate-arn>
-  --certificate-authority-arn <private-certificate-authority-arn>
-  --output text | sed "s/\t/\n/g" > client_1.cert
+--region us-east-1 \
+--certificate-arn <client-certificate-arn>
+--certificate-authority-arn <private-certificate-authority-arn>
+--output text | sed "s/\t/\n/g" > client_1.cert
 ```
 
 This returns the public signed client certificate chain associated with the client private key.
@@ -189,10 +188,10 @@ Now we need to create the secret value using the `pkcs8` encoded private key as 
 
 ```bash:no-line-numbers
 aws secretsmanager create-secret \
-  --region us-east-1 \
-  --name "client-1" \
-  --secret-string file://client-1.pkcs8.pem \
-  --tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
+--region us-east-1 \
+--name "client-1" \
+--secret-string file://client-1.pkcs8.pem \
+--tags '[{"Key":"certificate-authority-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/..."}, {"Key":"certificate-arn", "Value":"arn:aws:acm-pca:us-east-1:...:certificate-authority/.../certificate/..."}]'
 ```
 
 This secret can now be used by the Zilla Plus for Amazon MSK to resolve private keys and their corresponding signed certificates to support TLS client authentication.

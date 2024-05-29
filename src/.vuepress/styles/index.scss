@@ -33,9 +33,13 @@ html[data-theme=light] #app {
 }
 
 // make bash code blocks have $ prefix
+pre.language-bash {
+    padding-left: 2rem;
+}
 pre.language-bash:before {
     content: "$ ";
     font-weight: bold;
+    margin-left: -1.2rem;
 }
 
 // remove table borders

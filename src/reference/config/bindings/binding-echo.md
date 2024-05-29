@@ -35,7 +35,7 @@ This binding supports the `echo` protocol and is run with the `server` behavior.
 
 ### kind\*
 
-> enum [ "server" ]
+> `enum` [ "server" ]
 
 Behaves as an `echo` `server`.
 

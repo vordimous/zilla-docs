@@ -15,7 +15,7 @@ description: Setup mutual authentication to your mTLS Amazon MSK cluster from an
 
 The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
 
-In this guide we will deploy the Zilla Plus for Amazon MSK Secure Public Access proxy  and showcase globally trusted public internet connectivity to an MSK cluster from a Kafka client, using the custom wildcard domain `*.example.aklivity.io`. Kafka clients will use TLS client certificates to verify trusted client identity.
+In this guide we will deploy the Zilla Plus for Amazon MSK Secure Public Access proxy and showcase globally trusted public internet connectivity to an MSK cluster from a Kafka client, using the custom wildcard domain `*.example.aklivity.io`. Kafka clients will use TLS client certificates to verify trusted client identity.
 
 ### AWS services used
 
@@ -318,7 +318,6 @@ Find the `Public IPv4 Address` and then SSH into the instance.
 ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 ```
 
-
 After logging in via SSH, check the status of the `zilla-plus` system service.
 
 ::: tabs
@@ -346,7 +345,7 @@ netstat -ntlp
 ```
 
 ```output:no-line-numbers
-tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin 
+tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin
 ```
 
 @tab Check Zilla Logs
@@ -367,7 +366,7 @@ systemd[1]: Started zilla-plus.service - Zilla Plus.
 All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
 
 ```bash:no-line-numbers
-cat /var/log/cloud-init-output.log 
+cat /var/log/cloud-init-output.log
 ```
 
 ```output:no-line-numbers

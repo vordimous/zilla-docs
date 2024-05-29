@@ -49,9 +49,9 @@ Then we can create the secret, for example:
 
 ```bash:no-line-numbers
 aws secretsmanager create-secret \
-  --region us-east-1 \
-  --name wildcard.example.aklivity.io \
-  --secret-string file://wildcard.example.aklivity.io.pem
+--region us-east-1 \
+--name wildcard.example.aklivity.io \
+--secret-string file://wildcard.example.aklivity.io.pem
 ```
 
 ::: info

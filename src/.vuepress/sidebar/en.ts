@@ -204,8 +204,23 @@ export const enSidebar = sidebar({
           link: "how-tos/deploy-operate.md",
         },
         {
-          text: "Add Prometheus Metrics",
-          link: "tutorials/metrics/prometheus-intro.md",
+          text: "Telemetry Logs & Metrics",
+          collapsible: true,
+          link: "concepts/telemetry.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/telemetry.md",
+            },
+            {
+              text: "Add logs & metrics",
+              link: "tutorials/telemetry/telemetry-intro.md",
+            },
+            {
+              text: "Push to an OTLP Collector",
+              link: "how-tos/telemetry/opentelemetry-protocol.md",
+            },
+          ]
         },
       ],
     },
@@ -213,6 +228,11 @@ export const enSidebar = sidebar({
       text: "Kafka Proxying",
       link: "concepts/kafka-proxies/http-proxy.md",
       children: [
+        {
+          text: "Kafka Proxy Quickstart",
+          collapsible: true,
+          link: "tutorials/quickstart/kafka-proxies.md",
+        },
         {
           text: "HTTP Kafka Proxy",
           collapsible: true,

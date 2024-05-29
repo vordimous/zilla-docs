@@ -605,9 +605,9 @@ Let's verify the Tasks API using the `curl` `POST` and `GET` commands shown belo
 
 ```bash:no-line-numbers
 curl -X POST http://localhost:8080/tasks \
-  -H "Idempotency-Key: 5958F9A2-8319-486B-BD43-2F80FDE87223" \
-  -H "Content-Type: application/json" \
-  -d "{\"name\":\"Read the docs\"}"
+-H "Idempotency-Key: 5958F9A2-8319-486B-BD43-2F80FDE87223" \
+-H "Content-Type: application/json" \
+-d "{\"name\":\"Read the docs\"}"
 ```
 
 ```bash:no-line-numbers
@@ -625,9 +625,9 @@ Now create a new Todo task while keeping the `GET /tasks` stream open as shown a
 
 ```bash:no-line-numbers
 curl -X POST http://localhost:8080/tasks \
-  -H "Idempotency-Key: 5C1A90A3-AEB5-496F-BA00-42D1D805B21B" \
-  -H "Content-Type: application/json" \
-  -d "{\"name\":\"Join the Slack community\"}"
+-H "Idempotency-Key: 5C1A90A3-AEB5-496F-BA00-42D1D805B21B" \
+-H "Content-Type: application/json" \
+-d "{\"name\":\"Join the Slack community\"}"
 ```
 
 The `GET /tasks` stream automatically receives the update when the new task is created.
@@ -635,7 +635,6 @@ The `GET /tasks` stream automatically receives the update when the new task is c
 ```text:no-line-numbers
 id:["NUMxQTkwQTMtQUVCNS00OTZGLUJBMDAtNDJEMUQ4MDVCMjFC","AQIABA==/1"]
 data:{"name":"Join the Slack community"}
-
 ```
 
 Each new update arrives automatically, even when changes are made by other clients.
@@ -824,7 +823,7 @@ Make sure that `zilla.yaml` config changes got applied after restarting the Zill
 
 ### Step 5: Test Drive
 
-Open the browser and enter `http://localhost:8080/` to see the Todo Application.
+Open the browser and enter <http://localhost:8080/> to see the Todo Application.
 
 ![](./TodoAppNotLoggedIn.png)
 

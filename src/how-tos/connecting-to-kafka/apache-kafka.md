@@ -1,6 +1,7 @@
 ---
 description: In this guide, you will learn how to connect to a generic Kafka from Zilla
 ---
+
 # Apache Kafka
 
 <!-- TODO enable -->
@@ -51,7 +52,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::
@@ -97,7 +97,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::
@@ -143,7 +142,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::
@@ -169,15 +167,15 @@ You can use the scripts shown below to generate `truststore.p12` and `keystore.p
 
 ```bash:no-line-numbers
 keytool -import -file ca.pem -alias YOUR_KAFKA_SIGNED_CLIENT_CERT_ALIAS \
-        -keystore truststore.p12
+-keystore truststore.p12
 ```
 
 @tab keystore.p12
 
 ```bash:no-line-numbers
 openssl pkcs12 -export -in service.cert -inkey service.key
-    -out keystore.p12 -name YOUR_KAFKA_CA_CERT_ALIAS \
-    -CAfile ca.pem
+-out keystore.p12 -name YOUR_KAFKA_CA_CERT_ALIAS \
+-CAfile ca.pem
 ```
 
 :::
@@ -229,7 +227,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::
@@ -293,7 +290,6 @@ bindings:
     routes:
       - when:
           - cidr: 0.0.0.0/0
-
 ```
 
 :::
