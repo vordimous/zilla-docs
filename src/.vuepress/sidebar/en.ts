@@ -251,18 +251,8 @@ export const enSidebar = sidebar({
               link: "tutorials/sse/sse-intro.md",
             },
             {
-              text: "Build a CQRS Todo App",
-              link: "tutorials/todo-app/build.md",
-              children: [
-                {
-                  text: "Application Setup",
-                  link: "tutorials/todo-app/build.md",
-                },
-                {
-                  text: "Adding Auth",
-                  link: "tutorials/todo-app/secure.md",
-                },
-              ],
+              text: "Run the TodoMVC CQRS Demo",
+              link: "https://github.com/aklivity/zilla-demos/tree/main/todo-mvc-cqrs",
             },
           ],
         },

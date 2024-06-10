@@ -2,9 +2,9 @@
 
 Zilla can validate API requests and message streams using your OpenAPI and AsyncAPI schemas. Zilla implements the OpenAPI and AsyncAPI schemas directly meaning there are little or no changes necessary to start serving you existing operations through Zilla. You can just drop in an existing OpenAPI/AsyncAPI specification and Zilla can seamlessly integrate with your current API management workflows and tooling.
 
-You can see a working [Petstore Demo](https://github.com/aklivity/zilla-demos/tree/main/petstore) using OpenAPI/AsyncAPI schemas. Zilla can also define and proxy MQTT endpoints using a pair of AsyncAPI schemas. Check out the [Taxi Demo](https://github.com/aklivity/zilla-demos/tree/main/taxi) to see a Zilla MQTT proxy defined using AsyncAPI, which is deployed [Live](https://taxi.aklivity.io/) using Kubernetes.
+You can see a working [Petstore Demo](https://github.com/aklivity/zilla-demos/tree/main/petstore) using OpenAPI/AsyncAPI schemas. Zilla can also define and proxy MQTT endpoints utilizing a pair of AsyncAPI schemas. Check out the [Taxi Demo](https://github.com/aklivity/zilla-demos/tree/main/taxi) to see a Zilla MQTT proxy defined using AsyncAPI, which is deployed [Live](https://taxi.aklivity.io/) using Kubernetes. We added an event-driven backend to the popular TodoMVC UI frontend in the [TodoMVC CQRS Demo](https://github.com/aklivity/zilla-demos/tree/main/todo-mvc-cqrs) where all of the new tasks will sync live to any open browsers.
 
-> [Petstore Demo](https://github.com/aklivity/zilla-demos/tree/main/petstore) | [Taxi Demo](https://github.com/aklivity/zilla-demos/tree/main/taxi)
+> [Petstore Demo](https://github.com/aklivity/zilla-demos/tree/main/petstore) | [Taxi Demo](https://github.com/aklivity/zilla-demos/tree/main/taxi) | [TodoMVC CQRS Demo](https://github.com/aklivity/zilla-demos/tree/main/todo-mvc-cqrs)
 
 You can explicitly define your APIs in a Zilla configuration by carefully orchestrating all of the different [Bindings](../concepts/config-intro.md#Bindings) Zilla has to offer. You can see many of them on display by using the [Kafka Proxy Quickstart](../tutorials/quickstart/kafka-proxies.md) or checking out the [Zilla Examples](https://github.com/aklivity/zilla-examples) repo.
 
@@ -27,7 +27,7 @@ zilla start -ve -c ./zilla.yaml
 
 ## Docker
 
-You can run your `zilla.yaml` config inside of a container. If you want to deploy on Kubernetes you can use our [helm chart](./deploy-operate.md).
+You can run your `zilla.yaml` config inside of a container. If you want to deploy on Kubernetes, you can use our [helm chart](./deploy-operate.md).
 
 ```bash:no-line-numbers
 docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -ve
@@ -59,7 +59,7 @@ The Zilla MQTT Kafka Proxy manages MQTT Pub/Sub connections and messages on and 
 
 ## Zilla Plus <FontIcon icon="aky-zilla-plus"/>
 
-Everything in OSS plus commercial integrations and enterprise support. Partner-certified solutions for Confluent Cloud, Redpanda, and AWS MSK. Check out the [<ZillaPlus/>](https://www.aklivity.io/products/zilla-plus) product page and find detailed instructions for each of our markeplace offerings below.
+Everything in OSS plus commercial integrations and enterprise support. Partner-certified solutions for Confluent Cloud, Redpanda, and AWS MSK. Check out the [<ZillaPlus/>](https://www.aklivity.io/products/zilla-plus) product page and find detailed instructions for each of our marketplace offerings below.
 
 > [Amazon MSK Secure Public Access](../solutions/how-tos/amazon-msk/secure-public-access/overview.md)
 > This allows Kafka clients from outside the private network access to the full functionality of your Amazon MSK cluster.
