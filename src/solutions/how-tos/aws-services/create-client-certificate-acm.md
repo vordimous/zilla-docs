@@ -201,5 +201,5 @@ Note the ARN of the newly created secret for the client certificate's private ke
 :::
 
 ::: warning
-In the example above, private certificates are valid for `365 days`, so you will need to renew the certificate and update the secret value accordingly before expiration. The latest secret value and corresponding private certificate are obtained automatically upon restarting the Zilla proxy instance.
+In the example above, private certificates are valid for `365 days`, so you will need to renew the certificate and update the `secret-string` value and `certificate-arn` tag accordingly before expiration. The latest secret value and corresponding private certificate are obtained automatically upon restarting the Zilla proxy instance.
 :::
