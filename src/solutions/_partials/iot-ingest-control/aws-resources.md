@@ -54,6 +54,7 @@ Navigate to the [Create role](https://console.aws.amazon.com/iamv2/home#/roles/c
 
   ```text:no-line-numbers
   AWSCertificateManagerReadOnly
+  AmazonSSMManagedInstanceCore
   ```
 
 - Role Name:

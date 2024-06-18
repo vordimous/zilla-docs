@@ -162,6 +162,7 @@ aklivity-zilla-proxy
 
 ```text:no-line-numbers
 AWSCertificateManagerReadOnly
+AmazonSSMManagedInstanceCore
 ```
 
 :::

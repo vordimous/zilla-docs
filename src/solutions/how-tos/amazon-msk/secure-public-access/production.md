@@ -132,6 +132,7 @@ aklivity-zilla-proxy
 AWSCertificateManagerReadOnly
 AWSCertificateManagerPrivateCAReadOnly
 ResourceGroupsandTagEditorReadOnlyAccess
+AmazonSSMManagedInstanceCore
 ```
 
 :::
