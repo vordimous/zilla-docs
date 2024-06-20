@@ -1,16 +1,17 @@
 ---
 shortTitle: syslog
 description: Zilla runtime syslog exporter
+icon: aky-zilla-plus
 category:
   - Telemetry
 tag:
   - Exporters
 ---
 
+# Syslog Exporter
+
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
-
-# Syslog Exporter
 
 Zilla runtime Syslog exporter
 

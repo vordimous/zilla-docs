@@ -110,7 +110,7 @@ options:
 
 > `string`
 
-Compacted Kafka topic for storing mqtt session states.
+Compacted Kafka topic for storing mqtt session states. Cleanup policy must be log compacted.
 
 ##### topics.messages\*
 

@@ -14,17 +14,27 @@ Named events from Zilla that can be exported and logged.
 :::: note Event Names
 
 - [BINDING\_HTTP\_REQUEST\_ACCEPTED](#binding-http-request-accepted)
-- [BINDING\_KAFKA\_AUTHORIZATION\_FAILED](#binding-kafka-authorization-failed)
 - [BINDING\_KAFKA\_API\_VERSION\_REJECTED](#binding-kafka-api-version-rejected)
+- [BINDING\_KAFKA\_AUTHORIZATION\_FAILED](#binding-kafka-authorization-failed)
+- [BINDING\_MQTT\_CLIENT\_CONNECTED](#binding-mqtt-client-connected)
+- [BINDING\_MQTT\_KAFKA\_NON\_COMPACT\_SESSIONS\_TOPIC](#binding-mqtt-kafka-non-compact-sessions-topic)
 - [BINDING\_TCP\_DNS\_FAILED](#binding-tcp-dns-failed)
-- [BINDING\_TLS\_TLS\_FAILED](#binding-tls-tls-failed)
-- [BINDING\_TLS\_PROTOCOL\_REJECTED](#binding-tls-protocol-rejected)
+- [BINDING\_TLS\_HANDSHAKE\_FAILED](#binding-tls-handshake-failed)
 - [BINDING\_TLS\_KEY\_REJECTED](#binding-tls-key-rejected)
 - [BINDING\_TLS\_PEER\_NOT\_VERIFIED](#binding-tls-peer-not-verified)
-- [BINDING\_TLS\_HANDSHAKE\_FAILED](#binding-tls-handshake-failed)
+- [BINDING\_TLS\_PROTOCOL\_REJECTED](#binding-tls-protocol-rejected)
+- [BINDING\_TLS\_TLS\_FAILED](#binding-tls-tls-failed)
+- [CATALOG\_APICURIO\_RETRIEVED\_ARTIFACT\_ID](#catalog-apicurio-retrieved-artifact-id)
+- [CATALOG\_APICURIO\_RETRIEVED\_ARTIFACT\_SUBJECT\_VERSION](#catalog-apicurio-retrieved-artifact-subject-version)
+- [CATALOG\_APICURIO\_UNRETRIEVABLE\_ARTIFACT\_ID](#catalog-apicurio-unretrievable-artifact-id)
+- [CATALOG\_APICURIO\_UNRETRIEVABLE\_ARTIFACT\_SUBJECT\_VERSION\_STALE\_ARTIFACT](#catalog-apicurio-unretrievable-artifact-subject-version-stale-artifact)
+- [CATALOG\_APICURIO\_UNRETRIEVABLE\_ARTIFACT\_SUBJECT\_VERSION](#catalog-apicurio-unretrievable-artifact-subject-version)
 - [CATALOG\_FILESYSTEM\_FILE\_NOT\_FOUND](#catalog-filesystem-file-not-found)
-- [CATALOG\_APICURIO\_REMOTE\_ACCESS\_REJECTED](#catalog-apicurio-remote-access-rejected)
-- [CATALOG\_KARAPACE\_REMOTE\_ACCESS\_REJECTED](#catalog-karapace-remote-access-rejected)
+- [CATALOG\_KARAPACE\_RETRIEVED\_SCHEMA\_ID](#catalog-karapace-retrieved-schema-id)
+- [CATALOG\_KARAPACE\_RETRIEVED\_SCHEMA\_SUBJECT\_VERSION](#catalog-karapace-retrieved-schema-subject-version)
+- [CATALOG\_KARAPACE\_UNRETRIEVABLE\_SCHEMA\_ID](#catalog-karapace-unretrievable-schema-id)
+- [CATALOG\_KARAPACE\_UNRETRIEVABLE\_SCHEMA\_SUBJECT\_VERSION\_STALE\_SCHEMA](#catalog-karapace-unretrievable-schema-subject-version-stale-schema)
+- [CATALOG\_KARAPACE\_UNRETRIEVABLE\_SCHEMA\_SUBJECT\_VERSION](#catalog-karapace-unretrievable-schema-subject-version)
 - [GUARD\_JWT\_AUTHORIZATION\_FAILED](#guard-jwt-authorization-failed)
 - [MODEL\_AVRO\_VALIDATION\_FAILED](#model-avro-validation-failed)
 - [MODEL\_CORE\_VALIDATION\_FAILED](#model-core-validation-failed)
@@ -37,92 +47,108 @@ Named events from Zilla that can be exported and logged.
 
 ### BINDING_HTTP_REQUEST_ACCEPTED
 
-> :identity :scheme :method :authority :path
-
-A successful HTTP request.
-
-### BINDING_KAFKA_AUTHORIZATION_FAILED
-
-> :identity
-
-An authorization failure happened in the http, mqtt or the kafka binding.
+The server received a valid HTTP request.
 
 ### BINDING_KAFKA_API_VERSION_REJECTED
 
-> :apiKey :apiVersion
-
 An API version mismatch occurred in the kafka binding.
+
+### BINDING_KAFKA_AUTHORIZATION_FAILED
+
+An authorization failure happened in the http, mqtt or the kafka binding.
+
+### BINDING_MQTT_CLIENT_CONNECTED
+
+An MQTT session was successfully authorized and connected.
+
+### BINDING_MQTT_KAFKA_NON_COMPACT_SESSIONS_TOPIC
+
+The sessions topic declared in the [mqtt-kafka](../bindings/binding-mqtt-kafka.md) is required to be log compacted.
 
 ### BINDING_TCP_DNS_FAILED
 
-> :address
-
 A DNS resolution failure.
-
-### BINDING_TLS_TLS_FAILED
-
-A general `SSLException` occurred.
-
-### BINDING_TLS_PROTOCOL_REJECTED
-
-A `SSLProtocolException` occurred.
-
-### BINDING_TLS_KEY_REJECTED
-
-A `SSLKeyException` occurred.
-
-### BINDING_TLS_PEER_NOT_VERIFIED
-
-A `SSLPeerUnverifiedException` occurred.
 
 ### BINDING_TLS_HANDSHAKE_FAILED
 
-A `SSLHandshakeException` occurred.
+A client could not negotiate the desired level of security with the server.
+
+### BINDING_TLS_KEY_REJECTED
+
+A client or server has a misconfiguration of the server or client SSL certificate and private key.
+
+### BINDING_TLS_PEER_NOT_VERIFIED
+
+A peer's identity could not be verified.
+
+### BINDING_TLS_PROTOCOL_REJECTED
+
+An error in the operation of the SSL protocol.
+
+### BINDING_TLS_TLS_FAILED
+
+A generic error detected by an SSL subsystem.
+
+### CATALOG_APICURIO_RETRIEVED_ARTIFACT_ID
+
+Fetching the Apicurio artifact was successful.
+
+### CATALOG_APICURIO_RETRIEVED_ARTIFACT_SUBJECT_VERSION
+
+Fetching the Apicurio artifact by version was successful.
+
+### CATALOG_APICURIO_UNRETRIEVABLE_ARTIFACT_ID
+
+Fetching the Apicurio artifact was unsuccessful.
+
+### CATALOG_APICURIO_UNRETRIEVABLE_ARTIFACT_SUBJECT_VERSION_STALE_ARTIFACT
+
+Fetching the Apicurio artifact by version was unsuccessful, but an previously fetched artifact is still being used.
+
+### CATALOG_APICURIO_UNRETRIEVABLE_ARTIFACT_SUBJECT_VERSION
+
+Fetching the Apicurio artifact by version was unsuccessful.
 
 ### CATALOG_FILESYSTEM_FILE_NOT_FOUND
 
-> :location
-
 No file was found at the specified location.
 
-### CATALOG_APICURIO_REMOTE_ACCESS_REJECTED
+### CATALOG_KARAPACE_RETRIEVED_SCHEMA_ID
 
-> :method :url :statusCode
+Fetching the Karapace schema was successful.
 
-Zilla did not receive a `200` HTTP status code from the Apicurio schema registry catalog. If the status code is `0` the request could not be completed.
+### CATALOG_KARAPACE_RETRIEVED_SCHEMA_SUBJECT_VERSION
 
-### CATALOG_KARAPACE_REMOTE_ACCESS_REJECTED
+Fetching the Karapace schema by version was successful.
 
-> :method :url :statusCode
+### CATALOG_KARAPACE_UNRETRIEVABLE_SCHEMA_ID
 
-Zilla did not receive a `200` HTTP status code from the Apicurio schema registry catalog. If the status code is `0` the request could not be completed.
+Fetching the Karapace schema was unsuccessful.
+
+### CATALOG_KARAPACE_UNRETRIEVABLE_SCHEMA_SUBJECT_VERSION_STALE_SCHEMA
+
+Fetching the Karapace schema by version was unsuccessful, but an previously fetched schema is still being used.
+
+### CATALOG_KARAPACE_UNRETRIEVABLE_SCHEMA_SUBJECT_VERSION
+
+Fetching the Karapace schema by version was unsuccessful.
 
 ### GUARD_JWT_AUTHORIZATION_FAILED
-
-> :identity
 
 A client failed authorization for a JWT Guarded route.
 
 ### MODEL_AVRO_VALIDATION_FAILED
 
-> :error
-
 A payload did not have the required model schema.
 
 ### MODEL_CORE_VALIDATION_FAILED
-
-> :error
 
 A payload did not have the required model schema.
 
 ### MODEL_JSON_VALIDATION_FAILED
 
-> :error
-
 A payload did not have the required model schema.
 
 ### MODEL_PROTOBUF_VALIDATION_FAILED
-
-> :error
 
 A payload did not have the required model schema.
