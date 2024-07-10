@@ -17,6 +17,7 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
   - [-v --verbose](#v-verbose)
   - [-w --write `<output>`](#w-write-output)
 - [zilla help](#zilla-help)
+- [zilla version](#zilla-version)
 - [zilla metrics](#zilla-metrics)
   - [--namespace `<namespace>`](#namespace-namespace)
 - [zilla start](#zilla-start)
@@ -99,6 +100,18 @@ Examples:
 
 ```bash:no-line-numbers
 ./zilla help start
+```
+
+### zilla version
+
+The `zilla version` command prints the version information of Zilla.
+
+```bash:no-line-numbers
+zilla version
+```
+
+```output:no-line-numbers
+zilla version 0.9.85
 ```
 
 ### zilla metrics
