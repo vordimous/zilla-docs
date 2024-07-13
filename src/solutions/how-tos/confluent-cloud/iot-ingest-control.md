@@ -128,7 +128,7 @@ Parameters:
   - Public TLS Certificate Key: `<TLS certificate private key secret ARN>` \*4
   - Key pair for SSH access: `my-key-pair` \*5
 - \*Configuration Reference
-  1. This is the ARN for the secret created in the the [Create a Secret with SASL/SCRAM authentication params](#create-a-secret-with-sasl-scram-authentication-params) step of this guide.
+  1. This is the ARN for the secret created in the [Create a Secret with SASL/SCRAM authentication params](#create-a-secret-with-sasl-scram-authentication-params) step of this guide.
   2. Consider the network throughput characteristics of the AWS instance type as that will impact the upper bound on network performance.
   3. Replace with your own custom wildcard DNS pattern mentioned in the [Prerequisites](#prerequisites) of this guide.
   4. This is the ARN of the created secret for the signed certificate's private key mentioned in the [Prerequisites](#prerequisites) of this guide.

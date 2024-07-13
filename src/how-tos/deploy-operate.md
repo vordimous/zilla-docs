@@ -1,8 +1,31 @@
-# Deploy and Operating Zilla
+# Deploy and Operate Zilla
+
+## Install on MacOS via Homebrew
+
+You can install Zilla using our [homebrew tap](https://github.com/aklivity/homebrew-tap).
+
+```bash:no-line-numbers
+brew tap aklivity/tap
+brew install zilla
+```
+
+Now you can run any `zilla.yaml` config.
+
+```bash:no-line-numbers
+zilla start -ve -c ./zilla.yaml
+```
+
+## Running Zilla via Docker
+
+You can run your `zilla.yaml` config inside a container. If you want to deploy on Kubernetes, use our [helm chart](./deploy-operate.md).
+
+```bash:no-line-numbers
+docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -ve
+```
 
 ## Deploying Zilla via Helm
 
-Go to the [Zilla artifacthub](https://artifacthub.io/packages/helm/zilla/zilla) page to find out more on how to install Zilla using Helm.
+Go to the [Zilla artifacthub](https://artifacthub.io/packages/helm/zilla/zilla) page to learn more about installing Zilla using Helm.
 
 ```bash:no-line-numbers
 helm install zilla oci://ghcr.io/aklivity/charts/zilla --namespace zilla --create-namespace --wait \
@@ -10,31 +33,97 @@ helm install zilla oci://ghcr.io/aklivity/charts/zilla --namespace zilla --creat
 --set-file zilla\\.yaml=zilla.yaml
 ```
 
-Zilla specific configuration is in the `zilla.yaml` file which can be included in the helm install by adding `--set-file zilla\\.yaml=zilla.yaml` to your command.
+The Zilla configuration is in the `zilla.yaml` file, which is added to the Helm install using the `--set-file zilla\\.yaml=zilla.yaml` argument.
 
-## Running Zilla via Docker
+### Mapping TCP ports through the official `ingress-nginx` ingress controller
 
-Run the latest Zilla release with the default empty configuration via docker.
-
-```bash:no-line-numbers
-docker run ghcr.io/aklivity/zilla:latest start -v
-```
-
-The output should display the Zilla config and `started` to know Zilla is ready for traffic.
-
-```output:no-line-numbers
-// default Zilla config
-name: default
-
-// Zilla status
-started
-```
-
-Specify your own `zilla.yaml` file.
+You can define your TCP ports to services mapping in a `tcp-services` ConfigMap. Official documentation on this method can be found in the [Exposing TCP and UDP services](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/) guide.
 
 ```bash:no-line-numbers
-docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -v
+kubectl create configmap tcp-services \
+  --from-literal=7183="$NAMESPACE/$SERVICE_NAME:7183" \
+  --from-literal=7151="$NAMESPACE/$SERVICE_NAME:7151" \
+  -n ingress-nginx -o yaml --dry-run=client | kubectl apply -f -
 ```
+
+You will need to download the YAML manifest for the ingress controller. You can find an example on the [Ingress Nginx Quickstart guide](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
+
+```bash:no-line-numbers
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml > ingress-deploy.yaml
+```
+
+Once you have the Ingress Nginx YAML manifest, you must add the TCP port proxies for the ingress controller to allow your ports to pass through.
+
+Here is how to add ports `7183` and `7151` to the `service/ingress-nginx-controller`.
+
+```yaml{10-17}
+kind: Service
+metadata:
+...
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+spec:
+...
+  ports:
+...
+ - name: proxied-tcp-7183
+    port: 7183
+    targetPort: 7183
+    protocol: TCP
+ - name: proxied-tcp-7151
+    port: 7151
+    targetPort: 7151
+    protocol: TCP
+...
+```
+
+Finally, we need to configure the Ingress Nginx controller to look for port mappings in the `tcp-services` by adding the `--tcp-services-configmap=$(POD_NAMESPACE)/tcp-services` argument to the Deployment container args.
+
+```yaml{9}
+kind: Deployment
+spec:
+  template:
+    spec:
+      containers:
+ - args:
+  - /nginx-ingress-controller
+...
+  - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
+```
+
+Create the ingress controller:
+
+```bash:no-line-numbers
+kubectl apply -f ingress-deploy.yaml
+```
+
+The ingress controller will allow your ports to pass through, and you can configure which services should receive the requests made at those ports.
+
+### Get diagnostics from zilla pods
+
+For every running zilla pod you will need to first copy the `/var/run/zilla` directory to make sure no additional files are written while it is compressed then compress the full directory to make it easier to copy.
+
+```bash:no-line-numbers
+kubectl get pod \
+-l "app.kubernetes.io/name=zilla" \
+-n $NAMESPACE \
+--field-selector=status.phase=Running \
+-o custom-columns=name:metadata.name --no-headers \
+| xargs -I{} kubectl exec {} -n $NAMESPACE -c zilla -- sh -c "cp -r /var/run/zilla /tmp/zilla && tar czf /tmp/zilla.tar.gz /tmp/zilla && rm -rf /tmp/zilla"
+```
+
+Copy the compressed `/var/run/zilla` directory off of the pod into your local directory using the pod name. 
+
+```bash:no-line-numbers
+kubectl get pod \
+-l "app.kubernetes.io/name=zilla" \
+-n $NAMESPACE \
+--field-selector=status.phase=Running \
+-o custom-columns=name:metadata.name --no-headers \
+| xargs -I{} kubectl cp  -n $NAMESPACE {}:/tmp/zilla.tar.gz ./{}.tar.gz
+```
+
+Now you have a copy of the Zilla runtime directory for each running pod. This information can be used to diagnose all of the traffic zilla has managed.
 
 ## Auto Reconfigure
 
@@ -60,7 +149,6 @@ The `ZILLA_INCUBATOR_ENABLED` environment variable will set the incubator java o
 ZILLA_INCUBATOR_ENABLED=true
 ```
 
-## Export `TACE` level Log Dump
+## Export `TRACE` level Log Dump
 
-The [zilla dump](../reference/config/zilla-cli.md#zilla-dump) command will capture all of the internal events at the stream level for a detailed analysis of what zilla was doing. These logs are capture down to the nanosecond and are exported as a `.pcap` file to be used with [Wireshark](https://wiki.wireshark.org/SampleCaptures). You can find instructions on how to view the capture in wireshark in the zilla dump [plugin install section](../reference/config/zilla-cli.md#i-install-plugin-directory).
-
+The [zilla dump](../reference/config/zilla-cli.md#zilla-dump) command will capture all of the internal events at the stream level for a detailed analysis of what zilla was doing. These logs are captured down to the nanosecond and are exported as a `.pcap` file to be used with [Wireshark](https://wiki.wireshark.org/SampleCaptures). You can find instructions on how to view the capture in wireshark in the zilla dump [plugin install section](../reference/config/zilla-cli.md#i-install-plugin-directory).

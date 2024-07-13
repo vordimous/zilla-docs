@@ -1,14 +1,12 @@
 ---
-description: Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the internet
+description: How to connect to your own Amazon MSK from Zilla.
 ---
 
 # Amazon MSK
 
-## Introduction
-
 Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the internet. As a result, unless Zilla is deployed in the same VPC in which MSK is running, you will first need to make your cluster publicly accessible.
 
-### Enable MSK Public Access
+## Enable MSK Public Access
 
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
@@ -90,20 +88,18 @@ openssl pkcs12 -export -in client.cert -inkey client-1.key.pem \
 
 ## Configure Zilla
 
-To configure Zilla you will be replacing the following values in the `zilla.yaml` config:
+The examples use the below Environment variables.
 
-| Value                       | Description                                                                                                                     |
+| Environment variable        | Description                                                                                                                     |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `KEYSTORE_PATH`             | The path to the local `keystore.p12` file that was generated above.                                                             |
+| `TRUSTORE_TYPE`             | Keystore types such as `pkcs12`, `jceks`, and etc                                                                               |
 | `KEYSTORE_PASSWORD`         | Keystore password to `keystore.p12` file that was generated above.                                                              |
-| `STORE_TYPE`                | Keystore types such as `pkcs12`, `jceks`, and etc                                                                               |
 | `SIGNED_CLIENT_CERT_ALIAS`  | A unique string that identifies the key cert entry chain in the `keystore.p12`. For example, use the MSK bootstrap server name. |
 | `BOOTSTRAP_SERVER_HOSTNAME` | Target MSK hostname. For example: `b-2-public.myTestCluster.v4ni96.c2.kafka.us-east-1.amazonaws.com`                            |
 | `BOOTSTRAP_SERVER_PORT`     | Target MSK port number. For example `9094`                                                                                      |
 
-Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the vault in the `tls_client` binding. Your `zilla.yaml` should appear as follows:
-
-### zilla.yaml
+Inside `zilla.yaml` create a `client_vault` that references your newly created `keystore`. After this, reference the vault in the `south_tls_client` binding. Your `zilla.yaml` should appear as follows:
 
 ::: code-tabs#yaml
 
@@ -114,35 +110,29 @@ vaults:
   client_vault:
     type: filesystem
     options:
-      keys:
-        store: KEYSTORE_PATH
-        type: STORE_TYPE
-        password: KEYSTORE_PASSWORD
+      trust:
+        store: ${{env.TRUSTORE_PATH}}
+        type: ${{env.TRUSTORE_TYPE}}
+        password: ${{env.TRUSTORE_PASSWORD}}
 bindings:
-  kafka_client:
+...
+  south_kafka_client:
     type: kafka
     kind: client
-    exit: tls_client
-  tls_client:
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
+    exit: south_tls_client
+  south_tls_client:
     type: tls
     kind: client
-    vault: client_vault
     options:
-      trustcacerts: true
-      keys:
-        - SIGNED_CLIENT_CERT_ALIAS
-      sni:
-        - BOOTSTRAP_SERVER_HOSTNAME
-    exit: tcp_client
-  tcp_client:
+      trust:
+        - ${{env.CA_CERT_ALIAS}}
+    exit: south_tcp_client
+  south_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: BOOTSTRAP_ SERVER_HOSTNAME
-      port: BOOTSTRAP_SERVER_PORT
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
 ```
 
 :::
@@ -151,4 +141,4 @@ bindings:
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.
 :::
 
-Your Zilla can now connect to your MSK cluster! You can test your configuration by placing it into the `zilla.yaml` of the following Zilla [example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache) and running it as per the instructions.
+To test the above config you can use it to add or replace the necessary bindings in the [http.kafka.sasl.scram example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sasl.scram).

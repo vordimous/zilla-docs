@@ -8,7 +8,7 @@ tag:
   - Exporters
 ---
 
-# Syslog Exporter
+# syslog Exporter
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
@@ -26,6 +26,7 @@ exporters:
 ```
 
 with vault:
+
 ```yaml {11}
 vaults:
   my_syslog_trust:

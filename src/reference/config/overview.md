@@ -64,7 +64,6 @@ A `binding` also has a `kind`, indicating how it should behave, such as `server`
 As each incoming data stream arrives, the binding follows its configured `routes` to reach an `exit` binding, or rejects the stream if no routes are viable. Route matching conditions are defined in terms specific to each `binding` type.
 
 #### routes.exit
-<!-- TODO move to individual reference docs -->
 
 > `string`
 

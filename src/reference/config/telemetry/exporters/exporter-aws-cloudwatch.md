@@ -7,7 +7,7 @@ tag:
   - Exporters
 ---
 
-# aws cloudwatch Exporter
+# aws-cloudwatch Exporter
 
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}

@@ -52,4 +52,3 @@ Unique identifier for artifact categorization in the catalog.
 > `string`
 
 Path to access artifact from the filesystem. The paths are relative to `zilla.yaml`.
-

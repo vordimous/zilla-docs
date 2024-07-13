@@ -383,7 +383,7 @@ Repeat these steps for each of the other <ZillaPlus/> proxies launched by the Cl
 
 <!-- @include: @partials/secure-public-access/verify-kafka-connect.md  -->
 
-#### Trust the Private Certificate Authority
+### Trust the Private Certificate Authority
 
 Import the private CA certificate into your trust store.
 

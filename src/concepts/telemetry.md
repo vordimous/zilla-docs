@@ -2,14 +2,13 @@
 
 Zilla captures telemetry data in [metrics](#metrics) and [events](#events). The data can then be accessed outside of Zilla by configuring [exporters](#exporters) to chose how and where to see the telemetry data. You can see logs and metrics with the [Telemetry Intro](../tutorials/telemetry/telemetry-intro.md) example.
 
-In the `zilla.yaml` telemetry is configured at the top level to apply to the entire zilla namespace.
-
 ```yaml
 telemetry:
   metrics:
-    ...
+    - http.duration
   exporters:
-    ...
+    stdout_logs_exporter:
+      type: stdout
 ```
 
 ## Metrics
@@ -18,7 +17,7 @@ telemetry:
 
 ## Events
 
-[Events](../reference/config/telemetry/events.md) in Zilla signal important activities and collect relevant information along with them. Primarily they are useful when troubleshooting common issues like model validation or failed secure access, but they provide more observability with the HTTP and MQTT access information. The easiest way to see logged events in Zilla is to add the [stdout](../reference/config/telemetry/exporters/exporter-stdout.md) exporter to your `zilla.yaml` config.
+[Events](../reference/config/telemetry/events.md) in Zilla signal important activities and collect relevant information along with them. Primarily they are useful when troubleshooting common issues like model validation or failed secure access, but they provide more observability with the HTTP access information. The easiest way to see logged events in Zilla is to add the [stdout](../reference/config/telemetry/exporters/exporter-stdout.md) exporter to your `zilla.yaml` config.
 
 ## Exporters
 

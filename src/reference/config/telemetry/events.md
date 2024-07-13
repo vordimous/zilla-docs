@@ -51,11 +51,15 @@ The server received a valid HTTP request.
 
 ### BINDING_KAFKA_API_VERSION_REJECTED
 
-An API version mismatch occurred in the kafka binding.
+A Kafka protocol API version mismatch occurred in the kafka binding.
 
 ### BINDING_KAFKA_AUTHORIZATION_FAILED
 
 An authorization failure happened in the http, mqtt or the kafka binding.
+
+### BINDING_KAFKA_CLUSTER_AUTHORIZATION_FAILED
+
+A Kafka protocol API cluster authorization failed.
 
 ### BINDING_MQTT_CLIENT_CONNECTED
 
@@ -84,6 +88,10 @@ A peer's identity could not be verified.
 ### BINDING_TLS_PROTOCOL_REJECTED
 
 An error in the operation of the SSL protocol.
+
+### BINDING_TLS_TLS_KEY_VERIFICATION_FAILED
+
+A TLS key verification failed because the key is missing or invalid.
 
 ### BINDING_TLS_TLS_FAILED
 

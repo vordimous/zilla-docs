@@ -16,7 +16,7 @@ Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the
 
 @tab zilla.yaml
 
-```yaml{19-24,56-60}
+```yaml{18-23,56-60}
 <!-- @include: ./kafka.fanout/zilla.yaml -->
 ```
 

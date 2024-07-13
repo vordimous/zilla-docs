@@ -17,7 +17,7 @@ By automating the configuration of an internet-facing network load balancer and 
 
 You will need to choose a wildcard DNS pattern to use for public internet access to the brokers in your MSK cluster. These wildcard DNS names must resolve to the public IP address(es) where the <ZillaPlus/> proxy is deployed. The <ZillaPlus/> proxy must also be configured with a TLS server certificate representing the same wildcard DNS pattern.
 
-The the <ZillaPlus/> proxy can securely expose any MSK cluster with these access options.
+The <ZillaPlus/> proxy can securely expose any MSK cluster with these access options.
 
 ## SASL/SCRAM authentication
 

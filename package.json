@@ -15,24 +15,25 @@
     "clean-dev": "vuepress-vite dev src --clean-cache",
     "dev": "vuepress-vite dev src",
     "update-package": "pnpm add -g pnpm && pnpm dlx vp-update",
-    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
-    "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\"",
+    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
+    "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
     "link-checker": "pnpm build && link-checker src/.vuepress/dist",
     "check-schema": "node ./.check-schema"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.7",
-    "@vuepress/plugin-catalog": "2.0.0-rc.14",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.14",
-    "@vuepress/plugin-prismjs": "2.0.0-rc.15",
-    "@vuepress/plugin-google-analytics": "2.0.0-rc.15",
-    "@vuepress/plugin-register-components": "2.0.0-rc.14",
+    "@vuepress/bundler-vite": "2.0.0-rc.13",
+    "@vuepress/plugin-catalog": "2.0.0-rc.36",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.36",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.34",
+    "@vuepress/plugin-prismjs": "2.0.0-rc.36",
+    "@vuepress/plugin-register-components": "2.0.0-rc.34",
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
-    "vue": "^3.4.26",
-    "vuepress": "2.0.0-rc.7",
-    "vuepress-theme-hope": "2.0.0-rc.38"
+    "mermaid": "^10.9.1",
+    "vue": "^3.4.29",
+    "vuepress": "2.0.0-rc.13",
+    "vuepress-theme-hope": "2.0.0-rc.49"
   },
   "pnpm": {
     "overrides": {

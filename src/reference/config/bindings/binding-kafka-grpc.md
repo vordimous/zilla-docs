@@ -199,7 +199,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route when adapting `kafka` topic streams to `grpc` request-response streams.
-Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
+Read more: [When a route matches](../../../concepts/bindings.md#when-a-route-matches)
 
 ```yaml
 routes:

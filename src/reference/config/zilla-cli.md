@@ -3,6 +3,7 @@ category:
   - CLI
 description: The command line interface to control the Zilla runtime.
 ---
+<!-- markdownlint-disable MD024 -->
 
 # Zilla Runtime CLI
 

@@ -6,6 +6,7 @@ category:
 tag:
   - Proxy
 ---
+<!-- markdownlint-disable MD024 -->
 
 # openapi-asyncapi Binding
 
@@ -157,7 +158,7 @@ Conditional `openapi-asyncapi`-specific routes for adapting `openapi` operations
 > `array` of `object`
 
 List of conditions to match this route when adapting `openapi` request-response streams to `asyncapi` streams.
-Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
+Read more: [When a route matches](../../../concepts/bindings.md#when-a-route-matches)
 
 #### when[].api-id
 
