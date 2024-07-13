@@ -7,10 +7,6 @@ category:
 
 # filesystem Catalog
 
-::: important Feature is in Incubator
-Read how to [enable incubator features](../../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
-:::
-
 Zilla runtime filesystem catalog
 
 ```yaml {2}
@@ -56,4 +52,3 @@ Unique identifier for artifact categorization in the catalog.
 > `string`
 
 Path to access artifact from the filesystem. The paths are relative to `zilla.yaml`.
-

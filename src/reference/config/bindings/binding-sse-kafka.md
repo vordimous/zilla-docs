@@ -115,7 +115,7 @@ routes:
 > `array` of `object`
 
 List of conditions (any match) to match this route.
-Read more: [When a route matches](../../../concepts/config-intro.md#when-a-route-matches)
+Read more: [When a route matches](../../../concepts/bindings.md#when-a-route-matches)
 
 ```yaml
 routes:
@@ -158,9 +158,9 @@ Topic name, optionally referencing path parameter such as `${params.topic}`.
 
 > `array` of `object`
 
-List of criteria (any match)Kafka filters for matched route when adapting `sse` data streams to `kafka` data streams.
+Kafka filters for matched route when adapting `sse` data streams to `kafka` data streams.
 
-All specified headers and key must match for the combined criteria to match.
+List of criteria (any match). All specified headers and key must match for the combined criteria to match.
 
 ##### filters[].key
 

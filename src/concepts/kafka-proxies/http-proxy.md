@@ -12,11 +12,11 @@ A developer has the freedom to define their own HTTP mapping to Kafka, with cont
 
 ## Configure Endpoints
 
-Zilla can map REST APIs to Kafka using the [http-kafka](../../reference/config/bindings/binding-http-kafka.md) binding in a [zilla.yaml](../../reference/config/overview.md) config. Zilla routes REST urls using [wildcard pattern matching](../../concepts/config-intro.md#pattern-matching) and [dynamic path params](../../concepts/config-intro.md#dynamic-path-parameters). Dynamic path matching and custom message routing from endpoints to Kafka topics help prevent API lock-in.
+Zilla can map REST APIs to Kafka using the [http-kafka](../../reference/config/bindings/binding-http-kafka.md) binding in a [zilla.yaml](../../reference/config/overview.md) config. Zilla routes REST urls using [wildcard pattern matching](../bindings.md#pattern-matching) and [dynamic path params](../bindings.md#dynamic-path-parameters). Dynamic path matching and custom message routing from endpoints to Kafka topics help prevent API lock-in.
 
 ### HTTP request methods
 
-Zilla separates the HTTP request methods into two groups called capabilities: produce and fetch. The [produce](../../concepts/config-intro.md#the-fetch-capability) capability handles method types `POST`, `PUT`, `DELETE`, and `PATCH` that produce messages onto Kafka topics. The [fetch](../../reference/config/bindings/binding-http-kafka.md#with-capability-fetch) capability handles the `GET` method that fetches messages from Kafka topics. One exception is for a route managing async correlation. The `produce` route will have two when clauses: a `PUT` clause for submission and a `GET` clause matching the `async.location` path returned to the caller.
+Zilla separates the HTTP request methods into two groups called capabilities: produce and fetch. The [produce](../bindings.md#the-fetch-capability) capability handles method types `POST`, `PUT`, `DELETE`, and `PATCH` that produce messages onto Kafka topics. The [fetch](../../reference/config/bindings/binding-http-kafka.md#with-capability-fetch) capability handles the `GET` method that fetches messages from Kafka topics. One exception is for a route managing async correlation. The `produce` route will have two when clauses: a `PUT` clause for submission and a `GET` clause matching the `async.location` path returned to the caller.
 
 ## Correlated Request-Response
 
@@ -38,7 +38,7 @@ An [SSE](https://html.spec.whatwg.org/multipage/server-sent-events.html) server 
 
 ### Message Filtering
 
-The message source topic is defined in a route, and the route is matched by the path defined for the client to connect. A route can [filter](../../reference/config/bindings/binding-sse-kafka.md#routes-with) the messages delivered to the SSE stream using the message key and headers. A filter's value can be statically defined in the config or be pulled from a [path param](../../concepts/config-intro.md#dynamic-path-parameters).
+The message source topic is defined in a route, and the route is matched by the path defined for the client to connect. A route can [filter](../../reference/config/bindings/binding-sse-kafka.md#routes-with) the messages delivered to the SSE stream using the message key and headers. A filter's value can be statically defined in the config or be pulled from a [path param](../bindings.md#dynamic-path-parameters).
 
 ### Reliable Delivery
 
@@ -46,7 +46,7 @@ Zilla sends an event `id` with every message. A client can send a `last-event-id
 
 ## Oneway
 
-Clients can produce fire and forget HTTP request payload to a Kafka topic. The Kafka message key and headers are set using [path params](../../concepts/config-intro.md#dynamic-path-parameters).
+Clients can produce fire and forget HTTP request payload to a Kafka topic. The Kafka message key and headers are set using [path params](../bindings.md#dynamic-path-parameters).
 
 ## Idempotency
 
@@ -54,7 +54,7 @@ Requests can be idempotent (to make multiple identical requests and receive the 
 
 ## Caching
 
-Bindings can retrieve messages from a Kafka topic, filtered by message key and headers, with the key and header values extracted from the [path params](../../concepts/config-intro.md#dynamic-path-parameters).
+Bindings can retrieve messages from a Kafka topic, filtered by message key and headers, with the key and header values extracted from the [path params](../bindings.md#dynamic-path-parameters).
 
 An HTTP response returns with an [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header. This fetch supports a conditional [if-none-match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) request, returning `304` if not modified or `200` if modified (with a new ETag header). A client can wait for a modified response by including `prefer:wait=N` and `cache-control: no-cache` headers. The request will wait for up to `N` seconds and return once a message with a new ETag header is delivered on the response topic.
 

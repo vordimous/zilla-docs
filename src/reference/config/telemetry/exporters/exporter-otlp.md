@@ -7,7 +7,7 @@ tag:
   - Exporters
 ---
 
-# OpenTelemetry Protocol Exporter
+# otlp Exporter
 
 The Zilla runtime [OpenTelemetry Protocol](https://github.com/open-telemetry/oteps/blob/main/text/0035-opentelemetry-protocol.md) exporter publishes data to a [Collector](https://opentelemetry.io/docs/collector/).
 
@@ -66,7 +66,7 @@ Interval in seconds to push data to the collector.
 
 #### options.signals
 
-> `array` of of `enum` [ "logs", "metrics" ]
+> `array` of `enum` [ "logs", "metrics" ]
 
 Specifies what signals should be exported. The default behavior is to export all supported signals.
 

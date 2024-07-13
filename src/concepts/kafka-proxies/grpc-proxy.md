@@ -12,7 +12,7 @@ Zilla can be the gRPC server, routing a service method's request and response me
 
 ## RPC Service Definitions
 
-Zilla supports all four [gRPC service method definitions](https://grpc.io/docs/what-is-grpc/core-concepts/#service-definition). The request and return message(s) are managed through two different Kafka topics, respectively. These topics are defined through [dynamic method routing](../../concepts/config-intro.md#routes).
+Zilla supports all four [gRPC service method definitions](https://grpc.io/docs/what-is-grpc/core-concepts/#service-definition). The request and return message(s) are managed through two different Kafka topics, respectively. These topics are defined through [dynamic method routing](../bindings.md#routes).
 
 Zilla can also handle the stream upgrade when a client sends a single request, but the service expects a stream. Zilla does this by treating all gRPC request and response messages as a stream of messages on Kafka topics with at least one data message and a null end-of-stream message representing the end of the request or response streams.
 

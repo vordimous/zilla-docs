@@ -1,6 +1,7 @@
 ---
 name: zilla-mqtt-kafka-broker
 bindings:
+  #region entrypoint
   # Proxy service entrypoint
   north_tcp_server:
     type: tcp
@@ -17,7 +18,9 @@ bindings:
       - when:
           - port: 7183
         exit: north_mqtt_server
+  #endregion entrypoint
 
+  #region server
   # WebSocket server
   north_http_server:
     type: http
@@ -42,7 +45,9 @@ bindings:
     type: mqtt
     kind: server
     exit: north_mqtt_kafka_mapping
+  #endregion server
 
+  #region kafka_mapping
   # MQTT messages to Kafka topics
   north_mqtt_kafka_mapping:
     type: mqtt-kafka
@@ -52,8 +57,11 @@ bindings:
         sessions: mqtt-sessions
         messages: mqtt-messages
         retained: mqtt-retained
-    clients:
-      - place/{identity}/#
+      clients:
+        - place/{identity}/#
+    exit: north_kafka_cache_client
+    #endregion kafka_mapping
+    #region device_mapping
     routes:
       - when:
           - publish:
@@ -64,9 +72,9 @@ bindings:
               - topic: device/#
         with:
           messages: mqtt-devices
-        exit: north_kafka_cache_client
-    exit: north_kafka_cache_client
+    #endregion device_mapping
 
+  #region kafka_sync
   # Kafka sync layer
   north_kafka_cache_client:
     type: kafka
@@ -81,7 +89,9 @@ bindings:
         - mqtt-retained
         - mqtt-devices
     exit: south_kafka_client
+    #endregion kafka_sync
 
+  #region kafka_client
   # Connect to Kafka
   south_kafka_client:
     type: kafka
@@ -93,6 +103,7 @@ bindings:
   south_kafka_tcp_client:
     type: tcp
     kind: client
+    #endregion kafka_client
 
 telemetry:
   exporters:

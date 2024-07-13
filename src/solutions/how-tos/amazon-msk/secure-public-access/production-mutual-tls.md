@@ -185,12 +185,17 @@ MSKProxySecretsManagerRead
       "Sid": "VisualEditor0",
       "Effect": "Allow",
       "Action": [
+        "acm-pca:GetCertificate",
+        "acm-pca:GetCertificateAuthorityCertificate",
+        "acm-pca:DescribeCertificateAuthority",
+        "tag:GetResources",
         "secretsmanager:GetSecretValue",
         "secretsmanager:DescribeSecret"
       ],
       "Resource": [
-        "arn:aws:secretsmanager:*:*:secret:wildcard.example.aklivity.io-*",
-        "arn:aws:secretsmanager:*:*:secret:client-*"
+        "arn:aws:secretsmanager:*:*:secret:wildcard.example.aklivity.io*",
+        "arn:aws:secretsmanager:*:*:secret:client-*",
+        "arn:aws:acm-pca:*:*:certificate-authority*"
       ]
     }
   ]
@@ -199,17 +204,9 @@ MSKProxySecretsManagerRead
 
 :::
 
-::: note
-This example pattern requires all trusted client certificate key secrets to be named `client-*`.
-:::
+::: info If you used a different names for your certificate resources.
 
-::: info If you used a different secret name for your certificate key.
-
-Replace `wildcard.example.aklivity.io` in the resource regular expression for:
-
-```text:no-line-numbers
-MSKProxySecretsManagerRead
-```
+This example pattern uses resources with names including `wildcard.example.aklivity.io`, `client-`, `certificate-authority` etc. Replace them with the names you used or use wildcard resource selectors.
 
 :::
 
@@ -269,7 +266,7 @@ Parameters:
 - MSK Configuration
   - Wildcard DNS pattern: `*.aklivity.[...].amazonaws.com` *1
   - Port number: `9094`
-  - Private Certificate Authority: `<private certificate authority ARN>` *2a
+  - Private Certificate Authority: `<private certificate authority ARN>` *2
 - Secure Public Access Configuration
   - Instance count: `2`
   - Instance type: `t3.small` *3
@@ -278,7 +275,7 @@ Parameters:
   - Secrets Manager Secret ARN: `<TLS certificate private key secret ARN>` *3
   - Public Wildcard DNS: `*.example.aklivity.io` *4
   - Public Port: `9094`
-  - Private Certificate Authority: `<private certificate authority ARN>` *2
+  - Public Certificate Authority: `<private certificate authority ARN>` *2
   - Key pair for SSH access: `my-key-pair` *5
 - *Configuration Reference
   1. Follow the [Lookup MSK Server Names](../../aws-services/lookup-msk-server-names.md) guide to discover the wildcard DNS pattern for your MSK cluster.
@@ -428,7 +425,7 @@ With the Kaka client now installed we are ready to configure it and point it at 
 We need to import the trusted client certificate and corresponding private key into the local key store used by the Kafka client when connecting to the <ZillaPlus/> proxy.
 
 ```bash:no-line-numbers
-openssl pkcs12 -export -in client-1.cert.pem -inkey client-1.pkcs8.key.pem -out client-1.p12 -name client-1
+openssl pkcs12 -export -in client-1.cert -inkey client-1.pkcs8.key.pem -out client-1.p12 -name client-1
 keytool -importkeystore -destkeystore /tmp/kafka.client.keystore.jks -deststorepass generated -srckeystore client-1.p12 -srcstoretype PKCS12 -srcstorepass generated -alias client-1
 ```
 

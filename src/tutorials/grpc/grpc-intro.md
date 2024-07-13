@@ -18,7 +18,7 @@ Create each of these files `zilla.yaml`, `docker-compose.yaml`, and `echo.proto`
 
 @tab zilla.yaml
 
-```yaml{40,44,46}
+```yaml{39,43,45}
 <!-- @include: ./zilla.yaml -->
 ```
 

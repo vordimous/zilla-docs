@@ -183,7 +183,7 @@ remote_server:
       exit: grpc_client
       with:
         scheme: http
-        authority: <entrypoint_host>:<entrypoint_port>
+        authority: ${{env.ENTRYPOINT_HOST}}:${{env.ENTRYPOINT_PORT}}
 grpc_client:
   type: grpc
   kind: client
@@ -226,7 +226,7 @@ tcp_client:
 
 ### Proxy service entrypoint
 
-Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we can route the gRPC traffic through an `http` server, `<entrypoint_host>`:`<entrypoint_port>`, to our desired gRPC server at the `<grpc_server_binding_name>`. The [tls](../../reference/config/bindings/binding-tls.md) server binding secures the entrypoint by defining a tls certificate from the [filesystem](../../reference/config/vaults/vault-filesystem.md) vault, which is used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server and the tls binding and filesystem vault can be removed.
+Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we can route the gRPC traffic through an `http` server, `${{env.ENTRYPOINT_HOST}}`:`${{env.ENTRYPOINT_PORT}}`, to our desired gRPC server at the `<grpc_server_binding_name>`. The [tls](../../reference/config/bindings/binding-tls.md) server binding secures the entrypoint by defining a tls certificate from the [filesystem](../../reference/config/vaults/vault-filesystem.md) vault, which is used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server and the tls binding and filesystem vault can be removed.
 
 ```yaml
   tcp_server:
@@ -234,7 +234,7 @@ Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we 
     kind: server
     options:
       host: 0.0.0.0
-      port: <entrypoint_port>
+      port: ${{env.ENTRYPOINT_PORT}}
     exit: tls_server
   tls_server:
     type: tls
@@ -242,9 +242,9 @@ Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we 
     vault: server
     options:
       keys:
-        - <entrypoint_host>
+        - ${{env.ENTRYPOINT_HOST}}
       sni:
-        - <entrypoint_host>
+        - ${{env.ENTRYPOINT_HOST}}
       alpn:
         - h2
     exit: http_server
@@ -260,7 +260,7 @@ Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we 
       - when:
           - headers:
               :scheme: https
-              :authority: <entrypoint_host>:<entrypoint_port>
+              :authority: ${{env.ENTRYPOINT_HOST}}:${{env.ENTRYPOINT_PORT}}
         exit: <grpc_server_binding_name>
 ```
 
@@ -280,16 +280,13 @@ A gRPC server can connect to Kafka the same as any other binding in Zilla. [See 
   kafka_client:
     type: kafka
     kind: client
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
     exit: tcp_client
   tcp_client:
     type: tcp
     kind: client
-    options:
-      host: <kafka_host>
-      port: <kafka_port>
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
 ```
 
 ## Try it out

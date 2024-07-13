@@ -1,10 +1,10 @@
 ---
-description: In this guide, you create Kafka topics and use Zilla to mediate MQTT broker messages onto those topics.
+description: In this guide, you create Kafka topics and use Zilla to map MQTT broker messages onto those topics.
 ---
 
 # Running an MQTT Kafka broker
 
-In this guide, you create Kafka topics and use Zilla to mediate MQTT broker messages onto those topics.
+In this guide, you create Kafka topics and use Zilla to map MQTT broker messages onto those topics.
 
 Specifically, you will:
 
@@ -133,8 +133,8 @@ Create a new file called `zilla.yaml` and append the below yaml to it.
 
 This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections.
 
-```yaml{11,12,15,18}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{-19} -->
+```yaml{12-13,15-16}
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml#entrypoint -->
 ```
 
 ::: right
@@ -144,7 +144,7 @@ This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../
 A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handle any MQTT over WebSocket using the `mqtt` protocol. The [mqtt](../../reference/config/bindings/binding-mqtt.md) binding then handles all of the MQTT message traffic that needs to go to Kafka.
 
 ```yaml{17,22}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{21-44} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml#server -->
 ```
 
 ::: right
@@ -157,7 +157,7 @@ A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handl
 The service definition defines how the clients using this service will interact with Kafka through Zilla. The required set of Kafka topics are defined in the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) where Zilla manages any MQTT required features. A client identity can be determined by pulling the identifier out of the topic using the [options.clients](../../reference/config/bindings/binding-mqtt-kafka.md#options-clients) property.
 
 ```yaml{7-9,21}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{46-68} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml#kafka_mapping -->
 ```
 
 ::: right
@@ -168,11 +168,11 @@ The service definition defines how the clients using this service will interact 
 Additionally, a route is defined to capture any "device" messages and route them to a specific topic called `mqtt-devices`. Here Zilla enables routing different topic patterns into one Kafka topic using MQTT supported wildcards. All other messages will use the default `exit` and end up in the `mqtt-messages` topic.
 
 ```yaml{4,5,7,8,10}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{57-67} -->
+  <!-- @include: ./mqtt_kafka_broker_zilla.yaml#device_mapping -->
 ```
 
 ::: right
-[More on When a route matches](../../concepts/config-intro.md#when-a-route-matches)
+[More on When a route matches](../../concepts/bindings.md#when-a-route-matches)
 [More on binding-mqtt-kafka routing](../../reference/config/bindings/binding-mqtt-kafka.md#routes)
 :::
 
@@ -181,7 +181,7 @@ Additionally, a route is defined to capture any "device" messages and route them
 The Zilla [cache_client and cache_server](../../reference/config/bindings/binding-kafka.md#kind) helps manage the smooth data transfer between the service definition and Kafka. It is important to bootstrap the topics that will be brokering MQTT messages.
 
 ```yaml{11-13}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{70-83} -->
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml#kafka_sync -->
 ```
 
 ::: right
@@ -192,8 +192,8 @@ The Zilla [cache_client and cache_server](../../reference/config/bindings/bindin
 
 This will define the location and connection for Zilla to communicate with Kafka.
 
-```yaml{10-11}
-<!-- @include: ./mqtt_kafka_broker_zilla.yaml{85-} -->
+```yaml{7}
+<!-- @include: ./mqtt_kafka_broker_zilla.yaml#kafka_client -->
 ```
 
 ::: details Full zilla.yaml
@@ -217,24 +217,21 @@ With your `zilla.yaml` config, follow the [Zilla install instructions](../deploy
 @tab Docker
 
 ```bash:no-line-numbers
---env KAFKA_HOST="host.docker.internal" --env KAFKA_PORT="9092"
+--env KAFKA_BOOTSTRAP_SERVER="host.docker.internal:9092"
 ```
 
 @tab Helm values.yaml
 
 ```yaml:no-line-numbers
-extraEnv:
-  - name: KAFKA_HOST
-    value: "kafka.zilla-kafka-broker.svc.cluster.local"
-  - name: KAFKA_PORT
-    value: "9092"
+env:
+  KAFKA_BOOTSTRAP_SERVER: "kafka.zilla-kafka-broker.svc.cluster.local:9092"
 ```
 
 :::
 
 ### Adding TLS
 
-You can add TLS to this broker by adding a vault and tls binding as described in the [Server Encryption](../../concepts/config-intro.md#server-encryption-tls-ssl) section.
+You can add TLS to this MQTT broker by adding a vault and tls binding as described in the [Server Encryption](../../concepts/bindings.md#server-encryption-tls-ssl) section.
 
 ## Remove the running containers
 

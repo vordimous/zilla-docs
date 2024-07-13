@@ -1,4 +1,3 @@
-import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import { registerComponentsPlugin } from "@vuepress/plugin-register-components";
@@ -9,10 +8,6 @@ import { base, siteBase, dest, versionKey } from "./env.js";
 const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
-  bundler: viteBundler({
-    viteOptions: {},
-    vuePluginOptions: {},
-  }),
   pagePatterns: ["**/*.md", "!.vuepress", "!node_modules", "!**/_partials"],
   base: `/${base}/`,
   dest,

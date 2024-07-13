@@ -56,6 +56,11 @@ export default hopeTheme({
   plugins: {
     catalog: {
       level: 1,
+      locales: {
+        "/": {
+          title: "Appendix",
+        },
+      },
     },
     docsearch: {
       disableUserPersonalization: true,
@@ -67,6 +72,7 @@ export default hopeTheme({
         facetFilters: [`version:${versionKey}`, `product:${siteBase}`],
       },
     },
+    shiki: false,
     prismjs: true,
     mdEnhance: {
       align: true,
@@ -89,6 +95,7 @@ export default hopeTheme({
         },
       },
       mark: true,
+      mermaid: true,
       tabs: true,
       gfm: true,
       linkify: false,
