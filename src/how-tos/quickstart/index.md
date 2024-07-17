@@ -26,8 +26,8 @@ This Quickstart is hosted at `quickstart.aklivity.io` meaning you can interact w
 
 The Zilla HTTP Kafka Proxy lets you configure application-centric REST APIs and SSE streams that unlock Kafka event-driven architectures.
 
+1. Open the live [http-messages](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/http-messages/messages?limit=100&mode=TAILING) Kafka topic, which will have all the JSON messages you create. You can switch the filter from `live` to `newest` to see all of the latest messages on the topic.
 1. Fork the [HTTP Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview) Postman collection.
-1. Open the live [http-messages](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/http-messages/messages?limit=100&mode=TAILING) Kafka topic, which will have all the JSON messages you create.
 1. Open the live [API stream](https://quickstart.aklivity.io/api/stream) and scroll to the bottom to view messages fetched from a Kafka topic as a Server-sent Events (SSE) stream. SSE is a text stream over HTTP that directly shows the raw output in a browser tab.
 1. Use the `Create a new message` request to update and submit the JSON in the `Body` tab. The new object will appear in the SSE stream and the Kafka topic.
 1. Get your Kafka message key from the [http-messages](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/http-messages/messages) topic and use the `Get message by key` request to fetch only your message using your key in the `<key-from-kafka-topic>` path variable.
@@ -139,8 +139,8 @@ Stream messages for a specific key published on a Kafka.
 
 The Zilla MQTT Kafka Proxy manages MQTT client connections and messages through Kafka topics.
 
+1. Open the live [mqtt-messages](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/mqtt-messages/messages?limit=100&mode=TAILING) Kafka topic, which will have all of the MQTT messages sent to the broker. You can switch the filter from `live` to `newest` to see all of the latest messages on the topic.
 1. Fork the [MQTT Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview) Postman collection in the Postman Desktop client.
-1. Open the live [mqtt-messages](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/mqtt-messages/messages?limit=100&mode=TAILING) Kafka topic, which will have all of the MQTT messages sent to the broker.
 1. Connect to the broker with the `Pub/Sub` request. Send one of the saved messages, or you can send any message on any MQTT topic. Subscribe to topics in the **Topics** tab.
 1. Observe the MQTT Broker messages on the Kafka topics with your message in the `body` and the MQTT topic as the `key`.
 1. Connect to the broker with the `Simulator Topics` request to subscribe to the simulated messages being published to the broker.
@@ -173,8 +173,8 @@ A Zilla MQTT broker is defined using three specific Kafka topics. The [messages]
 
 The Zilla gRPC Kafka Proxy lets you implement gRPC service definitions from protobuf files to produce and consume messages via Kafka topics.
 
+1. Open the live [grpc-request](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/grpc-request/messages?limit=100&mode=TAILING&valueSerde=ProtobufDecodeRaw) and [grpc-response](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/grpc-response/messages?limit=100&mode=TAILING&valueSerde=ProtobufDecodeRaw) Kafka topics, which will have all of the service methods request and response messages respectively. You can switch the filter from `live` to `newest` to see all of the latest messages on the topic.
 1. Fork the [gRPC Kafka proxy](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview) Postman collection in the Postman Desktop client.
-1. Open the live [grpc-request](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/grpc-request/messages?limit=100&mode=TAILING&valueSerde=ProtobufDecodeRaw) and [grpc-response](https://quickstart.aklivity.io/kafka/ui/clusters/zilla-quickstart-kafka/all-topics/grpc-response/messages?limit=100&mode=TAILING&valueSerde=ProtobufDecodeRaw) Kafka topics, which will have all of the service methods request and response messages respectively.
 1. Invoke the `GetFeature` service method with the default message.
 1. Observe the requested message payload on the Kafka topic followed by the response message with the `keys` having the same UUID. The gRPC method routing information is captured in the Kafka messages `header` values.
 1. Try out the additional RPC method types in the Postman collection.
