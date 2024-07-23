@@ -91,6 +91,7 @@ bindings:
   south_tls_client:
     type: tls
     kind: client
+    vault: client_vault
     options:
       trust:
         - ${{env.CA_CERT_ALIAS}}
