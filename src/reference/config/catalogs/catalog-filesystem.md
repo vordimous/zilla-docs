@@ -7,7 +7,7 @@ category:
 
 # filesystem Catalog
 
-Zilla runtime filesystem catalog
+Zilla runtime filesystem catalog.
 
 ```yaml {2}
 catalogs:

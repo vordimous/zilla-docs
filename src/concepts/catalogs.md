@@ -23,6 +23,6 @@ The simplest catalogs allow Zilla to access resources directly. The [filesystem]
 
 ## Remote Catalogs
 
-Zilla can reference remote configs stored in third-party services like Schema Registry. The [schema-registry](../reference/config/catalogs/catalog-schema-registry.md) and [apicurio](../reference/config/catalogs/catalog-apicurio.md) catalogs allow zilla to interact with those services through their admin APIs.
+Zilla can reference remote configs stored in third-party services like Schema Registry. The [schema-registry](../reference/config/catalogs/catalog-schema-registry.md) and [apicurio-registry](../reference/config/catalogs/catalog-apicurio-registry.md) catalogs allow zilla to interact with those services through their admin APIs.
 
 > [Apicurio in the Petstore REST Demo](https://github.com/aklivity/zilla-demos/tree/main/petstore) | [http.kafka.karapace example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.karapace)

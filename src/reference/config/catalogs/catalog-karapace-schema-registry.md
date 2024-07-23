@@ -1,17 +1,19 @@
 ---
-shortTitle: karapace
-description: Zilla runtime karapace catalog
+shortTitle: karapace-schema-registry
+description: Zilla runtime karapace-schema-registry catalog
 category:
   - Catalog
 ---
 
-# karapace Catalog
+# karapace-schema-registry Catalog
 
-Zilla runtime karapace catalog
+Zilla runtime karapace-schema-registry catalog
+
+Accepted `type` aliases: `karapace`
 
 ```yaml {2}
 catalog:
-  type: karapace
+  type: karapace-schema-registry
   options:
     url: http://reg.example.com:8081
     context: default

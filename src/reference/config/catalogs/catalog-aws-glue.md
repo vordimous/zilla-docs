@@ -11,7 +11,7 @@ category:
 [Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
 {.zilla-plus-badge .hint-container .info}
 
-Zilla runtime aws-glue catalog.
+Zilla runtime aws-glue catalog supports the official [AWS Glue](https://aws.amazon.com/glue/) registry.
 
 ```yaml {2}
 catalog:

@@ -1,17 +1,13 @@
 ---
 shortTitle: schema-registry
 description: Zilla runtime schema-registry catalog
-icon: aky-zilla-plus
 category:
   - Catalog
 ---
 
 # schema-registry Catalog
 
-[Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
-{.zilla-plus-badge .hint-container .info}
-
-Zilla runtime schema-registry catalog
+Zilla runtime schema-registry catalog.
 
 ```yaml {2}
 catalog:
