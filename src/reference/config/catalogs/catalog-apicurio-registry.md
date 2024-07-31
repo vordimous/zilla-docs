@@ -1,17 +1,19 @@
 ---
-shortTitle: apicurio
-description: Zilla runtime apicurio catalog
+shortTitle: apicurio-registry
+description: Zilla runtime apicurio-registry catalog
 category:
   - Catalog
 ---
 
-# apicurio Catalog
+# apicurio-registry Catalog
 
-Zilla runtime apicurio catalog
+Zilla runtime apicurio-registry catalog.
+
+Accepted `type` aliases:  `apicurio`
 
 ```yaml {2}
 catalog:
-  type: apicurio
+  type: apicurio-registry
   options:
     url: http://localhost:8080
     group-id: schemas

@@ -1,17 +1,21 @@
 ---
-shortTitle: schema-registry
-description: Zilla runtime schema-registry catalog
+shortTitle: confluent-schema-registry
+description: Zilla runtime confluent-schema-registry catalog
+icon: aky-zilla-plus
 category:
   - Catalog
 ---
 
-# schema-registry Catalog
+# confluent-schema-registry Catalog
 
-Zilla runtime schema-registry catalog.
+[Available in <ZillaPlus/>](https://www.aklivity.io/products/zilla-plus)
+{.zilla-plus-badge .hint-container .info}
+
+Zilla runtime confluent-schema-registry catalog supports the official [Confluent](https://docs.confluent.io/platform/current/schema-registry/index.html) schema registry.
 
 ```yaml {2}
 catalog:
-  type: schema-registry
+  type: confluent-schema-registry
   options:
     url: http://reg.example.com:8081
     context: default

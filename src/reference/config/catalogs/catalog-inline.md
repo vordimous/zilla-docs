@@ -7,7 +7,7 @@ category:
 
 # inline Catalog
 
-Zilla runtime inline catalog
+Zilla runtime inline catalog.
 
 ```yaml {2}
 catalog:
