@@ -2,7 +2,7 @@
 description: Common errors and how to handle them
 ---
 
-# AWS Troubleshooting
+# Troubleshooting
 
 ::: note Table of contents
 

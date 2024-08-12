@@ -486,11 +486,11 @@ b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example
 ::: tip A quick summary of what just happened
 
 1. The Kafka client with access to the public internet issued a request to create a new topic
-2. This request was directed to the internet-facing Network Load Balancer
-3. The Network Load Balancer forwarded the request to the <ZillaPlus/> proxy
-4. The <ZillaPlus/> proxy routed the request to the appropriate MSK broker
-5. The topic was created in the MSK broker
-6. Public access was verified
+1. This request was directed to the internet-facing Network Load Balancer
+1. The Network Load Balancer forwarded the request to the <ZillaPlus/> proxy
+1. The <ZillaPlus/> proxy routed the request to the appropriate MSK broker
+1. The topic was created in the MSK broker
+1. Public access was verified
 
 :::
 
@@ -498,4 +498,4 @@ b-1.aklivity.example.com:9094,b-2.aklivity.example.com:9094,b-3.aklivity.example
 
 ## Conclusion
 
-You have successfully deployed the [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-sj4kquyndubiu) Secure Public Access. Instructions on how to Monitor and Upgrade your <ZillaPlus/> proxy can be found in the [managing a cloudformation stack](../../aws-services/manage-cloudformation-stack.md) section.
+You have successfully deployed the [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access. Instructions on how to Monitor and Upgrade your <ZillaPlus/> proxy can be found in the [managing a cloudformation stack](../../aws-services/manage-cloudformation-stack.md) section.

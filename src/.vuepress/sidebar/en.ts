@@ -50,7 +50,6 @@ export const enSidebar = sidebar({
         {
           text: "Events",
           link: "events.md",
-          children: [],
         },
         {
           text: "Metrics",
@@ -86,10 +85,12 @@ export const enSidebar = sidebar({
         {
           text: "CLI (zpm)",
           link: "zpm-cli.md",
+          children: [],
         },
         {
           text: "zpm Config Overview",
           link: "overview.md",
+          children: [],
         },
       ],
     },
@@ -102,6 +103,7 @@ export const enSidebar = sidebar({
         {
           text: "Overview",
           link: "concepts/kafka-proxies/secure-public-access.md",
+          children: [],
         },
         {
           text: "Amazon MSK",
@@ -110,26 +112,38 @@ export const enSidebar = sidebar({
           link: "how-tos/amazon-msk/secure-public-access/overview.md",
           children: [
             {
-              text: "Overview",
+              text: "Deployment Options",
               link: "overview.md",
             },
             {
-              text: "via SASL/SCRAM",
+              text: "Terraform",
+              link: "https://github.com/aklivity/zilla-plus-aws-templates/tree/main/amazon-msk/cdktf/secure-public-access",
+            },
+            {
+              text: "CloudFormation",
+              collapsible: true,
               link: "production.md",
-            },
-            {
-              text: "via mTLS",
-              link: "production-mutual-tls.md",
-            },
-            {
-              text: "via Unauthorized access",
-              link: "development.md",
+              children: [
+                {
+                  text: "with SASL/SCRAM",
+                  link: "production.md",
+                },
+                {
+                  text: "with Mutual TLS (mTLS)",
+                  link: "production-mutual-tls.md",
+                },
+                {
+                  text: "with Unauthorized access",
+                  link: "development.md",
+                },
+              ],
             },
           ],
         },
         {
           text: "Confluent Cloud",
           link: "how-tos/confluent-cloud/secure-public-access.md",
+          children: [],
         },
       ],
     },
@@ -140,18 +154,22 @@ export const enSidebar = sidebar({
         {
           text: "Overview",
           link: "concepts/kafka-proxies/iot-ingest-control.md",
+          children: [],
         },
         {
           text: "Amazon MSK",
           link: "how-tos/amazon-msk/iot-ingest-control.md",
+          children: [],
         },
         {
           text: "Confluent Cloud",
           link: "how-tos/confluent-cloud/iot-ingest-control.md",
+          children: [],
         },
         {
           text: "Redpanda",
           link: "how-tos/redpanda/iot-ingest-control.md",
+          children: [],
         },
       ],
     },
@@ -161,7 +179,6 @@ export const enSidebar = sidebar({
         {
           text: "AWS",
           prefix: "how-tos/aws-services/",
-          link: "how-tos/aws-services/",
           children: "structure",
         },
       ],
@@ -219,6 +236,12 @@ export const enSidebar = sidebar({
     {
       text: "Kafka Proxying",
       children: [
+        {
+          text: "-hidden-",
+          ariaLabel: "-hidden-",
+          link: "/",
+          children: [],
+        },
         {
           text: "HTTP Kafka Proxy",
           collapsible: true,
@@ -326,6 +349,12 @@ export const enSidebar = sidebar({
     {
       text: "Security",
       children: [
+        {
+          text: "-hidden-",
+          ariaLabel: "-hidden-",
+          link: "/",
+          children: [],
+        },
         {
           text: "Guards",
           collapsible: true,

@@ -121,6 +121,12 @@ h6 {
   }
 }
 
+// TODO: This is a hack to be removed along with the corresponding sidebar elements
+// when the bug (https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4286) is fixed
+.vp-sidebar-header:has([aria-label^="-hidden-"]) {
+  display: none !important;
+}
+
 ::-webkit-scrollbar-thumb {
     background: var(--code-highlight-bg-color);
 }
@@ -132,16 +138,19 @@ h6 {
     .vp-sidebar-group > .vp-sidebar-header {
       padding: 0.25rem 0rem;
       margin-left: 0rem;
+      font-weight: 600;
     }
     .vp-sidebar-links {
       .vp-sidebar-link {
-        padding: 0.25rem 0rem;
+        padding: 0.25rem 0.5rem;
         margin-left: 0rem;
       }
       .vp-sidebar-links {
+        .vp-sidebar-group {
+          padding: 0.25rem 0.5rem;
+        }
         .vp-sidebar-link {
           padding: 0.25rem 0.5rem;
-          margin: 0rem 0.5;
         }
       }
     }

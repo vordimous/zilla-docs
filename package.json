@@ -1,5 +1,6 @@
 {
   "name": "zilla-docs",
+  "type": "module",
   "version": "2.1.0",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],

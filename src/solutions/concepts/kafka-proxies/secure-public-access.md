@@ -20,6 +20,6 @@ The [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-j
 
 ## Confluent Cloud
 
-The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet.
+The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-eblxkinsqbaks) Secure Public Access proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet.
 
 > [Follow the guide to get started](../../how-tos/confluent-cloud/secure-public-access.md)

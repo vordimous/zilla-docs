@@ -14,12 +14,12 @@ You will need to choose a wildcard DNS pattern to use for public internet access
 
 ## Confluent Cloud
 
-The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) IoT Ingest and Control Broker lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet.
+The [Zilla Plus for Confluent Cloud](https://aws.amazon.com/marketplace/pp/prodview-eblxkinsqbaks) IoT Ingest and Control Broker lets authorized Kafka clients connect, publish messages and subscribe to topics in your Confluent Cloud cluster via the internet.
 
 > [Follow the guide to get started](../../how-tos/confluent-cloud/iot-ingest-control.md)
 
 ## Redpanda
 
-The [Zilla Plus for Redpanda](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44) IoT Ingest and Control Broker lets authorized Kafka clients connect, publish messages and subscribe to topics in your Redpanda cluster via the internet.
+The [Zilla Plus for Redpanda](https://aws.amazon.com/marketplace/pp/prodview-sj4kquyndubiu) IoT Ingest and Control Broker lets authorized Kafka clients connect, publish messages and subscribe to topics in your Redpanda cluster via the internet.
 
 > [Follow the guide to get started](../../how-tos/redpanda/iot-ingest-control.md)
