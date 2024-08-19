@@ -101,7 +101,7 @@ export const enSidebar = sidebar({
       icon: "aky-zilla-plus",
       children: [
         {
-          text: "Overview",
+          text: "Deployment Options",
           link: "concepts/kafka-proxies/secure-public-access.md",
           children: [],
         },
@@ -109,12 +109,8 @@ export const enSidebar = sidebar({
           text: "Amazon MSK",
           collapsible: true,
           prefix: "how-tos/amazon-msk/secure-public-access/",
-          link: "how-tos/amazon-msk/secure-public-access/overview.md",
+          link: "how-tos/amazon-msk/secure-public-access/production.md",
           children: [
-            {
-              text: "Deployment Options",
-              link: "overview.md",
-            },
             {
               text: "Terraform",
               link: "https://github.com/aklivity/zilla-plus-aws-templates/tree/main/amazon-msk/cdktf/secure-public-access",
@@ -152,7 +148,7 @@ export const enSidebar = sidebar({
       icon: "aky-zilla-plus",
       children: [
         {
-          text: "Overview",
+          text: "Deployment Options",
           link: "concepts/kafka-proxies/iot-ingest-control.md",
           children: [],
         },
@@ -170,6 +166,26 @@ export const enSidebar = sidebar({
           text: "Redpanda",
           link: "how-tos/redpanda/iot-ingest-control.md",
           children: [],
+        },
+      ],
+    },
+    {
+      text: "Web Streaming",
+      icon: "aky-zilla-plus",
+      children: [
+        {
+          text: "Deployment Options",
+          link: "concepts/kafka-proxies/web-streaming.md",
+          children: [],
+        },
+        {
+          text: "Amazon MSK",
+          children: [
+            {
+              text: "Terraform",
+              link: "https://github.com/aklivity/zilla-plus-aws-templates/tree/main/amazon-msk/cdktf/web-streaming",
+            },
+          ],
         },
       ],
     },
@@ -342,6 +358,12 @@ export const enSidebar = sidebar({
           text: "IoT Ingest and Control on AWS",
           icon: "aky-zilla-plus",
           link: "solutions/concepts/kafka-proxies/iot-ingest-control.md",
+          children: [],
+        },
+        {
+          text: "Web Streaming on AWS",
+          icon: "aky-zilla-plus",
+          link: "solutions/concepts/kafka-proxies/web-streaming.md",
           children: [],
         },
       ],

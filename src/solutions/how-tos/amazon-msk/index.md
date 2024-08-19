@@ -17,4 +17,10 @@ The IoT Ingest and Control MQTT Broker that lets clients publish messages and su
 
 The Secure Public Access Proxy lets authorized Kafka clients connect, publish messages and subscribe to topics in your Amazon MSK cluster via the internet.
 
-> [Amazon MSK Secure Public Access Proxy Guide](./secure-public-access/overview.md)
+> [Amazon MSK Secure Public Access Proxy Guide](./secure-public-access/production.md)
+
+## Web Streaming
+
+The Web Streaming proxy lets Web clients publish, update, and stream messages to a Kafka topic in your Amazon MSK cluster.
+
+> [Amazon MSK Web Streaming Guide](./web-streaming.md)

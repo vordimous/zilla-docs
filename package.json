@@ -24,10 +24,11 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.13",
     "@vuepress/plugin-catalog": "2.0.0-rc.36",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.36",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.28",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.34",
-    "@vuepress/plugin-prismjs": "2.0.0-rc.36",
+    "@vuepress/plugin-redirect": "2.0.0-rc.36",
     "@vuepress/plugin-register-components": "2.0.0-rc.34",
+    "@vuepress/plugin-shiki": "2.0.0-rc.36",
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
