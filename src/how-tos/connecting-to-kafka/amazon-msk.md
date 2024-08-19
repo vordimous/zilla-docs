@@ -11,7 +11,7 @@ Unlike other hosted Kafka services, Amazon MSK is not readily reachable over the
 "Public Access" can be turned on for MSK clusters running Apache Kafka 2.6.0 or later. Follow the MSK [Public Access Guide](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)to do so.
 
 ::: warning
-MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Secure Public Access](../../solutions/how-tos/amazon-msk/secure-public-access/overview.md) solution using [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44). The solution is deployed via a CloudFormation template, and acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
+MSK's “Public Access” feature directly exposes your brokers to the internet, which may present additional security concerns. An alternative and more flexible solution is the [Secure Public Access](../../solutions/concepts/kafka-proxies/secure-public-access.md) solution using [Zilla Plus for Amazon MSK](https://aws.amazon.com/marketplace/pp/prodview-jshnzslazfm44). The solution acts as intermediary that securely routes connectivity between external clients and MSK brokers without having to modify the brokers.
 :::
 
 ## Set up mTLS Authentication between MSK and Zilla
