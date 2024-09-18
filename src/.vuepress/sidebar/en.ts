@@ -244,8 +244,27 @@ export const enSidebar = sidebar({
         },
         {
           text: "Catalogs",
+          collapsible: true,
           link: "concepts/catalogs.md",
-          children: [],
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/catalogs.md",
+            },
+            "how-tos/catalogs/",
+          ],
+        },
+        {
+          text: "Models",
+          collapsible: true,
+          link: "concepts/models.md",
+          children: [
+            {
+              text: "Overview",
+              link: "concepts/models.md",
+            },
+            "how-tos/models/",
+          ],
         },
       ],
     },
