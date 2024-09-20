@@ -99,9 +99,52 @@ kubectl apply -f ingress-deploy.yaml
 
 The ingress controller will allow your ports to pass through, and you can configure which services should receive the requests made at those ports.
 
-### Get diagnostics from zilla pods
+### Adding files to the Zilla pod
 
-For every running zilla pod you will need to first copy the `/var/run/zilla` directory to make sure no additional files are written while it is compressed then compress the full directory to make it easier to copy.
+All local files referenced in a `zilla.yaml` config should be found in a location relative to the Zilla install location `/etc/zilla`. The best way to get your files into a pod is by using configmaps. Below you will find one option using configmaps and volume mounts to add your files into the Zilla pod.
+
+- From a single file.
+
+  ```bash:no-line-numbers
+  kubectl create configmap my-files-configmap --from-file=my-file.txt -n $NAMESPACE -o yaml --dry-run=client | kubectl apply -f -
+  ```
+
+- All files in a folder. This does not add folders recursively and each folder needs to be individually mapped
+
+  ```bash:no-line-numbers
+  kubectl create configmap my-folder-configmap --from-file=path/to/my-folder/ -n $NAMESPACE -o yaml --dry-run=client | kubectl apply -f -
+  ```
+
+Once you have the files you need stored in a configmap you can mount them as volumes into the Zilla pod at the install location `/etc/zilla`.
+
+:::
+
+::: code-tabs#bash
+
+@tab values.yaml
+
+```yaml
+...
+volumeMounts:
+  - name: my-files-volume
+    mountPath: /etc/zilla/files
+  - name: my-folder-volume
+    mountPath: /etc/zilla/folder
+
+volumes:
+  - name: my-files-volume
+    configMap:
+      name: my-files-configmap
+  - name: my-folder-volume
+    configMap:
+      name: my-folder-configmap
+```
+
+:::
+
+### Get diagnostics from Zilla pods
+
+For every running Zilla pod you will need to first copy the `/var/run/zilla` directory to make sure no additional files are written while it is compressed then compress the full directory to make it easier to copy.
 
 ```bash:no-line-numbers
 kubectl get pod \
