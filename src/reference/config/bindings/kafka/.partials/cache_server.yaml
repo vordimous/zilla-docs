@@ -1,0 +1,7 @@
+  kafka_cache_server:
+    type: kafka
+    kind: cache_server
+    options:
+      bootstrap:
+        - items-responses
+    exit: kafka_client

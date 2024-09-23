@@ -1,0 +1,35 @@
+  asyncapi_proxy:
+    type: asyncapi
+    kind: proxy
+    options:
+      specs:
+        my-mqtt-api-spec:
+          catalog:
+            my_catalog:
+              subject: mqtt-streetlights
+              version: latest
+        my-kafka-api-spec:
+          catalog:
+            my_catalog:
+              subject: kafka-streetlights
+              version: latest
+      mqtt-kafka:
+        channels:
+          sessions: mqttSessions
+          retained: mqttRetained
+          messages: mqttMessages
+    routes:
+      - when:
+          - api-id: my-mqtt-api-spec
+            operation-id: sendEvents
+        exit: asyncapi_client
+        with:
+          api-id: my-kafka-api-spec
+          operation-id: toSensorData
+      - when:
+          - api-id: my-mqtt-api-spec
+            operation-id: receiveEvents
+        exit: asyncapi_client
+        with:
+          api-id: my-kafka-api-spec
+          operation-id: onSensorData

@@ -26,26 +26,7 @@ telemetry:
   ...
 ```
 
-## Configuration
-
-:::: note Properties
-
-- [name\*](#name)
-- [bindings](#bindings)
-  - [routes.exit](#routes-exit)
-- [guards](#guards)
-- [vaults](#vaults)
-- [catalogs](#catalogs)
-- [telemetry](#telemetry)
-  - [attributes](#attributes)
-  - [exporters](#exporters)
-  - [metrics](#metrics)
-
-::: right
-\* required
-:::
-
-::::
+## Configuration (\* required)
 
 ### name\*
 
@@ -55,7 +36,7 @@ Namespace name.
 
 ### bindings
 
-> `object` as map of named [`binding`](./bindings/) properties
+> `object` as map of named[`binding`](./bindings/) properties
 
 Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`.
 
@@ -71,7 +52,7 @@ Unconditional `exit` binding acting as a default if none of the conditional rout
 
 ### guards
 
-> `object` as map of named [`guard`](./guards/) properties
+> `object` as map of named[`guard`](./guards/) properties
 
 Each configured `guard` represents a security checkpoint for one or more bindings based on a specific implementation `type`.
 
@@ -81,7 +62,7 @@ Associated roles can be enforced during routing by only following routes `guarde
 
 ### vaults
 
-> `object` as map of named [`vault`](./vaults/) properties
+> `object` as map of named[`vault`](./vaults/) properties
 
 Each configured `vault` represents a container for digital keys and certificates based on a specific implementation `type`.
 
@@ -89,7 +70,7 @@ Vaults can be used by specific protocol bindings, such as `tls`, to negotiate sh
 
 ### catalogs
 
-> `object` as map of named [`catalog`](./catalogs/) properties
+> `object` as map of named[`catalog`](./catalogs/) properties
 
 Each configured `catalog` represent a catalog of schemas of various format based on a specific implementation `type`.
 
@@ -117,7 +98,7 @@ Default attributes to optionally include when exporting metrics.
 
 #### exporters
 
-> `object` as map of named [`exporter`](./telemetry/exporters/) properties
+> `object` as map of named[`exporter`](./telemetry/exporters/) properties
 
 Map of named exporters.
 

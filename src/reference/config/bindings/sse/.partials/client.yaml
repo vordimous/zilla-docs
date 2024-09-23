@@ -1,0 +1,4 @@
+  sse_server:
+    type: sse
+    kind: client
+    exit: tcp_client

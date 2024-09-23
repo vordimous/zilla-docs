@@ -140,9 +140,12 @@ h6 {
       margin-left: 0rem;
       font-weight: 600;
     }
+    .vp-sidebar-title {
+      font-weight: 500;
+    }
     .vp-sidebar-links {
       .vp-sidebar-link {
-        padding: 0.25rem 0.5rem;
+        padding-right: 0rem !important;
         margin-left: 0rem;
       }
       .vp-sidebar-links {

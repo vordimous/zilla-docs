@@ -155,7 +155,7 @@ kubectl get pod \
 | xargs -I{} kubectl exec {} -n $NAMESPACE -c zilla -- sh -c "cp -r /var/run/zilla /tmp/zilla && tar czf /tmp/zilla.tar.gz /tmp/zilla && rm -rf /tmp/zilla"
 ```
 
-Copy the compressed `/var/run/zilla` directory off of the pod into your local directory using the pod name. 
+Copy the compressed `/var/run/zilla` directory off of the pod into your local directory using the pod name.
 
 ```bash:no-line-numbers
 kubectl get pod \
@@ -178,7 +178,7 @@ This feature is demonstrated in the above Helm install command. Running a `helm 
 
 ## Auto Scaling
 
-Zilla will start workers that default to the CPU cores it is allowed to use. This makes horizontal scaling easy with a 1:1 ratio of instances to workers. Any of the default scaling metrics based on server CPU usage will enable Zilla to handle traffic spikes. Additionally, Zilla [Telemetry](../reference/config/overview.md#telemetry) configuration provides more data when determining how to scale. The [Prometheus autoscale example](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale) demonstrates using metrics from the [Prometheus exporter](../reference/config/telemetry/exporters/exporter-prometheus.md) to horizontally scale Zilla on k8s.
+Zilla will start workers that default to the CPU cores it is allowed to use. This makes horizontal scaling easy with a 1:1 ratio of instances to workers. Any of the default scaling metrics based on server CPU usage will enable Zilla to handle traffic spikes. Additionally, Zilla [Telemetry](../reference/config/overview.md#telemetry) configuration provides more data when determining how to scale. The [Prometheus autoscale example](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale) demonstrates using metrics from the [Prometheus exporter](../reference/config/telemetry/exporters/prometheus.md) to horizontally scale Zilla on k8s.
 
 ## Enable Incubator Features
 

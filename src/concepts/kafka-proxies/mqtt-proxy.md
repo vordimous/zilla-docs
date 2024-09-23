@@ -8,7 +8,7 @@ next: /tutorials/mqtt/mqtt-intro.md
 
 The Zilla MQTT Kafka Proxy manages MQTT Pub/Sub connections and messages on and off of Kafka.
 
-An MQTT server acts as a broker between publishers and subscribers. This requires a complex protocol to manage the wide range of IoT devices and use cases. By proxying these messages on and off of Kafka with the [mqtt-kafka](../../reference/config/bindings/binding-mqtt-kafka.md) binding in a [zilla.yaml](../../reference/config/overview.md) config, IoT devices can transmit data to a wider range of tech stacks, adapting to more business needs.
+An MQTT server acts as a broker between publishers and subscribers. This requires a complex protocol to manage the wide range of IoT devices and use cases. By proxying these messages on and off of Kafka with the [mqtt-kafka](../../reference/config/bindings/mqtt-kafka/) binding in a [zilla.yaml](../../reference/config/overview.md) config, IoT devices can transmit data to a wider range of tech stacks, adapting to more business needs.
 
 Zilla uses specific Kafka topics to store and route MQTT messages, meaning the Kafka architecture can be optimized for MQTT Pub/Sub. MQTT client subscribers and publishers will communicate with Zilla the same as any broker.
 
@@ -30,7 +30,7 @@ An MQTT client can use any Quality of Service flag.
 
 ### MQTT over WebSocket
 
-The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections. Zilla natively handles WebSockets and can manage the MQTT protocol over an active connection.
+The [tcp](../../reference/config/bindings/tcp/README.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections. Zilla natively handles WebSockets and can manage the MQTT protocol over an active connection.
 
 ### Last Will and Testament
 
@@ -54,7 +54,7 @@ An MQTT client can be redirected to a specific Zilla instance, sharding client s
 
 ## Pub/Sub with Kafka
 
-Zilla manages MQTT pub/sub to Kafka using three Kafka topics. The specific topic names can be configured using the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) property.
+Zilla manages MQTT pub/sub to Kafka using three Kafka topics. The specific topic names can be configured using the [options.topics](../../reference/config/bindings/mqtt-kafka/proxy.md#options-topics) property.
 
 ### Messages on Kafka
 
@@ -62,7 +62,7 @@ All MQTT messages brokered by Zilla are published on the `messages` Kafka topic.
 
 ### Topic routing
 
-By defining [routes](../../reference/config/bindings/binding-mqtt-kafka.md#routes) in Zilla, you can direct MQTT publish and subscribe connections to specific kafka topics other than the `messages` Kafka topic. The `sessions` and `retained` topics are not affected by routing.
+By defining [routes](../../reference/config/bindings/mqtt-kafka/proxy.md#routes) in Zilla, you can direct MQTT publish and subscribe connections to specific kafka topics other than the `messages` Kafka topic. The `sessions` and `retained` topics are not affected by routing.
 
 ### Retaining Messages
 
@@ -74,4 +74,4 @@ MQTT connect, disconnect, and other session messages are maintained on the `sess
 
 ## Authorizing clients
 
-Any connection Zilla handles can be secured using the [tls](../../reference/config/bindings/binding-tls.md) binding. This means both MQTT and MQTT over WebSocket can be encrypted. Additionally, A client connection to the MQTT server can be guarded by the [jwt](../../reference/config/guards/guard-jwt.md) guard supporting JWT access tokens, with fine-grained privileges enforced on publish or subscribe to MQTT topics.
+Any connection Zilla handles can be secured using the [tls](../../reference/config/bindings/tls/) binding. This means both MQTT and MQTT over WebSocket can be encrypted. Additionally, A client connection to the MQTT server can be guarded by the [jwt](../../reference/config/guards/jwt.md) guard supporting JWT access tokens, with fine-grained privileges enforced on publish or subscribe to MQTT topics.

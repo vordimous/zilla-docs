@@ -1,0 +1,4 @@
+  mqtt_client:
+    type: mqtt
+    kind: client
+    exit: mqtt_client_tcp

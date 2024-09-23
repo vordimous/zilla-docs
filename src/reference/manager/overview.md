@@ -97,19 +97,19 @@ Stores the remote repository credentials.
 
 List of repository credentials
 
-##### credentials[].host
+#### credentials[].host
 
 > `string`
 
 Repository hostname
 
-##### credentials[].username
+#### credentials[].username
 
 > `string`
 
 Repository credentials username
 
-##### credentials[].password
+#### credentials[].password
 
 > `string`
 

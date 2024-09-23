@@ -1,0 +1,7 @@
+  http_client:
+    type: http
+    kind: client
+    options:
+      versions:
+        - h2
+    exit: tcp_client

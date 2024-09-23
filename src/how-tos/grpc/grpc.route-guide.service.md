@@ -12,7 +12,7 @@ Let's take a look at how Zilla would be configured with a full featured gRPC ser
 
 ## Step 1: Declaring the service
 
-Zilla lets you use your service proto file(s) to specify the service definitions. This will let you create one or many [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) proxy handlers to be used by the whole service or individual methods.
+Zilla lets you use your service proto file(s) to specify the service definitions. This will let you create one or many [grpc-kafka](../../reference/config/bindings/grpc-kafka/README.md) proxy handlers to be used by the whole service or individual methods.
 
 Here is the service we will be enhancing with Zilla and Kafka.
 
@@ -39,9 +39,9 @@ Here is the simplest configuration for declaring the gRPC service. There is a `s
 grpc_server:
   type: grpc
   kind: server
-  options:
-    services:
-      - route_guide.proto
+  catalog:
+    host_filesystem:
+      - subject: route_guide
   routes:
     - when:
         - method: routeguide.RouteGuide/*
@@ -71,7 +71,7 @@ routes:
 
 ## Step 2: Handling message routing onto Kafka
 
-This maps the proto service method's request and response messages directly to Kafka topics defined by the `topic` and `reply-to` attributes respectively. The messages are linked by the `zilla:correlation-id` header for individual calls into the gRPC service. Read more about it and how the `idempotency-key` enables safe message replays in the [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md#produce-capability) reference section.
+This maps the proto service method's request and response messages directly to Kafka topics defined by the `topic` and `reply-to` attributes respectively. The messages are linked by the `zilla:correlation-id` header for individual calls into the gRPC service. Read more about it and how the `idempotency-key` enables safe message replays in the [grpc-kafka](../../reference/config/bindings/grpc-kafka/proxy.md#produce-capability) reference section.
 
 ### Message routing for RPC request and response types
 
@@ -134,7 +134,7 @@ routes:
 
 ### Fanout streaming RPC
 
-An additional method for getting messages from a service onto Kafka is using the [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) fetch capability. This enables message filtering and reliable message delivery. Read more about the [fetch capability](../../reference/config/bindings/binding-grpc-kafka.md#fetch-capability) in the reference section.
+An additional method for getting messages from a service onto Kafka is using the [grpc-kafka](../../reference/config/bindings/grpc-kafka/README.md) fetch capability. This enables message filtering and reliable message delivery. Read more about the [fetch capability](../../reference/config/bindings/grpc-kafka/proxy.md#fetch-capability) in the reference section.
 
 The service will need a method that accepts the `google/protobuf/empty.proto` and produce the massage to be fanned out onto the Kafka topic.
 
@@ -147,7 +147,7 @@ service FanoutService
 }
 ```
 
-Here we set the [fetch capability](../../reference/config/bindings/binding-grpc-kafka.md#fetch-capability) and a filter.
+Here we set the [fetch capability](../../reference/config/bindings/grpc-kafka/proxy.md#fetch-capability) and a filter.
 
 ```yaml
 grpc_kafka:
@@ -167,7 +167,7 @@ grpc_kafka:
 
 ## Step 3: Calling services from Kafka
 
-Now that messages are in Kafka we need to send them to the gRPC services responsible for processing them. For this, we will be using the [kafka-grpc](../../reference/config/bindings/binding-kafka-grpc.md) binding.
+Now that messages are in Kafka we need to send them to the gRPC services responsible for processing them. For this, we will be using the [kafka-grpc](../../reference/config/bindings/kafka-grpc/README.md) binding.
 
 ```yaml
 remote_server:
@@ -226,7 +226,7 @@ tcp_client:
 
 ### Proxy service entrypoint
 
-Using a [tcp](../../reference/config/bindings/binding-tcp.md) server binding we can route the gRPC traffic through an `http` server, `${{env.ENTRYPOINT_HOST}}`:`${{env.ENTRYPOINT_PORT}}`, to our desired gRPC server at the `<grpc_server_binding_name>`. The [tls](../../reference/config/bindings/binding-tls.md) server binding secures the entrypoint by defining a tls certificate from the [filesystem](../../reference/config/vaults/vault-filesystem.md) vault, which is used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server and the tls binding and filesystem vault can be removed.
+Using a [tcp server](../../reference/config/bindings/tcp/server.md)  binding we can route the gRPC traffic through an `http` server, `${{env.ENTRYPOINT_HOST}}`:`${{env.ENTRYPOINT_PORT}}`, to our desired gRPC server at the `<grpc_server_binding_name>`. The [tls server](../../reference/config/bindings/tls/server.md) binding secures the entrypoint by defining a tls certificate from the [filesystem](../../reference/config/vaults/filesystem.md) vault, which is used to send the traffic over https. Alternatively, if tls is not needed The tcp server can exit directly to the http server and the tls binding and filesystem vault can be removed.
 
 ```yaml
   tcp_server:

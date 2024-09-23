@@ -45,6 +45,7 @@
         "keytool",
         "lycheeverse",
         "mosquitto",
+        "mqtt",
         "mvnw",
         "netcat",
         "OAUTHBEARER",

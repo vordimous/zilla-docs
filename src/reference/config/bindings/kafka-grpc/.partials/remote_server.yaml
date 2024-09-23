@@ -1,0 +1,23 @@
+  kafka_grpc_proxy:
+    type: kafka-grpc
+    kind: remote_server
+    entry: kafka_cache_client
+    options:
+      acks: leader_only
+      idempotency:
+        metadata: idempotency-key
+      correlation:
+        headers:
+          service: zilla:service
+          method: zilla:method
+          correlation-id: zilla:correlation-id
+          reply-to: zilla:reply-to
+    routes:
+      - when:
+          - topic: requests
+            reply-to: responses
+            method: example.EchoService/*
+        exit: grpc
+        with:
+          scheme: http
+          authority: localhost:7151

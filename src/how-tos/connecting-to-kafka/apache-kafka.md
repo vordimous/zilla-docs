@@ -84,7 +84,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a TLS server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/vault-filesystem.md) to provide access to certificates needed by the TLS client binding.
+However, if the `Kafka` cluster is secured by a TLS server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/filesystem.md) to provide access to certificates needed by the TLS client binding.
 
 ::: code-tabs#yaml
 
@@ -123,7 +123,7 @@ bindings:
 
 :::
 
-However, if the `Kafka` cluster is secured by a TLS server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/vault-filesystem.md) to provide access to certificates needed by the TLS client binding.
+However, if the `Kafka` cluster is secured by a TLS server certificate that is signed by a private certificate authority then you need to add a `vault` [config](../../reference/config/vaults/filesystem.md) to provide access to certificates needed by the TLS client binding.
 
 To test the above config you can use it to add or replace the necessary bindings in the [http.kafka.sasl.scram example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sasl.scram).
 

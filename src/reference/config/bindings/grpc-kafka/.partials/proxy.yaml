@@ -1,0 +1,45 @@
+  grpc_kafka_proxy:
+    type: grpc-kafka
+    kind: proxy
+    options:
+      idempotency:
+        metadata: idempotency-key
+      reliability:
+        field: 32767
+        metadata: last-message-id
+      correlation:
+        headers:
+          service: zilla:service
+          method: zilla:method
+          correlation-id: zilla:correlation-id
+          reply-to: zilla:reply-to
+    routes:
+      - when:
+          - method: example.FanoutService/*
+            metadata:
+              custom-text: custom value
+              custom-binary:
+                base64: Y3VzdG9tIHZhbHVl
+        exit: kafka_cache_client
+        with:
+          capability: fetch
+          topic: messages
+          filters:
+            key: custom-key
+            headers:
+              custom-text: custom-value
+      - when:
+          - method: example.EchoService/*
+            metadata:
+              custom-text: custom value
+              custom-binary:
+                base64: Y3VzdG9tIHZhbHVl
+        exit: kafka_cache_client
+        with:
+          capability: produce
+          topic: requests
+          acks: leader_only
+          key: custom-key
+          overrides:
+            custom-text: custom-value
+          reply-to: responses

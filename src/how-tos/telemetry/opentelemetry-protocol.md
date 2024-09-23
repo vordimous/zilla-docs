@@ -62,7 +62,7 @@ telemetry:
     - stream.closes.received
     - stream.closes.sent
 
-  # Prometheus endpoint definition
+  # Open Telemetry exporter definition
   exporters:
     otel_exporter_otlp:
       type: otlp
@@ -150,7 +150,6 @@ bindings:
     telemetry:
       metrics:
         - stream.*
-
 ```
 
 @tab docker-compose.yaml
@@ -228,12 +227,12 @@ United States*98109*leWA"
 
 
 LS4PSXUNUM
-USD9����* 
+USD9����*
 
 
 2ZYFJ3GM2N
 
-USD�����* 
+USD�����*
 
 
 66VCHSJNUP
@@ -244,7 +243,7 @@ United States*95014*    CupertinoCA"
 
 
 L9ECAV7KIM
-USD����* 
+USD����*
 
 
 66VCHSJNUP

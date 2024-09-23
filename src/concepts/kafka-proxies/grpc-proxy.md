@@ -8,7 +8,7 @@ next: /tutorials/grpc/grpc-intro.md
 
 The Zilla gRPC Kafka Proxy lets you implement gRPC service definitions from protobuf files to produce and consume messages via Kafka topics.
 
-Zilla can be the gRPC server, routing a service method's request and response messages to and from Kafka topics, or Zilla can fanout messages from a Kafka topic to multiple gRPC clients using the [grpc-kafka](../../reference/config/bindings/binding-grpc-kafka.md) and [kafka-grpc](../../reference/config/bindings/binding-kafka-grpc.md) bindings in a [zilla.yaml](../../reference/config/overview.md) config. Additionally, Zilla can sit on the critical path between a gRPC client and server. They can communicate as if they are talking directly to each other, while Zilla actually proxies the messages through Kafka.
+Zilla can be the gRPC server, routing a service method's request and response messages to and from Kafka topics, or Zilla can fanout messages from a Kafka topic to multiple gRPC clients using the [grpc-kafka](../../reference/config/bindings/grpc-kafka/) and [kafka-grpc](../../reference/config/bindings/kafka-grpc/README.md) bindings in a [zilla.yaml](../../reference/config/overview.md) config. Additionally, Zilla can sit on the critical path between a gRPC client and server. They can communicate as if they are talking directly to each other, while Zilla actually proxies the messages through Kafka.
 
 ## RPC Service Definitions
 
@@ -54,14 +54,14 @@ Zilla manages the synchronous request and response messages of a gRPC service. R
 
 ## gRPC Metadata
 
-Method routes can use [custom metadata fields](../../reference/config/bindings/binding-grpc-kafka.md#when-metadata) for request routing and idempotency. Zilla can also augment the metadata it sends based on the configured route the request matches.
+Method routes can use [custom metadata fields](../../reference/config/bindings/grpc-kafka/proxy.md#when-metadata) for request routing and idempotency. Zilla can also augment the metadata it sends based on the configured route the request matches.
 
 ## Reliable Delivery
 
-Clients can fetch some or all messages from a single Kafka topic using a route with the [fetch capability](../../reference/config/bindings/binding-grpc-kafka.md#fetch-capability) by creating a service definition with an `Empty` request type and the topic message as the response type. Zilla sends an event ID with every message serialized as an unknown field in the payload. Messages can be identified without field collision, and the client doesn't need to acknowledge the message receipt explicitly. A client consuming the stream of messages can remember the event ID. In the event, the stream gets interrupted. The client can reconnect with a `last-event-id` header to recover without message loss or needing to start over from the beginning.
+Clients can fetch some or all messages from a single Kafka topic using a route with the [fetch capability](../../reference/config/bindings/grpc-kafka/proxy.md#fetch-capability) by creating a service definition with an `Empty` request type and the topic message as the response type. Zilla sends an event ID with every message serialized as an unknown field in the payload. Messages can be identified without field collision, and the client doesn't need to acknowledge the message receipt explicitly. A client consuming the stream of messages can remember the event ID. In the event, the stream gets interrupted. The client can reconnect with a `last-event-id` header to recover without message loss or needing to start over from the beginning.
 
 ## Kafka Consumer Groups
 
-The [kafka-grpc](../../reference/config/bindings/binding-kafka-grpc.md) `remote_server` binding will create a consumer group. It creates one consumer per named binding in a zilla config. The format of the consumer group ID is `zilla:<zilla namespace>-<binding name>`. Scaling the number of Zilla instances with the same configuration will add each new Zilla instance as a member of the same group. Using different Zilla `namespace`s or adding multiple bindings will create different consumer groups.
+The [kafka-grpc](../../reference/config/bindings/kafka-grpc/README.md) `remote_server` binding will create a consumer group. It creates one consumer per named binding in a zilla config. The format of the consumer group ID is `zilla:<zilla namespace>-<binding name>`. Scaling the number of Zilla instances with the same configuration will add each new Zilla instance as a member of the same group. Using different Zilla `namespace`s or adding multiple bindings will create different consumer groups.
 
-The [grpc-kakfa](../../reference/config/bindings/binding-grpc-kafka.md) does not create consumer groups. Instead, the binding fetches messages from a topic the same way for all connected clients. Clients can filter messages received using filters like adding the desired Kafka message key in the `idempotency-key` header. The client can track and recover progress through the stream using [reliable delivery](#reliable-delivery).
+The [grpc-kakfa](../../reference/config/bindings/grpc-kafka/README.md) does not create consumer groups. Instead, the binding fetches messages from a topic the same way for all connected clients. Clients can filter messages received using filters like adding the desired Kafka message key in the `idempotency-key` header. The client can track and recover progress through the stream using [reliable delivery](#reliable-delivery).
