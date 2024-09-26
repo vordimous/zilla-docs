@@ -29,7 +29,7 @@ jobs:
 
       - name: Restore cached Docs
         id: dist-cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: ${{ env.DistDir }}
           key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
@@ -100,21 +100,21 @@ jobs:
 
       - if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
         name: Save Docs
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: ${{ env.DistDir }}
           key: ${{ env.DistDir }}-${{ hashFiles('deploy-versions.json') }}
 
       - name: Upload cloudflare-pages artifact
         if: github.repository_owner == 'aklivity'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cloudflare-pages
           path: ${{ env.DistDir }}
 
       - name: Upload github-pages artifact
         if: github.repository_owner != 'aklivity'
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.DistDir }}/zilla-docs
 
@@ -165,4 +165,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: github-deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
