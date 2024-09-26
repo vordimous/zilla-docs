@@ -1,7 +1,7 @@
 {
   "name": "zilla-docs",
   "type": "module",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],
   "author": "aklivity.io",
@@ -17,14 +17,15 @@
     "dev": "vuepress-vite dev src",
     "update-package": "pnpm add -g pnpm && pnpm dlx vp-update",
     "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
-    "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
+    "lint-fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
     "link-checker": "pnpm build && link-checker src/.vuepress/dist",
+    "install-check-schema": "cd ./.check-schema && pnpm install",
     "check-schema": "node ./.check-schema"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.13",
     "@vuepress/plugin-catalog": "2.0.0-rc.36",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.28",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.36",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.34",
     "@vuepress/plugin-redirect": "2.0.0-rc.36",
     "@vuepress/plugin-register-components": "2.0.0-rc.34",

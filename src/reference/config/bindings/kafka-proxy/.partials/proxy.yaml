@@ -1,0 +1,11 @@
+  kafka_proxy:
+    type: kafka-proxy
+    kind: proxy
+    options:
+      external:
+        host: kafka-#.external.net
+        port: 9093
+      internal:
+        host: b-#.kafka.internal.net
+        port: 9094
+    exit: tls_client

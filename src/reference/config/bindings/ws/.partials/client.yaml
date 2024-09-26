@@ -1,0 +1,3 @@
+ws_client:
+  type: ws
+  kind: client

@@ -205,6 +205,12 @@ export const enSidebar = sidebar({
       text: "Getting Started",
       children: [
         {
+          text: "-hidden-",
+          ariaLabel: "-hidden-",
+          link: "/",
+          children: [],
+        },
+        {
           text: "What is Zilla?",
           link: "concepts/what-is-zilla.md",
           children: [],
@@ -229,6 +235,12 @@ export const enSidebar = sidebar({
     {
       text: "Integration",
       children: [
+        {
+          text: "-hidden-",
+          ariaLabel: "-hidden-",
+          link: "/",
+          children: [],
+        },
         {
           text: "Connecting to Kafka",
           collapsible: true,
@@ -343,6 +355,12 @@ export const enSidebar = sidebar({
     {
       text: "Deploy & Operate",
       children: [
+        {
+          text: "-hidden-",
+          ariaLabel: "-hidden-",
+          link: "/",
+          children: [],
+        },
         {
           text: "Installing Zilla",
           link: "how-tos/deploy-operate.md",

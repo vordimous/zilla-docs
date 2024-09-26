@@ -1,0 +1,12 @@
+  amqp_server:
+    type: amqp
+    kind: server
+    exit: default_exit
+    routes:
+      - guarded:
+          my_guard:
+            - read:items
+      - when:
+          - address: echo
+            capabilities: send_and_receive
+        exit: routed_exit

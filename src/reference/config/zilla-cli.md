@@ -3,7 +3,6 @@ category:
   - CLI
 description: The command line interface to control the Zilla runtime.
 ---
-<!-- markdownlint-disable MD024 -->
 
 # Zilla Runtime CLI
 
@@ -217,6 +216,7 @@ Set individual Zilla properties.
 zilla start -P zilla.engine.prop=value -P zilla.other.thing=value
 ```
 
+<!-- markdownlint-disable MD024 -->
 #### -v --verbose
 
 > `flag`
@@ -226,6 +226,7 @@ Log verbose output to `stdout`.
 ```bash:no-line-numbers
 zilla start -v
 ```
+<!-- markdownlint-enable MD024 -->
 
 #### -w --workers
 

@@ -131,37 +131,37 @@ Create a new file called `zilla.yaml` and append the below yaml to it.
 
 ### Entrypoint
 
-This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../../reference/config/bindings/binding-tcp.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections.
+This will configure Zilla for accepting all of the `mqtt` traffic. The [tcp](../../reference/config/bindings/tcp/README.md) binding defines the ports Zilla will accept traffic for both MQTT and WebSocket connections.
 
 ```yaml{12-13,15-16}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml#entrypoint -->
 ```
 
 ::: right
-[More on binding-tcp](../../reference/config/bindings/binding-tcp.md)
+[More on binding-tcp](../../reference/config/bindings/tcp/README.md)
 :::
 
-A [ws](../../reference/config/bindings/binding-tcp.md) binding is added to handle any MQTT over WebSocket using the `mqtt` protocol. The [mqtt](../../reference/config/bindings/binding-mqtt.md) binding then handles all of the MQTT message traffic that needs to go to Kafka.
+A [ws](../../reference/config/bindings/tcp/) binding is added to handle any MQTT over WebSocket using the `mqtt` protocol. The [mqtt](../../reference/config/bindings/mqtt/README.md) binding then handles all of the MQTT message traffic that needs to go to Kafka.
 
 ```yaml{17,22}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml#server -->
 ```
 
 ::: right
-[More on binding-mqtt](../../reference/config/bindings/binding-mqtt.md)
-[More on binding-ws](../../reference/config/bindings/binding-tcp.md)
+[More on binding-mqtt](../../reference/config/bindings/mqtt/README.md)
+[More on binding-ws](../../reference/config/bindings/tcp/README.md)
 :::
 
 ### Service definition
 
-The service definition defines how the clients using this service will interact with Kafka through Zilla. The required set of Kafka topics are defined in the [options.topics](../../reference/config/bindings/binding-mqtt-kafka.md#options-topics) where Zilla manages any MQTT required features. A client identity can be determined by pulling the identifier out of the topic using the [options.clients](../../reference/config/bindings/binding-mqtt-kafka.md#options-clients) property.
+The service definition defines how the clients using this service will interact with Kafka through Zilla. The required set of Kafka topics are defined in the [options.topics](../../reference/config/bindings/mqtt-kafka/proxy.md#options-topics) where Zilla manages any MQTT required features. A client identity can be determined by pulling the identifier out of the topic using the [options.clients](../../reference/config/bindings/mqtt-kafka/proxy.md#options-clients) property.
 
 ```yaml{7-9,21}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml#kafka_mapping -->
 ```
 
 ::: right
-[More on binding-mqtt-kafka](../../reference/config/bindings/binding-mqtt-kafka.md)
+[More on binding-mqtt-kafka](../../reference/config/bindings/mqtt-kafka/README.md)
 [More on topic data](../../concepts/kafka-proxies/mqtt-proxy.md#step-2-pub-sub-message-reflect-with-kafka)
 :::
 
@@ -173,19 +173,19 @@ Additionally, a route is defined to capture any "device" messages and route them
 
 ::: right
 [More on When a route matches](../../concepts/bindings.md#when-a-route-matches)
-[More on binding-mqtt-kafka routing](../../reference/config/bindings/binding-mqtt-kafka.md#routes)
+[More on mqtt-kafka binding routes](../../reference/config/bindings/mqtt-kafka/proxy.md#routes)
 :::
 
 ### Add a Kafka sync layer
 
-The Zilla [cache_client and cache_server](../../reference/config/bindings/binding-kafka.md#kind) helps manage the smooth data transfer between the service definition and Kafka. It is important to bootstrap the topics that will be brokering MQTT messages.
+The Zilla [cache_client](../../reference/config/bindings/kafka/cache_client.md) and [cache_server](../../reference/config/bindings/kafka/cache_server.md) helps manage the smooth data transfer between the service definition and Kafka. It is important to bootstrap the topics that will be brokering MQTT messages.
 
 ```yaml{11-13}
 <!-- @include: ./mqtt_kafka_broker_zilla.yaml#kafka_sync -->
 ```
 
 ::: right
-[More on binding-kafka cache](../../reference/config/bindings/binding-kafka.md#cache-behavior)
+[More on kafka binding cache](../../reference/config/bindings/kafka/README.md#cache-behavior)
 :::
 
 ### Point to a Running Kafka instance
@@ -205,7 +205,7 @@ This will define the location and connection for Zilla to communicate with Kafka
 :::
 
 ::: right
-[More on binding-kafka client](../../reference/config/bindings/binding-kafka.md#client-behavior)
+[More on kafka cache_client binding](../../reference/config/bindings/kafka/cache_client.md)
 :::
 
 ### Start Zilla

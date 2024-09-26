@@ -1,0 +1,4 @@
+  grpc_server:
+    type: grpc
+    kind: client
+    exit: tcp_server

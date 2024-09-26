@@ -1,0 +1,44 @@
+name: Schema Checker
+
+on:
+  push:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  schemaChecker:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install-check-schema
+
+      - name: Build latest schema
+        run: |
+          CONTAINER_ID=$(docker run -d --rm -e ZILLA_INCUBATOR_ENABLED=true ghcr.io/aklivity/zilla:latest start -v -Pzilla.engine.verbose.schema.plain);
+          sleep 5;
+          docker logs $CONTAINER_ID > ./.check-schema/zilla-schema.json 2>&1;
+          docker stop $CONTAINER_ID;
+
+          sed -i '1,2d' ./.check-schema/zilla-schema.json;
+          sed -i '$d' ./.check-schema/zilla-schema.json;
+
+      - name: Schema Checker
+        run: pnpm check-schema
+

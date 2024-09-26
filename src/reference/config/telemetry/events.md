@@ -1,6 +1,5 @@
 ---
 shortTitle: Events
-description: Zilla runtime telemetry events
 category:
   - Telemetry
 tag:
@@ -79,7 +78,7 @@ An MQTT session was successfully authorized and connected.
 
 ### BINDING_MQTT_KAFKA_NON_COMPACT_SESSIONS_TOPIC
 
-The sessions topic declared in the [mqtt-kafka](../bindings/binding-mqtt-kafka.md) is required to be log compacted.
+The sessions topic declared in the [mqtt-kafka](../bindings/mqtt-kafka/README.md) is required to be log compacted.
 
 ### BINDING_TCP_DNS_FAILED
 

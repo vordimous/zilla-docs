@@ -72,6 +72,7 @@ Conduktor
 config
 const
 CQRS
+crv
 cspell
 datagram
 EDAs
@@ -95,9 +96,12 @@ jwt
 Kafka
 Karapace
 kcat
+kty
 leader_only
 Lua
 lycheeverse
+maxLength
+minLength
 MQTT
 mvnw
 netcat

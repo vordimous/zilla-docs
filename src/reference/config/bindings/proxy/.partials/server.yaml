@@ -1,0 +1,10 @@
+  proxy_server:
+    type: proxy
+    kind: server
+    routes:
+      - when:
+          - transport: stream
+            family: inet4
+            destination:
+              port: 443
+        exit: tls_server

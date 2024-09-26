@@ -20,7 +20,7 @@
   <a href="https://docs.aklivity.io/zilla/"><b>Documentation</b></a> &bull;
   <a href="https://docs.aklivity.io/zilla/latest/guides/install/"><b>Get Started</b></a> &bull;
   <a href="https://github.com/aklivity/zilla-examples"><b>Examples</b></a> &bull;
-  <a href="https://www.aklivity.io/blog"><b>Blog</b></a> 
+  <a href="https://www.aklivity.io/blog"><b>Blog</b></a>
 </h3>
 <!-- markdownlint-restore -->
 
@@ -93,12 +93,8 @@ Pages in the reference section describe, as briefly as possible and in an orderl
     - `#### parent.child`
   - Arrays of objects have brackets `[]` only when describing child properties
     - `#### parentArray[].child`
-
-Table of Contents (ToC) anchor links are generated using the [Markdown All in One](https://markdown-all-in-one.github.io/docs/guide/table-of-contents.html#overview) extension with the `gitea` slug mode.
-
 - Required props have an escaped splat `\*` at the end of the header and ToC link
   - `### topLevelProp\*`
-  - `- [topLevelProp\*](#toplevelprop)`
 
 ````markdown
 # Title
@@ -179,6 +175,18 @@ parentArray:
 
 Description.
 ````
+
+### Generate schema asset
+
+capture the output and delete the first and last lines
+
+```bash
+docker run -it --rm -e ZILLA_INCUBATOR_ENABLED=true ghcr.io/aklivity/zilla:latest start -v -Pzilla.engine.verbose.schema > src/.vuepress/public/assets/zilla-schema.json
+```
+
+```bash
+pnpm check-schema > schema-edits.txt
+```
 
 ## Provide feedback
 
