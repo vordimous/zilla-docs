@@ -22,6 +22,10 @@ This Quickstart is hosted at `quickstart.aklivity.io` meaning you can interact w
 - A Postman [account](https://www.postman.com/postman-account/)
 - Fork the Postman collections from the [Zilla Quickstart Workspace](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview)
 
+::: warning
+The live version of the quickstart is currently down for maintenance and any requests to [quickstart.aklivity.io]() won't work. Please use the [local deploy with docker compose](#run-the-quickstart-locally) setup and select the `Local Zilla Quickstart` environment in the Postman collection.
+:::
+
 ## HTTP Kafka Proxy
 
 The Zilla HTTP Kafka Proxy lets you configure application-centric REST APIs and SSE streams that unlock Kafka event-driven architectures.
