@@ -439,7 +439,7 @@ The <ZillaPlus/> proxy relies on TLS so we need to create a file called `client.
 
 @tab client.properties
 
-```toml:no-line-numbers
+```text:no-line-numbers
 security.protocol=SSL
 ssl.keystore.location=/tmp/kafka.client.keystore.jks
 ssl.keystore.password=generated

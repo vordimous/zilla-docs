@@ -23,20 +23,25 @@
     "check-schema": "node ./.check-schema"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.13",
-    "@vuepress/plugin-catalog": "2.0.0-rc.36",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.36",
-    "@vuepress/plugin-google-analytics": "2.0.0-rc.34",
-    "@vuepress/plugin-redirect": "2.0.0-rc.36",
-    "@vuepress/plugin-register-components": "2.0.0-rc.34",
-    "@vuepress/plugin-shiki": "2.0.0-rc.36",
+    "@vuepress/bundler-vite": "2.0.0-rc.17",
+    "@vuepress/plugin-catalog": "2.0.0-rc.52",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.52",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-hint": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-image": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-tab": "2.0.0-rc.52",
+    "@vuepress/plugin-redirect": "2.0.0-rc.52",
+    "@vuepress/plugin-register-components": "2.0.0-rc.52",
+    "@vuepress/plugin-shiki": "2.0.0-rc.52",
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
     "mermaid": "^10.9.1",
-    "vue": "^3.4.29",
-    "vuepress": "2.0.0-rc.13",
-    "vuepress-theme-hope": "2.0.0-rc.49"
+    "sass-embedded": "^1.79.4",
+    "sass-embedded-darwin-arm64": "^1.79.4",
+    "vue": "^3.5.10",
+    "vuepress": "2.0.0-rc.17",
+    "vuepress-theme-hope": "2.0.0-rc.58"
   },
   "pnpm": {
     "overrides": {

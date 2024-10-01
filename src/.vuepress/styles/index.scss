@@ -1,17 +1,9 @@
 // Dark theme settings
 html[data-theme="dark"] #app {
-  --code-highlight-bg-color: #203e36;
   --border-color: #0e5c49;
-  --code-border-color: #333;
-  --tab-nav-bg-color: var(--code-tabs-nav-bg-color);
-  --tab-nav-hover-color: var(--code-tabs-nav-hover-color);
-  --tab-bg-color: #161b25;
-  --tab-nav-text-color: var(--code-tabs-nav-text-color);
-  --note-bg-color: var(--bg-color);
-  --info-bg-color: var(--bg-color);
-  --tip-bg-color: #001c00;
-  --warning-bg-color: #1d1500;
-  --caution-bg-color: #340c0d;
+  .vp-sidebar {
+    scrollbar-color: #274b41 #333;
+  }
   .vp-footer img.logo {
     content: url("/footer-logo-white.webp");
   }
@@ -19,27 +11,28 @@ html[data-theme="dark"] #app {
 
 // Light theme settings
 html[data-theme="light"] #app {
-  --code-highlight-bg-color: #a9d4c9;
   --border-color: #55877a;
-  --code-bg-color: #e4e6e5;
-  --code-border-color: #eee;
-  --tab-nav-bg-color: var(--code-tabs-nav-bg-color);
-  --tab-nav-hover-color: var(--code-tabs-nav-hover-color);
-  --tab-bg-color: #e6f0f9;
-  --tab-nav-text-color: var(--code-tabs-nav-text-color);
-  --info-bg-color: var(--info-bg-color);
+
+  .vp-sidebar {
+    scrollbar-color: #a9d4c9 #e4e6e5;
+  }
   .vp-footer img.logo {
     content: url("/footer-logo.webp");
   }
 }
 
 // make bash code blocks have $ prefix
-pre.language-bash {
-  padding-left: 0.8rem;
-  code:before {
-    content: "$ ";
-    font-weight: bold;
-    margin-left: -1rem;
+div.language-bash pre {
+    padding-left: 0.8rem;
+    code:before {
+      content: "$ ";
+      font-weight: bold;
+      margin-left: -1rem;
+    }
+}
+div.language-output {
+  button.vp-copy-code-button {
+    display: none;
   }
 }
 
@@ -71,12 +64,6 @@ p {
   -moz-hyphens: none !important;
   -ms-hyphens: none !important;
   hyphens: none !important;
-}
-
-// don't adjust image boarders
-.theme-hope-content figure img {
-  overflow: auto;
-  border-radius: unset;
 }
 
 // Increase H tag headers font weight
@@ -132,7 +119,6 @@ h6 {
 }
 
 .vp-sidebar {
-  scrollbar-color: var(--code-highlight-bg-color) var(--code-bg-color);
   .vp-sidebar-links {
     margin-left: 0rem;
     .vp-sidebar-group > .vp-sidebar-header {
@@ -205,50 +191,6 @@ sup {
   span.icon {
     color: var(--theme-color);
   }
-}
-
-// Fix VPCard spacing
-.vp-card {
-  max-width: 330px;
-}
-
-// Style text output in a code block
-@layer {
-  div.language-output {
-    border-radius: 0px !important;
-    border-inline-start: 0.2rem solid var(--code-border-color);
-
-    code {
-      padding: 0.25rem 0 0.25rem 1rem !important;
-      span {
-        color: #666 !important;
-        font-size: 1rem;
-        overflow-wrap: break-word;
-      }
-    }
-
-    button.vp-copy-code-button {
-      display: none;
-    }
-  }
-}
-
-// Fix code tabs border radius, remove with https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/4235
-.vp-code-tabs {
-  div[class*="language-"].line-numbers-mode::after {
-    border-radius: 0;
-    border-bottom-left-radius: 6px;
-  }
-  div[class*="language-"] {
-    pre {
-      border-radius: 0;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
-  }
-}
-pre.shiki {
-  border-radius: 0 6px 6px 0 !important;
 }
 
 // === ICONS ===
