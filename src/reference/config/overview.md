@@ -36,7 +36,7 @@ Namespace name.
 
 ### bindings
 
-> `object` as map of named[`binding`](./bindings/) properties
+> `object` as map of named [`binding`](../../concepts/bindings.md) properties
 
 Each configured `binding` represents a step in the pipeline as data streams are decoded, translated or encoded according to a specific protocol `type`.
 
@@ -52,7 +52,7 @@ Unconditional `exit` binding acting as a default if none of the conditional rout
 
 ### guards
 
-> `object` as map of named[`guard`](./guards/) properties
+> `object` as map of named [`guard`](../../concepts/guards.md) properties
 
 Each configured `guard` represents a security checkpoint for one or more bindings based on a specific implementation `type`.
 
@@ -62,7 +62,7 @@ Associated roles can be enforced during routing by only following routes `guarde
 
 ### vaults
 
-> `object` as map of named[`vault`](./vaults/) properties
+> `object` as map of named [`vault`](../../concepts/vaults.md) properties
 
 Each configured `vault` represents a container for digital keys and certificates based on a specific implementation `type`.
 
@@ -70,7 +70,7 @@ Vaults can be used by specific protocol bindings, such as `tls`, to negotiate sh
 
 ### catalogs
 
-> `object` as map of named[`catalog`](./catalogs/) properties
+> `object` as map of named [`catalog`](../../concepts/catalogs.md) properties
 
 Each configured `catalog` represent a catalog of schemas of various format based on a specific implementation `type`.
 
@@ -78,7 +78,7 @@ Catalogs can be used by specific protocol bindings to enforce validation.
 
 ### telemetry
 
-> `object` of [`telemetry`](./telemetry/) properties
+> `object` of [`telemetry`](../../concepts/telemetry.md) properties
 
 ```yaml
 telemetry:
@@ -98,12 +98,12 @@ Default attributes to optionally include when exporting metrics.
 
 #### exporters
 
-> `object` as map of named[`exporter`](./telemetry/exporters/) properties
+> `object` as map of named [`exporter`](../../concepts/telemetry.md#exporters) properties
 
 Map of named exporters.
 
 #### metrics
 
-> `array` of `string` of named [`metrics`](./telemetry/metrics/)
+> `array` of `string` of named [`metrics`](../../concepts/telemetry.md#metrics)
 
 Array of named metrics.

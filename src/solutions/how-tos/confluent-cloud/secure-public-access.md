@@ -430,7 +430,7 @@ Notice we used the username and password, you will need to replace those with yo
 
 @tab confluent.properties
 
-```toml:no-line-numbers
+```text:no-line-numbers
 # Required connection configs for Kafka producer, consumer, and admin
 bootstrap.servers=kafka.example.aklivity.io:9092
 #bootstrap.servers=lkc-0d9ox2.us-east-1.aws.private.confluent.cloud:9092

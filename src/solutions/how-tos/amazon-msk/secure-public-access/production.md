@@ -400,7 +400,7 @@ Notice we used the default username and password, but you will need to replace t
 
 @tab client.properties
 
-```toml:no-line-numbers
+```text:no-line-numbers
 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="alice" password="alice-secret";
 security.protocol=SASL_SSL
 sasl.mechanism=SCRAM-SHA-512

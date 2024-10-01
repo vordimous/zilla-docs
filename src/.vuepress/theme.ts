@@ -84,11 +84,7 @@ export default hopeTheme({
       align: true,
       attrs: true,
       chart: false,
-      codetabs: true,
       component: false,
-      hint: true,
-      figure: true,
-      imgLazyload: true,
       include: {
         resolvePath: (file) => {
           path.resolve(file);
@@ -102,9 +98,21 @@ export default hopeTheme({
       },
       mark: true,
       mermaid: true,
-      tabs: true,
-      gfm: true,
       linkify: false,
+    },
+    markdownTab: {
+      codeTabs: true,
+      tabs: true,
+    },
+    markdownImage: {
+      figure: true,
+      lazyload: true,
+      mark: true,
+      size: true,
+    },
+    markdownHint: {
+      hint: true,
+      alert: true,
     },
   },
 });
