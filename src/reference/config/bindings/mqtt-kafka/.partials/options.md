@@ -71,7 +71,7 @@ options:
 
 > `object`
 
-The `QTT `publish` specific options.
+The MQTT client publish specific options.
 
 #### publish.qosMax\*
 
