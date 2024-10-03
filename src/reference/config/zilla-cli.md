@@ -180,10 +180,14 @@ started
 
 > `string`
 
-Set the path to the local `zilla.yaml` configuration file.
+Set the path to the local `zilla.yaml` configuration file or remote URI.
 
 ```bash:no-line-numbers
 zilla start -c ./path/to/zilla.yaml
+```
+
+```bash:no-line-numbers
+zilla start -c http://example.com/zilla.yaml
 ```
 
 #### -e --exception-traces
