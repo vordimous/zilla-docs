@@ -58,19 +58,23 @@ Zilla manages MQTT pub/sub to Kafka using three Kafka topics. The specific topic
 
 ### Messages on Kafka
 
-All MQTT messages brokered by Zilla are published on the `messages` Kafka topic. The MQTT message topic becomes the Kafka key.
+All MQTT messages brokered by Zilla are published on the [messages](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-messages) Kafka topic. The MQTT message topic becomes the Kafka key.
 
 ### Topic routing
 
-By defining [routes](../../reference/config/bindings/mqtt-kafka/proxy.md#routes) in Zilla, you can direct MQTT publish and subscribe connections to specific kafka topics other than the `messages` Kafka topic. The `sessions` and `retained` topics are not affected by routing.
+By defining [routes](../../reference/config/bindings/mqtt-kafka/proxy.md#routes) in Zilla, you can direct MQTT publish and subscribe connections to specific kafka topics other than the [messages](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-messages) Kafka topic. The [sessions](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-sessions) and [retained](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-retained) topics are not affected by routing.
 
 ### Retaining Messages
 
-An MQTT client can Publish messages to any configured Kafka topics, marking specific messages with the retain flag. These messages will have a copy published on the `retained` Kafka topic. When a client subscribes with replay-on-subscribe, Zilla will deliver the retained messages.
+An MQTT client can Publish messages to any configured Kafka topics, marking specific messages with the retain flag. These messages will have a copy published on the [retained](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-retained) Kafka topic. When a client subscribes with replay-on-subscribe, Zilla will deliver the retained messages.
 
 ### Session Management
 
-MQTT connect, disconnect, and other session messages are maintained on the `sessions` Kafka topic.
+MQTT connect, disconnect, and other session messages are maintained on the the log compacted [sessions](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-sessions) Kafka topic. A message keyed by the MQTT client ID on the topic is used to track client subscriptions across client reconnects.
+
+#### Kafka Consumer Groups for MQTT sessions
+
+A consumer group is created for each unique client ID used by an MQTT session with the format `zilla:<zilla namespace>-<binding name>-<MQTT client ID>`. Zilla minimizes the number of hearbeats required to approximately one per MQTT session expiry interval. When an MQTT session expires, perhaps because the MQTT client abruptly disconnected but did not reconnect, the corresponding consumer group also expires and the associated tracking state in the [sessions](../../reference/config/bindings/mqtt-kafka/proxy.md#topics-sessions) Kafka topic is cleaned up automatically.
 
 ## Authorizing clients
 
