@@ -386,6 +386,12 @@ export const enSidebar = sidebar({
           ],
         },
         {
+          text: "Zilla Plus on AWS ECS Fargate",
+          icon: "aky-zilla-plus",
+          link: "how-tos/zilla-plus-aws-ecs-fargate.md",
+          children: [],
+        },
+        {
           text: "Secure Public Access on AWS",
           icon: "aky-zilla-plus",
           link: "solutions/concepts/kafka-proxies/secure-public-access.md",
