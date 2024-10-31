@@ -23,7 +23,6 @@ Named events from Zilla that can be exported and logged.
 - [BINDING\_TLS\_KEY\_REJECTED](#binding-tls-key-rejected)
 - [BINDING\_TLS\_PEER\_NOT\_VERIFIED](#binding-tls-peer-not-verified)
 - [BINDING\_TLS\_PROTOCOL\_REJECTED](#binding-tls-protocol-rejected)
-- [BINDING\_TLS\_TLS\_KEY\_VERIFICATION\_FAILED](#binding-tls-tls-key-verification-failed)
 - [BINDING\_TLS\_TLS\_FAILED](#binding-tls-tls-failed)
 - [CATALOG\_APICURIO\_REGISTRY\_RETRIEVED\_ARTIFACT\_ID](#catalog-apicurio-registry-retrieved-artifact-id)
 - [CATALOG\_APICURIO\_REGISTRY\_RETRIEVED\_ARTIFACT\_SUBJECT\_VERSION](#catalog-apicurio-registry-retrieved-artifact-subject-version)
@@ -51,6 +50,7 @@ Named events from Zilla that can be exported and logged.
 - [MODEL\_CORE\_VALIDATION\_FAILED](#model-core-validation-failed)
 - [MODEL\_JSON\_VALIDATION\_FAILED](#model-json-validation-failed)
 - [MODEL\_PROTOBUF\_VALIDATION\_FAILED](#model-protobuf-validation-failed)
+- [VAULT\_AWS\_SECRETS\_KEY\_PAIR\_INVALID](#vault-aws-secrets-key-pair-invalid)
 
 ::::
 
@@ -99,10 +99,6 @@ A peer's identity could not be verified.
 ### BINDING_TLS_PROTOCOL_REJECTED
 
 An error in the operation of the SSL protocol.
-
-### BINDING_TLS_TLS_KEY_VERIFICATION_FAILED
-
-A TLS key verification failed because the key is missing or invalid.
 
 ### BINDING_TLS_TLS_FAILED
 
@@ -211,3 +207,7 @@ A payload did not have the required model schema.
 ### MODEL_PROTOBUF_VALIDATION_FAILED
 
 A payload did not have the required model schema.
+
+### VAULT_AWS_SECRETS_KEY_PAIR_INVALID
+
+A TLS key verification failed because the key pair is missing or invalid.
