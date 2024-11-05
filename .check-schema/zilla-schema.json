@@ -93,6 +93,9 @@
                     "title": "Type",
                     "type": "string",
                     "enum": [
+                        "aws-acm",
+                        "aws-secrets",
+                        "aws",
                         "filesystem"
                     ]
                 },
@@ -106,6 +109,46 @@
                 "type"
             ],
             "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "const": "aws-acm"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "const": "aws-acm"
+                            },
+                            "options": false
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "aws-secrets",
+                                    "aws"
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "aws-secrets",
+                                    "aws"
+                                ]
+                            },
+                            "options": false
+                        }
+                    }
+                },
                 {
                     "if": {
                         "properties": {
@@ -258,6 +301,11 @@
                                     "challenge": {
                                         "title": "Challenge",
                                         "type": "integer"
+                                    },
+                                    "identity": {
+                                        "title": "Identity",
+                                        "type": "string",
+                                        "default": "sub"
                                     }
                                 },
                                 "additionalProperties": false
@@ -307,9 +355,11 @@
                         "title": "Type",
                         "type": "string",
                         "enum": [
+                            "aws-cloudwatch",
                             "otlp",
                             "prometheus",
-                            "stdout"
+                            "stdout",
+                            "syslog"
                         ]
                     }
                 },
@@ -317,6 +367,77 @@
                     "type"
                 ],
                 "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "aws-cloudwatch"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "type": {
+                                    "const": "aws-cloudwatch"
+                                },
+                                "options": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metrics": {
+                                            "type": "object",
+                                            "properties": {
+                                                "namespace": {
+                                                    "type": "string"
+                                                },
+                                                "interval": {
+                                                    "title": "Interval",
+                                                    "type": "number",
+                                                    "default": 30
+                                                }
+                                            },
+                                            "required": [
+                                                "namespace"
+                                            ],
+                                            "additionalProperties": false
+                                        },
+                                        "logs": {
+                                            "type": "object",
+                                            "properties": {
+                                                "group": {
+                                                    "type": "string"
+                                                },
+                                                "stream": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "group",
+                                                "stream"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "metrics"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "logs"
+                                            ]
+                                        }
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                "additionalProperties": false
+                            },
+                            "required": [
+                                "options"
+                            ]
+                        }
+                    },
                     {
                         "if": {
                             "properties": {
@@ -456,6 +577,66 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "type": {
+                                    "const": "syslog"
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "type": {
+                                    "const": "syslog"
+                                },
+                                "options": {
+                                    "type": "object",
+                                    "properties": {
+                                        "host": {
+                                            "type": "string"
+                                        },
+                                        "port": {
+                                            "type": "integer"
+                                        },
+                                        "protocol": {
+                                            "type": "string",
+                                            "enum": [
+                                                "udp",
+                                                "tcp",
+                                                "tls"
+                                            ]
+                                        }
+                                    },
+                                    "if": {
+                                        "properties": {
+                                            "protocol": {
+                                                "const": "tls"
+                                            }
+                                        }
+                                    },
+                                    "then": {
+                                        "properties": {
+                                            "trustcacerts": {
+                                                "type": "boolean"
+                                            },
+                                            "trust": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "host",
+                                        "port",
+                                        "protocol"
+                                    ]
+                                }
+                            }
+                        }
                     }
                 ]
             }
@@ -470,6 +651,8 @@
                     "enum": [
                         "apicurio-registry",
                         "apicurio",
+                        "aws-glue",
+                        "confluent-schema-registry",
                         "filesystem",
                         "inline",
                         "karapace-schema-registry",
@@ -538,6 +721,62 @@
                                     }
                                 },
                                 "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "const": "aws-glue"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "const": "aws-glue"
+                            },
+                            "options": {
+                                "properties": {
+                                    "registry": {
+                                        "type": "string"
+                                    },
+                                    "max-age": {
+                                        "title": "Max Age",
+                                        "type": "number",
+                                        "default": 300
+                                    },
+                                    "compression": {
+                                        "enum": [
+                                            "none",
+                                            "zlib"
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "const": "confluent-schema-registry"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "const": "confluent-schema-registry"
+                            },
+                            "options": {
+                                "$ref": "#/$defs/options/catalog/schema-registry"
                             }
                         },
                         "additionalProperties": false
@@ -945,7 +1184,7 @@
                                                         "extract-headers": {
                                                             "type": "object",
                                                             "patternProperties": {
-                                                                "^[a-zA-Z]+[a-zA-Z0-9\\._\\-]*$": {
+                                                                "^[a-zA-Z:]+[a-zA-Z0-9\\._\\-:]*$": {
                                                                     "type": "string",
                                                                     "pattern": "^\\$\\{message\\.(key|value)\\.([A-Za-z_][A-Za-z0-9_]*)\\}$"
                                                                 }
@@ -967,7 +1206,7 @@
                                                         "extract-headers": {
                                                             "type": "object",
                                                             "patternProperties": {
-                                                                "^[a-zA-Z]+[a-zA-Z0-9\\._\\-]*$": {
+                                                                "^[a-zA-Z:]+[a-zA-Z0-9\\._\\-:]*$": {
                                                                     "type": "string",
                                                                     "pattern": "^\\$\\{message\\.(key|value)\\.([A-Za-z_][A-Za-z0-9_]*)\\}$"
                                                                 }
@@ -1236,11 +1475,13 @@
                         "http-kafka",
                         "kafka",
                         "kafka-grpc",
+                        "kafka-proxy",
                         "mqtt",
                         "mqtt-kafka",
                         "openapi",
                         "openapi-asyncapi",
                         "pgsql",
+                        "pgsql-kafka",
                         "proxy",
                         "risingwave",
                         "sse",
@@ -3098,6 +3339,85 @@
                     "if": {
                         "properties": {
                             "type": {
+                                "const": "kafka-proxy"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "const": "kafka-proxy"
+                            },
+                            "kind": {
+                                "enum": [
+                                    "proxy"
+                                ]
+                            },
+                            "vault": false,
+                            "options": {
+                                "properties": {
+                                    "external": {
+                                        "type": "object",
+                                        "properties": {
+                                            "host": {
+                                                "title": "Host",
+                                                "type": "string",
+                                                "pattern": "^[^:]+(?::(\\d+)\\+)?$"
+                                            },
+                                            "port": {
+                                                "title": "Port",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "required": [
+                                            "host",
+                                            "port"
+                                        ],
+                                        "additionalProperties": false
+                                    },
+                                    "internal": {
+                                        "type": "object",
+                                        "properties": {
+                                            "host": {
+                                                "title": "Host",
+                                                "type": "string",
+                                                "pattern": "^[^:]+$"
+                                            },
+                                            "port": {
+                                                "title": "Port",
+                                                "type": "integer"
+                                            },
+                                            "default": {
+                                                "title": "Default",
+                                                "type": "string",
+                                                "pattern": "^[^:]+$"
+                                            }
+                                        },
+                                        "required": [
+                                            "host",
+                                            "port"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                    "internal",
+                                    "external"
+                                ]
+                            },
+                            "routes": false
+                        },
+                        "required": [
+                            "options",
+                            "exit"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
                                 "const": "mqtt"
                             }
                         }
@@ -3151,7 +3471,8 @@
                                                             "properties": {
                                                                 "topic": {
                                                                     "title": "Topic",
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "pattern": "^(\\/?([\\w{}-]*|\\+)(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?|#|\\/|\\$SYS(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?)$"
                                                                 }
                                                             }
                                                         }
@@ -3165,7 +3486,8 @@
                                                             "properties": {
                                                                 "topic": {
                                                                     "title": "Topic",
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "pattern": "^(\\/?([\\w{}-]*|\\+)(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?|#|\\/|\\$SYS(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?)$"
                                                                 }
                                                             }
                                                         }
@@ -3366,13 +3688,15 @@
                                                                     "properties": {
                                                                         "topic": {
                                                                             "title": "Topic",
-                                                                            "type": "string"
+                                                                            "type": "string",
+                                                                            "pattern": "^(\\/?([\\w{}-]*|\\+)(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?|#|\\/|\\$SYS(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?)$"
                                                                         }
                                                                     },
                                                                     "additionalProperties": false
                                                                 }
                                                             }
-                                                        }
+                                                        },
+                                                        "additionalProperties": false
                                                     },
                                                     {
                                                         "properties": {
@@ -3384,13 +3708,15 @@
                                                                     "properties": {
                                                                         "topic": {
                                                                             "title": "Topic",
-                                                                            "type": "string"
+                                                                            "type": "string",
+                                                                            "pattern": "^(\\/?([\\w{}-]*|\\+)(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?|#|\\/|\\$SYS(\\/((?![-_])[\\w{}-]*|\\+))*(\\/#)?)$"
                                                                         }
                                                                     },
                                                                     "additionalProperties": false
                                                                 }
                                                             }
-                                                        }
+                                                        },
+                                                        "additionalProperties": false
                                                     }
                                                 ]
                                             }
@@ -3746,6 +4072,34 @@
                     "if": {
                         "properties": {
                             "type": {
+                                "const": "pgsql-kafka"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "type": {
+                                "const": "pgsql-kafka"
+                            },
+                            "kind": {
+                                "enum": [
+                                    "proxy"
+                                ]
+                            },
+                            "vault": false,
+                            "options": false,
+                            "routes": false,
+                            "required": [
+                                "catalog",
+                                "exit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
                                 "const": "proxy"
                             }
                         }
@@ -3931,6 +4285,31 @@
                                                 "$ref": "#/$defs/converter"
                                             }
                                         }
+                                    },
+                                    "udf": {
+                                        "title": "UDF",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "server": {
+                                                    "title": "Server",
+                                                    "type": "string",
+                                                    "pattern": "^([a-zA-Z0-9\\\\.-]+)(:(\\\\{[a-zA-Z_]+\\\\}|[0-9]+))?$"
+                                                },
+                                                "language": {
+                                                    "title": "Language",
+                                                    "type": "string",
+                                                    "default": "java",
+                                                    "enum": [
+                                                        "java",
+                                                        "python"
+                                                    ]
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "minItems": 1
                                     }
                                 },
                                 "additionalProperties": false
@@ -3948,7 +4327,8 @@
                                                         "items": {
                                                             "type": "string",
                                                             "enum": [
-                                                                "CREATE TOPIC"
+                                                                "CREATE TOPIC",
+                                                                "DROP TOPIC"
                                                             ]
                                                         }
                                                     }
