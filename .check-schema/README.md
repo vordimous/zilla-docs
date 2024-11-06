@@ -2,7 +2,17 @@
 
 This project compares the JSON Schema from the Zilla to the [Reference](../src/reference) section of the docs.
 
-## Update schema
+## Generate a the schema
+
+You can generate the Zilla schema on startup by using the `zilla start` command with the `-Pzilla.engine.verbose.schema.plain` option. The `schema.plain` option is needed because we don't need to check the schema with the extra string validation options that get injected.
+
+```bash
+zilla start -v -Pzilla.engine.verbose.schema.plain
+```
+
+### Update schema from Docker
+
+You can generate the schema from the docker image and pull it from the logs. Then just remove the none JSON lines from the beginning and end of each file.
 
 In the repository root directory run:
 
@@ -18,9 +28,4 @@ docker stop $CONTAINER_ID;
 
 gsed -i '1,2d' ./.check-schema/zilla-schema.json;
 gsed -i '$d' ./.check-schema/zilla-schema.json;
-
 ```
-
-Once the docker container has printed "started" it must be deleted for the command to complete.
-
-Remove the none JSON lines from the beginning and end of each file.

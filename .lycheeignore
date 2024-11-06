@@ -3,13 +3,10 @@ fonts.googleapis.com
 fonts.gstatic.com
 github.com/.+/zilla-docs/edit
 docs.aklivity.io
+https://quickstart.aklivity.io
 www.linkedin.com/company/aklivity
 www.twitter.com/aklivityinc
 .+algolia.net
 amazonaws.com
 hub.docker.com
 .+\.name
-
-# These should be removed once the docsearch plugin is fixed
-.+/assets/style.+
-.+/assets/docsearch.+

@@ -42,6 +42,12 @@ pnpm i
 pnpm dev
 ```
 
+### Search
+
+This projects uses the free [Algolia Docsearch](https://docsearch.algolia.com/) tool to index the production site for all of the public versions. The crawler config is based on the recommended config from the [Docsearch Plugin](https://ecosystem.vuejs.press/plugins/search/docsearch.html).
+
+To see the current search index or crawler config login to the [Algolia Dashboard](https://dashboard.algolia.com/users/sign_in).
+
 ### Running Lints
 
 - Markdown linting
@@ -76,6 +82,14 @@ pnpm dev
 
   ```bash
   pnpm link-checker && lychee --exclude-mail --base="src/.vuepress/dist" src/.vuepress/dist
+  ```
+
+- Schema checking
+
+  You can automatically check the reference docs against the Zilla json schema. More instructions are in the [.check-schema/README.md]()
+
+  ```bash
+  pnpm check-schema > schema-edits.txt
   ```
 
 ### Reference docs Structure
@@ -113,20 +127,6 @@ parentArray:
 ```
 
 ## Section
-
-:::: note ToC
-
-- [topLevelProp\*](#toplevelprop)
-  - [topLevelProp.child\*](#toplevelprop-child)
-- [array](#array)
-- [parentArray](#parentarray)
-  - [parentArray\[\].child](#parentarray-child)
-
-::: right
-\* required
-:::
-
-::::
 
 ### topLevelProp\*
 
@@ -175,18 +175,6 @@ parentArray:
 
 Description.
 ````
-
-### Generate schema asset
-
-capture the output and delete the first and last lines
-
-```bash
-docker run -it --rm -e ZILLA_INCUBATOR_ENABLED=true ghcr.io/aklivity/zilla:latest start -v -Pzilla.engine.verbose.schema > src/.vuepress/public/assets/zilla-schema.json
-```
-
-```bash
-pnpm check-schema > schema-edits.txt
-```
 
 ## Provide feedback
 
