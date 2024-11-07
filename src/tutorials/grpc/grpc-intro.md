@@ -38,20 +38,20 @@ Create each of these files `zilla.yaml`, `docker-compose.yaml`, and `echo.proto`
 
 ### Run Zilla and Kafka
 
-```bash:no-line-numbers
+```bash
 docker-compose up --detach
 ```
 
 ### Send a greeting
 
-```bash:no-line-numbers
+```bash
 docker run -v ./echo.proto:/proto/echo.proto -it --rm fullstorydev/grpcurl \
 -plaintext -proto proto/echo.proto -d '{"message":"Hello World"}' host.docker.internal:7151 example.EchoService.EchoSimple
 ```
 
 ### Remove the running containers
 
-```bash:no-line-numbers
+```bash
 docker-compose down
 ```
 

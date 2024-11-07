@@ -4,20 +4,36 @@ This is the resource folder for the running the [MQTT Kafka broker guide](https:
 
 ## Running locally
 
-This example can be run using Docker compose or Kubernetes. The setup scripts are in the [compose](./docker/compose) and [helm](./k8s/helm) folders respectively and work the same way.
-
-You will need a running kafka broker. To start one locally you will find instructions in the [kafka.broker](../kafka.broker) folder. Alternatively you can use the [redpanda.broker](../redpanda.broker) folder.
+This quickstart runs using Docker compose.
 
 ### Setup
 
-Whether you chose [compose](./docker/compose) or [helm](./k8s/helm), the `setup.sh` script will:
+The `setup.sh` script will:
 
 - create the necessary kafka topics
 - create an MQTT broker at `mqtt://localhost:7183`
 
-```bash
-./setup.sh
-```
+- Setup with a bitnami Kafka cluster
+
+    ```bash
+    ./setup.sh
+    ```
+
+- Setup with a Redpanda cluster
+
+    ```bash
+    KAFKA_VENDOR_PROFILE=redpanda ./setup.sh
+    ```
+
+- alternatively with the plain docker compose command respectively
+
+    ```bash
+    docker compose --profile kafka --profile init-kafka up -d
+    ```
+
+    ```bash
+    KAFKA_VENDOR_PROFILE=redpanda docker compose --profile redpanda --profile init-redpanda up -d
+    ```
 
 ### Using this example
 

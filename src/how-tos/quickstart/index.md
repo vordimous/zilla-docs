@@ -50,7 +50,7 @@ Create a new message.
     type: http-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#rest_create -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#rest_create -->
 ```
 
 @tab Read:all
@@ -62,7 +62,7 @@ Fetch all messages on the topic.
     type: http-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#rest_retrieve_all -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#rest_retrieve_all -->
 ```
 
 @tab Read:key
@@ -74,7 +74,7 @@ Fetch one message by its key.
     type: http-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#rest_retrieve_id -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#rest_retrieve_id -->
 ```
 
 @tab Update
@@ -86,7 +86,7 @@ Update a message based on its key.
     type: http-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#rest_update -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#rest_update -->
 ```
 
 @tab Delete
@@ -98,7 +98,7 @@ Produce a blank message for a key.
     type: http-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#rest_delete -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#rest_delete -->
 ```
 
 @tab Stream:all
@@ -110,7 +110,7 @@ Stream all of the messages published on a Kafka topic.
     type: sse-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#sse_stream_all -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#sse_stream_all -->
 ```
 
 @tab Stream:key
@@ -122,7 +122,7 @@ Stream messages for a specific key published on a Kafka.
     type: sse-kafka
     kind: proxy
     routes:
-      <!-- @include: ./http-zilla.yaml#sse_stream_id -->
+      <!-- @include: ../../cookbooks/quickstart/http-zilla.yaml#sse_stream_id -->
 ```
 
 :::
@@ -130,7 +130,7 @@ Stream messages for a specific key published on a Kafka.
 ::: details Full HTTP Proxy zilla.yaml Config
 
 ```yaml
-<!-- @include: ./http-zilla.yaml -->
+<!-- @include: ../../cookbooks/quickstart/http-zilla.yaml -->
 ```
 
 :::
@@ -156,7 +156,7 @@ A Zilla MQTT broker is defined using three specific Kafka topics. The [messages]
 @tab MQTT broker
 
 ```yaml{10-12}
-<!-- @include: ./mqtt-zilla.yaml#mqtt_broker_mapping -->
+<!-- @include: ../../cookbooks/quickstart/mqtt-zilla.yaml#mqtt_broker_mapping -->
 ```
 
 :::
@@ -164,7 +164,7 @@ A Zilla MQTT broker is defined using three specific Kafka topics. The [messages]
 ::: details Full MQTT proxy zilla.yaml Config
 
 ```yaml
-<!-- @include: ./mqtt-zilla.yaml -->
+<!-- @include: ../../cookbooks/quickstart/mqtt-zilla.yaml -->
 ```
 
 :::
@@ -195,25 +195,25 @@ Zilla is routing all RouteGuide protobuf messages from any gRPC client to a gRPC
 @tab RouteGuide Server
 
 ```yaml{7,15,24,27-30}
-<!-- @include: ./grpc-zilla.yaml#route_guide_proto -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml#route_guide_proto -->
 ...
-<!-- @include: ./grpc-zilla.yaml#route_guide_service_definition -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml#route_guide_service_definition -->
 ...
-<!-- @include: ./grpc-zilla.yaml#route_guide_service_mapping -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml#route_guide_service_mapping -->
 ```
 
 @tab RouteGuide Remote Server
 
 ```yaml{9-11,14,21-22}
-<!-- @include: ./grpc-zilla.yaml#route_guide_interface -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml#route_guide_interface -->
 ...
-<!-- @include: ./grpc-zilla.yaml#route_guide_server -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml#route_guide_server -->
 ```
 
 @tab route_guide.proto
 
 ```protobuf{18,26,32,38}
-<!-- @include: ./route_guide.proto -->
+<!-- @include: ../../cookbooks/quickstart/proto/route_guide.proto -->
 ```
 
 :::
@@ -221,7 +221,7 @@ Zilla is routing all RouteGuide protobuf messages from any gRPC client to a gRPC
 ::: details Full gRPC proxy zilla.yaml Config
 
 ```yaml
-<!-- @include: ./grpc-zilla.yaml -->
+<!-- @include: ../../cookbooks/quickstart/grpc-zilla.yaml -->
 ```
 
 :::
@@ -232,11 +232,15 @@ Zilla is routing all RouteGuide protobuf messages from any gRPC client to a gRPC
 
 ## Run the Quickstart locally
 
-You can see all of the features in the hosted Quickstart running locally. Download and run the Zilla [Quickstart](https://github.com/aklivity/zilla-examples/tree/main/quickstart). This [startup.sh](https://github.com/aklivity/zilla-examples/releases/latest/download/startup.sh) script will start Zilla and everything you need.
+Download and run the Zilla `quickstart` cookbook using this install script. It will start Zilla and everything you need for this guide.
 
-```bash:no-line-numbers
+```bash
 wget -qO- https://raw.githubusercontent.com/aklivity/zilla-examples/main/startup.sh | sh -
 ```
+
+::: note
+Alternatively, download [quickstart](https://github.com/aklivity/zilla-docs/releases/latest/download/quickstart.tar.gz) and follow the `README` yourself.
+:::
 
 The key components this script will setup:
 

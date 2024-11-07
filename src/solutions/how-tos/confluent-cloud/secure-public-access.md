@@ -312,7 +312,7 @@ They each have an IAM Role name starting with `aklivity-zilla-proxy`.
 
 Find the `Public IPv4 Address` and then SSH into the instance.
 
-```bash:no-line-numbers
+```bash
 ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 ```
 
@@ -324,7 +324,7 @@ After logging in via SSH, check the status of the `zilla-plus` system service.
 
 Verify that the `zilla-plus` service is active and logging output similar to that shown below.
 
-```bash:no-line-numbers
+```bash
 systemctl status zilla-plus.service
 ```
 
@@ -338,7 +338,7 @@ zilla-plus.service - Zilla Plus
 
 Check for the active ports with `netstat`.
 
-```bash:no-line-numbers
+```bash
 netstat -ntlp
 ```
 
@@ -350,7 +350,7 @@ tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin
 
 You can get an stdout dump of the `zilla-plus.service` using `journalctl`.
 
-```bash:no-line-numbers
+```bash
 journalctl -e -u zilla-plus.service | tee -a /tmp/zilla.log
 ```
 
@@ -363,7 +363,7 @@ systemd[1]: Started zilla-plus.service - Zilla Plus.
 
 All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
 
-```bash:no-line-numbers
+```bash
 cat /var/log/cloud-init-output.log
 ```
 
@@ -381,7 +381,7 @@ Check the networking of the <ZillaPlus/> proxy instances to confluent cloud.
 
 Verify that the instance can resolve the private Route53 DNS address.
 
-```bash:no-line-numbers
+```bash
 nslookup <Cluster ID>.<Region>.aws.private.confluent.cloud
 ```
 
@@ -398,7 +398,7 @@ Address: ***
 
 Check the communication over necessary ports with `netcat`.
 
-```bash:no-line-numbers
+```bash
 nc -vz <Cluster ID>.<Region>.aws.private.confluent.cloud 9092
 ```
 
@@ -461,7 +461,7 @@ Replace these TLS bootstrap server names accordingly for your own custom wildcar
 
 Use the Kafka client to create a topic called `zilla-proxy-test`, replacing `<tls-bootstrap-server-names>` in the command below with the TLS proxy names of your <ZillaPlus/> proxy:
 
-```bash:no-line-numbers
+```bash
 bin/kafka-topics.sh \
 --create \
 --topic zilla-plus-test \
@@ -486,7 +486,7 @@ bin/kafka-topics.sh \
 
 Publish two messages to the newly created topic via the following producer command:
 
-```bash:no-line-numbers
+```bash
 bin/kafka-console-producer.sh \
 --topic zilla-plus-test \
 --producer.config confluent.properties \
@@ -504,7 +504,7 @@ A prompt will appear for you to type in the messages:
 
 Read these messages back via the following consumer command:
 
-```bash:no-line-numbers
+```bash
 bin/kafka-console-consumer.sh \
 --topic zilla-plus-test \
 --from-beginning \

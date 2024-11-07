@@ -4,13 +4,13 @@ To verify that we have successfully enabled public internet connectivity to our 
 
 First, we must install a Java runtime that can be used by the Kafka client.
 
-```bash:no-line-numbers
+```bash
 sudo yum install java-1.8.0
 ```
 
 Now we are ready to install the Kafka client:
 
-```bash:no-line-numbers
+```bash
 wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
 cd kafka_2.13-2.8.0

@@ -30,16 +30,22 @@ The `setup.sh` script will:
 - alternatively with the plain docker compose command respectively
 
     ```bash
-    docker compose --profile bitnami --profile init-bitnami up -d
+    docker compose --profile kafka --profile init-kafka up -d
     ```
 
     ```bash
-    docker compose --profile redpanda --profile init-redpanda up -d
+    KAFKA_VENDOR_PROFILE=redpanda docker compose --profile redpanda --profile init-redpanda up -d
     ```
 
 ### Using this quickstart
 
 You can interact with this quickstart using our [Postman collection](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview)
+
+### Generate combined zilla.yaml
+
+```bash
+yq '.' *-zilla.yaml > zilla.yaml
+```
 
 ### Teardown
 

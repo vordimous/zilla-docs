@@ -31,13 +31,13 @@ The Zilla Manager command line interface uses the [Zilla Manager Configuration](
 
 The `zpm help` command shows help information about available commands, or more information for a specific command.
 
-```bash:no-line-numbers
+```bash
 zpm help [command]
 ```
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zpmw help install
 ```
 
@@ -47,7 +47,7 @@ The `zpm clean` command removes files from its `.zpm/` output directory.
 
 Optionally, only the files necessary to execute the [Zilla Runtime](../config/zilla-cli.md) are kept intact, leaving a minimal installation footprint for deployment.
 
-```bash:no-line-numbers
+```bash
 zpm clean
 ```
 
@@ -59,7 +59,7 @@ Clean up everything except runtime image
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zpmw clean --keep-image
 ```
 
@@ -71,13 +71,13 @@ When Maven repositories requiring authorization are listed in [Zilla Manager Con
 
 If a master secret does not already exist, it is generated in [Zilla Manager Security](./overview.md#security.json).
 
-```bash:no-line-numbers
+```bash
 zpm encrypt
 ```
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zpmw encrypt
 ```
 
@@ -87,7 +87,7 @@ Enter a password to `zpmw encrypt` via standard input, then the base64-encoded e
 
 The `zpm install` command resolves the [Zilla Manager Configuration](./overview.md) to create a runtime with minimal dependencies, generating the `zilla` runtime executable.
 
-```bash:no-line-numbers
+```bash
 zpm install
 ```
 
@@ -107,7 +107,7 @@ Exclude remote Maven repositories when resolving dependencies
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zpmw install
 ```
 
@@ -117,7 +117,7 @@ The `zpm wrap` command generates an executable `zpmw` wrapper script that automa
 
 This approach avoids the need to manually install `zpm` and allows greater control over the version of `zpm` being used.
 
-```bash:no-line-numbers
+```bash
 zpm wrap
 ```
 
@@ -139,7 +139,7 @@ Require `zpm` wrapper to use `<version>`
 
 Example:
 
-```bash:no-line-numbers
+```bash
 ./zpmw wrap --version 0.9.8
 ```
 
