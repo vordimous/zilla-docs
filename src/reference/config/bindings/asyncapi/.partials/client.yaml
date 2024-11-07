@@ -1,0 +1,14 @@
+  asyncapi_client:
+    type: asyncapi
+    kind: client
+    options:
+      specs:
+        my-kafka-api-spec:
+          catalog:
+            my_catalog:
+              subject: petstore
+              version: latest
+      tcp:
+        host: localhost
+        port:
+          - 9092

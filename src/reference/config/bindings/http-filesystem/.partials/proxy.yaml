@@ -1,0 +1,9 @@
+  http_filesystem_proxy:
+    type: http-filesystem
+    kind: proxy
+    routes:
+      - when:
+          - path: /{path}
+        exit: filesystem_server
+        with:
+          path: ${params.path}

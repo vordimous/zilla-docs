@@ -1,4 +1,8 @@
 / /zilla/latest 302
-/zilla /zilla/latest 302
-/zilla/ /zilla/latest 302
-/zilla/latest/library /zilla/latest 302
+/zilla /zilla/latest 301
+/zilla/ /zilla/latest 301
+
+/zilla/latest/library /zilla/latest 301
+/zilla/:version/concepts/kafka-proxies/secure-public-access /zilla/:version/solutions/concepts/kafka-proxies/secure-public-access 301
+/zilla/:version/how-tos/amazon-msk/secure-public-access/* /zilla/:version/solutions/how-tos/amazon-msk/secure-public-access/:splat 301
+/zilla/:version/how-tos/confluent-cloud/secure-public-access /zilla/:version/solutions/how-tos/confluent-cloud/secure-public-access 301

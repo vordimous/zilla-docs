@@ -1,0 +1,22 @@
+  mqtt_server:
+    type: mqtt
+    kind: server
+    options:
+      authorization:
+        my_jwt_guard:
+          credentials:
+            connect:
+              username: Bearer {credentials}
+      versions:
+        - v5
+        - v3.1.1
+    routes:
+      - when:
+          - session:
+              - client-id: "*"
+          - publish:
+              - topic: command/one
+              - topic: command/two
+          - subscribe:
+              - topic: reply
+    exit: mqtt_kafka_proxy

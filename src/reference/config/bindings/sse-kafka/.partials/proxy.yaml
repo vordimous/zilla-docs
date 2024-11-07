@@ -1,0 +1,11 @@
+  sse_kafka_proxy:
+    type: sse-kafka
+    kind: proxy
+    routes:
+      - when:
+          - path: /items
+        exit: kafka_cache_client
+        with:
+          topic: items-snapshots
+          event:
+            id: '["${base64(key)}","${etag}"]'

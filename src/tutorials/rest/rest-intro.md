@@ -6,7 +6,12 @@ description: Running these Zilla samples will implement a simple CRUD API featur
 
 Get started with Zilla by deploying our Docker Compose stack. Before proceeding, you should have [Docker Compose](https://docs.docker.com/compose/gettingstarted/) installed.
 
-Running this Zilla sample will create a simple API to create and list items. All of the data will be stored on a Kafka topic.
+Running this Zilla sample will create a simple API using the [Zilla REST Kafka proxy](../../concepts/kafka-proxies/http-proxy.md) to expose common entity CRUD endpoints with the entity data being stored on Kafka topics. Leveraging Kafka's `cleanup.policy=compact` feature, Zilla enables a standard REST backend architecture with Kafka as the storage layer. Adding an `Idempotency-Key` header during creation will set the message `key` and act as the `ID` for the record. A UUID is generated if no key is sent.
+
+- **GET** - Fetches all items on the topic or Fetch one item by its key using `/:key`.
+- **POST** - Create a new item with the `Idempotency-Key` header setting the key.
+- **PUT** - Update an item based on its key using `/:key`.
+- **DELETE** - Delete an item based on its key using `/:key`.
 
 ## Setup
 
@@ -16,7 +21,7 @@ Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same director
 
 @tab zilla.yaml
 
-```yaml {28,32-33,35,39-40}
+```yaml {27,31-33,35,39-40}
 <!-- @include: ./zilla.yaml -->
 ```
 
@@ -30,19 +35,19 @@ Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same director
 
 ## Run Zilla and Kafka
 
-```bash:no-line-numbers
-docker-compose up -d
+```bash
+docker-compose up --detach
 ```
 
 ## Use `curl` to send a greeting
 
-```bash:no-line-numbers
-curl -X POST http://localhost:7114/items -H 'Content-Type: application/json' -d '{"greeting":"Hello, world"}'
+```bash
+curl -X POST http://localhost:7114/items -H 'Content-Type: application/json' -H 'Idempotency-Key: 1234' -d '{"greeting":"Hello, world"}'
 ```
 
 ## Use `curl` to list all of the greetings
 
-```bash:no-line-numbers
+```bash
 curl http://localhost:7114/items
 ```
 
@@ -52,7 +57,7 @@ curl http://localhost:7114/items
 
 ## Remove the running containers
 
-```bash:no-line-numbers
+```bash
 docker-compose down
 ```
 

@@ -1,0 +1,14 @@
+  grpc_server:
+    type: grpc
+    kind: server
+    catalog:
+      host_filesystem:
+        - subject: echo
+    routes:
+      - when:
+          - method: example.EchoService/*
+            metadata:
+              custom-text: custom value
+              custom-binary:
+                base64: Y3VzdG9tIHZhbHVl
+        exit: echo_server

@@ -1,36 +1,47 @@
 {
   "name": "zilla-docs",
-  "version": "0.8.0",
+  "type": "module",
+  "version": "0.0.0",
   "description": "The official documentation for the aklivity/zilla open-source project",
   "keywords": [],
   "author": "aklivity.io",
   "license": "ISC",
   "engines": {
-    "node": ">=14",
-    "pnpm": ">=7"
+    "node": ">=18",
+    "pnpm": ">=9"
   },
   "scripts": {
-    "info": "vuepress info",
-    "build": "vuepress build src",
-    "clean-dev": "vuepress dev src --clean-cache --debug",
-    "dev": "vuepress dev src",
-    "update-package": "pnpm dlx vp-update",
+    "info": "vuepress-vite info",
+    "build": "vuepress-vite build src",
+    "clean-dev": "vuepress-vite dev src --clean-cache",
+    "dev": "vuepress-vite dev src",
+    "update-package": "pnpm add -g pnpm && pnpm dlx vp-update",
     "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
-    "lint-fix": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
-    "link-checker": "pnpm build && link-checker src/.vuepress/dist"
+    "lint-fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\" \"#.config\" \"#.check-schema\"",
+    "link-checker": "pnpm build && link-checker src/.vuepress/dist",
+    "install-check-schema": "cd ./.check-schema && pnpm install",
+    "check-schema": "node ./.check-schema"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-rc.0",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.0",
-    "@vuepress/plugin-google-analytics": "2.0.0-rc.0",
-    "@vuepress/plugin-register-components": "2.0.0-rc.0",
-    "@vuepress/utils": "2.0.0-rc.0",
+    "@vuepress/bundler-vite": "2.0.0-rc.17",
+    "@vuepress/plugin-catalog": "2.0.0-rc.52",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.52",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-hint": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-image": "2.0.0-rc.52",
+    "@vuepress/plugin-markdown-tab": "2.0.0-rc.52",
+    "@vuepress/plugin-redirect": "2.0.0-rc.52",
+    "@vuepress/plugin-register-components": "2.0.0-rc.52",
+    "@vuepress/plugin-shiki": "2.0.0-rc.52",
     "link-checker": "^1.4.2",
     "markdownlint-cli2": "^0.8.1",
     "mathjax-full": "^3.2.2",
-    "vue": "^3.4.7",
-    "vuepress": "2.0.0-rc.0",
-    "vuepress-theme-hope": "2.0.0-rc.11"
+    "mermaid": "^10.9.1",
+    "sass-embedded": "^1.79.4",
+    "sass-embedded-darwin-arm64": "^1.79.4",
+    "vue": "^3.5.10",
+    "vuepress": "2.0.0-rc.17",
+    "vuepress-theme-hope": "2.0.0-rc.58"
   },
   "pnpm": {
     "overrides": {

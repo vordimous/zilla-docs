@@ -9,3 +9,7 @@ www.twitter.com/aklivityinc
 amazonaws.com
 hub.docker.com
 .+\.name
+
+# These should be removed once the docsearch plugin is fixed
+.+/assets/style.+
+.+/assets/docsearch.+

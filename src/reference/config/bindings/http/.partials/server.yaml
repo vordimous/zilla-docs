@@ -1,0 +1,17 @@
+  http_server:
+    type: http
+    kind: server
+    options:
+      access-control:
+        policy: cross-origin
+      authorization:
+        my_jwt_guard:
+          credentials:
+            headers:
+              authorization: Bearer {credentials}
+    routes:
+      - when:
+          - headers:
+              ":scheme": https
+              ":authority": example.com:443
+        exit: echo_server

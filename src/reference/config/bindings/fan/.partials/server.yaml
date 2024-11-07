@@ -1,0 +1,4 @@
+  fan_server:
+    type: fan
+    kind: server
+    exit: echo_server

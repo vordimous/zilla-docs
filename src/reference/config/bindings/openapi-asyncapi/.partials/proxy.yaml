@@ -1,0 +1,23 @@
+  openapi_asyncapi_proxy:
+    type: openapi-asyncapi
+    kind: proxy
+    options:
+      specs:
+        openapi:
+          my-openapi-spec:
+            catalog:
+              my_catalog:
+                subject: petstore
+                version: latest
+        asyncapi:
+          my-asyncapi-spec:
+            catalog:
+                my_catalog:
+                  subject: petstore
+                  version: latest
+    routes:
+      - when:
+          - api-id: my-openapi-spec
+        exit: asyncapi_client
+        with:
+          api-id: my-asyncapi-spec

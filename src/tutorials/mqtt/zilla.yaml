@@ -1,7 +1,6 @@
 name: MQTT-intro
 bindings:
-
-# Proxy service entrypoint
+  # Proxy service entrypoint
   north_tcp_server:
     type: tcp
     kind: server
@@ -10,13 +9,13 @@ bindings:
       port: 7183
     exit: north_mqtt_server
 
-# MQTT Broker With an exit to Kafka
+  # MQTT Broker With an exit to Kafka
   north_mqtt_server:
     type: mqtt
     kind: server
     exit: north_mqtt_kafka_mapping
 
-# Proxy MQTT messages to Kafka
+  # Proxy MQTT messages to Kafka
   north_mqtt_kafka_mapping:
     type: mqtt-kafka
     kind: proxy
@@ -27,7 +26,7 @@ bindings:
         retained: mqtt-retained
     exit: north_kafka_cache_client
 
-# Kafka sync layer
+  # Kafka sync layer
   north_kafka_cache_client:
     type: kafka
     kind: cache_client
@@ -41,17 +40,19 @@ bindings:
         - mqtt-retained
     exit: south_kafka_client
 
-# Connect to local Kafka
+  # Connect to Kafka
   south_kafka_client:
     type: kafka
     kind: client
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
     exit: south_kafka_tcp_client
   south_kafka_tcp_client:
     type: tcp
     kind: client
-    options:
-      host: ${{env.KAFKA_HOST}}
-      port: ${{env.KAFKA_PORT}}
-    routes:
-      - when:
-          - cidr: 0.0.0.0/0
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

@@ -1,0 +1,13 @@
+  openapi_server:
+    type: openapi
+    kind: server
+    options:
+      specs:
+        petstore:
+          servers:
+            - url: http://localhost:9090
+          catalog:
+            my_catalog:
+              subject: petstore
+              version: latest
+    exit: openapi_client

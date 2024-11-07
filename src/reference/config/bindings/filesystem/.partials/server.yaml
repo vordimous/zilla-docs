@@ -1,0 +1,6 @@
+  filesystem_server:
+    type: filesystem
+    kind: server
+    options:
+      location: web/
+      simlinks: follow

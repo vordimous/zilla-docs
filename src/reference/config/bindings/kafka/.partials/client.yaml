@@ -1,0 +1,10 @@
+  kafka_client:
+    type: kafka
+    kind: client
+    options:
+      servers:
+        - ${{env.KAFKA_BOOTSTRAP_SERVER}}
+      sasl:
+        mechanism: scram-sha-256
+        username: ${{env.SASL_USERNAME}}
+        password: ${{env.SASL_PASSWORD}}

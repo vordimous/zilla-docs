@@ -67,3 +67,8 @@ bindings:
     options:
       host: ${{env.SSE_SERVER_HOST}}
       port: ${{env.SSE_SERVER_PORT}}
+
+telemetry:
+  exporters:
+    stdout_logs_exporter:
+      type: stdout

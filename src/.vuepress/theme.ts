@@ -1,14 +1,24 @@
+import { getDirname, path } from "vuepress/utils";
 import { hopeTheme } from "vuepress-theme-hope";
 import { enSidebar } from "./sidebar/index.js";
 import { enNavbar } from "./navbar/index.js";
-import { base, siteBase, versionKey, hostnameSEO, docsRepo, docsBranch } from "./env.js";
+import {
+  base,
+  siteBase,
+  versionKey,
+  hostnameSEO,
+  docsRepo,
+  docsBranch,
+} from "./env.js";
+
+const __dirname = getDirname(import.meta.url);
 
 export default hopeTheme({
   hostname: hostnameSEO,
-  logo: "/logo.png",
-  logoDark: "/logo-dark.png",
+  logo: "/logo.webp",
+  logoDark: "/logo-dark.webp",
   iconAssets: ["fontawesome-with-brands"],
-  favicon: "favicon.ico",
+  favicon: "/favicon.ico",
 
   repo: "aklivity/zilla",
   editLink: true,
@@ -35,7 +45,7 @@ export default hopeTheme({
 
       displayFooter: true,
       footer: `<span style="display:flex;align-items:center"><a href="https://www.aklivity.io"><img class="logo" alt="aklivity"></a> <a href="https://github.com/aklivity/zilla"><i class="fa-brands fa-github" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.linkedin.com/company/aklivity/"><i class="fa-brands fa-linkedin" style="font-size:22px;padding-right:6px"></i></a> <a href="https://www.aklivity.io/slack"><i class="fa-brands fa-slack" style="font-size:25px;padding-right:6px"></i></a> <a href="https://www.twitter.com/aklivityinc"><i class="fa-brands fa-twitter" style="font-size:22px"></i></a></span>`,
-      copyright: "© aklivity, inc. 2022-2023",
+      copyright: "© aklivity, inc. 2023-2024",
 
       metaLocales: {
         editLink: "Edit this page on GitHub",
@@ -44,7 +54,16 @@ export default hopeTheme({
   },
 
   plugins: {
+    catalog: {
+      level: 1,
+      locales: {
+        "/": {
+          title: "Appendix",
+        },
+      },
+    },
     docsearch: {
+      disableUserPersonalization: true,
       appId: "H6RNUBSB6E",
       indexName: "aklivity",
       apiKey: "bae72797404a23ba5466230146919cae",
@@ -53,24 +72,47 @@ export default hopeTheme({
         facetFilters: [`version:${versionKey}`, `product:${siteBase}`],
       },
     },
-    autoCatalog: {
-      level: 1
+    shiki: {
+      themes: {
+        light: "light-plus",
+        dark: "dark-plus",
+      },
+      lineNumbers: 3
     },
+    redirect: true,
     mdEnhance: {
       align: true,
       attrs: true,
       chart: false,
-      codetabs: true,
       component: false,
-      hint: true,
-      figure: true,
-      imgLazyload: true,
-      imgSize: true,
-      include: true,
+      include: {
+        resolvePath: (file) => {
+          path.resolve(file);
+          if (file.startsWith("@partials"))
+            return file.replace(
+              "@partials",
+              path.resolve(__dirname, "../solutions/_partials")
+            );
+          return file;
+        },
+      },
       mark: true,
-      tabs: true,
-      gfm: true,
+      mermaid: true,
       linkify: false,
+    },
+    markdownTab: {
+      codeTabs: true,
+      tabs: true,
+    },
+    markdownImage: {
+      figure: true,
+      lazyload: true,
+      mark: true,
+      size: true,
+    },
+    markdownHint: {
+      hint: true,
+      alert: true,
     },
   },
 });

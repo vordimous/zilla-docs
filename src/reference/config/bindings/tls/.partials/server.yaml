@@ -1,0 +1,16 @@
+  tls_server:
+    type: tls
+    kind: server
+    vault: server
+    exit: default_server
+    options:
+      keys:
+        - localhost
+      sni:
+        - localhost
+      alpn:
+        - echo
+    routes:
+      - when:
+          - alpn: echo
+        exit: echo_server

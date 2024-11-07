@@ -1,0 +1,5 @@
+### vault
+
+> `string`
+
+Vault name.

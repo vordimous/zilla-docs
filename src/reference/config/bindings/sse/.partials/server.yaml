@@ -1,0 +1,4 @@
+  sse_server:
+    type: sse
+    kind: server
+    exit: sse_kafka_proxy

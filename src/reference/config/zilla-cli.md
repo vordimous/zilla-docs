@@ -1,5 +1,4 @@
 ---
-order: 2
 category:
   - CLI
 description: The command line interface to control the Zilla runtime.
@@ -17,16 +16,17 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
   - [-i --install `<plugin-directory>`](#i-install-plugin-directory)
   - [-v --verbose](#v-verbose)
   - [-w --write `<output>`](#w-write-output)
-- [zilla generate](#zilla-generate)
-  - [-t --template `<template>`](#t-template-template)
-  - [-i --input `<input-file>`](#i-input-input-file)
-  - [-o --output `<output-file>`](#o-output-output-file)
 - [zilla help](#zilla-help)
+- [zilla version](#zilla-version)
 - [zilla metrics](#zilla-metrics)
   - [--namespace `<namespace>`](#namespace-namespace)
 - [zilla start](#zilla-start)
-  - [-v --verbose](#v-verbose)
-  - [--workers](#workers)
+  - [-c --config](#c-config)
+  - [-e --exception-traces](#e-exception-traces)
+  - [-p --properties](#p-properties)
+  - [-P --property](#p-property)
+  - [-v --verbose](#v-verbose-1)
+  - [-w --workers](#w-workers)
 - [zilla stop](#zilla-stop)
 - [zilla tune](#zilla-tune)
 
@@ -36,8 +36,8 @@ The Zilla Runtime command line interface uses the [Zilla Runtime Configuration](
 
 ### zilla dump
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla dump` command creates a `pcap` file that can be opened in Wireshark. Using the Zilla dissector plugin, Wireshark shows detailed information about the internal state of the current Zilla instance.
@@ -56,20 +56,21 @@ Install the dissector plugin `zilla.lua` to the plugin directory of Wireshark. T
 
 To find the Wireshark plugin directory navigate the menu: About Wireshark -> Folders -> Personal Lua Plugins; or use this command:
 
-```bash:no-line-numbers
+```bash
 tshark -G folders | grep "Personal Lua Plugins"
 ```
 
 To find out the plugin version navigate the menu: About Wireshark -> Plugins -> search: zilla; or use this command:
 
-```bash:no-line-numbers
+```bash
 tshark -G plugins | grep zilla
 ```
 
 You may need to reload Lua plugins from the menu: Analyze -> Reload Lua Plugins or with the keyboard shortcut (Command+Shift+L or Ctrl+Shift+L).
 
 Example:
-```bash:no-line-numbers
+
+```bash
 ./zilla dump -v -w zilla.pcap -i ~/.local/lib/wireshark/plugins
 ```
 
@@ -79,76 +80,51 @@ Show verbose output
 
 #### -w --write `<output>`
 
-Write the `pcap` output to this file. 
+Write the `pcap` output to this file.
 
 Example:
-```bash:no-line-numbers
+
+```bash
 ./zilla dump -v -w zilla.pcap
-```
-
-### zilla generate
-
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
-:::
-
-The `zilla generate` command generates a zilla configuration file from an OpenAPI or AsyncAPI service definition.
-
-The command currently has templates for the following common scenarios:
-
-- `openapi.http.proxy` - create an http proxy config based on an OpenAPI service definition
-- `asyncapi.http.proxy` - create an http proxy config based on an AsyncAPI service definition
-- `asyncapi.mqtt.proxy` - create an mqtt proxy config based on an AsyncAPI service definition
-
-You have to specify which template to use, the OpenAPI/AsyncAPI service definition as the input file and the output file name you want the generated zilla config to be saved.
-
-```bash:no-line-numbers
-zilla generate -t <template> -i <input-file> -o <output-file>
-```
-
-#### -t --template `<template>`
-
-The template to use for the config generation.
-
-#### -i --input `<input-file>`
-
-The OpenAPI/AsyncAPI service definition.
-
-#### -o --output `<output-file>`
-
-The file name you want the generated zilla config to be saved.
-
-Example:
-
-```bash:no-line-numbers
-./zilla generate -t asyncapi.http.proxy -i my-asyncapi-service.yaml -o zilla.yaml
 ```
 
 ### zilla help
 
 The `zilla help` command shows help information about available commands, or more information for a specific command.
 
-```bash:no-line-numbers
+```bash
 zilla help [command]
 ```
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zilla help start
+```
+
+### zilla version
+
+The `zilla version` command prints the version information of Zilla.
+
+```bash
+zilla version
+```
+
+```output:no-line-numbers
+zilla version 0.9.85
 ```
 
 ### zilla metrics
 
 The `zilla metrics` command provides metrics for each binding in the configuration.
 
-```bash:no-line-numbers
+```bash
 zilla metrics
 ```
 
 Optionally specify a binding name to output metrics for that binding only.
 
-```bash:no-line-numbers
+```bash
 zilla metrics [binding-name]
 ```
 
@@ -158,7 +134,7 @@ Filters bindings by namespace
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zilla metrics echo_server
 ```
 
@@ -178,18 +154,8 @@ example      echo_server    stream.errors.sent            0
 
 The `zilla start` command resolves the [Zilla Runtime Configuration](./overview.md) in a `zilla.yaml` to start the runtime engine.
 
-```bash:no-line-numbers
-zilla start
-```
-
-> started
-
-#### -v --verbose
-
-Show verbose output
-
-```bash:no-line-numbers
-zilla start -v
+```bash
+zilla start -ve
 ```
 
 ```output:no-line-numbers
@@ -210,17 +176,77 @@ bindings:
 started
 ```
 
-#### --workers
+#### -c --config
 
-> Defaults to # CPU cores available
+> `string`
 
-Worker count
+Set the path to the local `zilla.yaml` configuration file or remote URI.
+
+```bash
+zilla start -c ./path/to/zilla.yaml
+```
+
+```bash
+zilla start -c http://example.com/zilla.yaml
+```
+
+#### -e --exception-traces
+
+> `flag`
+
+Log exception traces to `stdout`.
+
+```bash
+zilla start -e
+```
+
+#### -p --properties
+
+> `string`
+
+Set Zilla properties via a file.
+
+```bash
+zilla start -p /path/to/zilla.properties
+```
+
+#### -P --property
+
+> `name=value`
+
+Set individual Zilla properties.
+
+```bash
+zilla start -P zilla.engine.prop=value -P zilla.other.thing=value
+```
+
+<!-- markdownlint-disable MD024 -->
+#### -v --verbose
+
+> `flag`
+
+Log verbose output to `stdout`.
+
+```bash
+zilla start -v
+```
+<!-- markdownlint-enable MD024 -->
+
+#### -w --workers
+
+> `integer` | Default: CPU cores
+
+Set the Worker count in Zilla. Defaults to the number of CPU cores available.
+
+```bash
+zilla start -w 2
+```
 
 ### zilla stop
 
 The `zilla stop` command signals the runtime engine to stop.
 
-```bash:no-line-numbers
+```bash
 zilla stop
 ```
 
@@ -228,17 +254,17 @@ zilla stop
 
 ### zilla tune
 
-::: info Feature Coming Soon <HopeIcon icon="fas fa-circle-right"/>
-This is currently on the [Zilla roadmap](https://github.com/orgs/aklivity/projects/4). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+::: important Feature is in Incubator
+Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.
 
-```bash:no-line-numbers
+```bash
 zilla tune [NAME=VALUE]
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune
 ```
 
@@ -247,7 +273,7 @@ xxxx  example.tcp
 xxxx  example.echo
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune example.echo=2
 ```
 
@@ -255,7 +281,7 @@ xxxx  example.echo
 ..x.  example.echo
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune
 ```
 

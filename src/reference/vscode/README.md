@@ -1,6 +1,6 @@
 # VS Code extension
 
-The Zilla Visual Studio Code extension enables you to manage your Zilla.yaml config files easily in VS Code.
+The Zilla Visual Studio Code extension enables you to manage your Zilla config files easily in VS Code.
 
 ## Introduction
 
@@ -26,7 +26,7 @@ The Zilla extension can be installed on vscode.dev for those users who don't hav
 
 - Go to [vscode.dev/github/aklivity/zilla-examples](https://vscode.dev/github/aklivity/zilla-examples) to open the `zilla-examples` repo in the browser.
 - Sign in to GitHub.
-- The Zilla extension will be in the `recommended extenstions` section.
+- The Zilla extension will be in the `recommended extensions` section.
 - Now you can open any of the `zilla.yaml` files from the examples.
 
 ![vscode.dev](./online_extension.png)
