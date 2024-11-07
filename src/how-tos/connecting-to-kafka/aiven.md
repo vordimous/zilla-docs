@@ -109,4 +109,4 @@ bindings:
 SNI adds the domain name to the TLS handshake process so that the Zilla process reaches the right domain name and receives the correct SSL certificate.
 :::
 
-To test the above config you can use it to add or replace the necessary bindings in the [http.kafka.sasl.scram example](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sasl.scram).
+To test the above config you can use it to add or replace the necessary bindings in the [http.kafka.sasl.scram](https://github.com/aklivity/zilla-docs/releases/latest/download/http.kafka.sasl.scram.tar.gz) cookbook.

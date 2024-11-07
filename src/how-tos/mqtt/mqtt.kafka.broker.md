@@ -50,9 +50,9 @@ Run the docker command under the `Verify the Kafka topics created` section of th
 
 ```output:no-line-numbers
 mqtt-messages
-mqtt-devices cleanup.policy=compact
-mqtt-retained cleanup.policy=compact
-mqtt-sessions cleanup.policy=compact
+mqtt-devices
+mqtt-retained
+mqtt-sessions
 ```
 
 ### Listen for messages

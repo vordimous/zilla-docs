@@ -78,8 +78,10 @@ http_response_size_bytes_sum{namespace="Metrics-example",binding="http_server"} 
 
 Try out the other [Zilla examples](https://github.com/aklivity/zilla-examples).
 
+Check out our other guides:
+
 - [Push to an OTLP Collector](../../how-tos/telemetry/opentelemetry-protocol.md)
-- [kubernetes.prometheus.autoscale](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale)
+- [Autoscaling on K8s](../../how-tos/deploy-operate/autoscale-k8s.md)
 
 ## Clean up
 

@@ -73,5 +73,4 @@ Try out more HTTP Kafka examples:
 - [http.kafka.cache](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.cache)
 - [http.kafka.crud](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.crud)
 - [http.kafka.oneway](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.oneway)
-- [http.kafka.sasl.scram](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sasl.scram)
 - [http.kafka.sync](https://github.com/aklivity/zilla-examples/tree/main/http.kafka.sync)
