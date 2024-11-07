@@ -20,7 +20,7 @@ Note the ARN of the private certificate authority.
 
 We need to create a new key that will be used with the certificate, and store the key in `pkcs8` format. In this example we will be creating the key for a wildcard certificate with `*.aklivity.example.com` as the common name.
 
-```bash:no-line-numbers
+```bash
 openssl genrsa -out wildcard.aklivity.example.com.key.pem 4096
 openssl pkcs8 -topk8 -nocrypt -in wildcard.aklivity.example.com.key.pem -out wildcard.aklivity.example.com.pkcs8.pem
 ```
@@ -29,7 +29,7 @@ openssl pkcs8 -topk8 -nocrypt -in wildcard.aklivity.example.com.key.pem -out wil
 
 Next we need to create a certificate corresponding to the key, with metadata about the owner of the certificate and the common name. This is done by first creating a certificate signing request.
 
-```bash:no-line-numbers
+```bash
 openssl req -new -key wildcard.aklivity.example.com.key.pem -out wildcard.aklivity.example.com.csr
 ```
 
@@ -65,7 +65,7 @@ Now that the certificate signing request has been prepared, it can be used to is
 
 In this example, we issue the certificate to be valid for `365 days`. You should choose a validity period that best suits your specific use case.
 
-```bash:no-line-numbers
+```bash
 aws acm-pca issue-certificate \
 --region us-east-1 \
 --certificate-authority-arn <private-certificate-authority-arn> \
@@ -99,7 +99,7 @@ make sure that you have retrieved and set [your AWS credentials](https://aws.ama
 
 Now we need to create the secret value using the `pkcs8` encoded private key as the secret value and with secret tags `certificate-authority-arn` referencing the private certificate authority, and `certificate-arn` referencing the newly signed certificate.
 
-```bash:no-line-numbers
+```bash
 aws secretsmanager create-secret \
 --region us-east-1 \
 --name "wildcard.aklivity.example.com" \

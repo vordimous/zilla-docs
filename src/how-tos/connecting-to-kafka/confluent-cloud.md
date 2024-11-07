@@ -21,7 +21,7 @@ Confluent Cloud is exposed over `SASL_SSL` authentication protocols and the `Con
 
 Before we proceed further let's use the below command to verify connectivity to your Kafka.
 
-```bash:no-line-numbers
+```bash
 kcat -b $KAFKA_BOOTSTRAP_SERVER \
 -X security.protocol=sasl_ssl -X sasl.mechanisms=PLAIN \
 -X sasl.username=$KAFKA_API_KEY -X sasl.password=$KAFKA_API_SECRET \

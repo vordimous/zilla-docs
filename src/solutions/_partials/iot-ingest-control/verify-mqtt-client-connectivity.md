@@ -14,7 +14,7 @@ Replace these TLS server names accordingly for your own custom wildcard DNS patt
 
 Using [eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto) subscribe to the `zilla` topic.
 
-```bash:no-line-numbers
+```bash
 docker run -it --rm eclipse-mosquitto \
 mosquitto_sub --url mqtts://mqtt.example.aklivity.io/zilla
 ```
@@ -23,7 +23,7 @@ mosquitto_sub --url mqtts://mqtt.example.aklivity.io/zilla
 
 In a separate session, publish a message on the `zilla` topic.
 
-```bash:no-line-numbers
+```bash
 docker run -it --rm eclipse-mosquitto \
 mosquitto_pub --url mqtts://mqtt.example.aklivity.io/zilla --message 'Hello, world'
 ```

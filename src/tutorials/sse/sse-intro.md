@@ -36,7 +36,7 @@ Create these files, `zilla.yaml`, `docker-compose.yaml` and `index.html`, in the
 
 ## Run Zilla and Kafka
 
-```bash:no-line-numbers
+```bash
 docker-compose up --detach
 ```
 
@@ -59,7 +59,7 @@ open:
 
 - Remove the running containers
 
-```bash:no-line-numbers
+```bash
 docker-compose down
 ```
 

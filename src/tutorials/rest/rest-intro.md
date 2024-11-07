@@ -35,19 +35,19 @@ Create these files, `zilla.yaml` and `docker-compose.yaml`, in the same director
 
 ## Run Zilla and Kafka
 
-```bash:no-line-numbers
+```bash
 docker-compose up --detach
 ```
 
 ## Use `curl` to send a greeting
 
-```bash:no-line-numbers
+```bash
 curl -X POST http://localhost:7114/items -H 'Content-Type: application/json' -H 'Idempotency-Key: 1234' -d '{"greeting":"Hello, world"}'
 ```
 
 ## Use `curl` to list all of the greetings
 
-```bash:no-line-numbers
+```bash
 curl http://localhost:7114/items
 ```
 
@@ -57,7 +57,7 @@ curl http://localhost:7114/items
 
 ## Remove the running containers
 
-```bash:no-line-numbers
+```bash
 docker-compose down
 ```
 

@@ -59,7 +59,7 @@ Make sure your DNS and `client.properties` are configured correctly, then try ag
 
 You can verify TCP connectivity using the following command:
 
-```bash:no-line-numbers
+```bash
 nc -v <b-1-broker-dns-name> 9094
 ```
 
@@ -73,7 +73,7 @@ Also, `nc` should stay connected.
 
 You can verify TLS connectivity with client key and signed client certificate using the following command:
 
-```bash:no-line-numbers
+```bash
 openssl s_client \
 -connect <b-1-broker-dns-name>:9094 \
 -servername <b-1-broker-dns-name> \
@@ -83,7 +83,7 @@ openssl s_client \
 
 Note: if you followed [Create Server Certificate](./create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](./create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](./create-certificate-authority-acm.md#export-the-ca-certificate) and have `openssl` trust the exported CA certificate.
 
-```bash:no-line-numbers
+```bash
 openssl s_client \
 -connect <b-1-broker-dns-name>:9094 \
 -servername <b-1-broker-dns-name> \
@@ -106,7 +106,7 @@ Note: If the backend TLS handshake from proxy-to-msk fails for any reason, then 
 
 You can verify Kafka connectivity with client key and signed client certificate using the following command:
 
-```bash:no-line-numbers
+```bash
 kcat \
 -L \
 -b <b-1-broker-dns-name>:9094 \
@@ -117,7 +117,7 @@ kcat \
 
 Note: if you followed [Create Server Certificate](./create-server-certificate-acm.md) to create the server certificate instead of [Create Server Certificate (LetsEncrypt)](./create-server-certificate-letsencrypt.md), then you will need to [Export the CA Certificate](./create-certificate-authority-acm.md#export-the-ca-certificate) and have `kcat` trust the exported CA certificate.
 
-```bash:no-line-numbers
+```bash
 kcat \
 -L \
 -b <b-1-broker-dns-name>:9094 \

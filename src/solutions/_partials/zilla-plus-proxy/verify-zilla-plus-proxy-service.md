@@ -14,7 +14,7 @@ They each have an IAM Role name starting with `my-zilla-iot-role`.
 
 Find the `Public IPv4 Address` and then SSH into the instance.
 
-```bash:no-line-numbers
+```bash
 ssh -i ~/.ssh/<key-pair.cer> ec2-user@<instance-public-ip-address>
 ```
 
@@ -26,7 +26,7 @@ After logging in via SSH, check the status of the `zilla-plus` system service.
 
 Verify that the `zilla-plus` service is active and logging output similar to that shown below.
 
-```bash:no-line-numbers
+```bash
 systemctl status zilla-plus.service
 ```
 
@@ -40,7 +40,7 @@ zilla-plus.service - Zilla Plus
 
 Check for the active ports with `netstat`.
 
-```bash:no-line-numbers
+```bash
 netstat -ntlp
 ```
 
@@ -52,7 +52,7 @@ tcp6    0    0 :::9092    :::*    LISTEN    1726/.zpm/image/bin
 
 You can get an stdout dump of the `zilla-plus.service` using `journalctl`.
 
-```bash:no-line-numbers
+```bash
 journalctl -e -u zilla-plus.service | tee -a /tmp/zilla.log
 ```
 
@@ -65,7 +65,7 @@ systemd[1]: Started zilla-plus.service - Zilla Plus.
 
 All output from cloud-init is captured by default to `/var/log/cloud-init-output.log`. There shouldn't be any errors in this log.
 
-```bash:no-line-numbers
+```bash
 cat /var/log/cloud-init-output.log
 ```
 

@@ -42,7 +42,7 @@ You can use the scripts shown below to generate `truststore.p12` and `keystore.p
 
 @tab truststore.p12
 
-```bash:no-line-numbers
+```bash
 keytool -import -file ca.pem \
 -alias YOUR_KAFKA_SIGNED_CLIENT_CERT_ALIAS \
 -keystore truststore.p12
@@ -50,7 +50,7 @@ keytool -import -file ca.pem \
 
 @tab keystore.p12
 
-```bash:no-line-numbers
+```bash
 openssl pkcs12 -export -in service.cert -inkey service.key \
 -out keystore.p12 -name YOUR_KAFKA_CA_CERT_ALIAS \
 -CAfile ca.pem

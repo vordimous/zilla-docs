@@ -12,17 +12,17 @@ Follow the [Launch EC2 Instance](./launch-ec2-instance.md) guide to launch an Am
 
 After logging into the launched EC2 instance via SSH, install `certbot` to interact with [LetsEncrypt](https://letsencrypt.org/).
 
-```bash:no-line-numbers
+```bash
 sudo amazon-linux-extras install -y epel
 ```
 
-```bash:no-line-numbers
+```bash
 sudo yum install -y certbot
 ```
 
 Then issue the wildcard certificate such as `*.example.aklivity.io`.
 
-```bash:no-line-numbers
+```bash
 sudo certbot -d *.example.aklivity.io --manual --preferred-challenges dns --key-type rsa certonly
 ```
 
@@ -39,7 +39,7 @@ When `certbot` completes, the relevant files for the certificate chain and priva
 
 Now we need to prepare the secret value by combining these together:
 
-```bash:no-line-numbers
+```bash
 touch wildcard.example.aklivity.io.pem
 sudo cat /etc/letsencrypt/live/example.aklivity.io/privkey.pem >> wildcard.example.aklivity.io.pem
 sudo cat /etc/letsencrypt/live/example.aklivity.io/fullchain.pem >> wildcard.example.aklivity.io.pem
@@ -47,7 +47,7 @@ sudo cat /etc/letsencrypt/live/example.aklivity.io/fullchain.pem >> wildcard.exa
 
 Then we can create the secret, for example:
 
-```bash:no-line-numbers
+```bash
 aws secretsmanager create-secret \
 --region us-east-1 \
 --name wildcard.example.aklivity.io \

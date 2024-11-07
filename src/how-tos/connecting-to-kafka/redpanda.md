@@ -14,7 +14,7 @@ This is how to connect to Redpanda from Zilla. The examples use the below Enviro
 
 Before we proceed further let's use the below command to verify connectivity to your Kafka.
 
-```bash:no-line-numbers
+```bash
 kcat -b $KAFKA_BOOTSTRAP_SERVER \
 -X security.protocol=sasl_ssl -X sasl.mechanisms=PLAIN \
 -X sasl.username=$SASL_USERNAME -X sasl.password=$SASL_PASSWORD \

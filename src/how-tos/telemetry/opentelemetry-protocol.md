@@ -195,7 +195,7 @@ bindings:
 
 Run the Demo using Docker Compose from inside the demo directory:
 
-```bash:no-line-numbers
+```bash
 docker compose up --force-recreate --remove-orphans --detach
 ```
 
@@ -215,7 +215,7 @@ The running `zillaproxy` is configured to expose kafka topics passed in through 
 
 You can fetch all of the messages on the Kafka topic from a `curl` command.
 
-```bash:no-line-numbers
+```bash
 curl http://localhost:7114/orders
 ```
 
@@ -252,7 +252,7 @@ USD�����]
 
 Create lots of request with a `while` loop:
 
-```bash:no-line-numbers
+```bash
 while true; do; curl http://localhost:7114/orders; done
 ```
 
@@ -268,6 +268,6 @@ The `http.duration` metrics are being used to track the Latency and Requests Rat
 
 You have seen Zilla successfully export metrics to an `otlp` collector. You can teardown the demo using the below command.
 
-```bash:no-line-numbers
+```bash
 docker compose down
 ```

@@ -56,13 +56,13 @@ Install the dissector plugin `zilla.lua` to the plugin directory of Wireshark. T
 
 To find the Wireshark plugin directory navigate the menu: About Wireshark -> Folders -> Personal Lua Plugins; or use this command:
 
-```bash:no-line-numbers
+```bash
 tshark -G folders | grep "Personal Lua Plugins"
 ```
 
 To find out the plugin version navigate the menu: About Wireshark -> Plugins -> search: zilla; or use this command:
 
-```bash:no-line-numbers
+```bash
 tshark -G plugins | grep zilla
 ```
 
@@ -70,7 +70,7 @@ You may need to reload Lua plugins from the menu: Analyze -> Reload Lua Plugins 
 
 Example:
 
-```bash:no-line-numbers
+```bash
 ./zilla dump -v -w zilla.pcap -i ~/.local/lib/wireshark/plugins
 ```
 
@@ -84,7 +84,7 @@ Write the `pcap` output to this file.
 
 Example:
 
-```bash:no-line-numbers
+```bash
 ./zilla dump -v -w zilla.pcap
 ```
 
@@ -92,13 +92,13 @@ Example:
 
 The `zilla help` command shows help information about available commands, or more information for a specific command.
 
-```bash:no-line-numbers
+```bash
 zilla help [command]
 ```
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zilla help start
 ```
 
@@ -106,7 +106,7 @@ Examples:
 
 The `zilla version` command prints the version information of Zilla.
 
-```bash:no-line-numbers
+```bash
 zilla version
 ```
 
@@ -118,13 +118,13 @@ zilla version 0.9.85
 
 The `zilla metrics` command provides metrics for each binding in the configuration.
 
-```bash:no-line-numbers
+```bash
 zilla metrics
 ```
 
 Optionally specify a binding name to output metrics for that binding only.
 
-```bash:no-line-numbers
+```bash
 zilla metrics [binding-name]
 ```
 
@@ -134,7 +134,7 @@ Filters bindings by namespace
 
 Examples:
 
-```bash:no-line-numbers
+```bash
 ./zilla metrics echo_server
 ```
 
@@ -154,7 +154,7 @@ example      echo_server    stream.errors.sent            0
 
 The `zilla start` command resolves the [Zilla Runtime Configuration](./overview.md) in a `zilla.yaml` to start the runtime engine.
 
-```bash:no-line-numbers
+```bash
 zilla start -ve
 ```
 
@@ -182,11 +182,11 @@ started
 
 Set the path to the local `zilla.yaml` configuration file or remote URI.
 
-```bash:no-line-numbers
+```bash
 zilla start -c ./path/to/zilla.yaml
 ```
 
-```bash:no-line-numbers
+```bash
 zilla start -c http://example.com/zilla.yaml
 ```
 
@@ -196,7 +196,7 @@ zilla start -c http://example.com/zilla.yaml
 
 Log exception traces to `stdout`.
 
-```bash:no-line-numbers
+```bash
 zilla start -e
 ```
 
@@ -206,7 +206,7 @@ zilla start -e
 
 Set Zilla properties via a file.
 
-```bash:no-line-numbers
+```bash
 zilla start -p /path/to/zilla.properties
 ```
 
@@ -216,7 +216,7 @@ zilla start -p /path/to/zilla.properties
 
 Set individual Zilla properties.
 
-```bash:no-line-numbers
+```bash
 zilla start -P zilla.engine.prop=value -P zilla.other.thing=value
 ```
 
@@ -227,7 +227,7 @@ zilla start -P zilla.engine.prop=value -P zilla.other.thing=value
 
 Log verbose output to `stdout`.
 
-```bash:no-line-numbers
+```bash
 zilla start -v
 ```
 <!-- markdownlint-enable MD024 -->
@@ -238,7 +238,7 @@ zilla start -v
 
 Set the Worker count in Zilla. Defaults to the number of CPU cores available.
 
-```bash:no-line-numbers
+```bash
 zilla start -w 2
 ```
 
@@ -246,7 +246,7 @@ zilla start -w 2
 
 The `zilla stop` command signals the runtime engine to stop.
 
-```bash:no-line-numbers
+```bash
 zilla stop
 ```
 
@@ -260,11 +260,11 @@ Read how to [enable incubator features](../../how-tos/deploy-operate.md#enable-i
 
 The `zilla tune` command tunes the mapping from runtime engine workers to bindings.
 
-```bash:no-line-numbers
+```bash
 zilla tune [NAME=VALUE]
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune
 ```
 
@@ -273,7 +273,7 @@ xxxx  example.tcp
 xxxx  example.echo
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune example.echo=2
 ```
 
@@ -281,7 +281,7 @@ xxxx  example.echo
 ..x.  example.echo
 ```
 
-```bash:no-line-numbers
+```bash
 ./zilla tune
 ```
 

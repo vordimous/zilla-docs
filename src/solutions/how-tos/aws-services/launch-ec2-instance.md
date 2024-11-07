@@ -83,6 +83,6 @@ Select your recently launched EC2 instance to see the instance details. Copy the
 
 Execute the following `ssh` command to access your EC2 instance.
 
-```bash:no-line-numbers
+```bash
 ssh -i ~/.ssh/<instance-key-pair-name>.pem ec2-user@<instance-public-ipv4-address>
 ```
