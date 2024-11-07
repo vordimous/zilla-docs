@@ -3,25 +3,13 @@
 Listens on http port `7114` or https port `7143` and will produce messages to the `events` topic in `SASL/SCRAM`
 enabled Redpanda cluster, synchronously.
 
-### Requirements
+## Running locally
 
-- bash, jq, nc
-- Kubernetes (e.g. Docker Desktop with Kubernetes enabled)
-- kubectl
-- helm 3.0+
-- kcat
-
-### Install kcat client
-
-Requires Kafka client, such as `kcat`.
-
-```bash
-brew install kcat
-```
+This cookbook runs using Docker compose.
 
 ### Setup
 
-The `setup.sh` script:
+The `setup.sh` script will:
 
 - installs Zilla and Redpanda to the Kubernetes cluster with helm and waits for the pods to start up
 - creates the `user` user in Redpanda
@@ -30,43 +18,6 @@ The `setup.sh` script:
 
 ```bash
 ./setup.sh
-```
-
-output:
-
-```text
-+ ZILLA_CHART=oci://ghcr.io/aklivity/charts/zilla
-+ helm upgrade --install zilla-http-redpanda-sasl-scram ./zilla-0.1.0.tgz --namespace zilla-http-redpanda-sasl-scram --create-namespace --wait [...]
-NAME: zilla-http-redpanda-sasl-scram
-LAST DEPLOYED: [...]
-NAMESPACE: zilla-http-redpanda-sasl-scram
-STATUS: deployed
-REVISION: 1
-NOTES:
-Zilla has been installed.
-[...]
-+ helm upgrade --install zilla-http-redpanda-sasl-scram-redpanda chart --namespace zilla-http-redpanda-sasl-scram --create-namespace --wait
-NAME: zilla-http-redpanda-sasl-scram-redpanda
-LAST DEPLOYED: [...]
-NAMESPACE: zilla-http-redpanda-sasl-scram
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-++ kubectl get pods --namespace zilla-http-redpanda-sasl-scram --selector app.kubernetes.io/instance=redpanda -o name
-+ REDPANDA_POD=pod/redpanda-1234567890-abcde
-+ kubectl exec --namespace zilla-http-redpanda-sasl-scram pod/redpanda-1234567890-abcde -- rpk acl user create user -p redpanda
-Created user "user".
-+ kubectl exec --namespace zilla-http-redpanda-sasl-scram pod/redpanda-1234567890-abcde -- rpk topic create events --user user --password redpanda --sasl-mechanism SCRAM-SHA-256
-TOPIC   STATUS
-events  OK
-+ kubectl port-forward --namespace zilla-http-redpanda-sasl-scram service/zilla 7114 7143
-+ nc -z localhost 7114
-+ kubectl port-forward --namespace zilla-http-redpanda-sasl-scram service/redpanda 9092
-+ sleep 1
-+ nc -z localhost 7114
-Connection to localhost port 7114 [tcp/http-alt] succeeded!
-+ nc -z localhost 9092
-Connection to localhost port 9092 [tcp/XmlIpcRegSvc] succeeded!
 ```
 
 ### Verify behavior
@@ -93,8 +44,8 @@ output:
 Verify that the event has been produced to the `events` topic in Redpanda cluster.
 
 ```bash
-docker compose -p zilla-http-kafka-sync exec kcat \
-kafkacat -b localhost:9092 -X security.protocol=SASL_PLAINTEXT \
+docker compose -p zilla-http-kafka-sync exec kafkacat \
+kafkacat -b redpanda:29092 -X security.protocol=SASL_PLAINTEXT \
   -X sasl.mechanisms=SCRAM-SHA-256 \
   -X sasl.username=user \
   -X sasl.password=redpanda \

@@ -21,7 +21,6 @@ services:
 
   redpanda:
     image: docker.redpanda.com/redpandadata/redpanda:v23.2.17
-    container_name: redpanda
     command:
       - redpanda start
       - --set redpanda.enable_sasl=true
@@ -50,9 +49,8 @@ services:
       retries: 5
       start_period: 5s
 
-  console:
+  redpanda-console:
     image: docker.redpanda.com/redpandadata/console:v2.3.6
-    container_name: redpanda-console
     entrypoint: /bin/sh
     command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
     environment:

@@ -22,7 +22,6 @@ services:
   kafka:
     image: bitnami/kafka:3.5
     profiles: [kafka]
-    container_name: kafka
     restart: unless-stopped
     ports:
       - 9092:9092
@@ -72,7 +71,6 @@ services:
   kafka-ui:
     image: ghcr.io/kafbat/kafka-ui:latest
     profiles: [kafka]
-    container_name: kafka-ui
     restart: unless-stopped
     ports:
       - 8080:8080
@@ -87,7 +85,6 @@ services:
   redpanda:
     image: docker.redpanda.com/redpandadata/redpanda:v24.2.4
     profiles: [redpanda]
-    container_name: redpanda
     command:
       - redpanda
       - start
@@ -130,10 +127,9 @@ services:
       rpk topic create mqtt-sessions -c cleanup.policy=compact --brokers $${REDPANDA_BROKER}
       "
 
-  console:
+  redpanda-console:
     image: docker.redpanda.com/redpandadata/console:v2.3.6
     profiles: [redpanda]
-    container_name: redpanda-console
     entrypoint: /bin/sh
     command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
     environment:
