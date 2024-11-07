@@ -41,7 +41,7 @@ jobs:
 
       - if: ${{ env.IS_CUSTOM_VERSION && steps.validate-custom-version.outputs.match != github.event.inputs.custom-version }}
         name: Custom Version must be "#.#.#"
-        run: echo "Custom Version must be #.#.#" exit 1;
+        run: echo "Custom Version must be \#.\#.\#" exit 1;
 
   release:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{secrets.GITFLOW_RELEASES_TOKEN}}
+          token: ${{secrets.GITFLOW_RELEASES_TOKEN}} # The PAT used to push changes to protected branches
           fetch-depth: "0"
 
       - name: get new version
