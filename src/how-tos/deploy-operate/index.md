@@ -17,7 +17,7 @@ zilla start -ve -c ./zilla.yaml
 
 ## Running Zilla via Docker
 
-You can run your `zilla.yaml` config inside a container. If you want to deploy on Kubernetes, use our [helm chart](./deploy-operate.md).
+You can run your `zilla.yaml` config inside a container. If you want to deploy on Kubernetes, use our [helm chart](./deploy-operate/index.md).
 
 ```bash
 docker run -v ./zilla.yaml:/etc/zilla/zilla.yaml ghcr.io/aklivity/zilla:latest start -ve
@@ -176,11 +176,11 @@ Errors and misconfigured parts of the `zilla.yaml` file are detected by Zilla an
 
 This feature is demonstrated in the above Helm install command. Running a `helm update ...` with changes to the `zilla.yaml`, k8s will update the config map, which writes the new content into the running pods. Zilla will detect those file changes and load the new config.
 
-Zilla can load the `zilla.yaml` config from a remote source using the `-c` or `--config` [CLI flag](../reference/config/zilla-cli.md#c-config). The auto reconfigure feature will still work when pulling the config remotely.
+Zilla can load the `zilla.yaml` config from a remote source using the `-c` or `--config` [CLI flag](../../reference/config/zilla-cli.md#c-config). The auto reconfigure feature will still work when pulling the config remotely.
 
 ## Auto Scaling
 
-Zilla will start workers that default to the CPU cores it is allowed to use. This makes horizontal scaling easy with a 1:1 ratio of instances to workers. Any of the default scaling metrics based on server CPU usage will enable Zilla to handle traffic spikes. Additionally, Zilla [Telemetry](../reference/config/overview.md#telemetry) configuration provides more data when determining how to scale. The [Prometheus autoscale example](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale) demonstrates using metrics from the [Prometheus exporter](../reference/config/telemetry/exporters/prometheus.md) to horizontally scale Zilla on k8s.
+Zilla will start workers that default to the CPU cores it is allowed to use. This makes horizontal scaling easy with a 1:1 ratio of instances to workers. Any of the default scaling metrics based on server CPU usage will enable Zilla to handle traffic spikes. Additionally, Zilla [Telemetry](../../reference/config/overview.md#telemetry) configuration provides more data when determining how to scale. The [Prometheus autoscale example](https://github.com/aklivity/zilla-examples/tree/main/kubernetes.prometheus.autoscale) demonstrates using metrics from the [Prometheus exporter](../../reference/config/telemetry/exporters/prometheus.md) to horizontally scale Zilla on k8s.
 
 ## Enable Incubator Features
 
@@ -196,4 +196,4 @@ ZILLA_INCUBATOR_ENABLED=true
 
 ## Export `TRACE` level Log Dump
 
-The [zilla dump](../reference/config/zilla-cli.md#zilla-dump) command will capture all of the internal events at the stream level for a detailed analysis of what zilla was doing. These logs are captured down to the nanosecond and are exported as a `.pcap` file to be used with [Wireshark](https://wiki.wireshark.org/SampleCaptures). You can find instructions on how to view the capture in wireshark in the zilla dump [plugin install section](../reference/config/zilla-cli.md#i-install-plugin-directory).
+The [zilla dump](../../reference/config/zilla-cli.md#zilla-dump) command will capture all of the internal events at the stream level for a detailed analysis of what zilla was doing. These logs are captured down to the nanosecond and are exported as a `.pcap` file to be used with [Wireshark](https://wiki.wireshark.org/SampleCaptures). You can find instructions on how to view the capture in wireshark in the zilla dump [plugin install section](../../reference/config/zilla-cli.md#i-install-plugin-directory).

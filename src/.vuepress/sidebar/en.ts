@@ -363,7 +363,7 @@ export const enSidebar = sidebar({
         },
         {
           text: "Installing Zilla",
-          link: "how-tos/deploy-operate.md",
+          link: "how-tos/deploy-operate/index.md",
           children: [],
         },
         {
@@ -382,6 +382,10 @@ export const enSidebar = sidebar({
             {
               text: "Push to an OTLP Collector",
               link: "how-tos/telemetry/opentelemetry-protocol.md",
+            },
+            {
+              text: "Auto scaling on K8s",
+              link: "how-tos/deploy-operate/autoscale-k8s.md",
             },
           ],
         },

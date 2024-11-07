@@ -4,7 +4,7 @@ This is the resource folder for the running the [MQTT Kafka broker guide](https:
 
 ## Running locally
 
-This quickstart runs using Docker compose.
+This cookbook runs using Docker compose.
 
 ### Setup
 
@@ -35,7 +35,7 @@ The `setup.sh` script will:
     KAFKA_VENDOR_PROFILE=redpanda docker compose --profile redpanda --profile init-redpanda up -d
     ```
 
-### Using this example
+### Using this cookbook
 
 Follow the steps on our [MQTT Kafka broker guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html#send-a-greeting)
 

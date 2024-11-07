@@ -41,7 +41,7 @@ The `setup.sh` script will:
 
 You can interact with this quickstart using our [Postman collection](https://www.postman.com/aklivity-zilla/workspace/aklivity-zilla-quickstart/overview)
 
-### Generate combined zilla.yaml
+### Generating combined zilla.yaml
 
 ```bash
 yq '.' *-zilla.yaml > zilla.yaml

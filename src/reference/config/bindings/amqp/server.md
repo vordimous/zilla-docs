@@ -11,7 +11,7 @@ The amqp server binding decodes the AMQP protocol on the inbound network stream,
 ```
 
 ::: important Feature is in Incubator
-Read how to [enable incubator features](../../../../how-tos/deploy-operate.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
+Read how to [enable incubator features](../../../../how-tos/deploy-operate/deploy-operate/index.md#enable-incubator-features). Star and watch the [Zilla repo](https://github.com/aklivity/zilla/releases) for new releases!
 :::
 
 ## Configuration (\* required)

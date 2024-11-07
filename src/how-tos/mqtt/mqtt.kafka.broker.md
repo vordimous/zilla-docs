@@ -198,7 +198,7 @@ This will define the location and connection for Zilla to communicate with Kafka
 
 ### Start Zilla
 
-With your `zilla.yaml` config, follow the [Zilla install instructions](../deploy-operate.md) using your method of choice. Set the necessary `KAFKA_BOOTSTRAP_SERVER` environment variable to your running Kafka instance.
+With your `zilla.yaml` config, follow the [Zilla install instructions](../deploy-operate/index.md) using your method of choice. Set the necessary `KAFKA_BOOTSTRAP_SERVER` environment variable to your running Kafka instance.
 
 ### Adding TLS
 

@@ -6,7 +6,7 @@ A registered catalog is a namespace scoped item in a zilla config that can be re
 
 Local catalogs are used to quickly bootstrap a Zilla config or package a standard schema that doesn't change often with a Zilla install.
 
-A simple way to reference a file in Zilla is from the local filesystem. Adding [files to a Zilla pod](../deploy-operate.md#adding-files-to-the-zilla-pod) relative to the Zilla install directory.
+A simple way to reference a file in Zilla is from the local filesystem. Adding [files to a Zilla pod](../deploy-operate/deploy-operate/index.md#adding-files-to-the-zilla-pod) relative to the Zilla install directory.
 
 ```yaml
 catalogs:
